@@ -25,6 +25,7 @@ require_once MODMY_THEME_DIR . '/inc/shortcodes.php';
 
 // 6. WooCommerce customizations
 require_once MODMY_THEME_DIR . '/inc/woocommerce.php';
+require_once MODMY_THEME_DIR . '/inc/waklert-currency.php';
 
 // Custom Dynamic QRIS Gateway
 if ( class_exists( 'WooCommerce' ) ) {
