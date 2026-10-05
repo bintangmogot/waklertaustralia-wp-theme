@@ -1433,7 +1433,7 @@ body.single-product a[href="#product-reviews"] > span:last-child {
   text-underline-offset: 2px;
 }
 
-/* Replace the header monogram with a simple capsule mark. */
+/* Draw a molecule-inspired W mark for the header logo. */
 a[aria-label="Waklert Australia"] > span:first-child {
   position: relative;
 }
@@ -1443,9 +1443,9 @@ a[aria-label="Waklert Australia"] > span:first-child > span:first-child {
 a[aria-label="Waklert Australia"] > span:first-child::after {
   position: absolute;
   inset: 0;
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
   margin: auto;
   content: "";
-  background: center / contain no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg transform='rotate(-45 12 12)'%3E%3Crect x='6.5' y='2' width='11' height='20' rx='5.5' fill='%23fff'/%3E%3Cpath d='M6.5 12h11' fill='none' stroke='%231c5f7d' stroke-width='1.5'/%3E%3C/g%3E%3C/svg%3E");
+  background: center / contain no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3.5 6.5 7.5 18 12 10 16.5 18 20.5 6.5' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='3.5' cy='6.5' r='1.6' fill='%23fff'/%3E%3Ccircle cx='7.5' cy='18' r='1.6' fill='%23fff'/%3E%3Ccircle cx='12' cy='10' r='2.4' fill='%23f49a5b'/%3E%3Ccircle cx='16.5' cy='18' r='1.6' fill='%23fff'/%3E%3Ccircle cx='20.5' cy='6.5' r='1.6' fill='%23fff'/%3E%3C/svg%3E");
 }
