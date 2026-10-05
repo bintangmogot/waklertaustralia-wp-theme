@@ -1426,3 +1426,9 @@ label, .variations label { cursor: pointer !important; }
 .waklert-review-slider::-webkit-scrollbar {
   display: none;
 }
+
+/* Keep the product review count link visually identifiable. */
+body.single-product a[href="#product-reviews"] > span:last-child {
+  text-decoration-line: underline;
+  text-underline-offset: 2px;
+}
