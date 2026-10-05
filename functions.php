@@ -53,6 +53,7 @@ if (!function_exists('the_row')) {
     function the_row() { return false; }
 }
 
+require_once MODMY_THEME_DIR . '/inc/ajax-reviews.php';
 // 9. Enable SVG Uploads in Media Library
 add_filter('upload_mimes', function($mimes) {
     if (current_user_can('manage_options')) {

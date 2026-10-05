@@ -1417,3 +1417,12 @@ label, .variations label { cursor: pointer !important; }
 #respond .comment-form .submit {
   @apply !inline-flex !rounded-full !bg-primary !px-8 !py-3 !text-sm !font-bold !uppercase !tracking-wider !text-primary-foreground !shadow-pill !transition-all hover:!bg-primary-dark hover:!-translate-y-0.5 !cursor-pointer !border-none;
 }
+
+/* Keep the swipeable product review cards clean on touch screens. */
+.waklert-review-slider {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.waklert-review-slider::-webkit-scrollbar {
+  display: none;
+}
