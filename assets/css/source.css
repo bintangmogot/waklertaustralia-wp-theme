@@ -253,94 +253,12 @@
 }
 
 /*
- * ============================================================
- * SIDE CART WOOCOMMERCE PREMIUM CUSTOM STYLING
- * ============================================================
+ * The Side Cart WooCommerce Style settings are the source of truth for cart
+ * colors, typography, spacing, and button themes. Keep only structural tweaks
+ * here so theme CSS does not override those configurable plugin values.
  */
 
-/* General container styling */
-.xoo-wsc-container {
-  font-family: var(--font-sans) !important;
-}
-
-/* Header style */
-.xoo-wsc-header {
-  font-family: var(--font-heading) !important;
-  font-weight: 800 !important;
-  background-color: var(--background) !important;
-  border-bottom: 1px solid var(--border) !important;
-  padding: 1.25rem 1.5rem !important;
-}
-.xoo-wsc-header h2 {
-  font-size: 1.125rem !important;
-  font-weight: 800 !important;
-  color: var(--foreground) !important;
-}
-
-/* Close button style */
-.xoo-wsc-close {
-  color: var(--muted-foreground) !important;
-  opacity: 0.7;
-  transition: all 0.2s ease;
-}
-.xoo-wsc-close:hover {
-  color: var(--primary) !important;
-  opacity: 1;
-}
-
-/* Items details */
-.xoo-wsc-product {
-  border-bottom: 1px solid var(--border) !important;
-  padding: 1rem 1.5rem !important;
-}
-.xoo-wsc-pname {
-  font-weight: 700 !important;
-  color: var(--foreground) !important;
-  font-size: 0.875rem !important;
-  line-height: 1.25rem !important;
-}
-.xoo-wsc-pname:hover {
-  color: var(--primary) !important;
-}
-
-/* Price styling */
-.xoo-wsc-pprice {
-  font-weight: 700 !important;
-  color: var(--price) !important;
-}
-
-/* Quantity input and buttons */
-.xoo-wsc-qty-box {
-  border: 1px solid var(--border) !important;
-  border-radius: 9999px !important;
-  overflow: hidden;
-}
-.xoo-wsc-qty-btn {
-  background-color: var(--secondary) !important;
-  color: var(--foreground) !important;
-  transition: background-color 0.2s ease;
-}
-.xoo-wsc-qty-btn:hover {
-  background-color: var(--border) !important;
-}
-
-/* Footer section styling */
-.xoo-wsc-footer {
-  background-color: var(--background) !important;
-  border-top: 1px solid var(--border) !important;
-  padding: 1.5rem !important;
-}
-
-/* Subtotal styling */
-.xoo-wsc-subtotal {
-  font-family: var(--font-heading) !important;
-  font-weight: 800 !important;
-  color: var(--foreground) !important;
-  font-size: 1.125rem !important;
-  margin-bottom: 1.25rem !important;
-}
-
-/* Center Trust Badges / Custom HTML in Side Cart */
+/* Keep the custom trust badges grouped in a centered row. */
 .xoo-wsc-footer .xoo-wsc-sln-txt,
 .xoo-wsc-footer .xoo-wsc-bef-tot,
 .xoo-wsc-footer .xoo-wsc-aft-tot,
@@ -354,91 +272,9 @@
   width: 100% !important;
 }
 
-/* Premium Buttons Styling */
-.xoo-wsc-footer .xoo-wsc-ft-btn, 
-.xoo-wsc-ft-btn {
-  font-family: var(--font-sans) !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.05em !important;
-  border-radius: 9999px !important;
-  padding: 0.875rem 0.5rem !important;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  font-size: 0.8rem !important;
-  line-height: 1.4 !important;
-  box-shadow: var(--shadow-pill) !important;
-  border: none !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex-wrap: wrap !important;
-  text-align: center !important;
-}
-
-/* Primary Button (Checkout / Place Order) */
-.xoo-wsc-chkt-btn, 
-.xoo-wsc-ft-btn.xoo-wsc-chkt,
-.xoo-wsc-ft-btn-checkout {
-  background-color: var(--primary) !important;
-  color: var(--primary-foreground) !important;
-}
-.xoo-wsc-chkt-btn:hover, 
-.xoo-wsc-ft-btn.xoo-wsc-chkt:hover,
-.xoo-wsc-ft-btn-checkout:hover {
-  background-color: var(--primary-dark) !important;
-  transform: translateY(-1px);
-}
-.xoo-wsc-chkt-btn > *, 
-.xoo-wsc-ft-btn.xoo-wsc-chkt > *,
-.xoo-wsc-ft-btn-checkout > * {
-  display: none !important;
-}
-
-/* Secondary Button (View Cart / Continue Shopping) */
-.xoo-wsc-cart-btn, 
-.xoo-wsc-ft-btn.xoo-wsc-cart {
-  background-color: var(--secondary) !important;
-  color: var(--secondary-foreground) !important;
-  border: 1px solid var(--border) !important;
-  box-shadow: none !important;
-}
-.xoo-wsc-cart-btn:hover, 
-.xoo-wsc-ft-btn.xoo-wsc-cart:hover {
-  background-color: var(--border) !important;
-}
-
-/* Empty Cart text and buttons */
-.xoo-wsc-empty-text {
-  font-family: var(--font-heading) !important;
-  font-weight: 700 !important;
-  color: var(--muted-foreground) !important;
-}
-.xoo-wsc-empty-cart-btn {
-  background-color: var(--primary) !important;
-  color: var(--primary-foreground) !important;
-  border-radius: 9999px !important;
-  font-weight: 700 !important;
-}
-.xoo-wsc-empty-cart-btn:hover {
-  background-color: var(--primary-dark) !important;
-}
-
-/* Hide the subtotal price beside the cart icon in the header */
+/* Keep the basket trigger compact; its colors remain controlled by the plugin. */
 .xoo-wsc-sc-subt {
   display: none !important;
-}
-
-/* Keep the Side Cart WooCommerce trigger aligned with the Waklert blue palette. */
-.xoo-wsc-sc-bki,
-.xoo-wsc-basket,
-.xoo-wsc-basket .xoo-wsc-bki {
-  color: var(--primary) !important;
-}
-.xoo-wsc-sc-count,
-.xoo-wsc-items-count,
-.xoo-wsch-items-count {
-  background-color: var(--primary) !important;
-  color: var(--primary-foreground) !important;
 }
 
 /*
