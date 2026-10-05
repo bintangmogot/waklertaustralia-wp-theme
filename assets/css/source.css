@@ -272,6 +272,21 @@
   width: 100% !important;
 }
 
+/* Keep the checkout label and total on one line in the narrow cart footer. */
+@media (max-width: 480px) {
+  .xoo-wsc-ft-buttons-cont a.xoo-wsc-ft-btn-checkout {
+    flex-wrap: nowrap !important;
+    font-size: clamp(0.7rem, 3.2vw, 0.8rem) !important;
+    padding-inline: 0.25rem !important;
+    white-space: nowrap !important;
+  }
+
+  .xoo-wsc-ft-buttons-cont a.xoo-wsc-ft-btn-checkout .amount {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+}
+
 /* Keep the basket trigger compact; its colors remain controlled by the plugin. */
 .xoo-wsc-sc-subt {
   display: none !important;
