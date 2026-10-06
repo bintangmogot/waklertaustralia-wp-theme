@@ -156,3 +156,5 @@ function modmy_remove_qris_from_button($label) {
     // Remove any occurrence of "QRIS" (with optional surrounding spaces and parentheses)
     return preg_replace('/\s*\(?\s*QRIS\s*\)?/i', '', $label);
 }
+
+require_once __DIR__ . '/cart-shipping-insurance.php';
