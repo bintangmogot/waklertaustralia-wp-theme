@@ -158,3 +158,81 @@ function modmy_remove_qris_from_button($label) {
 }
 
 require_once __DIR__ . '/cart-shipping-insurance.php';
+add_filter('woocommerce_form_field_args', 'waklert_require_billing_phone_field_args', PHP_INT_MAX, 3);
+function waklert_require_billing_phone_field_args($args, $key, $value) {
+    if ('billing_phone' === $key) {
+        $args['required'] = true;
+        $args['label'] = 'Phone';
+        $args['class'] = array_values(array_unique(array_merge((array) ($args['class'] ?? array()), array('validate-required'))));
+    }
+
+    return $args;
+}
+
+/** Keep the phone field visibly required when the field-editor plugin renders its markup. */
+function waklert_require_billing_phone_markup($field, $key, $args, $value) {
+    if ('billing_phone' !== $key) {
+        return $field;
+    }
+
+    $required_marker = '&nbsp;<abbr class="required" title="' . esc_attr__('required', 'woocommerce') . '">*</abbr>';
+    $field = preg_replace('/(?:&nbsp;|\s)*<span class="optional">\s*\([^<]*\)\s*<\/span>/i', $required_marker, $field);
+
+    return preg_replace_callback('/<input\b[^>]*>/i', static function ($matches) {
+        $input = $matches[0];
+        if (!preg_match('/\srequired(?:\s|=|>)/i', $input)) {
+            $input = preg_replace('/\s*\/?>(?=\s*$)/', ' required="required" aria-required="true"$0', $input, 1);
+        }
+        return $input;
+    }, $field, 1);
+}
+foreach (array('tel', 'text') as $phone_field_type) {
+    add_filter('woocommerce_form_field_' . $phone_field_type, 'waklert_require_billing_phone_markup', PHP_INT_MAX, 4);
+}
+
+/** Keep the required indicator and native validation after checkout fragments refresh. */
+function waklert_require_billing_phone_ui() {
+    if (!is_checkout() || is_order_received_page()) {
+        return;
+    }
+    ?>
+    <script>
+    (() => {
+        const enforceRequiredPhone = () => {
+            const field = document.querySelector('#billing_phone_field');
+            const input = field?.querySelector('#billing_phone');
+            const label = field?.querySelector('label');
+            if (!field || !input || !label) return;
+
+            input.required = true;
+            input.setAttribute('aria-required', 'true');
+            field.classList.add('validate-required');
+            label.querySelector('.optional')?.remove();
+            if (!label.querySelector('.required')) {
+                const marker = document.createElement('abbr');
+                marker.className = 'required';
+                marker.title = 'required';
+                marker.textContent = '*';
+                label.append(document.createTextNode(' '), marker);
+            }
+        };
+
+        enforceRequiredPhone();
+        if (window.jQuery) {
+            jQuery(document.body).on('updated_checkout', enforceRequiredPhone);
+        }
+        new MutationObserver(enforceRequiredPhone).observe(document.body, { childList: true, subtree: true });
+    })();
+    </script>
+    <?php
+}
+add_action('wp_footer', 'waklert_require_billing_phone_ui', 99);
+
+/** Reject a missing phone number even when a checkout field extension skips core validation. */
+function waklert_validate_billing_phone_required($data, $errors) {
+    if (empty($data['billing_phone']) && $errors instanceof WP_Error) {
+        $errors->add('billing_phone_required', __('Please enter a phone number.', 'woocommerce'));
+    }
+}
+add_action('woocommerce_after_checkout_validation', 'waklert_validate_billing_phone_required', PHP_INT_MAX, 2);
+
