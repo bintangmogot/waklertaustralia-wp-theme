@@ -27,15 +27,6 @@ require_once MODMY_THEME_DIR . '/inc/shortcodes.php';
 require_once MODMY_THEME_DIR . '/inc/woocommerce.php';
 require_once MODMY_THEME_DIR . '/inc/waklert-currency.php';
 
-// Custom Dynamic QRIS Gateway
-if ( class_exists( 'WooCommerce' ) ) {
-    require_once MODMY_THEME_DIR . '/inc/class-wc-gateway-dynamic-qris.php';
-}
-add_filter( 'woocommerce_payment_gateways', function( $gateways ) {
-    $gateways[] = 'WC_Gateway_Dynamic_QRIS';
-    return $gateways;
-});
-
 // 7. Custom Post Types
 require_once MODMY_THEME_DIR . '/inc/post-types.php';
 
