@@ -67,8 +67,6 @@ $in_stock = $product->is_in_stock();
                 $variations = $product->get_available_variations();
                 $count = 0;
                 foreach ($variations as $var) {
-                    if ($count >= 6) break;
-                    
                     $label = "";
                     foreach ($var['attributes'] as $key => $val) {
                         if ($val) { $label = $val; break; }
@@ -77,6 +75,10 @@ $in_stock = $product->is_in_stock();
                         $parts = explode('-', get_the_title($var['variation_id']));
                         $label = trim(end($parts));
                     }
+                    
+                    // Clean up hyphens and lowercase
+                    $label = str_ireplace('-tabs', ' Tabs', $label);
+                    $label = str_ireplace('-', ' ', $label);
 
                     $price_html = wc_price($var['display_price']);
                     if ($count === 0) {
