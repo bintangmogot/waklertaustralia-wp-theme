@@ -156,6 +156,7 @@ $render_footer_menu = static function ($location, $wrapper_class = '') use ($foo
     </div>
 </footer>
 
+<script>console.log("🚀 InstaWP Auto-Deploy is fully operational!");</script>
 <?php wp_footer(); ?>
 </body>
 </html>
