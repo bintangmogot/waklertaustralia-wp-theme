@@ -1,131 +1,118 @@
 <?php
 /**
  * The template for displaying product content within loops
- * Adapted to match the Armodafinil Direct design with variation pills
+ * Matches the original React ProductCard.tsx design exactly
  */
 
 defined('ABSPATH') || exit;
 
 global $product;
 
+// Ensure we have a proper WC_Product object
 if (!is_a($product, 'WC_Product')) {
     $product = wc_get_product(get_the_ID());
 }
 
+// Ensure visibility.
 if (empty($product) || !$product->is_visible()) {
     return;
 }
 
 $title = $product->get_title();
 $link = $product->get_permalink();
-$image = wp_get_attachment_image_url($product->get_image_id(), 'medium_large') ?: '';
-if (!$image) {
-    $image = wc_placeholder_img_src();
-}
-
-$review_summary = waklert_get_product_review_summary($product->get_id());
-$rating = (float) $review_summary['average_rating'];
-$review_count = (int) $review_summary['review_count'];
-
+$image = wp_get_attachment_image_url($product->get_image_id(), 'medium') ?: '';
+$shop_page_text = get_field('shop_page_text', $product->get_id()); // From ACF
+$shop_page_excerpt = trim(wp_strip_all_tags((string) $shop_page_text));
+$is_placeholder_excerpt = preg_match('/^(?:armodafinil|modafinil)\s+product$/i', $shop_page_excerpt);
+$excerpt_source = $shop_page_text && !$is_placeholder_excerpt
+    ? $shop_page_text
+    : $product->get_short_description();
+$excerpt = trim(preg_replace('/\\s+/', ' ', wp_strip_all_tags($excerpt_source)));
+$excerpt_length = function_exists('mb_strlen') ? mb_strlen($excerpt) : strlen($excerpt);
+$description_id = 'product-description-' . absint($product->get_id());
 $in_stock = $product->is_in_stock();
+$unit_price = waklert_get_product_unit_price($product);
+$review_summary = waklert_get_product_review_summary($product->get_id());
+$no_reviews_text = waklert_get_product_presentation_option('product_no_reviews_text', 'No reviews yet');
 ?>
-<div class="group relative flex flex-col bg-white border border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-primary/50 transition-all duration-300 h-full">
-    <a href="<?= esc_url($link) ?>" class="block relative aspect-[4/3] bg-white border-b border-border p-4">
-        <img src="<?= esc_url($image) ?>" alt="<?= esc_attr($title) ?>" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+<article class="group relative flex flex-col overflow-hidden rounded-xl border border-border hover:border-primary bg-card shadow-card transition-shadow hover:shadow-card-hover">
+    <!-- Stock Badge -->
+    <?php if ($in_stock): ?>
+    <span class="absolute left-4 top-4 z-10 rounded-md bg-primary px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-primary-foreground">
+        <?= "In Stock" ?>
+    </span>
+    <?php else: ?>
+    <span class="absolute left-4 top-4 z-10 rounded-md bg-destructive px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-destructive-foreground">
+        <?= "Out of Stock" ?>
+    </span>
+    <?php endif; ?>
+
+    <!-- Product Image -->
+    <a href="<?= esc_url($link) ?>" class="relative block aspect-square overflow-hidden bg-white">
+        <img src="<?= esc_url($image) ?>" alt="<?= esc_attr($title) ?> product image" loading="lazy" class="h-full w-full object-contain transition-transform duration-500 group-hover:scale-110">
     </a>
-    
-    <div class="p-4 sm:p-5 flex flex-col flex-1">
-        <div class="flex items-center gap-2 mb-2">
-            <div class="flex items-center text-amber-400">
-                <?php for($i=1; $i<=5; $i++): 
-                    if ( $rating >= $i ) {
-                        echo '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
-                    } elseif ( $rating >= ( $i - 0.5 ) ) {
-                        echo '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M12 17.8 5.8 21 7 14.1 2 9.3l7-1L12 2"/></svg>';
-                    } else {
-                        echo '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 text-muted-foreground/30"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
-                    }
-                endfor; ?>
-            </div>
-            <span class="text-[11px] sm:text-xs text-muted-foreground font-medium">
-                <?php if ($review_count > 0): ?>
-                    <?= esc_html(number_format($rating, 1)) ?> <span class="opacity-70">(<?= esc_html($review_count) ?>)</span>
-                <?php else: ?>
-                    0 reviews
+
+    <!-- Product Info -->
+    <div class="flex flex-1 flex-col p-3 md:p-5">
+        <h3 class="font-heading text-sm md:text-base font-bold text-card-foreground leading-tight">
+            <a href="<?= esc_url($link) ?>" class="line-clamp-2">
+                <?= esc_html($title) ?>
+            </a>
+        </h3>
+
+        <?php if ($excerpt !== ''): ?>
+        <div class="product-desc-wrapper mt-1.5">
+            <p id="<?= esc_attr($description_id) ?>" class="text-xs md:text-sm text-muted-foreground leading-relaxed">
+                <?= esc_html($excerpt) ?>
+            </p>
+            <?php if ($excerpt_length > 80): ?>
+            <button type="button" aria-expanded="false" aria-controls="<?= esc_attr($description_id) ?>" data-product-description-toggle class="mt-1.5 text-xs font-medium text-primary-dark transition-colors hover:text-primary">
+                Read more
+            </button>
+            <?php endif; ?>
+        </div>
+        <?php endif; ?>
+
+        <!-- Price Range -->
+        <p class="mt-2 md:mt-4 font-heading text-[15px] md:text-lg font-bold text-price leading-tight">
+            <?= wp_kses_post(waklert_get_product_card_price_html($product)) ?>
+        </p>
+
+        <?php if ($unit_price !== null): ?>
+        <p class="mt-1 text-xs md:text-sm font-medium text-primary-dark line-clamp-1">
+            From <?= wp_kses_post(wc_price($unit_price, array('decimals' => 2))) ?>/tab
+        </p>
+        <?php endif; ?>
+
+        <!-- Anchor the review and action together at the bottom of the card. -->
+        <div class="mt-auto pt-4">
+            <?php if ($review_summary['review_count'] > 0): ?>
+            <a href="<?= esc_url($link . '#product-reviews') ?>" class="inline-flex w-fit items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-primary-dark" aria-label="Read <?= esc_attr($review_summary['review_count']) ?> product reviews">
+                <?php if ($review_summary['rating_count'] > 0): ?>
+                    <span class="text-accent" aria-hidden="true">★</span>
+                    <span class="font-semibold text-ink"><?= esc_html(number_format($review_summary['average_rating'], 1)) ?></span>
+                    <span aria-hidden="true">·</span>
                 <?php endif; ?>
+                <span>(<?= esc_html($review_summary['review_count']) ?> <?= esc_html($review_summary['review_count'] === 1 ? 'review' : 'reviews') ?>)</span>
+            </a>
+            <?php else: ?>
+            <a href="<?= esc_url($link . '#product-reviews') ?>" class="inline-flex w-fit text-xs text-muted-foreground transition-colors hover:text-primary-dark">
+                <?= esc_html($no_reviews_text) ?>
+            </a>
+            <?php endif; ?>
+
+            <!-- CTA Button -->
+            <div class="mt-3">
+            <?php if ($in_stock): ?>
+            <a href="<?= esc_url($link) ?>" class="flex w-full items-center justify-center text-center rounded-md bg-primary px-1 py-2 sm:px-2 md:px-3 lg:px-5 sm:py-2 md:py-3 text-[10px] sm:text-xs lg:text-sm font-bold uppercase leading-tight lg:tracking-wider text-primary-foreground shadow-pill transition-colors hover:bg-primary-dark">
+                <?= "Buy Now" ?>
+            </a>
+            <?php else: ?>
+            <span class="flex w-full items-center justify-center text-center rounded-md bg-destructive-soft px-1 py-2 sm:px-2 md:px-3 lg:px-5 sm:py-2 md:py-3 text-[10px] sm:text-xs lg:text-sm font-semibold leading-tight text-destructive">
+                <?= "Out of Stock" ?>
             </span>
+            <?php endif; ?>
+            </div>
         </div>
-
-        <a href="<?= esc_url($link) ?>" class="font-heading text-[15px] sm:text-lg font-bold text-card-foreground leading-snug hover:text-primary transition-colors line-clamp-2 mb-4">
-            <?= esc_html($title) ?>
-        </a>
-
-        <div class="grid grid-cols-2 gap-1.5 mt-auto mb-4">
-            <?php 
-            $first_price = "";
-            if ( $product->is_type('variable') ) {
-                $variations = $product->get_available_variations();
-                $count = 0;
-                foreach ($variations as $var) {
-                    if ($count >= 6) break;
-                    
-                    $label = "";
-                    foreach ($var['attributes'] as $key => $val) {
-                        if ($val) { $label = $val; break; }
-                    }
-                    if (empty($label)) {
-                        $parts = explode('-', get_the_title($var['variation_id']));
-                        $label = trim(end($parts));
-                    }
-
-                    $price_html = wc_price($var['display_price']);
-                    if ($count === 0) {
-                        $first_price = $price_html;
-                    }
-
-                    $is_first = ($count === 0);
-                    $base_classes = "text-center py-1.5 px-1 border rounded-md transition-colors text-[11px] font-bold truncate cursor-pointer";
-                    $active_classes = "bg-primary text-primary-foreground border-primary";
-                    $inactive_classes = "text-primary bg-primary/5 border-primary/20 hover:bg-primary/10";
-                    
-                    $current_classes = $base_classes . " " . ($is_first ? $active_classes : $inactive_classes);
-                    
-                    $js_price = addslashes($price_html);
-                    $onclick = "let card = this.closest('.group'); card.querySelector('.dynamic-price').innerHTML = '{$js_price}'; Array.from(this.parentElement.children).forEach(el => { el.className = '{$base_classes} {$inactive_classes}'; }); this.className = '{$base_classes} {$active_classes}';";
-
-                    echo '<button type="button" onclick="' . esc_attr($onclick) . '" class="' . esc_attr($current_classes) . '">';
-                    
-                    $display_label = trim($label);
-                    if (is_numeric($display_label)) {
-                        $display_label .= " Tabs";
-                    } elseif (stripos($display_label, "tab") === false && stripos($display_label, "pill") === false) {
-                        $display_label .= " Tabs";
-                    }
-                    $display_label = str_ireplace("tablets", "Tabs", $display_label);
-                    echo esc_html($display_label);
-
-                    echo '</button>';
-                    
-                    $count++;
-                }
-            } else {
-                $first_price = $product->get_price_html();
-            }
-            ?>
-        </div>
-
-        <div class="flex items-baseline gap-2 mb-3">
-            <span class="dynamic-price text-xl font-bold text-price tracking-tight [&>span.amount]:!font-bold [&>del]:opacity-50 [&>del]:font-normal [&>del]:text-sm [&>ins]:no-underline"><?= wp_kses_post($first_price) ?></span>
-        </div>
-        
-        <div class="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest <?= $in_stock ? 'text-emerald-600' : 'text-destructive' ?> mb-1">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg> 
-            <?= $in_stock ? 'In Stock' : 'Out of Stock' ?>
-        </div>
-        
-        <a href="<?= esc_url($link) ?>" class="mt-2 w-full inline-flex justify-center items-center gap-2 h-11 rounded-xl bg-primary hover:bg-primary-dark text-primary-foreground text-sm font-bold transition-all shadow-sm hover:shadow">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg> 
-            View Details
-        </a>
     </div>
-</div>
+</article>
