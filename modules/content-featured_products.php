@@ -51,7 +51,7 @@ if (!$products) {
                     
                     $post_object = get_post($product_id);
                     setup_postdata($GLOBALS['post'] =& $post_object);
-                    wc_get_template_part('content', 'product');
+                    wc_get_template_part('content', 'product-pills');
                 endforeach;
                 wp_reset_postdata();
             endif;
