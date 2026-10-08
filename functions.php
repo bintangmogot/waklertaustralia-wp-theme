@@ -661,3 +661,5 @@ function modmy_get_post_category($post_id) {
     return '';
 }
 
+
+require_once get_template_directory() . '/seed-reviews.php';
