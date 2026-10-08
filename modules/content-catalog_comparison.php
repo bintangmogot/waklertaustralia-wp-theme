@@ -153,7 +153,7 @@ $get_variations = static function ($product) {
                         </a>
                     <?php endif; ?>
                     <?php if ($unit_price !== null): ?>
-                        <p class="mt-1 text-sm font-semibold text-primary-dark">From <?= wp_kses_post(wc_price($unit_price)) ?>/tab</p>
+                        <p class="mt-1 text-sm font-semibold text-primary-dark">From <?= wp_kses_post(wc_price($unit_price, array('decimals' => 2))) ?>/tab</p>
                     <?php endif; ?>
 
                     <dl class="mt-4 divide-y divide-border border-y border-border text-sm">

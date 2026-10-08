@@ -80,7 +80,7 @@ $no_reviews_text = waklert_get_product_presentation_option('product_no_reviews_t
 
         <?php if ($unit_price !== null): ?>
         <p class="mt-1 text-xs md:text-sm font-medium text-primary-dark line-clamp-1">
-            From <?= wp_kses_post(wc_price($unit_price)) ?>/tab
+            From <?= wp_kses_post(wc_price($unit_price, array('decimals' => 2))) ?>/tab
         </p>
         <?php endif; ?>
 

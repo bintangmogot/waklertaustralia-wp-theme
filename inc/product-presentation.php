@@ -145,7 +145,7 @@ if (!function_exists('waklert_format_product_unit_price')) {
 
         return $symbol . number_format(
             (float) $amount,
-            wc_get_price_decimals(),
+            2,
             wc_get_price_decimal_separator(),
             wc_get_price_thousand_separator()
         );
