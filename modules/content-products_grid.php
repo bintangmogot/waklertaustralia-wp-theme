@@ -5,7 +5,7 @@
  */
 ?>
 <section class="py-10 md:py-16 bg-background">
-    <div class="container-site">
+    <div class="container-site px-2 sm:px-4">
         <?php
         if (woocommerce_product_loop()) {
             woocommerce_product_loop_start();

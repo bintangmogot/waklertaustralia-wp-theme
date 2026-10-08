@@ -3,26 +3,26 @@
  * Module: Comparison Table
  */
 
-$tag_en = get_sub_field('tag_en') ?: "Comparison";
-$tag_ms = get_sub_field('tag_ms') ?: "Perbandingan";
+// The cloned comparison contained unsupported medical and dependency claims.
+// Currently re-enabled per user request.
 
-$heading_en = get_sub_field('heading_en') ?: "Modafinil vs Coffee vs Energy Drinks";
-$heading_ms = get_sub_field('heading_ms') ?: "Modafinil vs Kopi vs Minuman Tenaga";
+$tag = get_sub_field('tag') ?: "Comparison";
 
-$desc_en = get_sub_field('description_en') ?: "See why thousands of Malaysian workers choose Modafinil over caffeine.";
-$desc_ms = get_sub_field('description_ms') ?: "Lihat mengapa ribuan pekerja Malaysia memilih Modafinil berbanding kafein.";
+$heading = get_sub_field('heading') ?: "Modafinil vs Coffee vs Energy Drinks";
+
+$desc = get_sub_field('description') ?: "See why thousands of Australian workers choose Modafinil over caffeine.";
 ?>
 <section class="section-padding bg-white" data-testid="comparison-table">
     <div class="container-custom max-w-4xl">
         <div class="text-center mb-10">
             <span class="inline-block bg-primary-soft text-primary-dark text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4">
-                <?= modmy_t($tag_en, $tag_ms) ?>
+                <?= $tag ?>
             </span>
             <h2 class="font-heading text-2xl md:text-4xl font-black text-ink mb-3">
-                <?= modmy_t($heading_en, $heading_ms) ?>
+                <?= $heading ?>
             </h2>
             <p class="text-muted-foreground">
-                <?= modmy_t($desc_en, $desc_ms) ?>
+                <?= $desc ?>
             </p>
         </div>
 
@@ -31,16 +31,16 @@ $desc_ms = get_sub_field('description_ms') ?: "Lihat mengapa ribuan pekerja Mala
                 <thead>
                     <tr class="border-b-2 border-stone-200">
                         <th class="text-left py-4 px-4 font-heading font-bold text-ink">
-                            <?= modmy_t("Feature", "Ciri / Feature") ?>
+                            <?= "Feature" ?>
                         </th>
                         <th class="text-center py-4 px-4 font-heading font-bold text-primary-dark bg-primary-softer rounded-t-lg">
                             Modafinil
                         </th>
                         <th class="text-center py-4 px-4 font-heading font-bold text-ink/70">
-                            <?= modmy_t("Coffee", "Kopi") ?>
+                            <?= "Coffee" ?>
                         </th>
                         <th class="text-center py-4 px-4 font-heading font-bold text-ink/70">
-                            <?= modmy_t("Energy Drink", "Minuman Tenaga") ?>
+                            <?= "Energy Drink" ?>
                         </th>
                     </tr>
                 </thead>
@@ -50,10 +50,10 @@ $desc_ms = get_sub_field('description_ms') ?: "Lihat mengapa ribuan pekerja Mala
                         while(have_rows('rows')): the_row();
                     ?>
                     <tr>
-                        <td class="py-3.5 px-4 font-medium text-ink/90"><?= modmy_t(get_sub_field('feature_en'), get_sub_field('feature_ms')) ?></td>
-                        <td class="py-3.5 px-4 text-center bg-primary-softer/50 font-semibold text-primary-dark"><?= modmy_t(get_sub_field('modafinil_en'), get_sub_field('modafinil_ms')) ?></td>
-                        <td class="py-3.5 px-4 text-center text-muted-foreground"><?= modmy_t(get_sub_field('coffee_en'), get_sub_field('coffee_ms')) ?></td>
-                        <td class="py-3.5 px-4 text-center text-muted-foreground"><?= modmy_t(get_sub_field('energy_en'), get_sub_field('energy_ms')) ?></td>
+                        <td class="py-3.5 px-4 font-medium text-ink/90"><?= get_sub_field('feature') ?></td>
+                        <td class="py-3.5 px-4 text-center bg-primary-softer/50 font-semibold text-primary-dark"><?= get_sub_field('modafinil') ?></td>
+                        <td class="py-3.5 px-4 text-center text-muted-foreground"><?= get_sub_field('coffee') ?></td>
+                        <td class="py-3.5 px-4 text-center text-muted-foreground"><?= get_sub_field('energy') ?></td>
                     </tr>
                     <?php 
                         endwhile;
@@ -66,10 +66,10 @@ $desc_ms = get_sub_field('description_ms') ?: "Lihat mengapa ribuan pekerja Mala
                         foreach($default_rows as $r):
                     ?>
                     <tr>
-                        <td class="py-3.5 px-4 font-medium text-ink/90"><?= modmy_t($r[0], $r[1]) ?></td>
-                        <td class="py-3.5 px-4 text-center bg-primary-softer/50 font-semibold text-primary-dark"><?= modmy_t($r[3], $r[2]) ?></td>
-                        <td class="py-3.5 px-4 text-center text-muted-foreground"><?= modmy_t($r[5], $r[4]) ?></td>
-                        <td class="py-3.5 px-4 text-center text-muted-foreground"><?= modmy_t($r[7], $r[6]) ?></td>
+                        <td class="py-3.5 px-4 font-medium text-ink/90"><?= $r[0] ?></td>
+                        <td class="py-3.5 px-4 text-center bg-primary-softer/50 font-semibold text-primary-dark"><?= $r[3] ?></td>
+                        <td class="py-3.5 px-4 text-center text-muted-foreground"><?= $r[5] ?></td>
+                        <td class="py-3.5 px-4 text-center text-muted-foreground"><?= $r[7] ?></td>
                     </tr>
                     <?php 
                         endforeach;

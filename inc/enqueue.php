@@ -7,10 +7,19 @@ function modmy_enqueue_scripts() {
     // 1. Google Fonts
     wp_enqueue_style(
         'modmy-fonts',
-        'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap',
+        'https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap',
         array(),
         null
     );
+
+    if (function_exists('is_product') && is_product()) {
+        wp_enqueue_style(
+            'waklert-flaticon-uicons',
+            'https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css',
+            array(),
+            '4.0.0'
+        );
+    }
 
     // 2. Main Tailwind CSS
     // Check if main.css exists in assets/css
@@ -43,15 +52,6 @@ function modmy_enqueue_scripts() {
         array('jquery'),
         file_exists(MODMY_THEME_DIR . '/assets/js/main.js') ? filemtime(MODMY_THEME_DIR . '/assets/js/main.js') : MODMY_THEME_VERSION,
         true
-    );
-
-    // 4. i18n logic
-    wp_enqueue_script(
-        'modmy-i18n-js',
-        MODMY_THEME_URI . '/assets/js/i18n.js',
-        array(),
-        file_exists(MODMY_THEME_DIR . '/assets/js/i18n.js') ? filemtime(MODMY_THEME_DIR . '/assets/js/i18n.js') : MODMY_THEME_VERSION,
-        false // Load in head so it can redirect quickly if ?lang= is present
     );
 }
 add_action('wp_enqueue_scripts', 'modmy_enqueue_scripts');

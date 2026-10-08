@@ -3,10 +3,8 @@
  * Sitemap Module
  */
 
-$title_en = get_sub_field('title_en') ?: "Sitemap";
-$title_ms = get_sub_field('title_ms') ?: "Peta Laman";
-$subtitle_en = get_sub_field('subtitle_en') ?: "Browse all pages on ModafinilMY. Find exactly what you're looking for.";
-$subtitle_ms = get_sub_field('subtitle_ms') ?: "Semua halaman ModafinilMY dalam satu senarai — halaman utama, produk, artikel, dan dasar.";
+$title = get_sub_field('title') ?: "Sitemap";
+$subtitle = get_sub_field('subtitle') ?: "Browse all pages on Waklert Australia. Find exactly what you're looking for.";
 
 // Hardcoded Main & Legal Links
 $main_links = [
@@ -52,14 +50,14 @@ $blog_posts = get_posts([
 ]);
 ?>
 
-<section class="bg-slate-900 text-white py-12 md:py-16 relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-emerald-950/40 to-slate-900 pointer-events-none"></div>
+<section class="bg-slate-900 text-white py-12 md:py-16 relative overflow-hidden border-b border-accent/40">
+    <div class="absolute inset-0 bg-gradient-to-b from-primary/20 to-slate-900 pointer-events-none"></div>
     <div class="container-custom relative z-10 text-center max-w-3xl mx-auto">
         <h1 class="font-heading text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">
-            <?= modmy_t($title_en, $title_ms) ?>
+            <?= $title ?>
         </h1>
         <p class="text-slate-300 max-w-lg mx-auto text-sm md:text-base leading-relaxed">
-            <?= modmy_t($subtitle_en, $subtitle_ms) ?>
+            <?= $subtitle ?>
         </p>
     </div>
 </section>
@@ -71,7 +69,7 @@ $blog_posts = get_posts([
             <!-- Column 1: Main Pages & Legal -->
             <div>
                 <h2 class="font-heading text-lg font-black text-slate-900 mb-4 pb-2 border-b border-stone-200 uppercase tracking-wider">
-                    <?= modmy_t("Main Pages", "Halaman Utama") ?>
+                    <?= "Main Pages" ?>
                 </h2>
                 <ul class="space-y-3 mb-10">
                     <?php foreach ($main_links as $link): ?>
@@ -84,7 +82,7 @@ $blog_posts = get_posts([
                 </ul>
 
                 <h2 class="font-heading text-lg font-black text-slate-900 mb-4 pb-2 border-b border-stone-200 uppercase tracking-wider">
-                    <?= modmy_t("Policies", "Dasar & Maklumat") ?>
+                    <?= "Policies" ?>
                 </h2>
                 <ul class="space-y-3">
                     <?php foreach ($legal_links as $link): ?>
@@ -100,7 +98,7 @@ $blog_posts = get_posts([
             <!-- Column 2: Products -->
             <div>
                 <h2 class="font-heading text-lg font-black text-slate-900 mb-4 pb-2 border-b border-stone-200 uppercase tracking-wider">
-                    <?= modmy_t("Products", "Produk") ?>
+                    <?= "Products" ?>
                 </h2>
                 <ul class="space-y-3">
                     <?php if (!empty($products)): ?>
@@ -120,7 +118,7 @@ $blog_posts = get_posts([
             <!-- Column 3: Delivery Areas -->
             <div>
                 <h2 class="font-heading text-lg font-black text-slate-900 mb-4 pb-2 border-b border-stone-200 uppercase tracking-wider">
-                    <?= modmy_t("Delivery Areas", "Kawasan Penghantaran") ?>
+                    <?= "Delivery Areas" ?>
                 </h2>
                 <ul class="space-y-3">
                     <?php foreach ($delivery_areas as $area): 
@@ -138,12 +136,12 @@ $blog_posts = get_posts([
             <!-- Column 4: Blog Posts -->
             <div>
                 <h2 class="font-heading text-lg font-black text-slate-900 mb-4 pb-2 border-b border-stone-200 uppercase tracking-wider">
-                    <?= modmy_t("Blog Articles", "Artikel Blog") ?>
+                    <?= "Blog Articles" ?>
                 </h2>
                 <ul class="space-y-3">
                     <li>
                         <a href="/blog/" class="text-emerald-600 hover:text-emerald-700 font-bold transition-colors text-sm">
-                            <?= modmy_t("View All Articles", "Lihat Semua Artikel") ?> &rarr;
+                            <?= "View All Articles" ?> &rarr;
                         </a>
                     </li>
                     <?php if (!empty($blog_posts)): ?>

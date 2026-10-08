@@ -3,14 +3,13 @@
  * Module: FAQs
  */
 
-$heading_en = get_sub_field('heading_en') ?: "Frequently Asked Questions";
-$heading_ms = get_sub_field('heading_ms') ?: "Soalan Yang Sering Ditanya";
+$heading = get_sub_field('heading') ?: "Frequently Asked Questions";
 ?>
 <section class="section-padding bg-white" data-testid="faq-strip">
     <div class="container-custom max-w-3xl">
         <div class="text-center mb-10">
             <h2 class="font-heading text-2xl md:text-4xl font-black text-ink mb-3">
-                <?= modmy_t($heading_en, $heading_ms) ?>
+                <?= $heading ?>
             </h2>
         </div>
 
@@ -19,15 +18,15 @@ $heading_ms = get_sub_field('heading_ms') ?: "Soalan Yang Sering Ditanya";
             if(have_rows('faq_items')): 
                 while(have_rows('faq_items')): the_row();
             ?>
-            <details open class="group border border-stone-200 rounded-xl">
-                <summary class="flex items-center justify-between gap-4 p-5 cursor-pointer list-none">
+            <details open class="group border border-stone-200 rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md open:bg-primary-softer/50 open:border-primary/40">
+                <summary class="flex items-center justify-between gap-4 p-5 cursor-pointer list-none rounded-xl transition-colors hover:text-primary-dark active:bg-primary-softer/60">
                     <h3 class="font-heading font-bold text-ink text-sm">
-                        <?= modmy_t(get_sub_field('question_en'), get_sub_field('question_ms')) ?>
+                        <?= get_sub_field('question') ?>
                     </h3>
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-primary flex-shrink-0 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
                 </summary>
                 <div class="px-5 pb-5 text-sm text-muted-foreground leading-relaxed border-t border-stone-100 pt-4 prose prose-sm max-w-none">
-                    <?= modmy_t(wp_kses_post(get_sub_field('answer_en')), wp_kses_post(get_sub_field('answer_ms'))) ?>
+                    <?= wp_kses_post(get_sub_field('answer')) ?>
                 </div>
             </details>
             <?php 
@@ -45,15 +44,15 @@ $heading_ms = get_sub_field('heading_ms') ?: "Soalan Yang Sering Ditanya";
                 ];
                 foreach($defaults as $f):
             ?>
-            <details class="group border border-stone-200 rounded-xl">
-                <summary class="flex items-center justify-between gap-4 p-5 cursor-pointer list-none">
+            <details open class="group border border-stone-200 rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md open:bg-primary-softer/50 open:border-primary/40">
+                <summary class="flex items-center justify-between gap-4 p-5 cursor-pointer list-none rounded-xl transition-colors hover:text-primary-dark active:bg-primary-softer/60">
                     <h3 class="font-heading font-bold text-ink text-sm">
-                        <?= modmy_t($f[0], $f[1]) ?>
+                        <?= $f[0] ?>
                     </h3>
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-primary flex-shrink-0 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
                 </summary>
                 <div class="px-5 pb-5 text-sm text-muted-foreground leading-relaxed border-t border-stone-100 pt-4">
-                    <?= modmy_t($f[2], $f[3]) ?>
+                    <?= $f[2] ?>
                 </div>
             </details>
             <?php 

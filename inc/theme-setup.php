@@ -18,11 +18,12 @@ function modmy_theme_setup() {
 
     // Register Navigation Menus
     register_nav_menus(array(
-        'primary'       => __('Primary Menu', 'modafinil-malaysia'),
-        'mobile_cities' => __('Mobile Cities Grid', 'modafinil-malaysia'),
-        'footer_quick'  => __('Footer Quick Links', 'modafinil-malaysia'),
-        'footer_info'   => __('Footer Information', 'modafinil-malaysia'),
-        'footer_cities' => __('Footer Delivery Cities', 'modafinil-malaysia'),
+        'primary'       => __('Primary Menu', 'waklert-australia'),
+        'mobile_cities' => __('Mobile Cities Grid', 'waklert-australia'),
+        'footer_quick'  => __('Footer Quick Links', 'waklert-australia'),
+        'footer_info'   => __('Footer Information', 'waklert-australia'),
+        'footer_trending' => __('Footer Trending Products', 'waklert-australia'),
+        'footer_cities' => __('Footer Delivery Cities', 'waklert-australia'),
     ));
 
     // HTML5 markup support
@@ -90,7 +91,7 @@ add_filter('nav_menu_link_attributes', function($atts, $item, $args) {
     } elseif (isset($args->theme_location) && $args->theme_location === 'mobile_cities') {
         $atts['class'] = (isset($atts['class']) ? $atts['class'] . ' ' : '') . 'text-sm text-[#62847A] hover:text-primary transition-colors block py-1.5 font-medium';
     } elseif (isset($args->theme_location) && strpos($args->theme_location, 'footer_') !== false) {
-        $atts['class'] = (isset($atts['class']) ? $atts['class'] . ' ' : '') . 'hover:text-primary transition-colors text-muted-foreground';
+        $atts['class'] = (isset($atts['class']) ? $atts['class'] . ' ' : '') . 'hover:text-primary transition-colors';
     }
     return $atts;
 }, 10, 3);

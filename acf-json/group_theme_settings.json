@@ -1,0 +1,149 @@
+{
+    "key": "group_theme_settings",
+    "title": "Theme Settings",
+    "fields": [
+        {
+            "key": "field_tab_header_top_bar",
+            "label": "Header & Top Bar",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_topbar_left",
+            "label": "Top Bar Left Text",
+            "name": "topbar_left",
+            "type": "text",
+            "default_value": "7-10 Day Delivery | Australia-wide dispatch"
+        },
+        {
+            "key": "field_topbar_center",
+            "label": "Top Bar Center Text",
+            "name": "topbar_center",
+            "type": "text",
+            "default_value": "Free Shipping on Orders Over $299"
+        },
+        {
+            "key": "field_whatsapp_number",
+            "label": "Top Bar Right Phone Number",
+            "name": "whatsapp_number",
+            "type": "text",
+            "default_value": "+61 488 841 833",
+            "instructions": "Used by the top bar call icon and WhatsApp contact links."
+        },
+        {
+            "key": "field_waklert_tab_social",
+            "label": "Social Media",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_waklert_facebook_link",
+            "label": "Facebook Link",
+            "name": "facebook_link",
+            "type": "url"
+        },
+        {
+            "key": "field_waklert_instagram_link",
+            "label": "Instagram Link",
+            "name": "instagram_link",
+            "type": "url"
+        },
+        {
+            "key": "field_waklert_twitter_link",
+            "label": "Twitter Link",
+            "name": "twitter_link",
+            "type": "url"
+        },
+        {
+            "key": "field_waklert_tab_contact",
+            "label": "Contact Info",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_waklert_support_email",
+            "label": "Support Email",
+            "name": "support_email",
+            "type": "email",
+            "default_value": "support@waklertaustralia.com",
+            "instructions": "Used for the support contact address."
+        },
+        {
+            "key": "field_tab_footer",
+            "label": "Footer",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_footer_description",
+            "label": "Footer Description",
+            "name": "footer_description",
+            "type": "textarea",
+            "default_value": "Waklert Australia provides clear information about a focused range of armodafinil products, ordering and delivery options."
+        },
+        {
+            "key": "field_waklert_ssl_text",
+            "label": "SSL Text",
+            "name": "ssl_text",
+            "type": "text"
+        },
+        {
+            "key": "field_waklert_dispatch_text",
+            "label": "Dispatch Text",
+            "name": "dispatch_text",
+            "type": "text"
+        },
+        {
+            "key": "field_waklert_checkout_text",
+            "label": "Checkout Text",
+            "name": "checkout_text",
+            "type": "text"
+        },
+        {
+            "key": "field_waklert_location_text",
+            "label": "Location Text",
+            "name": "location_text",
+            "type": "text",
+            "default_value": "Australia-wide online service"
+        },
+        {
+            "key": "field_waklert_copyright_text",
+            "label": "Copyright Text",
+            "name": "copyright_text",
+            "type": "text"
+        },
+        {
+            "key": "field_disclaimer",
+            "label": "Disclaimer",
+            "name": "disclaimer_en",
+            "type": "textarea",
+            "default_value": "This website provides general information only and is not a substitute for advice from a qualified health professional."
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "theme-general-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "modified": 1700000000
+}

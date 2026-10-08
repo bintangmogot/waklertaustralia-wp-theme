@@ -8,7 +8,7 @@
             "name": "modules",
             "aria-label": "",
             "type": "flexible_content",
-            "instructions": "",
+            "instructions": "Product pages use Product Summary and Product Description for the copy in the existing product intro and description areas. Their frontend styling and positions stay unchanged.",
             "required": false,
             "conditional_logic": false,
             "wrapper": {
@@ -17,6 +17,66 @@
                 "id": ""
             },
             "layouts": {
+                "layout_wa_product_summary": {
+                    "key": "layout_wa_product_summary",
+                    "name": "product_summary",
+                    "label": "Product Summary",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_wa_product_summary_content",
+                            "label": "Content",
+                            "name": "content",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "Shown below the product title in the existing product intro area.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 1,
+                            "delay": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_wa_product_description": {
+                    "key": "layout_wa_product_description",
+                    "name": "product_description",
+                    "label": "Product Description",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_wa_product_description_content",
+                            "label": "Content",
+                            "name": "content",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "Shown in the existing full product description area below the purchase section.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 1,
+                            "delay": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
                 "layout_hero_section": {
                     "key": "layout_hero_section",
                     "name": "hero_section",
@@ -50,28 +110,8 @@
                         },
                         {
                             "key": "field_hero_loc_en",
-                            "label": "Location (EN)",
-                            "name": "location_text_en",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
-                            "key": "field_hero_loc_ms",
-                            "label": "Location (MS)",
-                            "name": "location_text_ms",
+                            "label": "Location",
+                            "name": "location_text",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
@@ -90,28 +130,8 @@
                         },
                         {
                             "key": "field_hero_heading_en",
-                            "label": "Heading (EN)",
-                            "name": "heading_en",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
-                            "key": "field_hero_heading_ms",
-                            "label": "Heading (MS)",
-                            "name": "heading_ms",
+                            "label": "Heading",
+                            "name": "heading",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
@@ -130,28 +150,8 @@
                         },
                         {
                             "key": "field_hero_sub_en",
-                            "label": "Subtitle (EN)",
-                            "name": "subtitle_en",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
-                            "key": "field_hero_sub_ms",
-                            "label": "Subtitle (MS)",
-                            "name": "subtitle_ms",
+                            "label": "Subtitle",
+                            "name": "subtitle",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
@@ -170,28 +170,8 @@
                         },
                         {
                             "key": "field_hero_desc_en",
-                            "label": "Desc (EN)",
-                            "name": "description_en",
-                            "aria-label": "",
-                            "type": "textarea",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "new_lines": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "rows": ""
-                        },
-                        {
-                            "key": "field_hero_desc_ms",
-                            "label": "Desc (MS)",
-                            "name": "description_ms",
+                            "label": "Desc",
+                            "name": "description",
                             "aria-label": "",
                             "type": "textarea",
                             "instructions": "",
@@ -210,28 +190,8 @@
                         },
                         {
                             "key": "field_hero_btn1_en",
-                            "label": "Btn1 (EN)",
-                            "name": "primary_button_text_en",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
-                            "key": "field_hero_btn1_ms",
-                            "label": "Btn1 (MS)",
-                            "name": "primary_button_text_ms",
+                            "label": "Btn1",
+                            "name": "primary_button_text",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
@@ -267,28 +227,8 @@
                         },
                         {
                             "key": "field_hero_btn2_en",
-                            "label": "Btn2 (EN)",
-                            "name": "secondary_button_text_en",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
-                            "key": "field_hero_btn2_ms",
-                            "label": "Btn2 (MS)",
-                            "name": "secondary_button_text_ms",
+                            "label": "Btn2",
+                            "name": "secondary_button_text",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
@@ -353,15 +293,8 @@
                                 },
                                 {
                                     "key": "field_hero_stat_label_en",
-                                    "label": "Label (EN)",
-                                    "name": "label_en",
-                                    "type": "text",
-                                    "required": 1
-                                },
-                                {
-                                    "key": "field_hero_stat_label_ms",
-                                    "label": "Label (MS)",
-                                    "name": "label_ms",
+                                    "label": "Label",
+                                    "name": "label",
                                     "type": "text",
                                     "required": 1
                                 }
@@ -421,29 +354,8 @@
                                 },
                                 {
                                     "key": "field_ts_label_en",
-                                    "label": "Label (EN)",
-                                    "name": "label_en",
-                                    "aria-label": "",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": false,
-                                    "conditional_logic": false,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "parent_repeater": "field_ts_badges"
-                                },
-                                {
-                                    "key": "field_ts_label_ms",
-                                    "label": "Label (MS)",
-                                    "name": "label_ms",
+                                    "label": "Label",
+                                    "name": "label",
                                     "aria-label": "",
                                     "type": "text",
                                     "instructions": "",
@@ -475,28 +387,8 @@
                     "sub_fields": [
                         {
                             "key": "field_fp_title_en",
-                            "label": "Title (EN)",
-                            "name": "title_en",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
-                            "key": "field_fp_title_ms",
-                            "label": "Title (MS)",
-                            "name": "title_ms",
+                            "label": "Title",
+                            "name": "title",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
@@ -554,28 +446,8 @@
                     "sub_fields": [
                         {
                             "key": "field_wcu_tag_en",
-                            "label": "Tag (EN)",
-                            "name": "tag_en",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
-                            "key": "field_wcu_tag_ms",
-                            "label": "Tag (MS)",
-                            "name": "tag_ms",
+                            "label": "Tag",
+                            "name": "tag",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
@@ -594,28 +466,8 @@
                         },
                         {
                             "key": "field_wcu_heading_en",
-                            "label": "Heading (EN)",
-                            "name": "heading_en",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
-                            "key": "field_wcu_heading_ms",
-                            "label": "Heading (MS)",
-                            "name": "heading_ms",
+                            "label": "Heading",
+                            "name": "heading",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
@@ -634,28 +486,8 @@
                         },
                         {
                             "key": "field_wcu_desc_en",
-                            "label": "Desc (EN)",
-                            "name": "description_en",
-                            "aria-label": "",
-                            "type": "textarea",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "new_lines": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "rows": ""
-                        },
-                        {
-                            "key": "field_wcu_desc_ms",
-                            "label": "Desc (MS)",
-                            "name": "description_ms",
+                            "label": "Desc",
+                            "name": "description",
                             "aria-label": "",
                             "type": "textarea",
                             "instructions": "",
@@ -716,29 +548,8 @@
                                 },
                                 {
                                     "key": "field_wcu_a_title_en",
-                                    "label": "Title (EN)",
-                                    "name": "title_en",
-                                    "aria-label": "",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": false,
-                                    "conditional_logic": false,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "parent_repeater": "field_wcu_audiences"
-                                },
-                                {
-                                    "key": "field_wcu_a_title_ms",
-                                    "label": "Title (MS)",
-                                    "name": "title_ms",
+                                    "label": "Title",
+                                    "name": "title",
                                     "aria-label": "",
                                     "type": "text",
                                     "instructions": "",
@@ -758,29 +569,8 @@
                                 },
                                 {
                                     "key": "field_wcu_a_desc_en",
-                                    "label": "Desc (EN)",
-                                    "name": "desc_en",
-                                    "aria-label": "",
-                                    "type": "textarea",
-                                    "instructions": "",
-                                    "required": false,
-                                    "conditional_logic": false,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "new_lines": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "rows": "",
-                                    "parent_repeater": "field_wcu_audiences"
-                                },
-                                {
-                                    "key": "field_wcu_a_desc_ms",
-                                    "label": "Desc (MS)",
-                                    "name": "desc_ms",
+                                    "label": "Desc",
+                                    "name": "desc",
                                     "aria-label": "",
                                     "type": "textarea",
                                     "instructions": "",
@@ -812,28 +602,8 @@
                     "sub_fields": [
                         {
                             "key": "field_rc_title_en",
-                            "label": "Title (EN)",
-                            "name": "title_en",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
-                            "key": "field_rc_title_ms",
-                            "label": "Title (MS)",
-                            "name": "title_ms",
+                            "label": "Title",
+                            "name": "title",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
@@ -911,8 +681,8 @@
                         },
                         {
                             "key": "field_faq_eyebrow_en",
-                            "label": "Eyebrow (EN)",
-                            "name": "eyebrow_en",
+                            "label": "Eyebrow",
+                            "name": "eyebrow",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
@@ -930,29 +700,9 @@
                             "append": ""
                         },
                         {
-                            "key": "field_faq_eyebrow_ms",
-                            "label": "Eyebrow (MS)",
-                            "name": "eyebrow_ms",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "Soalan Lazim",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
                             "key": "field_faq_heading_en",
-                            "label": "Heading (EN)",
-                            "name": "heading_en",
+                            "label": "Heading",
+                            "name": "heading",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
@@ -964,26 +714,6 @@
                                 "id": ""
                             },
                             "default_value": "Frequently Asked Questions",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
-                            "key": "field_faq_heading_ms",
-                            "label": "Heading (MS)",
-                            "name": "heading_ms",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "Soalan Yang Sering Ditanya",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -1012,29 +742,8 @@
                             "sub_fields": [
                                 {
                                     "key": "field_faq_q_en",
-                                    "label": "Question (EN)",
-                                    "name": "question_en",
-                                    "aria-label": "",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": false,
-                                    "conditional_logic": false,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "parent_repeater": "field_faq_items"
-                                },
-                                {
-                                    "key": "field_faq_q_ms",
-                                    "label": "Question (MS)",
-                                    "name": "question_ms",
+                                    "label": "Question",
+                                    "name": "question",
                                     "aria-label": "",
                                     "type": "text",
                                     "instructions": "",
@@ -1054,29 +763,8 @@
                                 },
                                 {
                                     "key": "field_faq_a_en",
-                                    "label": "Answer (EN)",
-                                    "name": "answer_en",
-                                    "aria-label": "",
-                                    "type": "textarea",
-                                    "instructions": "",
-                                    "required": false,
-                                    "conditional_logic": false,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "rows": 4,
-                                    "default_value": "",
-                                    "new_lines": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "parent_repeater": "field_faq_items"
-                                },
-                                {
-                                    "key": "field_faq_a_ms",
-                                    "label": "Answer (MS)",
-                                    "name": "answer_ms",
+                                    "label": "Answer",
+                                    "name": "answer",
                                     "aria-label": "",
                                     "type": "textarea",
                                     "instructions": "",
@@ -1118,8 +806,8 @@
                         },
                         {
                             "key": "field_faq_link_en",
-                            "label": "Link Text (EN)",
-                            "name": "link_text_en",
+                            "label": "Link Text",
+                            "name": "link_text",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
@@ -1131,26 +819,6 @@
                                 "id": ""
                             },
                             "default_value": "Full FAQ",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
-                            "key": "field_faq_link_ms",
-                            "label": "Link Text (MS)",
-                            "name": "link_text_ms",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "Soalan Lazim Penuh",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -1170,7 +838,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "http://modafinil-malaysia.test/faq",
+                            "default_value": "http://waklertaustralia.com.test/faq",
                             "placeholder": ""
                         }
                     ],
@@ -1185,8 +853,8 @@
                     "sub_fields": [
                         {
                             "key": "field_cta_title_en",
-                            "label": "Title (EN)",
-                            "name": "title_en",
+                            "label": "Title",
+                            "name": "title",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
@@ -1204,29 +872,9 @@
                             "append": ""
                         },
                         {
-                            "key": "field_cta_title_ms",
-                            "label": "Title (MS)",
-                            "name": "title_ms",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "Hubungi Kami",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
                             "key": "field_cta_btn_en",
-                            "label": "Btn (EN)",
-                            "name": "button_text_en",
+                            "label": "Btn",
+                            "name": "button_text",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
@@ -1238,26 +886,6 @@
                                 "id": ""
                             },
                             "default_value": "WhatsApp Us",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
-                            "key": "field_cta_btn_ms",
-                            "label": "Btn (MS)",
-                            "name": "button_text_ms",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "WhatsApp Kami",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -1292,28 +920,8 @@
                     "sub_fields": [
                         {
                             "key": "field_comp_tag_en",
-                            "label": "Tag (EN)",
-                            "name": "tag_en",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
-                            "key": "field_comp_tag_ms",
-                            "label": "Tag (MS)",
-                            "name": "tag_ms",
+                            "label": "Tag",
+                            "name": "tag",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
@@ -1332,28 +940,8 @@
                         },
                         {
                             "key": "field_comp_heading_en",
-                            "label": "Heading (EN)",
-                            "name": "heading_en",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
-                            "key": "field_comp_heading_ms",
-                            "label": "Heading (MS)",
-                            "name": "heading_ms",
+                            "label": "Heading",
+                            "name": "heading",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
@@ -1372,28 +960,8 @@
                         },
                         {
                             "key": "field_comp_desc_en",
-                            "label": "Desc (EN)",
-                            "name": "description_en",
-                            "aria-label": "",
-                            "type": "textarea",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "new_lines": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "rows": ""
-                        },
-                        {
-                            "key": "field_comp_desc_ms",
-                            "label": "Desc (MS)",
-                            "name": "description_ms",
+                            "label": "Desc",
+                            "name": "description",
                             "aria-label": "",
                             "type": "textarea",
                             "instructions": "",
@@ -1433,29 +1001,8 @@
                             "sub_fields": [
                                 {
                                     "key": "field_comp_f_en",
-                                    "label": "Feature (EN)",
-                                    "name": "feature_en",
-                                    "aria-label": "",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": false,
-                                    "conditional_logic": false,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "parent_repeater": "field_comp_rows"
-                                },
-                                {
-                                    "key": "field_comp_f_ms",
-                                    "label": "Feature (MS)",
-                                    "name": "feature_ms",
+                                    "label": "Feature",
+                                    "name": "feature",
                                     "aria-label": "",
                                     "type": "text",
                                     "instructions": "",
@@ -1475,29 +1022,8 @@
                                 },
                                 {
                                     "key": "field_comp_m_en",
-                                    "label": "Modafinil (EN)",
-                                    "name": "modafinil_en",
-                                    "aria-label": "",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": false,
-                                    "conditional_logic": false,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "parent_repeater": "field_comp_rows"
-                                },
-                                {
-                                    "key": "field_comp_m_ms",
-                                    "label": "Modafinil (MS)",
-                                    "name": "modafinil_ms",
+                                    "label": "Modafinil",
+                                    "name": "modafinil",
                                     "aria-label": "",
                                     "type": "text",
                                     "instructions": "",
@@ -1517,29 +1043,8 @@
                                 },
                                 {
                                     "key": "field_comp_c_en",
-                                    "label": "Coffee (EN)",
-                                    "name": "coffee_en",
-                                    "aria-label": "",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": false,
-                                    "conditional_logic": false,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "parent_repeater": "field_comp_rows"
-                                },
-                                {
-                                    "key": "field_comp_c_ms",
-                                    "label": "Coffee (MS)",
-                                    "name": "coffee_ms",
+                                    "label": "Coffee",
+                                    "name": "coffee",
                                     "aria-label": "",
                                     "type": "text",
                                     "instructions": "",
@@ -1559,29 +1064,8 @@
                                 },
                                 {
                                     "key": "field_comp_e_en",
-                                    "label": "Energy Drink (EN)",
-                                    "name": "energy_en",
-                                    "aria-label": "",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": false,
-                                    "conditional_logic": false,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "parent_repeater": "field_comp_rows"
-                                },
-                                {
-                                    "key": "field_comp_e_ms",
-                                    "label": "Energy Drink (MS)",
-                                    "name": "energy_ms",
+                                    "label": "Energy Drink",
+                                    "name": "energy",
                                     "aria-label": "",
                                     "type": "text",
                                     "instructions": "",
@@ -1613,28 +1097,8 @@
                     "sub_fields": [
                         {
                             "key": "field_hto_tag_en",
-                            "label": "Tag (EN)",
-                            "name": "tag_en",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
-                            "key": "field_hto_tag_ms",
-                            "label": "Tag (MS)",
-                            "name": "tag_ms",
+                            "label": "Tag",
+                            "name": "tag",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
@@ -1653,28 +1117,8 @@
                         },
                         {
                             "key": "field_hto_heading_en",
-                            "label": "Heading (EN)",
-                            "name": "heading_en",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
-                            "key": "field_hto_heading_ms",
-                            "label": "Heading (MS)",
-                            "name": "heading_ms",
+                            "label": "Heading",
+                            "name": "heading",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
@@ -1735,29 +1179,8 @@
                                 },
                                 {
                                     "key": "field_hto_s_t_en",
-                                    "label": "Title (EN)",
-                                    "name": "title_en",
-                                    "aria-label": "",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": false,
-                                    "conditional_logic": false,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "parent_repeater": "field_hto_steps"
-                                },
-                                {
-                                    "key": "field_hto_s_t_ms",
-                                    "label": "Title (MS)",
-                                    "name": "title_ms",
+                                    "label": "Title",
+                                    "name": "title",
                                     "aria-label": "",
                                     "type": "text",
                                     "instructions": "",
@@ -1777,29 +1200,8 @@
                                 },
                                 {
                                     "key": "field_hto_s_d_en",
-                                    "label": "Desc (EN)",
-                                    "name": "desc_en",
-                                    "aria-label": "",
-                                    "type": "textarea",
-                                    "instructions": "",
-                                    "required": false,
-                                    "conditional_logic": false,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "new_lines": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "rows": "",
-                                    "parent_repeater": "field_hto_steps"
-                                },
-                                {
-                                    "key": "field_hto_s_d_ms",
-                                    "label": "Desc (MS)",
-                                    "name": "desc_ms",
+                                    "label": "Desc",
+                                    "name": "desc",
                                     "aria-label": "",
                                     "type": "textarea",
                                     "instructions": "",
@@ -1831,28 +1233,8 @@
                     "sub_fields": [
                         {
                             "key": "field_dc_title_en",
-                            "label": "Title (EN)",
-                            "name": "title_en",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
-                            "key": "field_dc_title_ms",
-                            "label": "Title (MS)",
-                            "name": "title_ms",
+                            "label": "Title",
+                            "name": "title",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
@@ -1871,28 +1253,8 @@
                         },
                         {
                             "key": "field_dc_desc_en",
-                            "label": "Description (EN)",
-                            "name": "description_en",
-                            "aria-label": "",
-                            "type": "textarea",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "new_lines": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "rows": ""
-                        },
-                        {
-                            "key": "field_dc_desc_ms",
-                            "label": "Description (MS)",
-                            "name": "description_ms",
+                            "label": "Description",
+                            "name": "description",
                             "aria-label": "",
                             "type": "textarea",
                             "instructions": "",
@@ -1950,45 +1312,24 @@
                     "sub_fields": [
                         {
                             "key": "field_3e7787969b6a4",
-                            "label": "Tag (EN)",
-                            "name": "tag_en",
+                            "label": "Tag",
+                            "name": "tag",
                             "type": "text",
                             "default_value": "About Us"
                         },
                         {
-                            "key": "field_3df3f2d8f79e4",
-                            "label": "Tag (MS)",
-                            "name": "tag_ms",
-                            "type": "text",
-                            "default_value": "Tentang Kami"
-                        },
-                        {
                             "key": "field_f2349bf4f6724",
-                            "label": "Heading (EN)",
-                            "name": "heading_en",
+                            "label": "Heading",
+                            "name": "heading",
                             "type": "text",
                             "default_value": "Malaysia's Trusted Modafinil Supplier"
                         },
                         {
-                            "key": "field_927bc070ff084",
-                            "label": "Heading (MS)",
-                            "name": "heading_ms",
-                            "type": "text",
-                            "default_value": "Pembekal Modafinil Dipercayai Malaysia"
-                        },
-                        {
                             "key": "field_c475fe4ca3274",
-                            "label": "Desc (EN)",
-                            "name": "desc_en",
+                            "label": "Desc",
+                            "name": "desc",
                             "type": "textarea",
                             "default_value": "ModafinilMY serves students, professionals, and shift workers across Malaysia — from Kuala Lumpur to Kota Kinabalu."
-                        },
-                        {
-                            "key": "field_b3378e9034bf4",
-                            "label": "Desc (MS)",
-                            "name": "desc_ms",
-                            "type": "textarea",
-                            "default_value": "ModafinilMY berkhidmat untuk pelajar, profesional, dan pekerja syif di seluruh Malaysia — dari Kuala Lumpur ke Kota Kinabalu."
                         }
                     ]
                 },
@@ -2000,59 +1341,31 @@
                     "sub_fields": [
                         {
                             "key": "field_5acecaf188104",
-                            "label": "Mission Heading (EN)",
-                            "name": "mission_heading_en",
+                            "label": "Mission Heading",
+                            "name": "mission_heading",
                             "type": "text",
                             "default_value": "Our Mission"
                         },
                         {
-                            "key": "field_f5bc7d65a5cc4",
-                            "label": "Mission Heading (MS)",
-                            "name": "mission_heading_ms",
-                            "type": "text",
-                            "default_value": "Misi Kami"
-                        },
-                        {
                             "key": "field_483eab146da44",
-                            "label": "Mission Desc (EN)",
-                            "name": "mission_desc_en",
+                            "label": "Mission Desc",
+                            "name": "mission_desc",
                             "type": "textarea",
                             "default_value": "We exist to ensure Malaysians have access to high-quality, genuine Modafinil — delivered fast, discreetly, and reliably across Peninsular, Sabah, and Sarawak."
                         },
                         {
-                            "key": "field_9a67f574b5bb4",
-                            "label": "Mission Desc (MS)",
-                            "name": "mission_desc_ms",
-                            "type": "textarea",
-                            "default_value": "Kami wujud untuk memastikan rakyat Malaysia mempunyai akses kepada Modafinil asli berkualiti tinggi — dihantar dengan pantas, diskret, dan boleh dipercayai ke seluruh Semenanjung, Sabah, dan Sarawak."
-                        },
-                        {
                             "key": "field_5eaf710cafea4",
-                            "label": "Vision Heading (EN)",
-                            "name": "vision_heading_en",
+                            "label": "Vision Heading",
+                            "name": "vision_heading",
                             "type": "text",
                             "default_value": "Why Choose Us?"
                         },
                         {
-                            "key": "field_9556e4f594314",
-                            "label": "Vision Heading (MS)",
-                            "name": "vision_heading_ms",
-                            "type": "text",
-                            "default_value": "Kenapa Pilih Kami?"
-                        },
-                        {
                             "key": "field_b6b97d8f0f494",
-                            "label": "Vision Desc (EN)",
-                            "name": "vision_desc_en",
+                            "label": "Vision Desc",
+                            "name": "vision_desc",
                             "type": "textarea",
                             "default_value": "Thousands of Malaysian customers have trusted ModafinilMY since we began operations. We stock genuine Modalert and Modvigil from licensed Indian pharmaceutical manufacturers."
-                        },
-                        {
-                            "key": "field_b6d3a0e6b63e4",
-                            "label": "Vision Desc (MS)",
-                            "name": "vision_desc_ms",
-                            "type": "textarea",
-                            "default_value": "Ribuan pelanggan Malaysia telah mempercayai ModafinilMY sejak kami mula beroperasi. Kami menyimpan Modalert dan Modvigil asli dari pengeluar farmaseutikal berlesen India."
                         }
                     ]
                 },
@@ -2064,31 +1377,17 @@
                     "sub_fields": [
                         {
                             "key": "field_7d1f064846a34",
-                            "label": "Heading (EN)",
-                            "name": "heading_en",
+                            "label": "Heading",
+                            "name": "heading",
                             "type": "text",
                             "default_value": "Products We Sell"
                         },
                         {
-                            "key": "field_b41d4c80c94a4",
-                            "label": "Heading (MS)",
-                            "name": "heading_ms",
-                            "type": "text",
-                            "default_value": "Produk Yang Kami Jual"
-                        },
-                        {
                             "key": "field_9e5242778e824",
-                            "label": "Desc (EN)",
-                            "name": "desc_en",
+                            "label": "Desc",
+                            "name": "desc",
                             "type": "textarea",
                             "default_value": "We specialize in the two most trusted Modafinil brands globally:"
-                        },
-                        {
-                            "key": "field_952afe100a904",
-                            "label": "Desc (MS)",
-                            "name": "desc_ms",
-                            "type": "textarea",
-                            "default_value": "Kami mengkhususkan diri dalam dua jenama Modafinil yang paling dipercayai secara global:"
                         },
                         {
                             "key": "field_1bfab0f22cce4",
@@ -2106,15 +1405,8 @@
                                 },
                                 {
                                     "key": "field_6059624946f94",
-                                    "label": "Desc (EN)",
-                                    "name": "desc_en",
-                                    "type": "textarea",
-                                    "parent_repeater": "field_1bfab0f22cce4"
-                                },
-                                {
-                                    "key": "field_11d3d6657be24",
-                                    "label": "Desc (MS)",
-                                    "name": "desc_ms",
+                                    "label": "Desc",
+                                    "name": "desc",
                                     "type": "textarea",
                                     "parent_repeater": "field_1bfab0f22cce4"
                                 }
@@ -2130,31 +1422,17 @@
                     "sub_fields": [
                         {
                             "key": "field_0d03ea4ccab84",
-                            "label": "Heading (EN)",
-                            "name": "heading_en",
+                            "label": "Heading",
+                            "name": "heading",
                             "type": "text",
                             "default_value": "Delivery Across Malaysia"
                         },
                         {
-                            "key": "field_8f374c41ec3f4",
-                            "label": "Heading (MS)",
-                            "name": "heading_ms",
-                            "type": "text",
-                            "default_value": "Penghantaran ke Seluruh Malaysia"
-                        },
-                        {
                             "key": "field_db0fe9dccbec4",
-                            "label": "Desc (EN)",
-                            "name": "desc_en",
+                            "label": "Desc",
+                            "name": "desc",
                             "type": "textarea",
                             "default_value": "We use Pos Malaysia for reliable delivery to all postcodes across Malaysia:"
-                        },
-                        {
-                            "key": "field_2e05544de4af4",
-                            "label": "Desc (MS)",
-                            "name": "desc_ms",
-                            "type": "textarea",
-                            "default_value": "Kami menggunakan Pos Malaysia untuk penghantaran yang boleh dipercayai ke semua poskod di seluruh Malaysia:"
                         },
                         {
                             "key": "field_3da652fbdede4",
@@ -2172,29 +1450,15 @@
                                 },
                                 {
                                     "key": "field_b5999682fdcf4",
-                                    "label": "Title (EN)",
-                                    "name": "title_en",
-                                    "type": "text",
-                                    "parent_repeater": "field_3da652fbdede4"
-                                },
-                                {
-                                    "key": "field_45980771444d4",
-                                    "label": "Title (MS)",
-                                    "name": "title_ms",
+                                    "label": "Title",
+                                    "name": "title",
                                     "type": "text",
                                     "parent_repeater": "field_3da652fbdede4"
                                 },
                                 {
                                     "key": "field_c514df4f69834",
-                                    "label": "Desc (EN)",
-                                    "name": "desc_en",
-                                    "type": "textarea",
-                                    "parent_repeater": "field_3da652fbdede4"
-                                },
-                                {
-                                    "key": "field_1db32dd82e4d4",
-                                    "label": "Desc (MS)",
-                                    "name": "desc_ms",
+                                    "label": "Desc",
+                                    "name": "desc",
                                     "type": "textarea",
                                     "parent_repeater": "field_3da652fbdede4"
                                 }
@@ -2210,27 +1474,14 @@
                     "sub_fields": [
                         {
                             "key": "field_94d2494262974",
-                            "label": "Heading (EN)",
-                            "name": "heading_en",
-                            "type": "text"
-                        },
-                        {
-                            "key": "field_90529904dfea4",
-                            "label": "Heading (MS)",
-                            "name": "heading_ms",
+                            "label": "Heading",
+                            "name": "heading",
                             "type": "text"
                         },
                         {
                             "key": "field_19334cb614cc4",
-                            "label": "Description (EN)",
-                            "name": "description_en",
-                            "type": "textarea",
-                            "rows": 3
-                        },
-                        {
-                            "key": "field_3a9fcc1f9bce4",
-                            "label": "Description (MS)",
-                            "name": "description_ms",
+                            "label": "Description",
+                            "name": "description",
                             "type": "textarea",
                             "rows": 3
                         }
@@ -2244,37 +1495,20 @@
                     "sub_fields": [
                         {
                             "key": "field_page_hero_title_en",
-                            "label": "Title (EN)",
-                            "name": "title_en",
+                            "label": "Title",
+                            "name": "title",
                             "type": "text",
                             "required": false,
                             "default_value": "Buy Modafinil Online in Malaysia"
                         },
                         {
-                            "key": "field_page_hero_title_ms",
-                            "label": "Title (MS)",
-                            "name": "title_ms",
-                            "type": "text",
-                            "required": false,
-                            "default_value": "Beli Modafinil Online di Malaysia"
-                        },
-                        {
                             "key": "field_page_hero_subtitle_en",
-                            "label": "Subtitle (EN)",
-                            "name": "subtitle_en",
+                            "label": "Subtitle",
+                            "name": "subtitle",
                             "type": "textarea",
                             "rows": 3,
                             "required": false,
                             "default_value": "Browse and buy genuine Modafinil tablets online from certified manufacturers. Fast Malaysia-wide delivery on all orders."
-                        },
-                        {
-                            "key": "field_page_hero_subtitle_ms",
-                            "label": "Subtitle (MS)",
-                            "name": "subtitle_ms",
-                            "type": "textarea",
-                            "rows": 3,
-                            "required": false,
-                            "default_value": "Semak dan beli tablet Modafinil asli secara dalam talian dari pengeluar bertauliah. Penghantaran pantas ke seluruh Malaysia."
                         },
                         {
                             "key": "field_page_hero_bullets",
@@ -2286,15 +1520,8 @@
                             "sub_fields": [
                                 {
                                     "key": "field_page_hero_bullet_en",
-                                    "label": "Bullet (EN)",
-                                    "name": "bullet_en",
-                                    "type": "text",
-                                    "required": false
-                                },
-                                {
-                                    "key": "field_page_hero_bullet_ms",
-                                    "label": "Bullet (MS)",
-                                    "name": "bullet_ms",
+                                    "label": "Bullet",
+                                    "name": "bullet",
                                     "type": "text",
                                     "required": false
                                 }
@@ -2317,37 +1544,20 @@
                     "sub_fields": [
                         {
                             "key": "field_product_guide_heading_en",
-                            "label": "Heading (EN)",
-                            "name": "heading_en",
+                            "label": "Heading",
+                            "name": "heading",
                             "type": "text",
                             "required": false,
                             "default_value": "Choosing the Right Modafinil"
                         },
                         {
-                            "key": "field_product_guide_heading_ms",
-                            "label": "Heading (MS)",
-                            "name": "heading_ms",
-                            "type": "text",
-                            "required": false,
-                            "default_value": "Memilih Modafinil Yang Tepat"
-                        },
-                        {
                             "key": "field_product_guide_description_en",
-                            "label": "Description (EN)",
-                            "name": "description_en",
+                            "label": "Description",
+                            "name": "description",
                             "type": "textarea",
                             "rows": 3,
                             "required": false,
                             "default_value": "With several brands and dosages available, the right product depends on your experience level, desired effects, and budget. Below is a comparison of our most popular options."
-                        },
-                        {
-                            "key": "field_product_guide_description_ms",
-                            "label": "Description (MS)",
-                            "name": "description_ms",
-                            "type": "textarea",
-                            "rows": 3,
-                            "required": false,
-                            "default_value": "Dengan pelbagai jenama dan dos yang ada, produk yang tepat bergantung kepada tahap pengalaman, kesan yang dimahukan, dan bajet anda. Di bawah adalah perbandingan pilihan paling popular kami."
                         },
                         {
                             "key": "field_product_guide_guide_items",
@@ -2359,45 +1569,23 @@
                             "sub_fields": [
                                 {
                                     "key": "field_guide_item_title_en",
-                                    "label": "Title (EN)",
-                                    "name": "title_en",
-                                    "type": "text",
-                                    "required": false
-                                },
-                                {
-                                    "key": "field_guide_item_title_ms",
-                                    "label": "Title (MS)",
-                                    "name": "title_ms",
+                                    "label": "Title",
+                                    "name": "title",
                                     "type": "text",
                                     "required": false
                                 },
                                 {
                                     "key": "field_guide_item_description_en",
-                                    "label": "Description (EN)",
-                                    "name": "description_en",
-                                    "type": "textarea",
-                                    "rows": 3,
-                                    "required": false
-                                },
-                                {
-                                    "key": "field_guide_item_description_ms",
-                                    "label": "Description (MS)",
-                                    "name": "description_ms",
+                                    "label": "Description",
+                                    "name": "description",
                                     "type": "textarea",
                                     "rows": 3,
                                     "required": false
                                 },
                                 {
                                     "key": "field_guide_item_best_for_en",
-                                    "label": "Best For (EN)",
-                                    "name": "best_for_en",
-                                    "type": "text",
-                                    "required": false
-                                },
-                                {
-                                    "key": "field_guide_item_best_for_ms",
-                                    "label": "Best For (MS)",
-                                    "name": "best_for_ms",
+                                    "label": "Best For",
+                                    "name": "best_for",
                                     "type": "text",
                                     "required": false
                                 },
@@ -2420,16 +1608,8 @@
                     "sub_fields": [
                         {
                             "key": "field_seo_text_content_en",
-                            "label": "Content (EN)",
-                            "name": "content_en",
-                            "type": "wysiwyg",
-                            "required": false,
-                            "default_value": "<h2>Ordering Modafinil in Malaysia</h2>\n<p>We've made the process of buying modafinil online as straightforward as possible. Here's what to expect when you place an order with ModafinilMY.</p>\n\n<h3>Delivery Timeframes</h3>\n<p>Semua pesanan dihantar dengan cepat ke seluruh Malaysia dengan penjejakan penuh. Bandar-bandar utama Semenanjung seperti KL, Selangor, Penang, dan Johor biasanya menerima pesanan dalam masa 7-12 hari bekerja. Sabah dan Sarawak mengambil 10-16 hari bekerja. Pesanan atas RM399 layak untuk penghantaran percuma.</p>\n\n<h3>Customs & Packaging</h3>\n<p>Every order is shipped in plain, unmarked packaging with no indication of the contents. There is no branding or product information visible on the outside. Our shipments are processed through international channels and we maintain a high delivery success rate across all Malaysian states and territories.</p>\n\n<h3>What to Expect After Ordering</h3>\n<p>Once your order is placed, you'll receive a confirmation email with your order details. Tracking information is provided within 1-2 business days. If you have any questions about your order at any point, our support team is available via our contact page.</p>"
-                        },
-                        {
-                            "key": "field_seo_text_content_ms",
-                            "label": "Content (MS)",
-                            "name": "content_ms",
+                            "label": "Content",
+                            "name": "content",
                             "type": "wysiwyg",
                             "required": false,
                             "default_value": "<h2>Ordering Modafinil in Malaysia</h2>\n<p>We've made the process of buying modafinil online as straightforward as possible. Here's what to expect when you place an order with ModafinilMY.</p>\n\n<h3>Delivery Timeframes</h3>\n<p>Semua pesanan dihantar dengan cepat ke seluruh Malaysia dengan penjejakan penuh. Bandar-bandar utama Semenanjung seperti KL, Selangor, Penang, dan Johor biasanya menerima pesanan dalam masa 7-12 hari bekerja. Sabah dan Sarawak mengambil 10-16 hari bekerja. Pesanan atas RM399 layak untuk penghantaran percuma.</p>\n\n<h3>Customs & Packaging</h3>\n<p>Every order is shipped in plain, unmarked packaging with no indication of the contents. There is no branding or product information visible on the outside. Our shipments are processed through international channels and we maintain a high delivery success rate across all Malaysian states and territories.</p>\n\n<h3>What to Expect After Ordering</h3>\n<p>Once your order is placed, you'll receive a confirmation email with your order details. Tracking information is provided within 1-2 business days. If you have any questions about your order at any point, our support team is available via our contact page.</p>"
@@ -2445,37 +1625,20 @@
                         },
                         {
                             "key": "field_seo_text_cta_title_en",
-                            "label": "CTA Title (EN)",
-                            "name": "cta_title_en",
+                            "label": "CTA Title",
+                            "name": "cta_title",
                             "type": "text",
                             "required": false,
                             "default_value": "Modafinil Dosage Guide"
                         },
                         {
-                            "key": "field_seo_text_cta_title_ms",
-                            "label": "CTA Title (MS)",
-                            "name": "cta_title_ms",
-                            "type": "text",
-                            "required": false,
-                            "default_value": "Panduan Dos Modafinil"
-                        },
-                        {
                             "key": "field_seo_text_cta_desc_en",
-                            "label": "CTA Description (EN)",
-                            "name": "cta_desc_en",
+                            "label": "CTA Description",
+                            "name": "cta_desc",
                             "type": "textarea",
                             "rows": 3,
                             "required": false,
                             "default_value": "Not sure which dose is right for you? Read our complete dosage guide with recommendations, timing tips, and brand comparisons."
-                        },
-                        {
-                            "key": "field_seo_text_cta_desc_ms",
-                            "label": "CTA Description (MS)",
-                            "name": "cta_desc_ms",
-                            "type": "textarea",
-                            "rows": 3,
-                            "required": false,
-                            "default_value": "Tidak pasti dos mana yang sesuai untuk anda? Baca panduan dos lengkap kami dengan cadangan, tips masa, dan perbandingan jenama."
                         },
                         {
                             "key": "field_seo_text_cta_link",
@@ -2495,31 +1658,17 @@
                     "sub_fields": [
                         {
                             "key": "field_c1b546c89e524",
-                            "label": "Heading (EN)",
-                            "name": "heading_en",
+                            "label": "Heading",
+                            "name": "heading",
                             "type": "text",
                             "default_value": "What Malaysian Customers Say"
                         },
                         {
-                            "key": "field_35603c7eecc34",
-                            "label": "Heading (MS)",
-                            "name": "heading_ms",
-                            "type": "text",
-                            "default_value": "Apa Kata Pelanggan Malaysia"
-                        },
-                        {
                             "key": "field_6f47fd49d5334",
-                            "label": "Description (EN)",
-                            "name": "description_en",
+                            "label": "Description",
+                            "name": "description",
                             "type": "text",
                             "default_value": "Real testimonials from ModafinilMY users across Malaysia."
-                        },
-                        {
-                            "key": "field_b85ef437c54e4",
-                            "label": "Description (MS)",
-                            "name": "description_ms",
-                            "type": "text",
-                            "default_value": "Testimoni sebenar dari pengguna ModafinilMY di seluruh Malaysia."
                         }
                     ]
                 },
@@ -2531,8 +1680,8 @@
                     "sub_fields": [
                         {
                             "key": "field_to_499d7e074a8d",
-                            "label": "Badge Text (EN)",
-                            "name": "badge_text_en",
+                            "label": "Badge Text",
+                            "name": "badge_text",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
@@ -2547,26 +1696,9 @@
                             "placeholder": ""
                         },
                         {
-                            "key": "field_to_a78306fb104a",
-                            "label": "Badge Text (MS)",
-                            "name": "badge_text_ms",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "Jejak Pesanan",
-                            "placeholder": ""
-                        },
-                        {
                             "key": "field_to_26c1afaa5ea2",
-                            "label": "Heading (EN)",
-                            "name": "heading_en",
+                            "label": "Heading",
+                            "name": "heading",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
@@ -2581,26 +1713,9 @@
                             "placeholder": ""
                         },
                         {
-                            "key": "field_to_45b1743717c9",
-                            "label": "Heading (MS)",
-                            "name": "heading_ms",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "Jejak Pesanan Anda",
-                            "placeholder": ""
-                        },
-                        {
                             "key": "field_to_3fe623e37045",
-                            "label": "Description (EN)",
-                            "name": "description_en",
+                            "label": "Description",
+                            "name": "description",
                             "aria-label": "",
                             "type": "textarea",
                             "instructions": "",
@@ -2615,26 +1730,9 @@
                             "placeholder": ""
                         },
                         {
-                            "key": "field_to_53a2b2fbd6cc",
-                            "label": "Description (MS)",
-                            "name": "description_ms",
-                            "aria-label": "",
-                            "type": "textarea",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "Semua pesanan ModafinilMY dihantar melalui Pos Malaysia dengan nombor penjejakan yang boleh disemak secara dalam talian.",
-                            "placeholder": ""
-                        },
-                        {
                             "key": "field_to_a5e3ca01aad2",
-                            "label": "Track Box Heading (EN)",
-                            "name": "track_box_heading_en",
+                            "label": "Track Box Heading",
+                            "name": "track_box_heading",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
@@ -2649,26 +1747,9 @@
                             "placeholder": ""
                         },
                         {
-                            "key": "field_to_9d4557133302",
-                            "label": "Track Box Heading (MS)",
-                            "name": "track_box_heading_ms",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "Jejak melalui Pos Malaysia",
-                            "placeholder": ""
-                        },
-                        {
                             "key": "field_to_f125831f58f2",
-                            "label": "Track Box Desc (EN)",
-                            "name": "track_box_desc_en",
+                            "label": "Track Box Desc",
+                            "name": "track_box_desc",
                             "aria-label": "",
                             "type": "textarea",
                             "instructions": "",
@@ -2683,26 +1764,9 @@
                             "placeholder": ""
                         },
                         {
-                            "key": "field_to_3876ca0fb997",
-                            "label": "Track Box Desc (MS)",
-                            "name": "track_box_desc_ms",
-                            "aria-label": "",
-                            "type": "textarea",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "Anda boleh menjejak pesanan anda terus di laman web rasmi Pos Malaysia menggunakan nombor penjejakan yang kami hantar kepada anda.",
-                            "placeholder": ""
-                        },
-                        {
                             "key": "field_to_898b9bd411e8",
-                            "label": "Button Text (EN)",
-                            "name": "track_btn_text_en",
+                            "label": "Button Text",
+                            "name": "track_btn_text",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
@@ -2714,23 +1778,6 @@
                                 "id": ""
                             },
                             "default_value": "Track at Pos Malaysia",
-                            "placeholder": ""
-                        },
-                        {
-                            "key": "field_to_0004927073a3",
-                            "label": "Button Text (MS)",
-                            "name": "track_btn_text_ms",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "Jejak di Pos Malaysia",
                             "placeholder": ""
                         },
                         {
@@ -2801,8 +1848,8 @@
                     "sub_fields": [
                         {
                             "key": "field_faq_2a7a6c8b5b25",
-                            "label": "Eyebrow (EN)",
-                            "name": "eyebrow_en",
+                            "label": "Eyebrow",
+                            "name": "eyebrow",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
@@ -2817,26 +1864,9 @@
                             "placeholder": ""
                         },
                         {
-                            "key": "field_faq_0f923004a21f",
-                            "label": "Eyebrow (MS)",
-                            "name": "eyebrow_ms",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "Soalan Lazim",
-                            "placeholder": ""
-                        },
-                        {
                             "key": "field_faq_43944e673ca3",
-                            "label": "Heading (EN)",
-                            "name": "heading_en",
+                            "label": "Heading",
+                            "name": "heading",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
@@ -2851,26 +1881,9 @@
                             "placeholder": ""
                         },
                         {
-                            "key": "field_faq_e654267d06c3",
-                            "label": "Heading (MS)",
-                            "name": "heading_ms",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "Soalan Lazim / FAQ",
-                            "placeholder": ""
-                        },
-                        {
                             "key": "field_faq_51a7b0956e3c",
-                            "label": "Description (EN)",
-                            "name": "description_en",
+                            "label": "Description",
+                            "name": "description",
                             "aria-label": "",
                             "type": "textarea",
                             "instructions": "",
@@ -2885,26 +1898,9 @@
                             "placeholder": ""
                         },
                         {
-                            "key": "field_faq_71cf86d60c48",
-                            "label": "Description (MS)",
-                            "name": "description_ms",
-                            "aria-label": "",
-                            "type": "textarea",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "Semua yang anda perlu tahu tentang membeli Modafinil di Malaysia.",
-                            "placeholder": ""
-                        },
-                        {
                             "key": "field_faq_f9e298bbadda",
-                            "label": "CTA Heading (EN)",
-                            "name": "cta_heading_en",
+                            "label": "CTA Heading",
+                            "name": "cta_heading",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
@@ -2919,26 +1915,9 @@
                             "placeholder": ""
                         },
                         {
-                            "key": "field_faq_22468d1880fe",
-                            "label": "CTA Heading (MS)",
-                            "name": "cta_heading_ms",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "Masih Ada Soalan?",
-                            "placeholder": ""
-                        },
-                        {
                             "key": "field_faq_1322847629cc",
-                            "label": "CTA Desc (EN)",
-                            "name": "cta_desc_en",
+                            "label": "CTA Desc",
+                            "name": "cta_desc",
                             "aria-label": "",
                             "type": "textarea",
                             "instructions": "",
@@ -2953,26 +1932,9 @@
                             "placeholder": ""
                         },
                         {
-                            "key": "field_faq_22e0690fb2af",
-                            "label": "CTA Desc (MS)",
-                            "name": "cta_desc_ms",
-                            "aria-label": "",
-                            "type": "textarea",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "Pasukan kami berbahasa Malaysia dan English, sedia membantu 7 hari seminggu.",
-                            "placeholder": ""
-                        },
-                        {
                             "key": "field_faq_5db0c02a932d",
-                            "label": "CTA Button Text (EN)",
-                            "name": "cta_btn_text_en",
+                            "label": "CTA Button Text",
+                            "name": "cta_btn_text",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
@@ -2984,23 +1946,6 @@
                                 "id": ""
                             },
                             "default_value": "WhatsApp Us Now",
-                            "placeholder": ""
-                        },
-                        {
-                            "key": "field_faq_073f8d408a6b",
-                            "label": "CTA Button Text (MS)",
-                            "name": "cta_btn_text_ms",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "WhatsApp Kami Sekarang",
                             "placeholder": ""
                         },
                         {
@@ -3038,15 +1983,8 @@
                             "sub_fields": [
                                 {
                                     "key": "field_faq_cat_title_en",
-                                    "label": "Category Title (EN)",
-                                    "name": "title_en",
-                                    "type": "text",
-                                    "parent_repeater": "field_faq_categories"
-                                },
-                                {
-                                    "key": "field_faq_cat_title_ms",
-                                    "label": "Category Title (MS)",
-                                    "name": "title_ms",
+                                    "label": "Category Title",
+                                    "name": "title",
                                     "type": "text",
                                     "parent_repeater": "field_faq_categories"
                                 },
@@ -3061,30 +1999,15 @@
                                     "sub_fields": [
                                         {
                                             "key": "field_faq_q_en",
-                                            "label": "Question (EN)",
-                                            "name": "question_en",
-                                            "type": "text",
-                                            "parent_repeater": "field_faq_cat_items"
-                                        },
-                                        {
-                                            "key": "field_faq_q_ms",
-                                            "label": "Question (MS)",
-                                            "name": "question_ms",
+                                            "label": "Question",
+                                            "name": "question",
                                             "type": "text",
                                             "parent_repeater": "field_faq_cat_items"
                                         },
                                         {
                                             "key": "field_faq_a_en",
-                                            "label": "Answer (EN)",
-                                            "name": "answer_en",
-                                            "type": "textarea",
-                                            "rows": 3,
-                                            "parent_repeater": "field_faq_cat_items"
-                                        },
-                                        {
-                                            "key": "field_faq_a_ms",
-                                            "label": "Answer (MS)",
-                                            "name": "answer_ms",
+                                            "label": "Answer",
+                                            "name": "answer",
                                             "type": "textarea",
                                             "rows": 3,
                                             "parent_repeater": "field_faq_cat_items"
@@ -3102,32 +2025,18 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "label": "Title (EN)",
-                            "name": "title_en",
+                            "label": "Title",
+                            "name": "title",
                             "type": "text",
                             "default": "Refund Policy & Guarantee",
                             "key": "field_ref_d48a00dd46a3"
                         },
                         {
-                            "label": "Title (MS)",
-                            "name": "title_ms",
-                            "type": "text",
-                            "default": "Dasar Bayaran Balik & Jaminan",
-                            "key": "field_ref_9ea1f8b69f70"
-                        },
-                        {
-                            "label": "Subtitle (EN)",
-                            "name": "subtitle_en",
+                            "label": "Subtitle",
+                            "name": "subtitle",
                             "type": "textarea",
                             "default": "If your order does not arrive, we will reship it for free or issue a full refund.",
                             "key": "field_ref_4524e00f098a"
-                        },
-                        {
-                            "label": "Subtitle (MS)",
-                            "name": "subtitle_ms",
-                            "type": "textarea",
-                            "default": "Jika pesanan anda tidak sampai, kami hantar semula secara percuma atau kembalikan wang anda sepenuhnya.",
-                            "key": "field_ref_ec897aebf12a"
                         },
                         {
                             "key": "field_ref_4685c02287ac",
@@ -3139,14 +2048,8 @@
                             "sub_fields": [
                                 {
                                     "key": "field_ref_33f9b6e9ef9b",
-                                    "label": "Badge (EN)",
-                                    "name": "badge_en",
-                                    "type": "text"
-                                },
-                                {
-                                    "key": "field_ref_cf560e9c3db0",
-                                    "label": "Badge (MS)",
-                                    "name": "badge_ms",
+                                    "label": "Badge",
+                                    "name": "badge",
                                     "type": "text"
                                 }
                             ]
@@ -3161,27 +2064,14 @@
                             "sub_fields": [
                                 {
                                     "key": "field_ref_a36a22a29c4f",
-                                    "label": "Section Title (EN)",
-                                    "name": "title_en",
-                                    "type": "text"
-                                },
-                                {
-                                    "key": "field_ref_d610844f8453",
-                                    "label": "Section Title (MS)",
-                                    "name": "title_ms",
+                                    "label": "Section Title",
+                                    "name": "title",
                                     "type": "text"
                                 },
                                 {
                                     "key": "field_ref_f8e7a5d6a302",
-                                    "label": "Content (EN)",
-                                    "name": "content_en",
-                                    "type": "textarea",
-                                    "rows": 4
-                                },
-                                {
-                                    "key": "field_ref_afca2eeb31cf",
-                                    "label": "Content (MS)",
-                                    "name": "content_ms",
+                                    "label": "Content",
+                                    "name": "content",
                                     "type": "textarea",
                                     "rows": 4
                                 }
@@ -3196,32 +2086,18 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "label": "Title (EN)",
-                            "name": "title_en",
+                            "label": "Title",
+                            "name": "title",
                             "type": "text",
                             "default": "Privacy Policy",
                             "key": "field_prv_75a7e76c6b6d"
                         },
                         {
-                            "label": "Title (MS)",
-                            "name": "title_ms",
-                            "type": "text",
-                            "default": "Dasar Privasi",
-                            "key": "field_prv_d30588402abe"
-                        },
-                        {
-                            "label": "Subtitle (EN)",
-                            "name": "subtitle_en",
+                            "label": "Subtitle",
+                            "name": "subtitle",
                             "type": "textarea",
                             "default": "We collect the absolute minimum data required to process and deliver your order.",
                             "key": "field_prv_9f1a915df9a3"
-                        },
-                        {
-                            "label": "Subtitle (MS)",
-                            "name": "subtitle_ms",
-                            "type": "textarea",
-                            "default": "Kami mengumpul data sekurang-kurangnya yang diperlukan untuk memproses pesanan anda.",
-                            "key": "field_prv_543c3b416765"
                         },
                         {
                             "key": "field_prv_4e7ceb8fef70",
@@ -3233,14 +2109,8 @@
                             "sub_fields": [
                                 {
                                     "key": "field_prv_33d845bce880",
-                                    "label": "Badge (EN)",
-                                    "name": "badge_en",
-                                    "type": "text"
-                                },
-                                {
-                                    "key": "field_prv_5b8bc8d820d4",
-                                    "label": "Badge (MS)",
-                                    "name": "badge_ms",
+                                    "label": "Badge",
+                                    "name": "badge",
                                     "type": "text"
                                 }
                             ]
@@ -3255,27 +2125,14 @@
                             "sub_fields": [
                                 {
                                     "key": "field_prv_e5d908c1e544",
-                                    "label": "Section Title (EN)",
-                                    "name": "title_en",
-                                    "type": "text"
-                                },
-                                {
-                                    "key": "field_prv_1ee18cacafb5",
-                                    "label": "Section Title (MS)",
-                                    "name": "title_ms",
+                                    "label": "Section Title",
+                                    "name": "title",
                                     "type": "text"
                                 },
                                 {
                                     "key": "field_prv_35c0999f1336",
-                                    "label": "Content (EN)",
-                                    "name": "content_en",
-                                    "type": "textarea",
-                                    "rows": 4
-                                },
-                                {
-                                    "key": "field_prv_26b63c38abd5",
-                                    "label": "Content (MS)",
-                                    "name": "content_ms",
+                                    "label": "Content",
+                                    "name": "content",
                                     "type": "textarea",
                                     "rows": 4
                                 }
@@ -3290,32 +2147,18 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "label": "Title (EN)",
-                            "name": "title_en",
+                            "label": "Title",
+                            "name": "title",
                             "type": "text",
                             "default": "Terms & Conditions",
                             "key": "field_trm_14e9f36c3f1a"
                         },
                         {
-                            "label": "Title (MS)",
-                            "name": "title_ms",
-                            "type": "text",
-                            "default": "Terma & Syarat",
-                            "key": "field_trm_49e61e52865a"
-                        },
-                        {
-                            "label": "Subtitle (EN)",
-                            "name": "subtitle_en",
+                            "label": "Subtitle",
+                            "name": "subtitle",
                             "type": "textarea",
                             "default": "By accessing this website and placing an order, you agree to the terms below.",
                             "key": "field_trm_017a398b5af1"
-                        },
-                        {
-                            "label": "Subtitle (MS)",
-                            "name": "subtitle_ms",
-                            "type": "textarea",
-                            "default": "Dengan menggunakan laman ini dan membuat pesanan, anda bersetuju dengan terma di bawah.",
-                            "key": "field_trm_2f9e11803ce9"
                         },
                         {
                             "key": "field_trm_32c5220a5e9b",
@@ -3327,14 +2170,8 @@
                             "sub_fields": [
                                 {
                                     "key": "field_trm_71d51e7feaf2",
-                                    "label": "Badge (EN)",
-                                    "name": "badge_en",
-                                    "type": "text"
-                                },
-                                {
-                                    "key": "field_trm_e692d66037e6",
-                                    "label": "Badge (MS)",
-                                    "name": "badge_ms",
+                                    "label": "Badge",
+                                    "name": "badge",
                                     "type": "text"
                                 }
                             ]
@@ -3349,27 +2186,14 @@
                             "sub_fields": [
                                 {
                                     "key": "field_trm_e959ba899200",
-                                    "label": "Section Title (EN)",
-                                    "name": "title_en",
-                                    "type": "text"
-                                },
-                                {
-                                    "key": "field_trm_21d755862849",
-                                    "label": "Section Title (MS)",
-                                    "name": "title_ms",
+                                    "label": "Section Title",
+                                    "name": "title",
                                     "type": "text"
                                 },
                                 {
                                     "key": "field_trm_a6bceb1d73df",
-                                    "label": "Content (EN)",
-                                    "name": "content_en",
-                                    "type": "textarea",
-                                    "rows": 4
-                                },
-                                {
-                                    "key": "field_trm_db06cee41104",
-                                    "label": "Content (MS)",
-                                    "name": "content_ms",
+                                    "label": "Content",
+                                    "name": "content",
                                     "type": "textarea",
                                     "rows": 4
                                 }
@@ -3384,32 +2208,18 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "label": "Title (EN)",
-                            "name": "title_en",
+                            "label": "Title",
+                            "name": "title",
                             "type": "text",
                             "default": "Sitemap",
                             "key": "field_stm_231b1e01f7a6"
                         },
                         {
-                            "label": "Title (MS)",
-                            "name": "title_ms",
-                            "type": "text",
-                            "default": "Peta Laman",
-                            "key": "field_stm_517a76e2ec33"
-                        },
-                        {
-                            "label": "Subtitle (EN)",
-                            "name": "subtitle_en",
+                            "label": "Subtitle",
+                            "name": "subtitle",
                             "type": "textarea",
                             "default": "Browse all pages on ModafinilMY. Find exactly what you're looking for.",
                             "key": "field_stm_ba3c2400045b"
-                        },
-                        {
-                            "label": "Subtitle (MS)",
-                            "name": "subtitle_ms",
-                            "type": "textarea",
-                            "default": "Semua halaman ModafinilMY dalam satu senarai — halaman utama, produk, artikel, dan dasar.",
-                            "key": "field_stm_19c8c18574dc"
                         }
                     ]
                 },
@@ -3445,52 +2255,28 @@
                             "key": "field_city_927abea3e5cd"
                         },
                         {
-                            "label": "Demographic (EN)",
-                            "name": "demographic_en",
+                            "label": "Demographic",
+                            "name": "demographic",
                             "type": "text",
                             "key": "field_city_11ce776de785"
                         },
                         {
-                            "label": "Demographic (MS)",
-                            "name": "demographic_ms",
-                            "type": "text",
-                            "key": "field_city_f36ad4dd710d"
-                        },
-                        {
-                            "label": "Industry (EN)",
-                            "name": "industry_en",
+                            "label": "Industry",
+                            "name": "industry",
                             "type": "text",
                             "key": "field_city_1d15e28c9f77"
                         },
                         {
-                            "label": "Industry (MS)",
-                            "name": "industry_ms",
-                            "type": "text",
-                            "key": "field_city_98df291962f3"
-                        },
-                        {
-                            "label": "Hero Description (EN)",
-                            "name": "hero_desc_en",
+                            "label": "Hero Description",
+                            "name": "hero_desc",
                             "type": "textarea",
                             "key": "field_city_3fb43d17d5cb"
                         },
                         {
-                            "label": "Hero Description (MS)",
-                            "name": "hero_desc_ms",
-                            "type": "textarea",
-                            "key": "field_city_44d647761d90"
-                        },
-                        {
-                            "label": "Description (EN)",
-                            "name": "desc_en",
+                            "label": "Description",
+                            "name": "desc",
                             "type": "textarea",
                             "key": "field_city_2b8834e47af2"
-                        },
-                        {
-                            "label": "Description (MS)",
-                            "name": "desc_ms",
-                            "type": "textarea",
-                            "key": "field_city_123737155c17"
                         },
                         {
                             "label": "Features",
@@ -3499,16 +2285,10 @@
                             "layout": "table",
                             "sub_fields": [
                                 {
-                                    "label": "Feature (EN)",
-                                    "name": "feat_en",
+                                    "label": "Feature",
+                                    "name": "feat",
                                     "type": "text",
                                     "key": "feat_en_226dcea21a96"
-                                },
-                                {
-                                    "label": "Feature (MS)",
-                                    "name": "feat_ms",
-                                    "type": "text",
-                                    "key": "feat_ms_bec0a1370a0e"
                                 }
                             ],
                             "key": "field_city_b906e20f51a5"
@@ -3532,28 +2312,16 @@
                                     "key": "rev_rat_609f0be1d61e"
                                 },
                                 {
-                                    "label": "Date (EN)",
-                                    "name": "date_en",
+                                    "label": "Date",
+                                    "name": "date",
                                     "type": "text",
                                     "key": "rev_den_e6cd4be66efd"
                                 },
                                 {
-                                    "label": "Date (MS)",
-                                    "name": "date_ms",
-                                    "type": "text",
-                                    "key": "rev_dms_9648d02eff19"
-                                },
-                                {
-                                    "label": "Text (EN)",
-                                    "name": "text_en",
+                                    "label": "Text",
+                                    "name": "text",
                                     "type": "textarea",
                                     "key": "rev_ten_753d322f0a1a"
-                                },
-                                {
-                                    "label": "Text (MS)",
-                                    "name": "text_ms",
-                                    "type": "textarea",
-                                    "key": "rev_tms_9a1e8e61764d"
                                 }
                             ],
                             "key": "field_city_56c16bc341bd"
@@ -3568,50 +2336,44 @@
                     "sub_fields": [
                         {
                             "key": "field_dsg_23787a24fc",
-                            "label": "Page Badge (EN)",
-                            "name": "page_badge_en",
-                            "type": "text"
-                        },
-                        {
-                            "key": "field_dsg_317c40f54a",
-                            "label": "Page Badge (MS)",
-                            "name": "page_badge_ms",
+                            "label": "Page Badge",
+                            "name": "page_badge",
                             "type": "text"
                         },
                         {
                             "key": "field_dsg_c3e8d94a1d",
-                            "label": "Page Title (EN)",
-                            "name": "page_title_en",
-                            "type": "text"
-                        },
-                        {
-                            "key": "field_dsg_eaf9eb6854",
-                            "label": "Page Title (MS)",
-                            "name": "page_title_ms",
+                            "label": "Page Title",
+                            "name": "page_title",
                             "type": "text"
                         },
                         {
                             "key": "field_dsg_304d43d200",
-                            "label": "Page Subtitle (EN)",
-                            "name": "page_subtitle_en",
-                            "type": "textarea"
-                        },
-                        {
-                            "key": "field_dsg_a7bb473e51",
-                            "label": "Page Subtitle (MS)",
-                            "name": "page_subtitle_ms",
+                            "label": "Page Subtitle",
+                            "name": "page_subtitle",
                             "type": "textarea"
                         },
                         {
                             "key": "field_dsg_03b5f12065",
-                            "label": "Disclaimer (EN)",
-                            "name": "disclaimer_en",
+                            "label": "Disclaimer",
+                            "name": "disclaimer",
                             "type": "textarea"
                         },
                         {
-                            "key": "field_dsg_1544da278a",
-                            "label": "Disclaimer (MS)",
-                            "name": "disclaimer_ms",
+                            "key": "field_dsg_1861c02731",
+                            "label": "Disclaimer Label",
+                            "name": "disclaimer_label",
+                            "type": "text"
+                        },
+                        {
+                            "key": "field_dsg_0d3f79609a",
+                            "label": "Before You Use Heading",
+                            "name": "guide_heading",
+                            "type": "text"
+                        },
+                        {
+                            "key": "field_dsg_216ab090e2",
+                            "label": "Before You Use Introduction",
+                            "name": "guide_intro",
                             "type": "textarea"
                         },
                         {
@@ -3629,26 +2391,14 @@
                                 },
                                 {
                                     "key": "field_dsg_3653141a2e",
-                                    "label": "Label (EN)",
-                                    "name": "label_en",
-                                    "type": "text"
-                                },
-                                {
-                                    "key": "field_dsg_50bb6166b8",
-                                    "label": "Label (MS)",
-                                    "name": "label_ms",
+                                    "label": "Label",
+                                    "name": "label",
                                     "type": "text"
                                 },
                                 {
                                     "key": "field_dsg_79671202e8",
-                                    "label": "Description (EN)",
-                                    "name": "desc_en",
-                                    "type": "textarea"
-                                },
-                                {
-                                    "key": "field_dsg_1b3b11b478",
-                                    "label": "Description (MS)",
-                                    "name": "desc_ms",
+                                    "label": "Description",
+                                    "name": "desc",
                                     "type": "textarea"
                                 },
                                 {
@@ -3674,21 +2424,21 @@
                                 },
                                 {
                                     "key": "field_dsg_7a681ea9ac",
-                                    "label": "Description (EN)",
-                                    "name": "desc_en",
-                                    "type": "textarea"
-                                },
-                                {
-                                    "key": "field_dsg_8bb09ec431",
-                                    "label": "Description (MS)",
-                                    "name": "desc_ms",
+                                    "label": "Description",
+                                    "name": "desc",
                                     "type": "textarea"
                                 }
                             ]
                         },
                         {
+                            "key": "field_dsg_484f63d710",
+                            "label": "Products Section Heading",
+                            "name": "products_heading",
+                            "type": "text"
+                        },
+                        {
                             "key": "field_dsg_3233ca758a",
-                            "label": "Malaysia Tips",
+                            "label": "Australian Import Checks",
                             "name": "malaysia_tips",
                             "type": "repeater",
                             "layout": "block",
@@ -3701,29 +2451,29 @@
                                 },
                                 {
                                     "key": "field_dsg_afe52d680f",
-                                    "label": "Title (EN)",
-                                    "name": "title_en",
-                                    "type": "text"
-                                },
-                                {
-                                    "key": "field_dsg_40566ede55",
-                                    "label": "Title (MS)",
-                                    "name": "title_ms",
+                                    "label": "Title",
+                                    "name": "title",
                                     "type": "text"
                                 },
                                 {
                                     "key": "field_dsg_a4540d0c41",
-                                    "label": "Description (EN)",
-                                    "name": "desc_en",
-                                    "type": "textarea"
-                                },
-                                {
-                                    "key": "field_dsg_67f903e85e",
-                                    "label": "Description (MS)",
-                                    "name": "desc_ms",
+                                    "label": "Description",
+                                    "name": "desc",
                                     "type": "textarea"
                                 }
                             ]
+                        },
+                        {
+                            "key": "field_dsg_0f4d13f8a0",
+                            "label": "Products Button Text",
+                            "name": "products_button_text",
+                            "type": "text"
+                        },
+                        {
+                            "key": "field_dsg_5533e29071",
+                            "label": "Products Button Link",
+                            "name": "products_button_link",
+                            "type": "text"
                         },
                         {
                             "key": "field_dsg_c5ad7251dc",
@@ -3740,25 +2490,19 @@
                                 },
                                 {
                                     "key": "field_dsg_c6d199f563",
-                                    "label": "Use Case (EN)",
-                                    "name": "use_en",
-                                    "type": "text"
-                                },
-                                {
-                                    "key": "field_dsg_9707b14d07",
-                                    "label": "Use Case (MS)",
-                                    "name": "use_ms",
+                                    "label": "Listing Note",
+                                    "name": "use",
                                     "type": "text"
                                 },
                                 {
                                     "key": "field_dsg_8b879d706d",
-                                    "label": "Dose",
+                                    "label": "Stated Strength",
                                     "name": "dose",
                                     "type": "text"
                                 },
                                 {
                                     "key": "field_dsg_39713e496e",
-                                    "label": "Duration",
+                                    "label": "Directions Note",
                                     "name": "duration",
                                     "type": "text"
                                 },
@@ -3771,6 +2515,36 @@
                             ]
                         },
                         {
+                            "key": "field_dsg_7502be4e83",
+                            "label": "Timing Section Heading",
+                            "name": "timing_heading",
+                            "type": "text"
+                        },
+                        {
+                            "key": "field_dsg_3af0875b9e",
+                            "label": "Timing Section Introduction",
+                            "name": "timing_intro",
+                            "type": "textarea"
+                        },
+                        {
+                            "key": "field_dsg_c741650225",
+                            "label": "Import Section Heading",
+                            "name": "import_heading",
+                            "type": "text"
+                        },
+                        {
+                            "key": "field_dsg_6d06c5adfe",
+                            "label": "Import Section Introduction",
+                            "name": "import_intro",
+                            "type": "textarea"
+                        },
+                        {
+                            "key": "field_dsg_31cc6df9b0",
+                            "label": "FAQ Section Heading",
+                            "name": "faq_heading",
+                            "type": "text"
+                        },
+                        {
                             "key": "field_dsg_ff966795a6",
                             "label": "FAQ Items",
                             "name": "faq_items",
@@ -3779,29 +2553,53 @@
                             "sub_fields": [
                                 {
                                     "key": "field_dsg_3718ef24da",
-                                    "label": "Question (EN)",
-                                    "name": "q_en",
-                                    "type": "text"
-                                },
-                                {
-                                    "key": "field_dsg_1aa4146200",
-                                    "label": "Question (MS)",
-                                    "name": "q_ms",
+                                    "label": "Question",
+                                    "name": "q",
                                     "type": "text"
                                 },
                                 {
                                     "key": "field_dsg_0264c9a81f",
-                                    "label": "Answer (EN)",
-                                    "name": "a_en",
-                                    "type": "textarea"
-                                },
-                                {
-                                    "key": "field_dsg_2430f44e42",
-                                    "label": "Answer (MS)",
-                                    "name": "a_ms",
+                                    "label": "Answer",
+                                    "name": "a",
                                     "type": "textarea"
                                 }
                             ]
+                        },
+                        {
+                            "key": "field_dsg_94f4a1a1d8",
+                            "label": "Call to Action Heading",
+                            "name": "cta_heading",
+                            "type": "text"
+                        },
+                        {
+                            "key": "field_dsg_5b4a80cd09",
+                            "label": "Call to Action Description",
+                            "name": "cta_description",
+                            "type": "textarea"
+                        },
+                        {
+                            "key": "field_dsg_19b2cab52e",
+                            "label": "Shop Button Text",
+                            "name": "shop_button_text",
+                            "type": "text"
+                        },
+                        {
+                            "key": "field_dsg_e629d75f7c",
+                            "label": "Shop Button Link",
+                            "name": "shop_button_link",
+                            "type": "text"
+                        },
+                        {
+                            "key": "field_dsg_9412ab9886",
+                            "label": "Contact Button Text",
+                            "name": "contact_button_text",
+                            "type": "text"
+                        },
+                        {
+                            "key": "field_dsg_0309c2a3de",
+                            "label": "Contact Button Link",
+                            "name": "contact_button_link",
+                            "type": "text"
                         }
                     ]
                 },
@@ -3813,17 +2611,10 @@
                     "sub_fields": [
                         {
                             "key": "field_dsg_title_en_123",
-                            "label": "FAQ Title (EN)",
-                            "name": "heading_en",
+                            "label": "FAQ Title",
+                            "name": "heading",
                             "type": "text",
                             "default_value": "Frequently Asked Questions"
-                        },
-                        {
-                            "key": "field_dsg_title_ms_123",
-                            "label": "FAQ Title (MS)",
-                            "name": "heading_ms",
-                            "type": "text",
-                            "default_value": "Soalan Yang Sering Ditanya"
                         },
                         {
                             "key": "field_dsg_624949de81",
@@ -3848,29 +2639,8 @@
                             "sub_fields": [
                                 {
                                     "key": "field_dsg_ae5395b1a7",
-                                    "label": "Question (EN)",
-                                    "name": "question_en",
-                                    "aria-label": "",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": false,
-                                    "conditional_logic": false,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "parent_repeater": "field_faq_items"
-                                },
-                                {
-                                    "key": "field_dsg_f3bbb68d4e",
-                                    "label": "Question (MS)",
-                                    "name": "question_ms",
+                                    "label": "Question",
+                                    "name": "question",
                                     "aria-label": "",
                                     "type": "text",
                                     "instructions": "",
@@ -3890,30 +2660,8 @@
                                 },
                                 {
                                     "key": "field_dsg_4ececabc41",
-                                    "label": "Answer (EN)",
-                                    "name": "answer_en",
-                                    "aria-label": "",
-                                    "type": "wysiwyg",
-                                    "instructions": "",
-                                    "required": false,
-                                    "conditional_logic": false,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "parent_repeater": "field_faq_items",
-                                    "tabs": "all",
-                                    "toolbar": "full",
-                                    "media_upload": 1
-                                },
-                                {
-                                    "key": "field_dsg_462a8df2cf",
-                                    "label": "Answer (MS)",
-                                    "name": "answer_ms",
+                                    "label": "Answer",
+                                    "name": "answer",
                                     "aria-label": "",
                                     "type": "wysiwyg",
                                     "instructions": "",
@@ -3981,6 +2729,401 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_support_cta": {
+                    "key": "layout_support_cta",
+                    "name": "support_cta",
+                    "label": "Support CTA",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_scta_title",
+                            "label": "Title",
+                            "name": "title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_scta_desc",
+                            "label": "Description",
+                            "name": "desc",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "rows": 4,
+                            "placeholder": "",
+                            "new_lines": ""
+                        },
+                        {
+                            "key": "field_scta_chat_text",
+                            "label": "Chat Button Text",
+                            "name": "chat_btn_text",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_scta_chat_url",
+                            "label": "Chat Button URL",
+                            "name": "chat_btn_url",
+                            "aria-label": "",
+                            "type": "url",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_scta_email_text",
+                            "label": "Contact Button Text",
+                            "name": "email_btn_text",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_scta_email_url",
+                            "label": "Contact Button URL",
+                            "name": "email_btn_url",
+                            "aria-label": "",
+                            "type": "url",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_rich_text": {
+                    "key": "layout_rich_text",
+                    "name": "rich_text",
+                    "label": "Rich Text",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_rt_content",
+                            "label": "Content",
+                            "name": "content",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 1,
+                            "delay": 0
+                        },
+                        {
+                            "key": "field_rt_width",
+                            "label": "Container Width",
+                            "name": "width",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "default": "Default",
+                                "narrow": "Narrow",
+                                "full": "Full width"
+                            },
+                            "default_value": "default",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_legal_policy": {
+                    "key": "layout_legal_policy",
+                    "name": "legal_policy",
+                    "label": "Legal Policy / Disclaimer",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_lp_title",
+                            "label": "Page Title",
+                            "name": "title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_lp_eyebrow",
+                            "label": "Eyebrow",
+                            "name": "eyebrow",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_lp_intro",
+                            "label": "Introduction",
+                            "name": "intro",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "rows": 4,
+                            "placeholder": "",
+                            "new_lines": ""
+                        },
+                        {
+                            "key": "field_lp_updated",
+                            "label": "Last Updated",
+                            "name": "updated",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_lp_sections",
+                            "label": "Sections",
+                            "name": "sections",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "block",
+                            "pagination": 0,
+                            "min": 0,
+                            "max": 0,
+                            "collapsed": "field_lps_title",
+                            "button_label": "Add Section",
+                            "rows_per_page": 20,
+                            "sub_fields": [
+                                {
+                                    "key": "field_lps_title",
+                                    "label": "Heading",
+                                    "name": "title",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": ""
+                                },
+                                {
+                                    "key": "field_lps_content",
+                                    "label": "Content",
+                                    "name": "content",
+                                    "aria-label": "",
+                                    "type": "wysiwyg",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "tabs": "all",
+                                    "toolbar": "full",
+                                    "media_upload": 1,
+                                    "delay": 0
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_lp_contact_email",
+                            "label": "Contact Email",
+                            "name": "contact_email",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_lp_contact_heading",
+                            "label": "Contact Heading",
+                            "name": "contact_heading",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_lp_contact_description",
+                            "label": "Contact Description",
+                            "name": "contact_description",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "rows": 4,
+                            "placeholder": "",
+                            "new_lines": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -4002,6 +3145,13 @@
                 "operator": "==",
                 "value": "product"
             }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
         ]
     ],
     "menu_order": 0,
@@ -4016,6 +3166,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1786461296,
-    "local_file": "C:laragonwwwmodafinil-malaysia/wp-content/themes/modafinil-malaysia-wp/acf-json/group_page_modules.json"
+    "modified": 1791221615,
+    "local_file": "C:laragonwwwwaklertaustralia.com/wp-content/themes/waklertaustralia.com-wp/acf-json/group_page_modules.json"
 }

@@ -18,6 +18,9 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+
+$contact_email = function_exists( 'get_field' ) ? get_field( 'contact_email', 'option' ) : '';
+$contact_email = sanitize_email( $contact_email ?: 'orders@modafinil-australia.com' );
 ?>
 
 <div class="woocommerce-order max-w-3xl mx-auto py-8 lg:py-12">
@@ -95,7 +98,7 @@ defined( 'ABSPATH' ) || exit;
         <div class="bg-[#F0F7FF] border border-[#BDE0FF] rounded-2xl p-6 md:p-8 mb-10 text-center">
             <h3 class="font-heading text-xl font-bold text-foreground mb-4">Payment Instructions</h3>
             <p class="mb-0 text-foreground text-lg leading-relaxed">
-                * Once your payment is done, just send the transaction copy to <a href="mailto:orders@modafinil-malaysia.com" class="text-primary hover:underline font-bold">orders@modafinil-malaysia.com</a> and we’ll ship your order immediately.
+                * Once your payment is done, just send the transaction copy to <a href="mailto:<?php echo esc_attr( $contact_email ); ?>" class="text-primary hover:underline font-bold"><?php echo esc_html( $contact_email ); ?></a> and we’ll ship your order immediately.
             </p>
         </div>
 

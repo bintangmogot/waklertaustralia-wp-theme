@@ -78,7 +78,7 @@ add_filter('document_title_separator', function($sep) {
 // 11. Custom Gravity Forms submit button markup with envelope icon
 add_filter('gform_submit_button', function($button, $form) {
     if ($form['id'] == 1) {
-        $btn_text = function_exists('modmy_t') ? modmy_t("Send Message", "Hantar Mesej") : "Send Message";
+        $btn_text = function_exists('modmy_t') ? "Send Message" : "Send Message";
         return sprintf(
             '<button type="submit" id="gform_submit_button_%d" class="button gform_button flex items-center justify-center gap-2 w-full md:w-auto">
                 <span>%s</span>

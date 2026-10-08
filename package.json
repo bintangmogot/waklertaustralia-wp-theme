@@ -1,12 +1,12 @@
 {
-  "name": "modafinil-malaysia-wp",
+  "name": "waklertaustralia.com-wp",
   "version": "1.0.0",
-  "description": "Modafinil Malaysia WordPress Theme",
+  "description": "Waklert Australia WordPress Theme",
   "private": true,
   "scripts": {
     "build": "npx @tailwindcss/cli -i ./assets/css/source.css -o ./assets/css/main.css --minify",
     "tailwind": "npx @tailwindcss/cli -i ./assets/css/source.css -o ./assets/css/main.css --watch",
-    "sync": "browser-sync start --proxy \"http://modafinil-malaysia.test\" --files \"*.php, modules/**/*.php, template-parts/**/*.php, woocommerce/**/*.php, assets/css/main.css, assets/js/*.js\" --ignore \"node_modules/**/*\"",
+    "sync": "browser-sync start --proxy \"http://waklertaustralia.com.test\" --files \"*.php, modules/**/*.php, template-parts/**/*.php, woocommerce/**/*.php, assets/css/main.css, assets/js/*.js\" --ignore \"node_modules/**/*\"",
     "dev": "npm-run-all --parallel tailwind sync"
   },
   "devDependencies": {

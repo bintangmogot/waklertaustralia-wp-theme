@@ -40,9 +40,9 @@ function modmy_register_post_types() {
 
     // 2. Cities CPT
     $city_labels = array(
-        'name'                  => 'Cities',
+        'name'                  => 'Australia Delivery',
         'singular_name'         => 'City',
-        'menu_name'             => 'Cities',
+        'menu_name'             => 'Australia Delivery',
         'name_admin_bar'        => 'City',
         'add_new'               => 'Add New',
         'add_new_item'          => 'Add New City',

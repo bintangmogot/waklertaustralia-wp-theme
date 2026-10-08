@@ -4,16 +4,14 @@
  * Matches the original React design exactly
  */
 
-$tag_en = get_sub_field('tag_en') ?: "Our Products";
-$tag_ms = get_sub_field('tag_ms') ?: "Produk Kami";
+$tag = "Our Products";
 
-$heading_en = get_sub_field('heading_en') ?: "Modafinil Tablets Available Now";
-$heading_ms = get_sub_field('heading_ms') ?: "Tablet Modafinil Tersedia Sekarang";
+$heading = get_sub_field('title') ?: "Armodafinil Products";
 
 // Featured product slugs (matching original JS: HOME_PRODUCT_SLUGS)
-$featured_slugs = ['modvigil-200mg', 'modalert-100mg', 'modalert-200mg', 'modafinil-200mg'];
+$featured_slugs = ['waklert-150mg', 'artvigil-50mg', 'armod-50mg-armodafinil'];
 
-$products = get_sub_field('selected_products');
+$products = get_sub_field('products');
 if (!$products) {
     // Fallback: Get by the exact slugs from the original design
     $products = [];
@@ -36,10 +34,10 @@ if (!$products) {
     <div class="container-custom">
         <div class="text-center mb-10">
             <span class="inline-block bg-primary-soft text-primary-dark text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4">
-                <?= modmy_t($tag_en, $tag_ms) ?>
+                <?= $tag ?>
             </span>
             <h2 class="font-heading text-2xl md:text-4xl font-black text-ink">
-                <?= modmy_t($heading_en, $heading_ms) ?>
+                <?= $heading ?>
             </h2>
         </div>
 
@@ -60,11 +58,16 @@ if (!$products) {
             ?>
         </div>
 
-        <div class="text-center mt-8">
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
             <a href="<?= wc_get_page_permalink('shop') ?>" class="inline-flex items-center gap-2 border-2 border-primary-light text-primary-dark font-bold px-7 py-3 rounded-full hover:bg-primary-light hover:text-white hover:border-primary-light transition-all uppercase tracking-widest text-sm">
-                <?= modmy_t("View All Products", "Lihat Semua Produk") ?>
+                <?= "View All Products" ?>
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
             </a>
+            <?php if (is_front_page()): ?>
+            <a href="<?= esc_url(trailingslashit(wc_get_page_permalink('shop')) . '#product-comparison') ?>" class="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3 font-bold uppercase tracking-widest text-sm text-primary-foreground transition-colors hover:bg-primary-dark">
+                Compare Products
+            </a>
+            <?php endif; ?>
         </div>
     </div>
 </section>

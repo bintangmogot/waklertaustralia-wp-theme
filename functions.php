@@ -1,6 +1,6 @@
 <?php
 /**
- * Modafinil Malaysia — Theme Functions
+ * Waklert Australia — Theme Functions
  */
 
 // Define constants for easy reference
@@ -8,27 +8,34 @@ define('MODMY_THEME_VERSION', '1.0.0');
 define('MODMY_THEME_DIR', get_stylesheet_directory());
 define('MODMY_THEME_URI', get_stylesheet_directory_uri());
 
-// 1. Language system
-require_once MODMY_THEME_DIR . '/inc/i18n.php';
+/** Render the subtle orbit-line background used across Waklert blue sections. */
+function waklert_output_pattern_rings() {
+    ?>
+    <div aria-hidden="true" class="pointer-events-none absolute -right-40 -top-48 z-0 h-[34rem] w-[34rem] rounded-full border border-white/10"></div>
+    <div aria-hidden="true" class="pointer-events-none absolute -right-20 -top-28 z-0 h-[26rem] w-[26rem] rounded-full border border-white/10"></div>
+    <div aria-hidden="true" class="pointer-events-none absolute -bottom-64 left-[34%] z-0 h-[32rem] w-[32rem] rounded-full border border-white/5"></div>
+    <?php
+}
 
-// 2. Theme setup (menus, supports, image sizes)
+// 1. Theme setup (menus, supports, image sizes)
 require_once MODMY_THEME_DIR . '/inc/theme-setup.php';
 
-// 3. Asset enqueues (CSS, JS)
+// 2. Asset enqueues (CSS, JS)
 require_once MODMY_THEME_DIR . '/inc/enqueue.php';
 
-// 4. ACF Theme Options (Global settings)
+// 3. ACF Theme Options (Global settings)
 require_once MODMY_THEME_DIR . '/inc/theme-options.php';
 
-// 5. Shortcodes
+// 4. Shortcodes
 require_once MODMY_THEME_DIR . '/inc/shortcodes.php';
 
-// 6. WooCommerce customizations
+// 5. WooCommerce customizations
 require_once MODMY_THEME_DIR . '/inc/woocommerce.php';
 require_once MODMY_THEME_DIR . '/inc/waklert-currency.php';
 
-// 7. Custom Post Types
+// 6. Custom Post Types
 require_once MODMY_THEME_DIR . '/inc/post-types.php';
+require_once MODMY_THEME_DIR . '/inc/australia-delivery.php';
 
 
 // 7. ACF Fallbacks (prevents fatal errors if ACF is not active)
@@ -45,7 +52,9 @@ if (!function_exists('the_row')) {
     function the_row() { return false; }
 }
 
+require_once MODMY_THEME_DIR . '/inc/product-presentation.php';
 require_once MODMY_THEME_DIR . '/inc/ajax-reviews.php';
+
 // 9. Enable SVG Uploads in Media Library
 add_filter('upload_mimes', function($mimes) {
     if (current_user_can('manage_options')) {
@@ -71,7 +80,7 @@ add_filter('document_title_separator', function($sep) {
 // 11. Custom Gravity Forms submit button markup with envelope icon
 add_filter('gform_submit_button', function($button, $form) {
     if ($form['id'] == 1) {
-        $btn_text = function_exists('modmy_t') ? modmy_t("Send Message", "Hantar Mesej") : "Send Message";
+        $btn_text = function_exists('modmy_t') ? "Send Message" : "Send Message";
         return sprintf(
             '<button type="submit" id="gform_submit_button_%d" class="button gform_button flex items-center justify-center gap-2 w-full md:w-auto">
                 <span>%s</span>
@@ -92,7 +101,7 @@ function modafinil_add_shipping_note_thankyou( $order_id ) {
         <h3 class="text-blue-700 font-bold mb-2">Note</h3>
         <p class="text-blue-700 mb-4">Please <strong>DO NOT</strong> reference anything related to medicine or website name. Just mention your order number.</p>
         <p class="text-blue-700 mb-4">The average shipping time is 7 - 10 business days. Please note that delivery may take up to 30 days from the date of dispatch due to potential disruptions in postal services caused by weather issues or natural disaster.</p>
-        <p class="text-blue-700 font-semibold">modafinil-malaysia.com</p>
+        <p class="text-blue-700 font-semibold">waklertaustralia.com</p>
     </div>
     <?php
 }
@@ -309,51 +318,20 @@ add_filter('acf/load_field/key=field_dsg_624949de81', function($field) {
     return $field;
 });
 
-// Register Bilingual Product Fields
+// Keep product copy in the shared Product Summary and Product Description modules.
 if( function_exists('acf_add_local_field_group') ):
 acf_add_local_field_group(array(
-    'key' => 'group_product_bilingual',
-    'title' => 'Product Content (Bilingual)',
+    'key' => 'group_product_content',
+    'title' => 'Product Content',
     'fields' => array(
         array(
-            'key' => 'field_short_desc_en',
-            'label' => 'Short Description (English)',
-            'name' => 'short_desc_en',
-            'type' => 'wysiwyg',
-            'instructions' => 'Description below the product title.',
-            'wrapper' => array(
-                'width' => '50',
-            ),
-        ),
-        array(
-            'key' => 'field_short_desc_ms',
-            'label' => 'Short Description (Malay)',
-            'name' => 'short_desc_ms',
-            'type' => 'wysiwyg',
-            'instructions' => 'Description below the product title.',
-            'wrapper' => array(
-                'width' => '50',
-            ),
-        ),
-        array(
-            'key' => 'field_main_desc_en',
-            'label' => 'Main Description (English)',
-            'name' => 'main_desc_en',
-            'type' => 'wysiwyg',
-            'instructions' => 'Full product description (appears below product images/buy section).',
-            'wrapper' => array(
-                'width' => '50',
-            ),
-        ),
-        array(
-            'key' => 'field_main_desc_ms',
-            'label' => 'Main Description (Malay)',
-            'name' => 'main_desc_ms',
-            'type' => 'wysiwyg',
-            'instructions' => 'Full product description (appears below product images/buy section).',
-            'wrapper' => array(
-                'width' => '50',
-            ),
+            'key' => 'field_product_content_modules_notice',
+            'label' => 'Edit product copy in Modules',
+            'name' => 'product_content_modules_notice',
+            'type' => 'message',
+            'message' => 'Product Summary and Product Description content now lives in the Modules field below. The summary appears under the product title; the full description keeps its current position and styling.',
+            'new_lines' => 'wpautop',
+            'esc_html' => 0,
         ),
     ),
     'location' => array(
@@ -365,59 +343,36 @@ acf_add_local_field_group(array(
             ),
         ),
     ),
-    'menu_order' => 0,
+    'menu_order' => -1,
     
     'style' => 'default',
     'label_placement' => 'top',
     'instruction_placement' => 'label',
     'hide_on_screen' => array('the_content', 'excerpt'),
-    'position' => 'high',
+    'position' => 'normal',
 ));
 endif;
 
-
-// Auto-migrate native WooCommerce descriptions into ACF Bilingual Fields on load
-add_filter('acf/load_value/name=main_desc_en', function($value, $post_id, $field) {
-    if (empty($value) && $post_id) {
-        $post = get_post($post_id);
-        if ($post && !empty($post->post_content)) {
-            return $post->post_content;
-        }
+// Keep product-only layouts out of the shared Modules editor on pages and posts.
+add_filter('acf/prepare_field/key=field_modules', function($field) {
+    if (empty($field['layouts']) || !function_exists('get_current_screen')) {
+        return $field;
     }
-    return $value;
-}, 10, 3);
 
-add_filter('acf/load_value/name=short_desc_en', function($value, $post_id, $field) {
-    if (empty($value) && $post_id) {
-        $post = get_post($post_id);
-        if ($post && !empty($post->post_excerpt)) {
-            $excerpt = $post->post_excerpt;
-            if (preg_match('/<!-- en -->(.+?)<!-- \/en -->/s', $excerpt, $match)) {
-                return trim($match[1]);
-            }
-            // If no tags, return the whole excerpt
-            $clean = strip_tags($excerpt, '<p><a><strong><b><i><em><ul><ol><li><br>');
-            return trim($clean);
-        }
+    $screen = get_current_screen();
+    if (!$screen || $screen->post_type === 'product') {
+        return $field;
     }
-    return $value;
-}, 10, 3);
 
-add_filter('acf/load_value/name=short_desc_ms', function($value, $post_id, $field) {
-    if (empty($value) && $post_id) {
-        $post = get_post($post_id);
-        if ($post && !empty($post->post_excerpt)) {
-            $excerpt = $post->post_excerpt;
-            if (preg_match('/<!-- ms -->(.+?)<!-- \/ms -->/s', $excerpt, $match)) {
-                return trim($match[1]);
-            }
-        }
-    }
-    return $value;
-}, 10, 3);
+    unset(
+        $field['layouts']['layout_wa_product_summary'],
+        $field['layouts']['layout_wa_product_description']
+    );
 
+    return $field;
+});
 
-// Force hide native WooCommerce editors to avoid confusion
+// Product copy is managed through the Product Summary and Product Description modules.
 add_action('admin_head', function() {
     $screen = get_current_screen();
     if ($screen && $screen->post_type === 'product') {
@@ -695,5 +650,14 @@ function modmy_custom_bacs_details($order_id) {
         echo "<p class=\"mb-4 text-lg\"><strong>SWIFT/BIC:</strong> " . esc_html($bic) . "</p>";
     }
     echo "</div>";
+}
+
+// Added missing function
+function modmy_get_post_category($post_id) {
+    $categories = get_the_category($post_id);
+    if (!empty($categories)) {
+        return $categories[0]->name;
+    }
+    return '';
 }
 

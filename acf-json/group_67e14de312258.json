@@ -75,7 +75,7 @@
         },
         {
             "key": "field_6a7cbe3a3c178",
-            "label": "Job \/ Location",
+            "label": "Job / Location",
             "name": "reviewer_meta",
             "aria-label": "",
             "type": "text",

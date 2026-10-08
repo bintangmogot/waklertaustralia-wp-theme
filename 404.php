@@ -10,13 +10,13 @@ get_header();
     <div class="container-site max-w-2xl">
         <h1 class="font-heading text-6xl md:text-8xl font-black text-primary mb-6">404</h1>
         <h2 class="font-heading text-2xl md:text-3xl font-bold text-foreground mb-4">
-            <?= modmy_t("Oops! Page not found", "Alamak! Halaman tidak dijumpai") ?>
+            <?= "Oops! Page not found" ?>
         </h2>
         <p class="text-muted-foreground mb-8">
-            <?= modmy_t("The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.", "Halaman yang anda cari mungkin telah dibuang, ditukar nama, atau tidak tersedia buat sementara waktu.") ?>
+            <?= "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable." ?>
         </p>
         <a href="<?= home_url('/') ?>" class="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-sm font-bold uppercase tracking-wider text-primary-foreground shadow-pill transition-colors hover:bg-primary-dark">
-            <?= modmy_t("Back to Homepage", "Kembali ke Laman Utama") ?>
+            <?= "Back to Homepage" ?>
         </a>
     </div>
 </div>

@@ -24,11 +24,11 @@ remove_action( 'woocommerce_cart_is_empty', 'wc_empty_cart_message', 10 );
     </div>
 
     <h2 class="font-heading text-3xl font-black text-slate-900 mb-4">
-        <?= modmy_t("Your cart is empty", "Troli anda kosong") ?>
+        <?= "Your cart is empty" ?>
     </h2>
     
     <p class="text-slate-500 mb-10 max-w-md mx-auto">
-        <?= modmy_t("Looks like you haven't added anything to your cart yet. Discover our premium products and get started.", "Nampaknya anda belum menambah apa-apa ke troli anda. Temui produk premium kami dan mulakan pesanan.") ?>
+        <?= "Looks like you haven't added anything to your cart yet. Discover our premium products and get started." ?>
     </p>
 
     <?php do_action( 'woocommerce_cart_is_empty' ); ?>
@@ -37,7 +37,7 @@ remove_action( 'woocommerce_cart_is_empty', 'wc_empty_cart_message', 10 );
         <p class="return-to-shop">
             <a class="inline-flex rounded-full bg-primary px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-white shadow-sm transition-all hover:bg-primary-dark hover:-translate-y-0.5" href="<?php echo esc_url( apply_filters( 'woocommerce_return_to_shop_redirect', wc_get_page_permalink( 'shop' ) ) ); ?>">
                 <?php
-                    echo esc_html( apply_filters( 'woocommerce_return_to_shop_text', modmy_t('Return to shop', 'Kembali ke kedai') ) );
+                    echo esc_html( apply_filters( 'woocommerce_return_to_shop_text', 'Return to shop' ) );
                 ?>
             </a>
         </p>

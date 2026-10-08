@@ -38,4 +38,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (menuOpen) menuOpen.addEventListener('click', openMenu);
     if (menuClose) menuClose.addEventListener('click', closeMenu);
     if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+
+    document.querySelectorAll('[data-product-description-toggle]').forEach((button) => {
+        const description = document.getElementById(button.getAttribute('aria-controls'));
+        if (!description) return;
+
+        description.classList.add('line-clamp-2');
+        button.addEventListener('click', () => {
+            const expanded = button.getAttribute('aria-expanded') === 'true';
+            description.classList.toggle('line-clamp-2', expanded);
+            button.setAttribute('aria-expanded', String(!expanded));
+            button.textContent = expanded ? 'Read more' : 'Read less';
+        });
+    });
 });

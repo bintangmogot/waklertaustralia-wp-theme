@@ -7,11 +7,10 @@
     <div class="container-custom max-w-4xl">
         <div class="prose prose-slate max-w-none prose-a:text-primary hover:prose-a:text-primary-dark prose-headings:font-heading prose-headings:font-bold">
             <?php 
-            $content_en = get_sub_field('content_en');
-            $content_ms = get_sub_field('content_ms');
+            $content = get_sub_field('content');
 
-            if ($content_en && $content_ms) {
-                echo modmy_t($content_en, $content_ms);
+            if ($content) {
+                echo $content;
             } else {
                 echo get_sub_field('content'); // Fallback if no translation fields
             }
