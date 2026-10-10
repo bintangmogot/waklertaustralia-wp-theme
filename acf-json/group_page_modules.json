@@ -386,6 +386,26 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_fp_tag_en",
+                            "label": "Small Tag Label",
+                            "name": "tag",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "e.g. MOST POPULAR in 2026",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "OUR PRODUCTS",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
                             "key": "field_fp_title_en",
                             "label": "Title",
                             "name": "title",
@@ -1329,7 +1349,7 @@
                             "label": "Desc",
                             "name": "desc",
                             "type": "textarea",
-                            "default_value": "ModafinilMY serves students, professionals, and shift workers across Malaysia — from Kuala Lumpur to Kota Kinabalu."
+                            "default_value": "ModafinilMY serves students, professionals, and shift workers across Malaysia \u2014 from Kuala Lumpur to Kota Kinabalu."
                         }
                     ]
                 },
@@ -1351,7 +1371,7 @@
                             "label": "Mission Desc",
                             "name": "mission_desc",
                             "type": "textarea",
-                            "default_value": "We exist to ensure Malaysians have access to high-quality, genuine Modafinil — delivered fast, discreetly, and reliably across Peninsular, Sabah, and Sarawak."
+                            "default_value": "We exist to ensure Malaysians have access to high-quality, genuine Modafinil \u2014 delivered fast, discreetly, and reliably across Peninsular, Sabah, and Sarawak."
                         },
                         {
                             "key": "field_5eaf710cafea4",

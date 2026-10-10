@@ -4,7 +4,7 @@
  * Matches the original React design exactly
  */
 
-$tag = "Our Products";
+$tag = get_sub_field('tag') ?: "OUR PRODUCTS";
 
 $heading = get_sub_field('title') ?: "Armodafinil Products";
 
@@ -41,7 +41,7 @@ if (!$products) {
             </h2>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             <?php 
             if($products):
                 foreach($products as $p):
@@ -51,7 +51,7 @@ if (!$products) {
                     
                     $post_object = get_post($product_id);
                     setup_postdata($GLOBALS['post'] =& $post_object);
-                    wc_get_template_part('content', 'product-pills');
+                    wc_get_template_part('content', 'product-horizontal');
                 endforeach;
                 wp_reset_postdata();
             endif;
