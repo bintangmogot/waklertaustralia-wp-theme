@@ -59,7 +59,7 @@ $price_html = $product->get_price_html();
         </div>
         
         <!-- Shop Now Link -->
-        <a href="<?= esc_url($link) ?>" class="inline-flex items-center gap-1 text-primary hover:text-primary-dark font-bold text-sm transition-colors mt-auto group/btn">
+        <a href="<?= esc_url($link) ?>" class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold text-sm transition-colors mt-auto py-2.5 px-4 rounded-xl group/btn shadow-sm">
             Shop now 
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 transition-transform group-hover/btn:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
