@@ -387,8 +387,8 @@
                     "sub_fields": [
                         {
                             "key": "field_fp_tag_en",
-                            "label": "Small Tag Label",
-                            "name": "tag",
+                            "label": "Subheading",
+                            "name": "subheading",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "e.g. MOST POPULAR in 2026",
@@ -399,7 +399,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "OUR PRODUCTS",
+                            "default_value": "MOST POPULAR in 2026",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",

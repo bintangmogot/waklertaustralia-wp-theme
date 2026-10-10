@@ -20,25 +20,25 @@ $title = $product->get_title();
 $link = $product->get_permalink();
 $image = wp_get_attachment_image_url($product->get_image_id(), 'medium_large') ?: wc_placeholder_img_src();
 
-// Use short description for excerpt, fallback to standard post excerpt
-$excerpt = $product->get_short_description();
+// Use shop_page_text ACF field for excerpt, fallback to standard post excerpt
+$excerpt = get_field('shop_page_text', $product->get_id());
 if (empty($excerpt)) {
-    $excerpt = get_the_excerpt();
+    $excerpt = $product->get_short_description() ?: get_the_excerpt();
 }
-$excerpt = wp_trim_words(strip_shortcodes(wp_strip_all_tags($excerpt)), 20, '...');
+$excerpt = wp_trim_words(strip_shortcodes(wp_strip_all_tags($excerpt)), 30, '...');
 
 // If price has range, WooCommerce usually adds "From". Let's just output WooCommerce price html
 $price_html = $product->get_price_html();
 ?>
-<div class="group relative flex flex-col sm:flex-row bg-white border border-stone-200 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow duration-300">
-    <a href="<?= esc_url($link) ?>" class="sm:w-2/5 md:w-[35%] relative flex items-center justify-center p-4 bg-white border-b sm:border-b-0 sm:border-r border-stone-100 shrink-0 min-h-[200px]">
+<div class="group relative flex flex-col sm:flex-row bg-blue-50/50 border border-blue-100 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow duration-300">
+    <a href="<?= esc_url($link) ?>" class="sm:w-2/5 md:w-[35%] relative flex items-center justify-center p-4 bg-white border-b sm:border-b-0 sm:border-r border-blue-100 shrink-0 min-h-[200px]">
         <img src="<?= esc_url($image) ?>" alt="<?= esc_attr($title) ?>" class="max-w-[80%] max-h-[160px] object-contain transition-transform duration-500 group-hover:scale-105" loading="lazy" />
     </a>
     
     <div class="p-5 sm:p-6 flex flex-col justify-center flex-1">
         
         <!-- Bestseller Tag -->
-        <div class="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-purple-600 mb-2">
+        <div class="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-orange-500 mb-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg> 
             BESTSELLER
         </div>

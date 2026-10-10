@@ -4,7 +4,7 @@
  * Matches the original React design exactly
  */
 
-$tag = get_sub_field('tag') ?: "OUR PRODUCTS";
+$tag = get_sub_field('subheading') ?: "MOST POPULAR in 2026";
 
 $heading = get_sub_field('title') ?: "Armodafinil Products";
 
