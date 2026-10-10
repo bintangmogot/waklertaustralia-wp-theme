@@ -27,8 +27,13 @@ if (empty($excerpt)) {
 }
 $excerpt = wp_trim_words(strip_shortcodes(wp_strip_all_tags($excerpt)), 30, '...');
 
-// If price has range, WooCommerce usually adds "From". Let's just output WooCommerce price html
-$price_html = $product->get_price_html();
+// Custom price logic: change range to "From" for variable products
+if ( $product->is_type('variable') ) {
+    $min_price = $product->get_variation_price('min', true);
+    $price_html = 'From ' . wc_price($min_price);
+} else {
+    $price_html = $product->get_price_html();
+}
 ?>
 <div class="group relative flex flex-col sm:flex-row bg-blue-50/50 border border-blue-100 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow duration-300">
     <a href="<?= esc_url($link) ?>" class="sm:w-2/5 md:w-[35%] relative flex items-center justify-center p-4 bg-white border-b sm:border-b-0 sm:border-r border-blue-100 shrink-0 min-h-[200px]">
