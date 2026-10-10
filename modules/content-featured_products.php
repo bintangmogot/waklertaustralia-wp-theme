@@ -41,7 +41,7 @@ if (!$products) {
             </h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-5xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             <?php 
             if($products):
                 foreach($products as $p):

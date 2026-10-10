@@ -38,9 +38,9 @@ if ( $product->is_type('variable') ) {
 ?>
 <div class="group relative flex flex-col sm:flex-row bg-gradient-to-br from-white to-blue-50/70 border border-slate-200/70 rounded-[1.5rem] overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
     
-    <!-- Image full width, no padding -->
-    <a href="<?= esc_url($link) ?>" class="sm:w-2/5 md:w-[40%] relative block bg-white shrink-0 overflow-hidden min-h-[220px] sm:min-h-[auto] border-b sm:border-b-0 sm:border-r border-slate-100">
-        <img src="<?= esc_url($image) ?>" alt="<?= esc_attr($title) ?>" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+    <!-- Image full width, no padding, object-contain so it never cuts -->
+    <a href="<?= esc_url($link) ?>" class="sm:w-2/5 md:w-[40%] relative block bg-white shrink-0 overflow-hidden min-h-[220px] sm:min-h-[auto] border-b sm:border-b-0 sm:border-r border-slate-100 p-0">
+        <img src="<?= esc_url($image) ?>" alt="<?= esc_attr($title) ?>" class="absolute inset-0 w-full h-full object-contain transition-transform duration-700 group-hover:scale-105" loading="lazy" />
     </a>
     
     <div class="p-6 sm:p-7 flex flex-col justify-center flex-1">
