@@ -1042,7 +1042,7 @@
                                 },
                                 {
                                     "key": "field_comp_m_en",
-                                    "label": "Modafinil",
+                                    "label": "Waklert",
                                     "name": "modafinil",
                                     "aria-label": "",
                                     "type": "text",

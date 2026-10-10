@@ -8,9 +8,9 @@
 
 $tag = get_sub_field('tag') ?: "Comparison";
 
-$heading = get_sub_field('heading') ?: "Modafinil vs Coffee vs Energy Drinks";
+$heading = get_sub_field('heading') ?: "Waklert vs Coffee vs Energy Drinks";
 
-$desc = get_sub_field('description') ?: "See why thousands of Australian workers choose Modafinil over caffeine.";
+$desc = get_sub_field('description') ?: "See why thousands of Australian workers choose Waklert over caffeine.";
 ?>
 <section class="section-padding bg-white" data-testid="comparison-table">
     <div class="container-custom max-w-4xl">
@@ -33,9 +33,7 @@ $desc = get_sub_field('description') ?: "See why thousands of Australian workers
                         <th class="text-left py-4 px-4 font-heading font-bold text-ink">
                             <?= "Feature" ?>
                         </th>
-                        <th class="text-center py-4 px-4 font-heading font-bold text-primary-dark bg-primary-softer rounded-t-lg">
-                            Modafinil
-                        </th>
+                        <th class="text-center py-4 px-4 font-heading font-bold text-primary-dark bg-primary-softer rounded-t-lg">Waklert</th>
                         <th class="text-center py-4 px-4 font-heading font-bold text-ink/70">
                             <?= "Coffee" ?>
                         </th>
@@ -80,3 +78,4 @@ $desc = get_sub_field('description') ?: "See why thousands of Australian workers
         </div>
     </div>
 </section>
+
