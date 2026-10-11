@@ -26,7 +26,8 @@ if (is_array($hero_img)) {
     $hero_img_url = '';
 }
 
-if (empty($hero_img_url)) {
+// Ignore legacy KL skyline from old cloned database
+if (empty($hero_img_url) || str_contains($hero_img_url, 'kl-skyline')) {
     $hero_img_url = get_theme_file_uri('assets/images/hero-tradie.png');
 }
 
