@@ -56,21 +56,6 @@ $product_count = function_exists('wp_count_posts') ? (int) wp_count_posts('produ
                     </a>
                 <?php endif; ?>
             </div>
-
-            <div class="flex flex-wrap gap-x-8 gap-y-4 border-t border-white/15 pt-6">
-                <div>
-                    <p class="font-heading text-2xl font-extrabold text-accent">01</p>
-                    <p class="mt-1 text-[10px] font-bold uppercase tracking-[0.15em] text-white/65">Focused category</p>
-                </div>
-                <div>
-                    <p class="font-heading text-2xl font-extrabold text-accent"><?= esc_html((string) $product_count) ?></p>
-                    <p class="mt-1 text-[10px] font-bold uppercase tracking-[0.15em] text-white/65">Products listed</p>
-                </div>
-                <div>
-                    <p class="font-heading text-2xl font-extrabold text-accent">AU</p>
-                    <p class="mt-1 text-[10px] font-bold uppercase tracking-[0.15em] text-white/65">Australian storefront</p>
-                </div>
-            </div>
         </div>
 
         <div class="relative mx-auto w-full max-w-lg lg:ml-auto">
