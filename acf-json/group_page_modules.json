@@ -2757,6 +2757,25 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_scta_eyebrow",
+                            "label": "Small Tag / Eyebrow",
+                            "name": "eyebrow",
+                            "type": "text",
+                            "instructions": "e.g. Need Help?",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "Need Help?",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
                             "key": "field_scta_title",
                             "label": "Title",
                             "name": "title",
@@ -2770,9 +2789,9 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "",
+                            "default_value": "Talk to us via SMS or WhatsApp - 24/7.",
                             "maxlength": "",
-                            "placeholder": "",
+                            "placeholder": "Talk to us via SMS or WhatsApp - 24/7.",
                             "prepend": "",
                             "append": ""
                         },
@@ -2790,10 +2809,10 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "",
+                            "default_value": "We are available all the time to handle any questions, offer advice or reassure you about your purchase.",
                             "maxlength": "",
                             "rows": 4,
-                            "placeholder": "",
+                            "placeholder": "We are available all the time to handle any questions, offer advice or reassure you about your purchase.",
                             "new_lines": ""
                         },
                         {
@@ -2810,7 +2829,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "",
+                            "default_value": "WhatsApp",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -2830,8 +2849,27 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "",
-                            "placeholder": ""
+                            "default_value": "https://wa.me/61488841833",
+                            "placeholder": "https://wa.me/61488841833"
+                        },
+                        {
+                            "key": "field_scta_sms_url",
+                            "label": "SMS Link or Number",
+                            "name": "sms_btn_url",
+                            "type": "text",
+                            "instructions": "e.g. sms:0488841833",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "sms:0488841833",
+                            "placeholder": "sms:0488841833",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
                         },
                         {
                             "key": "field_scta_email_text",
@@ -2847,7 +2885,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "",
+                            "default_value": "Send an email",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -2867,8 +2905,8 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "",
-                            "placeholder": ""
+                            "default_value": "mailto:orders@waklertaustralia.com.au",
+                            "placeholder": "mailto:orders@waklertaustralia.com.au"
                         }
                     ],
                     "min": "",

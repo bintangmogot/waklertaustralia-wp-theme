@@ -50,9 +50,15 @@ $render_footer_menu = static function ($location, $wrapper_class = '') use ($foo
     </section>
     <?php
 };
+
+// On homepage, render the Support CTA banner before footer if not already rendered as a page module
+if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
+    get_template_part('modules/content', 'support_cta');
+}
 ?>
 <footer class="relative isolate overflow-hidden bg-ink text-ink-foreground">
     <?php waklert_output_pattern_rings(); ?>
+    <?php if (!is_front_page()): ?>
     <!-- Badge strip -->
     <div class="relative isolate overflow-hidden bg-primary py-8 text-primary-foreground [&_svg]:text-accent">
         <?php waklert_output_pattern_rings(); ?>
@@ -80,6 +86,7 @@ $render_footer_menu = static function ($location, $wrapper_class = '') use ($foo
 
         </div>
     </div>
+    <?php endif; ?>
 
     <div class="container-site relative z-10 grid gap-10 py-16 md:grid-cols-2 lg:grid-cols-5">
         <!-- Column 1 -->

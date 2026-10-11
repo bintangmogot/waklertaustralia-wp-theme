@@ -3,19 +3,19 @@
  * Module: Call to Action (CTA)
  */
 
-$heading = get_sub_field('heading') ?: get_sub_field('title') ?: "Contact Us";
+$heading = get_sub_field('heading') ?: get_sub_field('title') ?: "Need Help?";
 
 $is_buyers_guide = is_page('buyers-guide');
 $desc = get_sub_field('description') ?: ($is_buyers_guide
     ? "Compare the current product listings and confirm the details shown at checkout before ordering."
-    : "Have questions? Our team speaks English and Malay, ready to help you 7 days a week via WhatsApp.");
+    : "We are available all the time to handle any questions, offer advice or reassure you about your purchase.");
 
 $btn = get_sub_field('button_text') ?: ($is_buyers_guide ? "Browse Products" : "WhatsApp Us");
-$wa_number = preg_replace('/[^0-9]/', '', get_field('whatsapp_number', 'option') ?: '60185754182');
+$wa_number = preg_replace('/[^0-9]/', '', get_field('whatsapp_number', 'option') ?: '61488841833');
 $btn_url = get_sub_field('button_url') ?: ($is_buyers_guide ? home_url('/shop/') : "https://wa.me/{$wa_number}");
 
-$btn2 = get_sub_field('secondary_button_text') ?: ($is_buyers_guide ? "Contact Us" : "Contact Form");
-$btn2_url = get_sub_field('secondary_button_url') ?: site_url('/contact');
+$btn2 = get_sub_field('secondary_button_text') ?: ($is_buyers_guide ? "Contact Us" : "Send an email");
+$btn2_url = get_sub_field('secondary_button_url') ?: 'mailto:orders@waklertaustralia.com.au';
 ?>
 <section class="py-4 pb-10 bg-white" data-testid="cta-section">
     <div class="container-custom max-w-4xl">
