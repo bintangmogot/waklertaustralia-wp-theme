@@ -1515,14 +1515,256 @@
                             "key": "field_94d2494262974",
                             "label": "Heading",
                             "name": "heading",
-                            "type": "text"
+                            "type": "text",
+                            "default_value": "Have Questions? We Are Here."
                         },
                         {
                             "key": "field_19334cb614cc4",
                             "label": "Description",
                             "name": "description",
                             "type": "textarea",
-                            "rows": 3
+                            "rows": 3,
+                            "default_value": "Our team speaks English and Australia. We usually reply within 30 minutes during business hours."
+                        },
+                        {
+                            "key": "field_contact_wa_title",
+                            "label": "WhatsApp Title",
+                            "name": "whatsapp_title",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "WhatsApp (Fastest Option)"
+                        },
+                        {
+                            "key": "field_contact_wa_number",
+                            "label": "WhatsApp Display Number",
+                            "name": "whatsapp_number",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "+61 488 841 833"
+                        },
+                        {
+                            "key": "field_contact_wa_url",
+                            "label": "WhatsApp Link URL",
+                            "name": "whatsapp_url",
+                            "type": "url",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "https://wa.me/61488841833"
+                        },
+                        {
+                            "key": "field_contact_email_title",
+                            "label": "Email Title",
+                            "name": "email_title",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "Email"
+                        },
+                        {
+                            "key": "field_contact_email_address",
+                            "label": "Contact Email Address",
+                            "name": "contact_email",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "orders@waklertaustralia.com.au"
+                        },
+                        {
+                            "key": "field_contact_email_subtext",
+                            "label": "Email Subtext",
+                            "name": "email_subtext",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "Within 24 hours"
+                        },
+                        {
+                            "key": "field_contact_hours_title",
+                            "label": "Operating Hours Title",
+                            "name": "hours_title",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "OPERATING HOURS"
+                        },
+                        {
+                            "key": "field_contact_hours_mon_fri",
+                            "label": "Hours: Mon - Fri",
+                            "name": "hours_mon_fri",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "8:00 AM \u2013 8:00 PM AWST"
+                        },
+                        {
+                            "key": "field_contact_hours_sat",
+                            "label": "Hours: Saturday",
+                            "name": "hours_sat",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "9:00 AM \u2013 5:00 PM AWST"
+                        },
+                        {
+                            "key": "field_contact_hours_sun",
+                            "label": "Hours: Sunday / Public Holiday",
+                            "name": "hours_sun",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "34",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "Limited (WhatsApp only)"
+                        },
+                        {
+                            "key": "field_contact_address_title",
+                            "label": "Visit Us Card Title",
+                            "name": "address_title",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "Visit us"
+                        },
+                        {
+                            "key": "field_contact_address_line1",
+                            "label": "Street Address",
+                            "name": "address_line_1",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "148 Washington Street"
+                        },
+                        {
+                            "key": "field_contact_address_line2",
+                            "label": "City, State, Postcode",
+                            "name": "address_city_state_zip",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "Victoria Park WA 6100"
+                        },
+                        {
+                            "key": "field_contact_address_country",
+                            "label": "Country",
+                            "name": "address_country",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "Australia"
+                        },
+                        {
+                            "key": "field_contact_directions_url",
+                            "label": "Get Directions URL",
+                            "name": "directions_url",
+                            "type": "url",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "https://maps.google.com/?q=148+Washington+Street,+Victoria+Park+WA+6100,+Australia"
+                        },
+                        {
+                            "key": "field_contact_maps_url",
+                            "label": "Google Maps Embed URL",
+                            "name": "google_maps_url",
+                            "type": "url",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "https://maps.google.com/maps?q=148+Washington+Street,+Victoria+Park+WA+6100,+Australia&t=&z=15&ie=UTF8&iwloc=&output=embed"
                         }
                     ]
                 },
