@@ -38,18 +38,18 @@ $overlay_color = trim((string) get_sub_field('overlay_color')) ?: '#0C4161';
     <?php waklert_output_pattern_rings(); ?>
 
     <!-- Right Column Hero Photo & Figma Linear Gradient Overlay (#0C4161) -->
-    <div class="pointer-events-none absolute inset-y-0 right-0 w-full lg:w-[58%] xl:w-[55%] z-0 overflow-hidden">
+    <div class="pointer-events-none absolute inset-y-0 right-0 w-full lg:w-[60%] xl:w-[56%] z-0 overflow-hidden">
         <img 
             src="<?= esc_url($hero_img_url) ?>" 
             alt="<?= esc_attr($heading) ?>" 
-            class="h-full w-full object-cover object-[75%_center] lg:object-[62%_center] xl:object-[58%_center]"
+            class="h-full w-full object-cover object-[70%_center] lg:object-[58%_center] xl:object-[54%_center]"
             loading="eager"
             fetchpriority="high"
         />
-        <!-- Desktop Linear Gradient Overlay: subtle soft blend on left edge only, leaving product 100% crystal clear -->
+        <!-- Desktop Linear Gradient Overlay: smooth cinematic blend from solid #0C4161 into the photo -->
         <div 
             class="absolute inset-0 hidden lg:block"
-            style="background: linear-gradient(90deg, <?= esc_attr($overlay_color) ?> 0%, rgba(12, 65, 97, 0.7) 4%, rgba(12, 65, 97, 0.15) 12%, transparent 20%);"
+            style="background: linear-gradient(90deg, <?= esc_attr($overlay_color) ?> 0%, <?= esc_attr($overlay_color) ?> 10%, rgba(12, 65, 97, 0.75) 24%, rgba(12, 65, 97, 0.38) 38%, rgba(12, 65, 97, 0.12) 52%, transparent 68%);"
         ></div>
         <!-- Mobile/Tablet Overlay for optimal text readability -->
         <div 
@@ -60,7 +60,7 @@ $overlay_color = trim((string) get_sub_field('overlay_color')) ?: '#0C4161';
 
     <!-- Left Column Content (narrower width for ample spacing from product) -->
     <div class="container-site relative z-10 w-full py-16 md:py-20 lg:py-24">
-        <div class="max-w-lg lg:max-w-[420px] xl:max-w-[450px]">
+        <div class="max-w-lg lg:max-w-[430px] xl:max-w-[460px]">
             <?php if ($location): ?>
             <span class="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-white backdrop-blur-sm">
                 <span aria-hidden="true" class="h-2 w-2 rounded-full bg-accent"></span>
