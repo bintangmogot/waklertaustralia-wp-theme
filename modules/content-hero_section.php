@@ -58,9 +58,9 @@ $overlay_color = trim((string) get_sub_field('overlay_color')) ?: '#0C4161';
         ></div>
     </div>
 
-    <!-- Left Column Content (positioned more to the left for clean composition) -->
+    <!-- Left Column Content (slightly wider for optimal typography) -->
     <div class="container-site relative z-10 w-full py-16 md:py-20 lg:py-24">
-        <div class="max-w-lg lg:max-w-[400px] xl:max-w-[440px]">
+        <div class="max-w-lg lg:max-w-[460px] xl:max-w-[500px]">
             <?php if ($location): ?>
             <span class="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-white backdrop-blur-sm">
                 <span aria-hidden="true" class="h-2 w-2 rounded-full bg-accent"></span>
