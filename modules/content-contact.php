@@ -21,17 +21,17 @@ $email_subtext = get_sub_field('email_subtext') ?: "Within 24 hours";
 
 // Operating Hours
 $hours_title   = get_sub_field('hours_title') ?: "OPERATING HOURS";
-$hours_mon_fri = get_sub_field('hours_mon_fri') ?: "8:00 AM – 8:00 PM AWST";
-$hours_sat     = get_sub_field('hours_sat') ?: "9:00 AM – 5:00 PM AWST";
+$hours_mon_fri = get_sub_field('hours_mon_fri') ?: "8:00 AM – 8:00 PM AEST";
+$hours_sat     = get_sub_field('hours_sat') ?: "9:00 AM – 5:00 PM AEST";
 $hours_sun     = get_sub_field('hours_sun') ?: "Limited (WhatsApp only)";
 
 // Map & Address
 $address_title   = get_sub_field('address_title') ?: "Visit us";
-$address_line_1  = get_sub_field('address_line_1') ?: "148 Washington Street";
-$address_line_2  = get_sub_field('address_city_state_zip') ?: "Victoria Park WA 6100";
+$address_line_1  = get_sub_field('address_line_1') ?: "50 Holt St";
+$address_line_2  = get_sub_field('address_city_state_zip') ?: "Surry Hills NSW 2010";
 $address_country = get_sub_field('address_country') ?: "Australia";
-$directions_url  = get_sub_field('directions_url') ?: "https://maps.google.com/?q=148+Washington+Street,+Victoria+Park+WA+6100,+Australia";
-$google_maps_url = get_sub_field('google_maps_url') ?: "https://maps.google.com/maps?q=148+Washington+Street,+Victoria+Park+WA+6100,+Australia&t=&z=15&ie=UTF8&iwloc=&output=embed";
+$directions_url  = get_sub_field('directions_url') ?: "https://maps.google.com/?q=50+Holt+St,+Surry+Hills+NSW+2010,+Australia";
+$google_maps_url = get_sub_field('google_maps_url') ?: "https://maps.google.com/maps?q=50+Holt+St,+Surry+Hills+NSW+2010,+Australia&t=&z=15&ie=UTF8&iwloc=&output=embed";
 ?>
 <section class="bg-background pt-8 pb-4 md:pt-16 md:pb-8 text-center">
     <div class="container-site max-w-3xl">

@@ -1644,7 +1644,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "8:00 AM \u2013 8:00 PM AWST"
+                            "default_value": "8:00 AM \u2013 8:00 PM AEST"
                         },
                         {
                             "key": "field_contact_hours_sat",
@@ -1659,7 +1659,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "9:00 AM \u2013 5:00 PM AWST"
+                            "default_value": "9:00 AM \u2013 5:00 PM AEST"
                         },
                         {
                             "key": "field_contact_hours_sun",
@@ -1704,7 +1704,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "148 Washington Street"
+                            "default_value": "50 Holt St"
                         },
                         {
                             "key": "field_contact_address_line2",
@@ -1719,7 +1719,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Victoria Park WA 6100"
+                            "default_value": "Surry Hills NSW 2010"
                         },
                         {
                             "key": "field_contact_address_country",
@@ -1749,7 +1749,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "https://maps.google.com/?q=148+Washington+Street,+Victoria+Park+WA+6100,+Australia"
+                            "default_value": "https://maps.google.com/?q=50+Holt+St,+Surry+Hills+NSW+2010,+Australia"
                         },
                         {
                             "key": "field_contact_maps_url",
@@ -1764,7 +1764,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "https://maps.google.com/maps?q=148+Washington+Street,+Victoria+Park+WA+6100,+Australia&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                            "default_value": "https://maps.google.com/maps?q=50+Holt+St,+Surry+Hills+NSW+2010,+Australia&t=&z=15&ie=UTF8&iwloc=&output=embed"
                         }
                     ]
                 },
