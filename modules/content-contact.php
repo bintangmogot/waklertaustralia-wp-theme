@@ -130,11 +130,13 @@ if (strpos($entered_embed, 'maps.app.goo.gl') !== false || strpos($entered_embed
                         </svg>
                         <span class="text-foreground"><?= esc_html($address_title) ?></span>
                     </div>
-                    <div class="text-sm leading-relaxed text-muted-foreground">
-                        <p><?= esc_html($address_line_1) ?></p>
-                        <p><?= esc_html($address_line_2) ?></p>
-                        <p><?= esc_html($address_country) ?></p>
-                    </div>
+                    <?php
+                    $address_parts = array_filter(array_map(function($p) {
+                        return rtrim(trim((string) $p), ',');
+                    }, [$address_line_1, $address_line_2, $address_country]));
+                    $one_line_address = implode(', ', $address_parts);
+                    ?>
+                    <p class="text-sm leading-relaxed text-muted-foreground"><?= esc_html($one_line_address) ?></p>
                     <div class="pt-1">
                         <a href="<?= esc_url($directions_url) ?>" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary-hover hover:underline">
                             <span>Get directions</span>
