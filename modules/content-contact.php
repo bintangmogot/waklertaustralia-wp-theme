@@ -30,9 +30,35 @@ $address_title   = get_sub_field('address_title') ?: "Visit us";
 $address_line_1  = get_sub_field('address_line_1') ?: "50 Holt St";
 $address_line_2  = get_sub_field('address_city_state_zip') ?: "Surry Hills NSW 2010";
 $address_country = get_sub_field('address_country') ?: "Australia";
-$default_map_embed = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.729113645068!2d151.2091490757531!3d-33.88636402035985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ae2183c50979%3A0x8e8334863e467d3c!2s50%20Holt%20St%2C%20Surry%20Hills%20NSW%202010%2C%20Australia!5e0!3m2!1sen!2sau!4v1728725700000!5m2!1sen!2sau";
-$google_maps_url = get_sub_field('google_maps_url');
-if (empty($google_maps_url) || strpos($google_maps_url, 'output=embed') !== false) {
+
+// Directions URL (link to open in Google Maps)
+$entered_directions = trim(get_sub_field('directions_url') ?: '');
+$default_directions = "https://maps.google.com/?q=" . urlencode($address_line_1 . ', ' . $address_line_2 . ', ' . $address_country);
+$directions_url     = $entered_directions ?: $default_directions;
+
+// Official Google Maps Embed URL specifically for 50 Holt St, Surry Hills NSW 2010
+$default_map_embed = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.729113645068!2d151.2069395!3d-33.8862948!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ae21d2054155%3A0x88d02fd98fa53a3a!2s50%20Holt%20St%2C%20Surry%20Hills%20NSW%202010!5e0!3m2!1sen!2sau!4v1728725700000!5m2!1sen!2sau";
+
+$entered_embed = trim(get_sub_field('google_maps_url') ?: '');
+
+// Extract src attribute if the user pasted a full <iframe ... src="..."> code snippet
+if (preg_match('/src=["\']([^"\']+)["\']/', $entered_embed, $iframe_match)) {
+    $entered_embed = $iframe_match[1];
+}
+
+// Detect if the entered URL is a share/place link instead of an embed URL
+// (e.g. maps.app.goo.gl, goo.gl/maps, google.com/maps/place, etc.)
+// Share links cause X-Frame-Options: sameorigin when loaded in an iframe, but make great directions links!
+if (strpos($entered_embed, 'maps.app.goo.gl') !== false || strpos($entered_embed, 'goo.gl/maps') !== false || strpos($entered_embed, '/place/') !== false) {
+    if (empty($entered_directions)) {
+        $directions_url = $entered_embed;
+    }
+    $google_maps_url = $default_map_embed;
+} elseif (!empty($entered_embed) && strpos($entered_embed, '/maps/embed') !== false) {
+    // Valid embed URL starting with /maps/embed
+    $google_maps_url = $entered_embed;
+} else {
+    // Empty, output=embed, or invalid format
     $google_maps_url = $default_map_embed;
 }
 ?>
