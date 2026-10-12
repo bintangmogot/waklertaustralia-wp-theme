@@ -1756,7 +1756,7 @@
                             "label": "Google Maps Embed URL",
                             "name": "google_maps_url",
                             "type": "url",
-                            "instructions": "",
+                            "instructions": "Paste the Google Maps embed URL (starts with https://www.google.com/maps/embed?pb=...)",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -1764,7 +1764,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "https://maps.google.com/maps?q=50+Holt+St,+Surry+Hills+NSW+2010,+Australia&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                            "default_value": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.729113645068!2d151.2091490757531!3d-33.88636402035985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ae2183c50979%3A0x8e8334863e467d3c!2s50%20Holt%20St%2C%20Surry%20Hills%20NSW%202010%2C%20Australia!5e0!3m2!1sen!2sau!4v1728725700000!5m2!1sen!2sau"
                         }
                     ]
                 },

@@ -30,8 +30,11 @@ $address_title   = get_sub_field('address_title') ?: "Visit us";
 $address_line_1  = get_sub_field('address_line_1') ?: "50 Holt St";
 $address_line_2  = get_sub_field('address_city_state_zip') ?: "Surry Hills NSW 2010";
 $address_country = get_sub_field('address_country') ?: "Australia";
-$directions_url  = get_sub_field('directions_url') ?: "https://maps.google.com/?q=50+Holt+St,+Surry+Hills+NSW+2010,+Australia";
-$google_maps_url = get_sub_field('google_maps_url') ?: "https://maps.google.com/maps?q=50+Holt+St,+Surry+Hills+NSW+2010,+Australia&t=&z=15&ie=UTF8&iwloc=&output=embed";
+$default_map_embed = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.729113645068!2d151.2091490757531!3d-33.88636402035985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ae2183c50979%3A0x8e8334863e467d3c!2s50%20Holt%20St%2C%20Surry%20Hills%20NSW%202010%2C%20Australia!5e0!3m2!1sen!2sau!4v1728725700000!5m2!1sen!2sau";
+$google_maps_url = get_sub_field('google_maps_url');
+if (empty($google_maps_url) || strpos($google_maps_url, 'output=embed') !== false) {
+    $google_maps_url = $default_map_embed;
+}
 ?>
 <section class="bg-background pt-8 pb-4 md:pt-16 md:pb-8 text-center">
     <div class="container-site max-w-3xl">
