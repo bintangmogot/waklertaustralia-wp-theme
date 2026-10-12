@@ -139,9 +139,9 @@ if (!function_exists('waklert_get_product_card_price_html')) {
 if (!function_exists('waklert_format_product_unit_price')) {
     function waklert_format_product_unit_price($amount) {
         $currency = get_woocommerce_currency();
-        $symbol = $currency === 'AUD'
-            ? 'A$'
-            : get_woocommerce_currency_symbol($currency);
+        $symbol = (function_exists('is_product') && (is_product() || is_singular('product')))
+            ? '$'
+            : ($currency === 'AUD' ? 'A$' : get_woocommerce_currency_symbol($currency));
 
         return $symbol . number_format(
             (float) $amount,

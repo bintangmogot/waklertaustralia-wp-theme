@@ -8,6 +8,11 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
+// On product pages, display currency as $ without the "A" prefix
+add_filter('woocommerce_currency_symbol', function ($symbol, $currency) {
+    return '$';
+}, 999, 2);
+
 get_header('shop');
 
 global $product;
@@ -92,7 +97,7 @@ if ($product->is_type('variable') && isset($variations[$default_variation_index]
     }
 }
 $unit_currency = get_woocommerce_currency();
-$unit_currency_symbol = $unit_currency === 'AUD' ? 'A$' : get_woocommerce_currency_symbol($unit_currency);
+$unit_currency_symbol = '$';
 $unit_price_decimals = wc_get_price_decimals();
 $unit_price_decimal_separator = wc_get_price_decimal_separator();
 $unit_price_thousand_separator = wc_get_price_thousand_separator();
@@ -198,21 +203,6 @@ $product_specs = [
                 <?= esc_html($product->get_name()) ?>
             </h1>
 
-            <?php if ($review_summary['review_count'] > 0): ?>
-                <a href="#product-reviews" class="mb-4 inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-primary-dark" aria-label="Read <?= esc_attr($review_summary['review_count']) ?> customer reviews">
-                    <?php if ($review_summary['rating_count'] > 0): ?>
-                        <span class="text-accent" aria-hidden="true">★★★★★</span>
-                        <span class="font-semibold text-ink"><?= esc_html(number_format($review_summary['average_rating'], 1)) ?></span>
-                        <span aria-hidden="true">·</span>
-                    <?php endif; ?>
-                    <span>(<?= esc_html($review_summary['review_count']) ?> <?= esc_html($review_summary['review_count'] === 1 ? 'review' : 'reviews') ?>)</span>
-                </a>
-            <?php else: ?>
-                <a href="#product-reviews" class="mb-4 inline-flex text-sm text-muted-foreground transition-colors hover:text-primary-dark">
-                    <?= esc_html($no_reviews_text) ?>
-                </a>
-            <?php endif; ?>
-
             <div class="mb-4">
                 <span class="text-2xl font-extrabold text-primary" data-testid="text-product-price">
                     <?php
@@ -264,9 +254,9 @@ $product_specs = [
                     <div class="space-y-4" data-testid="variation-selector">
                         <div>
                             <label
-                                class="text-sm font-medium text-foreground mb-2 block"><?= "Select Option" ?></label>
+                                class="text-sm font-bold text-foreground mb-2 block"><?= "Choose Quantity (prices in AUD)" ?></label>
 
-                            <div class="space-y-2" id="variation-rows">
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5" id="variation-rows">
                                 <?php 
                                 // Determine the correct attribute key dynamically (e.g., attribute_pa_pack-size)
                                 $first_attr_key = 'attribute_pa_quantity';
@@ -302,22 +292,19 @@ $product_specs = [
                                     $sticky_price_label = wp_strip_all_tags(wc_price($price_num));
                                     ?>
                                     <button type="button"
-                                        class="variation-row-btn w-full flex items-center justify-between gap-4 px-4 py-3 rounded-md border text-left transition-colors <?php echo $is_active ? 'border-primary bg-primary-softer text-primary-dark active-row' : 'border-slate-200 bg-white text-slate-700 hover:border-primary/50'; ?>"
+                                        class="variation-row-btn flex flex-col items-start justify-center p-3.5 sm:p-4 rounded-xl border text-left transition-all cursor-pointer <?php echo $is_active ? 'border-primary bg-primary text-primary-foreground shadow-sm active-row' : 'border-slate-200 bg-white text-slate-800 hover:border-primary/50'; ?>"
                                         data-id="<?= esc_attr($variation['variation_id']) ?>"
                                         data-qty="<?= esc_attr($qty_num) ?>" data-price="<?= esc_attr($price_num) ?>"
                                         data-pack-label="<?= esc_attr($display_qty_str) ?>" data-display-price="<?= esc_attr($sticky_price_label) ?>"
                                         data-per-tab="<?= esc_attr($per_tab_price ?? '') ?>" data-val="<?= esc_attr($qty_str) ?>">
 
-                                        <span class="text-sm font-semibold"><?= esc_html($display_qty_str) ?></span>
-                                        <span class="text-right shrink-0">
-                                            <span
-                                                class="text-sm font-extrabold text-primary block leading-snug"><?= wp_kses_post(wc_price($price_num)) ?></span>
-                                            <?php if ($per_tab_price !== null): ?>
-                                                <span class="text-[10px] text-emerald-600 block leading-none -mt-px">
-                                                    <?= esc_html(waklert_format_product_unit_price($per_tab_price)) ?>/tablet
-                                                </span>
-                                            <?php endif; ?>
-                                        </span>
+                                        <span class="text-sm sm:text-base font-extrabold block leading-tight <?php echo $is_active ? 'text-white' : 'text-slate-900'; ?>" data-role="pack-label"><?= esc_html($display_qty_str) ?></span>
+                                        <span class="text-xs sm:text-sm font-medium mt-1 block leading-tight <?php echo $is_active ? 'text-white/90' : 'text-slate-500'; ?>" data-role="price-label"><?= wp_kses_post(wc_price($price_num)) ?></span>
+                                        <?php if ($per_tab_price !== null): ?>
+                                            <span class="text-[10px] mt-1 block leading-none <?php echo $is_active ? 'text-white/80' : 'text-emerald-600'; ?>" data-role="per-tab-label">
+                                                <?= esc_html(waklert_format_product_unit_price($per_tab_price)) ?>/tab
+                                            </span>
+                                        <?php endif; ?>
                                     </button>
                                 <?php endforeach; ?>
                             </div>
@@ -413,10 +400,9 @@ $product_specs = [
 
                         function updateBtnText() {
                             const total = selectedPrice * quantity;
-                            btnText.innerHTML = '<?= "Checkout & Pay" ?> - <?= esc_js(get_woocommerce_currency_symbol()) ?>' + total.toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                            btnText.innerHTML = '<?= "Checkout & Pay" ?> - $' + total.toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
                             if (stickyPrice) {
-                                const currencySymbol = stickyPrice.dataset.currencySymbol || '';
-                                stickyPrice.textContent = currencySymbol + total.toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                                stickyPrice.textContent = '$' + total.toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
                             }
                         }
 
@@ -428,9 +414,21 @@ $product_specs = [
                             row.addEventListener('click', function () {
                                 // Update UI states
                                 rows.forEach(r => {
-                                    r.className = "variation-row-btn w-full flex items-center justify-between gap-4 px-4 py-3 rounded-md border text-left transition-colors border-slate-200 bg-white text-slate-700 hover:border-primary/50";
+                                    r.className = "variation-row-btn flex flex-col items-start justify-center p-3.5 sm:p-4 rounded-xl border text-left transition-all cursor-pointer border-slate-200 bg-white text-slate-800 hover:border-primary/50";
+                                    const pLabel = r.querySelector('[data-role="pack-label"]');
+                                    const prLabel = r.querySelector('[data-role="price-label"]');
+                                    const ptLabel = r.querySelector('[data-role="per-tab-label"]');
+                                    if (pLabel) { pLabel.className = "text-sm sm:text-base font-extrabold block leading-tight text-slate-900"; }
+                                    if (prLabel) { prLabel.className = "text-xs sm:text-sm font-medium mt-1 block leading-tight text-slate-500"; }
+                                    if (ptLabel) { ptLabel.className = "text-[10px] mt-1 block leading-none text-emerald-600"; }
                                 });
-                                this.className = "variation-row-btn active-row w-full flex items-center justify-between gap-4 px-4 py-3 rounded-md border-2 border-primary bg-primary-softer text-primary-dark text-left transition-colors";
+                                this.className = "variation-row-btn active-row flex flex-col items-start justify-center p-3.5 sm:p-4 rounded-xl border-2 border-primary bg-primary text-primary-foreground shadow-sm text-left transition-all cursor-pointer";
+                                const pLabel = this.querySelector('[data-role="pack-label"]');
+                                const prLabel = this.querySelector('[data-role="price-label"]');
+                                const ptLabel = this.querySelector('[data-role="per-tab-label"]');
+                                if (pLabel) { pLabel.className = "text-sm sm:text-base font-extrabold block leading-tight text-white"; }
+                                if (prLabel) { prLabel.className = "text-xs sm:text-sm font-medium mt-1 block leading-tight text-white/90"; }
+                                if (ptLabel) { ptLabel.className = "text-[10px] mt-1 block leading-none text-white/80"; }
 
                                 // Update Hidden inputs
                                 inputVarId.value = this.dataset.id;
@@ -598,13 +596,6 @@ if (!empty(trim(strip_tags($main_desc)))):
 </section>
 <?php endif; ?>
 
-<?php
-get_template_part('template-parts/product-reviews', null, [
-    'product_id' => $product->get_id(),
-    'product_name' => $product->get_name(),
-]);
-?>
-
 <!-- Dosage Guide Banner -->
 <section class="py-8 bg-white border-t border-slate-200" data-testid="product-dosage-guide-banner">
     <div class="container-site max-w-4xl">
@@ -636,15 +627,13 @@ get_template_part('template-parts/product-reviews', null, [
     </div>
 </section>
 
-
-
 <!-- Dynamic ACF Modules (Replaces Hardcoded FAQs) -->
 <?php
 if (have_rows('modules', $product->get_id())) {
     while (have_rows('modules', $product->get_id())) {
         the_row();
         $layout = get_row_layout();
-        if (in_array($layout, ['product_summary', 'product_description'], true)) {
+        if (in_array($layout, ['product_summary', 'product_description', 'reviews', 'reviews_carousel'], true)) {
             continue;
         }
         get_template_part('modules/content', $layout);
