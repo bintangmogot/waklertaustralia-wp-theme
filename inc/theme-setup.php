@@ -75,11 +75,11 @@ add_filter('nav_menu_css_class', function($classes, $item, $args) {
 add_filter('nav_menu_link_attributes', function($atts, $item, $args) {
     if (isset($args->theme_location) && $args->theme_location === 'primary') {
         if (isset($args->menu_class) && strpos($args->menu_class, 'flex flex-col') !== false) {
-            // Mobile Menu Link
-            $atts['class'] = (isset($atts['class']) ? $atts['class'] . ' ' : '') . 'block px-6 py-3 text-base font-semibold text-slate-800 hover:bg-stone-50 hover:text-primary transition-colors';
+            // Mobile Menu Link (increased by 25%: 16px -> 20px)
+            $atts['class'] = (isset($atts['class']) ? $atts['class'] . ' ' : '') . 'block px-6 py-3 text-[20px] font-semibold text-slate-800 hover:bg-stone-50 hover:text-primary transition-colors';
         } else {
-            // Desktop Menu Link
-            $classes = 'px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200';
+            // Desktop Menu Link (increased by 25%: 14px -> 17.5px)
+            $classes = 'px-3.5 xl:px-4 py-2 text-[17.5px] font-semibold rounded-full transition-all duration-200';
             $is_current = in_array('current-menu-item', $item->classes) || $item->current || in_array('current-page-ancestor', $item->classes);
             if ($is_current) {
                 $classes .= ' bg-primary-softer text-primary';
