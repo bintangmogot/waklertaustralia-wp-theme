@@ -596,37 +596,6 @@ if ($show_product_reviews) {
 }
 ?>
 
-<!-- Dosage Guide Banner -->
-<section class="py-8 bg-white border-t border-slate-200" data-testid="product-dosage-guide-banner">
-    <div class="container-site max-w-4xl">
-        <a href="<?= home_url('/armodafinil-guide/') ?>"
-            class="group flex flex-col sm:flex-row items-center gap-4 bg-primary-softer border-2 border-primary-light/50 rounded-md p-5 hover:bg-primary-soft hover:border-primary-light transition-colors"
-            data-testid="link-dosage-guide-banner">
-            <div class="w-12 h-12 rounded-md bg-primary text-primary-foreground flex items-center justify-center flex-shrink-0">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4">
-                    </path>
-                </svg>
-            </div>
-            <div class="text-center sm:text-left flex-1">
-                <h3 class="font-heading font-extrabold text-primary group-hover:text-primary-dark transition-colors">
-                    <?= "Armodafinil Information Guide" ?>
-                </h3>
-                <p class="text-slate-600 text-sm mt-1">
-                    <?= "Read general safety and Australian access information. Discuss treatment and directions with your doctor or pharmacist." ?>
-                </p>
-            </div>
-            <svg xmlns="http://www.w3.org/2000/svg"
-                class="w-5 h-5 text-primary flex-shrink-0 hidden sm:block transition-transform group-hover:translate-x-1"
-                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-            </svg>
-        </a>
-    </div>
-</section>
-
 <!-- Dynamic ACF Modules (Replaces Hardcoded FAQs) -->
 <?php
 if (have_rows('modules', $product->get_id())) {
