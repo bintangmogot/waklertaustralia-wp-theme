@@ -2,7 +2,8 @@
 /**
  * Module: Hero Section
  * Waklert Australia editorial storefront introduction.
- * Features Australian tradie holding Waklert 150 with Figma linear gradient overlay (#0C4161).
+ * Features Australian tradie holding Waklert 150 product box.
+ * Responsive right-anchor layout with seamless desktop blend and zero dark overlay on desktop.
  */
 
 $location      = get_sub_field('location_text') ?: 'Australia-wide delivery';
@@ -27,28 +28,40 @@ if (is_array($hero_img)) {
 }
 
 // Fallback to bundled tradie photo if empty or legacy image from previous clone
+// Cache-busted with query string to bypass stale aggressive browser/Nginx caching
 if (empty($hero_img_url) || str_contains($hero_img_url, 'kl-skyline')) {
-    $hero_img_url = get_theme_file_uri('assets/images/hero-tradie.png');
+    $hero_img_url = get_theme_file_uri('assets/images/hero-tradie-v2.png?v=20261013v2');
 }
 ?>
 
 <section data-testid="hero-section" class="relative isolate overflow-hidden bg-[#0C4161] text-primary-foreground min-h-[580px] lg:min-h-[640px] flex items-center">
     <?php waklert_output_pattern_rings(); ?>
 
-    <!-- Hero Background Image (with built-in gradient, no overlay) -->
-    <div class="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+    <style>
+    @media (min-width: 1024px) {
+        .hero-img-blend {
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 1) 20%);
+            mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 1) 20%);
+        }
+    }
+    </style>
+
+    <!-- Right-anchored Hero Image Container (Steven's product photo prominent, no dark overlay on desktop) -->
+    <div class="hero-img-blend pointer-events-none absolute inset-y-0 right-0 w-full lg:w-[58%] xl:w-[54%] 2xl:w-[50%] z-0 overflow-hidden">
         <img 
             src="<?= esc_url($hero_img_url) ?>" 
             alt="<?= esc_attr($heading) ?>" 
-            class="h-full w-full object-cover object-right"
+            class="h-full w-full object-cover object-center lg:object-[80%_center] xl:object-[74%_center]"
             loading="eager"
             fetchpriority="high"
         />
+        <!-- Mobile/Tablet only backdrop overlay (< 1024px) to ensure crisp text readability on phones. Completely hidden on desktop. -->
+        <div class="absolute inset-0 bg-[#0C4161]/85 sm:bg-[#0C4161]/80 lg:hidden" aria-hidden="true"></div>
     </div>
 
-    <!-- Left Column Content (slightly wider for optimal typography) -->
+    <!-- Left Column Content (dedicated text column completely clear of the product box) -->
     <div class="container-site relative z-10 w-full py-16 md:py-20 lg:py-24">
-        <div class="max-w-lg lg:max-w-[460px] xl:max-w-[500px]">
+        <div class="max-w-lg lg:max-w-[420px] xl:max-w-[480px]">
             <?php if ($location): ?>
             <span class="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-white backdrop-blur-sm">
                 <span aria-hidden="true" class="h-2 w-2 rounded-full bg-accent"></span>
@@ -56,7 +69,7 @@ if (empty($hero_img_url) || str_contains($hero_img_url, 'kl-skyline')) {
             </span>
             <?php endif; ?>
 
-            <h1 class="mb-4 font-heading text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-extrabold leading-[1.08] tracking-tight text-white">
+            <h1 class="mb-4 font-heading text-3xl sm:text-4xl lg:text-[40px] xl:text-[44px] font-extrabold leading-[1.1] tracking-tight text-white">
                 <?= esc_html($heading) ?>
             </h1>
 
