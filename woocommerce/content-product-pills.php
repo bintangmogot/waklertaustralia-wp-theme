@@ -35,6 +35,7 @@ $in_stock = $product->is_in_stock();
     </a>
     
     <div class="p-4 sm:p-5 flex flex-col flex-1">
+        <?php if (apply_filters('waklert_show_product_card_reviews', false)): ?>
         <div class="flex items-center gap-2 mb-2">
             <div class="flex items-center text-amber-400">
                 <?php for($i=1; $i<=5; $i++): 
@@ -55,6 +56,7 @@ $in_stock = $product->is_in_stock();
                 <?php endif; ?>
             </span>
         </div>
+        <?php endif; ?>
 
         <a href="<?= esc_url($link) ?>" class="font-heading text-[15px] sm:text-lg font-bold text-card-foreground leading-snug hover:text-primary transition-colors line-clamp-2 mb-4">
             <?= esc_html($title) ?>

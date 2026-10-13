@@ -84,25 +84,29 @@ $no_reviews_text = waklert_get_product_presentation_option('product_no_reviews_t
         </p>
         <?php endif; ?>
 
-        <!-- Anchor the review and action together at the bottom of the card. -->
+        <!-- Anchor action at the bottom of the card. -->
         <div class="mt-auto pt-4">
-            <?php if ($review_summary['review_count'] > 0): ?>
-            <a href="<?= esc_url($link . '#product-reviews') ?>" class="inline-flex w-fit items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-primary-dark" aria-label="Read <?= esc_attr($review_summary['review_count']) ?> product reviews">
-                <?php if ($review_summary['rating_count'] > 0): ?>
-                    <span class="text-accent" aria-hidden="true">★</span>
-                    <span class="font-semibold text-ink"><?= esc_html(number_format($review_summary['average_rating'], 1)) ?></span>
-                    <span aria-hidden="true">·</span>
-                <?php endif; ?>
-                <span>(<?= esc_html($review_summary['review_count']) ?> <?= esc_html($review_summary['review_count'] === 1 ? 'review' : 'reviews') ?>)</span>
-            </a>
-            <?php else: ?>
-            <a href="<?= esc_url($link . '#product-reviews') ?>" class="inline-flex w-fit text-xs text-muted-foreground transition-colors hover:text-primary-dark">
-                <?= esc_html($no_reviews_text) ?>
-            </a>
+            <?php if (apply_filters('waklert_show_product_card_reviews', false)): ?>
+                <div class="mb-3">
+                    <?php if ($review_summary['review_count'] > 0): ?>
+                    <a href="<?= esc_url($link . '#product-reviews') ?>" class="inline-flex w-fit items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-primary-dark" aria-label="Read <?= esc_attr($review_summary['review_count']) ?> product reviews">
+                        <?php if ($review_summary['rating_count'] > 0): ?>
+                            <span class="text-accent" aria-hidden="true">★</span>
+                            <span class="font-semibold text-ink"><?= esc_html(number_format($review_summary['average_rating'], 1)) ?></span>
+                            <span aria-hidden="true">·</span>
+                        <?php endif; ?>
+                        <span>(<?= esc_html($review_summary['review_count']) ?> <?= esc_html($review_summary['review_count'] === 1 ? 'review' : 'reviews') ?>)</span>
+                    </a>
+                    <?php else: ?>
+                    <a href="<?= esc_url($link . '#product-reviews') ?>" class="inline-flex w-fit text-xs text-muted-foreground transition-colors hover:text-primary-dark">
+                        <?= esc_html($no_reviews_text) ?>
+                    </a>
+                    <?php endif; ?>
+                </div>
             <?php endif; ?>
 
             <!-- CTA Button -->
-            <div class="mt-3">
+            <div>
             <?php if ($in_stock): ?>
             <a href="<?= esc_url($link) ?>" class="flex w-full items-center justify-center text-center rounded-md bg-primary px-1 py-2 sm:px-2 md:px-3 lg:px-5 sm:py-2 md:py-3 text-[10px] sm:text-xs lg:text-sm font-bold uppercase leading-tight lg:tracking-wider text-primary-foreground shadow-pill transition-colors hover:bg-primary-dark">
                 <?= "Buy Now" ?>

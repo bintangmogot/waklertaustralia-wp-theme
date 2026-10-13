@@ -138,19 +138,21 @@ $get_variations = static function ($product) {
                         </div>
                     <?php endif; ?>
 
-                    <?php if ($review_summary['review_count'] > 0): ?>
-                        <a href="<?= esc_url(get_permalink($product->get_id()) . '#product-reviews') ?>" class="mt-2 inline-flex w-fit items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-primary-dark" aria-label="Read <?= esc_attr($review_summary['review_count']) ?> product reviews">
-                            <?php if ($review_summary['rating_count'] > 0): ?>
-                                <span class="text-accent" aria-hidden="true">★</span>
-                                <span class="font-semibold text-ink"><?= esc_html(number_format($review_summary['average_rating'], 1)) ?></span>
-                                <span aria-hidden="true">·</span>
-                            <?php endif; ?>
-                            <span>(<?= esc_html($review_summary['review_count']) ?> <?= esc_html($review_summary['review_count'] === 1 ? 'review' : 'reviews') ?>)</span>
-                        </a>
-                    <?php else: ?>
-                        <a href="<?= esc_url(get_permalink($product->get_id()) . '#product-reviews') ?>" class="mt-2 inline-flex w-fit text-xs text-muted-foreground transition-colors hover:text-primary-dark">
-                            <?= esc_html($no_reviews_text) ?>
-                        </a>
+                    <?php if (apply_filters('waklert_show_product_card_reviews', false)): ?>
+                        <?php if ($review_summary['review_count'] > 0): ?>
+                            <a href="<?= esc_url(get_permalink($product->get_id()) . '#product-reviews') ?>" class="mt-2 inline-flex w-fit items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-primary-dark" aria-label="Read <?= esc_attr($review_summary['review_count']) ?> product reviews">
+                                <?php if ($review_summary['rating_count'] > 0): ?>
+                                    <span class="text-accent" aria-hidden="true">★</span>
+                                    <span class="font-semibold text-ink"><?= esc_html(number_format($review_summary['average_rating'], 1)) ?></span>
+                                    <span aria-hidden="true">·</span>
+                                <?php endif; ?>
+                                <span>(<?= esc_html($review_summary['review_count']) ?> <?= esc_html($review_summary['review_count'] === 1 ? 'review' : 'reviews') ?>)</span>
+                            </a>
+                        <?php else: ?>
+                            <a href="<?= esc_url(get_permalink($product->get_id()) . '#product-reviews') ?>" class="mt-2 inline-flex w-fit text-xs text-muted-foreground transition-colors hover:text-primary-dark">
+                                <?= esc_html($no_reviews_text) ?>
+                            </a>
+                        <?php endif; ?>
                     <?php endif; ?>
                     <?php if ($unit_price !== null): ?>
                         <p class="mt-1 text-sm font-semibold text-primary-dark">From <?= wp_kses_post(wc_price($unit_price, array('decimals' => 2))) ?>/tab</p>
