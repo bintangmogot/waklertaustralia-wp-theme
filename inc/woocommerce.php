@@ -235,4 +235,19 @@ function modmy_remove_qris_from_button($label) {
     return preg_replace('/\s*\(?\s*QRIS\s*\)?/i', '', $label);
 }
 
+/**
+ * Ensure BACS payment description and instructions always use Australian Post
+ * and match Armodafinil Direct format.
+ */
+add_filter('woocommerce_gateway_description', function($description, $gateway_id) {
+    if ($gateway_id === 'bacs') {
+        return '<p>' . esc_html__('Your order is nearly complete – Please place the order we will send you an email confirmation with the bank payment & PayID details. Once you have paid we will immediately dispatch the product and issue you with an Australian Post tracking number.', 'waklertaustralia') . '</p>';
+    }
+    return $description;
+}, 99, 2);
+
+add_filter('woocommerce_bacs_instructions', function($instructions, $order) {
+    return str_replace('Malaysian Post', 'Australian Post', $instructions);
+}, 99, 2);
+
 require_once __DIR__ . '/cart-shipping-insurance.php';
