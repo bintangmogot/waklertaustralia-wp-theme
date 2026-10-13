@@ -26,36 +26,24 @@ if (is_array($hero_img)) {
     $hero_img_url = '';
 }
 
-// Ignore legacy KL skyline from old cloned database
+// Fallback to bundled tradie photo if empty or legacy image from previous clone
 if (empty($hero_img_url) || str_contains($hero_img_url, 'kl-skyline')) {
     $hero_img_url = get_theme_file_uri('assets/images/hero-tradie.png');
 }
-
-$overlay_color = trim((string) get_sub_field('overlay_color')) ?: '#0C4161';
 ?>
 
 <section data-testid="hero-section" class="relative isolate overflow-hidden bg-[#0C4161] text-primary-foreground min-h-[580px] lg:min-h-[640px] flex items-center">
     <?php waklert_output_pattern_rings(); ?>
 
-    <!-- Right Column Hero Photo & Figma Linear Gradient Overlay (#0C4161) -->
-    <div class="pointer-events-none absolute inset-y-0 right-0 w-full lg:w-[68%] xl:w-[64%] z-0 overflow-hidden">
+    <!-- Hero Background Image (with built-in gradient, no overlay) -->
+    <div class="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <img 
             src="<?= esc_url($hero_img_url) ?>" 
             alt="<?= esc_attr($heading) ?>" 
-            class="h-full w-full object-cover object-[75%_center] lg:object-[68%_center] xl:object-[64%_center]"
+            class="h-full w-full object-cover object-right"
             loading="eager"
             fetchpriority="high"
         />
-        <!-- Desktop Linear Gradient Overlay: smooth cinematic blend extending gracefully all the way to the right side -->
-        <div 
-            class="absolute inset-0 hidden lg:block"
-            style="background: linear-gradient(90deg, <?= esc_attr($overlay_color) ?> 0%, <?= esc_attr($overlay_color) ?> 14%, rgba(12, 65, 97, 0.78) 30%, rgba(12, 65, 97, 0.42) 50%, rgba(12, 65, 97, 0.16) 72%, rgba(12, 65, 97, 0.04) 88%, transparent 100%);"
-        ></div>
-        <!-- Mobile/Tablet Overlay for optimal text readability -->
-        <div 
-            class="absolute inset-0 lg:hidden"
-            style="background: linear-gradient(180deg, rgba(12, 65, 97, 0.95) 0%, rgba(12, 65, 97, 0.8) 50%, rgba(12, 65, 97, 0.92) 100%);"
-        ></div>
     </div>
 
     <!-- Left Column Content (slightly wider for optimal typography) -->
