@@ -37,31 +37,22 @@ if (empty($hero_img_url) || str_contains($hero_img_url, 'kl-skyline')) {
 <section data-testid="hero-section" class="relative isolate overflow-hidden bg-[#0C4161] text-primary-foreground min-h-[580px] lg:min-h-[640px] flex items-center">
     <?php waklert_output_pattern_rings(); ?>
 
-    <style>
-    @media (min-width: 1024px) {
-        .hero-img-blend {
-            -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 1) 20%);
-            mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 1) 20%);
-        }
-    }
-    </style>
-
-    <!-- Right-anchored Hero Image Container (Steven's product photo prominent, no dark overlay on desktop) -->
-    <div class="hero-img-blend pointer-events-none absolute inset-y-0 right-0 w-full lg:w-[62%] xl:w-[58%] 2xl:w-[54%] z-0 overflow-hidden">
+    <!-- Hero Background Image (Full-bleed natural image, no complex wrappers or masks) -->
+    <div class="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <img 
             src="<?= esc_url($hero_img_url) ?>" 
             alt="<?= esc_attr($heading) ?>" 
-            class="h-full w-full object-cover object-center lg:object-[72%_center] xl:object-[65%_center]"
+            class="h-full w-full object-cover"
             loading="eager"
             fetchpriority="high"
         />
-        <!-- Mobile/Tablet only backdrop overlay (< 1024px) to ensure crisp text readability on phones. Completely hidden on desktop. -->
-        <div class="absolute inset-0 bg-[#0C4161]/85 sm:bg-[#0C4161]/80 lg:hidden" aria-hidden="true"></div>
+        <!-- Mobile/Tablet only backdrop overlay (< 1024px) for phone readability -->
+        <div class="absolute inset-0 bg-[#0C4161]/80 sm:bg-[#0C4161]/70 lg:hidden" aria-hidden="true"></div>
     </div>
 
-    <!-- Left Column Content (dedicated text column completely clear of the product box) -->
+    <!-- Left Column Content -->
     <div class="container-site relative z-10 w-full py-16 md:py-20 lg:py-24">
-        <div class="max-w-lg lg:max-w-[390px] xl:max-w-[460px] 2xl:max-w-[500px]">
+        <div class="max-w-lg lg:max-w-[440px] xl:max-w-[480px]">
             <?php if ($location): ?>
             <span class="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-white backdrop-blur-sm">
                 <span aria-hidden="true" class="h-2 w-2 rounded-full bg-accent"></span>
