@@ -2479,6 +2479,90 @@
                                     "rows": 4
                                 }
                             ]
+                        },
+                        {
+                            "key": "field_trm_contact_heading",
+                            "label": "Contact Callout Heading",
+                            "name": "contact_heading",
+                            "type": "text",
+                            "default_value": "Have questions about our terms?",
+                            "placeholder": "Have questions about our terms?"
+                        },
+                        {
+                            "key": "field_trm_contact_description",
+                            "label": "Contact Callout Description",
+                            "name": "contact_description",
+                            "type": "textarea",
+                            "rows": 2,
+                            "default_value": "Contact our legal support team via WhatsApp for any clarifications before placing your order.",
+                            "placeholder": "Contact our legal support team via WhatsApp for any clarifications before placing your order."
+                        },
+                        {
+                            "key": "field_trm_contact_btn_label",
+                            "label": "WhatsApp Button Label",
+                            "name": "contact_btn_label",
+                            "type": "text",
+                            "default_value": "Support WhatsApp",
+                            "placeholder": "Support WhatsApp"
+                        },
+                        {
+                            "key": "field_trm_whatsapp_number",
+                            "label": "WhatsApp Phone Number or Link",
+                            "name": "whatsapp_number",
+                            "type": "text",
+                            "instructions": "Enter Australian phone number (e.g. +61 488 841 833) or direct link (e.g. https://wa.me/61488841833). Defaults to Theme Settings.",
+                            "default_value": "+61 488 841 833",
+                            "placeholder": "+61 488 841 833"
+                        },
+                        {
+                            "key": "field_trm_hide_contact",
+                            "label": "Hide Contact Callout",
+                            "name": "hide_contact_callout",
+                            "type": "true_false",
+                            "ui": 1,
+                            "default_value": 0
+                        }
+                    ]
+                },
+                "layout_terms_contact": {
+                    "key": "layout_terms_contact",
+                    "name": "terms_contact",
+                    "label": "Terms & Conditions - Contact Support Callout",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_trm_cta_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "default_value": "Have questions about our terms?",
+                            "placeholder": "Have questions about our terms?"
+                        },
+                        {
+                            "key": "field_trm_cta_description",
+                            "label": "Description",
+                            "name": "description",
+                            "type": "textarea",
+                            "rows": 2,
+                            "default_value": "Contact our legal support team via WhatsApp for any clarifications before placing your order.",
+                            "placeholder": "Contact our legal support team via WhatsApp for any clarifications before placing your order."
+                        },
+                        {
+                            "key": "field_trm_cta_btn_label",
+                            "label": "Button Label",
+                            "name": "btn_label",
+                            "type": "text",
+                            "default_value": "Support WhatsApp",
+                            "placeholder": "Support WhatsApp"
+                        },
+                        {
+                            "key": "field_trm_cta_whatsapp_number",
+                            "label": "WhatsApp Phone Number or Link",
+                            "name": "whatsapp_number",
+                            "type": "text",
+                            "instructions": "Enter Australian phone number (e.g. +61 488 841 833) or direct wa.me link. Defaults to Theme Settings.",
+                            "default_value": "+61 488 841 833",
+                            "placeholder": "+61 488 841 833"
                         }
                     ]
                 },
