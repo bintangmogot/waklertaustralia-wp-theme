@@ -47,11 +47,11 @@ if (empty($hero_img_url) || str_contains($hero_img_url, 'kl-skyline')) {
     </style>
 
     <!-- Right-anchored Hero Image Container (Steven's product photo prominent, no dark overlay on desktop) -->
-    <div class="hero-img-blend pointer-events-none absolute inset-y-0 right-0 w-full lg:w-[58%] xl:w-[54%] 2xl:w-[50%] z-0 overflow-hidden">
+    <div class="hero-img-blend pointer-events-none absolute inset-y-0 right-0 w-full lg:w-[62%] xl:w-[58%] 2xl:w-[54%] z-0 overflow-hidden">
         <img 
             src="<?= esc_url($hero_img_url) ?>" 
             alt="<?= esc_attr($heading) ?>" 
-            class="h-full w-full object-cover object-center lg:object-[80%_center] xl:object-[74%_center]"
+            class="h-full w-full object-cover object-center lg:object-[72%_center] xl:object-[65%_center]"
             loading="eager"
             fetchpriority="high"
         />
@@ -61,7 +61,7 @@ if (empty($hero_img_url) || str_contains($hero_img_url, 'kl-skyline')) {
 
     <!-- Left Column Content (dedicated text column completely clear of the product box) -->
     <div class="container-site relative z-10 w-full py-16 md:py-20 lg:py-24">
-        <div class="max-w-lg lg:max-w-[420px] xl:max-w-[480px]">
+        <div class="max-w-lg lg:max-w-[390px] xl:max-w-[460px] 2xl:max-w-[500px]">
             <?php if ($location): ?>
             <span class="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-white backdrop-blur-sm">
                 <span aria-hidden="true" class="h-2 w-2 rounded-full bg-accent"></span>
