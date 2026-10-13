@@ -41,19 +41,28 @@ add_filter('woocommerce_cart_total', function($cart_total) {
 add_filter('xoo_wsc_footer_buttons_args', 'waklert_side_cart_checkout_button_subtotal', 20);
 function waklert_side_cart_checkout_button_subtotal($args) {
     if (isset($args['buttons']['checkout']) && function_exists('WC') && WC()->cart && !WC()->cart->is_empty()) {
-        // Use cart subtotal (product price total) instead of order total
-        $subtotal = WC()->cart->get_cart_subtotal();
-        // Ensure no 'A' prefix appears in the price
-        $subtotal = str_replace(array('A$', 'A&#36;', 'A&dollar;'), '$', $subtotal);
-
         // Extract button text prefix (defaults to 'Checkout')
         $chk_text = 'Checkout';
         if (class_exists('Xoo_Wsc_Template_Args') && !empty(Xoo_Wsc_Template_Args::$gl['sct-ft-chkbtn'])) {
             $chk_text = trim(Xoo_Wsc_Template_Args::$gl['sct-ft-chkbtn']);
         }
-        
         $chk_text = rtrim($chk_text, '- ');
-        $args['buttons']['checkout']['label'] = $chk_text . ' - ' . $subtotal;
+
+        $show_total = true;
+        if (class_exists('Xoo_Wsc_Template_Args') && isset(Xoo_Wsc_Template_Args::$gl['scf-chkbtntotal-en'])) {
+            $show_total = (Xoo_Wsc_Template_Args::$gl['scf-chkbtntotal-en'] === 'yes');
+        }
+
+        if ($show_total) {
+            // Use cart subtotal (product price total) instead of order total
+            $subtotal = WC()->cart->get_cart_subtotal();
+            // Ensure no 'A' prefix appears in the price
+            $subtotal = str_replace(array('A$', 'A&#36;', 'A&dollar;'), '$', $subtotal);
+            // Note: side-cart-woocommerce adds ' - ' via .amount:before CSS, so we simply concatenate
+            $args['buttons']['checkout']['label'] = $chk_text . $subtotal;
+        } else {
+            $args['buttons']['checkout']['label'] = $chk_text;
+        }
     }
     return $args;
 }

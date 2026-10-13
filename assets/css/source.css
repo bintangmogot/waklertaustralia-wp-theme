@@ -273,18 +273,28 @@
   width: 100% !important;
 }
 
-/* Keep the checkout label and total on one line in the narrow cart footer. */
+/* Keep the checkout label and total on one line in the cart footer across all viewports. */
+.xoo-wsc-ft-buttons-cont > a.xoo-wsc-ft-btn {
+  flex-wrap: nowrap !important;
+  white-space: nowrap !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.xoo-wsc-ft-buttons-cont > a.xoo-wsc-ft-btn .woocommerce-Price-amount.amount {
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
+  font-style: normal !important;
+}
+
 @media (max-width: 480px) {
   .xoo-wsc-ft-buttons-cont > a.xoo-wsc-ft-btn:nth-of-type(2) {
-    flex-wrap: nowrap !important;
     font-size: clamp(0.7rem, 3.2vw, 0.8rem) !important;
     padding-inline: 0.25rem !important;
-    white-space: nowrap !important;
   }
 
   .xoo-wsc-ft-buttons-cont > a.xoo-wsc-ft-btn:nth-of-type(2) .woocommerce-Price-amount.amount {
-    flex-shrink: 0;
-    white-space: nowrap;
     font-size: 0.78rem !important;
     line-height: 1.1;
   }
