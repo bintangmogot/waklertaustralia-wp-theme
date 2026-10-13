@@ -56,9 +56,9 @@ usort($all_articles, function($a, $b) {
                                         }
                                     }
                                     if (!$excerpt) {
-                                        $excerpt = wp_trim_words($article->post_content, 20);
+                                        $excerpt = !empty(trim($article->post_excerpt)) ? $article->post_excerpt : wp_trim_words($article->post_content, 20);
                                     }
-                                    echo esc_html($excerpt);
+                                    echo esc_html(wp_trim_words($excerpt, 24));
                                 ?>
                             </p>
                             <span class="inline-flex items-center gap-1 text-sm font-bold text-primary-dark">

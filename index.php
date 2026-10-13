@@ -53,17 +53,27 @@ function modmy_render_blog_loop() {
 
                                 <p class="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
                                     <?php
-                                    $excerpt = get_the_excerpt();
-                                    if (empty(trim($excerpt))) {
-                                        $modules = get_field('modules', get_the_ID());
-                                        if ($modules) {
-                                            foreach ($modules as $mod) {
-                                                if (!empty($mod['intro'])) {
-                                                    $excerpt = $mod['intro'];
-                                                    break;
-                                                }
+                                    $excerpt = '';
+                                    // 1. Prioritize ACF module intro (used across theme modules)
+                                    $modules = get_field('modules', get_the_ID());
+                                    if ($modules) {
+                                        foreach ($modules as $mod) {
+                                            if (!empty($mod['intro'])) {
+                                                $excerpt = $mod['intro'];
+                                                break;
                                             }
                                         }
+                                    }
+                                    // 2. If no ACF intro, fallback to native post excerpt
+                                    if (empty(trim($excerpt))) {
+                                        $raw_post_excerpt = get_post_field('post_excerpt', get_the_ID());
+                                        if (!empty(trim($raw_post_excerpt))) {
+                                            $excerpt = $raw_post_excerpt;
+                                        }
+                                    }
+                                    // 3. Fallback to get_the_excerpt() or trimmed content
+                                    if (empty(trim($excerpt))) {
+                                        $excerpt = get_the_excerpt();
                                     }
                                     if (empty(trim($excerpt))) {
                                         $excerpt = wp_trim_words(get_the_content(), 24);

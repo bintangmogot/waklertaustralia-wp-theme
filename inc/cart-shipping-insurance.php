@@ -12,7 +12,7 @@ if ( ! class_exists( 'WooCommerce' ) ) {
 
 /**
  * Select the configured insurance default on first cart calculation.
- * The sentinel preserves a customer's explicit choice to decline insurance.
+ * Preserves a customer's explicit choice to decline insurance.
  *
  * @param WC_Cart $cart WooCommerce cart.
  */
@@ -22,7 +22,8 @@ function waklert_cart_insurance_select_default( $cart ) {
 	}
 
 	$selected = WC()->session->get( 'shipping_insurance_package', null );
-	if ( 'NO_INSURANCE' === $selected || ( null !== $selected && '' !== $selected ) ) {
+	// If insurance selection has already been established in session, never overwrite it.
+	if ( null !== $selected ) {
 		return;
 	}
 
@@ -85,21 +86,48 @@ function waklert_cart_insurance_select_default( $cart ) {
 add_action( 'woocommerce_cart_calculate_fees', 'waklert_cart_insurance_select_default', 1 );
 
 /**
- * Preserve the explicit no-insurance choice through checkout refreshes.
+ * Normalize the insurance radio markup and preserve explicit selections across refreshes.
  *
  * @param string $markup Insurance Manager radio markup.
  * @return string
  */
 function waklert_cart_insurance_preserve_decline_choice( $markup ) {
-	if ( WC()->session && 'NO_INSURANCE' === WC()->session->get( 'shipping_insurance_package', '' ) ) {
-		$markup = str_replace(
-			'name="shipping_insurance_package" value="" ',
-			'name="shipping_insurance_package" value="NO_INSURANCE" checked="checked" ',
-			$markup
-		);
+	if ( empty( $markup ) ) {
+		return $markup;
 	}
 
-	return $markup;
+	$selected    = WC()->session ? WC()->session->get( 'shipping_insurance_package', null ) : null;
+	$is_declined = ( 'NO_INSURANCE' === $selected || '' === $selected );
+
+	return preg_replace_callback(
+		'/<input\b([^>]*name=["\']shipping_insurance_package["\'][^>]*?)(\/?)>/i',
+		function ( $matches ) use ( $is_declined ) {
+			$attrs = rtrim( trim( $matches[1] ), '/' );
+
+			// Identify if this is the "No Insurance" radio (empty value or NO_INSURANCE).
+			if ( preg_match( '/\bvalue=["\'](?:|NO_INSURANCE)["\']/i', $attrs ) ) {
+				// Normalize value attribute to NO_INSURANCE so client submissions are explicit.
+				$attrs = preg_replace( '/\bvalue=["\'](?:|NO_INSURANCE)["\']/i', 'value="NO_INSURANCE"', $attrs );
+				// Remove any existing checked attribute.
+				$attrs = preg_replace( '/\s*\bchecked(=["\'][^"\']*["\'])?/i', '', $attrs );
+
+				if ( $is_declined ) {
+					$attrs .= ' checked="checked"';
+				}
+
+				return '<input ' . trim( $attrs ) . ' />';
+			}
+
+			// If customer explicitly declined insurance, ensure no package radio remains checked.
+			if ( $is_declined ) {
+				$attrs = preg_replace( '/\s*\bchecked(=["\'][^"\']*["\'])?/i', '', $attrs );
+				return '<input ' . trim( $attrs ) . ' />';
+			}
+
+			return '<input ' . trim( $attrs ) . ' />';
+		},
+		$markup
+	);
 }
 
 /** Render the plugin's insurance choices in the existing cart totals layout. */
@@ -147,6 +175,66 @@ function waklert_cart_insurance_finish_checkout_buffer() {
 	echo waklert_cart_insurance_preserve_decline_choice( $markup );
 }
 add_action( 'woocommerce_review_order_before_order_total', 'waklert_cart_insurance_finish_checkout_buffer', 9999 );
+
+/**
+ * Synchronize checkout order review AJAX updates with the shipping insurance session.
+ *
+ * @param string $posted_data Serialized checkout form data.
+ */
+function waklert_cart_insurance_handle_checkout_update( $posted_data ) {
+	if ( empty( $posted_data ) || ! WC()->session ) {
+		return;
+	}
+
+	parse_str( $posted_data, $output );
+
+	if ( array_key_exists( 'shipping_insurance_package', $output ) ) {
+		$value = sanitize_text_field( $output['shipping_insurance_package'] );
+
+		if ( '' === $value || 'NO_INSURANCE' === $value ) {
+			$previous = WC()->session->get( 'shipping_insurance_package', null );
+			WC()->session->set( 'shipping_insurance_package', 'NO_INSURANCE' );
+
+			// If switching from insurance to no insurance, recalculate cart fees immediately.
+			if ( 'NO_INSURANCE' !== $previous && WC()->cart ) {
+				WC()->cart->calculate_totals();
+			}
+		} else {
+			$packages = (array) get_option( 'shipping_insurance_packages', array() );
+			if ( isset( $packages[ $value ]['enabled'] ) && 'yes' === $packages[ $value ]['enabled'] ) {
+				$previous = WC()->session->get( 'shipping_insurance_package', null );
+				WC()->session->set( 'shipping_insurance_package', $value );
+
+				if ( $previous !== $value && WC()->cart ) {
+					WC()->cart->calculate_totals();
+				}
+			}
+		}
+	}
+}
+add_action( 'woocommerce_checkout_update_order_review', 'waklert_cart_insurance_handle_checkout_update', 25 );
+
+/**
+ * Ensure insurance selection is properly applied when placing order.
+ */
+function waklert_cart_insurance_save_checkout_field_on_submit() {
+	if ( ! WC()->session ) {
+		return;
+	}
+
+	if ( isset( $_POST['shipping_insurance_package'] ) ) {
+		$value = sanitize_text_field( wp_unslash( $_POST['shipping_insurance_package'] ) );
+		if ( '' === $value || 'NO_INSURANCE' === $value ) {
+			WC()->session->set( 'shipping_insurance_package', 'NO_INSURANCE' );
+		} else {
+			$packages = (array) get_option( 'shipping_insurance_packages', array() );
+			if ( isset( $packages[ $value ]['enabled'] ) && 'yes' === $packages[ $value ]['enabled'] ) {
+				WC()->session->set( 'shipping_insurance_package', $value );
+			}
+		}
+	}
+}
+add_action( 'woocommerce_checkout_process', 'waklert_cart_insurance_save_checkout_field_on_submit', 5 );
 
 /** Save cart-page insurance choices, recalculate the fee and refresh the cart. */
 function waklert_cart_insurance_save_choice() {
@@ -216,3 +304,32 @@ function waklert_cart_insurance_cart_script() {
 	<?php
 }
 add_action( 'wp_footer', 'waklert_cart_insurance_cart_script', 40 );
+
+/** Ensure the "No Insurance" radio always has value="NO_INSURANCE" before checkout serializes. */
+function waklert_cart_insurance_checkout_script() {
+	if ( ! is_checkout() || is_order_received_page() ) {
+		return;
+	}
+	?>
+	<script>
+	jQuery( function( $ ) {
+		const normalizeInsuranceInputs = function() {
+			$( 'input.shipping-insurance-radio' ).each( function() {
+				if ( ! this.value || this.value === 'NO_INSURANCE' ) {
+					this.value = 'NO_INSURANCE';
+				}
+			} );
+		};
+
+		normalizeInsuranceInputs();
+		$( document.body ).on( 'updated_checkout', normalizeInsuranceInputs );
+		$( document.body ).on( 'change', 'input.shipping-insurance-radio', function() {
+			if ( ! this.value || this.value === 'NO_INSURANCE' ) {
+				this.value = 'NO_INSURANCE';
+			}
+		} );
+	} );
+	</script>
+	<?php
+}
+add_action( 'wp_footer', 'waklert_cart_insurance_checkout_script', 45 );
