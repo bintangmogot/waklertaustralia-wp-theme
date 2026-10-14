@@ -40,13 +40,6 @@ get_header();
                         <?php the_title(); ?>
                     </h1>
 
-                    <?php $excerpt = get_the_excerpt(); ?>
-                    <?php if ($excerpt) : ?>
-                        <p class="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-                            <?php echo esc_html($excerpt); ?>
-                        </p>
-                    <?php endif; ?>
-
                     <div class="mt-6 flex flex-wrap items-center justify-center gap-2 text-xs text-muted-foreground">
                         <time datetime="<?php echo esc_attr(get_the_date('c')); ?>"><?php echo esc_html(get_the_date('j F Y')); ?></time>
                         <span aria-hidden="true">&middot;</span>
