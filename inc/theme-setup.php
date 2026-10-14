@@ -16,6 +16,15 @@ function modmy_theme_setup() {
     // WooCommerce support
     add_theme_support('woocommerce');
 
+    // Custom Logo support (WordPress standard)
+    add_theme_support('custom-logo', array(
+        'height'      => 90,
+        'width'       => 300,
+        'flex-height' => true,
+        'flex-width'  => true,
+        'unlink-homepage-logo' => false,
+    ));
+
     // Register Navigation Menus
     register_nav_menus(array(
         'primary'       => __('Primary Menu', 'waklert-australia'),
@@ -156,4 +165,96 @@ add_filter('walker_nav_menu_start_el', function($item_output, $item, $depth, $ar
     }
     return $item_output;
 }, 10, 4);
+
+/**
+ * Get dynamic site logo attachment ID
+ * Checks ACF Theme Settings first, falls back to WordPress Custom Logo (theme mod)
+ *
+ * @param string $location 'header', 'mobile', or 'footer'
+ * @return int Attachment ID or 0
+ */
+function waklert_get_logo_id($location = 'header') {
+    if ($location === 'footer') {
+        $footer_logo = function_exists('get_field') ? get_field('footer_logo', 'option') : null;
+        if (!empty($footer_logo)) {
+            return is_array($footer_logo) ? (int) ($footer_logo['ID'] ?? 0) : (int) $footer_logo;
+        }
+    }
+
+    $acf_logo = function_exists('get_field') ? get_field('site_logo', 'option') : null;
+    if (!empty($acf_logo)) {
+        return is_array($acf_logo) ? (int) ($acf_logo['ID'] ?? 0) : (int) $acf_logo;
+    }
+
+    return (int) get_theme_mod('custom_logo');
+}
+
+function waklert_get_logo_url($location = 'header') {
+    $logo_id = waklert_get_logo_id($location);
+    if ($logo_id && ($src = wp_get_attachment_image_url($logo_id, 'full'))) {
+        return $src;
+    }
+    // Fallback to theme asset for fresh environments (e.g. InstaWP staging)
+    $theme_logo = get_template_directory() . '/assets/images/waklert-australia-logo.png';
+    if (file_exists($theme_logo)) {
+        return get_template_directory_uri() . '/assets/images/waklert-australia-logo.png';
+    }
+    return false;
+}
+
+/**
+ * Render dynamic site logo markup (NOT hardcoded, editable in WP Customizer / ACF Theme Settings)
+ *
+ * @param string $classes CSS classes for the img tag
+ * @param string $location 'header', 'mobile', or 'footer'
+ */
+function waklert_the_logo($classes = 'h-10 sm:h-11 w-auto max-w-[220px] sm:max-w-[260px] object-contain', $location = 'header') {
+    $logo_src = waklert_get_logo_url($location);
+    $home_url = esc_url(home_url('/'));
+    $site_name = esc_attr(get_bloginfo('name') ?: 'Waklert Australia');
+
+    if ($logo_src) {
+        $img_html = sprintf(
+            '<img src="%s" alt="%s" class="%s" width="240" height="82" loading="%s" decoding="async" />',
+            esc_url($logo_src),
+            $site_name,
+            esc_attr($classes),
+            $location === 'header' ? 'eager' : 'lazy'
+        );
+
+        if ($location === 'footer') {
+            // Check if it's the main logo (with dark text) on a dark footer background
+            $has_footer_specific = function_exists('get_field') && get_field('footer_logo', 'option');
+            $wrapper_class = $has_footer_specific
+                ? 'inline-flex shrink-0 items-center'
+                : 'inline-flex shrink-0 items-center rounded-xl bg-white px-3.5 py-1.5 shadow-sm hover:opacity-95 transition-opacity';
+            echo sprintf('<a href="%s" class="%s" aria-label="%s">%s</a>', $home_url, $wrapper_class, $site_name, $img_html);
+        } else {
+            echo sprintf('<a href="%s" class="flex shrink-0 items-center" aria-label="%s">%s</a>', $home_url, $site_name, $img_html);
+        }
+        return;
+    }
+
+    // Dynamic text fallback if no logo image is uploaded
+    if ($location === 'footer') {
+        echo sprintf(
+            '<a href="%s" class="flex shrink-0 items-center gap-2.5" aria-label="%s">
+                <span class="font-heading text-xl font-extrabold tracking-tight text-white">%s</span>
+            </a>',
+            $home_url,
+            $site_name,
+            esc_html(get_bloginfo('name') ?: 'Waklert Australia')
+        );
+    } else {
+        echo sprintf(
+            '<a href="%s" class="flex shrink-0 items-center gap-2.5" aria-label="%s">
+                <span class="font-heading text-[17px] font-extrabold tracking-[0.12em] text-foreground uppercase">%s</span>
+            </a>',
+            $home_url,
+            $site_name,
+            esc_html(get_bloginfo('name') ?: 'Waklert Australia')
+        );
+    }
+}
+
 

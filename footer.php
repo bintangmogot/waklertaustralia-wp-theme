@@ -91,21 +91,7 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
     <div class="container-site relative z-10 grid gap-10 py-16 md:grid-cols-2 lg:grid-cols-5">
         <!-- Column 1 -->
         <div class="lg:col-span-2 pr-0 lg:pr-8">
-            <a href="<?= home_url('/') ?>" class="flex shrink-0 items-center gap-2.5" aria-label="Waklert Australia">
-                <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M3.5 6.5 7.5 18 12 10 16.5 18 20.5 6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        <circle cx="3.5" cy="6.5" r="1.6" fill="#fff" />
-                        <circle cx="7.5" cy="18" r="1.6" fill="#fff" />
-                        <circle cx="12" cy="10" r="2.4" fill="#f49a5b" />
-                        <circle cx="16.5" cy="18" r="1.6" fill="#fff" />
-                        <circle cx="20.5" cy="6.5" r="1.6" fill="#fff" />
-                    </svg>
-                </span>
-                <span class="font-heading text-xl font-extrabold tracking-tight text-white">
-                    Waklert <span class="text-accent">Australia</span>
-                </span>
-            </a>
+            <?php waklert_the_logo('h-10 sm:h-11 w-auto max-w-[220px] sm:max-w-[260px] object-contain', 'footer'); ?>
             <p class="mt-5 text-[13px] leading-relaxed text-ink-foreground/80">
                 <?= $footer_desc ?>
             </p>

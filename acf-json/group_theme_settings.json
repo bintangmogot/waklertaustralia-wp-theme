@@ -11,6 +11,17 @@
             "endpoint": 0
         },
         {
+            "key": "field_site_logo",
+            "label": "Site Logo",
+            "name": "site_logo",
+            "type": "image",
+            "instructions": "Upload or choose the primary website logo. If empty, the WordPress Customizer logo will be used.",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all"
+        },
+        {
             "key": "field_topbar_left",
             "label": "Top Bar Left Text",
             "name": "topbar_left",
@@ -81,6 +92,17 @@
             "type": "tab",
             "placement": "top",
             "endpoint": 0
+        },
+        {
+            "key": "field_footer_logo",
+            "label": "Footer Logo",
+            "name": "footer_logo",
+            "type": "image",
+            "instructions": "Optional footer logo. If empty, the primary site logo will be used.",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all"
         },
         {
             "key": "field_footer_description",

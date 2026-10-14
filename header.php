@@ -44,8 +44,11 @@
         <meta property="og:description" content="<?php echo esc_attr(get_bloginfo('description')); ?>" />
         <meta property="og:url" content="<?php echo esc_url(home_url('/')); ?>" />
         <meta property="og:type" content="website" />
-    <?php endif; ?>
     <?php wp_head(); ?>
+    <?php if (!has_site_icon()) : ?>
+        <link rel="icon" href="<?= esc_url(get_template_directory_uri() . '/assets/images/waklert-site-icon.png') ?>" type="image/png">
+        <link rel="apple-touch-icon" href="<?= esc_url(get_template_directory_uri() . '/assets/images/waklert-site-icon.png') ?>">
+    <?php endif; ?>
 </head>
 
 <body <?php body_class('bg-background text-foreground antialiased selection:bg-primary-soft selection:text-primary-dark'); ?>>
@@ -90,22 +93,7 @@
 
         <!-- Logo -->
         <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 lg:static lg:translate-x-0 lg:translate-y-0">
-            <a href="<?= home_url('/') ?>" class="flex shrink-0 items-center gap-2.5" aria-label="Waklert Australia">
-                <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M3.5 6.5 7.5 18 12 10 16.5 18 20.5 6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        <circle cx="3.5" cy="6.5" r="1.6" fill="#fff" />
-                        <circle cx="7.5" cy="18" r="1.6" fill="#fff" />
-                        <circle cx="12" cy="10" r="2.4" fill="#f49a5b" />
-                        <circle cx="16.5" cy="18" r="1.6" fill="#fff" />
-                        <circle cx="20.5" cy="6.5" r="1.6" fill="#fff" />
-                    </svg>
-                </span>
-                <span class="flex flex-col leading-none">
-                    <span class="font-heading text-[15px] font-extrabold tracking-[0.12em] text-foreground">WAKLERT</span>
-                    <span class="mt-1 text-[9px] font-bold uppercase tracking-[0.24em] text-muted-foreground">Australia</span>
-                </span>
-            </a>
+            <?php waklert_the_logo('h-10 sm:h-11 w-auto max-w-[220px] sm:max-w-[260px] object-contain', 'header'); ?>
         </div>
 
         <!-- Desktop Nav -->
@@ -140,9 +128,7 @@
     <!-- Mobile Nav Drawer -->
     <div id="mobile-menu-drawer" class="fixed inset-y-0 left-0 z-50 w-[85%] max-w-sm transform overflow-y-auto bg-background transition-transform duration-300 ease-in-out lg:hidden -translate-x-full">
         <div class="flex h-[68px] items-center justify-between border-b border-border px-6">
-            <span class="font-heading text-lg font-bold text-foreground">
-                Waklert Australia
-            </span>
+            <?php waklert_the_logo('h-9 w-auto max-w-[190px] object-contain', 'mobile'); ?>
             <button type="button" aria-label="Close menu" id="mobile-menu-close" class="rounded-md p-2 text-foreground/70 transition-colors hover:text-primary">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
             </button>

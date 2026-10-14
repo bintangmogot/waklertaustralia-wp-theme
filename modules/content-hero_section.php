@@ -32,60 +32,88 @@ if (is_array($hero_img)) {
 if (empty($hero_img_url) || str_contains($hero_img_url, 'kl-skyline')) {
     $hero_img_url = get_theme_file_uri('assets/images/hero-tradie-v2.png?v=20261013v2');
 }
+// Bundled mobile image: friendly tradie holding Waklert 150 box at outdoor site
+$mobile_img = get_sub_field('mobile_image') ?: get_sub_field('hero_image_mobile');
+if (is_array($mobile_img)) {
+    $mobile_img_url = $mobile_img['url'] ?? '';
+} elseif (is_numeric($mobile_img)) {
+    $mobile_img_url = wp_get_attachment_image_url($mobile_img, 'full');
+} elseif (is_string($mobile_img) && $mobile_img !== '') {
+    $mobile_img_url = $mobile_img;
+} else {
+    $mobile_img_url = '';
+}
+if (empty($mobile_img_url)) {
+    $mobile_img_url = get_theme_file_uri('assets/images/hero-mobile-tradie.png?v=20261013m1');
+}
 ?>
 
-<section data-testid="hero-section" class="relative isolate overflow-hidden bg-[#0C4161] text-primary-foreground min-h-[580px] lg:min-h-[640px] flex items-center">
-    <?php waklert_output_pattern_rings(); ?>
-
-    <!-- Hero Background Image (Full-bleed natural image, no complex wrappers or masks) -->
-    <div class="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+<section data-testid="hero-section" class="relative isolate overflow-hidden bg-[#0C4161] text-primary-foreground">
+    <!-- MOBILE ONLY: Top Image (< md) -->
+    <div class="block md:hidden w-full overflow-hidden bg-[#0C4161]">
         <img 
-            src="<?= esc_url($hero_img_url) ?>" 
+            src="<?= esc_url($mobile_img_url) ?>" 
             alt="<?= esc_attr($heading) ?>" 
-            class="h-full w-full object-cover"
+            class="w-full h-auto object-cover max-h-[460px] object-top"
             loading="eager"
             fetchpriority="high"
         />
-        <!-- Mobile/Tablet only backdrop overlay (< 1024px) for phone readability -->
-        <div class="absolute inset-0 bg-[#0C4161]/80 sm:bg-[#0C4161]/70 lg:hidden" aria-hidden="true"></div>
     </div>
 
-    <!-- Left Column Content -->
-    <div class="container-site relative z-10 w-full py-16 md:py-20 lg:py-24">
-        <div class="max-w-lg lg:max-w-[440px] xl:max-w-[480px]">
-            <?php if ($location): ?>
-            <span class="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-white backdrop-blur-sm">
-                <span aria-hidden="true" class="h-2 w-2 rounded-full bg-accent"></span>
-                <?= esc_html($location) ?>
-            </span>
-            <?php endif; ?>
+    <!-- MAIN HERO CONTENT CONTAINER (with pattern rings & text) -->
+    <div class="relative min-h-[440px] md:min-h-[580px] lg:min-h-[640px] flex items-center">
+        <?php waklert_output_pattern_rings(); ?>
 
-            <h1 class="mb-4 font-heading text-3xl sm:text-4xl lg:text-[40px] xl:text-[44px] font-extrabold leading-[1.1] tracking-tight text-white">
-                <?= esc_html($heading) ?>
-            </h1>
+        <!-- TABLET & DESKTOP ONLY: Background Right-Anchored Image (>= md) -->
+        <div class="pointer-events-none absolute inset-0 z-0 overflow-hidden hidden md:block">
+            <img 
+                src="<?= esc_url($hero_img_url) ?>" 
+                alt="<?= esc_attr($heading) ?>" 
+                class="h-full w-full object-cover"
+                loading="eager"
+                fetchpriority="high"
+            />
+            <!-- Tablet backdrop overlay (md to lg) for text contrast, hidden on desktop lg+ -->
+            <div class="absolute inset-0 bg-[#0C4161]/75 lg:hidden" aria-hidden="true"></div>
+        </div>
 
-            <?php if ($subtitle): ?>
-            <p class="mb-5 font-heading text-xl font-semibold leading-snug text-white/85 md:text-2xl">
-                <?= esc_html($subtitle) ?>
-            </p>
-            <?php endif; ?>
-
-            <?php if ($description): ?>
-            <p class="mb-8 text-base leading-relaxed text-white/75 md:text-lg">
-                <?= esc_html($description) ?>
-            </p>
-            <?php endif; ?>
-
-            <div class="flex flex-wrap gap-3">
-                <a href="<?= esc_url($primary_link) ?>" class="inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 text-sm font-extrabold uppercase tracking-wide text-accent-foreground shadow-pill transition hover:-translate-y-0.5 hover:brightness-105 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
-                    <?= esc_html($primary_btn) ?>
-                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
-                </a>
-                <?php if ($secondary_btn !== '' && $secondary_link !== ''): ?>
-                    <a href="<?= esc_url($secondary_link) ?>" class="inline-flex items-center rounded-full border border-white/30 bg-white/10 px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-white transition hover:bg-white/20">
-                        <?= esc_html($secondary_btn) ?>
-                    </a>
+        <!-- Left Column Content -->
+        <div class="container-site relative z-10 w-full py-12 md:py-20 lg:py-24">
+            <div class="max-w-lg lg:max-w-[460px] xl:max-w-[510px]">
+                <?php if ($location): ?>
+                <span class="mb-5 md:mb-6 inline-flex items-center gap-2 md:gap-2.5 rounded-full border border-white/20 bg-white/10 px-4.5 py-2 md:px-5 md:py-2.5 text-[13px] sm:text-[14px] md:text-[15px] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-sm">
+                    <span aria-hidden="true" class="h-2 w-2 md:h-2.5 md:w-2.5 rounded-full bg-accent"></span>
+                    <?= esc_html($location) ?>
+                </span>
                 <?php endif; ?>
+
+                <h1 class="mb-4 md:mb-5 font-heading text-[32px] sm:text-[40px] md:text-[45px] lg:text-[50px] xl:text-[55px] font-extrabold leading-[1.1] md:leading-[1.08] tracking-tight text-white">
+                    <?= esc_html($heading) ?>
+                </h1>
+
+                <?php if ($subtitle): ?>
+                <p class="mb-5 md:mb-6 font-heading text-[20px] sm:text-[24px] md:text-[26px] lg:text-[30px] font-semibold leading-snug text-white/90">
+                    <?= esc_html($subtitle) ?>
+                </p>
+                <?php endif; ?>
+
+                <?php if ($description): ?>
+                <p class="mb-7 md:mb-8 text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22.5px] leading-relaxed text-white/80">
+                    <?= esc_html($description) ?>
+                </p>
+                <?php endif; ?>
+
+                <div class="flex flex-wrap gap-3 md:gap-3.5">
+                    <a href="<?= esc_url($primary_link) ?>" class="inline-flex items-center gap-2 md:gap-2.5 rounded-full bg-accent px-7 py-3.5 md:px-8 md:py-4 text-sm sm:text-base md:text-[17px] font-extrabold uppercase tracking-wide text-accent-foreground shadow-pill transition hover:-translate-y-0.5 hover:brightness-105 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
+                        <?= esc_html($primary_btn) ?>
+                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-5 md:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
+                    </a>
+                    <?php if ($secondary_btn !== '' && $secondary_link !== ''): ?>
+                        <a href="<?= esc_url($secondary_link) ?>" class="inline-flex items-center rounded-full border border-white/30 bg-white/10 px-6 py-3.5 md:px-7 md:py-4 text-sm sm:text-base md:text-[17px] font-bold uppercase tracking-wide text-white transition hover:bg-white/20">
+                            <?= esc_html($secondary_btn) ?>
+                        </a>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
     </div>

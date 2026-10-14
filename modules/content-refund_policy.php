@@ -43,7 +43,11 @@ if (!$title && !$subtitle && !$badges && !$sections) {
                 <?= esc_html($section['title']) ?>
             </h2>
             <?php endif; ?>
-            <?php if (!empty($section['content'])): ?><div class="text-slate-600 text-sm leading-relaxed whitespace-pre-line"><?= esc_html($section['content']) ?></div><?php endif; ?>
+            <?php if (!empty($section['content'])): ?>
+                <div class="prose max-w-none text-muted-foreground text-sm leading-relaxed mt-2">
+                    <?= wp_kses_post(wpautop($section['content'])) ?>
+                </div>
+            <?php endif; ?>
         </article>
         <?php endforeach; ?>
     </div>

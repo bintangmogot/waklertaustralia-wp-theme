@@ -95,8 +95,8 @@ $default_sections = [
                     <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span>
                     <?= $s_title ?>
                 </h2>
-                <div class="text-slate-600 text-sm leading-relaxed whitespace-pre-line space-y-3">
-                    <?= esc_html($content) ?>
+                <div class="prose max-w-none text-muted-foreground text-sm leading-relaxed">
+                    <?= wp_kses_post(wpautop($content)) ?>
                 </div>
             </div>
             <?php endwhile; ?>
@@ -109,8 +109,8 @@ $default_sections = [
                     <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span>
                     <?= $sec['title'] ?>
                 </h2>
-                <div class="text-slate-600 text-sm leading-relaxed whitespace-pre-line">
-                    <?= esc_html($content) ?>
+                <div class="prose max-w-none text-muted-foreground text-sm leading-relaxed">
+                    <?= wp_kses_post(wpautop($content)) ?>
                 </div>
             </div>
             <?php endforeach; ?>

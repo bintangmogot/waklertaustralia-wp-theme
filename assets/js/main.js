@@ -93,4 +93,36 @@ document.addEventListener('DOMContentLoaded', () => {
             button.textContent = expanded ? 'Read more' : 'Read less';
         });
     });
+
+    // Automatic Table Enhancer for WYSIWYG Content
+    document.querySelectorAll('.prose table').forEach((table) => {
+        // 1. Promote first row to <thead> if missing
+        if (!table.querySelector('thead')) {
+            const firstRow = table.querySelector('tbody tr:first-child, tr:first-child');
+            if (firstRow) {
+                const thead = document.createElement('thead');
+                thead.appendChild(firstRow);
+                table.insertBefore(thead, table.firstChild);
+            }
+        }
+
+        // 2. Wrap standalone tables in a responsive scroll container
+        if (!table.parentElement.classList.contains('table-wrapper') && !table.closest('figure.wp-block-table')) {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'table-wrapper';
+            table.parentNode.insertBefore(wrapper, table);
+            wrapper.appendChild(table);
+        }
+
+        // 3. Highlight Waklert column in comparison tables
+        const headerCells = table.querySelectorAll('thead th, thead td');
+        headerCells.forEach((th, idx) => {
+            if (th.textContent.trim().toLowerCase().includes('waklert')) {
+                th.classList.add('waklert-highlight-header');
+                table.querySelectorAll(`tbody tr td:nth-child(${idx + 1})`).forEach((td) => {
+                    td.classList.add('waklert-highlight-cell');
+                });
+            }
+        });
+    });
 });

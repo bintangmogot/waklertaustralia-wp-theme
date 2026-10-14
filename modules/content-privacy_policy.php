@@ -104,7 +104,7 @@ foreach ($sections as $index => $section) {
                         <h2 id="<?php echo esc_attr($section_id); ?>-title" class="mt-1 font-heading text-2xl font-bold leading-tight text-foreground md:text-3xl">
                             <?php echo esc_html($section_title); ?>
                         </h2>
-                        <div class="mt-4 text-sm leading-7 text-muted-foreground md:text-base [&_a]:font-semibold [&_a]:text-primary [&_a]:underline [&_li]:pl-1 [&_ol]:list-decimal [&_ol]:space-y-2 [&_ol]:pl-5 [&_p+p]:mt-4 [&_strong]:font-bold [&_strong]:text-foreground [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-5">
+                        <div class="prose max-w-none text-muted-foreground mt-4 text-sm md:text-base leading-7">
                             <?php echo wp_kses_post(wpautop($section_content)); ?>
                         </div>
                     </section>

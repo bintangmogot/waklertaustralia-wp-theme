@@ -29,15 +29,24 @@ function modmy_enqueue_scripts() {
     if (file_exists($css_path)) {
         wp_enqueue_style('modmy-style', $css_url, array(), filemtime($css_path));
         
-        // Add missing prose table styles since Tailwind CLI stripped them
+        // Add robust prose table and typography styles as inline safeguard
         $custom_css = "
-            .prose table { width: 100%; table-layout: auto; text-align: left; margin-top: 2em; margin-bottom: 2em; border-collapse: collapse; }
-            .prose thead { border-bottom: 2px solid var(--color-primary-light); background-color: var(--color-primary-softer); }
-            .prose th { font-weight: 700; color: var(--color-foreground); padding: 0.75rem 1rem; vertical-align: bottom; }
-            .prose td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--color-border); vertical-align: top; color: var(--color-muted-foreground); }
-            .prose tbody tr:last-child td { border-bottom: none; }
-            .prose tbody tr:nth-child(even) { background-color: var(--color-surface); }
-            .prose .table-wrapper, .prose figure.wp-block-table { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--color-border); border-radius: var(--radius-md); }
+            .prose table { width: 100%; max-width: 100%; table-layout: auto; text-align: left; margin: 2rem 0; border-collapse: separate; border-spacing: 0; border: 1px solid var(--color-border); border-radius: var(--radius-xl, 1rem); overflow: hidden; background-color: #fff; box-shadow: 0 4px 20px -4px oklch(0.208 0.042 265.755 / 0.08); font-size: 0.9375rem; line-height: 1.55; }
+            .prose .table-wrapper, .prose figure.wp-block-table { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 2rem 0; border: 1px solid var(--color-border); border-radius: var(--radius-xl, 1rem); background-color: #fff; box-shadow: 0 4px 20px -4px oklch(0.208 0.042 265.755 / 0.08); }
+            .prose .table-wrapper table, .prose figure.wp-block-table table { margin: 0; border: none; border-radius: 0; box-shadow: none; min-width: 100%; }
+            .prose thead { border-bottom: 2px solid var(--color-primary); background-color: var(--color-primary-softer); }
+            .prose th, .prose thead th { font-family: var(--font-heading); font-weight: 800; font-size: 0.875rem; letter-spacing: 0.02em; color: var(--color-foreground); padding: 1rem 1.25rem; vertical-align: middle; border-bottom: 2px solid var(--color-primary); border-right: 1px solid oklch(0.9 0.018 82 / 0.6); background-color: var(--color-primary-softer); text-align: left; }
+            .prose th:last-child, .prose thead th:last-child { border-right: none; }
+            .prose table:not(:has(thead)) tbody tr:first-child td, .prose table:not(:has(thead)) tbody tr:first-child th { font-family: var(--font-heading); font-weight: 800; font-size: 0.875rem; letter-spacing: 0.02em; color: var(--color-foreground); padding: 1rem 1.25rem; vertical-align: middle; border-bottom: 2px solid var(--color-primary); border-right: 1px solid oklch(0.9 0.018 82 / 0.6); background-color: var(--color-primary-softer); }
+            .prose table:not(:has(thead)) tbody tr:first-child td:last-child, .prose table:not(:has(thead)) tbody tr:first-child th:last-child { border-right: none; }
+            .prose td { padding: 0.9375rem 1.25rem; border-bottom: 1px solid var(--color-border); border-right: 1px solid oklch(0.9 0.018 82 / 0.6); vertical-align: top; color: var(--color-muted-foreground); font-size: 0.9375rem; line-height: 1.6; }
+            .prose td:last-child { border-right: none; }
+            .prose tbody td:first-child, .prose tbody th:first-child { font-weight: 700; color: var(--color-foreground); background-color: oklch(0.988 0.006 220 / 0.5); }
+            .prose tbody tr:nth-child(even) td { background-color: var(--color-surface); }
+            .prose tbody tr:nth-child(even) td:first-child { background-color: oklch(0.975 0.012 220 / 0.7); }
+            .prose tbody tr:hover td { background-color: var(--color-primary-softer); transition: background-color 0.15s ease; }
+            .prose tbody tr:hover td:first-child { background-color: oklch(0.95 0.022 220); }
+            .prose tbody tr:last-child td, .prose tbody tr:last-child th { border-bottom: none; }
         ";
         wp_add_inline_style('modmy-style', $custom_css);
     } else {
