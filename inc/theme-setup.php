@@ -129,6 +129,10 @@ add_filter('nav_menu_submenu_css_class', function($classes, $args, $depth = 0) {
         if (!in_array('sub-menu', $classes)) {
             $classes[] = 'sub-menu';
         }
+        $is_mobile = ($args->theme_location === 'mobile') || (isset($args->menu_class) && strpos($args->menu_class, 'flex flex-col') !== false);
+        if ($is_mobile && !in_array('is-open', $classes)) {
+            $classes[] = 'is-open';
+        }
     }
     return $classes;
 }, 10, 3);
@@ -143,7 +147,7 @@ add_filter('walker_nav_menu_start_el', function($item_output, $item, $depth, $ar
             if ($is_mobile) {
                 $chevron_svg = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-4.5 h-4.5 pointer-events-none transition-transform duration-200"><path d="m6 9 6 6 6-6"/></svg>';
                 $toggle_button = sprintf(
-                    '<button type="button" class="mobile-submenu-toggle flex items-center justify-center w-9 h-9 mr-6 rounded-xl bg-surface border border-border/70 text-foreground/70 hover:text-primary hover:bg-primary-softer hover:border-primary/40 transition-all focus:outline-none shrink-0" aria-expanded="false" aria-label="%s">%s</button>',
+                    '<button type="button" class="mobile-submenu-toggle is-active flex items-center justify-center w-9 h-9 mr-6 rounded-xl bg-surface border border-border/70 text-foreground/70 hover:text-primary hover:bg-primary-softer hover:border-primary/40 transition-all focus:outline-none shrink-0" aria-expanded="true" aria-label="%s">%s</button>',
                     esc_attr(sprintf(__('Toggle %s submenu', 'waklert-australia'), $item->title)),
                     $chevron_svg
                 );
