@@ -27,12 +27,12 @@ function modmy_theme_setup() {
 
     // Register Navigation Menus
     register_nav_menus(array(
-        'primary'       => __('Primary Menu', 'waklert-australia'),
-        'mobile_cities' => __('Mobile Cities Grid', 'waklert-australia'),
-        'footer_quick'  => __('Footer Quick Links', 'waklert-australia'),
-        'footer_info'   => __('Footer Information', 'waklert-australia'),
+        'primary'         => __('Primary Navigation (Desktop)', 'waklert-australia'),
+        'mobile'          => __('Mobile Navigation', 'waklert-australia'),
+        'footer_quick'    => __('Footer Quick Links', 'waklert-australia'),
+        'footer_info'     => __('Footer Information', 'waklert-australia'),
         'footer_trending' => __('Footer Trending Products', 'waklert-australia'),
-        'footer_cities' => __('Footer Delivery Cities', 'waklert-australia'),
+        'footer_cities'   => __('Footer Delivery Cities', 'waklert-australia'),
     ));
 
     // HTML5 markup support
@@ -71,41 +71,37 @@ add_action('init', 'modmy_register_cpt');
  */
 add_filter('nav_menu_css_class', function($classes, $item, $args, $depth = 0) {
     if (isset($args->theme_location)) {
-        if ($args->theme_location === 'primary') {
-            $is_mobile = isset($args->menu_class) && strpos($args->menu_class, 'flex flex-col') !== false;
-            $has_children = in_array('menu-item-has-children', $classes);
+        $is_mobile = ($args->theme_location === 'mobile') || (isset($args->menu_class) && strpos($args->menu_class, 'flex flex-col') !== false);
+        $has_children = in_array('menu-item-has-children', $classes);
 
-            if ($is_mobile) {
-                $classes[] = 'w-full list-none';
-                if ($has_children) {
-                    $classes[] = 'has-submenu';
-                }
-            } else {
-                $classes[] = 'list-none';
-                if ($has_children && $depth === 0) {
-                    $classes[] = 'relative group';
-                }
+        if ($is_mobile) {
+            $classes[] = 'w-full list-none';
+            if ($has_children) {
+                $classes[] = 'has-submenu';
             }
-        } elseif ($args->theme_location === 'mobile_cities') {
+        } elseif ($args->theme_location === 'primary') {
             $classes[] = 'list-none';
+            if ($has_children && $depth === 0) {
+                $classes[] = 'relative group';
+            }
         }
     }
     return $classes;
 }, 10, 4);
 
 add_filter('nav_menu_link_attributes', function($atts, $item, $args, $depth = 0) {
-    if (isset($args->theme_location) && $args->theme_location === 'primary') {
-        $is_mobile = isset($args->menu_class) && strpos($args->menu_class, 'flex flex-col') !== false;
+    if (isset($args->theme_location)) {
+        $is_mobile = ($args->theme_location === 'mobile') || (isset($args->menu_class) && strpos($args->menu_class, 'flex flex-col') !== false);
 
         if ($is_mobile) {
             if ($depth === 0) {
                 // Mobile Menu Root Link
-                $atts['class'] = (isset($atts['class']) ? $atts['class'] . ' ' : '') . 'flex-1 block px-6 py-3 text-[20px] font-semibold text-slate-800 hover:bg-stone-50 hover:text-primary transition-colors';
+                $atts['class'] = (isset($atts['class']) ? $atts['class'] . ' ' : '') . 'flex-1 block px-6 py-3.5 text-[17px] font-semibold text-slate-800 hover:bg-stone-50 hover:text-primary transition-colors';
             } else {
                 // Mobile Menu Sub-item Link
                 $atts['class'] = (isset($atts['class']) ? $atts['class'] . ' ' : '') . 'flex items-center justify-between w-full px-4 py-2.5 text-[15px] font-medium text-foreground/85 hover:text-primary hover:bg-white rounded-xl transition-colors';
             }
-        } else {
+        } elseif ($args->theme_location === 'primary') {
             if ($depth === 0) {
                 // Desktop Root Menu Link
                 $classes = 'inline-flex items-center px-3.5 xl:px-4 py-2 text-[17.5px] font-semibold rounded-full transition-all duration-200';
@@ -121,17 +117,15 @@ add_filter('nav_menu_link_attributes', function($atts, $item, $args, $depth = 0)
                 // Desktop Submenu Dropdown Link
                 $atts['class'] = (isset($atts['class']) ? $atts['class'] . ' ' : '') . 'flex items-center justify-between w-full px-3.5 py-2 text-[14.5px] font-semibold text-foreground/80 hover:text-primary hover:bg-primary-softer/70 rounded-xl transition-colors whitespace-nowrap';
             }
+        } elseif (strpos($args->theme_location, 'footer_') !== false) {
+            $atts['class'] = (isset($atts['class']) ? $atts['class'] . ' ' : '') . 'hover:text-primary transition-colors';
         }
-    } elseif (isset($args->theme_location) && $args->theme_location === 'mobile_cities') {
-        $atts['class'] = (isset($atts['class']) ? $atts['class'] . ' ' : '') . 'text-sm text-[#62847A] hover:text-primary transition-colors block py-1.5 font-medium';
-    } elseif (isset($args->theme_location) && strpos($args->theme_location, 'footer_') !== false) {
-        $atts['class'] = (isset($atts['class']) ? $atts['class'] . ' ' : '') . 'hover:text-primary transition-colors';
     }
     return $atts;
 }, 10, 4);
 
 add_filter('nav_menu_submenu_css_class', function($classes, $args, $depth = 0) {
-    if (isset($args->theme_location) && $args->theme_location === 'primary') {
+    if (isset($args->theme_location) && ($args->theme_location === 'primary' || $args->theme_location === 'mobile')) {
         if (!in_array('sub-menu', $classes)) {
             $classes[] = 'sub-menu';
         }
@@ -140,10 +134,10 @@ add_filter('nav_menu_submenu_css_class', function($classes, $args, $depth = 0) {
 }, 10, 3);
 
 add_filter('walker_nav_menu_start_el', function($item_output, $item, $depth, $args) {
-    if (isset($args->theme_location) && $args->theme_location === 'primary') {
+    if (isset($args->theme_location) && ($args->theme_location === 'primary' || $args->theme_location === 'mobile')) {
         $item_classes = (array) $item->classes;
         $has_children = in_array('menu-item-has-children', $item_classes);
-        $is_mobile = isset($args->menu_class) && strpos($args->menu_class, 'flex flex-col') !== false;
+        $is_mobile = ($args->theme_location === 'mobile') || (isset($args->menu_class) && strpos($args->menu_class, 'flex flex-col') !== false);
 
         if ($has_children && $depth === 0) {
             if ($is_mobile) {

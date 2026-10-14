@@ -138,10 +138,18 @@
         <nav class="flex flex-col border-b border-border py-4 mobile-nav">
             <?php
             wp_nav_menu([
-                'theme_location' => 'primary',
+                'theme_location' => 'mobile',
                 'container'      => false,
                 'menu_class'     => 'flex flex-col',
-                'fallback_cb'    => false,
+                'fallback_cb'    => function() {
+                    wp_nav_menu([
+                        'theme_location' => 'primary',
+                        'container'      => false,
+                        'menu_class'     => 'flex flex-col',
+                        'fallback_cb'    => false,
+                        'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+                    ]);
+                },
                 'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
             ]);
             ?>
