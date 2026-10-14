@@ -44,6 +44,7 @@
         <meta property="og:description" content="<?php echo esc_attr(get_bloginfo('description')); ?>" />
         <meta property="og:url" content="<?php echo esc_url(home_url('/')); ?>" />
         <meta property="og:type" content="website" />
+    <?php endif; ?>
     <?php wp_head(); ?>
     <?php if (!has_site_icon()) : ?>
         <link rel="icon" href="<?= esc_url(get_template_directory_uri() . '/assets/images/waklert-site-icon.png') ?>" type="image/png">
