@@ -33,7 +33,7 @@ if (!$eyebrow && !$heading && !$desc && !$categories && !$cta_heading && !$cta_d
                 <?php if (!empty($category['items'])): ?>
                 <div class="space-y-3">
                     <?php foreach ($category['items'] as $item): ?>
-                    <details class="group rounded-xl border border-border transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md open:bg-primary-softer/50 open:border-primary/40">
+                    <details open class="group rounded-xl border border-border transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md open:bg-primary-softer/50 open:border-primary/40">
                         <summary class="flex items-center justify-between gap-4 p-5 cursor-pointer list-none rounded-xl transition-colors hover:text-primary-dark active:bg-primary-softer/60">
                             <h3 class="font-heading text-sm font-bold text-foreground"><?= esc_html($item['question'] ?? '') ?></h3>
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0 text-primary-dark transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
