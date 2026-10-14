@@ -125,4 +125,46 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Support Email Click Helper: Copies email address as a reliable backup when mailto link is clicked
+    document.querySelectorAll('a[data-support-email]').forEach((link) => {
+        link.addEventListener('click', () => {
+            const email = link.getAttribute('data-support-email');
+            if (!email) return;
+
+            const copyPromise = (navigator.clipboard && navigator.clipboard.writeText)
+                ? navigator.clipboard.writeText(email)
+                : new Promise((resolve, reject) => {
+                    try {
+                        const ta = document.createElement('textarea');
+                        ta.value = email;
+                        ta.style.position = 'fixed';
+                        ta.style.opacity = '0';
+                        document.body.appendChild(ta);
+                        ta.focus();
+                        ta.select();
+                        const success = document.execCommand('copy');
+                        document.body.removeChild(ta);
+                        success ? resolve() : reject();
+                    } catch (err) {
+                        reject(err);
+                    }
+                });
+
+            copyPromise.then(() => {
+                let badge = link.parentElement.querySelector('.email-copied-badge');
+                if (!badge) {
+                    badge = document.createElement('span');
+                    badge.className = 'email-copied-badge inline-flex items-center text-xs font-bold text-[#f49a5b] bg-black/50 border border-[#f49a5b]/40 px-2.5 py-0.5 rounded-full transition-opacity duration-300 ml-2 shadow-sm';
+                    link.parentElement.appendChild(badge);
+                }
+                badge.textContent = 'Copied ' + email;
+                badge.style.opacity = '1';
+                setTimeout(() => {
+                    badge.style.opacity = '0';
+                    setTimeout(() => badge.remove(), 300);
+                }, 2500);
+            }).catch(() => {});
+        });
+    });
 });

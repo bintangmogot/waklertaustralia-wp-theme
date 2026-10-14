@@ -122,8 +122,31 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#FFD700] shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                     <a href="mailto:<?= esc_attr($footer_email) ?>" class="hover:text-white transition-colors"><?= esc_html($footer_email) ?></a>
                 </div>
+                <div class="flex items-center gap-3 text-[13px] text-ink-foreground/80">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#FFD700] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                    <span><strong class="text-white font-medium">Working Days:</strong> <?= esc_html(get_field('working_days', 'option') ?: 'Monday to Sunday') ?></span>
+                </div>
+                <div class="flex items-center gap-3 text-[13px] text-ink-foreground/80">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#FFD700] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    <span><strong class="text-white font-medium">Office Hours:</strong> <?= esc_html(get_field('office_hours', 'option') ?: '24/7') ?></span>
+                </div>
             </div>
 
+            <h3 class="text-[15px] font-bold text-[#00D2BA] mb-4 mt-8">
+                <?= esc_html__('Payment Accepted', 'waklert') ?>
+            </h3>
+            <div class="mt-4 flex items-center gap-6 flex-wrap">
+                <img src="<?= esc_url(get_theme_file_uri('/assets/images/commonwealth-white.png')) ?>" alt="Commonwealth Bank" class="object-contain h-8 sm:h-9 w-auto">
+                <img src="<?= esc_url(get_theme_file_uri('/assets/images/osko-white.png')) ?>" alt="Osko by BPAY" class="object-contain h-7 sm:h-8 w-auto">
+                <img src="<?= esc_url(get_theme_file_uri('/assets/images/payid-white.png')) ?>" alt="PayID" class="object-contain h-7 sm:h-8 w-auto">
+            </div>
+
+            <h3 class="text-[15px] font-bold text-[#00D2BA] mb-4 mt-8">
+                <?= esc_html__('Shipping Partner', 'waklert') ?>
+            </h3>
+            <div class="mt-4 flex items-center">
+                <img src="<?= esc_url(get_theme_file_uri('/assets/images/australia-post.png')) ?>" alt="Australia Post" class="object-contain h-10 sm:h-11 w-auto">
+            </div>
         </div>
 
         <!-- Column 2 -->

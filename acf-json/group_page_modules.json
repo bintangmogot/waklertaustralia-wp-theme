@@ -3204,8 +3204,8 @@
                             "label": "Chat Button URL",
                             "name": "chat_btn_url",
                             "aria-label": "",
-                            "type": "url",
-                            "instructions": "",
+                            "type": "text",
+                            "instructions": "Enter WhatsApp URL (e.g. https://wa.me/61488841833), phone number, or page link (e.g. /contact/)",
                             "required": false,
                             "conditional_logic": false,
                             "wrapper": {
@@ -3249,9 +3249,9 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Send an email",
+                            "default_value": "Email Support",
                             "maxlength": "",
-                            "placeholder": "",
+                            "placeholder": "Email Support",
                             "prepend": "",
                             "append": ""
                         },
@@ -3260,8 +3260,8 @@
                             "label": "Contact Button URL",
                             "name": "email_btn_url",
                             "aria-label": "",
-                            "type": "url",
-                            "instructions": "",
+                            "type": "text",
+                            "instructions": "Enter email address (e.g. support@waklertaustralia.com), mailto link, or page link (e.g. /contact/)",
                             "required": false,
                             "conditional_logic": false,
                             "wrapper": {
@@ -3269,8 +3269,8 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "mailto:orders@waklertaustralia.com.au",
-                            "placeholder": "mailto:orders@waklertaustralia.com.au"
+                            "default_value": "mailto:support@waklertaustralia.com",
+                            "placeholder": "mailto:support@waklertaustralia.com"
                         }
                     ],
                     "min": "",

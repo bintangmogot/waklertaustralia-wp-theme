@@ -53,3 +53,19 @@ function waklert_format_whatsapp_url($phone_or_url = null) {
     return 'https://wa.me/' . $clean;
 }
 
+/**
+ * Configure ACF JSON save and load paths for automatic sync
+ */
+add_filter('acf/settings/save_json', function($path) {
+    return get_stylesheet_directory() . '/acf-json';
+});
+
+add_filter('acf/settings/load_json', function($paths) {
+    $theme_json_dir = get_stylesheet_directory() . '/acf-json';
+    if (!in_array($theme_json_dir, $paths)) {
+        $paths[] = $theme_json_dir;
+    }
+    return $paths;
+});
+
+
