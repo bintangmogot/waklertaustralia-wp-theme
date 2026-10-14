@@ -661,3 +661,23 @@ function modmy_get_post_category($post_id) {
     return '';
 }
 
+// Disable comments on standard blog posts
+add_action('init', function () {
+    remove_post_type_support('post', 'comments');
+    remove_post_type_support('post', 'trackbacks');
+});
+
+add_filter('comments_open', function ($open, $post_id) {
+    if (get_post_type($post_id) === 'post') {
+        return false;
+    }
+    return $open;
+}, 10, 2);
+
+add_filter('pings_open', function ($open, $post_id) {
+    if (get_post_type($post_id) === 'post') {
+        return false;
+    }
+    return $open;
+}, 10, 2);
+

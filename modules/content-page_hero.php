@@ -19,10 +19,11 @@ if (is_home()) {
 }
 
 if (is_shop()) {
-    // Match the Direct shop header presentation without changing saved ACF values.
-    $title = 'Armodafinil Products';
-    $subtitle = 'Browse our current range and compare listed product details, pack sizes and prices.';
-    $eyebrow = 'Full catalogue';
+    $shop_page_id = function_exists('wc_get_page_id') ? wc_get_page_id('shop') : 0;
+    // Allow custom title/subtitle/eyebrow from ACF or fallback to shop page title
+    $title = get_sub_field('title') ?: ($shop_page_id ? get_the_title($shop_page_id) : 'Armodafinil Products');
+    $subtitle = get_sub_field('subtitle') ?: 'Browse our current range of genuine Armodafinil tablets with fast delivery across Australia.';
+    $eyebrow = get_sub_field('eyebrow') ?: 'Full catalogue';
 }
 
 if (is_home()) :

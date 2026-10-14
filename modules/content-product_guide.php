@@ -4,10 +4,8 @@
  * "Choosing the Right Modafinil"
  */
 
-// The shop archive gets a catalog-driven comparison. The existing ACF guide
-// remains stored and continues to render unchanged on every other page.
+// The shop page omits the product comparison section per user request.
 if (function_exists('is_shop') && is_shop()) {
-    get_template_part('modules/content', 'catalog_comparison');
     return;
 }
 

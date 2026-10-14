@@ -1776,12 +1776,21 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_page_hero_title_en",
-                            "label": "Title",
-                            "name": "title",
+                            "key": "field_page_hero_eyebrow_en",
+                            "label": "Eyebrow / Badge",
+                            "name": "eyebrow",
                             "type": "text",
                             "required": false,
-                            "default_value": "Buy Modafinil Online in Malaysia"
+                            "default_value": "Full catalogue"
+                        },
+                        {
+                            "key": "field_page_hero_title_en",
+                            "label": "Title (H1)",
+                            "name": "title",
+                            "type": "text",
+                            "instructions": "The main H1 heading for this page.",
+                            "required": false,
+                            "default_value": "Shop Armodafinil Products in Australia"
                         },
                         {
                             "key": "field_page_hero_subtitle_en",
@@ -1790,7 +1799,7 @@
                             "type": "textarea",
                             "rows": 3,
                             "required": false,
-                            "default_value": "Browse and buy genuine Modafinil tablets online from certified manufacturers. Fast Malaysia-wide delivery on all orders."
+                            "default_value": "Browse our current range of genuine Armodafinil tablets with fast delivery across Australia."
                         },
                         {
                             "key": "field_page_hero_bullets",
@@ -3579,6 +3588,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1791995768,
+    "modified": 1791997815,
     "local_file": "C:laragonwwwwaklertaustralia.com/wp-content/themes/waklertaustralia.com-wp/acf-json/group_page_modules.json"
 }

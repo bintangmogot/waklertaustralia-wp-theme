@@ -38,7 +38,7 @@ foreach ($sections as $index => $section) {
                 <h1 class="mt-5 font-heading text-4xl font-extrabold leading-tight tracking-tight text-foreground md:text-5xl lg:text-6xl">
                     <?php echo esc_html($title); ?>
                 </h1>
-                <?php if ($intro) : ?>
+                <?php if ($intro && !is_singular('post')) : ?>
                     <p class="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
                         <?php echo esc_html($intro); ?>
                     </p>

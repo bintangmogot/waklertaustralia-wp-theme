@@ -16,9 +16,9 @@ if (have_rows('modules', $shop_page_id)) {
         the_row();
         $layout = get_row_layout();
 
-        // Keep the Ordering SEO copy and FAQ content saved in ACF, but omit
-        // these sections from the shop archive presentation.
-        if (is_shop() && in_array($layout, ['seo_text', 'faqs'], true)) {
+        // Omit product comparison and guide sections from the shop page as requested.
+        // FAQ content is now displayed.
+        if (is_shop() && in_array($layout, ['product_guide', 'catalog_comparison', 'comparison', 'seo_text'], true)) {
             continue;
         }
 
@@ -32,10 +32,10 @@ if (have_rows('modules', $shop_page_id)) {
 <section class="bg-background pt-12 pb-6 text-center border-b border-border">
     <div class="container-site max-w-4xl">
         <h1 class="font-heading text-4xl font-extrabold tracking-tight md:text-5xl">
-            <?= "Buy Modafinil Online in Malaysia" ?>
+            <?= esc_html(woocommerce_page_title(false)) ?>
         </h1>
         <p class="mx-auto mt-3 max-w-2xl text-base leading-relaxed text-muted-foreground">
-            <?= "Browse and buy genuine Modafinil tablets online from certified manufacturers. Fast Malaysia-wide delivery on all orders." ?>
+            <?= "Browse and buy genuine Armodafinil tablets online in Australia. Fast Australia-wide delivery on all orders." ?>
         </p>
     </div>
 </section>

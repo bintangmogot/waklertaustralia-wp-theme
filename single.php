@@ -66,12 +66,6 @@ get_header();
                     <div class="prose prose-slate max-w-none prose-a:text-primary hover:prose-a:text-primary-dark prose-headings:font-heading prose-headings:font-bold">
                         <?php the_content(); ?>
                     </div>
-
-                    <?php if (comments_open() || get_comments_number()) : ?>
-                        <div class="mt-12 border-t border-border pt-8">
-                            <?php comments_template(); ?>
-                        </div>
-                    <?php endif; ?>
                 </div>
             </div>
         </article>
