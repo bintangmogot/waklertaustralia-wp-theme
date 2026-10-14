@@ -269,9 +269,9 @@ $faq_items     = is_array($faq_items) ? $faq_items : [];
                             </span>
                         </summary>
                         <?php if (!empty($faq['a'])): ?>
-                            <p class="mt-4 pr-8 text-sm leading-relaxed text-slate-600">
-                                <?= nl2br(esc_html($faq['a'])) ?>
-                            </p>
+                            <div class="mt-4 pr-8 text-sm leading-relaxed text-slate-600 prose prose-sm max-w-none [&_a]:text-primary [&_a]:underline [&_a]:font-semibold hover:[&_a]:text-primary-dark">
+                                <?= wp_kses_post(wpautop($faq['a'])) ?>
+                            </div>
                         <?php endif; ?>
                     </details>
                 <?php endforeach; ?>

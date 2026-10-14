@@ -29,27 +29,27 @@ $desc = get_sub_field('description') ?: "See why thousands of Australian workers
         <div class="overflow-x-auto">
             <table class="w-full text-sm">
                 <thead>
-                    <tr class="border-b-2 border-stone-200">
-                        <th class="text-left py-4 px-4 font-heading font-bold text-ink">
+                    <tr class="bg-[#0C4161] text-white">
+                        <th class="text-left py-4 px-4 font-heading font-bold text-white rounded-tl-xl">
                             <?= "Feature" ?>
                         </th>
-                        <th class="text-center py-4 px-4 font-heading font-bold text-primary-dark bg-primary-softer rounded-t-lg">Waklert</th>
-                        <th class="text-center py-4 px-4 font-heading font-bold text-ink/70">
+                        <th class="text-center py-4 px-4 font-heading font-bold text-white bg-[#082C42]">Waklert</th>
+                        <th class="text-center py-4 px-4 font-heading font-bold text-white">
                             <?= "Coffee" ?>
                         </th>
-                        <th class="text-center py-4 px-4 font-heading font-bold text-ink/70">
+                        <th class="text-center py-4 px-4 font-heading font-bold text-white rounded-tr-xl">
                             <?= "Energy Drink" ?>
                         </th>
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-stone-100">
+                <tbody class="divide-y divide-border">
                     <?php 
                     if(have_rows('rows')): 
                         while(have_rows('rows')): the_row();
                     ?>
                     <tr>
-                        <td class="py-3.5 px-4 font-medium text-ink/90"><?= get_sub_field('feature') ?></td>
-                        <td class="py-3.5 px-4 text-center bg-primary-softer/50 font-semibold text-primary-dark"><?= get_sub_field('modafinil') ?></td>
+                        <td class="py-3.5 px-4 font-medium text-foreground"><?= get_sub_field('feature') ?></td>
+                        <td class="py-3.5 px-4 text-center bg-surface font-semibold text-foreground"><?= get_sub_field('modafinil') ?></td>
                         <td class="py-3.5 px-4 text-center text-muted-foreground"><?= get_sub_field('coffee') ?></td>
                         <td class="py-3.5 px-4 text-center text-muted-foreground"><?= get_sub_field('energy') ?></td>
                     </tr>
@@ -64,8 +64,8 @@ $desc = get_sub_field('description') ?: "See why thousands of Australian workers
                         foreach($default_rows as $r):
                     ?>
                     <tr>
-                        <td class="py-3.5 px-4 font-medium text-ink/90"><?= $r[0] ?></td>
-                        <td class="py-3.5 px-4 text-center bg-primary-softer/50 font-semibold text-primary-dark"><?= $r[3] ?></td>
+                        <td class="py-3.5 px-4 font-medium text-foreground"><?= $r[0] ?></td>
+                        <td class="py-3.5 px-4 text-center bg-surface font-semibold text-foreground"><?= $r[3] ?></td>
                         <td class="py-3.5 px-4 text-center text-muted-foreground"><?= $r[5] ?></td>
                         <td class="py-3.5 px-4 text-center text-muted-foreground"><?= $r[7] ?></td>
                     </tr>

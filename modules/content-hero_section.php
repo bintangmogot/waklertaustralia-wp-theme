@@ -81,35 +81,35 @@ if (empty($mobile_img_url)) {
         <div class="container-site relative z-10 w-full py-12 md:py-20 lg:py-24">
             <div class="max-w-lg lg:max-w-[460px] xl:max-w-[510px]">
                 <?php if ($location): ?>
-                <span class="mb-5 md:mb-6 inline-flex items-center gap-2 md:gap-2.5 rounded-full border border-white/20 bg-white/10 px-4.5 py-2 md:px-5 md:py-2.5 text-[13px] sm:text-[14px] md:text-[15px] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-sm">
+                <span class="mb-5 md:mb-6 inline-flex items-center gap-2 md:gap-2.5 rounded-full border border-white/20 bg-white/10 px-4.5 py-2 md:px-5 md:py-2.5 text-xs sm:text-sm md:text-[0.9375rem] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-sm">
                     <span aria-hidden="true" class="h-2 w-2 md:h-2.5 md:w-2.5 rounded-full bg-accent"></span>
                     <?= esc_html($location) ?>
                 </span>
                 <?php endif; ?>
 
-                <h1 class="mb-4 md:mb-5 font-heading text-[32px] sm:text-[40px] md:text-[45px] lg:text-[50px] xl:text-[55px] font-extrabold leading-[1.1] md:leading-[1.08] tracking-tight text-white">
+                <h1 class="mb-4 md:mb-5 font-heading text-3xl sm:text-4xl md:text-[2.75rem] lg:text-[3.125rem] xl:text-[3.4375rem] font-extrabold leading-[1.1] md:leading-[1.08] tracking-tight text-white">
                     <?= esc_html($heading) ?>
                 </h1>
 
                 <?php if ($subtitle): ?>
-                <p class="mb-5 md:mb-6 font-heading text-[20px] sm:text-[24px] md:text-[26px] lg:text-[30px] font-semibold leading-snug text-white/90">
+                <p class="mb-5 md:mb-6 font-heading text-xl sm:text-2xl md:text-[1.625rem] lg:text-[1.875rem] font-semibold leading-snug text-white/90">
                     <?= esc_html($subtitle) ?>
                 </p>
                 <?php endif; ?>
 
                 <?php if ($description): ?>
-                <p class="mb-7 md:mb-8 text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22.5px] leading-relaxed text-white/80">
+                <p class="mb-7 md:mb-8 text-base sm:text-lg md:text-[1.25rem] lg:text-[1.4rem] leading-relaxed text-white/80">
                     <?= esc_html($description) ?>
                 </p>
                 <?php endif; ?>
 
                 <div class="flex flex-wrap gap-3 md:gap-3.5">
-                    <a href="<?= esc_url($primary_link) ?>" class="inline-flex items-center gap-2 md:gap-2.5 rounded-full bg-accent px-7 py-3.5 md:px-8 md:py-4 text-sm sm:text-base md:text-[17px] font-extrabold uppercase tracking-wide text-accent-foreground shadow-pill transition hover:-translate-y-0.5 hover:brightness-105 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
+                    <a href="<?= esc_url($primary_link) ?>" class="inline-flex items-center gap-2 md:gap-2.5 rounded-full bg-accent px-7 py-3.5 md:px-8 md:py-4 text-sm sm:text-base md:text-[1.0625rem] font-extrabold uppercase tracking-wide text-accent-foreground shadow-pill transition hover:-translate-y-0.5 hover:brightness-105 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
                         <?= esc_html($primary_btn) ?>
                         <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-5 md:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
                     </a>
                     <?php if ($secondary_btn !== '' && $secondary_link !== ''): ?>
-                        <a href="<?= esc_url($secondary_link) ?>" class="inline-flex items-center rounded-full border border-white/30 bg-white/10 px-6 py-3.5 md:px-7 md:py-4 text-sm sm:text-base md:text-[17px] font-bold uppercase tracking-wide text-white transition hover:bg-white/20">
+                        <a href="<?= esc_url($secondary_link) ?>" class="inline-flex items-center rounded-full border border-white/30 bg-white/10 px-6 py-3.5 md:px-7 md:py-4 text-sm sm:text-base md:text-[1.0625rem] font-bold uppercase tracking-wide text-white transition hover:bg-white/20">
                             <?= esc_html($secondary_btn) ?>
                         </a>
                     <?php endif; ?>

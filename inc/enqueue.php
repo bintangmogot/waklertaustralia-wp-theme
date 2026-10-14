@@ -47,6 +47,11 @@ function modmy_enqueue_scripts() {
             .prose tbody tr:hover td { background-color: var(--color-primary-softer); transition: background-color 0.15s ease; }
             .prose tbody tr:hover td:first-child { background-color: oklch(0.95 0.022 220); }
             .prose tbody tr:last-child td, .prose tbody tr:last-child th { border-bottom: none; }
+            details .prose a, .faq-answer a, details summary + div a { color: var(--color-primary); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
+            details .prose a:hover, .faq-answer a:hover, details summary + div a:hover { color: var(--color-primary-dark); text-decoration-thickness: 2px; }
+            details .prose p { margin-top: 0.5rem; margin-bottom: 0.5rem; }
+            details .prose > :first-child { margin-top: 0; }
+            details .prose > :last-child { margin-bottom: 0; }
         ";
         wp_add_inline_style('modmy-style', $custom_css);
     } else {

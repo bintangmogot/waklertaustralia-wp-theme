@@ -37,8 +37,8 @@ $link_url = get_sub_field('link_url') ?: home_url('/faq');
                     </h3>
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-primary flex-shrink-0 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
                 </summary>
-                <div class="px-5 pb-5 text-sm text-muted-foreground leading-relaxed border-t border-stone-100 pt-4">
-                    <?= get_sub_field('answer') ?>
+                <div class="px-5 pb-5 text-sm text-muted-foreground leading-relaxed border-t border-stone-100 pt-4 prose prose-sm max-w-none [&_a]:text-primary [&_a]:underline [&_a]:font-semibold hover:[&_a]:text-primary-dark">
+                    <?= wp_kses_post(wpautop(get_sub_field('answer'))) ?>
                 </div>
             </details>
             <?php 
@@ -58,8 +58,8 @@ $link_url = get_sub_field('link_url') ?: home_url('/faq');
                     </h3>
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-primary flex-shrink-0 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
                 </summary>
-                <div class="px-5 pb-5 text-sm text-muted-foreground leading-relaxed border-t border-stone-100 pt-4">
-                    <?= $f[2] ?>
+                <div class="px-5 pb-5 text-sm text-muted-foreground leading-relaxed border-t border-stone-100 pt-4 prose prose-sm max-w-none [&_a]:text-primary [&_a]:underline [&_a]:font-semibold hover:[&_a]:text-primary-dark">
+                    <?= wp_kses_post(wpautop($f[2])) ?>
                 </div>
             </details>
             <?php 

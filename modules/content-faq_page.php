@@ -40,8 +40,8 @@ if (!$eyebrow && !$heading && !$desc && !$categories && !$cta_heading && !$cta_d
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
                             </svg>
                         </summary>
-                        <div class="border-t border-border px-5 pb-5 pt-4 text-sm leading-relaxed text-muted-foreground">
-                            <?= wp_kses_post($item['answer'] ?? '') ?>
+                        <div class="border-t border-border px-5 pb-5 pt-4 text-sm leading-relaxed text-muted-foreground prose prose-sm max-w-none [&_a]:text-primary [&_a]:underline [&_a]:font-semibold hover:[&_a]:text-primary-dark">
+                            <?= wp_kses_post(wpautop($item['answer'] ?? '')) ?>
                         </div>
                     </details>
                     <?php endforeach; ?>

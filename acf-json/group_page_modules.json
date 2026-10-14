@@ -805,8 +805,8 @@
                                     "label": "Answer",
                                     "name": "answer",
                                     "aria-label": "",
-                                    "type": "textarea",
-                                    "instructions": "",
+                                    "type": "wysiwyg",
+                                    "instructions": "Enter the answer. You can format text, add bullet points, and insert links (e.g. to Shipping Policy).",
                                     "required": false,
                                     "conditional_logic": false,
                                     "wrapper": {
@@ -814,12 +814,13 @@
                                         "class": "",
                                         "id": ""
                                     },
-                                    "rows": 4,
                                     "default_value": "",
-                                    "new_lines": "",
-                                    "maxlength": "",
                                     "placeholder": "",
-                                    "parent_repeater": "field_faq_items"
+                                    "parent_repeater": "field_faq_items",
+                                    "tabs": "all",
+                                    "toolbar": "full",
+                                    "media_upload": 0,
+                                    "delay": 0
                                 }
                             ]
                         },
@@ -2289,8 +2290,12 @@
                                             "key": "field_faq_a_en",
                                             "label": "Answer",
                                             "name": "answer",
-                                            "type": "textarea",
-                                            "rows": 3,
+                                            "type": "wysiwyg",
+                                            "instructions": "Enter the answer. You can format text, add bullet points, and insert links (e.g. to Shipping Policy).",
+                                            "tabs": "all",
+                                            "toolbar": "full",
+                                            "media_upload": 0,
+                                            "delay": 0,
                                             "parent_repeater": "field_faq_cat_items"
                                         }
                                     ]
@@ -2926,7 +2931,12 @@
                                     "key": "field_dsg_0264c9a81f",
                                     "label": "Answer",
                                     "name": "a",
-                                    "type": "textarea"
+                                    "type": "wysiwyg",
+                                    "instructions": "Enter the answer. You can format text, add bullet points, and insert links (e.g. to Shipping Policy).",
+                                    "tabs": "all",
+                                    "toolbar": "full",
+                                    "media_upload": 0,
+                                    "delay": 0
                                 }
                             ]
                         },
@@ -3569,6 +3579,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1791221615,
+    "modified": 1791995768,
     "local_file": "C:laragonwwwwaklertaustralia.com/wp-content/themes/waklertaustralia.com-wp/acf-json/group_page_modules.json"
 }
