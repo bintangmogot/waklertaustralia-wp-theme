@@ -136,16 +136,16 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
                 <?= esc_html__('Payment Accepted', 'waklert') ?>
             </h3>
             <div class="mt-4 flex items-center gap-6 flex-wrap">
-                <img src="<?= esc_url(get_theme_file_uri('/assets/images/commonwealth-white.png')) ?>" alt="Commonwealth Bank" class="object-contain h-8 sm:h-9 w-auto">
-                <img src="<?= esc_url(get_theme_file_uri('/assets/images/osko-white.png')) ?>" alt="Osko by BPAY" class="object-contain h-7 sm:h-8 w-auto">
-                <img src="<?= esc_url(get_theme_file_uri('/assets/images/payid-white.png')) ?>" alt="PayID" class="object-contain h-7 sm:h-8 w-auto">
+                <img src="<?= esc_url(get_theme_file_uri('/assets/images/commonwealth-white.png')) ?>" alt="Commonwealth Bank" class="footer-payment-logo object-contain h-8 sm:h-9 w-auto" style="height: 34px; max-height: 36px; width: auto; max-width: 160px; object-fit: contain;">
+                <img src="<?= esc_url(get_theme_file_uri('/assets/images/osko-white.png')) ?>" alt="Osko by BPAY" class="footer-payment-logo object-contain h-7 sm:h-8 w-auto" style="height: 28px; max-height: 32px; width: auto; max-width: 125px; object-fit: contain;">
+                <img src="<?= esc_url(get_theme_file_uri('/assets/images/payid-white.png')) ?>" alt="PayID" class="footer-payment-logo object-contain h-7 sm:h-8 w-auto" style="height: 28px; max-height: 32px; width: auto; max-width: 90px; object-fit: contain;">
             </div>
 
             <h3 class="text-[15px] font-bold text-white mb-4 mt-8" style="color: #fff !important">
                 <?= esc_html__('Shipping Partner', 'waklert') ?>
             </h3>
             <div class="mt-4 flex items-center">
-                <img src="<?= esc_url(get_theme_file_uri('/assets/images/australia-post.png')) ?>" alt="Australia Post" class="object-contain h-10 sm:h-11 w-auto">
+                <img src="<?= esc_url(get_theme_file_uri('/assets/images/australia-post.png')) ?>" alt="Australia Post" class="footer-shipping-logo object-contain h-10 sm:h-11 w-auto" style="height: 40px; max-height: 44px; width: auto; max-width: 150px; object-fit: contain;">
             </div>
         </div>
 

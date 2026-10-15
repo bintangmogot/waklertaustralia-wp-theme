@@ -212,11 +212,17 @@ function waklert_the_logo($classes = 'h-10 sm:h-11 w-auto max-w-[220px] sm:max-w
     $site_name = esc_attr(get_bloginfo('name') ?: 'Waklert Australia');
 
     if ($logo_src) {
+        $logo_classes = trim($classes . ' site-logo-img site-logo-img--' . esc_attr($location));
+        $inline_styles = $location === 'mobile'
+            ? 'height: 36px; max-height: 36px; width: auto; max-width: 190px; object-fit: contain;'
+            : 'height: 44px; max-height: 44px; width: auto; max-width: 260px; object-fit: contain;';
+
         $img_html = sprintf(
-            '<img src="%s" alt="%s" class="%s" width="240" height="82" loading="%s" decoding="async" />',
+            '<img src="%s" alt="%s" class="%s" style="%s" width="240" height="82" loading="%s" decoding="async" />',
             esc_url($logo_src),
             $site_name,
-            esc_attr($classes),
+            esc_attr($logo_classes),
+            esc_attr($inline_styles),
             $location === 'header' ? 'eager' : 'lazy'
         );
 
