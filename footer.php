@@ -3,8 +3,15 @@
  * The template for displaying the footer
  */
 $footer_desc = get_field('footer_description', 'option') ?: "Waklert Australia provides clear information about a focused range of armodafinil products, ordering and delivery options.";
-$footer_address = get_field('location_text', 'option') ?: get_field('footer_address', 'option') ?: "Australia-wide online service";
-$footer_email = get_field('support_email', 'option') ?: get_field('footer_email', 'option') ?: "support@waklertaustralia.com";
+$footer_address = get_field('location_text', 'option') ?: get_field('footer_address', 'option') ?: "50 Holt Street, Surry Hills, 2010";
+$footer_email = get_field('support_email', 'option') ?: get_field('footer_email', 'option') ?: "orders@waklertaustralia.com.au";
+$footer_contact_heading = get_field('footer_contact_heading', 'option') ?: "Get in Touch with Us";
+$working_days = get_field('working_days', 'option') ?: "Monday to Sunday";
+$office_hours = get_field('office_hours', 'option') ?: "24/7";
+$payments_heading = get_field('footer_payments_heading', 'option') ?: "Payment Accepted";
+$shipping_heading = get_field('footer_shipping_heading', 'option') ?: "Shipping Partner";
+$payment_images = get_field('footer_payment_images', 'option');
+$shipping_images = get_field('footer_shipping_images', 'option');
 $copyright_text = get_field('copyright_text', 'option') ?: sprintf('© %s Waklert Australia. All rights reserved.', date('Y'));
 $footer_menu_locations = get_nav_menu_locations();
 $footer_menus = [];
@@ -102,13 +109,13 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
             </p>
 
             <h3 class="text-[15px] font-bold text-white mb-4 mt-8" style="color: #fff !important">
-                <?= "Get in Touch with Us" ?>
+                <?= esc_html($footer_contact_heading) ?>
             </h3>
 
             <div class="mt-4 space-y-3.5">
                 <div class="flex items-start gap-3 text-[13px] text-ink-foreground/80">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mt-0.5 text-[#FFD700] shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                    <span><?= $footer_address ?></span>
+                    <span><?= esc_html($footer_address) ?></span>
                 </div>
                 <div class="flex items-center gap-3 text-[13px] text-ink-foreground/80">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#FFD700] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -124,28 +131,66 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
                 </div>
                 <div class="flex items-center gap-3 text-[13px] text-ink-foreground/80">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#FFD700] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-                    <span><strong class="text-white font-medium">Working Days:</strong> <?= esc_html(get_field('working_days', 'option') ?: 'Monday to Sunday') ?></span>
+                    <span><strong class="text-white font-medium">Working Days:</strong> <?= esc_html($working_days) ?></span>
                 </div>
                 <div class="flex items-center gap-3 text-[13px] text-ink-foreground/80">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#FFD700] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                    <span><strong class="text-white font-medium">Office Hours:</strong> <?= esc_html(get_field('office_hours', 'option') ?: '24/7') ?></span>
+                    <span><strong class="text-white font-medium">Office Hours:</strong> <?= esc_html($office_hours) ?></span>
                 </div>
             </div>
 
             <h3 class="text-[15px] font-bold text-white mb-4 mt-8" style="color: #fff !important">
-                <?= esc_html__('Payment Accepted', 'waklert') ?>
+                <?= esc_html($payments_heading) ?>
             </h3>
             <div class="mt-4 flex items-center gap-6 flex-wrap">
-                <img src="<?= esc_url(get_theme_file_uri('/assets/images/commonwealth-white.png')) ?>" alt="Commonwealth Bank" class="footer-payment-logo object-contain h-8 sm:h-9 w-auto" style="height: 34px; max-height: 36px; width: auto; max-width: 160px; object-fit: contain;">
-                <img src="<?= esc_url(get_theme_file_uri('/assets/images/osko-white.png')) ?>" alt="Osko by BPAY" class="footer-payment-logo object-contain h-7 sm:h-8 w-auto" style="height: 28px; max-height: 32px; width: auto; max-width: 125px; object-fit: contain;">
-                <img src="<?= esc_url(get_theme_file_uri('/assets/images/payid-white.png')) ?>" alt="PayID" class="footer-payment-logo object-contain h-7 sm:h-8 w-auto" style="height: 28px; max-height: 32px; width: auto; max-width: 90px; object-fit: contain;">
+                <?php if (!empty($payment_images) && is_array($payment_images)) : ?>
+                    <?php foreach ($payment_images as $pay) : 
+                        $img_src = '';
+                        if (!empty($pay['image'])) {
+                            if (is_array($pay['image'])) {
+                                $img_src = $pay['image']['url'] ?? '';
+                            } elseif (is_numeric($pay['image'])) {
+                                $img_src = wp_get_attachment_image_url($pay['image'], 'full');
+                            } elseif (is_string($pay['image'])) {
+                                $img_src = $pay['image'];
+                            }
+                        }
+                        if (!$img_src) continue;
+                        $alt_val = !empty($pay['alt_text']) ? $pay['alt_text'] : (is_array($pay['image']) ? ($pay['image']['alt'] ?? $pay['image']['title'] ?? 'Payment Method') : 'Payment Method');
+                    ?>
+                        <img src="<?= esc_url($img_src) ?>" alt="<?= esc_attr($alt_val) ?>" class="footer-payment-logo object-contain h-8 sm:h-9 w-auto" style="height: 34px; max-height: 36px; width: auto; max-width: 160px; object-fit: contain;">
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <img src="<?= esc_url(get_theme_file_uri('/assets/images/commonwealth-white.png')) ?>" alt="Commonwealth Bank" class="footer-payment-logo object-contain h-8 sm:h-9 w-auto" style="height: 34px; max-height: 36px; width: auto; max-width: 160px; object-fit: contain;">
+                    <img src="<?= esc_url(get_theme_file_uri('/assets/images/osko-white.png')) ?>" alt="Osko by BPAY" class="footer-payment-logo object-contain h-7 sm:h-8 w-auto" style="height: 28px; max-height: 32px; width: auto; max-width: 125px; object-fit: contain;">
+                    <img src="<?= esc_url(get_theme_file_uri('/assets/images/payid-white.png')) ?>" alt="PayID" class="footer-payment-logo object-contain h-7 sm:h-8 w-auto" style="height: 28px; max-height: 32px; width: auto; max-width: 90px; object-fit: contain;">
+                <?php endif; ?>
             </div>
 
             <h3 class="text-[15px] font-bold text-white mb-4 mt-8" style="color: #fff !important">
-                <?= esc_html__('Shipping Partner', 'waklert') ?>
+                <?= esc_html($shipping_heading) ?>
             </h3>
-            <div class="mt-4 flex items-center">
-                <img src="<?= esc_url(get_theme_file_uri('/assets/images/australia-post.png')) ?>" alt="Australia Post" class="footer-shipping-logo object-contain h-10 sm:h-11 w-auto" style="height: 40px; max-height: 44px; width: auto; max-width: 150px; object-fit: contain;">
+            <div class="mt-4 flex items-center gap-6 flex-wrap">
+                <?php if (!empty($shipping_images) && is_array($shipping_images)) : ?>
+                    <?php foreach ($shipping_images as $ship) : 
+                        $img_src = '';
+                        if (!empty($ship['image'])) {
+                            if (is_array($ship['image'])) {
+                                $img_src = $ship['image']['url'] ?? '';
+                            } elseif (is_numeric($ship['image'])) {
+                                $img_src = wp_get_attachment_image_url($ship['image'], 'full');
+                            } elseif (is_string($ship['image'])) {
+                                $img_src = $ship['image'];
+                            }
+                        }
+                        if (!$img_src) continue;
+                        $alt_val = !empty($ship['alt_text']) ? $ship['alt_text'] : (is_array($ship['image']) ? ($ship['image']['alt'] ?? $ship['image']['title'] ?? 'Shipping Partner') : 'Shipping Partner');
+                    ?>
+                        <img src="<?= esc_url($img_src) ?>" alt="<?= esc_attr($alt_val) ?>" class="footer-shipping-logo object-contain h-10 sm:h-11 w-auto" style="height: 40px; max-height: 44px; width: auto; max-width: 150px; object-fit: contain;">
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <img src="<?= esc_url(get_theme_file_uri('/assets/images/australia-post.png')) ?>" alt="Australia Post" class="footer-shipping-logo object-contain h-10 sm:h-11 w-auto" style="height: 40px; max-height: 44px; width: auto; max-width: 150px; object-fit: contain;">
+                <?php endif; ?>
             </div>
         </div>
 

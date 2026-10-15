@@ -4,150 +4,635 @@
     "fields": [
         {
             "key": "field_tab_header_top_bar",
-            "label": "Header & Top Bar",
+            "label": "Header &amp; Top Bar",
             "name": "",
+            "aria-label": "",
             "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_site_logo",
             "label": "Site Logo",
             "name": "site_logo",
+            "aria-label": "",
             "type": "image",
             "instructions": "Upload or choose the primary website logo. If empty, the WordPress Customizer logo will be used.",
             "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "return_format": "id",
             "preview_size": "medium",
-            "library": "all"
+            "library": "all",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": ""
         },
         {
             "key": "field_topbar_left",
             "label": "Top Bar Left Text",
             "name": "topbar_left",
+            "aria-label": "",
             "type": "text",
-            "default_value": "7-10 Day Delivery | Australia-wide dispatch"
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "7-10 Day Delivery | Australia-wide dispatch",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_topbar_center",
             "label": "Top Bar Center Text",
             "name": "topbar_center",
+            "aria-label": "",
             "type": "text",
-            "default_value": "Free Shipping on Orders Over $299"
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Free Shipping on Orders Over $299",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_whatsapp_number",
             "label": "Top Bar Right Phone Number",
             "name": "whatsapp_number",
+            "aria-label": "",
             "type": "text",
+            "instructions": "Used by the top bar call icon and WhatsApp contact links.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "+61 488 841 833",
-            "instructions": "Used by the top bar call icon and WhatsApp contact links."
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_waklert_tab_social",
             "label": "Social Media",
             "name": "",
+            "aria-label": "",
             "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_waklert_facebook_link",
             "label": "Facebook Link",
             "name": "facebook_link",
-            "type": "url"
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
         },
         {
             "key": "field_waklert_instagram_link",
             "label": "Instagram Link",
             "name": "instagram_link",
-            "type": "url"
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
         },
         {
             "key": "field_waklert_twitter_link",
             "label": "Twitter Link",
             "name": "twitter_link",
-            "type": "url"
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
         },
         {
             "key": "field_waklert_tab_contact",
             "label": "Contact Info",
             "name": "",
+            "aria-label": "",
             "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_waklert_support_email",
             "label": "Support Email",
             "name": "support_email",
+            "aria-label": "",
             "type": "email",
+            "instructions": "Used for the support contact address.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "support@waklertaustralia.com",
-            "instructions": "Used for the support contact address."
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_waklert_working_days",
+            "label": "Working Days",
+            "name": "working_days",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Displayed in the footer contact section (e.g. 'Monday to Sunday').",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Monday to Sunday",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_waklert_office_hours",
+            "label": "Office Hours",
+            "name": "office_hours",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Displayed in the footer contact section (e.g. '24\/7').",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "24\/7",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_tab_footer",
             "label": "Footer",
             "name": "",
+            "aria-label": "",
             "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_footer_logo",
             "label": "Footer Logo",
             "name": "footer_logo",
+            "aria-label": "",
             "type": "image",
             "instructions": "Optional footer logo. If empty, the primary site logo will be used.",
             "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "return_format": "id",
             "preview_size": "medium",
-            "library": "all"
+            "library": "all",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": ""
         },
         {
             "key": "field_footer_description",
             "label": "Footer Description",
             "name": "footer_description",
+            "aria-label": "",
             "type": "textarea",
-            "default_value": "Waklert Australia provides clear information about a focused range of armodafinil products, ordering and delivery options."
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Waklert Australia provides clear information about a focused range of armodafinil products, ordering and delivery options.",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": "",
+            "rows": ""
         },
         {
             "key": "field_waklert_ssl_text",
             "label": "SSL Text",
             "name": "ssl_text",
-            "type": "text"
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_waklert_dispatch_text",
             "label": "Dispatch Text",
             "name": "dispatch_text",
-            "type": "text"
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_waklert_checkout_text",
             "label": "Checkout Text",
             "name": "checkout_text",
-            "type": "text"
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_waklert_location_text",
-            "label": "Location Text",
+            "label": "Location \/ Address Text",
             "name": "location_text",
+            "aria-label": "",
             "type": "text",
-            "default_value": "Australia-wide online service"
+            "instructions": "Address displayed in the footer contact block.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "50 Holt Street, Surry Hills, 2010",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_waklert_footer_contact_heading",
+            "label": "Contact Section Heading",
+            "name": "footer_contact_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Heading displayed above contact information in footer.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Get in Touch with Us",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_waklert_footer_payments_heading",
+            "label": "Payment Accepted Heading",
+            "name": "footer_payments_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Heading displayed above payment method logos in footer.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Payment Accepted",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_waklert_footer_payment_images",
+            "label": "Payment Accepted Logos",
+            "name": "footer_payment_images",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Upload accepted payment logos (e.g. Commonwealth Bank, Osko, PayID). If left empty, default Australian bank and payment logos are displayed.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "button_label": "Add Payment Method",
+            "min": 0,
+            "max": 0,
+            "rows_per_page": 20,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_waklert_payment_img",
+                    "label": "Logo Image",
+                    "name": "image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "min_width": 0,
+                    "min_height": 0,
+                    "min_size": 0,
+                    "max_width": 0,
+                    "max_height": 0,
+                    "max_size": 0,
+                    "mime_types": "",
+                    "parent_repeater": "field_waklert_footer_payment_images"
+                },
+                {
+                    "key": "field_waklert_payment_alt",
+                    "label": "Label \/ Alt Text",
+                    "name": "alt_text",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Alt text or name (e.g. 'Commonwealth Bank', 'Osko', 'PayID').",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_waklert_footer_payment_images"
+                }
+            ]
+        },
+        {
+            "key": "field_waklert_footer_shipping_heading",
+            "label": "Shipping Partner Heading",
+            "name": "footer_shipping_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Heading displayed above shipping partner logos in footer.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Shipping Partner",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_waklert_footer_shipping_images",
+            "label": "Shipping Partner Logos",
+            "name": "footer_shipping_images",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Upload shipping partner logos (e.g. Australia Post). If left empty, default Australia Post logo is displayed.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "button_label": "Add Shipping Partner",
+            "min": 0,
+            "max": 0,
+            "rows_per_page": 20,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_waklert_shipping_img",
+                    "label": "Logo Image",
+                    "name": "image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "min_width": 0,
+                    "min_height": 0,
+                    "min_size": 0,
+                    "max_width": 0,
+                    "max_height": 0,
+                    "max_size": 0,
+                    "mime_types": "",
+                    "parent_repeater": "field_waklert_footer_shipping_images"
+                },
+                {
+                    "key": "field_waklert_shipping_alt",
+                    "label": "Label \/ Alt Text",
+                    "name": "alt_text",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Alt text or name (e.g. 'Australia Post').",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_waklert_footer_shipping_images"
+                }
+            ]
         },
         {
             "key": "field_waklert_copyright_text",
             "label": "Copyright Text",
             "name": "copyright_text",
-            "type": "text"
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_disclaimer",
             "label": "Disclaimer",
             "name": "disclaimer_en",
+            "aria-label": "",
             "type": "textarea",
-            "default_value": "This website provides general information only and is not a substitute for advice from a qualified health professional."
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "This website provides general information only and is not a substitute for advice from a qualified health professional.",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": "",
+            "rows": ""
         }
     ],
     "location": [
@@ -167,5 +652,9 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1700000000
+    "show_in_rest": false,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1792030280
 }
