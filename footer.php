@@ -132,7 +132,7 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
                 </div>
             </div>
 
-            <h3 class="text-[15px] font-bold text-[#00D2BA] mb-4 mt-8">
+            <h3 class="text-[15px] font-bold text-white mb-4 mt-8" style="color: #fff !important">
                 <?= esc_html__('Payment Accepted', 'waklert') ?>
             </h3>
             <div class="mt-4 flex items-center gap-6 flex-wrap">
@@ -141,7 +141,7 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
                 <img src="<?= esc_url(get_theme_file_uri('/assets/images/payid-white.png')) ?>" alt="PayID" class="object-contain h-7 sm:h-8 w-auto">
             </div>
 
-            <h3 class="text-[15px] font-bold text-[#00D2BA] mb-4 mt-8">
+            <h3 class="text-[15px] font-bold text-white mb-4 mt-8" style="color: #fff !important">
                 <?= esc_html__('Shipping Partner', 'waklert') ?>
             </h3>
             <div class="mt-4 flex items-center">
