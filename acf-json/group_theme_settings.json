@@ -106,6 +106,46 @@
             "append": ""
         },
         {
+            "key": "field_whatsapp_button_text",
+            "label": "WhatsApp Button Text",
+            "name": "whatsapp_button_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Button text for the WhatsApp button in the header (e.g. 'WhatsApp' or 'Chat on WhatsApp').",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "WhatsApp",
+            "maxlength": "",
+            "placeholder": "WhatsApp",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_whatsapp_button_url",
+            "label": "WhatsApp Button URL / Link",
+            "name": "whatsapp_button_url",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Optional custom URL or link for the WhatsApp button (e.g. https://wa.me/61488841833 or phone number). If left blank, it defaults to the WhatsApp number above.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "https://wa.me/61488841833",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_waklert_tab_social",
             "label": "Social Media",
             "name": "",
