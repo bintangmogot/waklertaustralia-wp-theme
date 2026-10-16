@@ -2190,6 +2190,37 @@
                             "new_lines": ""
                         },
                         {
+                            "key": "field_blog_sec_posts",
+                            "label": "Select Specific Posts (Optional)",
+                            "name": "selected_posts",
+                            "aria-label": "",
+                            "type": "relationship",
+                            "instructions": "Choose and order specific articles to display. Leave empty to automatically display the latest published posts.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "post_type": [
+                                "post"
+                            ],
+                            "taxonomy": [],
+                            "filters": [
+                                "search",
+                                "taxonomy"
+                            ],
+                            "return_format": "object",
+                            "min": 0,
+                            "max": 12,
+                            "elements": [
+                                "featured_image"
+                            ],
+                            "bidirectional": 0,
+                            "bidirectional_target": []
+                        },
+                        {
                             "key": "field_blog_sec_posts_count",
                             "label": "Number of Posts",
                             "name": "posts_count",
@@ -2339,6 +2370,37 @@
                             "rows": 2,
                             "placeholder": "",
                             "new_lines": ""
+                        },
+                        {
+                            "key": "field_blog_grid_posts",
+                            "label": "Select Specific Posts (Optional)",
+                            "name": "selected_posts",
+                            "aria-label": "",
+                            "type": "relationship",
+                            "instructions": "Choose and order specific articles to display. Leave empty to automatically display the latest published posts.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "post_type": [
+                                "post"
+                            ],
+                            "taxonomy": [],
+                            "filters": [
+                                "search",
+                                "taxonomy"
+                            ],
+                            "return_format": "object",
+                            "min": 0,
+                            "max": 24,
+                            "elements": [
+                                "featured_image"
+                            ],
+                            "bidirectional": 0,
+                            "bidirectional_target": []
                         },
                         {
                             "key": "field_blog_grid_posts_count",

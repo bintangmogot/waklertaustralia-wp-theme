@@ -68,17 +68,38 @@ if (empty($button_url)) {
     $button_url = $blog_page_id ? get_permalink($blog_page_id) : home_url('/blog');
 }
 
-// Fetch published articles
-$args = [
-    'post_type'      => 'post',
-    'posts_per_page' => $posts_count,
-    'post_status'    => 'publish',
-    'orderby'        => 'date',
-    'order'          => 'DESC',
-];
+// Check for admin-chosen posts (via ACF relationship field)
+$selected_posts = get_sub_field('selected_posts');
+if (empty($selected_posts) && isset($row['selected_posts'])) {
+    $selected_posts = $row['selected_posts'];
+}
+if (empty($selected_posts)) {
+    $selected_posts = get_sub_field('posts') ?: ($row['posts'] ?? null);
+}
 
-$blog_query = new WP_Query($args);
-$articles = $blog_query->posts;
+$articles = [];
+if (!empty($selected_posts) && is_array($selected_posts)) {
+    foreach ($selected_posts as $item) {
+        $p = is_numeric($item) ? get_post($item) : $item;
+        if ($p && is_object($p) && isset($p->ID) && $p->post_status === 'publish') {
+            $articles[] = $p;
+        }
+    }
+}
+
+// Fallback: If no posts selected manually, query latest posts based on posts_count
+if (empty($articles)) {
+    $args = [
+        'post_type'      => 'post',
+        'posts_per_page' => $posts_count,
+        'post_status'    => 'publish',
+        'orderby'        => 'date',
+        'order'          => 'DESC',
+    ];
+
+    $blog_query = new WP_Query($args);
+    $articles = $blog_query->posts;
+}
 ?>
 <section class="section-padding bg-slate-50/70 border-t border-slate-100" data-testid="blog-section">
     <div class="container-custom">
