@@ -83,7 +83,7 @@
 
 <!-- Header -->
 <header class="sticky top-0 z-50 w-full border-b border-border bg-background shadow-sm">
-    <div class="container-site relative flex h-[68px] items-center justify-between gap-4">
+    <div class="container-site relative flex h-[68px] sm:h-[72px] items-center justify-between gap-4">
 
         <!-- Mobile Menu Toggle -->
         <div class="flex items-center lg:hidden">
@@ -94,7 +94,7 @@
 
         <!-- Logo -->
         <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 lg:static lg:translate-x-0 lg:translate-y-0">
-            <?php waklert_the_logo('h-10 sm:h-11 w-auto max-w-[220px] sm:max-w-[260px] object-contain', 'header'); ?>
+            <?php waklert_the_logo('h-12 sm:h-[53px] w-auto max-w-[264px] sm:max-w-[312px] object-contain', 'header'); ?>
         </div>
 
         <!-- Desktop Nav -->
@@ -129,7 +129,7 @@
     <!-- Mobile Nav Drawer -->
     <div id="mobile-menu-drawer" class="fixed inset-y-0 left-0 z-50 w-[85%] max-w-sm transform overflow-y-auto bg-background transition-transform duration-300 ease-in-out lg:hidden -translate-x-full">
         <div class="flex h-[68px] items-center justify-between border-b border-border px-6">
-            <?php waklert_the_logo('h-9 w-auto max-w-[190px] object-contain', 'mobile'); ?>
+            <?php waklert_the_logo('h-11 w-auto max-w-[228px] object-contain', 'mobile'); ?>
             <button type="button" aria-label="Close menu" id="mobile-menu-close" class="rounded-md p-2 text-foreground/70 transition-colors hover:text-primary">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
             </button>

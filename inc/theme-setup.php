@@ -206,7 +206,7 @@ function waklert_get_logo_url($location = 'header') {
  * @param string $classes CSS classes for the img tag
  * @param string $location 'header', 'mobile', or 'footer'
  */
-function waklert_the_logo($classes = 'h-10 sm:h-11 w-auto max-w-[220px] sm:max-w-[260px] object-contain', $location = 'header') {
+function waklert_the_logo($classes = 'h-12 sm:h-[53px] w-auto max-w-[264px] sm:max-w-[312px] object-contain', $location = 'header') {
     $logo_src = waklert_get_logo_url($location);
     $home_url = esc_url(home_url('/'));
     $site_name = esc_attr(get_bloginfo('name') ?: 'Waklert Australia');
@@ -214,11 +214,11 @@ function waklert_the_logo($classes = 'h-10 sm:h-11 w-auto max-w-[220px] sm:max-w
     if ($logo_src) {
         $logo_classes = trim($classes . ' site-logo-img site-logo-img--' . esc_attr($location));
         $inline_styles = $location === 'mobile'
-            ? 'height: 36px; max-height: 36px; width: auto; max-width: 190px; object-fit: contain;'
-            : 'height: 44px; max-height: 44px; width: auto; max-width: 260px; object-fit: contain;';
+            ? 'height: 43px; max-height: 43px; width: auto; max-width: 228px; object-fit: contain;'
+            : 'height: 53px; max-height: 53px; width: auto; max-width: 312px; object-fit: contain;';
 
         $img_html = sprintf(
-            '<img src="%s" alt="%s" class="%s" style="%s" width="240" height="82" loading="%s" decoding="async" />',
+            '<img src="%s" alt="%s" class="%s" style="%s" width="288" height="98" loading="%s" decoding="async" />',
             esc_url($logo_src),
             $site_name,
             esc_attr($logo_classes),

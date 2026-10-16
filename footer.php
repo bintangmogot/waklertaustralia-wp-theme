@@ -98,7 +98,7 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
     <div class="container-site relative z-10 grid gap-10 py-16 md:grid-cols-2 lg:grid-cols-5">
         <!-- Column 1 -->
         <div class="lg:col-span-2 pr-0 lg:pr-8">
-            <?php waklert_the_logo('h-10 sm:h-11 w-auto max-w-[220px] sm:max-w-[260px] object-contain', 'footer'); ?>
+            <?php waklert_the_logo('h-12 sm:h-[53px] w-auto max-w-[264px] sm:max-w-[312px] object-contain', 'footer'); ?>
             <p class="mt-5 text-[13px] leading-relaxed text-ink-foreground/80">
                 <?= $footer_desc ?>
             </p>
