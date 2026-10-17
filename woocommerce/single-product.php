@@ -585,11 +585,11 @@ $product_specs = [
 <?php if ($product->is_in_stock() && !empty($variations)): ?>
     <?php $sticky_default_variation = $variations[$default_variation_index] ?? null; ?>
     <div id="sticky-product-bar" class="fixed inset-x-0 bottom-0 z-40 translate-y-full border-t-2 border-dashed border-sky-300/80 bg-white/95 opacity-0 shadow-[0_-8px_24px_rgba(12,65,97,0.12)] backdrop-blur-md transition duration-300 pointer-events-none" aria-hidden="true" inert>
-        <div class="container-site flex items-center justify-between gap-2 py-2 sm:gap-4 sm:py-3 sm:pr-20 md:pr-24 lg:pr-28">
+        <div class="container-site flex items-center justify-between gap-2 py-2 sm:gap-4 sm:py-3">
             <!-- Left: Product info / Price -->
-            <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+            <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
                 <?php if ($image !== ''): ?>
-                    <img src="<?= esc_url($image) ?>" alt="" class="hidden min-[420px]:block sm:block h-9 w-9 sm:h-12 sm:w-12 shrink-0 rounded-xl border-2 border-dashed border-sky-200 bg-white object-contain p-1">
+                    <img src="<?= esc_url($image) ?>" alt="" class="hidden min-[420px]:block sm:block h-10 w-10 sm:h-12 sm:w-12 shrink-0 rounded-xl border-2 border-dashed border-sky-200 bg-white object-contain p-1">
                 <?php endif; ?>
                 <div class="min-w-0">
                     <p class="hidden sm:block truncate text-xs font-extrabold text-slate-900 sm:text-sm max-w-[200px] md:max-w-none"><?= esc_html($product->get_name()) ?></p>
@@ -601,9 +601,9 @@ $product_specs = [
                 </div>
             </div>
 
-            <!-- Center: Add to Cart Button (Centered on BOTH mobile and desktop) -->
-            <div class="flex-1 flex justify-center items-center px-1 sm:px-2">
-                <button id="sticky-product-submit" type="button" class="inline-flex shrink-0 items-center justify-center gap-1.5 sm:gap-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 px-4 py-2 sm:px-8 sm:py-3 text-xs sm:text-sm font-black uppercase tracking-wider text-white shadow-md hover:shadow-lg transition-all active:scale-[0.98]">
+            <!-- Right: Add to Cart Button (Right-aligned, but shifted toward center away from side cart) -->
+            <div class="flex-1 flex justify-center sm:justify-end items-center px-1 sm:px-0">
+                <button id="sticky-product-submit" type="button" class="w-full max-w-[190px] sm:max-w-none sm:w-auto inline-flex shrink-0 items-center justify-center gap-1.5 sm:gap-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 px-3.5 py-2.5 sm:px-7 sm:py-3 text-xs sm:text-sm font-black uppercase tracking-wider text-white shadow-md hover:shadow-lg transition-all active:scale-[0.98]">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
@@ -611,16 +611,8 @@ $product_specs = [
                 </button>
             </div>
 
-            <!-- Mobile Spacer: Dedicated clearance for floating Side Cart launcher (.xoo-wsc-basket) on mobile -->
-            <div class="w-14 shrink-0 sm:hidden" aria-hidden="true"></div>
-
-            <!-- Desktop Right: Balanced Safe Spacer so Button is centered and away from floating side cart -->
-            <div class="hidden sm:block shrink-0 min-w-[120px] lg:min-w-[160px] text-right">
-                <span class="inline-flex items-center gap-1.5 text-xs font-bold text-slate-600 bg-sky-50 px-3 py-1 rounded-full border border-sky-200">
-                    <svg class="w-3.5 h-3.5 text-emerald-600 shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                    <span>In Stock</span>
-                </span>
-            </div>
+            <!-- Clearance Spacer: Shifts button toward the center and leaves dedicated clearance for floating side cart -->
+            <div class="w-14 sm:w-20 md:w-32 lg:w-44 xl:w-52 shrink-0" aria-hidden="true"></div>
         </div>
     </div>
 <?php endif; ?>
