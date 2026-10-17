@@ -1351,6 +1351,32 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_cs_theme_style",
+                            "label": "Theme Style",
+                            "name": "theme_style",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Select brand styling for this section.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "navy": "Pacific Navy (Signature Dark)",
+                                "light": "Clean Light (2-Tone Pattern)"
+                            },
+                            "default_value": "navy",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 1,
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
                             "key": "field_cs_tag",
                             "label": "Tag",
                             "name": "tag",
