@@ -105,7 +105,7 @@ function modmy_render_blog_loop() {
                                     </div>
 
                                     <!-- Title -->
-                                    <h2 class="font-heading font-black text-lg sm:text-xl text-[#0c4161] group-hover:text-sky-900 transition-colors line-clamp-2 mb-3 leading-snug">
+                                    <h2 class="font-heading font-black text-xl sm:text-2xl text-[#0c4161] group-hover:text-sky-900 transition-colors line-clamp-2 mb-3 leading-snug">
                                         <a href="<?php echo esc_url($permalink); ?>">
                                             <?php the_title(); ?>
                                         </a>
