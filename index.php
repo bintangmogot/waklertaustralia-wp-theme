@@ -56,11 +56,11 @@ function modmy_render_blog_loop() {
                         <article id="post-<?php the_ID(); ?>" <?php post_class('group flex flex-col h-full bg-white border-2 border-dashed border-sky-300/80 hover:border-[#0c4161] rounded-2xl overflow-hidden shadow-xs hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 ease-out'); ?>>
                             <!-- Thumbnail / Visual Media Area -->
                             <a href="<?php echo esc_url($permalink); ?>" class="block relative aspect-[16/10] overflow-hidden bg-slate-900 focus:outline-hidden" tabindex="-1" aria-hidden="true">
-                                <?php if (has_post_thumbnail()) : ?>
-                                    <?php the_post_thumbnail('large', [
+                                <?php if (has_post_thumbnail($post_id)) : ?>
+                                    <?php echo get_the_post_thumbnail($post_id, 'large', [
                                         'class' => 'w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105',
                                         'loading' => 'lazy',
-                                        'alt' => esc_attr(get_the_title())
+                                        'alt' => esc_attr(get_the_title($post_id))
                                     ]); ?>
                                 <?php else : ?>
                                     <!-- Branded Fallback Visual -->

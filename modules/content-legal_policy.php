@@ -150,9 +150,9 @@ foreach ($sections as $index => $section) {
 
             <!-- Policy Sections (Single Unified Box) -->
             <div class="min-w-0 space-y-8">
-                <?php if (has_post_thumbnail()) : ?>
+                <?php if (has_post_thumbnail(get_the_ID())) : ?>
                     <figure class="overflow-hidden rounded-2xl border-2 border-dashed border-sky-200/80 bg-white p-1.5 shadow-sm">
-                        <?php the_post_thumbnail('large', ['class' => 'h-auto w-full object-cover rounded-xl shadow-xs', 'loading' => 'eager']); ?>
+                        <?php echo get_the_post_thumbnail(get_the_ID(), 'large', ['class' => 'h-auto w-full object-cover rounded-xl shadow-xs', 'loading' => 'eager']); ?>
                     </figure>
                 <?php endif; ?>
 

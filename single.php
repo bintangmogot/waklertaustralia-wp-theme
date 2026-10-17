@@ -70,9 +70,9 @@ get_header();
 
                 <div class="bg-background min-h-[50vh] pt-6 pb-16 md:pt-8 md:pb-20">
                     <div class="container-site max-w-3xl">
-                        <?php if (has_post_thumbnail()) : ?>
+                        <?php if (has_post_thumbnail(get_the_ID())) : ?>
                             <figure class="mb-8 overflow-hidden rounded-2xl border-2 border-dashed border-sky-200/80 bg-white p-1.5 shadow-sm">
-                                <?php the_post_thumbnail('large', ['class' => 'h-auto w-full object-cover rounded-xl shadow-xs', 'loading' => 'eager']); ?>
+                                <?php echo get_the_post_thumbnail(get_the_ID(), 'large', ['class' => 'h-auto w-full object-cover rounded-xl shadow-xs', 'loading' => 'eager']); ?>
                             </figure>
                         <?php endif; ?>
 
