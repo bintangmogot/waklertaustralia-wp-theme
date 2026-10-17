@@ -56,13 +56,31 @@
 <?php wp_body_open(); ?>
 
 <!-- Trust Bar -->
-<div class="w-full bg-[#0c4161] text-white text-[13px]" data-testid="trust-bar">
-    <div class="container-site flex h-9 items-center justify-between gap-2 px-4 font-medium tracking-wide sm:gap-4">
+<div class="relative overflow-hidden w-full bg-gradient-to-r from-[#082a3f] via-[#0c4161] to-[#0f4f75] bg-pattern-dots-dark border-b border-sky-400/20 text-white text-[13px]" data-testid="trust-bar">
+    <div class="container-site relative z-10 flex h-9 items-center justify-between gap-2 px-4 font-medium tracking-wide sm:gap-4">
         <?php $topbar_left = get_field('topbar_left', 'option') ?: '7-10 Day Delivery | Australia-wide dispatch'; ?>
-        <p class="min-w-0 flex-1 truncate text-[10px] opacity-90 sm:flex-none sm:overflow-visible sm:text-[13px] sm:whitespace-nowrap"><?php echo esc_html($topbar_left); ?></p>
+        <p class="min-w-0 flex-1 truncate text-[10px] opacity-95 sm:flex-none sm:overflow-visible sm:text-[13px] sm:whitespace-nowrap flex items-center gap-1.5">
+            <!-- Colorful Delivery Van SVG -->
+            <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="1" y="5" width="14" height="11" rx="1.5" fill="#38BDF8" fill-opacity="0.3" stroke="#38BDF8" stroke-width="1.5"/>
+                <path d="M15 8h4.5l3.5 4.5v3.5h-8V8z" fill="#F59E0B" stroke="#F59E0B" stroke-width="1.5"/>
+                <circle cx="6" cy="18" r="2.5" fill="#FFFFFF" stroke="#0C4161" stroke-width="1.5"/>
+                <circle cx="18" cy="18" r="2.5" fill="#FFFFFF" stroke="#F59E0B" stroke-width="1.5"/>
+                <circle cx="6" cy="18" r="1" fill="#0C4161"/>
+                <circle cx="18" cy="18" r="1" fill="#F59E0B"/>
+                <path d="M17 11h3" stroke="#FFFFFF" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <span><?php echo esc_html($topbar_left); ?></span>
+        </p>
 
         <?php $topbar_center = get_field('topbar_center', 'option') ?: 'Free Shipping on Orders Over $299'; ?>
-        <p class="hidden md:block opacity-90"><?php echo esc_html($topbar_center); ?></p>
+        <p class="hidden md:flex items-center gap-1.5 opacity-95 text-amber-300 font-semibold">
+            <!-- Colorful Star SVG -->
+            <svg class="w-4 h-4 text-amber-400" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+            <span><?php echo esc_html($topbar_center); ?></span>
+        </p>
 
         <div class="flex shrink-0 items-center">
             <?php
@@ -73,8 +91,9 @@
             }
             $tel_phone = '+' . $clean_phone;
             ?>
-            <a href="tel:<?php echo esc_attr($tel_phone); ?>" aria-label="Call <?php echo esc_attr($support_phone); ?>" class="inline-flex shrink-0 items-center gap-1 text-[10px] text-white/80 transition-colors hover:text-white sm:gap-1.5 sm:text-[13px]">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/><path d="M14.05 2a9 9 0 0 1 8 7.94"/><path d="M14.05 6A5 5 0 0 1 18 10"/></svg>
+            <a href="tel:<?php echo esc_attr($tel_phone); ?>" aria-label="Call <?php echo esc_attr($support_phone); ?>" class="inline-flex shrink-0 items-center gap-1.5 text-[10px] text-white/90 transition-colors hover:text-white sm:text-[13px] font-semibold bg-white/10 hover:bg-white/20 px-2.5 py-1 rounded-full border border-white/20">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-emerald-300"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/><path d="M14.05 2a9 9 0 0 1 8 7.94"/><path d="M14.05 6A5 5 0 0 1 18 10"/></svg>
                 <span class="whitespace-nowrap"><?php echo esc_html($support_phone); ?></span>
             </a>
         </div>
@@ -82,18 +101,18 @@
 </div>
 
 <!-- Header -->
-<header class="sticky top-0 z-50 w-full border-b border-border bg-background shadow-sm">
+<header class="sticky top-0 z-50 w-full border-b-2 border-dashed border-sky-200/80 bg-white/95 backdrop-blur-md shadow-sm transition-all">
     <div class="container-site relative flex h-[68px] sm:h-[72px] items-center justify-between gap-4">
 
         <!-- Mobile Menu Toggle -->
         <div class="flex items-center lg:hidden">
-            <button type="button" aria-label="Menu" id="mobile-menu-open" class="rounded-md p-2 -ml-2 text-foreground/70 transition-colors hover:text-primary">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            <button type="button" aria-label="Menu" id="mobile-menu-open" class="rounded-xl p-2.5 -ml-1 text-[#0c4161] bg-sky-50 border-2 border-dashed border-sky-300/80 hover:bg-sky-100 hover:border-[#0c4161] transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
             </button>
         </div>
 
         <!-- Logo -->
-        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 lg:static lg:translate-x-0 lg:translate-y-0">
+        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 lg:static lg:translate-x-0 lg:translate-y-0 transition-transform duration-300 hover:scale-[1.02]">
             <?php waklert_the_logo('h-12 sm:h-[53px] w-auto max-w-[264px] sm:max-w-[312px] object-contain', 'header'); ?>
         </div>
 
@@ -103,7 +122,7 @@
             wp_nav_menu([
                 'theme_location' => 'primary',
                 'container'      => false,
-                'menu_class'     => 'flex items-center gap-1',
+                'menu_class'     => 'flex items-center gap-1 font-semibold text-slate-700',
                 'fallback_cb'    => false,
                 'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
             ]);
@@ -117,37 +136,39 @@
             $whatsapp_raw  = get_field('whatsapp_button_url', 'option') ?: get_field('whatsapp_number', 'option');
             $whatsapp      = function_exists('waklert_format_whatsapp_url') ? waklert_format_whatsapp_url($whatsapp_raw) : esc_url($whatsapp_raw ?: home_url('/contact/'));
             ?>
-            <a href="<?= esc_url($whatsapp) ?>" target="_blank" rel="noopener noreferrer" class="hidden items-center gap-2 rounded-full bg-[#0c4161] px-4 py-2 text-sm font-semibold text-white shadow-pill transition-colors hover:bg-[#082c42] sm:inline-flex">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4 shrink-0"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.67-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-                <?= esc_html($whatsapp_text) ?>
+            <a href="<?= esc_url($whatsapp) ?>" target="_blank" rel="noopener noreferrer" class="hidden items-center gap-2 rounded-full bg-gradient-to-r from-[#0c4161] to-[#125883] px-4 py-2 text-sm font-bold text-white shadow-sm border border-sky-400/30 transition-all hover:shadow-md hover:-translate-y-0.5 hover:from-[#09324c] hover:to-[#0c4161] sm:inline-flex">
+                <span class="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500 text-white shadow-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.67-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                </span>
+                <span><?= esc_html($whatsapp_text) ?></span>
             </a>
             <?= do_shortcode('[xoo_wsc_cart]') ?>
         </div>
     </div>
 
     <!-- Mobile Nav Overlay -->
-    <div id="mobile-menu-overlay" class="fixed inset-0 z-50 hidden bg-black/40 backdrop-blur-sm lg:hidden" aria-hidden="true"></div>
+    <div id="mobile-menu-overlay" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm lg:hidden transition-opacity" aria-hidden="true"></div>
 
     <!-- Mobile Nav Drawer -->
-    <div id="mobile-menu-drawer" class="fixed inset-y-0 left-0 z-50 w-[85%] max-w-sm transform overflow-y-auto bg-background transition-transform duration-300 ease-in-out lg:hidden -translate-x-full">
-        <div class="flex h-[68px] items-center justify-between border-b border-border px-6">
+    <div id="mobile-menu-drawer" class="fixed inset-y-0 left-0 z-50 w-[85%] max-w-sm transform overflow-y-auto bg-gradient-to-b from-[#f8fafc] via-[#f0f6fa] to-[#eef5fa] bg-pattern-dots transition-transform duration-300 ease-in-out lg:hidden -translate-x-full shadow-2xl">
+        <div class="flex h-[68px] items-center justify-between border-b-2 border-dashed border-sky-200/80 bg-white/90 px-6 backdrop-blur">
             <?php waklert_the_logo('h-11 w-auto max-w-[228px] object-contain', 'mobile'); ?>
-            <button type="button" aria-label="Close menu" id="mobile-menu-close" class="rounded-md p-2 text-foreground/70 transition-colors hover:text-primary">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            <button type="button" aria-label="Close menu" id="mobile-menu-close" class="rounded-xl p-2 text-[#0c4161] bg-sky-50 border border-dashed border-sky-300 hover:bg-sky-100 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
             </button>
         </div>
 
-        <nav class="flex flex-col border-b border-border py-4 mobile-nav">
+        <nav class="flex flex-col border-b-2 border-dashed border-sky-200/80 py-4 px-4 mobile-nav">
             <?php
             wp_nav_menu([
                 'theme_location' => 'mobile',
                 'container'      => false,
-                'menu_class'     => 'flex flex-col',
+                'menu_class'     => 'flex flex-col space-y-1',
                 'fallback_cb'    => function() {
                     wp_nav_menu([
                         'theme_location' => 'primary',
                         'container'      => false,
-                        'menu_class'     => 'flex flex-col',
+                        'menu_class'     => 'flex flex-col space-y-1',
                         'fallback_cb'    => false,
                         'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
                     ]);
@@ -158,18 +179,36 @@
         </nav>
 
         <div class="px-6 pt-5 pb-2">
-            <a href="<?= esc_url($whatsapp) ?>" target="_blank" rel="noopener noreferrer" class="flex w-full items-center justify-center gap-2 rounded-full bg-[#0c4161] px-5 py-3 text-sm font-semibold text-white shadow-pill transition-colors hover:bg-[#082c42]">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4 shrink-0"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.67-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-                <?= esc_html($whatsapp_text) ?>
+            <a href="<?= esc_url($whatsapp) ?>" target="_blank" rel="noopener noreferrer" class="flex w-full items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-[#0c4161] to-[#125883] px-5 py-3.5 text-sm font-bold text-white shadow-md transition-all hover:shadow-lg hover:from-[#09324c] hover:to-[#0c4161]">
+                <span class="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500 text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.67-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                </span>
+                <span><?= esc_html($whatsapp_text) ?></span>
             </a>
         </div>
 
-        <div class="mx-6 mb-8 mt-6 rounded-2xl border border-border bg-surface p-5">
-            <h3 class="mb-2 text-xs font-extrabold uppercase tracking-[0.16em] text-primary-dark">Need a hand?</h3>
-            <p class="mb-3 text-sm leading-relaxed text-muted-foreground">Find clear information about products, ordering and delivery.</p>
-            <a href="<?= esc_url(home_url('/faq/')) ?>" class="inline-flex items-center gap-2 text-sm font-bold text-primary-dark hover:text-primary">
-                Visit the FAQ
-                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        <!-- 2-Tone Dashed Help Card in Mobile Drawer -->
+        <div class="mx-6 mb-8 mt-4 rounded-3xl border-2 border-dashed border-sky-300/80 bg-white overflow-hidden shadow-sm transition-all hover:shadow-md">
+            <div class="p-5">
+                <div class="flex items-center gap-3 mb-2.5">
+                    <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-50 text-amber-600 border border-amber-200">
+                        <!-- Colorful Help Life Ring SVG -->
+                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="9" stroke="#F59E0B" stroke-width="2"/>
+                            <circle cx="12" cy="12" r="4" stroke="#0C4161" stroke-width="2"/>
+                            <path d="M4.93 4.93L8.5 8.5M15.5 15.5L19.07 19.07M4.93 19.07L8.5 15.5M15.5 8.5L19.07 4.93" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-extrabold uppercase tracking-widest text-amber-600">Support Desk</span>
+                        <h3 class="text-sm font-extrabold text-[#0c4161]">Need a hand?</h3>
+                    </div>
+                </div>
+                <p class="text-xs leading-relaxed text-slate-600">Find clear information about products, ordering and express Australia delivery.</p>
+            </div>
+            <a href="<?= esc_url(home_url('/faq/')) ?>" class="flex items-center justify-between bg-gradient-to-r from-[#0c4161] to-[#125883] px-5 py-3 text-xs font-bold text-white transition-colors hover:from-[#09324c] hover:to-[#0c4161]">
+                <span>Visit the FAQs</span>
+                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
             </a>
         </div>
     </div>

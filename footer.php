@@ -66,29 +66,60 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
 <footer class="relative isolate overflow-hidden bg-ink text-ink-foreground">
     <?php waklert_output_pattern_rings(); ?>
     <?php if (!is_front_page()): ?>
-    <!-- Badge strip -->
-    <div class="relative isolate overflow-hidden bg-primary py-8 text-primary-foreground [&_svg]:text-accent">
+    <!-- 2-Tone Dashed Inner Page Badge Strip -->
+    <div class="relative isolate overflow-hidden bg-gradient-to-r from-[#082a3f] via-[#0c4161] to-[#125883] bg-pattern-dots-dark py-10 text-white border-b-2 border-dashed border-sky-400/30">
         <?php waklert_output_pattern_rings(); ?>
-        <div class="container-site relative z-10 grid grid-cols-2 gap-6 text-center md:grid-cols-4">
+        <div class="container-site relative z-10 grid grid-cols-2 gap-4 md:grid-cols-4 sm:gap-6">
 
-            <div class="flex flex-col items-center gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
-                <span class="text-[11px] font-bold tracking-widest uppercase"><?= "Australia-wide delivery options" ?></span>
+            <!-- Card 1 -->
+            <div class="rounded-2xl border-2 border-dashed border-sky-300/40 bg-white/10 p-4 sm:p-5 backdrop-blur-sm flex flex-col items-center text-center gap-3 hover:bg-white/15 hover:-translate-y-1 transition-all">
+                <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-400/20 text-sky-300 border border-sky-300/40">
+                    <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="1" y="5" width="14" height="11" rx="1.5" fill="#38BDF8" fill-opacity="0.3" stroke="#38BDF8" stroke-width="1.8"/>
+                        <path d="M15 8h4.5l3.5 4.5v3.5h-8V8z" fill="#F59E0B" stroke="#F59E0B" stroke-width="1.8"/>
+                        <circle cx="6" cy="18" r="2.2" fill="#FFFFFF" stroke="#38BDF8" stroke-width="1.5"/>
+                        <circle cx="18" cy="18" r="2.2" fill="#FFFFFF" stroke="#F59E0B" stroke-width="1.5"/>
+                    </svg>
+                </div>
+                <span class="text-xs font-extrabold tracking-wider uppercase text-white leading-tight"><?= "Australia-Wide Delivery" ?></span>
+                <span class="text-[11px] text-sky-200 -mt-1.5">Express 7-10 days</span>
             </div>
 
-            <div class="flex flex-col items-center gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
-                <span class="text-[11px] font-bold tracking-widest uppercase"><?= "100% Genuine Products" ?></span>
+            <!-- Card 2 -->
+            <div class="rounded-2xl border-2 border-dashed border-sky-300/40 bg-white/10 p-4 sm:p-5 backdrop-blur-sm flex flex-col items-center text-center gap-3 hover:bg-white/15 hover:-translate-y-1 transition-all">
+                <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-400/20 text-amber-300 border border-amber-300/40">
+                    <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L4 6v6c0 5.25 3.4 10.15 8 11.35 4.6-1.2 8-6.1 8-11.35V6l-8-4z" fill="#F59E0B" fill-opacity="0.3" stroke="#F59E0B" stroke-width="1.8"/>
+                        <path d="M9 12l2 2 4-4" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <span class="text-xs font-extrabold tracking-wider uppercase text-white leading-tight"><?= "100% Genuine Sun Pharma" ?></span>
+                <span class="text-[11px] text-amber-200 -mt-1.5">Batch verified</span>
             </div>
 
-            <div class="flex flex-col items-center gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                <span class="text-[11px] font-bold tracking-widest uppercase"><?= "Shipping Insurance" ?></span>
+            <!-- Card 3 -->
+            <div class="rounded-2xl border-2 border-dashed border-sky-300/40 bg-white/10 p-4 sm:p-5 backdrop-blur-sm flex flex-col items-center text-center gap-3 hover:bg-white/15 hover:-translate-y-1 transition-all">
+                <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-400/20 text-emerald-300 border border-emerald-300/40">
+                    <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="9" fill="#34D399" fill-opacity="0.3" stroke="#34D399" stroke-width="1.8"/>
+                        <path d="M8.5 12.5l2.5 2.5 5-5" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <span class="text-xs font-extrabold tracking-wider uppercase text-white leading-tight"><?= "Transit Insurance" ?></span>
+                <span class="text-[11px] text-emerald-200 -mt-1.5">Guaranteed delivery</span>
             </div>
 
-            <div class="flex flex-col items-center gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                <span class="text-[11px] font-bold tracking-widest uppercase"><?= "Discreet Delivery" ?></span>
+            <!-- Card 4 -->
+            <div class="rounded-2xl border-2 border-dashed border-sky-300/40 bg-white/10 p-4 sm:p-5 backdrop-blur-sm flex flex-col items-center text-center gap-3 hover:bg-white/15 hover:-translate-y-1 transition-all">
+                <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-400/20 text-sky-300 border border-sky-300/40">
+                    <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="3" y="11" width="18" height="11" rx="2" fill="#38BDF8" fill-opacity="0.3" stroke="#38BDF8" stroke-width="1.8"/>
+                        <path d="M7 11V7a5 5 0 0110 0v4" stroke="#FFFFFF" stroke-width="1.8"/>
+                        <circle cx="12" cy="16" r="1.5" fill="#38BDF8"/>
+                    </svg>
+                </div>
+                <span class="text-xs font-extrabold tracking-wider uppercase text-white leading-tight"><?= "Discreet Delivery" ?></span>
+                <span class="text-[11px] text-sky-200 -mt-1.5">100% plain parcel</span>
             </div>
 
         </div>
@@ -124,28 +155,29 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
                     $whatsapp_raw = get_field('whatsapp_button_url', 'option') ?: get_field('whatsapp_number', 'option');
                     $whatsapp     = function_exists('waklert_format_whatsapp_url') ? waklert_format_whatsapp_url($whatsapp_raw) : esc_url($whatsapp_raw ?: home_url('/contact/'));
                     ?>
-                    <a href="<?= esc_url($whatsapp) ?>" target="_blank" rel="noopener noreferrer" class="inline-flex hover:opacity-80 transition-opacity">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[#25D366]" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.67-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                    <a href="<?= esc_url($whatsapp) ?>" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/40 px-2.5 py-0.5 text-xs font-bold text-emerald-300 hover:bg-emerald-500/30 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#25D366]" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.67-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                        <span>Chat Live</span>
                     </a>
                 </div>
                 <div class="flex items-center gap-3 text-[13px] text-ink-foreground/80">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#FFD700] shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-sky-400 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                     <a href="mailto:<?= esc_attr($footer_email) ?>" class="hover:text-white transition-colors"><?= esc_html($footer_email) ?></a>
                 </div>
                 <div class="flex items-center gap-3 text-[13px] text-ink-foreground/80">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#FFD700] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-amber-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
                     <span><strong class="text-white font-medium">Working Days:</strong> <?= esc_html($working_days) ?></span>
                 </div>
                 <div class="flex items-center gap-3 text-[13px] text-ink-foreground/80">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#FFD700] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-amber-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                     <span><strong class="text-white font-medium">Office Hours:</strong> <?= esc_html($office_hours) ?></span>
                 </div>
             </div>
 
-            <h3 class="text-[15px] font-bold text-white mb-4 mt-8" style="color: #fff !important">
+            <h3 class="text-[15px] font-bold text-white mb-3 mt-8" style="color: #fff !important">
                 <?= esc_html($payments_heading) ?>
             </h3>
-            <div class="mt-4 flex items-center gap-6 flex-wrap">
+            <div class="rounded-2xl border-2 border-dashed border-white/15 bg-white/5 p-4 flex items-center gap-5 flex-wrap">
                 <?php if (!empty($payment_images) && is_array($payment_images)) : ?>
                     <?php foreach ($payment_images as $pay) : 
                         $img_src = '';
@@ -161,19 +193,19 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
                         if (!$img_src) continue;
                         $alt_val = !empty($pay['alt_text']) ? $pay['alt_text'] : (is_array($pay['image']) ? ($pay['image']['alt'] ?? $pay['image']['title'] ?? 'Payment Method') : 'Payment Method');
                     ?>
-                        <img src="<?= esc_url($img_src) ?>" alt="<?= esc_attr($alt_val) ?>" class="footer-payment-logo object-contain h-8 sm:h-9 w-auto" style="height: 34px; max-height: 36px; width: auto; max-width: 160px; object-fit: contain;">
+                        <img src="<?= esc_url($img_src) ?>" alt="<?= esc_attr($alt_val) ?>" class="footer-payment-logo object-contain h-8 sm:h-9 w-auto hover:scale-105 transition-transform" style="height: 34px; max-height: 36px; width: auto; max-width: 160px; object-fit: contain;">
                     <?php endforeach; ?>
                 <?php else : ?>
-                    <img src="<?= esc_url(get_theme_file_uri('/assets/images/commonwealth-white.png')) ?>" alt="Commonwealth Bank" class="footer-payment-logo object-contain h-8 sm:h-9 w-auto" style="height: 34px; max-height: 36px; width: auto; max-width: 160px; object-fit: contain;">
-                    <img src="<?= esc_url(get_theme_file_uri('/assets/images/osko-white.png')) ?>" alt="Osko by BPAY" class="footer-payment-logo object-contain h-7 sm:h-8 w-auto" style="height: 28px; max-height: 32px; width: auto; max-width: 125px; object-fit: contain;">
-                    <img src="<?= esc_url(get_theme_file_uri('/assets/images/payid-white.png')) ?>" alt="PayID" class="footer-payment-logo object-contain h-7 sm:h-8 w-auto" style="height: 28px; max-height: 32px; width: auto; max-width: 90px; object-fit: contain;">
+                    <img src="<?= esc_url(get_theme_file_uri('/assets/images/commonwealth-white.png')) ?>" alt="Commonwealth Bank" class="footer-payment-logo object-contain h-8 sm:h-9 w-auto hover:scale-105 transition-transform" style="height: 34px; max-height: 36px; width: auto; max-width: 160px; object-fit: contain;">
+                    <img src="<?= esc_url(get_theme_file_uri('/assets/images/osko-white.png')) ?>" alt="Osko by BPAY" class="footer-payment-logo object-contain h-7 sm:h-8 w-auto hover:scale-105 transition-transform" style="height: 28px; max-height: 32px; width: auto; max-width: 125px; object-fit: contain;">
+                    <img src="<?= esc_url(get_theme_file_uri('/assets/images/payid-white.png')) ?>" alt="PayID" class="footer-payment-logo object-contain h-7 sm:h-8 w-auto hover:scale-105 transition-transform" style="height: 28px; max-height: 32px; width: auto; max-width: 90px; object-fit: contain;">
                 <?php endif; ?>
             </div>
 
-            <h3 class="text-[15px] font-bold text-white mb-4 mt-8" style="color: #fff !important">
+            <h3 class="text-[15px] font-bold text-white mb-3 mt-8" style="color: #fff !important">
                 <?= esc_html($shipping_heading) ?>
             </h3>
-            <div class="mt-4 flex items-center gap-6 flex-wrap">
+            <div class="rounded-2xl border-2 border-dashed border-white/15 bg-white/5 p-4 flex items-center gap-5 flex-wrap">
                 <?php if (!empty($shipping_images) && is_array($shipping_images)) : ?>
                     <?php foreach ($shipping_images as $ship) : 
                         $img_src = '';
@@ -189,10 +221,10 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
                         if (!$img_src) continue;
                         $alt_val = !empty($ship['alt_text']) ? $ship['alt_text'] : (is_array($ship['image']) ? ($ship['image']['alt'] ?? $ship['image']['title'] ?? 'Shipping Partner') : 'Shipping Partner');
                     ?>
-                        <img src="<?= esc_url($img_src) ?>" alt="<?= esc_attr($alt_val) ?>" class="footer-shipping-logo object-contain h-10 sm:h-11 w-auto" style="height: 40px; max-height: 44px; width: auto; max-width: 150px; object-fit: contain;">
+                        <img src="<?= esc_url($img_src) ?>" alt="<?= esc_attr($alt_val) ?>" class="footer-shipping-logo object-contain h-10 sm:h-11 w-auto hover:scale-105 transition-transform" style="height: 40px; max-height: 44px; width: auto; max-width: 150px; object-fit: contain;">
                     <?php endforeach; ?>
                 <?php else : ?>
-                    <img src="<?= esc_url(get_theme_file_uri('/assets/images/australia-post.png')) ?>" alt="Australia Post" class="footer-shipping-logo object-contain h-10 sm:h-11 w-auto" style="height: 40px; max-height: 44px; width: auto; max-width: 150px; object-fit: contain;">
+                    <img src="<?= esc_url(get_theme_file_uri('/assets/images/australia-post.png')) ?>" alt="Australia Post" class="footer-shipping-logo object-contain h-10 sm:h-11 w-auto hover:scale-105 transition-transform" style="height: 40px; max-height: 44px; width: auto; max-width: 150px; object-fit: contain;">
                 <?php endif; ?>
             </div>
         </div>

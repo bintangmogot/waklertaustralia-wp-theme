@@ -84,12 +84,12 @@ html {
   --radius: 0.75rem;
 
   /* Base surfaces */
-  --background: oklch(0.995 0.006 88);
+  --background: #ffffff;
   --foreground: oklch(0.235 0.035 248);
   --surface: oklch(0.972 0.014 84);
-  --card: oklch(1 0 0);
+  --card: #ffffff;
   --card-foreground: oklch(0.235 0.035 248);
-  --popover: oklch(1 0 0);
+  --popover: #ffffff;
   --popover-foreground: oklch(0.235 0.035 248);
 
   /* Dark blue is used for headers; warm tones for soft accents (no blue in body) */
@@ -2052,4 +2052,58 @@ footer .site-logo-img,
   width: auto !important;
   object-fit: contain !important;
 }
+
+/*
+ * ============================================================
+ * CREATIVE & VIBRANT UTILITIES (Patterns, Dashed Cards, Animations)
+ * ============================================================
+ */
+@keyframes floatSubtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes pulseSubtle {
+  0%, 100% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+
+.animate-float-subtle {
+  animation: floatSubtle 4s ease-in-out infinite;
+}
+
+.animate-pulse-subtle {
+  animation: pulseSubtle 3s ease-in-out infinite;
+}
+
+.bg-pattern-dots {
+  background-color: #f0f6fa;
+  background-image: radial-gradient(rgba(12, 65, 97, 0.09) 1.2px, transparent 1.2px), 
+                    linear-gradient(180deg, #f0f6fa 0%, #e9f2f8 50%, #f8fafc 100%);
+  background-size: 22px 22px, 100% 100%;
+}
+
+.bg-pattern-dots-dark {
+  background-color: #0c4161;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.14) 1.2px, transparent 1.2px), 
+                    linear-gradient(135deg, #082a3f 0%, #0c4161 50%, #125883 100%);
+  background-size: 24px 24px, 100% 100%;
+}
+
+.bg-pattern-grid {
+  background-image: linear-gradient(to right, rgba(12, 65, 97, 0.04) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(12, 65, 97, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
 

@@ -154,32 +154,34 @@ $product_specs = [
 ];
 ?>
 
-<div class="container-site py-4">
-    <nav class="flex items-center gap-2 text-sm text-slate-500" data-testid="breadcrumb">
-        <a href="<?= home_url('/') ?>"
-            class="hover:text-slate-900 transition-colors"><?= "Home" ?></a>
-        <span>/</span>
-        <a href="<?= wc_get_page_permalink('shop') ?>"
-            class="hover:text-slate-900 transition-colors"><?= "Products" ?></a>
-        <span>/</span>
-        <span class="text-slate-900"><?= esc_html($product->get_name()) ?></span>
-    </nav>
+<div class="relative overflow-hidden bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots py-6 md:py-10 border-b border-sky-100">
+    <div class="container-site">
+        <nav class="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-500 rounded-full border border-dashed border-sky-300/80 bg-white/90 px-4 py-1.5 shadow-sm backdrop-blur" data-testid="breadcrumb">
+            <a href="<?= home_url('/') ?>"
+                class="hover:text-[#0c4161] transition-colors font-bold"><?= "Home" ?></a>
+            <span class="text-sky-300">/</span>
+            <a href="<?= wc_get_page_permalink('shop') ?>"
+                class="hover:text-[#0c4161] transition-colors font-bold"><?= "Products" ?></a>
+            <span class="text-sky-300">/</span>
+            <span class="text-[#0c4161] font-extrabold"><?= esc_html($product->get_name()) ?></span>
+        </nav>
+    </div>
 </div>
 
-<section class="container-site pb-12">
+<section class="container-site py-10 md:py-14">
     <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
         <!-- Left Column: Image Area -->
         <div class="md:sticky md:top-24 md:self-start">
-            <div class="rounded-md overflow-hidden bg-white border border-slate-200 p-4 flex items-center justify-center"
+            <div class="rounded-3xl overflow-hidden bg-[radial-gradient(ellipse_at_center,rgba(186,230,253,0.35)_0%,rgba(255,255,255,0.95)_70%)] border-2 border-dashed border-sky-300/80 p-6 md:p-10 flex items-center justify-center relative shadow-sm group hover:shadow-xl hover:border-[#0c4161] transition-all duration-300"
                 data-testid="product-image">
                 <img src="<?= esc_url($image) ?>"
                     alt="<?= esc_attr($product->get_name()) ?>"
-                    class="max-w-full max-h-[500px] object-contain">
+                    class="max-w-full max-h-[460px] object-contain transition-transform duration-500 group-hover:scale-105">
             </div>
 
             <!-- ACF: Text under product image -->
             <?php if (!empty($text_under_image)): ?>
-                <div class="mt-8 prose prose-slate prose-sm max-w-none rounded-xl border border-slate-200 bg-white p-6">
+                <div class="mt-6 prose prose-slate prose-sm max-w-none rounded-3xl border-2 border-dashed border-sky-200/80 bg-white p-6 shadow-sm">
                     <?= $text_under_image ?>
                 </div>
             <?php endif; ?>
@@ -189,22 +191,23 @@ $product_specs = [
         <div>
             <div class="mb-3 flex flex-wrap items-center gap-2">
                 <?php if ($product_badge !== ''): ?>
-                    <span class="inline-flex rounded-full bg-primary-softer px-3 py-1 text-xs font-bold text-primary-dark">
+                    <span class="inline-flex items-center gap-1.5 rounded-full bg-amber-500 px-3.5 py-1 text-xs font-black uppercase tracking-wider text-white shadow-sm">
+                        <svg class="w-3.5 h-3.5 text-white fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                         <?= esc_html($product_badge) ?>
                     </span>
                 <?php endif; ?>
-                <span class="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-xs font-semibold text-primary-dark ring-1 ring-border">
-                    <span class="h-1.5 w-1.5 rounded-full <?= $product->is_in_stock() ? 'bg-primary' : 'bg-destructive' ?>" aria-hidden="true"></span>
-                    <?= esc_html($product->is_in_stock() ? 'In stock' : 'Out of stock') ?>
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1 text-xs font-bold text-[#0c4161] border border-dashed border-sky-300 shadow-sm">
+                    <span class="h-2 w-2 rounded-full <?= $product->is_in_stock() ? 'bg-emerald-500 animate-pulse' : 'bg-destructive' ?>" aria-hidden="true"></span>
+                    <?= esc_html($product->is_in_stock() ? 'In Stock — Ready to Dispatch' : 'Out of stock') ?>
                 </span>
             </div>
-            <h1 class="font-heading text-2xl md:text-3xl font-extrabold mb-3 text-slate-900"
+            <h1 class="font-heading text-2xl md:text-4xl font-extrabold mb-3 text-[#0c4161] tracking-tight"
                 data-testid="text-product-title">
                 <?= esc_html($product->get_name()) ?>
             </h1>
 
-            <div class="mb-4">
-                <span class="text-2xl font-extrabold text-primary" data-testid="text-product-price">
+            <div class="mb-5 flex flex-wrap items-baseline gap-3">
+                <span class="text-3xl md:text-4xl font-black text-[#0c4161]" data-testid="text-product-price">
                     <?php
                     if ($product->is_type('variable')) {
                         echo "From " . wp_kses_post(wc_price($product->get_variation_price('min')));
@@ -213,28 +216,27 @@ $product_specs = [
                     }
                     ?>
                 </span>
-        <?php if ($display_unit_price !== null): ?>
-            <p id="product-unit-price" class="mt-1 text-sm font-semibold text-primary-dark" aria-live="polite"
-                data-currency-symbol="<?= esc_attr($unit_currency_symbol) ?>"
-                data-decimals="<?= esc_attr($unit_price_decimals) ?>"
-                data-decimal-separator="<?= esc_attr($unit_price_decimal_separator) ?>"
-                data-thousand-separator="<?= esc_attr($unit_price_thousand_separator) ?>">
-                <?= esc_html($unit_price_lead . waklert_format_product_unit_price($display_unit_price) . '/tablet') ?>
-            </p>
-        <?php endif; ?>
+                <?php if ($display_unit_price !== null): ?>
+                    <span id="product-unit-price" class="inline-flex items-center rounded-full bg-emerald-50 border border-emerald-200 px-3 py-1 text-xs font-extrabold text-emerald-800" aria-live="polite"
+                        data-currency-symbol="<?= esc_attr($unit_currency_symbol) ?>"
+                        data-decimals="<?= esc_attr($unit_price_decimals) ?>"
+                        data-decimal-separator="<?= esc_attr($unit_price_decimal_separator) ?>"
+                        data-thousand-separator="<?= esc_attr($unit_price_thousand_separator) ?>">
+                        <?= esc_html($unit_price_lead . waklert_format_product_unit_price($display_unit_price) . '/tablet') ?>
+                    </span>
+                <?php endif; ?>
             </div>
 
-            <div class="prose prose-sm text-slate-600 mb-6 max-w-none" data-testid="text-product-description">
+            <div class="prose prose-sm text-slate-600 mb-6 max-w-none leading-relaxed" data-testid="text-product-description">
                 <?= wp_kses_post($summary) ?>
             </div>
 
             <?php if ($free_shipping_message !== '' && is_numeric($free_shipping_threshold) && (float) $free_shipping_threshold > 0): ?>
-                <div class="mb-6 flex items-center gap-3 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm font-medium text-ink">
-                    <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-accent" aria-hidden="true">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="9" />
-                            <path d="M12 11v5" />
-                            <path d="M12 8h.01" />
+                <div class="mb-6 flex items-center gap-3.5 rounded-2xl border-2 border-dashed border-amber-300 bg-gradient-to-r from-amber-50 via-orange-50/50 to-amber-50 p-4 shadow-sm">
+                    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-500 text-white shadow-sm" aria-hidden="true">
+                        <!-- Colorful Star/Gift SVG -->
+                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                         </svg>
                     </span>
                     <?php
@@ -243,7 +245,7 @@ $product_specs = [
                         ? 0
                         : wc_get_price_decimals();
                     ?>
-                    <span><?= esc_html($free_shipping_message) ?> <strong class="font-extrabold"><?= wp_kses_post(wc_price($free_shipping_threshold, ['decimals' => $free_shipping_decimals])) ?></strong></span>
+                    <span class="text-sm font-semibold text-slate-800"><?= esc_html($free_shipping_message) ?> <strong class="font-extrabold text-[#0c4161]"><?= wp_kses_post(wc_price($free_shipping_threshold, ['decimals' => $free_shipping_decimals])) ?></strong></span>
                 </div>
             <?php endif; ?>
 
@@ -251,7 +253,7 @@ $product_specs = [
 
                 <form id="product-purchase-form" class="mb-6 cart custom-variations-form" action="" method="post" enctype='multipart/form-data'>
 
-                    <div class="space-y-4" data-testid="variation-selector">
+                    <div class="space-y-5" data-testid="variation-selector">
                         <div>
                             <label
                                 class="text-sm font-bold text-foreground mb-2 block"><?= "Choose Quantity (prices in AUD)" ?></label>
@@ -292,18 +294,21 @@ $product_specs = [
                                     $sticky_price_label = wp_strip_all_tags(wc_price($price_num));
                                     ?>
                                     <button type="button"
-                                        class="variation-row-btn w-full flex items-center justify-between gap-4 px-4 py-3 rounded-md border text-left transition-colors <?php echo $is_active ? 'border-primary bg-primary-softer text-primary-dark active-row' : 'border-slate-200 bg-white text-slate-700 hover:border-primary/50'; ?>"
+                                        class="variation-row-btn w-full flex items-center justify-between gap-4 px-4 sm:px-5 py-3.5 rounded-2xl border-2 border-dashed text-left transition-all duration-200 <?php echo $is_active ? 'border-[#0c4161] bg-sky-50 text-[#0c4161] active-row shadow-sm' : 'border-sky-200/80 bg-white text-slate-700 hover:border-sky-400 hover:bg-sky-50/40'; ?>"
                                         data-id="<?= esc_attr($variation['variation_id']) ?>"
                                         data-qty="<?= esc_attr($qty_num) ?>" data-price="<?= esc_attr($price_num) ?>"
                                         data-pack-label="<?= esc_attr($display_qty_str) ?>" data-display-price="<?= esc_attr($sticky_price_label) ?>"
                                         data-per-tab="<?= esc_attr($per_tab_price ?? '') ?>" data-val="<?= esc_attr($qty_str) ?>">
 
-                                        <span class="text-sm font-semibold"><?= esc_html($display_qty_str) ?></span>
+                                        <span class="text-sm sm:text-base font-extrabold flex items-center gap-2">
+                                            <span class="h-2 w-2 rounded-full <?php echo $is_active ? 'bg-[#0c4161]' : 'bg-slate-300'; ?>"></span>
+                                            <?= esc_html($display_qty_str) ?>
+                                        </span>
                                         <span class="text-right shrink-0">
                                             <span
-                                                class="text-sm font-extrabold text-primary block leading-snug"><?= wp_kses_post(wc_price($price_num)) ?></span>
+                                                class="text-sm sm:text-base font-black text-[#0c4161] block leading-snug"><?= wp_kses_post(wc_price($price_num)) ?></span>
                                             <?php if ($per_tab_price !== null): ?>
-                                                <span class="text-[10px] text-emerald-600 block leading-none -mt-px">
+                                                <span class="text-[11px] text-emerald-800 font-bold bg-emerald-100 px-2 py-0.5 rounded-full inline-block mt-0.5">
                                                     <?= esc_html(waklert_format_product_unit_price($per_tab_price)) ?>/tablet
                                                 </span>
                                             <?php endif; ?>
@@ -316,13 +321,13 @@ $product_specs = [
                         <!-- Quantity Selector -->
                         <div class="flex items-center gap-3">
                             <label
-                                class="text-sm font-medium text-foreground"><?= "Quantity" ?></label>
-                            <div class="flex items-center border border-slate-200 rounded-md bg-white">
+                                class="text-sm font-bold text-[#0c4161]"><?= "Quantity" ?></label>
+                            <div class="flex items-center border-2 border-dashed border-sky-300 rounded-xl bg-white shadow-sm overflow-hidden">
                                 <button type="button" id="qty-dec"
-                                    class="w-9 h-9 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors font-bold">-</button>
-                                <span id="qty-val" class="w-10 text-center text-sm font-bold">1</span>
+                                    class="w-10 h-10 flex items-center justify-center text-slate-500 hover:text-[#0c4161] hover:bg-sky-50 transition-colors font-bold text-lg">-</button>
+                                <span id="qty-val" class="w-12 text-center text-sm font-extrabold text-[#0c4161]">1</span>
                                 <button type="button" id="qty-inc"
-                                    class="w-9 h-9 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors font-bold">+</button>
+                                    class="w-10 h-10 flex items-center justify-center text-slate-500 hover:text-[#0c4161] hover:bg-sky-50 transition-colors font-bold text-lg">+</button>
                             </div>
                         </div>
 
@@ -337,8 +342,8 @@ $product_specs = [
 
                         <!-- Checkout Button -->
                         <button type="submit"
-                            class="w-full flex items-center justify-center gap-2 rounded-md bg-primary px-4 py-3 text-xs font-bold uppercase tracking-normal text-primary-foreground shadow-sm transition-colors hover:bg-primary-dark disabled:opacity-50 sm:px-8 sm:py-3.5 sm:text-sm sm:tracking-wider">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                            class="w-full flex items-center justify-center gap-2.5 rounded-xl bg-gradient-to-r from-amber-500 via-amber-600 to-amber-500 hover:from-amber-600 hover:to-amber-700 px-6 py-4 text-xs font-black uppercase tracking-wider text-white shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all disabled:opacity-50 sm:text-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor" stroke-width="2.5">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -416,8 +421,8 @@ $product_specs = [
                         rows.forEach(row => {
                             row.addEventListener('click', function () {
                                 // Update UI states
-                                rows.forEach(r => r.className = "variation-row-btn w-full flex items-center justify-between gap-4 px-4 py-3 rounded-md border text-left transition-colors border-slate-200 bg-white text-slate-700 hover:border-primary/50");
-                                this.className = "variation-row-btn active-row w-full flex items-center justify-between gap-4 px-4 py-3 rounded-md border-2 border-primary bg-primary-softer text-primary-dark text-left transition-colors";
+                                rows.forEach(r => r.className = "variation-row-btn w-full flex items-center justify-between gap-4 px-4 sm:px-5 py-3.5 rounded-2xl border-2 border-dashed text-left transition-all duration-200 border-sky-200/80 bg-white text-slate-700 hover:border-sky-400 hover:bg-sky-50/40");
+                                this.className = "variation-row-btn active-row w-full flex items-center justify-between gap-4 px-4 sm:px-5 py-3.5 rounded-2xl border-2 border-dashed text-left transition-all duration-200 border-[#0c4161] bg-sky-50 text-[#0c4161] shadow-sm";
 
                                 // Update Hidden inputs
                                 inputVarId.value = this.dataset.id;
@@ -497,27 +502,66 @@ $product_specs = [
             <?php endif; ?>
 
             <?php if ($trust_items): ?>
-                <div class="grid grid-cols-1 gap-3 border-t border-slate-200 pt-6 sm:grid-cols-3">
-                    <?php foreach ($trust_items as $trust_item): ?>
-                        <div class="flex min-h-12 items-center gap-2 rounded-lg border border-border bg-white px-3 py-2 text-sm font-medium text-ink">
-                            <span class="inline-flex h-5 w-5 shrink-0 items-center justify-center text-primary" aria-hidden="true"><i class="fi <?= esc_attr($trust_item['icon']) ?>"></i></span>
-                            <span><?= esc_html($trust_item['label']) ?></span>
+                <div class="grid grid-cols-1 gap-3.5 border-t-2 border-dashed border-sky-200/80 pt-6 sm:grid-cols-3">
+                    <!-- 1. AU Express Dispatch -->
+                    <div class="flex items-center gap-3 rounded-2xl border-2 border-dashed border-sky-300/80 bg-gradient-to-br from-white to-sky-50/60 p-3.5 shadow-sm hover:border-[#0c4161] hover:shadow-md transition-all">
+                        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-sky-50 text-sky-600 border border-sky-200">
+                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="1" y="5" width="14" height="11" rx="1.5" fill="#38BDF8" fill-opacity="0.3" stroke="#38BDF8" stroke-width="1.8"/>
+                                <path d="M15 8h4.5l3.5 4.5v3.5h-8V8z" fill="#F59E0B" stroke="#F59E0B" stroke-width="1.8"/>
+                                <circle cx="6" cy="18" r="2.2" fill="#FFFFFF" stroke="#38BDF8" stroke-width="1.5"/>
+                                <circle cx="18" cy="18" r="2.2" fill="#FFFFFF" stroke="#F59E0B" stroke-width="1.5"/>
+                            </svg>
                         </div>
-                    <?php endforeach; ?>
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-900 leading-snug">AU Express</h4>
+                            <p class="text-[11px] text-slate-500">7-10 day delivery</p>
+                        </div>
+                    </div>
+
+                    <!-- 2. Encrypted Checkout -->
+                    <div class="flex items-center gap-3 rounded-2xl border-2 border-dashed border-sky-300/80 bg-gradient-to-br from-white to-sky-50/60 p-3.5 shadow-sm hover:border-[#0c4161] hover:shadow-md transition-all">
+                        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-50 text-amber-600 border border-amber-200">
+                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L4 6v6c0 5.25 3.4 10.15 8 11.35 4.6-1.2 8-6.1 8-11.35V6l-8-4z" fill="#F59E0B" fill-opacity="0.3" stroke="#F59E0B" stroke-width="1.8"/>
+                                <path d="M9 12l2 2 4-4" stroke="#0C4161" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-900 leading-snug">256-Bit SSL</h4>
+                            <p class="text-[11px] text-slate-500">Encrypted checkout</p>
+                        </div>
+                    </div>
+
+                    <!-- 3. Quality Verified -->
+                    <div class="flex items-center gap-3 rounded-2xl border-2 border-dashed border-sky-300/80 bg-gradient-to-br from-white to-sky-50/60 p-3.5 shadow-sm hover:border-[#0c4161] hover:shadow-md transition-all">
+                        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 border border-emerald-200">
+                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="9" fill="#10B981" fill-opacity="0.2" stroke="#10B981" stroke-width="1.8"/>
+                                <path d="M8.5 12.5l2.5 2.5 5-5" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-900 leading-snug">Sun Pharma</h4>
+                            <p class="text-[11px] text-slate-500">100% genuine seal</p>
+                        </div>
+                    </div>
                 </div>
             <?php endif; ?>
 
-            <details open class="mt-6 overflow-hidden rounded-xl border border-border bg-white">
-                <summary class="group flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-4 font-semibold text-ink marker:hidden [&::-webkit-details-marker]:hidden">
-                    <span class="inline-flex items-center gap-2">
-                        <i class="fi fi-rr-list-check text-primary" aria-hidden="true"></i>
-                        <span><?= esc_html($product_specs_heading ?: 'Product specs') ?> (<?= count($product_specs) ?>)</span>
+            <details open class="mt-6 overflow-hidden rounded-3xl border-2 border-dashed border-sky-300/80 bg-white shadow-sm">
+                <summary class="group flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 font-bold text-[#0c4161] bg-sky-50/60 border-b border-dashed border-sky-200 marker:hidden [&::-webkit-details-marker]:hidden">
+                    <span class="inline-flex items-center gap-2 text-sm sm:text-base font-heading">
+                        <span class="flex h-7 w-7 items-center justify-center rounded-lg bg-sky-100 text-[#0c4161]">
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+                        </span>
+                        <span><?= esc_html($product_specs_heading ?: 'Product Specifications') ?> (<?= count($product_specs) ?>)</span>
                     </span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0 text-primary transition-transform duration-200 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0 text-[#0c4161] transition-transform duration-200 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="m6 9 6 6 6-6" />
                     </svg>
                 </summary>
-                <dl class="divide-y divide-border border-t border-border px-4">
+                <dl class="divide-y divide-dashed divide-sky-100 px-5 py-2">
                     <?php foreach ($product_specs as $spec): ?>
                         <?php
                         $spec_label = trim((string) ($spec['label'] ?? ''));
@@ -527,8 +571,8 @@ $product_specs = [
                         }
                         ?>
                         <div class="flex items-start justify-between gap-4 py-3 text-sm">
-                            <dt class="text-muted-foreground"><?= esc_html($spec_label) ?></dt>
-                            <dd class="text-right font-medium text-ink"><?= esc_html($spec_value !== '' ? $spec_value : 'Not listed') ?></dd>
+                            <dt class="text-slate-500 font-medium"><?= esc_html($spec_label) ?></dt>
+                            <dd class="text-right font-bold text-[#0c4161]"><?= esc_html($spec_value !== '' ? $spec_value : 'Not listed') ?></dd>
                         </div>
                     <?php endforeach; ?>
                 </dl>
@@ -540,21 +584,21 @@ $product_specs = [
 
 <?php if ($product->is_in_stock() && !empty($variations)): ?>
     <?php $sticky_default_variation = $variations[$default_variation_index] ?? null; ?>
-    <div id="sticky-product-bar" class="fixed inset-x-0 bottom-0 z-40 translate-y-full border-t border-slate-200 bg-white/95 opacity-0 shadow-[0_-8px_24px_rgba(15,23,42,0.12)] backdrop-blur transition duration-300 pointer-events-none" aria-hidden="true" inert>
+    <div id="sticky-product-bar" class="fixed inset-x-0 bottom-0 z-40 translate-y-full border-t-2 border-dashed border-sky-300/80 bg-white/95 opacity-0 shadow-[0_-8px_24px_rgba(12,65,97,0.12)] backdrop-blur-md transition duration-300 pointer-events-none" aria-hidden="true" inert>
         <div class="container-site flex items-center gap-3 py-2 pr-16 sm:gap-4 sm:py-3 sm:pr-0">
             <?php if ($image !== ''): ?>
-                <img src="<?= esc_url($image) ?>" alt="" class="h-12 w-12 shrink-0 rounded-md border border-slate-200 bg-white object-contain p-1 sm:h-16 sm:w-16">
+                <img src="<?= esc_url($image) ?>" alt="" class="h-12 w-12 shrink-0 rounded-xl border-2 border-dashed border-sky-200 bg-white object-contain p-1 sm:h-14 sm:w-14">
             <?php endif; ?>
             <div class="min-w-0 flex-1">
-                <p class="truncate text-xs font-bold text-slate-900 sm:text-sm"><?= esc_html($product->get_name()) ?></p>
+                <p class="truncate text-xs font-extrabold text-slate-900 sm:text-sm"><?= esc_html($product->get_name()) ?></p>
                 <p class="mt-0.5 truncate text-[11px] text-slate-600 sm:text-xs">
-                    <span id="sticky-product-pack"><?= esc_html($sticky_default_pack_label ?? '') ?></span>
+                    <span id="sticky-product-pack" class="font-semibold"><?= esc_html($sticky_default_pack_label ?? '') ?></span>
                     <span aria-hidden="true"> · </span>
-                    <span id="sticky-product-price" data-currency-symbol="<?= esc_attr(get_woocommerce_currency_symbol()) ?>"><?= esc_html(wp_strip_all_tags(wc_price((float) ($sticky_default_variation['display_price'] ?? 0)))) ?></span>
+                    <span id="sticky-product-price" class="font-extrabold text-[#0c4161]" data-currency-symbol="<?= esc_attr(get_woocommerce_currency_symbol()) ?>"><?= esc_html(wp_strip_all_tags(wc_price((float) ($sticky_default_variation['display_price'] ?? 0)))) ?></span>
                 </p>
             </div>
-            <button id="sticky-product-submit" type="button" class="inline-flex shrink-0 items-center justify-center gap-2 rounded-md bg-primary px-3 py-3 text-xs font-bold text-primary-foreground shadow-sm transition-colors hover:bg-primary-dark sm:px-5 sm:text-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <button id="sticky-product-submit" type="button" class="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 px-4 py-2.5 text-xs font-black uppercase tracking-wider text-white shadow-md transition-all sm:px-6 sm:py-3 sm:text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
                 <span>Add to Cart</span>
@@ -576,9 +620,9 @@ if ($acf_main) {
 
 if (!empty(trim(strip_tags($main_desc)))): 
 ?>
-<section class="section-padding bg-slate-50 border-t border-slate-200" data-testid="section-product-description">
-    <div class="container-site">
-        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 md:p-10 prose prose-slate max-w-none">
+<section class="section-padding relative overflow-hidden bg-gradient-to-b from-[#f0f6fa] via-[#e9f2f8] to-[#f8fafc] bg-pattern-dots border-t-2 border-dashed border-sky-200/80" data-testid="section-product-description">
+    <div class="container-site relative z-10 max-w-5xl">
+        <div class="bg-white rounded-3xl shadow-sm border-2 border-dashed border-sky-300/80 p-6 md:p-12 prose prose-slate max-w-none">
             <?= apply_filters('the_content', $main_desc); ?>
         </div>
     </div>
@@ -611,11 +655,16 @@ if (have_rows('modules', $product->get_id())) {
 ?>
 
 <!-- Related Products -->
-<section class="section-padding bg-slate-50 border-t border-slate-200">
-    <div class="container-site">
-        <h2 class="font-heading text-2xl md:text-3xl font-extrabold text-slate-900 text-center mb-8">
-            <?= "Related Products" ?>
-        </h2>
+<section class="section-padding relative overflow-hidden bg-gradient-to-b from-[#f8fafc] via-[#f0f6fa] to-[#eef5fa] bg-pattern-dots border-t-2 border-dashed border-sky-200/80">
+    <div class="container-site relative z-10">
+        <div class="text-center mb-10">
+            <span class="inline-flex items-center gap-2 rounded-full bg-sky-100 border border-sky-300/80 px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-[#0c4161] shadow-sm mb-3">
+                Alternative Choices
+            </span>
+            <h2 class="font-heading text-2xl md:text-4xl font-extrabold text-[#0c4161]">
+                <?= "Related Armodafinil Products" ?>
+            </h2>
+        </div>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
             <?php
             $related_products = wc_get_related_products($product->get_id(), 4);

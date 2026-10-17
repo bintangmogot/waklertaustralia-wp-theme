@@ -30,15 +30,21 @@ if (!$products) {
     }
 }
 ?>
-<section class="section-padding bg-white" data-testid="featured-products">
-    <div class="container-custom">
-        <div class="text-center mb-10">
-            <span class="inline-block bg-primary-soft text-primary-dark text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4">
-                <?= $tag ?>
+<section class="section-padding bg-gradient-to-b from-[#f8fafc] via-[#eff6fb] to-[#f8fafc] bg-pattern-dots border-t-2 border-dashed border-sky-200/80 relative isolate overflow-hidden" data-testid="featured-products">
+    <div class="container-custom relative z-10">
+        <div class="text-center mb-10 md:mb-12">
+            <span class="inline-flex items-center gap-2 bg-amber-100/90 text-amber-900 border border-amber-300 text-xs font-black uppercase tracking-widest px-4 py-1.5 rounded-full mb-3 shadow-xs">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 text-amber-500 animate-pulse-subtle">
+                    <path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.527.82-1.173 1.93-1.897 3.19C7.457 7.747 6.452 9.5 5.56 10.742a1 1 0 00.323 1.488c.954.558 1.956.88 2.97.946.06.495.176 1.05.353 1.62.33 1.066.868 2.213 1.666 3.16.48.57 1.08.97 1.768 1.034.708.066 1.428-.216 1.996-.75 1.134-1.067 1.868-2.677 2.158-4.218.29-1.543.16-3.076-.25-4.437a1 1 0 00-.73-.67c-.89-.25-1.74-.63-2.48-1.13-.23-.15-.43-.33-.61-.53-.41-.45-.71-.98-.94-1.54-.22-.55-.32-1.15-.32-1.76z" clip-rule="evenodd" />
+                </svg>
+                <?= esc_html($tag) ?>
             </span>
-            <h2 class="font-heading text-2xl md:text-4xl font-black text-ink">
-                <?= $heading ?>
+            <h2 class="font-heading text-2xl md:text-4xl font-black text-ink tracking-tight mb-3">
+                <?= esc_html($heading) ?>
             </h2>
+            <p class="text-sm md:text-base text-muted-foreground max-w-xl mx-auto leading-relaxed">
+                Genuine Sun Pharma and HAB Pharma Armodafinil tablets shipped domestically across Australia.
+            </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">

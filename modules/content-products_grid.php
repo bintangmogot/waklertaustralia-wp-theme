@@ -4,8 +4,8 @@
  * Displays the WooCommerce products loop.
  */
 ?>
-<section class="py-10 md:py-16 bg-background">
-    <div class="container-site px-2 sm:px-4">
+<section class="relative overflow-hidden bg-gradient-to-b from-[#f0f6fa] via-[#e9f2f8] to-[#f8fafc] bg-pattern-dots py-12 md:py-20">
+    <div class="container-site px-3 sm:px-4 relative z-10">
         <?php
         if (woocommerce_product_loop()) {
             woocommerce_product_loop_start();

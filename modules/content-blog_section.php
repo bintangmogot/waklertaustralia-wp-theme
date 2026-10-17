@@ -101,13 +101,14 @@ if (empty($articles)) {
     $articles = $blog_query->posts;
 }
 ?>
-<section class="section-padding bg-slate-50/70 border-t border-slate-100" data-testid="blog-section">
-    <div class="container-custom">
+<section class="section-padding bg-gradient-to-b from-[#f0f6fa] via-[#e9f2f8] to-[#f8fafc] bg-pattern-dots border-t-2 border-dashed border-sky-200/80 relative isolate overflow-hidden" data-testid="blog-section">
+    <div class="container-custom relative z-10">
         <!-- Section Header -->
         <?php if (!empty($title) || !empty($eyebrow)): ?>
         <div class="text-center max-w-3xl mx-auto mb-10 md:mb-12">
             <?php if (!empty($eyebrow)): ?>
-            <span class="inline-block bg-primary-soft text-primary-dark text-xs font-bold uppercase tracking-widest px-3.5 py-1.5 rounded-full mb-3 shadow-xs">
+            <span class="inline-flex items-center gap-2 bg-amber-100 text-amber-900 border border-amber-300 text-xs font-black uppercase tracking-widest px-4 py-1.5 rounded-full mb-3 shadow-xs">
+                <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse-subtle"></span>
                 <?= esc_html($eyebrow) ?>
             </span>
             <?php endif; ?>
@@ -147,7 +148,7 @@ if (empty($articles)) {
                     ? $article->post_excerpt 
                     : wp_trim_words($plain_text, 22, '...');
             ?>
-            <article class="group flex flex-col bg-white border border-slate-200/90 rounded-2xl overflow-hidden shadow-xs hover:shadow-xl hover:border-primary/40 transition-all duration-300">
+            <article class="group flex flex-col h-full bg-white border-2 border-dashed border-sky-300/80 hover:border-[#0c4161] rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-out">
                 <!-- Card Thumbnail / Visual Area -->
                 <a href="<?= esc_url($permalink) ?>" class="block relative aspect-[16/10] overflow-hidden bg-slate-900 focus:outline-hidden" tabindex="-1" aria-hidden="true">
                     <?php if (has_post_thumbnail($post_id)): ?>
@@ -172,60 +173,58 @@ if (empty($articles)) {
 
                     <!-- Floating Category Badge -->
                     <div class="absolute top-3.5 left-3.5 z-10">
-                        <span class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase bg-white/95 text-slate-800 shadow-sm backdrop-blur-xs border border-slate-200/80">
-                            <?= esc_html($cat_label) ?>
+                        <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[10px] font-black tracking-wider uppercase bg-amber-400 text-slate-950 shadow-md border border-amber-500/30">
+                            ★ <?= esc_html($cat_label) ?>
                         </span>
                     </div>
                 </a>
 
                 <!-- Card Body -->
-                <div class="p-6 sm:p-7 flex-1 flex flex-col justify-between">
+                <div class="p-6 sm:p-7 flex-1 flex flex-col justify-between bg-white">
                     <div>
-                        <!-- Meta: Date & Read Time -->
+                        <!-- Meta: Date & Read Time with Colorful SVG Icons -->
                         <div class="flex items-center gap-3 text-xs text-slate-500 mb-3 font-semibold">
                             <time datetime="<?= get_the_date('c', $post_id) ?>" class="inline-flex items-center gap-1.5">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 text-sky-600">
+                                    <path fill-rule="evenodd" d="M5.75 2a.75.75 0 01.75.75V4h7V2.75a.75.75 0 011.5 0V4h.25A2.75 2.75 0 0118 6.75v8.5A2.75 2.75 0 0115.25 18H4.75A2.75 2.75 0 012 15.25v-8.5A2.75 2.75 0 014.75 4H5V2.75A.75.75 0 015.75 2zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75z" clip-rule="evenodd" />
                                 </svg>
                                 <?= get_the_date('M j, Y', $post_id) ?>
                             </time>
                             <span class="w-1 h-1 rounded-full bg-slate-300"></span>
                             <span class="inline-flex items-center gap-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 text-amber-500">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z" clip-rule="evenodd" />
                                 </svg>
                                 <?= esc_html($read_time) ?> min read
                             </span>
                         </div>
 
                         <!-- Title -->
-                        <h3 class="font-heading font-black text-lg sm:text-xl text-ink group-hover:text-primary transition-colors line-clamp-2 mb-3 leading-snug">
+                        <h3 class="font-heading font-black text-lg sm:text-xl text-ink group-hover:text-[#0c4161] transition-colors line-clamp-2 mb-3 leading-snug">
                             <a href="<?= esc_url($permalink) ?>">
                                 <?= esc_html($article->post_title) ?>
                             </a>
                         </h3>
 
                         <!-- Excerpt -->
-                        <p class="text-sm text-slate-600 line-clamp-3 mb-5 leading-relaxed">
+                        <p class="text-sm text-slate-600 line-clamp-3 mb-4 leading-relaxed">
                             <?= esc_html($excerpt) ?>
                         </p>
                     </div>
-
-                    <!-- Footer Link -->
-                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between mt-auto">
-                        <a href="<?= esc_url($permalink) ?>" class="inline-flex items-center gap-1.5 text-sm font-bold text-primary-dark group-hover:text-primary transition-colors">
-                            <span>Read Article</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                            </svg>
-                        </a>
-                    </div>
                 </div>
+
+                <!-- Two-Tone Footer Block -->
+                <a href="<?= esc_url($permalink) ?>" class="bg-[#f0f6fa] group-hover:bg-[#0c4161] p-4 px-6 border-t-2 border-dashed border-sky-200/80 flex items-center justify-between transition-colors duration-300 text-sm font-black text-[#0c4161] group-hover:text-white mt-auto">
+                    <span>Read Full Guide</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transform group-hover:translate-x-1.5 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </a>
             </article>
             <?php endforeach; ?>
         </div>
         <?php else: ?>
-        <div class="text-center py-12 bg-white rounded-2xl border border-slate-200 p-8">
+        <div class="text-center py-12 bg-white rounded-2xl border-2 border-dashed border-sky-300/80 p-8">
             <p class="text-slate-500 font-medium">No articles published yet.</p>
         </div>
         <?php endif; ?>
@@ -233,7 +232,7 @@ if (empty($articles)) {
         <!-- View All Button -->
         <?php if ($show_view_all && !empty($button_text) && !empty($button_url)): ?>
         <div class="mt-10 md:mt-12 text-center">
-            <a href="<?= esc_url($button_url) ?>" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-sm bg-primary text-primary-foreground hover:bg-primary-dark transition-all shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98]">
+            <a href="<?= esc_url($button_url) ?>" class="inline-flex items-center gap-2 border-2 border-dashed border-sky-300/90 bg-white hover:bg-[#0c4161] text-[#0c4161] hover:text-white font-extrabold px-8 py-3.5 rounded-full transition-all duration-300 uppercase tracking-widest text-xs shadow-sm hover:shadow-md hover:-translate-y-0.5">
                 <span><?= esc_html($button_text) ?></span>
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
