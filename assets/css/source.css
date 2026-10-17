@@ -653,18 +653,18 @@ details .prose > :last-child {
 .prose table {
   width: 100%;
   max-width: 100%;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-top: 1.75rem;
+  margin-bottom: 1.75rem;
   border-collapse: separate;
   border-spacing: 0;
   text-align: left;
   font-size: 0.9375rem;
   line-height: 1.55;
-  background-color: var(--color-card, #ffffff);
+  background-color: #ffffff;
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-xl, 1rem);
   overflow: hidden;
-  box-shadow: 0 4px 20px -4px oklch(0.208 0.042 265.755 / 0.08), 0 1px 3px 0 oklch(0.208 0.042 265.755 / 0.04);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
 }
 
 /* Table inside wrapper loses outer borders to avoid double lines */
@@ -677,69 +677,59 @@ details .prose > :last-child {
   min-width: 100%;
 }
 
-/* Table Headers (thead th, or th anywhere) - Dark blue for header */
+/* Table Headers (Clean white / light surface with dark bold text, matching reference) */
 .prose thead {
-  background-color: #0c4161;
-  border-bottom: 2px solid #082c42;
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .prose thead th,
+.prose thead td,
 .prose th {
   font-family: var(--font-heading);
-  font-weight: 800;
-  font-size: 0.875rem;
-  letter-spacing: 0.02em;
-  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  letter-spacing: -0.01em;
+  color: var(--color-foreground) !important;
   padding: 1rem 1.25rem;
   vertical-align: middle;
-  border-bottom: 2px solid #082c42;
-  border-right: 1px solid rgba(255, 255, 255, 0.15);
-  background-color: #0c4161;
+  border-bottom: 1px solid var(--color-border) !important;
+  border-right: none !important;
+  border-left: none !important;
+  border-top: none !important;
+  background-color: #ffffff;
   text-align: left;
-  min-width: 140px;
-}
-
-.prose thead th:last-child,
-.prose tr th:last-child {
-  border-right: none;
 }
 
 /* First row when no explicit thead is used by the WYSIWYG editor */
 .prose table:not(:has(thead)) tbody tr:first-child td,
 .prose table:not(:has(thead)) tbody tr:first-child th {
   font-family: var(--font-heading);
-  font-weight: 800;
-  font-size: 0.875rem;
-  letter-spacing: 0.02em;
-  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  letter-spacing: -0.01em;
+  color: var(--color-foreground) !important;
   padding: 1rem 1.25rem;
   vertical-align: middle;
-  border-bottom: 2px solid #082c42;
-  border-right: 1px solid rgba(255, 255, 255, 0.15);
-  background-color: #0c4161;
-  min-width: 140px;
+  border-bottom: 1px solid var(--color-border) !important;
+  border-right: none !important;
+  border-left: none !important;
+  border-top: none !important;
+  background-color: #ffffff;
 }
 
-.prose table:not(:has(thead)) tbody tr:first-child td:last-child,
-.prose table:not(:has(thead)) tbody tr:first-child th:last-child {
-  border-right: none;
-}
-
-/* Table Body Cells - Warm chocolate/cream scheme, NO blue in body */
+/* Table Body Cells - Clean horizontal borders only, NO vertical dividers */
 .prose td {
   padding: 0.9375rem 1.25rem;
   border-bottom: 1px solid var(--color-border);
-  border-right: 1px solid oklch(0.9 0.018 82 / 0.6);
-  vertical-align: top;
+  border-right: none !important;
+  border-left: none !important;
+  border-top: none !important;
+  vertical-align: middle;
   color: var(--color-foreground);
   font-size: 0.9375rem;
-  line-height: 1.6;
-  min-width: 140px;
-  background-color: var(--color-card, #ffffff);
-}
-
-.prose td:last-child {
-  border-right: none;
+  line-height: 1.55;
+  background-color: #ffffff;
 }
 
 /* First Column: Feature / Spec Name Column styling */
@@ -747,61 +737,70 @@ details .prose > :last-child {
 .prose tbody th:first-child {
   font-weight: 700;
   color: var(--color-foreground);
-  background-color: oklch(0.982 0.01 84 / 0.7);
 }
 
-/* Alternating zebra rows for readability */
-.prose tbody tr:nth-child(even) td {
-  background-color: oklch(0.988 0.006 84 / 0.5);
+/* Base cell background for all standard rows (Row 2 and beyond) */
+.prose tbody tr td {
+  background-color: #ffffff;
 }
 
-.prose tbody tr:nth-child(even) td:first-child {
-  background-color: oklch(0.972 0.014 84 / 0.8);
+/* Row 1 special highlight (Active Compound row in reference) */
+.prose tbody tr:first-child td {
+  background-color: #fcf7ee;
+}
+
+/* 3rd Column / Last Column (Waklert 150mg / Featured Hero Product Column Highlight) */
+.prose tbody tr td:last-child {
+  background-color: #fdf8ee;
+}
+
+/* Row 1 Last Column (Waklert 150mg top cell) */
+.prose tbody tr:first-child td:last-child {
+  background-color: #f7ecdc;
 }
 
 /* Interactive Hover Feedback */
 .prose tbody tr:hover td {
-  background-color: oklch(0.965 0.016 84 / 0.6);
+  background-color: #f8f6f0;
   transition: background-color 0.15s ease;
 }
 
-.prose tbody tr:hover td:first-child {
-  background-color: oklch(0.955 0.02 84);
+.prose tbody tr:hover td:last-child {
+  background-color: #f2e7d3;
 }
 
 /* Last Row */
 .prose tbody tr:last-child td,
 .prose tbody tr:last-child th {
-  border-bottom: none;
+  border-bottom: none !important;
 }
 
-/* Waklert Column Brand Highlight */
+/* Waklert Column Brand Highlight classes if applied explicitly */
 .prose th.waklert-highlight-header,
 .prose thead th.waklert-highlight-header {
-  background: #082c42 !important;
-  color: #ffffff !important;
-  border-bottom: 2px solid #051b29 !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  background: #fdf8ee !important;
+  color: var(--color-foreground) !important;
+  font-weight: 700;
 }
 
 .prose td.waklert-highlight-cell {
-  background-color: oklch(0.98 0.012 84 / 0.6);
+  background-color: #fdf8ee;
   font-weight: 600;
   color: var(--color-foreground);
 }
 
 .prose tbody tr:nth-child(even) td.waklert-highlight-cell {
-  background-color: oklch(0.97 0.016 84 / 0.7);
+  background-color: #f6ebd9;
 }
 
 .prose tbody tr:hover td.waklert-highlight-cell {
-  background-color: oklch(0.955 0.022 84);
+  background-color: #f0e1c8;
 }
 
 /* Special Featured Column (manual .is-featured) */
 .prose th.is-featured,
 .prose td.is-featured {
-  background-color: oklch(0.965 0.02 84) !important;
+  background-color: #fdf8ee !important;
   color: var(--color-foreground) !important;
   font-weight: 700;
 }

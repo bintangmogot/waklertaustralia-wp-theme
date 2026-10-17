@@ -682,3 +682,12 @@ add_filter('pings_open', function ($open, $post_id) {
     return $open;
 }, 10, 2);
 
+// Redirect /about to /about-us
+add_action('template_redirect', function() {
+    if (is_page('about')) {
+        wp_safe_redirect(home_url('/about-us/'), 301);
+        exit;
+    }
+});
+
+

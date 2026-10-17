@@ -31,26 +31,25 @@ function modmy_enqueue_scripts() {
         
         // Add robust prose table and typography styles as inline safeguard
         $custom_css = "
-            .prose table { width: 100%; max-width: 100%; table-layout: auto; text-align: left; margin: 2rem 0; border-collapse: separate; border-spacing: 0; border: 1px solid var(--color-border); border-radius: var(--radius-xl, 1rem); overflow: hidden; background-color: var(--color-card, #fff); box-shadow: 0 4px 20px -4px oklch(0.208 0.042 265.755 / 0.08); font-size: 0.9375rem; line-height: 1.55; }
-            .prose .table-wrapper, .prose figure.wp-block-table { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 2rem 0; border: 1px solid var(--color-border); border-radius: var(--radius-xl, 1rem); background-color: var(--color-card, #fff); box-shadow: 0 4px 20px -4px oklch(0.208 0.042 265.755 / 0.08); }
+            .prose table { width: 100%; max-width: 100%; table-layout: auto; text-align: left; margin: 1.75rem 0; border-collapse: separate; border-spacing: 0; border: 1px solid var(--color-border); border-radius: var(--radius-xl, 1rem); overflow: hidden; background-color: #ffffff; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04); font-size: 0.9375rem; line-height: 1.55; }
+            .prose .table-wrapper, .prose figure.wp-block-table { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.75rem 0; border: 1px solid var(--color-border); border-radius: var(--radius-xl, 1rem); background-color: #ffffff; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04); }
             .prose .table-wrapper table, .prose figure.wp-block-table table { margin: 0; border: none; border-radius: 0; box-shadow: none; min-width: 100%; }
-            .prose thead { border-bottom: 2px solid #082c42; background-color: #0c4161; }
-            .prose th, .prose thead th { font-family: var(--font-heading); font-weight: 800; font-size: 0.875rem; letter-spacing: 0.02em; color: #ffffff !important; padding: 1rem 1.25rem; vertical-align: middle; border-bottom: 2px solid #082c42; border-right: 1px solid rgba(255, 255, 255, 0.15); background-color: #0c4161; text-align: left; }
-            .prose th:last-child, .prose thead th:last-child { border-right: none; }
-            .prose table:not(:has(thead)) tbody tr:first-child td, .prose table:not(:has(thead)) tbody tr:first-child th { font-family: var(--font-heading); font-weight: 800; font-size: 0.875rem; letter-spacing: 0.02em; color: #ffffff !important; padding: 1rem 1.25rem; vertical-align: middle; border-bottom: 2px solid #082c42; border-right: 1px solid rgba(255, 255, 255, 0.15); background-color: #0c4161; }
-            .prose table:not(:has(thead)) tbody tr:first-child td:last-child, .prose table:not(:has(thead)) tbody tr:first-child th:last-child { border-right: none; }
-            .prose td { padding: 0.9375rem 1.25rem; border-bottom: 1px solid var(--color-border); border-right: 1px solid oklch(0.9 0.018 82 / 0.6); vertical-align: top; color: var(--color-foreground); font-size: 0.9375rem; line-height: 1.6; background-color: var(--color-card, #ffffff); }
-            .prose td:last-child { border-right: none; }
-            .prose tbody td:first-child, .prose tbody th:first-child { font-weight: 700; color: var(--color-foreground); background-color: oklch(0.982 0.01 84 / 0.7); }
-            .prose tbody tr:nth-child(even) td { background-color: oklch(0.988 0.006 84 / 0.5); }
-            .prose tbody tr:nth-child(even) td:first-child { background-color: oklch(0.972 0.014 84 / 0.8); }
-            .prose tbody tr:hover td { background-color: oklch(0.965 0.016 84 / 0.6); transition: background-color 0.15s ease; }
-            .prose tbody tr:hover td:first-child { background-color: oklch(0.955 0.02 84); }
-            .prose th.waklert-highlight-header, .prose thead th.waklert-highlight-header { background: #082c42 !important; color: #ffffff !important; border-bottom: 2px solid #051b29 !important; }
-            .prose td.waklert-highlight-cell { background-color: oklch(0.98 0.012 84 / 0.6); font-weight: 600; color: var(--color-foreground); }
-            .prose tbody tr:nth-child(even) td.waklert-highlight-cell { background-color: oklch(0.97 0.016 84 / 0.7); }
-            .prose tbody tr:hover td.waklert-highlight-cell { background-color: oklch(0.955 0.022 84); }
-            .prose tbody tr:last-child td, .prose tbody tr:last-child th { border-bottom: none; }
+            .prose thead { border-bottom: 1px solid var(--color-border); background-color: #ffffff; }
+            .prose th, .prose thead th, .prose thead td { font-family: var(--font-heading); font-weight: 700; font-size: 0.9375rem; letter-spacing: -0.01em; color: var(--color-foreground) !important; padding: 1rem 1.25rem; vertical-align: middle; border-bottom: 1px solid var(--color-border) !important; border-right: none !important; border-left: none !important; border-top: none !important; background-color: #ffffff; text-align: left; }
+            .prose table:not(:has(thead)) tbody tr:first-child td, .prose table:not(:has(thead)) tbody tr:first-child th { font-family: var(--font-heading); font-weight: 700; font-size: 0.9375rem; letter-spacing: -0.01em; color: var(--color-foreground) !important; padding: 1rem 1.25rem; vertical-align: middle; border-bottom: 1px solid var(--color-border) !important; border-right: none !important; border-left: none !important; border-top: none !important; background-color: #ffffff; }
+            .prose td { padding: 0.9375rem 1.25rem; border-bottom: 1px solid var(--color-border); border-right: none !important; border-left: none !important; border-top: none !important; vertical-align: middle; color: var(--color-foreground); font-size: 0.9375rem; line-height: 1.55; background-color: #ffffff; }
+            .prose tbody td:first-child, .prose tbody th:first-child { font-weight: 700; color: var(--color-foreground); }
+            .prose tbody tr td { background-color: #ffffff; }
+            .prose tbody tr:first-child td { background-color: #fcf7ee; }
+            .prose tbody tr td:last-child { background-color: #fdf8ee; }
+            .prose tbody tr:first-child td:last-child { background-color: #f7ecdc; }
+            .prose tbody tr:hover td { background-color: #f8f6f0; transition: background-color 0.15s ease; }
+            .prose tbody tr:hover td:last-child { background-color: #f2e7d3; }
+            .prose tbody tr:last-child td, .prose tbody tr:last-child th { border-bottom: none !important; }
+            .prose th.waklert-highlight-header, .prose thead th.waklert-highlight-header { background: #fdf8ee !important; color: var(--color-foreground) !important; font-weight: 700; }
+            .prose td.waklert-highlight-cell { background-color: #fdf8ee; font-weight: 600; color: var(--color-foreground); }
+            .prose tbody tr:nth-child(even) td.waklert-highlight-cell { background-color: #f6ebd9; }
+            .prose tbody tr:hover td.waklert-highlight-cell { background-color: #f0e1c8; }
             details .prose a, .faq-answer a, details summary + div a { color: var(--color-primary); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
             details .prose a:hover, .faq-answer a:hover, details summary + div a:hover { color: var(--color-primary-dark); text-decoration-thickness: 2px; }
             details .prose p { margin-top: 0.5rem; margin-bottom: 0.5rem; }

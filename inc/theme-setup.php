@@ -273,4 +273,21 @@ function waklert_the_logo($classes = 'h-12 sm:h-[53px] w-auto max-w-[264px] sm:m
     }
 }
 
+/**
+ * Wrap WYSIWYG tables in responsive table-wrapper if not already wrapped
+ */
+function waklert_wrap_prose_tables($content) {
+    if (empty($content) || !is_string($content) || strpos($content, '<table') === false) {
+        return $content;
+    }
+    // Avoid double wrapping if already inside .table-wrapper or wp-block-table
+    if (strpos($content, 'table-wrapper') !== false || strpos($content, 'wp-block-table') !== false) {
+        return $content;
+    }
+    return preg_replace('/(<table\b[^>]*>.*?<\/table>)/is', '<div class="table-wrapper">$1</div>', $content);
+}
+add_filter('the_content', 'waklert_wrap_prose_tables', 20);
+add_filter('acf/format_value/type=wysiwyg', 'waklert_wrap_prose_tables', 20);
+
+
 
