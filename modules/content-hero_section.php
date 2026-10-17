@@ -50,18 +50,23 @@ if (empty($mobile_img_url)) {
 
 <section data-testid="hero-section" class="relative isolate overflow-hidden bg-[#0C4161] text-primary-foreground">
     <!-- MOBILE ONLY: Top Image (< md) -->
-    <div class="block md:hidden w-full overflow-hidden bg-[#0C4161]">
+    <div class="relative block md:hidden w-full overflow-hidden bg-[#0C4161]">
         <img 
             src="<?= esc_url($mobile_img_url) ?>" 
             alt="<?= esc_attr($heading) ?>" 
-            class="w-full h-auto object-cover max-h-[460px] object-top"
+            class="w-full h-auto object-cover max-h-[440px] object-top"
             loading="eager"
             fetchpriority="high"
         />
+        <!-- Gradient transition between image and content (< md) -->
+        <div class="pointer-events-none absolute inset-x-0 bottom-0 h-36 sm:h-44 bg-gradient-to-t from-[#0C4161] via-[#0C4161]/80 to-transparent z-10" aria-hidden="true"></div>
     </div>
 
     <!-- MAIN HERO CONTENT CONTAINER (with pattern rings, dots & text) -->
-    <div class="relative min-h-[440px] md:min-h-[580px] lg:min-h-[640px] flex items-center bg-pattern-dots-dark">
+    <div class="relative md:min-h-[580px] lg:min-h-[640px] md:flex md:items-center -mt-12 sm:-mt-16 md:mt-0 z-20">
+        <!-- Background dot pattern (masked at top on mobile so dots dissolve into gradient seamlessly) -->
+        <div class="pointer-events-none absolute inset-0 bg-pattern-dots-dark hero-mobile-dots-fade z-0" aria-hidden="true"></div>
+
         <?php waklert_output_pattern_rings(); ?>
 
         <!-- TABLET & DESKTOP ONLY: Background Right-Anchored Image (>= md) -->
@@ -78,7 +83,7 @@ if (empty($mobile_img_url)) {
         </div>
 
         <!-- Left Column Content -->
-        <div class="container-site relative z-10 w-full py-12 md:py-20 lg:py-24">
+        <div class="container-site relative z-10 w-full pt-3 pb-12 sm:pt-4 sm:pb-16 md:py-20 lg:py-24">
             <div class="max-w-lg lg:max-w-[460px] xl:max-w-[530px]">
                 <?php if ($location): ?>
                 <span class="mb-5 md:mb-6 inline-flex items-center gap-2 md:gap-2.5 rounded-full border border-white/25 bg-white/10 px-4.5 py-2 md:px-5 md:py-2.5 text-xs sm:text-sm md:text-[0.9375rem] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-md shadow-sm">
