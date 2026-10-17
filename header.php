@@ -160,17 +160,17 @@
             </button>
         </div>
 
-        <nav class="flex flex-col border-b-2 border-dashed border-sky-200/80 py-4 px-4 mobile-nav">
+        <nav class="flex flex-col border-b-2 border-dashed border-sky-200/80 py-3 px-4 mobile-nav">
             <?php
             wp_nav_menu([
                 'theme_location' => 'mobile',
                 'container'      => false,
-                'menu_class'     => 'flex flex-col space-y-2',
+                'menu_class'     => 'flex flex-col divide-y divide-dashed divide-sky-200/80',
                 'fallback_cb'    => function() {
                     wp_nav_menu([
                         'theme_location' => 'primary',
                         'container'      => false,
-                        'menu_class'     => 'flex flex-col space-y-2',
+                        'menu_class'     => 'flex flex-col divide-y divide-dashed divide-sky-200/80',
                         'fallback_cb'    => false,
                         'walker'         => class_exists('Waklert_Mobile_Nav_Walker') ? new Waklert_Mobile_Nav_Walker() : false,
                     ]);

@@ -237,7 +237,7 @@ class Waklert_Desktop_Nav_Walker extends Walker_Nav_Menu {
  */
 class Waklert_Mobile_Nav_Walker extends Walker_Nav_Menu {
     public function start_lvl(&$output, $depth = 0, $args = null) {
-        $output .= '<ul class="sub-menu is-open pl-2 pr-1 py-2 space-y-2 transition-all">';
+        $output .= '<ul class="sub-menu is-open pl-2 pr-1 pt-2 pb-2.5 space-y-2 transition-all">';
     }
 
     public function end_lvl(&$output, $depth = 0, $args = null) {
@@ -260,7 +260,7 @@ class Waklert_Mobile_Nav_Walker extends Walker_Nav_Menu {
                   || $is_shop_active;
 
         if ($depth === 0) {
-            $output .= '<li class="list-none w-full ' . implode(' ', $classes) . '">';
+            $output .= '<li class="list-none w-full py-1.5 ' . implode(' ', $classes) . '">';
             $output .= '<div class="flex items-center justify-between gap-1.5 w-full">';
 
             if ($is_active) {
