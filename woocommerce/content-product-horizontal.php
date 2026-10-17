@@ -81,10 +81,10 @@ if ( $product->is_type('variable') ) {
                 <span class="font-black text-slate-950 text-lg md:text-xl [&>span.amount]:!font-black [&>del]:opacity-50 [&>del]:font-normal [&>del]:text-sm [&>ins]:no-underline"><?= wp_kses_post($price_html) ?></span>
             </div>
             
-            <!-- Shop Now Link -->
-            <a href="<?= esc_url($link) ?>" class="inline-flex items-center justify-center gap-2 bg-[#0c4161] hover:bg-[#082c42] text-white font-extrabold text-sm py-3 px-6 rounded-xl group/btn shadow-md hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
+            <!-- Shop Now Link (Compact on Mobile) -->
+            <a href="<?= esc_url($link) ?>" class="inline-flex items-center justify-center gap-2 bg-[#0c4161] hover:bg-[#082c42] text-white font-extrabold text-xs sm:text-sm py-2 px-4 sm:py-2.5 sm:px-6 rounded-lg sm:rounded-xl group/btn shadow-md hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
                 <span>Order Now</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 transition-transform group-hover/btn:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover/btn:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </a>
         </div>
     </div>
