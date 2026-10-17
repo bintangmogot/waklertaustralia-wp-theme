@@ -113,9 +113,9 @@ $no_reviews_text = waklert_get_product_presentation_option('product_no_reviews_t
         </div>
 
         <!-- Anchor action at the bottom of the card -->
-        <div class="mt-auto pt-5">
+        <div class="mt-auto pt-3 sm:pt-5">
             <?php if (apply_filters('waklert_show_product_card_reviews', false)): ?>
-                <div class="mb-3">
+                <div class="mb-2 sm:mb-3">
                     <?php if ($review_summary['review_count'] > 0): ?>
                     <a href="<?= esc_url($link . '#product-reviews') ?>" class="inline-flex w-fit items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-primary-dark" aria-label="Read <?= esc_attr($review_summary['review_count']) ?> product reviews">
                         <?php if ($review_summary['rating_count'] > 0): ?>
@@ -133,17 +133,18 @@ $no_reviews_text = waklert_get_product_presentation_option('product_no_reviews_t
                 </div>
             <?php endif; ?>
 
-            <!-- CTA Button -->
+            <!-- CTA Button (Compact on Mobile) -->
             <div>
             <?php if ($in_stock): ?>
-            <a href="<?= esc_url($link) ?>" class="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 px-4 py-3 text-xs sm:text-sm font-extrabold uppercase tracking-wider text-white shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0 transition-transform group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <a href="<?= esc_url($link) ?>" class="flex w-full items-center justify-center gap-1.5 sm:gap-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 px-2.5 py-2 sm:px-4 sm:py-3 text-[11px] sm:text-xs md:text-sm font-black uppercase tracking-tight sm:tracking-wider text-white shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5 leading-none text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0 transition-transform group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
-                <span><?= "Select Pack Size" ?></span>
+                <span class="inline sm:hidden">Select Pack</span>
+                <span class="hidden sm:inline"><?= "Select Pack Size" ?></span>
             </a>
             <?php else: ?>
-            <span class="flex w-full items-center justify-center rounded-xl bg-slate-100 px-4 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-400">
+            <span class="flex w-full items-center justify-center rounded-xl bg-slate-100 px-2.5 py-2 sm:px-4 sm:py-3 text-[11px] sm:text-xs md:text-sm font-bold uppercase tracking-tight sm:tracking-wider text-slate-400">
                 <?= "Out of Stock" ?>
             </span>
             <?php endif; ?>
