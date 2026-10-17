@@ -1344,6 +1344,162 @@
                     "min": "",
                     "max": ""
                 },
+                "layout_city_section": {
+                    "key": "layout_city_section",
+                    "name": "city_section",
+                    "label": "City Section",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_cs_tag",
+                            "label": "Tag",
+                            "name": "tag",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Top pill tag (e.g. SHIPPING NATIONWIDE).",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "SHIPPING NATIONWIDE",
+                            "maxlength": "",
+                            "placeholder": "SHIPPING NATIONWIDE",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_cs_title",
+                            "label": "Title",
+                            "name": "title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Main headline.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "Delivered Everywhere in Australia",
+                            "maxlength": "",
+                            "placeholder": "Delivered Everywhere in Australia",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_cs_desc",
+                            "label": "Description",
+                            "name": "description",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "Supporting text below the headline.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "Metro cities, regional towns, or remote FIFO camps — we ship to your address.",
+                            "new_lines": "",
+                            "maxlength": "",
+                            "placeholder": "Metro cities, regional towns, or remote FIFO camps — we ship to your address.",
+                            "rows": 3
+                        },
+                        {
+                            "key": "field_cs_cities_list",
+                            "label": "Cities",
+                            "name": "cities_list",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "List of cities/regions to display as pill badges. If empty, default Australian cities display automatically.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "table",
+                            "pagination": 0,
+                            "min": 0,
+                            "max": 0,
+                            "collapsed": "",
+                            "button_label": "Add City",
+                            "rows_per_page": 20,
+                            "sub_fields": [
+                                {
+                                    "key": "field_cs_city_name",
+                                    "label": "City Name",
+                                    "name": "city_name",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "75",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "placeholder": "e.g. Sydney NSW",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_cs_cities_list"
+                                },
+                                {
+                                    "key": "field_cs_has_checkmark",
+                                    "label": "Show Checkmark",
+                                    "name": "has_checkmark",
+                                    "aria-label": "",
+                                    "type": "true_false",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "25",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "message": "",
+                                    "default_value": 0,
+                                    "ui": 1,
+                                    "ui_on_text": "",
+                                    "ui_off_text": "",
+                                    "parent_repeater": "field_cs_cities_list"
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_cs_quick_cities",
+                            "label": "Quick Paste Cities",
+                            "name": "quick_cities",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "Optional: Paste multiple cities (one per line). Overrides the repeater above if populated.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "new_lines": "",
+                            "maxlength": "",
+                            "placeholder": "Sydney NSW\nMelbourne VIC\n...",
+                            "rows": 4
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
                 "layout_about_intro": {
                     "key": "layout_about_intro",
                     "name": "about_intro",
