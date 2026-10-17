@@ -46,7 +46,7 @@ foreach ($sections as $index => $section) {
                 </div>
             <?php endif; ?>
 
-            <h1 class="mx-auto max-w-2xl md:max-w-3xl font-heading text-xl sm:text-2xl md:text-3xl lg:text-[2rem] font-black leading-tight tracking-tight text-[#0c4161]">
+            <h1 class="mx-auto max-w-3xl md:max-w-4xl lg:max-w-5xl font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[3.25rem] font-black leading-[1.15] tracking-tight text-[#0c4161]">
                 <?php echo esc_html($title); ?>
             </h1>
 

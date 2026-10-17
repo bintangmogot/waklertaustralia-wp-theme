@@ -200,7 +200,7 @@ if (empty($articles)) {
                         </div>
 
                         <!-- Title -->
-                        <h3 class="font-heading font-black text-lg sm:text-xl text-ink group-hover:text-[#0c4161] transition-colors line-clamp-2 mb-3 leading-snug">
+                        <h3 class="font-heading font-black text-xl sm:text-2xl text-ink group-hover:text-[#0c4161] transition-colors line-clamp-2 mb-3 leading-snug">
                             <a href="<?= esc_url($permalink) ?>">
                                 <?= esc_html($article->post_title) ?>
                             </a>
