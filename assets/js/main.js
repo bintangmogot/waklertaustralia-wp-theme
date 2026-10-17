@@ -114,16 +114,45 @@ document.addEventListener('DOMContentLoaded', () => {
             wrapper.appendChild(table);
         }
 
-        // 3. Highlight Waklert column in comparison tables
+        // 3. Highlight featured product column in comparison tables
         const headerCells = table.querySelectorAll('thead th, thead td');
-        headerCells.forEach((th, idx) => {
-            if (th.textContent.trim().toLowerCase().includes('waklert')) {
-                th.classList.add('waklert-highlight-header');
-                table.querySelectorAll(`tbody tr td:nth-child(${idx + 1})`).forEach((td) => {
+        if (headerCells.length >= 2) {
+            let highlightIdx = -1;
+            const pageHeading = (document.querySelector('h1')?.textContent || '').trim().toLowerCase();
+
+            // Check if any column header matches the current product title
+            if (pageHeading) {
+                headerCells.forEach((th, idx) => {
+                    const txt = th.textContent.trim().toLowerCase();
+                    if (idx > 0 && txt && (pageHeading.includes(txt) || txt.includes(pageHeading.split(' ')[0]))) {
+                        highlightIdx = idx;
+                    }
+                });
+            }
+
+            // Fallback: check if any header contains 'waklert' or 'recommended'
+            if (highlightIdx === -1) {
+                headerCells.forEach((th, idx) => {
+                    const txt = th.textContent.trim().toLowerCase();
+                    if (idx > 0 && (txt.includes('waklert') || txt.includes('recommended'))) {
+                        highlightIdx = idx;
+                    }
+                });
+            }
+
+            // Fallback: if comparison table (>= 3 columns) and no column matched, highlight the last column
+            if (highlightIdx === -1 && headerCells.length >= 3) {
+                highlightIdx = headerCells.length - 1;
+            }
+
+            if (highlightIdx !== -1) {
+                const targetTh = headerCells[highlightIdx];
+                targetTh.classList.add('waklert-highlight-header');
+                table.querySelectorAll(`tbody tr td:nth-child(${highlightIdx + 1}), tbody tr th:nth-child(${highlightIdx + 1})`).forEach((td) => {
                     td.classList.add('waklert-highlight-cell');
                 });
             }
-        });
+        }
     });
 
     // Support Email Click Helper: Copies email address as a reliable backup when mailto link is clicked
