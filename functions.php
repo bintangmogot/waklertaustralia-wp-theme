@@ -19,6 +19,7 @@ function waklert_output_pattern_rings() {
 
 // 1. Theme setup (menus, supports, image sizes)
 require_once MODMY_THEME_DIR . '/inc/theme-setup.php';
+require_once MODMY_THEME_DIR . '/inc/nav-walkers.php';
 
 // 2. Asset enqueues (CSS, JS)
 require_once MODMY_THEME_DIR . '/inc/enqueue.php';

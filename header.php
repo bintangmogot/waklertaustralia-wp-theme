@@ -122,9 +122,9 @@
             wp_nav_menu([
                 'theme_location' => 'primary',
                 'container'      => false,
-                'menu_class'     => 'flex items-center gap-1 font-semibold text-slate-700',
+                'menu_class'     => 'flex items-center gap-1.5 font-semibold text-slate-700',
                 'fallback_cb'    => false,
-                'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+                'walker'         => class_exists('Waklert_Desktop_Nav_Walker') ? new Waklert_Desktop_Nav_Walker() : false,
             ]);
             ?>
         </nav>
@@ -145,12 +145,14 @@
             <?= do_shortcode('[xoo_wsc_cart]') ?>
         </div>
     </div>
+</header>
 
-    <!-- Mobile Nav Overlay -->
-    <div id="mobile-menu-overlay" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm lg:hidden transition-opacity" aria-hidden="true"></div>
+<!-- Mobile Nav Overlay (Placed outside <header> to avoid backdrop-blur/sticky containing block clipping) -->
+<div id="mobile-menu-overlay" class="fixed inset-0 z-[99998] hidden bg-slate-900/60 backdrop-blur-sm lg:hidden transition-opacity" aria-hidden="true"></div>
 
-    <!-- Mobile Nav Drawer -->
-    <div id="mobile-menu-drawer" class="fixed inset-y-0 left-0 z-50 w-[85%] max-w-sm transform overflow-y-auto bg-gradient-to-b from-[#f8fafc] via-[#f0f6fa] to-[#eef5fa] bg-pattern-dots transition-transform duration-300 ease-in-out lg:hidden -translate-x-full shadow-2xl">
+<!-- Mobile Nav Drawer -->
+<div id="mobile-menu-drawer" class="fixed inset-y-0 left-0 z-[99999] w-[88%] max-w-sm h-screen h-[100dvh] transform overflow-y-auto bg-gradient-to-b from-[#f8fafc] via-[#f0f6fa] to-[#eef5fa] bg-pattern-dots transition-transform duration-300 ease-in-out lg:hidden -translate-x-full shadow-2xl flex flex-col justify-between">
+    <div>
         <div class="flex h-[68px] items-center justify-between border-b-2 border-dashed border-sky-200/80 bg-white/90 px-6 backdrop-blur">
             <?php waklert_the_logo('h-11 w-auto max-w-[228px] object-contain', 'mobile'); ?>
             <button type="button" aria-label="Close menu" id="mobile-menu-close" class="rounded-xl p-2 text-[#0c4161] bg-sky-50 border border-dashed border-sky-300 hover:bg-sky-100 transition-colors">
@@ -163,17 +165,17 @@
             wp_nav_menu([
                 'theme_location' => 'mobile',
                 'container'      => false,
-                'menu_class'     => 'flex flex-col space-y-1',
+                'menu_class'     => 'flex flex-col space-y-2',
                 'fallback_cb'    => function() {
                     wp_nav_menu([
                         'theme_location' => 'primary',
                         'container'      => false,
-                        'menu_class'     => 'flex flex-col space-y-1',
+                        'menu_class'     => 'flex flex-col space-y-2',
                         'fallback_cb'    => false,
-                        'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+                        'walker'         => class_exists('Waklert_Mobile_Nav_Walker') ? new Waklert_Mobile_Nav_Walker() : false,
                     ]);
                 },
-                'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+                'walker'         => class_exists('Waklert_Mobile_Nav_Walker') ? new Waklert_Mobile_Nav_Walker() : false,
             ]);
             ?>
         </nav>
@@ -186,30 +188,30 @@
                 <span><?= esc_html($whatsapp_text) ?></span>
             </a>
         </div>
-
-        <!-- 2-Tone Dashed Help Card in Mobile Drawer -->
-        <div class="mx-6 mb-8 mt-4 rounded-3xl border-2 border-dashed border-sky-300/80 bg-white overflow-hidden shadow-sm transition-all hover:shadow-md">
-            <div class="p-5">
-                <div class="flex items-center gap-3 mb-2.5">
-                    <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-50 text-amber-600 border border-amber-200">
-                        <!-- Colorful Help Life Ring SVG -->
-                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="12" cy="12" r="9" stroke="#F59E0B" stroke-width="2"/>
-                            <circle cx="12" cy="12" r="4" stroke="#0C4161" stroke-width="2"/>
-                            <path d="M4.93 4.93L8.5 8.5M15.5 15.5L19.07 19.07M4.93 19.07L8.5 15.5M15.5 8.5L19.07 4.93" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <span class="text-[10px] font-extrabold uppercase tracking-widest text-amber-600">Support Desk</span>
-                        <h3 class="text-sm font-extrabold text-[#0c4161]">Need a hand?</h3>
-                    </div>
-                </div>
-                <p class="text-xs leading-relaxed text-slate-600">Find clear information about products, ordering and express Australia delivery.</p>
-            </div>
-            <a href="<?= esc_url(home_url('/faq/')) ?>" class="flex items-center justify-between bg-gradient-to-r from-[#0c4161] to-[#125883] px-5 py-3 text-xs font-bold text-white transition-colors hover:from-[#09324c] hover:to-[#0c4161]">
-                <span>Visit the FAQs</span>
-                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
-            </a>
-        </div>
     </div>
-</header>
+
+    <!-- 2-Tone Dashed Help Card in Mobile Drawer -->
+    <div class="mx-6 mb-8 mt-4 rounded-3xl border-2 border-dashed border-sky-300/80 bg-white overflow-hidden shadow-sm transition-all hover:shadow-md">
+        <div class="p-5">
+            <div class="flex items-center gap-3 mb-2.5">
+                <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-50 text-amber-600 border border-amber-200">
+                    <!-- Colorful Help Life Ring SVG -->
+                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="9" stroke="#F59E0B" stroke-width="2"/>
+                        <circle cx="12" cy="12" r="4" stroke="#0C4161" stroke-width="2"/>
+                        <path d="M4.93 4.93L8.5 8.5M15.5 15.5L19.07 19.07M4.93 19.07L8.5 15.5M15.5 8.5L19.07 4.93" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div>
+                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-amber-600">Support Desk</span>
+                    <h3 class="text-sm font-extrabold text-[#0c4161]">Need a hand?</h3>
+                </div>
+            </div>
+            <p class="text-xs leading-relaxed text-slate-600">Find clear information about products, ordering and express Australia delivery.</p>
+        </div>
+        <a href="<?= esc_url(home_url('/faq/')) ?>" class="flex items-center justify-between bg-gradient-to-r from-[#0c4161] to-[#125883] px-5 py-3 text-xs font-bold text-white transition-colors hover:from-[#09324c] hover:to-[#0c4161]">
+            <span>Visit the FAQs</span>
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </a>
+    </div>
+</div>

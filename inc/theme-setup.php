@@ -70,6 +70,9 @@ add_action('init', 'modmy_register_cpt');
  * Add Tailwind CSS classes to Navigation Menus
  */
 add_filter('nav_menu_css_class', function($classes, $item, $args, $depth = 0) {
+    if (isset($args->walker) && ($args->walker instanceof Waklert_Desktop_Nav_Walker || $args->walker instanceof Waklert_Mobile_Nav_Walker)) {
+        return $classes;
+    }
     if (isset($args->theme_location)) {
         $is_mobile = ($args->theme_location === 'mobile') || (isset($args->menu_class) && strpos($args->menu_class, 'flex flex-col') !== false);
         $has_children = in_array('menu-item-has-children', $classes);
@@ -90,6 +93,9 @@ add_filter('nav_menu_css_class', function($classes, $item, $args, $depth = 0) {
 }, 10, 4);
 
 add_filter('nav_menu_link_attributes', function($atts, $item, $args, $depth = 0) {
+    if (isset($args->walker) && ($args->walker instanceof Waklert_Desktop_Nav_Walker || $args->walker instanceof Waklert_Mobile_Nav_Walker)) {
+        return $atts;
+    }
     if (isset($args->theme_location)) {
         $is_mobile = ($args->theme_location === 'mobile') || (isset($args->menu_class) && strpos($args->menu_class, 'flex flex-col') !== false);
 
@@ -125,6 +131,9 @@ add_filter('nav_menu_link_attributes', function($atts, $item, $args, $depth = 0)
 }, 10, 4);
 
 add_filter('nav_menu_submenu_css_class', function($classes, $args, $depth = 0) {
+    if (isset($args->walker) && ($args->walker instanceof Waklert_Desktop_Nav_Walker || $args->walker instanceof Waklert_Mobile_Nav_Walker)) {
+        return $classes;
+    }
     if (isset($args->theme_location) && ($args->theme_location === 'primary' || $args->theme_location === 'mobile')) {
         if (!in_array('sub-menu', $classes)) {
             $classes[] = 'sub-menu';
@@ -138,6 +147,9 @@ add_filter('nav_menu_submenu_css_class', function($classes, $args, $depth = 0) {
 }, 10, 3);
 
 add_filter('walker_nav_menu_start_el', function($item_output, $item, $depth, $args) {
+    if (isset($args->walker) && ($args->walker instanceof Waklert_Desktop_Nav_Walker || $args->walker instanceof Waklert_Mobile_Nav_Walker)) {
+        return $item_output;
+    }
     if (isset($args->theme_location) && ($args->theme_location === 'primary' || $args->theme_location === 'mobile')) {
         $item_classes = (array) $item->classes;
         $has_children = in_array('menu-item-has-children', $item_classes);
