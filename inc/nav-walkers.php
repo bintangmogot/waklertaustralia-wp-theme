@@ -70,6 +70,40 @@ function waklert_get_product_menu_meta($title, $url = '') {
 }
 
 /**
+ * Helper to fetch product thumbnail image URL for rich navigation cards
+ */
+function waklert_get_product_menu_image($title, $url = '', $object_id = 0) {
+    $img_url = '';
+    if ($object_id) {
+        $img_url = get_the_post_thumbnail_url($object_id, 'woocommerce_thumbnail') ?: get_the_post_thumbnail_url($object_id, 'thumbnail');
+    }
+    if (!$img_url && $url) {
+        $post_id = url_to_postid($url);
+        if ($post_id) {
+            $img_url = get_the_post_thumbnail_url($post_id, 'woocommerce_thumbnail') ?: get_the_post_thumbnail_url($post_id, 'thumbnail');
+        }
+    }
+    if (!$img_url) {
+        $lower = strtolower($title);
+        $fallback_ids = [
+            'waklert 150'  => 1174,
+            'waklert 50'   => 1179,
+            'artvigil'     => 1175,
+            'armodacharge' => 1178,
+            'armod 150'    => 1176,
+            'armod 50'     => 1177,
+        ];
+        foreach ($fallback_ids as $key => $id) {
+            if (strpos($lower, $key) !== false) {
+                $img_url = get_the_post_thumbnail_url($id, 'woocommerce_thumbnail') ?: get_the_post_thumbnail_url($id, 'thumbnail');
+                break;
+            }
+        }
+    }
+    return $img_url;
+}
+
+/**
  * Desktop Navigation Walker
  */
 class Waklert_Desktop_Nav_Walker extends Walker_Nav_Menu {
@@ -159,19 +193,24 @@ class Waklert_Desktop_Nav_Walker extends Walker_Nav_Menu {
             $output .= '</a>';
         } else {
             // Submenu Item (Product Micro-Card inside dropdown)
-            $meta = waklert_get_product_menu_meta($title, $url);
+            $meta = waklert_get_product_menu_meta($title, $url, $item->object_id);
+            $img_url = waklert_get_product_menu_image($title, $url, $item->object_id);
 
             $output .= '<li class="list-none">';
             $output .= '<a href="' . $url . '" class="group/pcard flex items-center gap-3 p-2.5 rounded-xl border-2 border-dashed border-sky-200/80 hover:border-[#0c4161] bg-white hover:bg-sky-50/70 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">';
             
-            // 2-Tone Capsule SVG Box
-            $output .= '<div class="w-10 h-10 rounded-xl bg-sky-50 border border-sky-200 flex items-center justify-center shrink-0 group-hover/pcard:scale-105 group-hover/pcard:border-[#0c4161] transition-transform">';
-            $output .= '<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">';
-            $output .= '<rect x="3" y="7" width="18" height="10" rx="5" fill="' . $meta['icon_color'] . '" fill-opacity="0.18" stroke="' . $meta['icon_color'] . '" stroke-width="1.8"/>';
-            $output .= '<path d="M12 7V17" stroke="#0C4161" stroke-width="1.8" stroke-dasharray="2 2"/>';
-            $output .= '<circle cx="7.5" cy="12" r="1.5" fill="' . $meta['dot_color'] . '"/>';
-            $output .= '<circle cx="16.5" cy="12" r="1.5" fill="' . $meta['icon_color'] . '"/>';
-            $output .= '</svg>';
+            // Product Image Box (exact same place with zoom hover)
+            $output .= '<div class="w-12 h-12 rounded-xl bg-white border-2 border-dashed border-sky-200/90 p-1 flex items-center justify-center shrink-0 group-hover/pcard:scale-105 group-hover/pcard:border-[#0c4161] group-hover/pcard:shadow-sm transition-all overflow-hidden">';
+            if ($img_url) {
+                $output .= '<img src="' . esc_url($img_url) . '" alt="' . esc_attr($title) . '" class="w-full h-full object-contain transition-transform duration-300 group-hover/pcard:scale-110" loading="lazy" />';
+            } else {
+                $output .= '<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">';
+                $output .= '<rect x="3" y="7" width="18" height="10" rx="5" fill="' . $meta['icon_color'] . '" fill-opacity="0.18" stroke="' . $meta['icon_color'] . '" stroke-width="1.8"/>';
+                $output .= '<path d="M12 7V17" stroke="#0C4161" stroke-width="1.8" stroke-dasharray="2 2"/>';
+                $output .= '<circle cx="7.5" cy="12" r="1.5" fill="' . $meta['dot_color'] . '"/>';
+                $output .= '<circle cx="16.5" cy="12" r="1.5" fill="' . $meta['icon_color'] . '"/>';
+                $output .= '</svg>';
+            }
             $output .= '</div>';
 
             // Text Info
@@ -251,18 +290,24 @@ class Waklert_Mobile_Nav_Walker extends Walker_Nav_Menu {
             $output .= '</div>';
         } else {
             // Submenu Item in mobile drawer
-            $meta = waklert_get_product_menu_meta($title, $url);
+            $meta = waklert_get_product_menu_meta($title, $url, $item->object_id);
+            $img_url = waklert_get_product_menu_image($title, $url, $item->object_id);
+
             $output .= '<li class="list-none w-full">';
             $output .= '<a href="' . $url . '" class="flex items-center gap-2.5 p-2.5 rounded-xl border-2 border-dashed border-sky-200/90 hover:border-[#0c4161] bg-white transition-all">';
             
-            // Icon
-            $output .= '<div class="w-9 h-9 rounded-lg bg-sky-50 border border-sky-200 flex items-center justify-center shrink-0">';
-            $output .= '<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">';
-            $output .= '<rect x="3" y="7" width="18" height="10" rx="5" fill="' . $meta['icon_color'] . '" fill-opacity="0.18" stroke="' . $meta['icon_color'] . '" stroke-width="1.8"/>';
-            $output .= '<path d="M12 7V17" stroke="#0C4161" stroke-width="1.8" stroke-dasharray="2 2"/>';
-            $output .= '<circle cx="7.5" cy="12" r="1.5" fill="' . $meta['dot_color'] . '"/>';
-            $output .= '<circle cx="16.5" cy="12" r="1.5" fill="' . $meta['icon_color'] . '"/>';
-            $output .= '</svg>';
+            // Product Image Box (exact same place)
+            $output .= '<div class="w-11 h-11 rounded-xl bg-white border-2 border-dashed border-sky-200/90 p-1 flex items-center justify-center shrink-0 overflow-hidden">';
+            if ($img_url) {
+                $output .= '<img src="' . esc_url($img_url) . '" alt="' . esc_attr($title) . '" class="w-full h-full object-contain" loading="lazy" />';
+            } else {
+                $output .= '<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">';
+                $output .= '<rect x="3" y="7" width="18" height="10" rx="5" fill="' . $meta['icon_color'] . '" fill-opacity="0.18" stroke="' . $meta['icon_color'] . '" stroke-width="1.8"/>';
+                $output .= '<path d="M12 7V17" stroke="#0C4161" stroke-width="1.8" stroke-dasharray="2 2"/>';
+                $output .= '<circle cx="7.5" cy="12" r="1.5" fill="' . $meta['dot_color'] . '"/>';
+                $output .= '<circle cx="16.5" cy="12" r="1.5" fill="' . $meta['icon_color'] . '"/>';
+                $output .= '</svg>';
+            }
             $output .= '</div>';
 
             // Text
