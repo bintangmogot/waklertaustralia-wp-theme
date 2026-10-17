@@ -152,7 +152,7 @@
 
 <!-- Mobile Nav Drawer -->
 <div id="mobile-menu-drawer" class="fixed inset-y-0 left-0 z-[99999] w-[88%] max-w-sm h-screen h-[100dvh] transform overflow-y-auto bg-gradient-to-b from-[#f8fafc] via-[#f0f6fa] to-[#eef5fa] bg-pattern-dots transition-transform duration-300 ease-in-out lg:hidden -translate-x-full shadow-2xl flex flex-col justify-between">
-    <div>
+    <div class="shrink-0">
         <div class="flex h-[68px] items-center justify-between border-b-2 border-dashed border-sky-200/80 bg-white/90 px-6 backdrop-blur">
             <?php waklert_the_logo('h-11 w-auto max-w-[228px] object-contain', 'mobile'); ?>
             <button type="button" aria-label="Close menu" id="mobile-menu-close" class="rounded-xl p-2 text-[#0c4161] bg-sky-50 border border-dashed border-sky-300 hover:bg-sky-100 transition-colors">
@@ -191,7 +191,7 @@
     </div>
 
     <!-- 2-Tone Dashed Help Card in Mobile Drawer -->
-    <div class="mx-6 mb-8 mt-4 rounded-3xl border-2 border-dashed border-sky-300/80 bg-white overflow-hidden shadow-sm transition-all hover:shadow-md">
+    <div class="mx-6 mb-8 mt-4 shrink-0 rounded-3xl border-2 border-dashed border-sky-300/80 bg-white overflow-hidden shadow-sm transition-all hover:shadow-md">
         <div class="p-5">
             <div class="flex items-center gap-3 mb-2.5">
                 <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-50 text-amber-600 border border-amber-200">
