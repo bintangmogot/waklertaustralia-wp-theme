@@ -258,7 +258,7 @@ $product_specs = [
                             <label
                                 class="text-sm font-bold text-foreground mb-2 block"><?= "Choose Quantity (prices in AUD)" ?></label>
 
-                            <div class="space-y-2" id="variation-rows">
+                            <div class="space-y-1.5" id="variation-rows">
                                 <?php 
                                 // Determine the correct attribute key dynamically (e.g., attribute_pa_pack-size)
                                 $first_attr_key = 'attribute_pa_quantity';
@@ -294,19 +294,19 @@ $product_specs = [
                                     $sticky_price_label = wp_strip_all_tags(wc_price($price_num));
                                     ?>
                                     <button type="button"
-                                        class="variation-row-btn w-full flex items-center justify-between gap-3 px-3.5 sm:px-5 py-2.5 sm:py-3.5 rounded-xl sm:rounded-2xl border-2 border-dashed text-left transition-all duration-200 <?php echo $is_active ? 'border-[#0c4161] bg-sky-50 text-[#0c4161] active-row shadow-sm' : 'border-sky-200/80 bg-white text-slate-700 hover:border-sky-400 hover:bg-sky-50/40'; ?>"
+                                        class="variation-row-btn w-full flex items-center justify-between gap-3 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl border-2 border-dashed text-left transition-all duration-200 <?php echo $is_active ? 'border-[#0c4161] bg-sky-50 text-[#0c4161] active-row shadow-sm' : 'border-sky-200/80 bg-white text-slate-700 hover:border-sky-400 hover:bg-sky-50/40'; ?>"
                                         data-id="<?= esc_attr($variation['variation_id']) ?>"
                                         data-qty="<?= esc_attr($qty_num) ?>" data-price="<?= esc_attr($price_num) ?>"
                                         data-pack-label="<?= esc_attr($display_qty_str) ?>" data-display-price="<?= esc_attr($sticky_price_label) ?>"
                                         data-per-tab="<?= esc_attr($per_tab_price ?? '') ?>" data-val="<?= esc_attr($qty_str) ?>">
 
-                                        <span class="text-xs sm:text-base font-extrabold flex items-center gap-2">
+                                        <span class="text-xs sm:text-sm font-extrabold flex items-center gap-2">
                                             <span class="h-2 w-2 rounded-full <?php echo $is_active ? 'bg-[#0c4161]' : 'bg-slate-300'; ?>"></span>
                                             <?= esc_html($display_qty_str) ?>
                                         </span>
                                         <span class="text-right shrink-0">
                                             <span
-                                                class="text-xs sm:text-base font-black text-[#0c4161] block leading-snug"><?= wp_kses_post(wc_price($price_num)) ?></span>
+                                                class="text-xs sm:text-sm font-black text-[#0c4161] block leading-snug"><?= wp_kses_post(wc_price($price_num)) ?></span>
                                             <?php if ($per_tab_price !== null): ?>
                                                 <span class="text-[10px] sm:text-[11px] text-emerald-800 font-bold bg-emerald-100 px-1.5 sm:px-2 py-0.5 rounded-full inline-block mt-0.5">
                                                     <?= esc_html(waklert_format_product_unit_price($per_tab_price)) ?>/tablet
@@ -324,10 +324,10 @@ $product_specs = [
                                 class="text-xs sm:text-sm font-bold text-[#0c4161]"><?= "Quantity" ?></label>
                             <div class="flex items-center border-2 border-dashed border-sky-300 rounded-xl bg-white shadow-sm overflow-hidden">
                                 <button type="button" id="qty-dec"
-                                    class="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center text-slate-500 hover:text-[#0c4161] hover:bg-sky-50 transition-colors font-bold text-base sm:text-lg">-</button>
-                                <span id="qty-val" class="w-9 sm:w-12 text-center text-xs sm:text-sm font-extrabold text-[#0c4161]">1</span>
+                                    class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center text-slate-500 hover:text-[#0c4161] hover:bg-sky-50 transition-colors font-bold text-base">-</button>
+                                <span id="qty-val" class="w-8 sm:w-10 text-center text-xs sm:text-sm font-extrabold text-[#0c4161]">1</span>
                                 <button type="button" id="qty-inc"
-                                    class="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center text-slate-500 hover:text-[#0c4161] hover:bg-sky-50 transition-colors font-bold text-base sm:text-lg">+</button>
+                                    class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center text-slate-500 hover:text-[#0c4161] hover:bg-sky-50 transition-colors font-bold text-base">+</button>
                             </div>
                         </div>
 
@@ -342,8 +342,8 @@ $product_specs = [
 
                         <!-- Checkout Button -->
                         <button type="submit"
-                            class="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-amber-500 via-amber-600 to-amber-500 hover:from-amber-600 hover:to-amber-700 px-4 py-2.5 sm:px-6 sm:py-4 text-xs sm:text-sm font-black uppercase tracking-wide sm:tracking-wider text-white shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all disabled:opacity-50">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 shrink-0" fill="none" viewBox="0 0 24 24"
+                            class="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-amber-500 via-amber-600 to-amber-500 hover:from-amber-600 hover:to-amber-700 px-4 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-black uppercase tracking-wide sm:tracking-wider text-white shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all disabled:opacity-50">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-4.5 sm:w-4.5 shrink-0" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor" stroke-width="2.5">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -421,8 +421,8 @@ $product_specs = [
                         rows.forEach(row => {
                             row.addEventListener('click', function () {
                                 // Update UI states
-                                rows.forEach(r => r.className = "variation-row-btn w-full flex items-center justify-between gap-3 px-3.5 sm:px-5 py-2.5 sm:py-3.5 rounded-xl sm:rounded-2xl border-2 border-dashed text-left transition-all duration-200 border-sky-200/80 bg-white text-slate-700 hover:border-sky-400 hover:bg-sky-50/40");
-                                this.className = "variation-row-btn active-row w-full flex items-center justify-between gap-3 px-3.5 sm:px-5 py-2.5 sm:py-3.5 rounded-xl sm:rounded-2xl border-2 border-dashed text-left transition-all duration-200 border-[#0c4161] bg-sky-50 text-[#0c4161] shadow-sm";
+                                rows.forEach(r => r.className = "variation-row-btn w-full flex items-center justify-between gap-3 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl border-2 border-dashed text-left transition-all duration-200 border-sky-200/80 bg-white text-slate-700 hover:border-sky-400 hover:bg-sky-50/40");
+                                this.className = "variation-row-btn active-row w-full flex items-center justify-between gap-3 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl border-2 border-dashed text-left transition-all duration-200 border-[#0c4161] bg-sky-50 text-[#0c4161] shadow-sm";
 
                                 // Update Hidden inputs
                                 inputVarId.value = this.dataset.id;
@@ -585,25 +585,25 @@ $product_specs = [
 <?php if ($product->is_in_stock() && !empty($variations)): ?>
     <?php $sticky_default_variation = $variations[$default_variation_index] ?? null; ?>
     <div id="sticky-product-bar" class="fixed inset-x-0 bottom-0 z-40 translate-y-full border-t-2 border-dashed border-sky-300/80 bg-white/95 opacity-0 shadow-[0_-8px_24px_rgba(12,65,97,0.12)] backdrop-blur-md transition duration-300 pointer-events-none" aria-hidden="true" inert>
-        <div class="container-site flex items-center justify-between gap-2 py-2 sm:gap-4 sm:py-3">
+        <div class="container-site flex items-center justify-between gap-2 py-2 sm:gap-4 sm:py-3 sm:pr-20 md:pr-24 lg:pr-28">
             <!-- Left: Product info / Price -->
-            <div class="flex items-center gap-2.5 sm:gap-3 shrink-0 sm:min-w-0 sm:flex-1">
+            <div class="flex items-center gap-2 sm:gap-3 shrink-0">
                 <?php if ($image !== ''): ?>
-                    <img src="<?= esc_url($image) ?>" alt="" class="hidden min-[420px]:block sm:block h-10 w-10 sm:h-13 sm:w-13 shrink-0 rounded-xl border-2 border-dashed border-sky-200 bg-white object-contain p-1">
+                    <img src="<?= esc_url($image) ?>" alt="" class="hidden min-[420px]:block sm:block h-9 w-9 sm:h-12 sm:w-12 shrink-0 rounded-xl border-2 border-dashed border-sky-200 bg-white object-contain p-1">
                 <?php endif; ?>
                 <div class="min-w-0">
-                    <p class="hidden sm:block truncate text-xs font-extrabold text-slate-900 sm:text-sm"><?= esc_html($product->get_name()) ?></p>
+                    <p class="hidden sm:block truncate text-xs font-extrabold text-slate-900 sm:text-sm max-w-[200px] md:max-w-none"><?= esc_html($product->get_name()) ?></p>
                     <div class="flex flex-col sm:flex-row sm:items-center sm:gap-1.5 sm:mt-0.5">
                         <span id="sticky-product-price" class="font-black text-sm sm:text-base text-[#0c4161] leading-tight" data-currency-symbol="<?= esc_attr(get_woocommerce_currency_symbol()) ?>"><?= esc_html(wp_strip_all_tags(wc_price((float) ($sticky_default_variation['display_price'] ?? 0)))) ?></span>
                         <span class="hidden sm:inline text-slate-400" aria-hidden="true"> · </span>
-                        <span id="sticky-product-pack" class="text-[10.5px] sm:text-xs font-semibold text-slate-500 truncate max-w-[95px] sm:max-w-none"><?= esc_html($sticky_default_pack_label ?? '') ?></span>
+                        <span id="sticky-product-pack" class="text-[11px] sm:text-xs font-semibold text-slate-500 truncate max-w-[90px] sm:max-w-none"><?= esc_html($sticky_default_pack_label ?? '') ?></span>
                     </div>
                 </div>
             </div>
 
-            <!-- Center: Add to Cart Button (Centered on mobile, right-aligned on desktop) -->
-            <div class="flex-1 flex justify-center sm:justify-end items-center px-1 sm:px-0">
-                <button id="sticky-product-submit" type="button" class="w-full max-w-[190px] sm:max-w-none sm:w-auto inline-flex shrink-0 items-center justify-center gap-1.5 sm:gap-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 px-3.5 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-black uppercase tracking-wider text-white shadow-md hover:shadow-lg transition-all active:scale-[0.98]">
+            <!-- Center: Add to Cart Button (Centered on BOTH mobile and desktop) -->
+            <div class="flex-1 flex justify-center items-center px-1 sm:px-2">
+                <button id="sticky-product-submit" type="button" class="inline-flex shrink-0 items-center justify-center gap-1.5 sm:gap-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 px-4 py-2 sm:px-8 sm:py-3 text-xs sm:text-sm font-black uppercase tracking-wider text-white shadow-md hover:shadow-lg transition-all active:scale-[0.98]">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
@@ -611,8 +611,16 @@ $product_specs = [
                 </button>
             </div>
 
-            <!-- Mobile Clearance Spacer for the floating Side Cart launcher on the right -->
-            <div class="w-14 sm:hidden shrink-0" aria-hidden="true"></div>
+            <!-- Mobile Spacer: Dedicated clearance for floating Side Cart launcher (.xoo-wsc-basket) on mobile -->
+            <div class="w-14 shrink-0 sm:hidden" aria-hidden="true"></div>
+
+            <!-- Desktop Right: Balanced Safe Spacer so Button is centered and away from floating side cart -->
+            <div class="hidden sm:block shrink-0 min-w-[120px] lg:min-w-[160px] text-right">
+                <span class="inline-flex items-center gap-1.5 text-xs font-bold text-slate-600 bg-sky-50 px-3 py-1 rounded-full border border-sky-200">
+                    <svg class="w-3.5 h-3.5 text-emerald-600 shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                    <span>In Stock</span>
+                </span>
+            </div>
         </div>
     </div>
 <?php endif; ?>

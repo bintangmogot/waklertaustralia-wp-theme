@@ -186,14 +186,17 @@ if (is_home() && $has_modules) {
         $subtitle = '';
     }
     ?>
-    <section class="border-b border-border bg-gradient-to-b from-primary-softer via-primary-softer/70 to-background text-center" data-testid="blog-archive-hero">
-        <div class="container-site mx-auto max-w-4xl py-16 md:py-20">
-            <span class="eyebrow">Waklert Australia Insights</span>
-            <h1 class="mx-auto mt-5 max-w-4xl font-heading text-4xl font-extrabold leading-tight tracking-tight text-foreground sm:text-5xl md:text-6xl">
+    <section class="relative overflow-hidden border-b-2 border-dashed border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-10 md:py-14" data-testid="blog-archive-hero">
+        <div class="container-site mx-auto max-w-4xl px-4 relative z-10">
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 border border-sky-300/80 px-3.5 py-1 text-xs font-black uppercase tracking-[0.16em] text-[#0c4161] shadow-xs mb-3">
+                <span class="h-1.5 w-1.5 rounded-full bg-amber-500 animate-pulse" aria-hidden="true"></span>
+                <?php echo is_search() ? 'Search Results' : 'Waklert Australia Insights'; ?>
+            </span>
+            <h1 class="mx-auto mt-2 max-w-3xl font-heading text-2xl sm:text-3xl md:text-4xl font-black leading-tight tracking-tight text-[#0c4161]">
                 <?php echo esc_html($title); ?>
             </h1>
             <?php if ($subtitle) : ?>
-                <div class="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
+                <div class="mx-auto mt-4 max-w-2xl text-sm md:text-base leading-relaxed text-slate-600">
                     <?php echo is_archive() ? wp_kses_post($subtitle) : esc_html($subtitle); ?>
                 </div>
             <?php endif; ?>

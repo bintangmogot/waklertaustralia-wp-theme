@@ -19,49 +19,69 @@ get_header();
         // Fallback to standard post layout
         while (have_posts()) : the_post(); ?>
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                <header class="border-b border-border bg-gradient-to-b from-primary-softer via-primary-softer/70 to-background text-center" data-testid="single-post-hero">
-                <div class="container-site mx-auto max-w-4xl py-12 md:py-16">
-                    <nav aria-label="Breadcrumb" class="mb-7 flex flex-wrap items-center justify-center gap-2 text-xs text-muted-foreground">
-                        <a href="<?php echo esc_url(home_url('/')); ?>" class="transition-colors hover:text-primary">Home</a>
-                        <span aria-hidden="true">/</span>
-                        <a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>" class="transition-colors hover:text-primary">Insights</a>
-                        <span aria-hidden="true">/</span>
-                        <span class="max-w-[14rem] truncate text-foreground"><?php the_title(); ?></span>
-                    </nav>
+                <header class="relative overflow-hidden border-b-2 border-dashed border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-5 sm:py-6 md:py-7" data-testid="single-post-hero">
+                    <div class="container-site max-w-4xl mx-auto px-4 relative z-10">
+                        <!-- Centered Breadcrumb Pill -->
+                        <div class="mb-2.5">
+                            <nav aria-label="Breadcrumb" class="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border border-dashed border-sky-300/80 bg-white/90 px-3.5 py-1 text-xs font-medium text-slate-500 shadow-xs backdrop-blur">
+                                <a href="<?php echo esc_url(home_url('/')); ?>" class="font-bold text-slate-600 transition-colors hover:text-[#0c4161]">Home</a>
+                                <span class="text-sky-300 font-normal">/</span>
+                                <a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>" class="font-bold text-slate-600 transition-colors hover:text-[#0c4161]">Blog</a>
+                                <span class="text-sky-300 font-normal">/</span>
+                                <span class="max-w-[12rem] sm:max-w-xs md:max-w-md truncate font-extrabold text-[#0c4161]"><?php the_title(); ?></span>
+                            </nav>
+                        </div>
 
-                    <?php $category = modmy_get_post_category(get_the_ID()); ?>
-                    <?php if ($category) : ?>
-                        <span class="eyebrow"><?php echo esc_html($category); ?></span>
-                    <?php else : ?>
-                        <span class="eyebrow">Waklert Australia Insights</span>
-                    <?php endif; ?>
+                        <!-- Eyebrow Badge -->
+                        <?php $category = modmy_get_post_category(get_the_ID()); ?>
+                        <div class="mb-2">
+                            <span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 border border-sky-300/80 px-3 py-0.5 text-[11px] font-black uppercase tracking-[0.16em] text-[#0c4161] shadow-xs">
+                                <span class="h-1.5 w-1.5 rounded-full bg-amber-500 animate-pulse" aria-hidden="true"></span>
+                                <?php echo esc_html($category ?: 'Waklert Australia Insights'); ?>
+                            </span>
+                        </div>
 
-                    <h1 class="mx-auto mt-5 max-w-4xl font-heading text-4xl font-extrabold leading-tight tracking-tight text-foreground sm:text-5xl md:text-6xl">
-                        <?php the_title(); ?>
-                    </h1>
+                        <!-- Compact Centered Title -->
+                        <h1 class="mx-auto max-w-2xl md:max-w-3xl font-heading text-xl sm:text-2xl md:text-3xl lg:text-[2rem] font-black leading-tight tracking-tight text-[#0c4161]">
+                            <?php the_title(); ?>
+                        </h1>
 
-                    <div class="mt-6 flex flex-wrap items-center justify-center gap-2 text-xs text-muted-foreground">
-                        <time datetime="<?php echo esc_attr(get_the_date('c')); ?>"><?php echo esc_html(get_the_date('j F Y')); ?></time>
-                        <span aria-hidden="true">&middot;</span>
-                        <span><?php echo esc_html(get_the_author()); ?></span>
+                        <!-- Meta info: Date & Author -->
+                        <?php
+                        $post_author_id = get_post_field('post_author', get_the_ID());
+                        $author_name = get_the_author_meta('display_name', $post_author_id);
+                        if (empty($author_name) || strtolower($author_name) === 'admin') {
+                            $author_name = 'Waklert Australia Team';
+                        }
+                        ?>
+                        <div class="mt-2.5 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs text-slate-500">
+                            <span class="inline-flex items-center gap-1.5">
+                                <svg class="h-3.5 w-3.5 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                <time datetime="<?php echo esc_attr(get_the_date('c')); ?>"><?php echo esc_html(get_the_date('j F Y')); ?></time>
+                            </span>
+                            <span class="text-sky-300" aria-hidden="true">&middot;</span>
+                            <span class="inline-flex items-center gap-1.5">
+                                <svg class="h-3.5 w-3.5 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                                <span><?php echo esc_html($author_name); ?></span>
+                            </span>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="bg-background min-h-[50vh] pt-6 pb-16 md:pt-8 md:pb-20">
+                    <div class="container-site max-w-3xl">
+                        <?php if (has_post_thumbnail()) : ?>
+                            <figure class="mb-8 overflow-hidden rounded-2xl border-2 border-dashed border-sky-200/80 bg-white p-1.5 shadow-sm">
+                                <?php the_post_thumbnail('large', ['class' => 'h-auto w-full object-cover rounded-xl shadow-xs', 'loading' => 'eager']); ?>
+                            </figure>
+                        <?php endif; ?>
+
+                        <div class="prose prose-slate max-w-none prose-a:text-primary hover:prose-a:text-primary-dark prose-headings:font-heading prose-headings:font-bold">
+                            <?php the_content(); ?>
+                        </div>
                     </div>
                 </div>
-            </header>
-
-            <div class="section-padding min-h-[50vh] bg-background">
-                <div class="container-site max-w-3xl">
-                    <?php if (has_post_thumbnail()) : ?>
-                        <figure class="mb-8 overflow-hidden rounded-2xl border border-border shadow-card">
-                            <?php the_post_thumbnail('large', ['class' => 'h-auto w-full object-cover', 'loading' => 'eager']); ?>
-                        </figure>
-                    <?php endif; ?>
-
-                    <div class="prose prose-slate max-w-none prose-a:text-primary hover:prose-a:text-primary-dark prose-headings:font-heading prose-headings:font-bold">
-                        <?php the_content(); ?>
-                    </div>
-                </div>
-            </div>
-        </article>
+            </article>
     <?php endwhile; 
     } // End else
     ?>
