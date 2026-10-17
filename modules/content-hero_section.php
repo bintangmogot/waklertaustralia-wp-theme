@@ -87,8 +87,14 @@ if (empty($mobile_img_url)) {
             <div class="max-w-lg lg:max-w-[460px] xl:max-w-[530px]">
                 <?php if ($location): ?>
                 <span class="mb-5 md:mb-6 inline-flex items-center gap-2 md:gap-2.5 rounded-full border border-white/25 bg-white/10 px-4.5 py-2 md:px-5 md:py-2.5 text-xs sm:text-sm md:text-[0.9375rem] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-md shadow-sm">
-                    <span aria-hidden="true" class="h-2 w-2 md:h-2.5 md:w-2.5 rounded-full bg-amber-400 animate-pulse-subtle"></span>
-                    <?= esc_html($location) ?>
+                    <svg class="h-4 w-4 md:h-4.5 md:w-4.5 text-amber-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/>
+                        <path d="M15 18H9"/>
+                        <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.24-4.05a1 1 0 0 0-.78-.33H14v10"/>
+                        <circle cx="17" cy="18" r="2"/>
+                        <circle cx="7" cy="18" r="2"/>
+                    </svg>
+                    <span><?= esc_html($location) ?></span>
                 </span>
                 <?php endif; ?>
 

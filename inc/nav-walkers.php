@@ -13,53 +13,44 @@ if (!defined('ABSPATH')) {
  */
 function waklert_get_product_menu_meta($title, $url = '') {
     $meta = [
-        'badge'      => 'In Stock',
-        'badge_bg'   => 'bg-sky-100 text-sky-800 border-sky-300',
-        'brand'      => 'Pharmaceutical Grade',
-        'price'      => 'From $125',
-        'icon_color' => '#0284C7',
-        'dot_color'  => '#F59E0B',
+        'badge'          => '',
+        'badge_bg'       => '',
+        'is_best_seller' => false,
+        'brand'          => 'Pharmaceutical Grade',
+        'price'          => 'From $125',
+        'icon_color'     => '#0284C7',
+        'dot_color'      => '#F59E0B',
     ];
 
     $lower = strtolower($title);
     if (strpos($lower, 'waklert 150') !== false) {
-        $meta['badge']      = 'Best Seller';
-        $meta['badge_bg']   = 'bg-amber-100 text-amber-900 border-amber-300 font-black';
-        $meta['brand']      = 'Sun Pharma • 150mg';
-        $meta['price']      = 'From $150 ($3/tab)';
-        $meta['icon_color'] = '#0C4161';
-        $meta['dot_color']  = '#F59E0B';
+        $meta['badge']          = 'Best Seller';
+        $meta['is_best_seller'] = true;
+        $meta['brand']          = 'Sun Pharma • 150mg';
+        $meta['price']          = 'From $150 ($3/tab)';
+        $meta['icon_color']     = '#0C4161';
+        $meta['dot_color']      = '#F59E0B';
     } elseif (strpos($lower, 'waklert 50') !== false) {
-        $meta['badge']      = 'Low Dose';
-        $meta['badge_bg']   = 'bg-emerald-100 text-emerald-900 border-emerald-300 font-black';
         $meta['brand']      = 'Sun Pharma • 50mg';
         $meta['price']      = 'From $95';
         $meta['icon_color'] = '#10B981';
         $meta['dot_color']  = '#0C4161';
     } elseif (strpos($lower, 'artvigil') !== false) {
-        $meta['badge']      = 'Popular';
-        $meta['badge_bg']   = 'bg-sky-100 text-sky-900 border-sky-300 font-black';
         $meta['brand']      = 'HAB Pharma • 150mg';
         $meta['price']      = 'From $125';
         $meta['icon_color'] = '#0284C7';
         $meta['dot_color']  = '#6366F1';
     } elseif (strpos($lower, 'armodacharge') !== false) {
-        $meta['badge']      = 'High Potency';
-        $meta['badge_bg']   = 'bg-purple-100 text-purple-900 border-purple-300 font-black';
         $meta['brand']      = 'Centurion Labs • 150mg';
         $meta['price']      = 'From $125';
         $meta['icon_color'] = '#8B5CF6';
         $meta['dot_color']  = '#38BDF8';
     } elseif (strpos($lower, 'armod 150') !== false) {
-        $meta['badge']      = 'Signature';
-        $meta['badge_bg']   = 'bg-amber-100 text-amber-900 border-amber-300 font-black';
         $meta['brand']      = 'Signature Brand • 150mg';
         $meta['price']      = 'From $220';
         $meta['icon_color'] = '#D97706';
         $meta['dot_color']  = '#0C4161';
     } elseif (strpos($lower, 'armod 50') !== false) {
-        $meta['badge']      = 'Micro Dose';
-        $meta['badge_bg']   = 'bg-teal-100 text-teal-900 border-teal-300 font-black';
         $meta['brand']      = 'Signature Brand • 50mg';
         $meta['price']      = 'From $180';
         $meta['icon_color'] = '#0D9488';
@@ -110,7 +101,7 @@ class Waklert_Desktop_Nav_Walker extends Walker_Nav_Menu {
     public function start_lvl(&$output, $depth = 0, $args = null) {
         if ($depth === 0) {
             // Dropdown wrapper with 2-tone dashed container and hover bridge
-            $output .= '<div class="sub-menu-dropdown-wrapper absolute top-full left-[-80px] pt-2.5 w-[590px] max-w-[92vw] opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-2 group-hover:translate-y-0 transition-all duration-200 z-50 pointer-events-none group-hover:pointer-events-auto filter drop-shadow-2xl">';
+            $output .= '<div class="sub-menu-dropdown-wrapper absolute top-full left-[-80px] pt-2.5 w-[625px] max-w-[92vw] opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-2 group-hover:translate-y-0 transition-all duration-200 z-50 pointer-events-none group-hover:pointer-events-auto filter drop-shadow-2xl">';
             $output .= '<div class="rounded-2xl border-2 border-dashed border-sky-300/90 bg-white overflow-hidden shadow-2xl">';
             
             // Dropdown Header Strip
@@ -172,9 +163,9 @@ class Waklert_Desktop_Nav_Walker extends Walker_Nav_Menu {
             $output .= '<li class="' . esc_attr($li_classes) . '">';
 
             if ($is_active) {
-                // Active 2-Tone Nav Pill with glowing amber indicator and dashed amber border
+                // Active 2-Tone Nav Pill
                 $link_class = 'inline-flex items-center gap-2 px-4 py-1.5 text-[15.5px] xl:text-[16.5px] font-extrabold rounded-full bg-gradient-to-r from-[#0c4161] via-[#0e4a70] to-[#125883] text-white shadow-md shadow-[#0c4161]/25 border-2 border-dashed border-amber-400 outline-none focus:outline-none focus:ring-0 transition-all duration-200';
-                $dot_indicator = '<span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse shadow-sm"></span>';
+                $dot_indicator = '';
                 $chev_color = 'text-amber-300';
             } else {
                 // Inactive Nav Link
@@ -216,8 +207,13 @@ class Waklert_Desktop_Nav_Walker extends Walker_Nav_Menu {
             // Text Info
             $output .= '<div class="min-w-0 flex-1">';
             $output .= '<div class="flex items-center justify-between gap-1">';
-            $output .= '<h4 class="text-[13.5px] font-extrabold text-[#0c4161] truncate group-hover/pcard:text-[#082a3f]">' . $title . '</h4>';
-            $output .= '<span class="text-[9.5px] font-extrabold px-1.5 py-0.5 rounded-md border shrink-0 ' . $meta['badge_bg'] . '">' . $meta['badge'] . '</span>';
+            $output .= '<h4 class="text-[13px] font-extrabold text-[#0c4161] whitespace-nowrap group-hover/pcard:text-[#082a3f]">' . $title . '</h4>';
+            if (!empty($meta['is_best_seller'])) {
+                $output .= '<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-amber-50 text-amber-900 border border-amber-300/80 shrink-0 shadow-2xs">';
+                $output .= '<svg class="w-3 h-3 text-amber-600 shrink-0 animate-point-to-product" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>';
+                $output .= '<span class="font-caveat font-bold text-[13px] leading-none text-amber-950 tracking-normal select-none">Best Seller</span>';
+                $output .= '</span>';
+            }
             $output .= '</div>';
             $output .= '<p class="text-[11px] text-slate-500 font-medium truncate">' . $meta['brand'] . '</p>';
             $output .= '<div class="mt-1 flex items-center justify-between">';
@@ -270,7 +266,7 @@ class Waklert_Mobile_Nav_Walker extends Walker_Nav_Menu {
             if ($is_active) {
                 // Active 2-Tone Mobile Pill
                 $link_class = 'flex-1 flex items-center gap-2.5 px-4 py-3 rounded-2xl bg-gradient-to-r from-[#0c4161] to-[#125883] text-white font-extrabold text-[15px] border-2 border-dashed border-amber-400 shadow-sm';
-                $indicator = '<span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>';
+                $indicator = '';
             } else {
                 // Inactive Mobile Link
                 $link_class = 'flex-1 flex items-center gap-2 px-4 py-3 rounded-2xl text-slate-800 hover:text-[#0c4161] hover:bg-sky-50 font-bold text-[15px] border-2 border-dashed border-transparent hover:border-sky-200 transition-all';
@@ -314,7 +310,12 @@ class Waklert_Mobile_Nav_Walker extends Walker_Nav_Menu {
             $output .= '<div class="min-w-0 flex-1">';
             $output .= '<div class="flex items-center justify-between gap-1">';
             $output .= '<span class="text-xs font-bold text-[#0c4161] truncate">' . $title . '</span>';
-            $output .= '<span class="text-[9px] font-extrabold px-1.5 py-0.2 rounded border ' . $meta['badge_bg'] . '">' . $meta['badge'] . '</span>';
+            if (!empty($meta['is_best_seller'])) {
+                $output .= '<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-50 text-amber-900 border border-amber-300/80 shrink-0 shadow-2xs">';
+                $output .= '<svg class="w-3 h-3 text-amber-600 shrink-0 animate-point-to-product" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>';
+                $output .= '<span class="font-caveat font-bold text-[13px] leading-none text-amber-950 tracking-normal select-none">Best Seller</span>';
+                $output .= '</span>';
+            }
             $output .= '</div>';
             $output .= '<div class="flex items-center justify-between text-[10px] text-slate-500 font-medium">';
             $output .= '<span class="truncate">' . $meta['brand'] . '</span>';

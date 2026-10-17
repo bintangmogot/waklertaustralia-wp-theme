@@ -20,6 +20,7 @@
   --font-heading: "Manrope", ui-sans-serif, system-ui, sans-serif;
   --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-script: "Caveat", cursive, system-ui, sans-serif;
 
   /* ---------- Radii ---------- */
   --radius-sm: calc(var(--radius) - 4px);
@@ -2087,6 +2088,23 @@ footer .site-logo-img,
   background-image: linear-gradient(to right, rgba(12, 65, 97, 0.04) 1px, transparent 1px),
                     linear-gradient(to bottom, rgba(12, 65, 97, 0.04) 1px, transparent 1px);
   background-size: 24px 24px;
+}
+
+.font-caveat {
+  font-family: var(--font-script, "Caveat", cursive, system-ui, sans-serif);
+}
+
+@keyframes point-to-product {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-4px);
+  }
+}
+
+.animate-point-to-product {
+  animation: point-to-product 1.2s ease-in-out infinite;
 }
 
 

@@ -51,8 +51,7 @@ if (empty($rows)) {
     <div class="container-custom max-w-5xl relative z-10">
         <!-- Section Header -->
         <div class="text-center max-w-3xl mx-auto mb-10 md:mb-12">
-            <span class="inline-flex items-center gap-2 bg-amber-100 text-amber-900 border border-amber-300 text-xs font-black uppercase tracking-widest px-4 py-1.5 rounded-full mb-3 shadow-xs">
-                <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse-subtle"></span>
+            <span class="inline-flex items-center bg-amber-100 text-amber-900 border border-amber-300 text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full mb-3 shadow-2xs">
                 <?= esc_html($tag) ?>
             </span>
             <h2 class="font-heading text-2xl md:text-4xl font-black text-ink tracking-tight mb-3">
@@ -105,10 +104,9 @@ if (empty($rows)) {
                                 </div>
                             </td>
 
-                            <!-- Waklert Value (Highlighted with Green Pill / Checkmark) -->
+                            <!-- Waklert Value (Clean Pill without bullet dot) -->
                             <td class="py-4 px-5 md:px-6 text-center bg-sky-50/70 border-x-2 border-dashed border-sky-200/80 font-extrabold text-[#0c4161]">
-                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-300/80 text-xs font-black shadow-2xs">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                <span class="inline-flex items-center justify-center px-3.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-300/80 text-xs font-bold shadow-2xs">
                                     <?= esc_html($r['modafinil']) ?>
                                 </span>
                             </td>
@@ -131,8 +129,8 @@ if (empty($rows)) {
             <!-- Bottom Table Footer with Australia Note -->
             <div class="p-4 px-6 bg-slate-50 border-t-2 border-dashed border-sky-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-slate-500">
                 <span class="flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                    Armodafinil offers sustained wakefulness without sugar crashes or high liquid intake.
+                    <svg class="w-3.5 h-3.5 text-emerald-600 shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                    <span>Armodafinil offers sustained wakefulness without sugar crashes or high liquid intake.</span>
                 </span>
                 <span class="font-bold text-[#0c4161]">100% Genuine Sun Pharma Batch Tested</span>
             </div>

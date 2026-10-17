@@ -98,8 +98,7 @@ if (empty($cities_list)) {
         <!-- Section Header -->
         <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12">
             <?php if (!empty($tag)): ?>
-            <div class="inline-flex items-center gap-2 rounded-full bg-amber-400/20 border border-amber-300/40 px-4 py-1.5 text-xs font-black uppercase tracking-[0.2em] text-amber-300 mb-4 sm:mb-5 shadow-sm">
-                <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+            <div class="inline-flex items-center rounded-full bg-amber-400/15 border border-amber-300/35 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-amber-300 mb-4 sm:mb-5">
                 <?= esc_html($tag) ?>
             </div>
             <?php endif; ?>
@@ -118,12 +117,10 @@ if (empty($cities_list)) {
         <!-- City Pills Container -->
         <div class="max-w-4xl mx-auto flex flex-wrap justify-center items-center gap-2.5 sm:gap-3 md:gap-3.5">
             <?php foreach ($cities_list as $city): ?>
-            <div class="group inline-flex items-center gap-2.5 bg-white/10 hover:bg-white/15 border-2 border-dashed border-sky-300/40 hover:border-amber-400/70 text-white rounded-full px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm md:text-[15px] font-bold tracking-wide backdrop-blur-sm shadow-xs transition-all duration-300 hover:-translate-y-0.5 cursor-default select-none">
-                <!-- Glowing Amber Dot -->
-                <span class="w-2.5 h-2.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.8)] shrink-0" aria-hidden="true"></span>
+            <div class="inline-flex items-center bg-white/10 hover:bg-white/15 border border-white/20 hover:border-amber-400/50 text-white rounded-full px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm md:text-[15px] font-semibold tracking-wide backdrop-blur-sm transition-colors duration-200 cursor-default select-none">
                 <span class="text-white"><?= esc_html($city['name']) ?></span>
                 <?php if (!empty($city['checkmark'])): ?>
-                <span class="text-amber-400 font-black ml-0.5" aria-hidden="true">✓</span>
+                <span class="text-amber-300 font-bold ml-1.5" aria-hidden="true">✓</span>
                 <?php endif; ?>
             </div>
             <?php endforeach; ?>
@@ -138,8 +135,7 @@ if (empty($cities_list)) {
         <!-- Section Header -->
         <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12">
             <?php if (!empty($tag)): ?>
-            <span class="inline-flex items-center gap-2 bg-sky-100 text-[#0c4161] border border-sky-300 text-xs font-black uppercase tracking-widest px-4 py-1.5 rounded-full mb-3 shadow-xs">
-                <span class="w-2 h-2 rounded-full bg-[#0c4161] animate-pulse-subtle"></span>
+            <span class="inline-flex items-center bg-sky-100 text-[#0c4161] border border-sky-300 text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full mb-3">
                 <?= esc_html($tag) ?>
             </span>
             <?php endif; ?>
@@ -158,12 +154,10 @@ if (empty($cities_list)) {
         <!-- City Pills Container -->
         <div class="max-w-4xl mx-auto flex flex-wrap justify-center items-center gap-2.5 sm:gap-3 md:gap-3.5">
             <?php foreach ($cities_list as $city): ?>
-            <div class="group inline-flex items-center gap-2.5 bg-white hover:bg-sky-50/80 border-2 border-dashed border-sky-300/80 hover:border-[#0c4161] text-[#0c4161] rounded-full px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm md:text-[15px] font-bold tracking-wide shadow-xs hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 cursor-default select-none">
-                <!-- Amber / Orange Location Dot -->
-                <span class="w-2.5 h-2.5 rounded-full bg-amber-500 shadow-sm shrink-0" aria-hidden="true"></span>
-                <span class="text-ink group-hover:text-[#0c4161] transition-colors"><?= esc_html($city['name']) ?></span>
+            <div class="inline-flex items-center bg-white hover:bg-sky-50 border border-sky-200 hover:border-[#0c4161] text-[#0c4161] rounded-full px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm md:text-[15px] font-semibold tracking-wide shadow-2xs transition-colors duration-200 cursor-default select-none">
+                <span class="text-slate-800 hover:text-[#0c4161]"><?= esc_html($city['name']) ?></span>
                 <?php if (!empty($city['checkmark'])): ?>
-                <span class="text-emerald-600 font-black ml-0.5" aria-hidden="true">✓</span>
+                <span class="text-emerald-600 font-bold ml-1.5" aria-hidden="true">✓</span>
                 <?php endif; ?>
             </div>
             <?php endforeach; ?>
