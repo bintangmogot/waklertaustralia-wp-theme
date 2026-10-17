@@ -2107,4 +2107,22 @@ footer .site-logo-img,
   animation: point-to-product 1.2s ease-in-out infinite;
 }
 
+/*
+ * ============================================================
+ * MOBILE COMPACT BUTTON UTILITIES
+ * ============================================================
+ */
+@media (max-width: 639px) {
+  .woocommerce #place_order,
+  .woocommerce .wc-proceed-to-checkout .checkout-button,
+  .woocommerce table.cart td.actions .button,
+  .woocommerce #respond input#submit,
+  .woocommerce a.button.alt,
+  .woocommerce button.button.alt {
+    padding: 0.625rem 1.25rem !important;
+    font-size: 0.8125rem !important;
+    letter-spacing: 0.025em !important;
+  }
+}
+
 

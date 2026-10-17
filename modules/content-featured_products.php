@@ -65,9 +65,9 @@ if (!$products) {
         </div>
 
         <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <a href="<?= wc_get_page_permalink('shop') ?>" class="inline-flex items-center gap-2 border-2 border-primary-light text-primary-dark font-bold px-7 py-3 rounded-full hover:bg-primary-light hover:text-white hover:border-primary-light transition-all uppercase tracking-widest text-sm">
+            <a href="<?= wc_get_page_permalink('shop') ?>" class="inline-flex items-center gap-2 border-2 border-primary-light text-primary-dark font-bold px-5 py-2.5 sm:px-7 sm:py-3 rounded-full hover:bg-primary-light hover:text-white hover:border-primary-light transition-all uppercase tracking-wider sm:tracking-widest text-xs sm:text-sm">
                 <?= "View All Products" ?>
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
             </a>
         </div>
     </div>

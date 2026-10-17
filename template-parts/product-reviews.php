@@ -212,7 +212,7 @@ if ($average_rating !== null) {
                 <div class="flex flex-col items-center justify-between gap-4 pt-2 sm:flex-row">
                     <p class="w-full text-left text-[10px] text-slate-400 sm:w-auto">All fields are required.</p>
                     <div class="flex w-full flex-col items-end sm:w-auto">
-                        <button type="submit" class="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-8 py-3.5 text-sm font-bold text-primary-foreground transition-colors hover:bg-primary-dark focus:outline-none focus:ring-4 focus:ring-primary/20 disabled:cursor-wait disabled:opacity-70 sm:w-auto">
+                        <button type="submit" class="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-5 py-2.5 sm:px-8 sm:py-3.5 text-xs sm:text-sm font-bold text-primary-foreground transition-colors hover:bg-primary-dark focus:outline-none focus:ring-4 focus:ring-primary/20 disabled:cursor-wait disabled:opacity-70 sm:w-auto">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m22 2-7 20-4-9-9-4 20-7ZM22 2 11 13"/></svg>
                             Submit Review
                         </button>

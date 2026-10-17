@@ -53,7 +53,7 @@ $remote_has_day_range = (bool) preg_match('/^\d+\s*[-–]\s*\d+$/', $remote_esti
             <p class="mt-3 text-sm leading-relaxed text-slate-500 sm:text-base">
                 <?= $box_desc ?>
             </p>
-            <a href="<?= esc_url($btn_link) ?>" class="mt-6 inline-flex items-center gap-2 rounded-full bg-primary hover:bg-primary-dark px-6 py-3 text-sm font-bold text-primary-foreground shadow-md transition-colors">
+            <a href="<?= esc_url($btn_link) ?>" class="mt-6 inline-flex items-center gap-2 rounded-full bg-primary hover:bg-primary-dark px-5 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-bold text-primary-foreground shadow-md transition-colors">
                 <?= $btn_text ?>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
@@ -99,7 +99,7 @@ $remote_has_day_range = (bool) preg_match('/^\d+\s*[-–]\s*\d+$/', $remote_esti
             <p class="mt-8 text-sm text-slate-500">
                 <?= "Still have questions about your order?" ?>
             </p>
-            <a href="<?= esc_url(home_url('/contact/')) ?>" class="mt-4 inline-flex items-center rounded-full bg-slate-900 px-6 py-3 text-sm font-bold text-white shadow-md transition-colors hover:bg-slate-800">
+            <a href="<?= esc_url(home_url('/contact/')) ?>" class="mt-4 inline-flex items-center rounded-full bg-slate-900 px-5 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-bold text-white shadow-md transition-colors hover:bg-slate-800">
                 <?= "Contact Support" ?>
             </a>
         </div>

@@ -40,10 +40,10 @@ $contact_email = sanitize_email( $contact_email ?: 'orders@modafinil-australia.c
                 <h1 class="font-heading text-3xl font-extrabold text-foreground mb-4"><?php esc_html_e( 'Order Failed', 'woocommerce' ); ?></h1>
                 <p class="text-muted-foreground mb-8"><?php esc_html_e( 'Unfortunately your order cannot be processed as the originating bank/merchant has declined your transaction. Please attempt your purchase again.', 'woocommerce' ); ?></p>
                 
-                <p class="woocommerce-notice woocommerce-notice--error woocommerce-thankyou-order-failed-actions flex justify-center gap-4">
-                    <a href="<?php echo esc_url( $order->get_checkout_payment_url() ); ?>" class="button pay px-8 py-3 rounded-full bg-primary text-white font-bold hover:bg-primary-dark transition-colors"><?php esc_html_e( 'Pay', 'woocommerce' ); ?></a>
+                <p class="woocommerce-notice woocommerce-notice--error woocommerce-thankyou-order-failed-actions flex justify-center gap-3 sm:gap-4">
+                    <a href="<?php echo esc_url( $order->get_checkout_payment_url() ); ?>" class="button pay px-5 py-2.5 sm:px-8 sm:py-3 text-xs sm:text-sm rounded-full bg-primary text-white font-bold hover:bg-primary-dark transition-colors"><?php esc_html_e( 'Pay', 'woocommerce' ); ?></a>
                     <?php if ( is_user_logged_in() ) : ?>
-                        <a href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>" class="button pay px-8 py-3 rounded-full border-2 border-primary text-primary font-bold hover:bg-primary-softer transition-colors"><?php esc_html_e( 'My account', 'woocommerce' ); ?></a>
+                        <a href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>" class="button pay px-5 py-2.5 sm:px-8 sm:py-3 text-xs sm:text-sm rounded-full border-2 border-primary text-primary font-bold hover:bg-primary-softer transition-colors"><?php esc_html_e( 'My account', 'woocommerce' ); ?></a>
                     <?php endif; ?>
                 </p>
             </div>

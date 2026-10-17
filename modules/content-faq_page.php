@@ -56,7 +56,7 @@ if (!$eyebrow && !$heading && !$desc && !$categories && !$cta_heading && !$cta_d
         <div class="mt-12 rounded-2xl border border-primary-light/50 bg-primary-softer p-8 text-center">
             <?php if ($cta_heading): ?><h2 class="mb-3 font-heading text-xl font-bold text-foreground"><?= esc_html($cta_heading) ?></h2><?php endif; ?>
             <?php if ($cta_desc): ?><p class="mb-5 text-sm text-muted-foreground"><?= esc_html($cta_desc) ?></p><?php endif; ?>
-            <?php if ($cta_btn && $cta_link): ?><a href="<?= esc_url($cta_link) ?>" class="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-bold text-primary-foreground transition-colors hover:bg-primary-dark"><?= esc_html($cta_btn) ?></a><?php endif; ?>
+            <?php if ($cta_btn && $cta_link): ?><a href="<?= esc_url($cta_link) ?>" class="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-base font-bold text-primary-foreground transition-colors hover:bg-primary-dark"><?= esc_html($cta_btn) ?></a><?php endif; ?>
         </div>
         <?php endif; ?>
     </div>

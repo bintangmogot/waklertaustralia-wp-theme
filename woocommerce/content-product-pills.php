@@ -127,8 +127,8 @@ $in_stock = $product->is_in_stock();
             <?= $in_stock ? 'In Stock' : 'Out of Stock' ?>
         </div>
         
-        <a href="<?= esc_url($link) ?>" class="mt-2 w-full inline-flex justify-center items-center gap-2 h-11 rounded-xl bg-primary hover:bg-primary-dark text-primary-foreground text-sm font-bold transition-all shadow-sm hover:shadow">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg> 
+        <a href="<?= esc_url($link) ?>" class="mt-2 w-full inline-flex justify-center items-center gap-1.5 sm:gap-2 h-9 sm:h-11 rounded-lg sm:rounded-xl bg-primary hover:bg-primary-dark text-primary-foreground text-xs sm:text-sm font-bold transition-all shadow-sm hover:shadow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 sm:w-4 sm:h-4"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg> 
             View Details
         </a>
     </div>

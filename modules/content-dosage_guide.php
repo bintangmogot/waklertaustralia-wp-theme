@@ -159,7 +159,7 @@ $faq_items     = is_array($faq_items) ? $faq_items : [];
         <?php endif; ?>
         <?php if ($products_button_text !== '' && $products_button_link !== ''): ?>
             <div class="mt-8 text-center">
-                <a href="<?= esc_url($products_button_link) ?>" class="inline-flex rounded-full border-2 border-primary px-8 py-3 text-sm font-bold uppercase tracking-wider text-primary-dark transition-all hover:bg-primary hover:text-primary-foreground">
+                <a href="<?= esc_url($products_button_link) ?>" class="inline-flex rounded-full border-2 border-primary px-5 py-2.5 sm:px-8 sm:py-3 text-xs sm:text-sm font-bold uppercase tracking-wider text-primary-dark transition-all hover:bg-primary hover:text-primary-foreground">
                     <?= esc_html($products_button_text) ?>
                 </a>
             </div>
@@ -296,12 +296,12 @@ $faq_items     = is_array($faq_items) ? $faq_items : [];
         <?php if (($shop_button_text !== '' && $shop_button_link !== '') || ($contact_button_text !== '' && $contact_button_link !== '')): ?>
             <div class="flex flex-col gap-3 sm:flex-row sm:justify-center">
                 <?php if ($shop_button_text !== '' && $shop_button_link !== ''): ?>
-                    <a href="<?= esc_url($shop_button_link) ?>" class="inline-flex justify-center rounded-full bg-white px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-primary-dark transition-all hover:bg-primary-softer hover:scale-105 shadow-lg">
+                    <a href="<?= esc_url($shop_button_link) ?>" class="inline-flex justify-center rounded-full bg-white px-5 py-2.5 sm:px-8 sm:py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-primary-dark transition-all hover:bg-primary-softer hover:scale-105 shadow-lg">
                         <?= esc_html($shop_button_text) ?>
                     </a>
                 <?php endif; ?>
                 <?php if ($contact_button_text !== '' && $contact_button_link !== ''): ?>
-                    <a href="<?= esc_url($contact_button_link) ?>" class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/60 px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-white transition-all hover:bg-white/10">
+                    <a href="<?= esc_url($contact_button_link) ?>" class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/60 px-5 py-2.5 sm:px-8 sm:py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-white transition-all hover:bg-white/10">
                         <?= esc_html($contact_button_text) ?>
                     </a>
                 <?php endif; ?>

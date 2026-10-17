@@ -114,13 +114,13 @@ if (empty($mobile_img_url)) {
                 </p>
                 <?php endif; ?>
 
-                <div class="flex flex-wrap gap-3 md:gap-3.5 mb-8">
-                    <a href="<?= esc_url($primary_link) ?>" class="group inline-flex items-center gap-2 md:gap-2.5 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 px-7 py-3.5 md:px-8 md:py-4 text-sm sm:text-base md:text-[1.0625rem] font-extrabold uppercase tracking-wide text-slate-950 shadow-lg shadow-amber-500/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-amber-500/30 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
+                <div class="flex flex-wrap gap-2.5 sm:gap-3 md:gap-3.5 mb-8">
+                    <a href="<?= esc_url($primary_link) ?>" class="group inline-flex items-center gap-2 md:gap-2.5 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 px-5 py-2.5 sm:px-7 sm:py-3.5 md:px-8 md:py-4 text-xs sm:text-base md:text-[1.0625rem] font-extrabold uppercase tracking-wide text-slate-950 shadow-lg shadow-amber-500/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-amber-500/30 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
                         <span><?= esc_html($primary_btn) ?></span>
-                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-5 md:w-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
+                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
                     </a>
                     <?php if ($secondary_btn !== '' && $secondary_link !== ''): ?>
-                        <a href="<?= esc_url($secondary_link) ?>" class="inline-flex items-center rounded-full border border-white/30 bg-white/10 px-6 py-3.5 md:px-7 md:py-4 text-sm sm:text-base md:text-[1.0625rem] font-bold uppercase tracking-wide text-white transition hover:bg-white/20 hover:-translate-y-0.5">
+                        <a href="<?= esc_url($secondary_link) ?>" class="inline-flex items-center rounded-full border border-white/30 bg-white/10 px-4 py-2.5 sm:px-6 sm:py-3.5 md:px-7 md:py-4 text-xs sm:text-base md:text-[1.0625rem] font-bold uppercase tracking-wide text-white transition hover:bg-white/20 hover:-translate-y-0.5">
                             <?= esc_html($secondary_btn) ?>
                         </a>
                     <?php endif; ?>
