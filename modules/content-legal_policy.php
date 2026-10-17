@@ -148,7 +148,7 @@ foreach ($sections as $index => $section) {
                 </div>
             </aside>
 
-            <!-- Policy Sections -->
+            <!-- Policy Sections (Single Unified Box) -->
             <div class="min-w-0 space-y-8">
                 <?php if (has_post_thumbnail()) : ?>
                     <figure class="overflow-hidden rounded-2xl border-2 border-dashed border-sky-200/80 bg-white p-1.5 shadow-sm">
@@ -156,26 +156,22 @@ foreach ($sections as $index => $section) {
                     </figure>
                 <?php endif; ?>
 
-                <?php foreach ($sections as $index => $section) :
-                    $section_title = $section['title'] ?? '';
-                    $section_content = $section['content'] ?? '';
-                    $section_id = $section_ids[$index];
-                ?>
-                    <section id="<?php echo esc_attr($section_id); ?>" aria-labelledby="<?php echo esc_attr($section_id); ?>-title" class="scroll-mt-28 rounded-2xl border-2 border-dashed border-sky-200/80 bg-white p-6 sm:p-8 shadow-xs transition-all hover:border-sky-300">
-                        <div class="flex items-center gap-2.5 mb-2">
-                            <span class="flex h-7 w-7 items-center justify-center rounded-lg bg-sky-100 font-mono text-xs font-black text-[#0c4161]">
-                                <?php echo esc_html(str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT)); ?>
-                            </span>
-                            <span class="text-[11px] font-black uppercase tracking-widest text-slate-400">Section <?php echo esc_html($index + 1); ?></span>
-                        </div>
-                        <h2 id="<?php echo esc_attr($section_id); ?>-title" class="font-heading text-xl sm:text-2xl font-black leading-tight text-[#0c4161]">
-                            <?php echo esc_html($section_title); ?>
-                        </h2>
-                        <div class="prose max-w-none text-slate-600 mt-4 text-sm sm:text-base leading-relaxed">
-                            <?php echo wp_kses_post(wpautop($section_content)); ?>
-                        </div>
-                    </section>
-                <?php endforeach; ?>
+                <article class="rounded-2xl sm:rounded-3xl border-2 border-dashed border-sky-200/80 bg-white p-6 sm:p-10 shadow-xs divide-y divide-dashed divide-sky-200/80">
+                    <?php foreach ($sections as $index => $section) :
+                        $section_title = $section['title'] ?? '';
+                        $section_content = $section['content'] ?? '';
+                        $section_id = $section_ids[$index];
+                    ?>
+                        <section id="<?php echo esc_attr($section_id); ?>" aria-labelledby="<?php echo esc_attr($section_id); ?>-title" class="scroll-mt-28 <?php echo $index > 0 ? 'pt-8 sm:pt-10' : ''; ?> <?php echo $index < count($sections) - 1 ? 'pb-8 sm:pb-10' : ''; ?>">
+                            <h2 id="<?php echo esc_attr($section_id); ?>-title" class="font-heading text-xl sm:text-2xl font-black leading-tight text-[#0c4161]">
+                                <?php echo esc_html($section_title); ?>
+                            </h2>
+                            <div class="prose max-w-none text-slate-600 mt-4 text-sm sm:text-base leading-relaxed">
+                                <?php echo wp_kses_post(wpautop($section_content)); ?>
+                            </div>
+                        </section>
+                    <?php endforeach; ?>
+                </article>
 
                 <?php if ($contact_email) : ?>
                     <section aria-labelledby="legal-policy-contact-title" class="rounded-3xl border-2 border-dashed border-sky-300/80 bg-gradient-to-br from-[#f0f6fa] via-white to-sky-50/40 p-6 sm:p-8 md:p-10 shadow-xs">
