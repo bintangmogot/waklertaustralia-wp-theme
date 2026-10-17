@@ -163,6 +163,11 @@ foreach ($sections as $index => $section) {
                         $section_id = $section_ids[$index];
                     ?>
                         <section id="<?php echo esc_attr($section_id); ?>" aria-labelledby="<?php echo esc_attr($section_id); ?>-title" class="scroll-mt-28 <?php echo $index > 0 ? 'pt-8 sm:pt-10' : ''; ?> <?php echo $index < count($sections) - 1 ? 'pb-8 sm:pb-10' : ''; ?>">
+                            <div class="mb-2">
+                                <span class="inline-flex items-center justify-center rounded-md bg-sky-100 px-2 py-0.5 font-mono text-[11px] font-extrabold text-[#0c4161]">
+                                    <?php echo esc_html(str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT)); ?>
+                                </span>
+                            </div>
                             <h2 id="<?php echo esc_attr($section_id); ?>-title" class="font-heading text-xl sm:text-2xl font-black leading-tight text-[#0c4161]">
                                 <?php echo esc_html($section_title); ?>
                             </h2>
