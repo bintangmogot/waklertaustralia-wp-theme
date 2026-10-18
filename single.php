@@ -68,7 +68,7 @@ get_header();
                     </div>
                 </header>
 
-                <div class="bg-background min-h-[50vh] pt-6 pb-16 md:pt-8 md:pb-20">
+                <div class="bg-background min-h-[50vh] py-6 md:py-10">
                     <div class="container-site max-w-3xl">
                         <?php if (has_post_thumbnail(get_the_ID())) : ?>
                             <figure class="mb-8 overflow-hidden rounded-2xl border-2 border-dashed border-sky-200/80 bg-white p-1.5 shadow-sm">

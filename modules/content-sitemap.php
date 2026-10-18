@@ -53,7 +53,7 @@ $cities = get_posts([
 ?>
 
 <!-- 2-Tone Patterned Header -->
-<header class="relative overflow-hidden border-b-2 border-dashed border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-8 md:py-14">
+<header class="relative overflow-hidden border-b-2 border-dashed border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-6 sm:py-7 md:py-9">
     <div class="container-site max-w-4xl mx-auto px-4 relative z-10">
         <!-- Breadcrumbs -->
         <div class="mb-3">
@@ -82,7 +82,7 @@ $cities = get_posts([
     </div>
 </header>
 
-<section class="py-10 md:py-16 bg-gradient-to-b from-white via-slate-50/50 to-white">
+<section class="py-7 md:py-10 bg-gradient-to-b from-white via-slate-50/50 to-white">
     <div class="container-site max-w-6xl">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             

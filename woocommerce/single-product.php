@@ -154,7 +154,7 @@ $product_specs = [
 ];
 ?>
 
-<div class="relative overflow-hidden bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots py-6 md:py-10 border-b border-sky-100">
+<div class="relative overflow-hidden bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots py-4 md:py-6 border-b border-sky-100">
     <div class="container-site">
         <nav class="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-500 rounded-full border border-dashed border-sky-300/80 bg-white/90 px-4 py-1.5 shadow-sm backdrop-blur" data-testid="breadcrumb">
             <a href="<?= home_url('/') ?>"
@@ -168,7 +168,7 @@ $product_specs = [
     </div>
 </div>
 
-<section class="container-site py-10 md:py-14">
+<section class="container-site py-7 md:py-10">
     <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
         <!-- Left Column: Image Area -->
         <div class="md:sticky md:top-24 md:self-start">

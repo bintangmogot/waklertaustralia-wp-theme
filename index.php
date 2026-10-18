@@ -12,7 +12,7 @@ $has_modules  = $blog_page_id && have_rows('modules', $blog_page_id);
 function modmy_render_blog_loop() {
     $has_posts = have_posts();
     ?>
-    <section id="blog-articles" class="py-12 md:py-16 bg-gradient-to-b from-white via-slate-50/40 to-white min-h-[50vh]" aria-label="Articles">
+    <section id="blog-articles" class="py-8 md:py-12 bg-gradient-to-b from-white via-slate-50/40 to-white min-h-[50vh]" aria-label="Articles">
         <div class="container-site max-w-7xl">
             <?php if ($has_posts) : ?>
                 <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

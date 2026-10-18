@@ -9,7 +9,7 @@ get_header();
 
 <main>
     <!-- 2-Tone Patterned Hero Section -->
-    <header class="relative overflow-hidden border-b-2 border-dashed border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-8 md:py-14" data-testid="about-hero">
+    <header class="relative overflow-hidden border-b-2 border-dashed border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-6 sm:py-7 md:py-9" data-testid="about-hero">
         <div class="container-site max-w-4xl mx-auto px-4 relative z-10">
             <!-- Breadcrumb Pill -->
             <div class="mb-3">
@@ -39,7 +39,7 @@ get_header();
     </header>
 
     <!-- Origin Section -->
-    <section class="py-12 md:py-16 bg-white" data-testid="about-origin">
+    <section class="py-8 md:py-12 bg-white" data-testid="about-origin">
         <div class="container-site max-w-5xl">
             <div class="grid md:grid-cols-5 gap-8 lg:gap-12 items-center">
                 <div class="md:col-span-3 space-y-4">
@@ -76,7 +76,7 @@ get_header();
     </section>
 
     <!-- Four Principles -->
-    <section class="py-12 md:py-16 bg-gradient-to-b from-slate-50/60 via-white to-slate-50/40" data-testid="about-principles">
+    <section class="py-8 md:py-12 bg-gradient-to-b from-slate-50/60 via-white to-slate-50/40" data-testid="about-principles">
         <div class="container-site max-w-5xl">
             <div class="text-center mb-10">
                 <span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 border border-sky-300/80 px-3 py-0.5 text-[11px] font-black uppercase tracking-[0.16em] text-[#0c4161]">
@@ -110,7 +110,7 @@ get_header();
     </section>
 
     <!-- Support CTA Section -->
-    <section class="py-12 bg-white">
+    <section class="py-8 md:py-10 bg-white">
         <div class="container-site max-w-4xl text-center">
             <div class="rounded-3xl border-2 border-dashed border-sky-300/80 bg-gradient-to-br from-[#f0f6fa] via-white to-sky-50/30 p-8 sm:p-10 shadow-xs">
                 <span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 border border-sky-300/80 px-3.5 py-1 text-xs font-black uppercase tracking-[0.16em] text-[#0c4161]">

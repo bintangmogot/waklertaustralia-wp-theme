@@ -198,7 +198,7 @@ $faq_items     = is_array($faq_items) ? $faq_items : [];
 </section>
 
 <!-- Administration Schedule & Timing -->
-<section class="py-10 md:py-16 bg-white">
+<section class="py-7 md:py-10 bg-white">
     <div class="container-site max-w-5xl">
         <?php if ($timing_heading !== '' || $timing_intro !== ''): ?>
             <div class="mb-10 text-center max-w-3xl mx-auto">
@@ -240,7 +240,7 @@ $faq_items     = is_array($faq_items) ? $faq_items : [];
 </section>
 
 <!-- Australian Prescription & Import Information -->
-<section class="py-10 md:py-16 bg-gradient-to-b from-slate-50/60 via-white to-slate-50/40">
+<section class="py-7 md:py-10 bg-gradient-to-b from-slate-50/60 via-white to-slate-50/40">
     <div class="container-site max-w-5xl">
         <?php if ($import_heading !== '' || $import_intro !== ''): ?>
             <div class="mb-10 text-center max-w-3xl mx-auto">
@@ -288,7 +288,7 @@ $faq_items     = is_array($faq_items) ? $faq_items : [];
 
 <!-- FAQs Section -->
 <?php if ($faq_items): ?>
-<section class="py-10 md:py-16 bg-white">
+<section class="py-7 md:py-10 bg-white">
     <div class="container-site max-w-5xl">
         <div class="mb-10 text-center max-w-3xl mx-auto">
             <span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 border border-sky-300/80 px-3 py-0.5 text-[11px] font-black uppercase tracking-[0.16em] text-[#0c4161]">
@@ -321,7 +321,7 @@ $faq_items     = is_array($faq_items) ? $faq_items : [];
 <?php endif; ?>
 
 <!-- Bottom Support CTA -->
-<section class="py-12 bg-white">
+<section class="py-8 md:py-10 bg-white">
     <div class="container-site max-w-4xl text-center">
         <div class="rounded-3xl border-2 border-dashed border-sky-300/80 bg-gradient-to-br from-[#f0f6fa] via-white to-sky-50/30 p-8 sm:p-12 shadow-xs">
             <?php if ($cta_heading !== ''): ?>
