@@ -83,7 +83,7 @@ if (empty($mobile_img_url)) {
         </div>
 
         <!-- Left Column Content -->
-        <div class="container-site relative z-10 w-full pt-3 pb-12 sm:pt-4 sm:pb-16 md:py-20 lg:py-24">
+        <div class="container-site relative z-10 w-full pt-2 pb-8 sm:pt-3 sm:pb-10 md:py-12 lg:py-14">
             <div class="max-w-lg lg:max-w-[460px] xl:max-w-[530px]">
                 <?php if ($location): ?>
                 <span class="mb-5 md:mb-6 inline-flex items-center gap-2 md:gap-2.5 rounded-full border border-white/25 bg-white/10 px-4.5 py-2 md:px-5 md:py-2.5 text-xs sm:text-sm md:text-[0.9375rem] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-md shadow-sm">

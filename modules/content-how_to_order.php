@@ -129,7 +129,7 @@ if (empty($step_items)) {
     <?php if ($is_about_page) waklert_output_pattern_rings(); ?>
     <div class="container-site relative z-10">
         <!-- Section Header -->
-        <div class="text-center max-w-3xl mx-auto mb-12 md:mb-14">
+        <div class="text-center max-w-3xl mx-auto mb-6 md:mb-8">
             <?php if (!empty($tag)): ?>
                 <span class="<?= esc_attr($tag_classes) ?>">
                     <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse-subtle"></span>

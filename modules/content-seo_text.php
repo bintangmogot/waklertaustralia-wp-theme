@@ -23,7 +23,7 @@ if (strpos($cta_link, '/dosage-guide') !== false) {
     $cta_link = str_replace('/dosage-guide', '/armodafinil-guide', $cta_link);
 }
 ?>
-<section class="py-12 md:py-16 bg-background">
+<section class="py-8 md:py-12 bg-background">
     <div class="container-site max-w-4xl">
         <div class="prose prose-slate max-w-none prose-a:text-primary hover:prose-a:text-primary-dark prose-headings:font-heading prose-headings:font-bold">
             <?php 

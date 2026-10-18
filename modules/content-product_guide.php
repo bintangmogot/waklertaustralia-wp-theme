@@ -20,7 +20,7 @@ if (!$heading && !$desc && !$guide_items) {
 }
 ?>
 
-<section class="py-10 md:py-16 bg-gradient-to-b from-white via-slate-50/50 to-white" data-testid="product-guide">
+<section class="py-8 md:py-12 bg-gradient-to-b from-white via-slate-50/50 to-white" data-testid="product-guide">
     <div class="container-site <?= $is_buyers_guide ? 'max-w-6xl' : 'max-w-4xl' ?>">
         
         <div class="text-center mb-10 max-w-3xl mx-auto">

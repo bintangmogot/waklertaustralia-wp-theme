@@ -15,7 +15,7 @@ if (!$m_head && !$m_desc && !$v_head && !$v_desc) {
 }
 ?>
 
-<section class="py-8 md:py-12 bg-white">
+<section class="py-6 md:py-10 bg-white">
     <div class="container-site max-w-5xl">
         <div class="grid md:grid-cols-2 gap-6 lg:gap-8 items-stretch">
             

@@ -45,7 +45,7 @@ if ($contact_url === '') {
 }
 
 ?>
-<section class="relative overflow-hidden bg-gradient-to-b from-[#f0f6fa] via-[#e9f2f8] to-[#f8fafc] bg-pattern-dots py-12 md:py-20" data-testid="support-cta">
+<section class="relative overflow-hidden bg-gradient-to-b from-[#f0f6fa] via-[#e9f2f8] to-[#f8fafc] bg-pattern-dots py-8 md:py-12" data-testid="support-cta">
     <div class="container-site max-w-7xl relative z-10">
         <div class="relative isolate overflow-hidden rounded-[2.5rem] bg-gradient-to-r from-[#0c4160] via-[#165174] to-[#1f5f7f] bg-pattern-dots-dark p-8 sm:p-12 md:p-14 text-white shadow-2xl border-2 border-dashed border-sky-400/40">
             <?php waklert_output_pattern_rings(); ?>

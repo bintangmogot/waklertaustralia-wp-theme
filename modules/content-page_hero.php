@@ -29,7 +29,7 @@ if (is_shop()) {
 if (is_home()) :
 ?>
 <section class="relative overflow-hidden border-b-2 border-dashed border-sky-200/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-foreground" data-testid="blog-hero">
-    <div class="container-site relative z-10 py-12 md:py-16 lg:py-20">
+    <div class="container-site relative z-10 py-7 md:py-10 lg:py-12">
         <div class="grid gap-7 border-b-2 border-dashed border-sky-200/80 pb-8 md:grid-cols-[1.1fr_.9fr] md:items-end md:gap-12 md:pb-10">
             <div>
                 <span class="inline-flex items-center gap-2 rounded-full bg-sky-100 border border-sky-300/80 px-3.5 py-1 text-xs font-extrabold uppercase tracking-[0.18em] text-[#0c4161] shadow-sm">
@@ -84,7 +84,7 @@ if (is_home()) :
 <?php elseif (is_shop()) : ?>
 <section class="relative isolate overflow-hidden bg-gradient-to-br from-[#082a3f] via-[#0c4161] to-[#125883] bg-pattern-dots-dark text-white text-center border-b-2 border-dashed border-sky-400/30" data-testid="shop-hero">
     <?php waklert_output_pattern_rings(); ?>
-    <div class="container-site relative z-10 mx-auto max-w-4xl py-12 md:py-20 px-4">
+    <div class="container-site relative z-10 mx-auto max-w-4xl py-8 md:py-12 px-4">
         <!-- Eyebrow Badge -->
         <span class="inline-flex items-center gap-2 rounded-full border border-amber-400/40 bg-amber-400/15 px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-amber-300 shadow-sm">
             <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
@@ -155,7 +155,7 @@ if (is_home()) :
 <?php else : ?>
 <section class="relative isolate overflow-hidden bg-gradient-to-br from-[#082a3f] via-[#0c4161] to-[#125883] bg-pattern-dots-dark text-white border-b-2 border-dashed border-sky-400/30" data-testid="page-hero">
     <?php waklert_output_pattern_rings(); ?>
-    <div class="container-site relative z-10 py-12 md:py-20">
+    <div class="container-site relative z-10 py-8 md:py-12">
         <h1 class="font-heading text-3xl font-extrabold tracking-tight md:text-[2.75rem] md:leading-[1.1] text-white">
             <?php echo esc_html($title); ?>
         </h1>
