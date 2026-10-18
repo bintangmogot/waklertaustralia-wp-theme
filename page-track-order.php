@@ -21,7 +21,7 @@ $auspost_logo_url = get_theme_file_uri('/assets/images/australia-post.png');
 
 <main id="main-content" class="site-main bg-white">
     <!-- Breadcrumb & Header Section -->
-    <header class="relative overflow-hidden border-b-2 border-dashed border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-8 md:py-12" data-testid="track-order-hero">
+    <header class="relative overflow-hidden border-b-2 border-dashed border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-6 sm:py-7 md:py-9" data-testid="track-order-hero">
         <div class="container-site max-w-5xl mx-auto px-4 relative z-10">
             <!-- Breadcrumbs -->
             <div class="mb-3">
@@ -35,7 +35,7 @@ $auspost_logo_url = get_theme_file_uri('/assets/images/australia-post.png');
             <!-- Eyebrow Badge -->
             <div class="mb-2.5">
                 <span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 border border-sky-300/80 px-3.5 py-1 text-xs font-black uppercase tracking-[0.16em] text-[#0c4161] shadow-xs">
-                    <span class="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true"></span>
+                    <span class="h-1.5 w-1.5 rounded-full bg-amber-500 animate-pulse" aria-hidden="true"></span>
                     Live Australia Post Tracking
                 </span>
             </div>
@@ -50,7 +50,7 @@ $auspost_logo_url = get_theme_file_uri('/assets/images/australia-post.png');
     </header>
 
     <!-- Main Content Area -->
-    <div class="container-site max-w-5xl mx-auto px-4 py-8 sm:py-12 space-y-10 sm:space-y-14">
+    <div class="container-site max-w-5xl mx-auto px-4 py-6 sm:py-8 space-y-7 sm:space-y-9">
 
         <!-- Intro Callout Box (Yellow/Amber Accent Line) -->
         <div class="rounded-2xl border border-slate-200/90 border-l-[6px] border-l-amber-500 bg-gradient-to-r from-amber-50/40 via-white to-white p-5 sm:p-7 shadow-xs">
@@ -68,7 +68,7 @@ $auspost_logo_url = get_theme_file_uri('/assets/images/australia-post.png');
             <!-- Left Column: Tracking Form & Keywords -->
             <div class="lg:col-span-7 xl:col-span-7 flex flex-col justify-between space-y-6">
                 <div>
-                    <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-[#1b4332] tracking-tight">
+                    <h2 class="font-heading text-2xl sm:text-3xl font-black text-[#0c4161] tracking-tight">
                         Enter Your Tracking Number
                     </h2>
                     <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
@@ -89,13 +89,13 @@ $auspost_logo_url = get_theme_file_uri('/assets/images/australia-post.png');
                                     autocomplete="off"
                                     spellcheck="false"
                                     required
-                                    class="w-full rounded-xl border-2 border-slate-300 bg-white px-4 py-3 sm:py-3.5 text-base sm:text-lg font-mono tracking-wider text-slate-900 placeholder:text-slate-400 focus:border-[#1b4332] focus:bg-white focus:outline-none focus:ring-4 focus:ring-emerald-100 transition-all shadow-inner"
+                                    class="w-full rounded-xl border-2 border-slate-300 bg-white px-4 py-3 sm:py-3.5 text-base sm:text-lg font-mono tracking-wider text-slate-900 placeholder:text-slate-400 focus:border-[#0c4161] focus:bg-white focus:outline-none focus:ring-4 focus:ring-sky-100 transition-all shadow-inner"
                                 >
                             </div>
                             <button 
                                 type="submit" 
                                 id="auspost-tracking-btn"
-                                class="inline-flex items-center justify-center gap-2 rounded-xl bg-[#1b4332] hover:bg-[#143225] active:scale-[0.98] text-white px-6 sm:px-7 py-3 sm:py-3.5 text-sm sm:text-base font-extrabold uppercase tracking-wider shadow-md hover:shadow-lg transition-all shrink-0 cursor-pointer"
+                                class="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 active:scale-[0.98] text-white px-6 sm:px-7 py-3 sm:py-3.5 text-sm sm:text-base font-black uppercase tracking-wider shadow-md hover:shadow-lg hover:shadow-amber-500/20 transition-all shrink-0 cursor-pointer"
                             >
                                 <span>Track My Order</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
@@ -253,9 +253,9 @@ $auspost_logo_url = get_theme_file_uri('/assets/images/australia-post.png');
         </section>
 
         <!-- "How Order Tracking Works" Section -->
-        <section class="space-y-6 pt-4" aria-labelledby="how-tracking-works-heading">
+        <section class="space-y-6 pt-2" aria-labelledby="how-tracking-works-heading">
             <div class="border-b border-slate-200 pb-3">
-                <h2 id="how-tracking-works-heading" class="font-heading text-2xl sm:text-3xl font-extrabold text-[#1b4332] tracking-tight">
+                <h2 id="how-tracking-works-heading" class="font-heading text-2xl sm:text-3xl font-black text-[#0c4161] tracking-tight">
                     How Order Tracking Works
                 </h2>
             </div>
@@ -362,11 +362,11 @@ $auspost_logo_url = get_theme_file_uri('/assets/images/australia-post.png');
                     <!-- Secure Lock Shield SVG -->
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="w-10 h-10 shrink-0" fill="none" aria-hidden="true">
                         <ellipse cx="32" cy="55" rx="18" ry="2.5" fill="#0C4161" fill-opacity="0.15" />
-                        <path d="M32 7L16 13.5V27C16 40.5 23 48.5 32 52.5C41 48.5 48 40.5 48 27V13.5L32 7Z" fill="#059669" />
-                        <path d="M32 10L18.5 15.5V27C18.5 38.5 24.5 45.8 32 49.2C39.5 45.8 45.5 38.5 45.5 27V15.5L32 10Z" fill="#10B981" />
+                        <path d="M32 7L16 13.5V27C16 40.5 23 48.5 32 52.5C41 48.5 48 40.5 48 27V13.5L32 7Z" fill="#D97706" />
+                        <path d="M32 10L18.5 15.5V27C18.5 38.5 24.5 45.8 32 49.2C39.5 45.8 45.5 38.5 45.5 27V15.5L32 10Z" fill="#F59E0B" />
                         <rect x="25" y="27" width="14" height="12" rx="2.5" fill="#FFFFFF" />
                         <path d="M28 27V23C28 20.8 29.8 19 32 19C34.2 19 36 20.8 36 23V27" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" />
-                        <circle cx="32" cy="33" r="1.5" fill="#059669" />
+                        <circle cx="32" cy="33" r="1.5" fill="#B45309" />
                     </svg>
                 </div>
                 <h3 class="font-heading font-extrabold text-slate-900 text-base mb-2">Secure Payment</h3>

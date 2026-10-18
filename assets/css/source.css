@@ -240,12 +240,12 @@ html {
 
 /* Vertical rhythm for full-width sections */
 @utility section-y {
-  padding-block: clamp(3.5rem, 2rem + 5vw, 6rem);
+  padding-block: clamp(1.5rem, 1rem + 1vw, 2.25rem);
 }
 
 /* Alias — many components use section-padding instead of section-y */
 @utility section-padding {
-  padding-block: clamp(3.5rem, 2rem + 5vw, 6rem);
+  padding-block: clamp(1.5rem, 1rem + 1vw, 2.25rem);
 }
 
 /* The emerald gradient wash used on the home hero */

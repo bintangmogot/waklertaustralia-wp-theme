@@ -10,7 +10,7 @@ $desc = get_sub_field('desc') ?: "Waklert Australia was founded to provide Austr
 ?>
 
 <!-- 2-Tone Patterned Header -->
-<header class="relative overflow-hidden border-b-2 border-dashed border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-8 md:py-14">
+<header class="relative overflow-hidden border-b-2 border-dashed border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-6 sm:py-7 md:py-9">
     <div class="container-site max-w-4xl mx-auto px-4 relative z-10">
         <!-- Breadcrumb Pill -->
         <div class="mb-3">

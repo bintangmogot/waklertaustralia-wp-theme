@@ -41,7 +41,7 @@ if ($reviews_query->have_posts()) {
 $average_rating = $total_reviews > 0 ? round($total_stars / $total_reviews, 1) : 5.0;
 $average_stars = round($average_rating);
 ?>
-<section class="relative overflow-hidden bg-gradient-to-b from-[#f0f6fa] via-[#e9f2f8] to-[#f8fafc] bg-pattern-dots py-12 md:py-20" data-testid="section-general-reviews">
+<section class="relative overflow-hidden bg-gradient-to-b from-[#f0f6fa] via-[#e9f2f8] to-[#f8fafc] bg-pattern-dots py-8 md:py-12" data-testid="section-general-reviews">
     <div class="container-site max-w-6xl mx-auto px-4 relative z-10">
         <!-- Header & Aggregate Summary Card -->
         <div class="mb-12">

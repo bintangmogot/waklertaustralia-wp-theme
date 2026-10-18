@@ -13,7 +13,7 @@ if (!$heading && !$desc && !$products) {
 }
 ?>
 
-<section class="py-8 md:py-12 bg-gradient-to-b from-white via-slate-50/50 to-white">
+<section class="py-6 md:py-10 bg-gradient-to-b from-white via-slate-50/50 to-white">
     <div class="container-site max-w-5xl">
         <div class="text-center max-w-3xl mx-auto mb-8">
             <span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 border border-sky-300/80 px-3 py-0.5 text-[11px] font-black uppercase tracking-[0.16em] text-[#0c4161]">

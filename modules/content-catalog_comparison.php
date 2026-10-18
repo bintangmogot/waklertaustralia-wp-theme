@@ -103,7 +103,7 @@ $get_variations = static function ($product) {
     return $variations;
 };
 ?>
-<section id="product-comparison" class="relative isolate scroll-mt-24 overflow-hidden bg-ink py-12 text-primary-foreground md:py-16" data-testid="product-comparison">
+<section id="product-comparison" class="relative isolate scroll-mt-24 overflow-hidden bg-ink py-8 text-primary-foreground md:py-12" data-testid="product-comparison">
     <?php waklert_output_pattern_rings(); ?>
     <div class="container-site relative z-10">
         <header class="mx-auto mb-8 max-w-3xl text-center md:mb-10">
