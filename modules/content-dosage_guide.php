@@ -142,7 +142,7 @@ $faq_items     = is_array($faq_items) ? $faq_items : [];
 </section>
 
 <!-- Products Available in Australia -->
-<section class="py-10 md:py-16 bg-gradient-to-b from-slate-50/60 via-white to-slate-50/40">
+<section class="py-7 md:py-10 bg-gradient-to-b from-slate-50/60 via-white to-slate-50/40">
     <div class="container-site max-w-6xl">
         <?php if ($products_heading !== ''): ?>
             <div class="mb-10 text-center max-w-3xl mx-auto">
