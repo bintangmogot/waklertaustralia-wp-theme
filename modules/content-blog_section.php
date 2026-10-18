@@ -143,10 +143,26 @@ if (empty($articles)) {
                 $word_count = str_word_count($plain_text);
                 $read_time = max(1, (int) ceil($word_count / 200));
 
-                // Excerpt calculation
+                // Intro / Excerpt calculation
+                $intro_val = '';
+                if (function_exists('get_field')) {
+                    $modules_data = get_field('modules', $post_id);
+                    if (is_array($modules_data)) {
+                        foreach ($modules_data as $mod) {
+                            if (!empty($mod['intro'])) {
+                                $intro_val = $mod['intro'];
+                                break;
+                            }
+                        }
+                    }
+                    if (empty($intro_val)) {
+                        $intro_val = get_field('intro', $post_id);
+                    }
+                }
+
                 $excerpt = !empty(trim($article->post_excerpt)) 
                     ? $article->post_excerpt 
-                    : wp_trim_words($plain_text, 22, '...');
+                    : (!empty($intro_val) ? $intro_val : wp_trim_words($plain_text, 22, '...'));
             ?>
             <article class="group flex flex-col h-full bg-white border-2 border-dashed border-sky-300/80 hover:border-[#0c4161] rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-out">
                 <!-- Card Thumbnail / Visual Area -->
