@@ -1,0 +1,339 @@
+{
+    "key": "group_track_order_settings",
+    "title": "Track Order Page Settings",
+    "fields": [
+        {
+            "key": "field_track_tab_hero",
+            "label": "Hero & Intro",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_track_badge_text",
+            "label": "Eyebrow Badge Text",
+            "name": "track_badge_text",
+            "type": "text",
+            "default_value": "Live Australia Post Tracking"
+        },
+        {
+            "key": "field_track_page_title",
+            "label": "Hero Page Title",
+            "name": "track_page_title",
+            "type": "text",
+            "default_value": "Track Your Parcel"
+        },
+        {
+            "key": "field_track_page_description",
+            "label": "Hero Page Subtitle",
+            "name": "track_page_description",
+            "type": "textarea",
+            "rows": 2,
+            "default_value": "Follow your Waklert Australia delivery from our warehouse to your doorstep with real-time Australia Post tracking."
+        },
+        {
+            "key": "field_track_intro_paragraph_1",
+            "label": "Intro Callout (Paragraph 1)",
+            "name": "track_intro_paragraph_1",
+            "type": "textarea",
+            "rows": 3,
+            "default_value": "Welcome to the Waklert Australia order tracking page. Every parcel we dispatch is shipped with Australia Post and comes with a unique tracking number, so you can follow your delivery from our warehouse to your door."
+        },
+        {
+            "key": "field_track_intro_paragraph_2",
+            "label": "Intro Callout (Paragraph 2)",
+            "name": "track_intro_paragraph_2",
+            "type": "textarea",
+            "rows": 3,
+            "default_value": "Your tracking number was emailed to you when your order was dispatched. Enter it below and we'll take you straight to the live Australia Post tracking results for your parcel."
+        },
+        {
+            "key": "field_track_tab_form",
+            "label": "Tracking Form & Quick Links",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_track_form_heading",
+            "label": "Form Heading",
+            "name": "track_form_heading",
+            "type": "text",
+            "default_value": "Enter Your Tracking Number"
+        },
+        {
+            "key": "field_track_form_instructions",
+            "label": "Form Instructions Note",
+            "name": "track_form_instructions",
+            "type": "textarea",
+            "rows": 2,
+            "default_value": "Tracking numbers are usually 10–23 characters long, e.g. 33ABC1234567. You can find yours in your dispatch confirmation email."
+        },
+        {
+            "key": "field_track_input_placeholder",
+            "label": "Input Placeholder",
+            "name": "track_input_placeholder",
+            "type": "text",
+            "default_value": "e.g. 33ABC1234567"
+        },
+        {
+            "key": "field_track_button_text",
+            "label": "Button Label",
+            "name": "track_button_text",
+            "type": "text",
+            "default_value": "Track My Order"
+        },
+        {
+            "key": "field_track_redirect_notice",
+            "label": "Redirect Notice Box",
+            "name": "track_redirect_notice",
+            "type": "textarea",
+            "rows": 2,
+            "default_value": "You'll be redirected to the official Australia Post tracking page (auspost.com.au), where your parcel's latest scan events are shown automatically."
+        },
+        {
+            "key": "field_track_quick_links",
+            "label": "Keyword / Quick-Nav Pills",
+            "name": "track_quick_links",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Add Quick Link Pill",
+            "sub_fields": [
+                {
+                    "key": "field_track_pill_label",
+                    "label": "Label",
+                    "name": "label",
+                    "type": "text",
+                    "required": 1
+                },
+                {
+                    "key": "field_track_pill_url",
+                    "label": "URL",
+                    "name": "url",
+                    "type": "text",
+                    "required": 1
+                },
+                {
+                    "key": "field_track_pill_external",
+                    "label": "Open in New Tab",
+                    "name": "is_external",
+                    "type": "true_false",
+                    "default_value": 0,
+                    "ui": 1
+                }
+            ]
+        },
+        {
+            "key": "field_track_tab_banner",
+            "label": "Companion Delivery Banner",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_banner_partner_label",
+            "label": "Partner Badge Label",
+            "name": "banner_partner_label",
+            "type": "text",
+            "default_value": "Official Partner"
+        },
+        {
+            "key": "field_banner_partner_logo",
+            "label": "Partner Logo (Optional)",
+            "name": "banner_partner_logo",
+            "type": "image",
+            "return_format": "url",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_banner_brand_badge",
+            "label": "Brand Badge Text",
+            "name": "banner_brand_badge",
+            "type": "text",
+            "default_value": "Waklert Australia"
+        },
+        {
+            "key": "field_banner_kicker",
+            "label": "Banner Subtitle / Kicker",
+            "name": "banner_kicker",
+            "type": "text",
+            "default_value": "Direct Express Delivery"
+        },
+        {
+            "key": "field_banner_title_1",
+            "label": "Banner Headline Line 1",
+            "name": "banner_title_1",
+            "type": "text",
+            "default_value": "JUST STAY AT HOME"
+        },
+        {
+            "key": "field_banner_title_2",
+            "label": "Banner Headline Line 2",
+            "name": "banner_title_2",
+            "type": "text",
+            "default_value": "WE DELIVER!"
+        },
+        {
+            "key": "field_banner_safe_stamp",
+            "label": "Stamp Text",
+            "name": "banner_safe_stamp",
+            "type": "text",
+            "default_value": "100% SAFE"
+        },
+        {
+            "key": "field_banner_button_text",
+            "label": "Banner CTA Button Text",
+            "name": "banner_button_text",
+            "type": "text",
+            "default_value": "ORDER NOW"
+        },
+        {
+            "key": "field_banner_button_link",
+            "label": "Banner CTA Button Link",
+            "name": "banner_button_link",
+            "type": "text",
+            "default_value": "/shop/"
+        },
+        {
+            "key": "field_banner_domain",
+            "label": "Banner Domain Footer",
+            "name": "banner_domain",
+            "type": "text",
+            "default_value": "waklertaustralia.com"
+        },
+        {
+            "key": "field_track_tab_steps",
+            "label": "How Tracking Works",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_how_works_heading",
+            "label": "Section Heading",
+            "name": "how_works_heading",
+            "type": "text",
+            "default_value": "How Order Tracking Works"
+        },
+        {
+            "key": "field_how_works_steps",
+            "label": "Tracking Steps",
+            "name": "how_works_steps",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Add Tracking Step",
+            "sub_fields": [
+                {
+                    "key": "field_how_step_title",
+                    "label": "Step Title",
+                    "name": "title",
+                    "type": "text",
+                    "required": 1
+                },
+                {
+                    "key": "field_how_step_description",
+                    "label": "Step Description",
+                    "name": "description",
+                    "type": "textarea",
+                    "rows": 2,
+                    "required": 1
+                }
+            ]
+        },
+        {
+            "key": "field_track_tab_support",
+            "label": "Need Help & Trust",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_help_title",
+            "label": "Need Help Title",
+            "name": "help_title",
+            "type": "text",
+            "default_value": "Need Help?"
+        },
+        {
+            "key": "field_help_description",
+            "label": "Need Help Description",
+            "name": "help_description",
+            "type": "textarea",
+            "rows": 2,
+            "default_value": "Can't find your tracking number or no scans after 3 business days? Contact our support team and we'll look into it."
+        },
+        {
+            "key": "field_help_button_text",
+            "label": "Help Button Label",
+            "name": "help_button_text",
+            "type": "text",
+            "default_value": "Contact Support"
+        },
+        {
+            "key": "field_help_button_url",
+            "label": "Help Button Link",
+            "name": "help_button_url",
+            "type": "text",
+            "default_value": "/contact/"
+        },
+        {
+            "key": "field_trust_cards",
+            "label": "Trust / Value Proposition Cards",
+            "name": "trust_cards",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Add Trust Benefit Card",
+            "sub_fields": [
+                {
+                    "key": "field_trust_card_type",
+                    "label": "Card Icon Type",
+                    "name": "card_type",
+                    "type": "select",
+                    "choices": {
+                        "shipping": "Australia Post Express Van (Free Shipping)",
+                        "support": "24/7 Verified Support Shield",
+                        "payment": "100% Encrypted Payment Shield"
+                    },
+                    "default_value": "shipping"
+                },
+                {
+                    "key": "field_trust_card_title",
+                    "label": "Card Title",
+                    "name": "title",
+                    "type": "text",
+                    "required": 1
+                },
+                {
+                    "key": "field_trust_card_desc",
+                    "label": "Card Description",
+                    "name": "description",
+                    "type": "textarea",
+                    "rows": 2,
+                    "required": 1
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-track-order.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Customizable content settings for the Australia Post Order Tracking page."
+}
