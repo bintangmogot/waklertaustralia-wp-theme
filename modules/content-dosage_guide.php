@@ -198,7 +198,7 @@ $faq_items     = is_array($faq_items) ? $faq_items : [];
 </section>
 
 <!-- Administration Schedule & Timing -->
-<section class="py-10 md:py-16 bg-white">
+<section class="py-7 md:py-10 bg-white">
     <div class="container-site max-w-5xl">
         <?php if ($timing_heading !== '' || $timing_intro !== ''): ?>
             <div class="mb-10 text-center max-w-3xl mx-auto">
@@ -240,7 +240,7 @@ $faq_items     = is_array($faq_items) ? $faq_items : [];
 </section>
 
 <!-- Australian Prescription & Import Information -->
-<section class="py-10 md:py-16 bg-gradient-to-b from-slate-50/60 via-white to-slate-50/40">
+<section class="py-7 md:py-10 bg-gradient-to-b from-slate-50/60 via-white to-slate-50/40">
     <div class="container-site max-w-5xl">
         <?php if ($import_heading !== '' || $import_intro !== ''): ?>
             <div class="mb-10 text-center max-w-3xl mx-auto">
