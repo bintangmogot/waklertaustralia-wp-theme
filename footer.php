@@ -72,13 +72,21 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
         <div class="container-site relative z-10 grid grid-cols-2 gap-4 md:grid-cols-4 sm:gap-6">
 
             <!-- Card 1 -->
-            <div class="rounded-2xl border-2 border-dashed border-sky-300/40 bg-white/10 p-4 sm:p-5 backdrop-blur-sm flex flex-col items-center text-center gap-3 hover:bg-white/15 hover:-translate-y-1 transition-all">
-                <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-400/20 text-sky-300 border border-sky-300/40">
-                    <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="1" y="5" width="14" height="11" rx="1.5" fill="#38BDF8" fill-opacity="0.3" stroke="#38BDF8" stroke-width="1.8"/>
-                        <path d="M15 8h4.5l3.5 4.5v3.5h-8V8z" fill="#F59E0B" stroke="#F59E0B" stroke-width="1.8"/>
-                        <circle cx="6" cy="18" r="2.2" fill="#FFFFFF" stroke="#38BDF8" stroke-width="1.5"/>
-                        <circle cx="18" cy="18" r="2.2" fill="#FFFFFF" stroke="#F59E0B" stroke-width="1.5"/>
+            <div class="group rounded-2xl border-2 border-dashed border-sky-300/40 bg-white/10 p-4 sm:p-5 backdrop-blur-sm flex flex-col items-center text-center gap-3 hover:bg-white/15 hover:-translate-y-1 transition-all">
+                <div class="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-white p-2 sm:p-2.5 shadow-lg shadow-black/25 border-2 border-white/90 group-hover:scale-105 transition-transform duration-300 shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="w-10 h-10 sm:w-11 sm:h-11 shrink-0" fill="none" aria-hidden="true">
+                        <ellipse cx="32" cy="54" rx="22" ry="2.5" fill="#0C4161" fill-opacity="0.15" />
+                        <path d="M6 31H12M4 37H10M8 43H14" stroke="#DC2626" stroke-width="2.5" stroke-linecap="round" />
+                        <rect x="16" y="16" width="28" height="28" rx="4" fill="#DC2626" />
+                        <path d="M44 23H52L58 31V44H44V23Z" fill="#B91C1C" />
+                        <path d="M44 23H51.5L56 31H44V23Z" fill="#93C5FD" />
+                        <rect x="19" y="20" width="22" height="10" rx="2" fill="#FFFFFF" />
+                        <text x="30" y="27.5" font-family="system-ui, -apple-system, sans-serif" font-size="6.5" font-weight="900" fill="#DC2626" text-anchor="middle" letter-spacing="0.5">EXPRESS</text>
+                        <circle cx="25" cy="44" r="6.5" fill="#1E293B" />
+                        <circle cx="25" cy="44" r="2.8" fill="#F8FAFC" />
+                        <circle cx="49" cy="44" r="6.5" fill="#1E293B" />
+                        <circle cx="49" cy="44" r="2.8" fill="#F8FAFC" />
+                        <circle cx="56" cy="38" r="2" fill="#FBBF24" />
                     </svg>
                 </div>
                 <span class="text-xs font-extrabold tracking-wider uppercase text-white leading-tight"><?= "Australia-Wide Delivery" ?></span>
@@ -86,11 +94,17 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
             </div>
 
             <!-- Card 2 -->
-            <div class="rounded-2xl border-2 border-dashed border-sky-300/40 bg-white/10 p-4 sm:p-5 backdrop-blur-sm flex flex-col items-center text-center gap-3 hover:bg-white/15 hover:-translate-y-1 transition-all">
-                <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-400/20 text-amber-300 border border-amber-300/40">
-                    <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2L4 6v6c0 5.25 3.4 10.15 8 11.35 4.6-1.2 8-6.1 8-11.35V6l-8-4z" fill="#F59E0B" fill-opacity="0.3" stroke="#F59E0B" stroke-width="1.8"/>
-                        <path d="M9 12l2 2 4-4" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <div class="group rounded-2xl border-2 border-dashed border-sky-300/40 bg-white/10 p-4 sm:p-5 backdrop-blur-sm flex flex-col items-center text-center gap-3 hover:bg-white/15 hover:-translate-y-1 transition-all">
+                <div class="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-white p-2 sm:p-2.5 shadow-lg shadow-black/25 border-2 border-white/90 group-hover:scale-105 transition-transform duration-300 shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="w-10 h-10 sm:w-11 sm:h-11 shrink-0" fill="none" aria-hidden="true">
+                        <ellipse cx="32" cy="55" rx="18" ry="2.5" fill="#0C4161" fill-opacity="0.15" />
+                        <path d="M32 7L15 13.5V28C15 41.5 22.2 50 32 53.5C41.8 50 49 41.5 49 28V13.5L32 7Z" fill="#D97706" />
+                        <path d="M32 10L18 15.5V28C18 39.5 23.8 47 32 50.2C40.2 47 46 39.5 46 28V15.5L32 10Z" fill="#F59E0B" />
+                        <path d="M32 12.5L20.5 17V28C20.5 38 25.2 44.5 32 47.5C38.8 44.5 43.5 38 43.5 28V17L32 12.5Z" fill="#FBBF24" />
+                        <circle cx="32" cy="30" r="11" fill="#10B981" />
+                        <path d="M28 30H36M32 26V34" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+                        <circle cx="43" cy="18" r="4" fill="#38BDF8" stroke="#FFFFFF" stroke-width="1.5" />
+                        <path d="M41.5 18L42.5 19L44.5 17" stroke="#FFFFFF" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                 </div>
                 <span class="text-xs font-extrabold tracking-wider uppercase text-white leading-tight"><?= "100% Genuine Sun Pharma" ?></span>
@@ -98,11 +112,17 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
             </div>
 
             <!-- Card 3 -->
-            <div class="rounded-2xl border-2 border-dashed border-sky-300/40 bg-white/10 p-4 sm:p-5 backdrop-blur-sm flex flex-col items-center text-center gap-3 hover:bg-white/15 hover:-translate-y-1 transition-all">
-                <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-400/20 text-emerald-300 border border-emerald-300/40">
-                    <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="12" cy="12" r="9" fill="#34D399" fill-opacity="0.3" stroke="#34D399" stroke-width="1.8"/>
-                        <path d="M8.5 12.5l2.5 2.5 5-5" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <div class="group rounded-2xl border-2 border-dashed border-sky-300/40 bg-white/10 p-4 sm:p-5 backdrop-blur-sm flex flex-col items-center text-center gap-3 hover:bg-white/15 hover:-translate-y-1 transition-all">
+                <div class="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-white p-2 sm:p-2.5 shadow-lg shadow-black/25 border-2 border-white/90 group-hover:scale-105 transition-transform duration-300 shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="w-10 h-10 sm:w-11 sm:h-11 shrink-0" fill="none" aria-hidden="true">
+                        <ellipse cx="32" cy="55" rx="18" ry="2.5" fill="#0C4161" fill-opacity="0.15" />
+                        <path d="M32 7L16 13.5V27C16 40.5 23 48.5 32 52.5C41 48.5 48 40.5 48 27V13.5L32 7Z" fill="#059669" />
+                        <path d="M32 10L18.5 15.5V27C18.5 38.5 24.5 45.8 32 49.2C39.5 45.8 45.5 38.5 45.5 27V15.5L32 10Z" fill="#10B981" />
+                        <path d="M32 12.5L21 17V27C21 37 26 43 32 46.2C38 43 43 37 43 27V17L32 12.5Z" fill="#34D399" />
+                        <circle cx="32" cy="29" r="10" fill="#065F46" />
+                        <path d="M27 29L30.5 32.5L37 25.5" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M24 46L21 53L27 50L32 52L29 46" fill="#F59E0B" stroke="#D97706" stroke-width="1" />
+                        <path d="M40 46L43 53L37 50L32 52L35 46" fill="#F59E0B" stroke="#D97706" stroke-width="1" />
                     </svg>
                 </div>
                 <span class="text-xs font-extrabold tracking-wider uppercase text-white leading-tight"><?= "Transit Insurance" ?></span>
@@ -110,12 +130,19 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
             </div>
 
             <!-- Card 4 -->
-            <div class="rounded-2xl border-2 border-dashed border-sky-300/40 bg-white/10 p-4 sm:p-5 backdrop-blur-sm flex flex-col items-center text-center gap-3 hover:bg-white/15 hover:-translate-y-1 transition-all">
-                <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-400/20 text-sky-300 border border-sky-300/40">
-                    <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="3" y="11" width="18" height="11" rx="2" fill="#38BDF8" fill-opacity="0.3" stroke="#38BDF8" stroke-width="1.8"/>
-                        <path d="M7 11V7a5 5 0 0110 0v4" stroke="#FFFFFF" stroke-width="1.8"/>
-                        <circle cx="12" cy="16" r="1.5" fill="#38BDF8"/>
+            <div class="group rounded-2xl border-2 border-dashed border-sky-300/40 bg-white/10 p-4 sm:p-5 backdrop-blur-sm flex flex-col items-center text-center gap-3 hover:bg-white/15 hover:-translate-y-1 transition-all">
+                <div class="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-white p-2 sm:p-2.5 shadow-lg shadow-black/25 border-2 border-white/90 group-hover:scale-105 transition-transform duration-300 shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="w-10 h-10 sm:w-11 sm:h-11 shrink-0" fill="none" aria-hidden="true">
+                        <ellipse cx="32" cy="55" rx="20" ry="2.5" fill="#0C4161" fill-opacity="0.15" />
+                        <rect x="13" y="18" width="38" height="30" rx="3" fill="#B45309" />
+                        <rect x="15" y="16" width="34" height="29" rx="2.5" fill="#D97706" />
+                        <path d="M15 27H49M32 16V45" stroke="#92400E" stroke-width="2.5" />
+                        <rect x="18" y="32" width="11" height="8" rx="1.5" fill="#FFFFFF" />
+                        <line x1="20" y1="35" x2="27" y2="35" stroke="#64748B" stroke-width="1.2" />
+                        <line x1="20" y1="37.5" x2="25" y2="37.5" stroke="#64748B" stroke-width="1.2" />
+                        <rect x="35" y="30" width="12" height="11" rx="2.5" fill="#0284C7" />
+                        <path d="M38 30V27C38 25.3 39.3 24 41 24C42.7 24 44 25.3 44 27V30" stroke="#F59E0B" stroke-width="2.2" stroke-linecap="round" />
+                        <circle cx="41" cy="35.5" r="1.5" fill="#FFFFFF" />
                     </svg>
                 </div>
                 <span class="text-xs font-extrabold tracking-wider uppercase text-white leading-tight"><?= "Discreet Delivery" ?></span>
@@ -177,7 +204,7 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
             <h3 class="text-[15px] font-bold text-white mb-3 mt-8" style="color: #fff !important">
                 <?= esc_html($payments_heading) ?>
             </h3>
-            <div class="rounded-2xl border-2 border-dashed border-white/15 bg-white/5 p-4 flex items-center gap-5 flex-wrap">
+            <div class="w-fit max-w-full rounded-2xl border-2 border-dashed border-white/15 bg-white/5 p-4 flex items-center gap-5 flex-wrap">
                 <?php if (!empty($payment_images) && is_array($payment_images)) : ?>
                     <?php foreach ($payment_images as $pay) : 
                         $img_src = '';
@@ -205,7 +232,7 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
             <h3 class="text-[15px] font-bold text-white mb-3 mt-8" style="color: #fff !important">
                 <?= esc_html($shipping_heading) ?>
             </h3>
-            <div class="rounded-2xl border-2 border-dashed border-white/15 bg-white/5 p-4 flex items-center gap-5 flex-wrap">
+            <div class="w-fit max-w-full rounded-2xl border-2 border-dashed border-white/15 bg-white/5 p-4 flex items-center gap-5 flex-wrap">
                 <?php if (!empty($shipping_images) && is_array($shipping_images)) : ?>
                     <?php foreach ($shipping_images as $ship) : 
                         $img_src = '';

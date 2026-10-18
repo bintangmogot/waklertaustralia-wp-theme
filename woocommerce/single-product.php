@@ -601,18 +601,15 @@ $product_specs = [
                 </div>
             </div>
 
-            <!-- Right: Add to Cart Button (Right-aligned, but shifted toward center away from side cart) -->
-            <div class="flex-1 flex justify-center sm:justify-end items-center px-1 sm:px-0">
-                <button id="sticky-product-submit" type="button" class="w-full max-w-[190px] sm:max-w-none sm:w-auto inline-flex shrink-0 items-center justify-center gap-1.5 sm:gap-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 px-3.5 py-2.5 sm:px-7 sm:py-3 text-xs sm:text-sm font-black uppercase tracking-wider text-white shadow-md hover:shadow-lg transition-all active:scale-[0.98]">
+            <!-- Right: Add to Cart Button -->
+            <div class="flex items-center justify-end shrink-0">
+                <button id="sticky-product-submit" type="button" class="w-auto inline-flex shrink-0 items-center justify-center gap-1.5 sm:gap-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 px-4 py-2.5 sm:px-7 sm:py-3 text-xs sm:text-sm font-black uppercase tracking-wider text-white shadow-md hover:shadow-lg transition-all active:scale-[0.98]">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
                     <span>Add to Cart</span>
                 </button>
             </div>
-
-            <!-- Clearance Spacer: Shifts button toward the center and leaves dedicated clearance for floating side cart -->
-            <div class="w-14 sm:w-20 md:w-32 lg:w-44 xl:w-52 shrink-0" aria-hidden="true"></div>
         </div>
     </div>
 <?php endif; ?>
