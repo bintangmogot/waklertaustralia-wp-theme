@@ -94,7 +94,7 @@ $whatsapp     = function_exists('waklert_format_whatsapp_url') ? waklert_format_
 <section class="relative isolate overflow-hidden bg-gradient-to-r from-[#082a3f] via-[#0c4161] to-[#125883] bg-pattern-dots-dark text-white border-b-2 border-dashed border-sky-400/30">
     <?php waklert_output_pattern_rings(); ?>
 
-    <div class="container-site relative z-10 grid items-center gap-10 py-12 sm:py-16 md:py-20 lg:grid-cols-[1.15fr_.85fr] lg:gap-14">
+    <div class="container-site relative z-10 grid items-center gap-10 py-8 sm:py-10 md:py-12 lg:py-14 lg:grid-cols-[1.15fr_.85fr] lg:gap-14">
         <!-- Left: City Pitch & Actions -->
         <div>
             <!-- Breadcrumbs Pill -->

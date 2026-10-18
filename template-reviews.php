@@ -7,7 +7,7 @@ get_header();
 ?>
 
 <main class="site-main">
-    <section class="relative overflow-hidden bg-gradient-to-b from-[#f0f6fa] via-[#e9f2f8] to-[#f8fafc] bg-pattern-dots py-12 md:py-20" data-testid="section-general-reviews">
+    <section class="relative overflow-hidden bg-gradient-to-b from-[#f0f6fa] via-[#e9f2f8] to-[#f8fafc] bg-pattern-dots py-8 md:py-12" data-testid="section-general-reviews">
         <?php
         $reviews = get_posts([
             "post_type" => "review",

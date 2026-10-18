@@ -64,7 +64,7 @@ foreach ($sections as $index => $section) {
     </header>
 <?php else : ?>
     <!-- 2-Tone Patterned Policy Page Header -->
-    <header class="relative overflow-hidden border-b-2 border-dashed border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-8 md:py-14">
+    <header class="relative overflow-hidden border-b-2 border-dashed border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-6 sm:py-7 md:py-9">
         <div class="container-site max-w-4xl mx-auto px-4 relative z-10">
             <!-- Breadcrumbs -->
             <div class="mb-3">
@@ -104,7 +104,7 @@ foreach ($sections as $index => $section) {
 <?php endif; ?>
 
     <?php if ($sections) : ?>
-        <div class="container-site grid max-w-6xl gap-8 lg:gap-12 pt-8 pb-14 md:pt-12 md:pb-20 lg:grid-cols-[16rem_minmax(0,1fr)]">
+        <div class="container-site grid max-w-6xl gap-8 lg:gap-12 py-7 md:py-10 lg:grid-cols-[16rem_minmax(0,1fr)]">
             <!-- Sidebar Table of Contents -->
             <aside class="hidden lg:block">
                 <div class="sticky top-28 space-y-4">

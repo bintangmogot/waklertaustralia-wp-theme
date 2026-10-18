@@ -10,7 +10,7 @@ $heading = get_sub_field('heading') ?: "Buy Modafinil in {$city_name}, {$state_n
 
 $desc = get_sub_field('description') ?: "Fast, discreet delivery of genuine Modafinil to all areas in {$city_name}. Tracked shipping via Australia Post.";
 ?>
-<section class="bg-background pt-16 pb-8 text-center border-b border-border">
+<section class="bg-background py-8 md:py-10 text-center border-b border-border">
     <div class="container-site max-w-4xl">
         <span class="inline-block rounded-full bg-primary-softer px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary">
             <?= "Local Delivery" ?>

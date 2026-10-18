@@ -29,7 +29,7 @@ if (have_rows('modules', $shop_page_id)) {
     // Fallback if no ACF modules are configured for the Shop page
 ?>
 
-<section class="relative isolate overflow-hidden bg-gradient-to-br from-[#082a3f] via-[#0c4161] to-[#125883] bg-pattern-dots-dark text-white pt-14 pb-12 text-center border-b-2 border-dashed border-sky-400/30">
+<section class="relative isolate overflow-hidden bg-gradient-to-br from-[#082a3f] via-[#0c4161] to-[#125883] bg-pattern-dots-dark text-white py-8 md:py-10 text-center border-b-2 border-dashed border-sky-400/30">
     <div class="container-site max-w-4xl relative z-10 px-4">
         <span class="inline-flex items-center gap-2 rounded-full border border-amber-400/40 bg-amber-400/15 px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-amber-300 shadow-sm mb-4">
             <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
@@ -44,7 +44,7 @@ if (have_rows('modules', $shop_page_id)) {
     </div>
 </section>
 
-<section class="relative overflow-hidden bg-gradient-to-b from-[#f0f6fa] via-[#e9f2f8] to-[#f8fafc] bg-pattern-dots py-12 md:py-20">
+<section class="relative overflow-hidden bg-gradient-to-b from-[#f0f6fa] via-[#e9f2f8] to-[#f8fafc] bg-pattern-dots py-8 md:py-12">
     <div class="container-site relative z-10 px-3 sm:px-4">
         <?php
         if (woocommerce_product_loop()) {

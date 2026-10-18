@@ -61,7 +61,7 @@ if ($average_rating !== null) {
 }
 ?>
 
-<section id="product-reviews" class="scroll-mt-24 border-t border-slate-200 bg-slate-50 py-12 md:py-16" data-testid="section-reviews">
+<section id="product-reviews" class="scroll-mt-24 border-t border-slate-200 bg-slate-50 py-8 md:py-12" data-testid="section-reviews">
     <div class="container-site max-w-6xl">
         <header class="mb-10 flex flex-col items-center justify-center text-center">
             <span class="mb-4 inline-flex items-center gap-1.5 rounded-full bg-primary-softer px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-primary-dark">
