@@ -1430,10 +1430,10 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Metro cities, regional towns, or remote FIFO camps — we ship to your address.",
+                            "default_value": "Metro cities, regional towns, or remote FIFO camps \u2014 we ship to your address.",
                             "new_lines": "",
                             "maxlength": "",
-                            "placeholder": "Metro cities, regional towns, or remote FIFO camps — we ship to your address.",
+                            "placeholder": "Metro cities, regional towns, or remote FIFO camps \u2014 we ship to your address.",
                             "rows": 3
                         },
                         {
@@ -2152,157 +2152,312 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_to_499d7e074a8d",
+                            "key": "field_to_tab_hero",
+                            "label": "Hero & Intro",
+                            "name": "",
+                            "type": "tab",
+                            "placement": "top",
+                            "endpoint": 0
+                        },
+                        {
+                            "key": "field_to_badge_text",
                             "label": "Badge Text",
                             "name": "badge_text",
-                            "aria-label": "",
                             "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "Track Order",
-                            "placeholder": ""
+                            "default_value": "Live Australia Post Tracking"
                         },
                         {
-                            "key": "field_to_26c1afaa5ea2",
+                            "key": "field_to_heading",
                             "label": "Heading",
                             "name": "heading",
-                            "aria-label": "",
                             "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "Track Your Order",
-                            "placeholder": ""
+                            "default_value": "Track Your Parcel"
                         },
                         {
-                            "key": "field_to_3fe623e37045",
+                            "key": "field_to_description",
                             "label": "Description",
                             "name": "description",
-                            "aria-label": "",
                             "type": "textarea",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "All ModafinilMY orders are shipped via Pos Malaysia with a tracking number that can be checked online.",
-                            "placeholder": ""
+                            "rows": 2,
+                            "default_value": "Follow your Waklert Australia delivery from our warehouse to your doorstep with real-time Australia Post tracking."
                         },
                         {
-                            "key": "field_to_a5e3ca01aad2",
-                            "label": "Track Box Heading",
-                            "name": "track_box_heading",
-                            "aria-label": "",
+                            "key": "field_to_intro_callout_p1",
+                            "label": "Intro Callout (Paragraph 1)",
+                            "name": "intro_callout_p1",
+                            "type": "textarea",
+                            "rows": 3,
+                            "default_value": "Welcome to the Waklert Australia order tracking page. Every parcel we dispatch is shipped with Australia Post and comes with a unique tracking number, so you can follow your delivery from our warehouse to your door."
+                        },
+                        {
+                            "key": "field_to_intro_callout_p2",
+                            "label": "Intro Callout (Paragraph 2)",
+                            "name": "intro_callout_p2",
+                            "type": "textarea",
+                            "rows": 3,
+                            "default_value": "Your tracking number was emailed to you when your order was dispatched. Enter it below and we'll take you straight to the live Australia Post tracking results for your parcel."
+                        },
+                        {
+                            "key": "field_to_tab_form",
+                            "label": "Tracking Form & Quick Links",
+                            "name": "",
+                            "type": "tab",
+                            "placement": "top",
+                            "endpoint": 0
+                        },
+                        {
+                            "key": "field_to_form_heading",
+                            "label": "Tracking Form Heading",
+                            "name": "form_heading",
                             "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "Track via Pos Malaysia",
-                            "placeholder": ""
+                            "default_value": "Enter Your Tracking Number"
                         },
                         {
-                            "key": "field_to_f125831f58f2",
-                            "label": "Track Box Desc",
-                            "name": "track_box_desc",
-                            "aria-label": "",
+                            "key": "field_to_form_instructions",
+                            "label": "Form Instructions Note",
+                            "name": "form_instructions",
                             "type": "textarea",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "You can track your order directly on the official Pos Malaysia website using the tracking number we sent you.",
-                            "placeholder": ""
+                            "rows": 2,
+                            "default_value": "Tracking numbers are usually 10\u201323 characters long, e.g. 33ABC1234567. You can find yours in your dispatch confirmation email."
                         },
                         {
-                            "key": "field_to_898b9bd411e8",
+                            "key": "field_to_input_placeholder",
+                            "label": "Input Placeholder",
+                            "name": "input_placeholder",
+                            "type": "text",
+                            "default_value": "e.g. 33ABC1234567"
+                        },
+                        {
+                            "key": "field_to_btn_text",
                             "label": "Button Text",
                             "name": "track_btn_text",
-                            "aria-label": "",
                             "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "Track at Pos Malaysia",
-                            "placeholder": ""
+                            "default_value": "Track My Order"
                         },
                         {
-                            "key": "field_to_82333b21a59d",
-                            "label": "Button Link",
-                            "name": "track_btn_link",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "https://track.pos.com.my/",
-                            "placeholder": ""
+                            "key": "field_to_redirect_notice",
+                            "label": "Redirect Notice Box",
+                            "name": "redirect_notice",
+                            "type": "textarea",
+                            "rows": 2,
+                            "default_value": "You'll be redirected to the official Australia Post tracking page (auspost.com.au), where your parcel's latest scan events are shown automatically."
                         },
                         {
-                            "key": "field_to_d9375fc19e83",
-                            "label": "Peninsular Days Range",
-                            "name": "est_peninsular_days",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "7-12",
-                            "placeholder": ""
+                            "key": "field_to_keyword_pills",
+                            "label": "Keyword / Quick-Nav Pills",
+                            "name": "keyword_pills",
+                            "type": "repeater",
+                            "layout": "table",
+                            "button_label": "Add Quick Link Pill",
+                            "sub_fields": [
+                                {
+                                    "key": "field_to_pill_label",
+                                    "label": "Pill Label",
+                                    "name": "label",
+                                    "type": "text",
+                                    "required": 1
+                                },
+                                {
+                                    "key": "field_to_pill_url",
+                                    "label": "Pill URL",
+                                    "name": "url",
+                                    "type": "text",
+                                    "required": 1
+                                },
+                                {
+                                    "key": "field_to_pill_external",
+                                    "label": "Open in New Tab",
+                                    "name": "is_external",
+                                    "type": "true_false",
+                                    "default_value": 0,
+                                    "ui": 1
+                                }
+                            ]
                         },
                         {
-                            "key": "field_to_90a183737197",
-                            "label": "Sabah & Sarawak Days Range",
-                            "name": "est_sabah_sarawak_days",
-                            "aria-label": "",
+                            "key": "field_to_tab_banner",
+                            "label": "Companion Delivery Banner",
+                            "name": "",
+                            "type": "tab",
+                            "placement": "top",
+                            "endpoint": 0
+                        },
+                        {
+                            "key": "field_to_banner_partner_label",
+                            "label": "Banner Partner Label",
+                            "name": "banner_partner_label",
                             "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "10-16",
-                            "placeholder": ""
+                            "default_value": "Official Partner"
+                        },
+                        {
+                            "key": "field_to_banner_brand_badge",
+                            "label": "Banner Brand Badge",
+                            "name": "banner_brand_badge",
+                            "type": "text",
+                            "default_value": "Waklert Australia"
+                        },
+                        {
+                            "key": "field_to_banner_kicker",
+                            "label": "Banner Subtitle / Kicker",
+                            "name": "banner_kicker",
+                            "type": "text",
+                            "default_value": "Direct Express Delivery"
+                        },
+                        {
+                            "key": "field_to_banner_title_1",
+                            "label": "Banner Headline Line 1",
+                            "name": "banner_title_1",
+                            "type": "text",
+                            "default_value": "JUST STAY AT HOME"
+                        },
+                        {
+                            "key": "field_to_banner_title_2",
+                            "label": "Banner Headline Line 2",
+                            "name": "banner_title_2",
+                            "type": "text",
+                            "default_value": "WE DELIVER!"
+                        },
+                        {
+                            "key": "field_to_banner_safe_stamp",
+                            "label": "Banner Safe Stamp Text",
+                            "name": "banner_safe_stamp",
+                            "type": "text",
+                            "default_value": "100% SAFE"
+                        },
+                        {
+                            "key": "field_to_banner_button_text",
+                            "label": "Banner Button Text",
+                            "name": "banner_button_text",
+                            "type": "text",
+                            "default_value": "ORDER NOW"
+                        },
+                        {
+                            "key": "field_to_banner_button_link",
+                            "label": "Banner Button Link",
+                            "name": "banner_button_link",
+                            "type": "text",
+                            "default_value": "/shop/"
+                        },
+                        {
+                            "key": "field_to_banner_domain",
+                            "label": "Banner Domain Footer",
+                            "name": "banner_domain",
+                            "type": "text",
+                            "default_value": "waklertaustralia.com"
+                        },
+                        {
+                            "key": "field_to_tab_steps",
+                            "label": "How Tracking Works",
+                            "name": "",
+                            "type": "tab",
+                            "placement": "top",
+                            "endpoint": 0
+                        },
+                        {
+                            "key": "field_to_how_works_heading",
+                            "label": "Section Heading",
+                            "name": "how_works_heading",
+                            "type": "text",
+                            "default_value": "How Order Tracking Works"
+                        },
+                        {
+                            "key": "field_to_how_works_steps",
+                            "label": "Tracking Steps",
+                            "name": "how_works_steps",
+                            "type": "repeater",
+                            "layout": "block",
+                            "button_label": "Add Tracking Step",
+                            "sub_fields": [
+                                {
+                                    "key": "field_to_step_title",
+                                    "label": "Step Title",
+                                    "name": "title",
+                                    "type": "text",
+                                    "required": 1
+                                },
+                                {
+                                    "key": "field_to_step_desc",
+                                    "label": "Step Description",
+                                    "name": "description",
+                                    "type": "textarea",
+                                    "rows": 2,
+                                    "required": 1
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_to_tab_support",
+                            "label": "Need Help & Trust",
+                            "name": "",
+                            "type": "tab",
+                            "placement": "top",
+                            "endpoint": 0
+                        },
+                        {
+                            "key": "field_to_help_heading",
+                            "label": "Need Help Title",
+                            "name": "help_heading",
+                            "type": "text",
+                            "default_value": "Need Help?"
+                        },
+                        {
+                            "key": "field_to_help_description",
+                            "label": "Need Help Description",
+                            "name": "help_description",
+                            "type": "textarea",
+                            "rows": 2,
+                            "default_value": "Can't find your tracking number or no scans after 3 business days? Contact our support team and we'll look into it."
+                        },
+                        {
+                            "key": "field_to_help_btn_text",
+                            "label": "Help Button Text",
+                            "name": "help_btn_text",
+                            "type": "text",
+                            "default_value": "Contact Support"
+                        },
+                        {
+                            "key": "field_to_help_btn_url",
+                            "label": "Help Button Link",
+                            "name": "help_btn_url",
+                            "type": "text",
+                            "default_value": "/contact/"
+                        },
+                        {
+                            "key": "field_to_trust_cards",
+                            "label": "Trust Benefit Cards",
+                            "name": "trust_cards",
+                            "type": "repeater",
+                            "layout": "block",
+                            "button_label": "Add Benefit Card",
+                            "sub_fields": [
+                                {
+                                    "key": "field_to_trust_type",
+                                    "label": "Icon Type",
+                                    "name": "card_type",
+                                    "type": "select",
+                                    "choices": {
+                                        "shipping": "Australia Post Express Van (Free Shipping)",
+                                        "support": "24/7 Verified Support Shield",
+                                        "payment": "100% Encrypted Payment Shield"
+                                    },
+                                    "default_value": "shipping"
+                                },
+                                {
+                                    "key": "field_to_trust_title",
+                                    "label": "Card Title",
+                                    "name": "title",
+                                    "type": "text",
+                                    "required": 1
+                                },
+                                {
+                                    "key": "field_to_trust_desc",
+                                    "label": "Card Description",
+                                    "name": "description",
+                                    "type": "textarea",
+                                    "rows": 2,
+                                    "required": 1
+                                }
+                            ]
                         }
                     ]
                 },
