@@ -85,7 +85,7 @@ if (empty($image_url)) {
                         <?= esc_html($title) ?>
                     </h2>
 
-                    <p class="text-sky-100/90 text-sm sm:text-base md:text-lg leading-relaxed mb-8 max-w-2xl font-medium">
+                    <p class="text-sky-100/90 text-sm sm:text-base md:text-lg leading-relaxed mb-8 max-w-xl font-medium">
                         <?= esc_html($description) ?>
                     </p>
 
@@ -119,11 +119,11 @@ if (empty($image_url)) {
 
                 <!-- Right Column: Guy with Phone Media Image -->
                 <?php if (!empty($image_url)): ?>
-                <div class="lg:col-span-5 xl:col-span-5 flex justify-center lg:justify-end items-end self-end px-4 sm:px-6 lg:px-0 lg:pr-4 xl:pr-6 relative z-10 mt-2 lg:mt-0">
+                <div class="lg:col-span-5 xl:col-span-5 flex justify-center lg:justify-end items-end self-end px-4 sm:px-6 lg:px-0 lg:pr-6 xl:pr-8 relative z-10 mt-2 lg:mt-0">
                     <img 
                         src="<?= esc_url($image_url) ?>" 
                         alt="<?= esc_attr($image_alt) ?>" 
-                        class="w-auto h-auto max-h-[320px] sm:max-h-[380px] md:max-h-[430px] lg:max-h-[460px] xl:max-h-[500px] max-w-full lg:max-w-none lg:w-[115%] xl:w-[122%] object-contain object-bottom drop-shadow-[0_20px_35px_rgba(0,0,0,0.6)] transition-transform duration-300 hover:scale-[1.02]"
+                        class="w-auto h-auto max-h-[300px] sm:max-h-[350px] md:max-h-[390px] lg:max-h-[420px] xl:max-h-[450px] max-w-full object-contain object-bottom drop-shadow-[0_20px_35px_rgba(0,0,0,0.6)] transition-transform duration-300 hover:scale-[1.02]"
                         loading="lazy"
                         decoding="async"
                     />
