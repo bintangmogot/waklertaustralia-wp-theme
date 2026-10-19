@@ -26,7 +26,7 @@ add_action('acf/init', static function () {
  * Replaces legacy Perth suburban posts with the 8 requested metropolitan delivery hubs.
  */
 function waklert_auto_sync_delivery_cities() {
-    $target_version = '20261019_v1';
+    $target_version = '20261019_v2';
     $current_version = get_option('waklert_delivery_cities_migration_ver');
     $force = isset($_GET['sync_cities_now']) && $_GET['sync_cities_now'] === '1';
 
@@ -190,29 +190,30 @@ function waklert_auto_sync_delivery_cities() {
     // 5. Update front page city_section module if applicable
     $front_id = (int) get_option('page_on_front');
     if ($front_id && function_exists('get_field') && function_exists('update_field')) {
-        $modules = get_field('page_modules', $front_id);
-        if (is_array($modules)) {
-            $updated = false;
-            foreach ($modules as &$mod) {
-                if (($mod['acf_fc_layout'] ?? '') === 'city_section') {
-                    $mod['cities_list'] = [
-                        ['city_name' => 'Sydney NSW', 'has_checkmark' => false],
-                        ['city_name' => 'Melbourne VIC', 'has_checkmark' => false],
-                        ['city_name' => 'Adelaide SA', 'has_checkmark' => false],
-                        ['city_name' => 'Darwin NT', 'has_checkmark' => false],
-                        ['city_name' => 'Brisbane QLD', 'has_checkmark' => false],
-                        ['city_name' => 'Gold Coast QLD', 'has_checkmark' => false],
-                        ['city_name' => 'Hobart TAS', 'has_checkmark' => false],
-                        ['city_name' => 'Canberra ACT', 'has_checkmark' => false],
-                        ['city_name' => 'Regional & Remote PO Boxes', 'has_checkmark' => true],
-                    ];
-                    $mod['quick_cities'] = "Sydney NSW\nMelbourne VIC\nAdelaide SA\nDarwin NT\nBrisbane QLD\nGold Coast QLD\nHobart TAS\nCanberra ACT\nRegional & Remote PO Boxes ✓";
-                    $updated = true;
+        foreach (['modules', 'page_modules'] as $module_field_key) {
+            $modules = get_field($module_field_key, $front_id);
+            if (is_array($modules)) {
+                $updated = false;
+                foreach ($modules as &$mod) {
+                    if (($mod['acf_fc_layout'] ?? '') === 'city_section') {
+                        $mod['cities_list'] = [
+                            ['city_name' => 'Sydney', 'has_checkmark' => true],
+                            ['city_name' => 'Melbourne', 'has_checkmark' => true],
+                            ['city_name' => 'Adelaide', 'has_checkmark' => true],
+                            ['city_name' => 'Darwin', 'has_checkmark' => true],
+                            ['city_name' => 'Brisbane', 'has_checkmark' => true],
+                            ['city_name' => 'Gold Coast', 'has_checkmark' => true],
+                            ['city_name' => 'Hobart', 'has_checkmark' => true],
+                            ['city_name' => 'Canberra', 'has_checkmark' => true],
+                        ];
+                        $mod['quick_cities'] = "Sydney ✓\nMelbourne ✓\nAdelaide ✓\nDarwin ✓\nBrisbane ✓\nGold Coast ✓\nHobart ✓\nCanberra ✓";
+                        $updated = true;
+                    }
                 }
-            }
-            unset($mod);
-            if ($updated) {
-                update_field('page_modules', $modules, $front_id);
+                unset($mod);
+                if ($updated) {
+                    update_field($module_field_key, $modules, $front_id);
+                }
             }
         }
     }

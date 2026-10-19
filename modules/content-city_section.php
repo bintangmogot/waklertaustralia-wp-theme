@@ -66,17 +66,24 @@ if (empty($cities_list) && have_rows('cities_list')) {
 // 3. Fallback to default 8 Australian delivery cities
 if (empty($cities_list)) {
     $cities_list = [
-        ['name' => 'Sydney NSW', 'checkmark' => false],
-        ['name' => 'Melbourne VIC', 'checkmark' => false],
-        ['name' => 'Adelaide SA', 'checkmark' => false],
-        ['name' => 'Darwin NT', 'checkmark' => false],
-        ['name' => 'Brisbane QLD', 'checkmark' => false],
-        ['name' => 'Gold Coast QLD', 'checkmark' => false],
-        ['name' => 'Hobart TAS', 'checkmark' => false],
-        ['name' => 'Canberra ACT', 'checkmark' => false],
-        ['name' => 'Regional & Remote', 'checkmark' => true],
+        ['name' => 'Sydney', 'checkmark' => true],
+        ['name' => 'Melbourne', 'checkmark' => true],
+        ['name' => 'Adelaide', 'checkmark' => true],
+        ['name' => 'Darwin', 'checkmark' => true],
+        ['name' => 'Brisbane', 'checkmark' => true],
+        ['name' => 'Gold Coast', 'checkmark' => true],
+        ['name' => 'Hobart', 'checkmark' => true],
+        ['name' => 'Canberra', 'checkmark' => true],
     ];
 }
+
+// 4. Ensure legacy Perth references are mapped to Canberra
+foreach ($cities_list as &$c_item) {
+    if (stripos($c_item['name'], 'Perth') !== false) {
+        $c_item['name'] = 'Canberra';
+    }
+}
+unset($c_item);
 ?>
 
 <?php if ($is_navy): ?>
