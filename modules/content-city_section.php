@@ -63,23 +63,17 @@ if (empty($cities_list) && have_rows('cities_list')) {
     }
 }
 
-// 3. Fallback to default 15 Australian cities from reference design
+// 3. Fallback to default 8 Australian delivery cities
 if (empty($cities_list)) {
     $cities_list = [
         ['name' => 'Sydney NSW', 'checkmark' => false],
         ['name' => 'Melbourne VIC', 'checkmark' => false],
-        ['name' => 'Brisbane QLD', 'checkmark' => false],
-        ['name' => 'Perth WA', 'checkmark' => false],
         ['name' => 'Adelaide SA', 'checkmark' => false],
         ['name' => 'Darwin NT', 'checkmark' => false],
+        ['name' => 'Brisbane QLD', 'checkmark' => false],
+        ['name' => 'Gold Coast QLD', 'checkmark' => false],
         ['name' => 'Hobart TAS', 'checkmark' => false],
         ['name' => 'Canberra ACT', 'checkmark' => false],
-        ['name' => 'Gold Coast QLD', 'checkmark' => false],
-        ['name' => 'Newcastle NSW', 'checkmark' => false],
-        ['name' => 'Cairns QLD', 'checkmark' => false],
-        ['name' => 'Wollongong NSW', 'checkmark' => false],
-        ['name' => 'Geelong VIC', 'checkmark' => false],
-        ['name' => 'Townsville QLD', 'checkmark' => false],
         ['name' => 'Regional & Remote', 'checkmark' => true],
     ];
 }

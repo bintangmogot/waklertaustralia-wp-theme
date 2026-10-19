@@ -47,7 +47,7 @@ $cities = get_posts([
     'post_type' => 'city',
     'post_status' => 'publish',
     'posts_per_page' => 20,
-    'orderby' => 'title',
+    'orderby' => 'menu_order title',
     'order' => 'ASC'
 ]);
 ?>
