@@ -7,7 +7,7 @@
  */
 $title = get_sub_field('title') ?: get_the_title();
 $eyebrow = get_sub_field('eyebrow') ?: 'Policy & Information';
-$intro = get_sub_field('intro');
+$intro = get_sub_field('intro') ?: get_the_excerpt(get_the_ID());
 $updated = get_sub_field('updated');
 $sections = get_sub_field('sections') ?: [];
 $contact_email = sanitize_email(get_sub_field('contact_email'));
@@ -157,12 +157,26 @@ foreach ($sections as $index => $section) {
                 <?php endif; ?>
 
                 <article class="rounded-2xl sm:rounded-3xl border-2 border-dashed border-sky-200/80 bg-white p-6 sm:p-10 shadow-xs divide-y divide-dashed divide-sky-200/80">
+                    <?php if (is_singular('post') && !empty($intro)) : ?>
+                        <div class="pb-6 sm:pb-8">
+                            <div class="mb-2">
+                                <span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 border border-sky-300/80 px-2.5 py-0.5 text-[10px] font-black uppercase tracking-[0.14em] text-[#0c4161]">
+                                    <span class="h-1.5 w-1.5 rounded-full bg-amber-500 animate-pulse" aria-hidden="true"></span>
+                                    Introduction
+                                </span>
+                            </div>
+                            <div class="text-base sm:text-lg text-slate-700 font-medium leading-relaxed">
+                                <?php echo wp_kses_post(wpautop($intro)); ?>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+
                     <?php foreach ($sections as $index => $section) :
                         $section_title = $section['title'] ?? '';
                         $section_content = $section['content'] ?? '';
                         $section_id = $section_ids[$index];
                     ?>
-                        <section id="<?php echo esc_attr($section_id); ?>" aria-labelledby="<?php echo esc_attr($section_id); ?>-title" class="scroll-mt-28 <?php echo $index > 0 ? 'pt-8 sm:pt-10' : ''; ?> <?php echo $index < count($sections) - 1 ? 'pb-8 sm:pb-10' : ''; ?>">
+                        <section id="<?php echo esc_attr($section_id); ?>" aria-labelledby="<?php echo esc_attr($section_id); ?>-title" class="scroll-mt-28 <?php echo ($index > 0 || (is_singular('post') && !empty($intro))) ? 'pt-8 sm:pt-10' : ''; ?> <?php echo $index < count($sections) - 1 ? 'pb-8 sm:pb-10' : ''; ?>">
                             <div class="mb-2">
                                 <span class="inline-flex items-center justify-center rounded-md bg-sky-100 px-2 py-0.5 font-mono text-[11px] font-extrabold text-[#0c4161]">
                                     <?php echo esc_html(str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT)); ?>

@@ -71,9 +71,25 @@ get_header();
                 <div class="bg-background min-h-[50vh] py-6 md:py-10">
                     <div class="container-site max-w-3xl">
                         <?php if (has_post_thumbnail(get_the_ID())) : ?>
-                            <figure class="mb-8 overflow-hidden rounded-2xl border-2 border-dashed border-sky-200/80 bg-white p-1.5 shadow-sm">
+                            <figure class="mb-6 sm:mb-8 overflow-hidden rounded-2xl border-2 border-dashed border-sky-200/80 bg-white p-1.5 shadow-sm">
                                 <?php echo get_the_post_thumbnail(get_the_ID(), 'large', ['class' => 'h-auto w-full object-cover rounded-xl shadow-xs', 'loading' => 'eager']); ?>
                             </figure>
+                        <?php endif; ?>
+
+                        <?php 
+                        $intro = get_field('intro') ?: get_the_excerpt(get_the_ID());
+                        if (!empty($intro)) : ?>
+                            <div class="mb-6 sm:mb-8 rounded-2xl sm:rounded-3xl border-2 border-dashed border-sky-200/80 bg-white p-6 sm:p-8 shadow-xs">
+                                <div class="mb-2">
+                                    <span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 border border-sky-300/80 px-2.5 py-0.5 text-[10px] font-black uppercase tracking-[0.14em] text-[#0c4161]">
+                                        <span class="h-1.5 w-1.5 rounded-full bg-amber-500 animate-pulse" aria-hidden="true"></span>
+                                        Introduction
+                                    </span>
+                                </div>
+                                <div class="text-base sm:text-lg text-slate-700 font-medium leading-relaxed">
+                                    <?php echo wp_kses_post(wpautop($intro)); ?>
+                                </div>
+                            </div>
                         <?php endif; ?>
 
                         <div class="prose prose-slate max-w-none prose-a:text-primary hover:prose-a:text-primary-dark prose-headings:font-heading prose-headings:font-bold">
