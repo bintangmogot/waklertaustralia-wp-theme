@@ -82,7 +82,7 @@
             <span><?php echo esc_html($topbar_center); ?></span>
         </p>
 
-        <div class="flex shrink-0 items-center">
+        <div class="flex shrink-0 items-center md:hidden">
             <?php
             $support_phone = get_field('whatsapp_number', 'option') ?: '+61 488 841 833';
             $clean_phone = preg_replace('/[^0-9]/', '', $support_phone);
