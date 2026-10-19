@@ -3965,6 +3965,31 @@
                             },
                             "default_value": "mailto:support@waklertaustralia.com",
                             "placeholder": "mailto:support@waklertaustralia.com"
+                        },
+                        {
+                            "key": "field_scta_image",
+                            "label": "Representative Image (Guy with Phone)",
+                            "name": "image",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "Upload or select an image for the right side of the support banner (e.g. support representative pointing with phone). Defaults to bundled photo.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "preview_size": "medium",
+                            "library": "all",
+                            "min_width": 0,
+                            "min_height": 0,
+                            "min_size": 0,
+                            "max_width": 0,
+                            "max_height": 0,
+                            "max_size": 0,
+                            "mime_types": ""
                         }
                     ],
                     "min": "",
