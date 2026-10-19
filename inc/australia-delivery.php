@@ -26,7 +26,7 @@ add_action('acf/init', static function () {
  * Replaces legacy Perth suburban posts with the 8 requested metropolitan delivery hubs.
  */
 function waklert_auto_sync_delivery_cities() {
-    $target_version = '20261019_v3';
+    $target_version = '20261019_v4';
     $current_version = get_option('waklert_delivery_cities_migration_ver');
     $force = isset($_GET['sync_cities_now']) && $_GET['sync_cities_now'] === '1';
 
@@ -232,11 +232,6 @@ add_action('init', 'waklert_auto_sync_delivery_cities', 20);
  * and set as the default media object for Support CTA, enabling the admin to edit or replace it.
  */
 function waklert_sync_support_cta_media() {
-    $existing_id = (int) get_option('waklert_support_cta_media_id');
-    if ($existing_id && get_post($existing_id)) {
-        return $existing_id;
-    }
-
     $source_file = get_theme_file_path('/assets/images/guy-with-phone.png');
     if (!file_exists($source_file)) {
         $source_file = get_theme_file_path('/assets/images/guy with phone.png');
@@ -245,22 +240,24 @@ function waklert_sync_support_cta_media() {
         return 0;
     }
 
+    require_once ABSPATH . 'wp-admin/includes/image.php';
+    require_once ABSPATH . 'wp-admin/includes/file.php';
+    require_once ABSPATH . 'wp-admin/includes/media.php';
+
     global $wpdb;
-    $found_id = (int) $wpdb->get_var($wpdb->prepare(
-        "SELECT ID FROM $wpdb->posts WHERE post_type = 'attachment' AND post_title = %s",
-        'guy-with-phone'
-    ));
+    $found_id = (int) get_option('waklert_support_cta_media_id');
+    if (!$found_id || !get_post($found_id)) {
+        $found_id = (int) $wpdb->get_var($wpdb->prepare(
+            "SELECT ID FROM $wpdb->posts WHERE post_type = 'attachment' AND post_title = %s",
+            'guy-with-phone'
+        ));
+    }
+
+    $upload_dir = wp_upload_dir();
+    $filename = 'guy-with-phone.png';
 
     if (!$found_id) {
-        require_once ABSPATH . 'wp-admin/includes/image.php';
-        require_once ABSPATH . 'wp-admin/includes/file.php';
-        require_once ABSPATH . 'wp-admin/includes/media.php';
-
-        $upload_dir = wp_upload_dir();
-        $filename = 'guy-with-phone.png';
         $dest_file = $upload_dir['path'] . '/' . $filename;
-
-        // Copy file to uploads folder
         copy($source_file, $dest_file);
 
         $filetype = wp_check_filetype($filename, null);
@@ -277,6 +274,16 @@ function waklert_sync_support_cta_media() {
             wp_update_attachment_metadata($found_id, $attach_data);
             update_post_meta($found_id, '_wp_attachment_image_alt', 'Waklert Australia Customer Support - 24/7 Phone & WhatsApp');
         }
+    } else {
+        // If attachment exists, verify the file matches our latest cropped version
+        $existing_file = get_attached_file($found_id);
+        if ($existing_file && file_exists($existing_file)) {
+            if (filesize($existing_file) !== filesize($source_file)) {
+                copy($source_file, $existing_file);
+                $attach_data = wp_generate_attachment_metadata($found_id, $existing_file);
+                wp_update_attachment_metadata($found_id, $attach_data);
+            }
+        }
     }
 
     if ($found_id && !is_wp_error($found_id)) {
@@ -286,20 +293,58 @@ function waklert_sync_support_cta_media() {
         }
         update_option('options_support_cta_image', $found_id);
 
-        // Also update any support_cta modules in pages
+        // Ensure support_cta module is registered and configured on front page
         $front_id = (int) get_option('page_on_front');
         if ($front_id && function_exists('get_field') && function_exists('update_field')) {
             foreach (['modules', 'page_modules'] as $mod_key) {
                 $modules = get_field($mod_key, $front_id);
                 if (is_array($modules)) {
+                    $has_support_cta = false;
                     $changed = false;
                     foreach ($modules as &$mod) {
-                        if (($mod['acf_fc_layout'] ?? '') === 'support_cta' && empty($mod['image'])) {
-                            $mod['image'] = $found_id;
-                            $changed = true;
+                        if (($mod['acf_fc_layout'] ?? '') === 'support_cta') {
+                            $has_support_cta = true;
+                            if (empty($mod['image'])) {
+                                $mod['image'] = $found_id;
+                                $changed = true;
+                            }
                         }
                     }
                     unset($mod);
+
+                    if (!$has_support_cta) {
+                        $scta_payload = [
+                            'acf_fc_layout'   => 'support_cta',
+                            'eyebrow'         => 'Need Help?',
+                            'title'           => 'Talk to us via SMS or WhatsApp - 24/7.',
+                            'desc'            => 'We are available all the time to handle any questions, offer advice or reassure you about your purchase.',
+                            'description'     => 'We are available all the time to handle any questions, offer advice or reassure you about your purchase.',
+                            'chat_btn_text'   => 'Contact Support',
+                            'chat_btn_url'    => 'https://wa.me/61488841833',
+                            'sms_btn_text'    => 'SMS',
+                            'sms_btn_url'     => 'sms:0488841833',
+                            'email_btn_text'  => 'Email Support',
+                            'email_btn_url'   => 'mailto:support@waklertaustralia.com',
+                            'image'           => $found_id,
+                        ];
+
+                        // Find index of blog_section to place support_cta immediately after it
+                        $blog_idx = -1;
+                        foreach ($modules as $idx => $m) {
+                            if (($m['acf_fc_layout'] ?? '') === 'blog_section') {
+                                $blog_idx = $idx;
+                                break;
+                            }
+                        }
+
+                        if ($blog_idx !== -1) {
+                            array_splice($modules, $blog_idx + 1, 0, [$scta_payload]);
+                        } else {
+                            $modules[] = $scta_payload;
+                        }
+                        $changed = true;
+                    }
+
                     if ($changed) {
                         update_field($mod_key, $modules, $front_id);
                     }
