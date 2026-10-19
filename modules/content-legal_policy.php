@@ -158,16 +158,8 @@ foreach ($sections as $index => $section) {
 
                 <article class="rounded-2xl sm:rounded-3xl border-2 border-dashed border-sky-200/80 bg-white p-6 sm:p-10 shadow-xs divide-y divide-dashed divide-sky-200/80">
                     <?php if (is_singular('post') && !empty($intro)) : ?>
-                        <div class="pb-6 sm:pb-8">
-                            <div class="mb-2">
-                                <span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 border border-sky-300/80 px-2.5 py-0.5 text-[10px] font-black uppercase tracking-[0.14em] text-[#0c4161]">
-                                    <span class="h-1.5 w-1.5 rounded-full bg-amber-500 animate-pulse" aria-hidden="true"></span>
-                                    Introduction
-                                </span>
-                            </div>
-                            <div class="text-base sm:text-lg text-slate-700 font-medium leading-relaxed">
-                                <?php echo wp_kses_post(wpautop($intro)); ?>
-                            </div>
+                        <div class="pb-6 sm:pb-8 prose max-w-none text-slate-600 text-sm sm:text-base leading-relaxed">
+                            <?php echo wp_kses_post(wpautop($intro)); ?>
                         </div>
                     <?php endif; ?>
 
