@@ -80,7 +80,7 @@ if (!$columns) {
 }
 
 $delivery_links = [];
-foreach (get_posts(['post_type' => 'city', 'post_status' => 'publish', 'posts_per_page' => 12, 'orderby' => 'title', 'order' => 'ASC']) as $city_page) {
+foreach (get_posts(['post_type' => 'city', 'post_status' => 'publish', 'posts_per_page' => 12, 'orderby' => 'menu_order title', 'order' => 'ASC']) as $city_page) {
     $delivery_links[] = ['title' => get_field('city_name', $city_page->ID) ?: $city_page->post_title, 'url' => get_permalink($city_page)];
 }
 if ($delivery_links) {
