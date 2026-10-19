@@ -252,6 +252,31 @@
             "append": ""
         },
         {
+            "key": "field_waklert_support_cta_image",
+            "label": "Support CTA Representative Image (Guy with Phone)",
+            "name": "support_cta_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Global representative image for the Support CTA banner. Defaults to bundled guy with phone photo.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": ""
+        },
+        {
             "key": "field_waklert_working_days",
             "label": "Working Days",
             "name": "working_days",

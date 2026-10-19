@@ -10,7 +10,7 @@ add_action('acf/init', static function () {
         return;
     }
     // Register the version-controlled definitions after ACF loads database groups.
-    foreach (['group_city_fields', 'group_page_modules'] as $key) {
+    foreach (['group_city_fields', 'group_page_modules', 'group_theme_settings'] as $key) {
         $path = get_theme_file_path("/acf-json/{$key}.json");
         if (file_exists($path)) {
             $group = json_decode(file_get_contents($path), true);
@@ -26,7 +26,7 @@ add_action('acf/init', static function () {
  * Replaces legacy Perth suburban posts with the 8 requested metropolitan delivery hubs.
  */
 function waklert_auto_sync_delivery_cities() {
-    $target_version = '20261019_v2';
+    $target_version = '20261019_v3';
     $current_version = get_option('waklert_delivery_cities_migration_ver');
     $force = isset($_GET['sync_cities_now']) && $_GET['sync_cities_now'] === '1';
 
@@ -218,8 +218,97 @@ function waklert_auto_sync_delivery_cities() {
         }
     }
 
-    // 6. Flush rewrites & mark migration complete
+    // 6. Ensure Support CTA representative media image is imported & configured
+    waklert_sync_support_cta_media();
+
+    // 7. Flush rewrites & mark migration complete
     flush_rewrite_rules(false);
     update_option('waklert_delivery_cities_migration_ver', $target_version);
 }
 add_action('init', 'waklert_auto_sync_delivery_cities', 20);
+
+/**
+ * Ensure the representative guy-with-phone image is imported into the WordPress Media Library
+ * and set as the default media object for Support CTA, enabling the admin to edit or replace it.
+ */
+function waklert_sync_support_cta_media() {
+    $existing_id = (int) get_option('waklert_support_cta_media_id');
+    if ($existing_id && get_post($existing_id)) {
+        return $existing_id;
+    }
+
+    $source_file = get_theme_file_path('/assets/images/guy-with-phone.png');
+    if (!file_exists($source_file)) {
+        $source_file = get_theme_file_path('/assets/images/guy with phone.png');
+    }
+    if (!file_exists($source_file)) {
+        return 0;
+    }
+
+    global $wpdb;
+    $found_id = (int) $wpdb->get_var($wpdb->prepare(
+        "SELECT ID FROM $wpdb->posts WHERE post_type = 'attachment' AND post_title = %s",
+        'guy-with-phone'
+    ));
+
+    if (!$found_id) {
+        require_once ABSPATH . 'wp-admin/includes/image.php';
+        require_once ABSPATH . 'wp-admin/includes/file.php';
+        require_once ABSPATH . 'wp-admin/includes/media.php';
+
+        $upload_dir = wp_upload_dir();
+        $filename = 'guy-with-phone.png';
+        $dest_file = $upload_dir['path'] . '/' . $filename;
+
+        // Copy file to uploads folder
+        copy($source_file, $dest_file);
+
+        $filetype = wp_check_filetype($filename, null);
+        $attachment = [
+            'post_mime_type' => $filetype['type'],
+            'post_title'     => 'guy-with-phone',
+            'post_content'   => '',
+            'post_status'    => 'inherit'
+        ];
+
+        $found_id = wp_insert_attachment($attachment, $dest_file);
+        if (!is_wp_error($found_id) && $found_id) {
+            $attach_data = wp_generate_attachment_metadata($found_id, $dest_file);
+            wp_update_attachment_metadata($found_id, $attach_data);
+            update_post_meta($found_id, '_wp_attachment_image_alt', 'Waklert Australia Customer Support - 24/7 Phone & WhatsApp');
+        }
+    }
+
+    if ($found_id && !is_wp_error($found_id)) {
+        update_option('waklert_support_cta_media_id', $found_id);
+        if (function_exists('update_field')) {
+            update_field('support_cta_image', $found_id, 'option');
+        }
+        update_option('options_support_cta_image', $found_id);
+
+        // Also update any support_cta modules in pages
+        $front_id = (int) get_option('page_on_front');
+        if ($front_id && function_exists('get_field') && function_exists('update_field')) {
+            foreach (['modules', 'page_modules'] as $mod_key) {
+                $modules = get_field($mod_key, $front_id);
+                if (is_array($modules)) {
+                    $changed = false;
+                    foreach ($modules as &$mod) {
+                        if (($mod['acf_fc_layout'] ?? '') === 'support_cta' && empty($mod['image'])) {
+                            $mod['image'] = $found_id;
+                            $changed = true;
+                        }
+                    }
+                    unset($mod);
+                    if ($changed) {
+                        update_field($mod_key, $modules, $front_id);
+                    }
+                }
+            }
+        }
+
+        return $found_id;
+    }
+
+    return 0;
+}
