@@ -60,6 +60,9 @@ $image = wp_get_attachment_image_url($product->get_image_id(), 'large') ?: '';
 $variations = [];
 if ($product->is_type('variable')) {
     $variations = $product->get_available_variations();
+    if (function_exists('waklert_sort_product_variations')) {
+        waklert_sort_product_variations($variations, $product);
+    }
 }
 $default_variation_index = 0;
 $lowest_variation_price = INF;
