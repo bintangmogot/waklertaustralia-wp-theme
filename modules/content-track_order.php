@@ -2,7 +2,7 @@
 /**
  * Module: Track Order
  * Displays the complete Australia Post Order Tracking section.
- * All content, headlines, pills, steps, and cards are 100% editable from WP Admin.
+ * All content, headlines, steps, and cards are 100% editable from WP Admin.
  */
 
 // Optional prefilled tracking number from query string
@@ -24,22 +24,6 @@ $form_instructions   = get_sub_field('form_instructions') ?: 'Tracking numbers a
 $input_placeholder   = get_sub_field('input_placeholder') ?: 'e.g. 33ABC1234567';
 $button_text         = get_sub_field('track_btn_text') ?: 'Track My Order';
 $redirect_notice     = get_sub_field('redirect_notice') ?: "You'll be redirected to the official Australia Post tracking page (auspost.com.au), where your parcel's latest scan events are shown automatically.";
-$quick_links_heading = get_sub_field('quick_links_heading') ?: 'POPULAR SEARCHES & QUICK LINKS';
-
-// Keyword Pills Repeater (100% Editable by Admin in WP Admin)
-$quick_links = get_sub_field('keyword_pills');
-if (empty($quick_links) || !is_array($quick_links)) {
-    $quick_links = [
-        ['label' => 'Order Tracking', 'url' => '#auspost-tracking-form', 'is_external' => false],
-        ['label' => 'Australia Post', 'url' => 'https://auspost.com.au/mypost/track/', 'is_external' => true],
-        ['label' => 'Buy Modafinil Australia', 'url' => home_url('/shop/'), 'is_external' => false],
-        ['label' => 'Shipping Australia', 'url' => home_url('/shipping-policy/'), 'is_external' => false],
-        ['label' => 'Buy Modvigil Online', 'url' => home_url('/product/waklert-150/'), 'is_external' => false],
-        ['label' => 'Buy Artvigil', 'url' => home_url('/product/artvigil-150mg/'), 'is_external' => false],
-        ['label' => 'Waklert Australia', 'url' => home_url('/'), 'is_external' => false],
-        ['label' => 'Modafinil Buy Australia', 'url' => home_url('/armodafinil-guide/'), 'is_external' => false],
-    ];
-}
 
 // 3. How Order Tracking Works Steps Repeater
 $how_heading = get_sub_field('how_works_heading') ?: 'How Order Tracking Works';
@@ -132,7 +116,7 @@ if (empty($trust_cards) || !is_array($trust_cards)) {
         </div>
     </div>
 
-    <!-- Main Australia Post Tracking Tool & Quick Links Card (Clean Focused Single Card) -->
+    <!-- Main Australia Post Tracking Tool Card (Clean, Focused Single Card) -->
     <section class="rounded-3xl border-2 border-dashed border-sky-300/80 bg-white p-6 sm:p-8 md:p-10 shadow-sm relative overflow-hidden" aria-label="Australia Post Order Tracking">
         <div class="max-w-3xl mx-auto space-y-6">
             <div class="text-center sm:text-left">
@@ -194,32 +178,6 @@ if (empty($trust_cards) || !is_array($trust_cards)) {
                     <?= wp_kses_post($redirect_notice) ?>
                 </p>
             </div>
-
-            <!-- Keyword / Popular Searches & Quick Links (100% Editable by Admin) -->
-            <?php if (!empty($quick_links)): ?>
-            <div class="pt-4 border-t border-slate-200/80">
-                <p class="text-xs font-black uppercase tracking-wider text-slate-500 mb-3"><?= esc_html($quick_links_heading) ?></p>
-                <div class="flex flex-wrap gap-2 sm:gap-2.5">
-                    <?php foreach ($quick_links as $pill): 
-                        $plabel = $pill['label'] ?? '';
-                        $purl   = $pill['url'] ?? '#';
-                        $pext   = !empty($pill['is_external']);
-                        if (!$plabel) continue;
-                    ?>
-                        <a 
-                            href="<?= esc_url($purl) ?>" 
-                            <?= $pext ? 'target="_blank" rel="noopener noreferrer"' : '' ?>
-                            class="inline-flex items-center gap-1.5 rounded-full border border-amber-200/90 bg-amber-50/70 hover:bg-amber-100 text-slate-700 hover:text-slate-900 px-4 py-1.5 text-xs font-bold transition-all shadow-2xs hover:shadow-xs hover:border-amber-300"
-                        >
-                            <span><?= esc_html($plabel) ?></span>
-                            <?php if ($pext): ?>
-                                <svg class="w-3 h-3 opacity-60" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                            <?php endif; ?>
-                        </a>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-            <?php endif; ?>
         </div>
     </section>
 

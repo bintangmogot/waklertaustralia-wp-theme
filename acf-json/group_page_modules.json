@@ -2243,45 +2243,6 @@
                             "default_value": "You'll be redirected to the official Australia Post tracking page (auspost.com.au), where your parcel's latest scan events are shown automatically."
                         },
                         {
-                            "key": "field_to_quick_links_heading",
-                            "label": "Quick Links Heading",
-                            "name": "quick_links_heading",
-                            "type": "text",
-                            "default_value": "POPULAR SEARCHES & QUICK LINKS"
-                        },
-                        {
-                            "key": "field_to_keyword_pills",
-                            "label": "Keyword / Quick-Nav Pills",
-                            "name": "keyword_pills",
-                            "type": "repeater",
-                            "layout": "table",
-                            "button_label": "Add Quick Link Pill",
-                            "sub_fields": [
-                                {
-                                    "key": "field_to_pill_label",
-                                    "label": "Pill Label",
-                                    "name": "label",
-                                    "type": "text",
-                                    "required": 1
-                                },
-                                {
-                                    "key": "field_to_pill_url",
-                                    "label": "Pill URL",
-                                    "name": "url",
-                                    "type": "text",
-                                    "required": 1
-                                },
-                                {
-                                    "key": "field_to_pill_external",
-                                    "label": "Open in New Tab",
-                                    "name": "is_external",
-                                    "type": "true_false",
-                                    "default_value": 0,
-                                    "ui": 1
-                                }
-                            ]
-                        },
-                        {
                             "key": "field_to_tab_banner",
                             "label": "Companion Delivery Banner",
                             "name": "",
