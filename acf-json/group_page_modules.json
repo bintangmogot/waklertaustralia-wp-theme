@@ -1430,10 +1430,10 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Metro cities, regional towns, or remote FIFO camps \u2014 we ship to your address.",
+                            "default_value": "Metro cities, regional towns, or remote FIFO camps — we ship to your address.",
                             "new_lines": "",
                             "maxlength": "",
-                            "placeholder": "Metro cities, regional towns, or remote FIFO camps \u2014 we ship to your address.",
+                            "placeholder": "Metro cities, regional towns, or remote FIFO camps — we ship to your address.",
                             "rows": 3
                         },
                         {
@@ -1551,7 +1551,7 @@
                             "label": "Desc",
                             "name": "desc",
                             "type": "textarea",
-                            "default_value": "ModafinilMY serves students, professionals, and shift workers across Malaysia \u2014 from Kuala Lumpur to Kota Kinabalu."
+                            "default_value": "ModafinilMY serves students, professionals, and shift workers across Malaysia — from Kuala Lumpur to Kota Kinabalu."
                         }
                     ]
                 },
@@ -1573,7 +1573,7 @@
                             "label": "Mission Desc",
                             "name": "mission_desc",
                             "type": "textarea",
-                            "default_value": "We exist to ensure Malaysians have access to high-quality, genuine Modafinil \u2014 delivered fast, discreetly, and reliably across Peninsular, Sabah, and Sarawak."
+                            "default_value": "We exist to ensure Malaysians have access to high-quality, genuine Modafinil — delivered fast, discreetly, and reliably across Peninsular, Sabah, and Sarawak."
                         },
                         {
                             "key": "field_5eaf710cafea4",
@@ -1827,7 +1827,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "8:00 AM \u2013 8:00 PM AEST"
+                            "default_value": "8:00 AM – 8:00 PM AEST"
                         },
                         {
                             "key": "field_contact_hours_sat",
@@ -1842,7 +1842,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "9:00 AM \u2013 5:00 PM AEST"
+                            "default_value": "9:00 AM – 5:00 PM AEST"
                         },
                         {
                             "key": "field_contact_hours_sun",
@@ -2218,7 +2218,7 @@
                             "name": "form_instructions",
                             "type": "textarea",
                             "rows": 2,
-                            "default_value": "Tracking numbers are usually 10\u201323 characters long, e.g. 33ABC1234567. You can find yours in your dispatch confirmation email."
+                            "default_value": "Tracking numbers are usually 10–23 characters long, e.g. 33ABC1234567. You can find yours in your dispatch confirmation email."
                         },
                         {
                             "key": "field_to_input_placeholder",
@@ -2241,6 +2241,13 @@
                             "type": "textarea",
                             "rows": 2,
                             "default_value": "You'll be redirected to the official Australia Post tracking page (auspost.com.au), where your parcel's latest scan events are shown automatically."
+                        },
+                        {
+                            "key": "field_to_quick_links_heading",
+                            "label": "Quick Links Heading",
+                            "name": "quick_links_heading",
+                            "type": "text",
+                            "default_value": "POPULAR SEARCHES & QUICK LINKS"
                         },
                         {
                             "key": "field_to_keyword_pills",

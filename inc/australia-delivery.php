@@ -26,7 +26,7 @@ add_action('acf/init', static function () {
  * Replaces legacy Perth suburban posts with the 8 requested metropolitan delivery hubs.
  */
 function waklert_auto_sync_delivery_cities() {
-    $target_version = '20261019_v5';
+    $target_version = '20261020_v1';
     $current_version = get_option('waklert_delivery_cities_migration_ver');
     $force = isset($_GET['sync_cities_now']) && $_GET['sync_cities_now'] === '1';
 
@@ -226,7 +226,12 @@ function waklert_auto_sync_delivery_cities() {
         waklert_sync_all_variations_menu_order();
     }
 
-    // 8. Flush rewrites & mark migration complete
+    // 8. Synchronize Track Order page ACF flexible content & quick links pills
+    if (function_exists('waklert_sync_track_order_page_module')) {
+        waklert_sync_track_order_page_module();
+    }
+
+    // 9. Flush rewrites & mark migration complete
     flush_rewrite_rules(false);
     update_option('waklert_delivery_cities_migration_ver', $target_version);
 }
@@ -361,4 +366,119 @@ function waklert_sync_support_cta_media() {
     }
 
     return 0;
+}
+
+
+/**
+ * Synchronize Track Order page ACF fields so admin can easily edit all headlines and quick links pills.
+ */
+function waklert_sync_track_order_page_module() {
+    $page = get_page_by_path('track-order');
+    if (!$page) {
+        $pages = get_posts([
+            'post_type'   => 'page',
+            'meta_key'    => '_wp_page_template',
+            'meta_value'  => 'page-track-order.php',
+            'numberposts' => 1,
+        ]);
+        if (!empty($pages)) {
+            $page = $pages[0];
+        }
+    }
+    if (!$page) {
+        $p633 = get_post(633);
+        if ($p633 && $p633->post_type === 'page') {
+            $page = $p633;
+        }
+    }
+    if (!$page) {
+        return false;
+    }
+
+    $page_id = $page->ID;
+
+    $pills = [
+        ['label' => 'Order Tracking', 'url' => '#auspost-tracking-form', 'is_external' => 0],
+        ['label' => 'Australia Post', 'url' => 'https://auspost.com.au/mypost/track/', 'is_external' => 1],
+        ['label' => 'Buy Modafinil Australia', 'url' => home_url('/shop/'), 'is_external' => 0],
+        ['label' => 'Shipping Australia', 'url' => home_url('/shipping-policy/'), 'is_external' => 0],
+        ['label' => 'Buy Modvigil Online', 'url' => home_url('/product/waklert-150/'), 'is_external' => 0],
+        ['label' => 'Buy Artvigil', 'url' => home_url('/product/artvigil-150mg/'), 'is_external' => 0],
+        ['label' => 'Waklert Australia', 'url' => home_url('/'), 'is_external' => 0],
+        ['label' => 'Modafinil Buy Australia', 'url' => home_url('/armodafinil-guide/'), 'is_external' => 0],
+    ];
+
+    $track_module = [
+        'acf_fc_layout'        => 'track_order',
+        'badge_text'           => 'Live Australia Post Tracking',
+        'heading'              => 'Track Your Parcel',
+        'description'          => 'Follow your Waklert Australia delivery from our warehouse to your doorstep with real-time Australia Post tracking.',
+        'intro_callout_p1'     => 'Welcome to the Waklert Australia order tracking page. Every parcel we dispatch is shipped with Australia Post and comes with a unique tracking number, so you can follow your delivery from our warehouse to your door.',
+        'intro_callout_p2'     => "Your tracking number was emailed to you when your order was dispatched. Enter it below and we'll take you straight to the live Australia Post tracking results for your parcel.",
+        'form_heading'         => 'Enter Your Tracking Number',
+        'form_instructions'    => 'Tracking numbers are usually 10–23 characters long, e.g. 33ABC1234567. You can find yours in your dispatch confirmation email.',
+        'input_placeholder'    => 'e.g. 33ABC1234567',
+        'track_btn_text'       => 'Track My Order',
+        'redirect_notice'      => "You'll be redirected to the official Australia Post tracking page (auspost.com.au), where your parcel's latest scan events are shown automatically.",
+        'quick_links_heading'  => 'POPULAR SEARCHES & QUICK LINKS',
+        'keyword_pills'        => $pills,
+        'how_works_heading'    => 'How Order Tracking Works',
+        'how_works_steps'      => [
+            [
+                'title'       => '1. Order Dispatched',
+                'description' => 'Once your order leaves our facility, we email you a dispatch confirmation containing your Australia Post tracking number.',
+            ],
+            [
+                'title'       => '2. Enter Your Number',
+                'description' => 'Paste the tracking number into the field above and select "Track My Order". We\'ll open your parcel\'s results on the Australia Post website.',
+            ],
+            [
+                'title'       => '3. Follow Your Parcel',
+                'description' => 'Australia Post updates scan events at each stage — accepted, in transit, onboard for delivery, and delivered.',
+            ],
+        ],
+        'help_heading'         => 'Need Help?',
+        'help_description'     => "Can't find your tracking number or no scans after 3 business days? Contact our support team and we'll look into it.",
+        'help_btn_text'        => 'Contact Support',
+        'help_btn_url'         => home_url('/contact/'),
+        'trust_cards'          => [
+            [
+                'card_type'   => 'shipping',
+                'title'       => 'Free Shipping',
+                'description' => 'On orders over $200 AUD — enjoy fast, secure, and discreet delivery right to your doorstep.',
+            ],
+            [
+                'card_type'   => 'support',
+                'title'       => '24/7 Support',
+                'description' => 'We’re here to help anytime — day or night, our team is ready to assist you with your orders and inquiries.',
+            ],
+            [
+                'card_type'   => 'payment',
+                'title'       => 'Secure Payment',
+                'description' => 'Shop with confidence — all transactions are 100% safe, encrypted, and protected for your peace of mind.',
+            ],
+        ],
+    ];
+
+    if (function_exists('update_field')) {
+        update_field('field_modules', [$track_module], $page_id);
+    } else {
+        update_post_meta($page_id, 'modules', ['track_order']);
+        update_post_meta($page_id, '_modules', 'field_modules');
+        update_post_meta($page_id, 'modules_0_quick_links_heading', 'POPULAR SEARCHES & QUICK LINKS');
+        update_post_meta($page_id, '_modules_0_quick_links_heading', 'field_to_quick_links_heading');
+        update_post_meta($page_id, 'modules_0_keyword_pills', count($pills));
+        update_post_meta($page_id, '_modules_0_keyword_pills', 'field_to_keyword_pills');
+        foreach ($pills as $i => $p) {
+            update_post_meta($page_id, "modules_0_keyword_pills_{$i}_label", $p['label']);
+            update_post_meta($page_id, "_modules_0_keyword_pills_{$i}_label", 'field_to_pill_label');
+            update_post_meta($page_id, "modules_0_keyword_pills_{$i}_url", $p['url']);
+            update_post_meta($page_id, "_modules_0_keyword_pills_{$i}_url", 'field_to_pill_url');
+            update_post_meta($page_id, "modules_0_keyword_pills_{$i}_is_external", $p['is_external']);
+            update_post_meta($page_id, "_modules_0_keyword_pills_{$i}_is_external", 'field_to_pill_external');
+        }
+    }
+
+    clean_post_cache($page_id);
+    return true;
 }
