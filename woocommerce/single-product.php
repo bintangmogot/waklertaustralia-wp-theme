@@ -213,21 +213,15 @@ $product_specs = [
                 <span class="text-3xl md:text-4xl font-black text-[#0c4161]" data-testid="text-product-price">
                     <?php
                     if ($product->is_type('variable')) {
-                        echo "From " . wp_kses_post(wc_price($product->get_variation_price('min')));
+                        $initial_price = isset($variations[$default_variation_index]['display_price'])
+                            ? (float) $variations[$default_variation_index]['display_price']
+                            : (float) $product->get_variation_price('min');
+                        echo wp_kses_post(wc_price($initial_price));
                     } else {
                         echo $product->get_price_html();
                     }
                     ?>
                 </span>
-                <?php if ($display_unit_price !== null): ?>
-                    <span id="product-unit-price" class="inline-flex items-center rounded-full bg-emerald-50 border border-emerald-200 px-3 py-1 text-xs font-extrabold text-emerald-800" aria-live="polite"
-                        data-currency-symbol="<?= esc_attr($unit_currency_symbol) ?>"
-                        data-decimals="<?= esc_attr($unit_price_decimals) ?>"
-                        data-decimal-separator="<?= esc_attr($unit_price_decimal_separator) ?>"
-                        data-thousand-separator="<?= esc_attr($unit_price_thousand_separator) ?>">
-                        <?= esc_html($unit_price_lead . waklert_format_product_unit_price($display_unit_price) . '/tablet') ?>
-                    </span>
-                <?php endif; ?>
             </div>
 
             <div class="prose prose-sm text-slate-600 mb-6 max-w-none leading-relaxed" data-testid="text-product-description">
@@ -301,6 +295,7 @@ $product_specs = [
                                         data-id="<?= esc_attr($variation['variation_id']) ?>"
                                         data-qty="<?= esc_attr($qty_num) ?>" data-price="<?= esc_attr($price_num) ?>"
                                         data-pack-label="<?= esc_attr($display_qty_str) ?>" data-display-price="<?= esc_attr($sticky_price_label) ?>"
+                                        data-display-price-html="<?= esc_attr(wc_price($price_num)) ?>"
                                         data-per-tab="<?= esc_attr($per_tab_price ?? '') ?>" data-val="<?= esc_attr($qty_str) ?>">
 
                                         <span class="text-xs sm:text-sm font-extrabold flex items-center gap-2">
@@ -310,11 +305,7 @@ $product_specs = [
                                         <span class="text-right shrink-0">
                                             <span
                                                 class="text-xs sm:text-sm font-black text-[#0c4161] block leading-snug"><?= wp_kses_post(wc_price($price_num)) ?></span>
-                                            <?php if ($per_tab_price !== null): ?>
-                                                <span class="text-[10px] sm:text-[11px] text-emerald-800 font-bold bg-emerald-100 px-1.5 sm:px-2 py-0.5 rounded-full inline-block mt-0.5">
-                                                    <?= esc_html(waklert_format_product_unit_price($per_tab_price)) ?>/tablet
-                                                </span>
-                                            <?php endif; ?>
+                                            
                                         </span>
                                     </button>
                                 <?php endforeach; ?>
@@ -371,7 +362,6 @@ $product_specs = [
                         const btnDec = document.getElementById('qty-dec');
                         const btnInc = document.getElementById('qty-inc');
                         const btnText = document.getElementById('submit-btn-text');
-                        const unitPriceLabel = document.getElementById('product-unit-price');
                         const stickyBar = document.getElementById('sticky-product-bar');
                         const stickyPack = document.getElementById('sticky-product-pack');
                         const stickyPrice = document.getElementById('sticky-product-price');
@@ -382,30 +372,7 @@ $product_specs = [
                         let selectedPrice = parseFloat(selectedRow.dataset.price);
                         let quantity = 1;
 
-                        function updateUnitPrice(row) {
-                            if (!unitPriceLabel) return;
-
-                            const rawPerTab = row.dataset.perTab;
-                            const perTab = Number(rawPerTab);
-                            if (rawPerTab === '' || !Number.isFinite(perTab)) {
-                                unitPriceLabel.hidden = true;
-                                return;
-                            }
-
-                            const decimals = parseInt(unitPriceLabel.dataset.decimals, 10) || 0;
-                            const decimalSeparator = unitPriceLabel.dataset.decimalSeparator || '.';
-                            const thousandSeparator = unitPriceLabel.dataset.thousandSeparator || ',';
-                            const fixedPrice = perTab.toFixed(decimals).split('.');
-                            const whole = fixedPrice[0].replace(/\B(?=(\d{3})+(?!\d))/g, thousandSeparator);
-                            const fraction = fixedPrice[1] || '';
-                            const formattedPrice = unitPriceLabel.dataset.currencySymbol + whole + (decimals > 0 ? decimalSeparator + fraction : '');
-
-                            unitPriceLabel.textContent = formattedPrice + '/tablet';
-                            unitPriceLabel.hidden = false;
-                        }
-
                         if (selectedRow) {
-                            updateUnitPrice(selectedRow);
                             if (stickyPack) stickyPack.textContent = selectedRow.dataset.packLabel || '';
                         }
 
@@ -433,7 +400,10 @@ $product_specs = [
 
                                 // Update local variables
                                 selectedPrice = parseFloat(this.dataset.price);
-                                updateUnitPrice(this);
+                                const mainPriceEl = document.querySelector('[data-testid="text-product-price"]');
+                                if (mainPriceEl && this.dataset.displayPriceHtml) {
+                                    mainPriceEl.innerHTML = this.dataset.displayPriceHtml;
+                                }
                                 if (stickyPack) stickyPack.textContent = this.dataset.packLabel || '';
                                 updateBtnText();
                             });

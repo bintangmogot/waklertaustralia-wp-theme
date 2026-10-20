@@ -87,22 +87,34 @@
         <?php endif; ?>
 
         <?php 
-        $support_phone = get_field('whatsapp_number', 'option');
-        if (!empty($support_phone)): 
-            $clean_phone = preg_replace('/[^0-9]/', '', $support_phone);
-            if (strpos($clean_phone, '0') === 0) {
-                $clean_phone = '61' . substr($clean_phone, 1);
-            }
-            $tel_phone = '+' . $clean_phone;
+        $raw_phone = get_field('header_phone_number', 'option') ?: get_field('whatsapp_number', 'option');
+        if (empty($raw_phone)) {
+            $raw_phone = '0488 841 833';
+        }
+        $clean_digits = preg_replace('/\D+/', '', $raw_phone);
+        if (str_starts_with($clean_digits, '61') && strlen($clean_digits) >= 10) {
+            $clean_digits = '0' . substr($clean_digits, 2);
+        }
+        if (strlen($clean_digits) === 10 && str_starts_with($clean_digits, '0')) {
+            $display_phone = substr($clean_digits, 0, 4) . ' ' . substr($clean_digits, 4, 3) . ' ' . substr($clean_digits, 7, 3);
+        } elseif (strlen($clean_digits) === 9 && str_starts_with($clean_digits, '4')) {
+            $clean_digits = '0' . $clean_digits;
+            $display_phone = substr($clean_digits, 0, 4) . ' ' . substr($clean_digits, 4, 3) . ' ' . substr($clean_digits, 7, 3);
+        } else {
+            $display_phone = trim((string) preg_replace('/^\+?61\s*/', '0', $raw_phone));
+        }
+        if (empty($display_phone)) {
+            $display_phone = '0488 841 833';
+        }
+        $tel_phone = 'tel:' . preg_replace('/\D+/', '', $display_phone);
         ?>
         <div class="flex shrink-0 items-center md:hidden">
-            <a href="tel:<?php echo esc_attr($tel_phone); ?>" aria-label="Call <?php echo esc_attr($support_phone); ?>" class="inline-flex shrink-0 items-center gap-1.5 text-[10px] text-white/90 transition-colors hover:text-white sm:text-[13px] font-semibold bg-white/10 hover:bg-white/20 px-2.5 py-1 rounded-full border border-white/20">
+            <a href="<?php echo esc_attr($tel_phone); ?>" aria-label="Call <?php echo esc_attr($display_phone); ?>" class="inline-flex shrink-0 items-center gap-1.5 text-[10px] text-white/90 transition-colors hover:text-white sm:text-[13px] font-semibold bg-white/10 hover:bg-white/20 px-2.5 py-1 rounded-full border border-white/20">
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-emerald-300"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/><path d="M14.05 2a9 9 0 0 1 8 7.94"/><path d="M14.05 6A5 5 0 0 1 18 10"/></svg>
-                <span class="whitespace-nowrap"><?php echo esc_html($support_phone); ?></span>
+                <span class="whitespace-nowrap"><?php echo esc_html($display_phone); ?></span>
             </a>
         </div>
-        <?php endif; ?>
     </div>
 </div>
 
@@ -136,18 +148,20 @@
         </nav>
 
         <!-- Right Actions -->
-        <div class="flex items-center gap-3 ml-auto lg:ml-0">
-            <?php
-            $whatsapp_text = get_field('whatsapp_button_text', 'option') ?: 'WhatsApp';
-            $whatsapp_raw  = get_field('whatsapp_button_url', 'option') ?: get_field('whatsapp_number', 'option');
-            $whatsapp      = function_exists('waklert_format_whatsapp_url') ? waklert_format_whatsapp_url($whatsapp_raw) : esc_url($whatsapp_raw ?: home_url('/contact/'));
-            ?>
-            <a href="<?= esc_url($whatsapp) ?>" target="_blank" rel="noopener noreferrer" class="hidden items-center gap-2 rounded-full bg-gradient-to-r from-[#0c4161] to-[#125883] px-4 py-2 text-sm font-bold text-white shadow-sm border border-sky-400/30 transition-all hover:shadow-md hover:-translate-y-0.5 hover:from-[#09324c] hover:to-[#0c4161] sm:inline-flex">
-                <span class="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500 text-white shadow-sm">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.67-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-                </span>
-                <span><?= esc_html($whatsapp_text) ?></span>
+        <div class="flex items-center gap-2 sm:gap-3 ml-auto lg:ml-0">
+            <!-- Mobile Quick Call Button (Phone icon on small mobile screens) -->
+            <a href="<?= esc_attr($tel_phone) ?>" aria-label="Call <?= esc_attr($display_phone) ?>" class="flex sm:hidden h-10 w-10 items-center justify-center rounded-xl bg-sky-50 border-2 border-dashed border-sky-300/80 text-[#0c4161] hover:bg-sky-100 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" class="h-4.5 w-4.5 text-[#0c4161]"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             </a>
+
+            <!-- Header Phone Number Link (Large & Prominent) -->
+            <a href="<?= esc_attr($tel_phone) ?>" aria-label="Call <?= esc_attr($display_phone) ?>" class="hidden sm:inline-flex items-center gap-2 sm:gap-2.5 px-3 sm:px-3.5 py-1.5 rounded-full border-2 border-dashed border-sky-300/80 bg-sky-50/70 hover:bg-sky-100 hover:border-[#0c4161] transition-all group shadow-xs">
+                <span class="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-[#0c4161] text-white shadow-xs group-hover:bg-[#082a3f] transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5 sm:h-4 sm:w-4 text-white"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </span>
+                <span class="text-base sm:text-lg lg:text-xl font-black font-heading tracking-tight text-[#0c4161] group-hover:text-[#082a3f] whitespace-nowrap"><?= esc_html($display_phone) ?></span>
+            </a>
+
             <?= do_shortcode('[xoo_wsc_cart]') ?>
         </div>
     </div>
@@ -187,11 +201,11 @@
         </nav>
 
         <div class="px-6 pt-5 pb-2">
-            <a href="<?= esc_url($whatsapp) ?>" target="_blank" rel="noopener noreferrer" class="flex w-full items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-[#0c4161] to-[#125883] px-4 py-2.5 sm:px-5 sm:py-3.5 text-xs sm:text-sm font-bold text-white shadow-md transition-all hover:shadow-lg hover:from-[#09324c] hover:to-[#0c4161]">
-                <span class="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500 text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.67-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+            <a href="<?= esc_attr($tel_phone) ?>" class="flex w-full items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-[#0c4161] to-[#125883] px-4 py-2.5 sm:px-5 sm:py-3.5 text-sm sm:text-base font-black text-white shadow-md transition-all hover:shadow-lg hover:from-[#09324c] hover:to-[#0c4161]">
+                <span class="flex h-6 w-6 items-center justify-center rounded-full bg-white/20 text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                 </span>
-                <span><?= esc_html($whatsapp_text) ?></span>
+                <span><?= esc_html($display_phone) ?></span>
             </a>
         </div>
     </div>

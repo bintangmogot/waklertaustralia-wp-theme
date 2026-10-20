@@ -460,6 +460,47 @@ html {
   color: var(--color-foreground);
 }
 
+.prose h1 strong, .prose h1 b,
+.prose h2 strong, .prose h2 b,
+.prose h3 strong, .prose h3 b,
+.prose h4 strong, .prose h4 b,
+.prose h5 strong, .prose h5 b,
+.prose h6 strong, .prose h6 b {
+  color: inherit;
+}
+
+/* Inverted prose for dark containers */
+.prose.prose-invert,
+.prose.prose-invert h1,
+.prose.prose-invert h2,
+.prose.prose-invert h3,
+.prose.prose-invert h4,
+.prose.prose-invert h5,
+.prose.prose-invert h6,
+.prose.prose-invert strong,
+.prose.prose-invert b,
+.prose.prose-invert h1 *,
+.prose.prose-invert h2 *,
+.prose.prose-invert h3 *,
+.prose.prose-invert h4 *,
+.prose.prose-invert h5 *,
+.prose.prose-invert h6 * {
+  color: #ffffff !important;
+}
+
+.prose.prose-invert p,
+.prose.prose-invert li {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+.prose.prose-invert a {
+  color: #38bdf8 !important;
+}
+
+.prose.prose-invert a:hover {
+  color: #ffffff !important;
+}
+
 .prose em, .prose i {
   font-style: italic;
 }
