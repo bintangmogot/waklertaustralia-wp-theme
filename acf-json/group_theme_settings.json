@@ -302,7 +302,7 @@
             "name": "office_hours",
             "aria-label": "",
             "type": "text",
-            "instructions": "Displayed in the footer contact section (e.g. '24\/7').",
+            "instructions": "Displayed in the footer contact section (e.g. '24/7').",
             "required": false,
             "conditional_logic": false,
             "wrapper": {
@@ -310,7 +310,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "24\/7",
+            "default_value": "24/7",
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
@@ -333,6 +333,187 @@
             "placement": "top",
             "endpoint": 0,
             "selected": 0
+        },
+        {
+            "key": "field_pre_footer_badges_enabled",
+            "label": "Enable Pre-Footer Trust Badges (Inner Pages)",
+            "name": "pre_footer_badges_enabled",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Toggle the 4 trust badge cards displayed above the footer on all inner pages.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "message": "Display trust badge cards on inner pages",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "Yes",
+            "ui_off_text": "No"
+        },
+        {
+            "key": "field_pre_footer_badges",
+            "label": "Pre-Footer Trust Badges (Inner Pages)",
+            "name": "pre_footer_badges",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Edit the trust badge cards shown before the footer across all inner pages.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_pre_footer_badges_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 6,
+            "collapsed": "",
+            "button_label": "Add Trust Badge",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_pre_footer_badge_icon",
+                    "label": "Icon Style",
+                    "name": "icon",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "truck": "Express Delivery Truck (Red)",
+                        "shield_pharma": "100% Genuine Sun Pharma Shield (Gold/Green)",
+                        "shield_insurance": "Transit Insurance Shield (Emerald)",
+                        "parcel": "Discreet Plain Parcel (Amber/Brown)",
+                        "custom": "Custom Uploaded Icon"
+                    },
+                    "default_value": "truck",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_pre_footer_badge_custom_icon",
+                    "label": "Custom Icon (Image/SVG)",
+                    "name": "custom_icon",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "Used only if Icon Style is set to Custom",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_pre_footer_badge_icon",
+                                "operator": "==",
+                                "value": "custom"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "png,svg,jpg,jpeg,webp",
+                    "preview_size": "medium"
+                },
+                {
+                    "key": "field_pre_footer_badge_title",
+                    "label": "Title",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "e.g. Australia-Wide Delivery",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_pre_footer_badge_subtitle",
+                    "label": "Subtitle",
+                    "name": "subtitle",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "e.g. Express 7-10 days",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_pre_footer_badge_subtitle_color",
+                    "label": "Subtitle Color",
+                    "name": "subtitle_color",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "10",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "sky": "Sky Blue",
+                        "amber": "Amber / Gold",
+                        "emerald": "Emerald / Green"
+                    },
+                    "default_value": "sky",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": ""
+                }
+            ]
         },
         {
             "key": "field_footer_logo",
@@ -441,7 +622,7 @@
         },
         {
             "key": "field_waklert_location_text",
-            "label": "Location \/ Address Text",
+            "label": "Location / Address Text",
             "name": "location_text",
             "aria-label": "",
             "type": "text",
@@ -548,7 +729,7 @@
                 },
                 {
                     "key": "field_waklert_payment_alt",
-                    "label": "Label \/ Alt Text",
+                    "label": "Label / Alt Text",
                     "name": "alt_text",
                     "aria-label": "",
                     "type": "text",
@@ -638,7 +819,7 @@
                 },
                 {
                     "key": "field_waklert_shipping_alt",
-                    "label": "Label \/ Alt Text",
+                    "label": "Label / Alt Text",
                     "name": "alt_text",
                     "aria-label": "",
                     "type": "text",
@@ -721,5 +902,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1792030280
+    "modified": 1792503117
 }
