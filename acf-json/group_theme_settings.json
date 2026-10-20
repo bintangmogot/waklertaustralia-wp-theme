@@ -87,11 +87,11 @@
         },
         {
             "key": "field_whatsapp_number",
-            "label": "Top Bar Right Phone Number",
+            "label": "Header & Contact Phone Number",
             "name": "whatsapp_number",
             "aria-label": "",
             "type": "text",
-            "instructions": "Used by the top bar call icon and WhatsApp contact links.",
+            "instructions": "Australian contact phone number (e.g. 0488 841 833). Displayed in the header, mobile drawer and top bar.",
             "required": false,
             "conditional_logic": false,
             "wrapper": {
@@ -99,9 +99,9 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "+61 488 841 833",
+            "default_value": "0488 841 833",
             "maxlength": "",
-            "placeholder": "",
+            "placeholder": "0488 841 833",
             "prepend": "",
             "append": ""
         },
