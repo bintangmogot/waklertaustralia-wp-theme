@@ -65,90 +65,126 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
 ?>
 <footer class="relative isolate overflow-hidden bg-ink text-ink-foreground">
     <?php waklert_output_pattern_rings(); ?>
-    <?php if (!is_front_page()): ?>
-    <!-- 2-Tone Dashed Inner Page Badge Strip -->
+        <?php
+    $pre_footer_enabled = get_field('pre_footer_badges_enabled', 'option');
+    if ($pre_footer_enabled === null) {
+        $pre_footer_enabled = true;
+    }
+    $pre_footer_badges = get_field('pre_footer_badges', 'option');
+
+    // Default badges if none configured
+    if (empty($pre_footer_badges) || !is_array($pre_footer_badges)) {
+        $pre_footer_badges = [
+            [
+                'icon'           => 'truck',
+                'title'          => 'Australia-Wide Delivery',
+                'subtitle'       => 'Express 7-10 days',
+                'subtitle_color' => 'sky',
+            ],
+            [
+                'icon'           => 'shield_pharma',
+                'title'          => '100% Genuine Sun Pharma',
+                'subtitle'       => 'Batch verified',
+                'subtitle_color' => 'amber',
+            ],
+            [
+                'icon'           => 'shield_insurance',
+                'title'          => 'Transit Insurance',
+                'subtitle'       => 'Guaranteed delivery',
+                'subtitle_color' => 'emerald',
+            ],
+            [
+                'icon'           => 'parcel',
+                'title'          => 'Discreet Delivery',
+                'subtitle'       => '100% plain parcel',
+                'subtitle_color' => 'sky',
+            ],
+        ];
+    }
+
+    $color_classes = [
+        'sky'     => 'text-sky-200',
+        'amber'   => 'text-amber-200',
+        'emerald' => 'text-emerald-200',
+    ];
+    ?>
+    <?php if (!is_front_page() && !empty($pre_footer_enabled)): ?>
+    <!-- 2-Tone Dashed Inner Page Badge Strip (Editable in WP Admin -> Theme Settings -> Footer) -->
     <div class="relative isolate overflow-hidden bg-gradient-to-r from-[#082a3f] via-[#0c4161] to-[#125883] bg-pattern-dots-dark py-10 text-white border-b-2 border-dashed border-sky-400/30">
         <?php waklert_output_pattern_rings(); ?>
         <div class="container-site relative z-10 grid grid-cols-2 gap-4 md:grid-cols-4 sm:gap-6">
-
-            <!-- Card 1 -->
+            <?php foreach ($pre_footer_badges as $idx => $badge):
+                $badge_title = $badge['title'] ?? '';
+                $badge_sub = $badge['subtitle'] ?? '';
+                $badge_color_key = $badge['subtitle_color'] ?? 'sky';
+                $badge_color_cls = $color_classes[$badge_color_key] ?? 'text-sky-200';
+                $badge_icon_type = $badge['icon'] ?? 'truck';
+                $badge_custom_icon = $badge['custom_icon'] ?? null;
+            ?>
             <div class="group rounded-2xl border-2 border-dashed border-sky-300/40 bg-white/10 p-4 sm:p-5 backdrop-blur-sm flex flex-col items-center text-center gap-3 hover:bg-white/15 hover:-translate-y-1 transition-all">
                 <div class="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-white p-2 sm:p-2.5 shadow-lg shadow-black/25 border-2 border-white/90 group-hover:scale-105 transition-transform duration-300 shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="w-10 h-10 sm:w-11 sm:h-11 shrink-0" fill="none" aria-hidden="true">
-                        <ellipse cx="32" cy="54" rx="22" ry="2.5" fill="#0C4161" fill-opacity="0.15" />
-                        <path d="M6 31H12M4 37H10M8 43H14" stroke="#DC2626" stroke-width="2.5" stroke-linecap="round" />
-                        <rect x="16" y="16" width="28" height="28" rx="4" fill="#DC2626" />
-                        <path d="M44 23H52L58 31V44H44V23Z" fill="#B91C1C" />
-                        <path d="M44 23H51.5L56 31H44V23Z" fill="#93C5FD" />
-                        <rect x="19" y="20" width="22" height="10" rx="2" fill="#FFFFFF" />
-                        <text x="30" y="27.5" font-family="system-ui, -apple-system, sans-serif" font-size="6.5" font-weight="900" fill="#DC2626" text-anchor="middle" letter-spacing="0.5">EXPRESS</text>
-                        <circle cx="25" cy="44" r="6.5" fill="#1E293B" />
-                        <circle cx="25" cy="44" r="2.8" fill="#F8FAFC" />
-                        <circle cx="49" cy="44" r="6.5" fill="#1E293B" />
-                        <circle cx="49" cy="44" r="2.8" fill="#F8FAFC" />
-                        <circle cx="56" cy="38" r="2" fill="#FBBF24" />
-                    </svg>
+                    <?php if ($badge_icon_type === 'custom' && !empty($badge_custom_icon)):
+                        $icon_url = is_array($badge_custom_icon) ? ($badge_custom_icon['url'] ?? '') : (is_numeric($badge_custom_icon) ? wp_get_attachment_image_url($badge_custom_icon, 'full') : $badge_custom_icon);
+                    ?>
+                        <img src="<?= esc_url($icon_url) ?>" alt="<?= esc_attr($badge_title) ?>" class="w-10 h-10 sm:w-11 sm:h-11 object-contain shrink-0" />
+                    <?php elseif ($badge_icon_type === 'shield_pharma'): ?>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="w-10 h-10 sm:w-11 sm:h-11 shrink-0" fill="none" aria-hidden="true">
+                            <ellipse cx="32" cy="55" rx="18" ry="2.5" fill="#0C4161" fill-opacity="0.15" />
+                            <path d="M32 7L15 13.5V28C15 41.5 22.2 50 32 53.5C41.8 50 49 41.5 49 28V13.5L32 7Z" fill="#D97706" />
+                            <path d="M32 10L18 15.5V28C18 39.5 23.8 47 32 50.2C40.2 47 46 39.5 46 28V15.5L32 10Z" fill="#F59E0B" />
+                            <path d="M32 12.5L20.5 17V28C20.5 38 25.2 44.5 32 47.5C38.8 44.5 43.5 38 43.5 28V17L32 12.5Z" fill="#FBBF24" />
+                            <circle cx="32" cy="30" r="11" fill="#10B981" />
+                            <path d="M28 30H36M32 26V34" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+                            <circle cx="43" cy="18" r="4" fill="#38BDF8" stroke="#FFFFFF" stroke-width="1.5" />
+                            <path d="M41.5 18L42.5 19L44.5 17" stroke="#FFFFFF" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    <?php elseif ($badge_icon_type === 'shield_insurance'): ?>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="w-10 h-10 sm:w-11 sm:h-11 shrink-0" fill="none" aria-hidden="true">
+                            <ellipse cx="32" cy="55" rx="18" ry="2.5" fill="#0C4161" fill-opacity="0.15" />
+                            <path d="M32 7L16 13.5V27C16 40.5 23 48.5 32 52.5C41 48.5 48 40.5 48 27V13.5L32 7Z" fill="#059669" />
+                            <path d="M32 10L18.5 15.5V27C18.5 38.5 24.5 45.8 32 49.2C39.5 45.8 45.5 38.5 45.5 27V15.5L32 10Z" fill="#10B981" />
+                            <path d="M32 12.5L21 17V27C21 37 26 43 32 46.2C38 43 43 37 43 27V17L32 12.5Z" fill="#34D399" />
+                            <circle cx="32" cy="29" r="10" fill="#065F46" />
+                            <path d="M27 29L30.5 32.5L37 25.5" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M24 46L21 53L27 50L32 52L29 46" fill="#F59E0B" stroke="#D97706" stroke-width="1" />
+                            <path d="M40 46L43 53L37 50L32 52L35 46" fill="#F59E0B" stroke="#D97706" stroke-width="1" />
+                        </svg>
+                    <?php elseif ($badge_icon_type === 'parcel'): ?>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="w-10 h-10 sm:w-11 sm:h-11 shrink-0" fill="none" aria-hidden="true">
+                            <ellipse cx="32" cy="55" rx="20" ry="2.5" fill="#0C4161" fill-opacity="0.15" />
+                            <rect x="13" y="18" width="38" height="30" rx="3" fill="#B45309" />
+                            <rect x="15" y="16" width="34" height="29" rx="2.5" fill="#D97706" />
+                            <path d="M15 27H49M32 16V45" stroke="#92400E" stroke-width="2.5" />
+                            <rect x="18" y="32" width="11" height="8" rx="1.5" fill="#FFFFFF" />
+                            <line x1="20" y1="35" x2="27" y2="35" stroke="#64748B" stroke-width="1.2" />
+                            <line x1="20" y1="37.5" x2="25" y2="37.5" stroke="#64748B" stroke-width="1.2" />
+                            <rect x="35" y="30" width="12" height="11" rx="2.5" fill="#0284C7" />
+                            <path d="M38 30V27C38 25.3 39.3 24 41 24C42.7 24 44 25.3 44 27V30" stroke="#F59E0B" stroke-width="2.2" stroke-linecap="round" />
+                            <circle cx="41" cy="35.5" r="1.5" fill="#FFFFFF" />
+                        </svg>
+                    <?php else: // 'truck' or default ?>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="w-10 h-10 sm:w-11 sm:h-11 shrink-0" fill="none" aria-hidden="true">
+                            <ellipse cx="32" cy="54" rx="22" ry="2.5" fill="#0C4161" fill-opacity="0.15" />
+                            <path d="M6 31H12M4 37H10M8 43H14" stroke="#DC2626" stroke-width="2.5" stroke-linecap="round" />
+                            <rect x="16" y="16" width="28" height="28" rx="4" fill="#DC2626" />
+                            <path d="M44 23H52L58 31V44H44V23Z" fill="#B91C1C" />
+                            <path d="M44 23H51.5L56 31H44V23Z" fill="#93C5FD" />
+                            <rect x="19" y="20" width="22" height="10" rx="2" fill="#FFFFFF" />
+                            <text x="30" y="27.5" font-family="system-ui, -apple-system, sans-serif" font-size="6.5" font-weight="900" fill="#DC2626" text-anchor="middle" letter-spacing="0.5">EXPRESS</text>
+                            <circle cx="25" cy="44" r="6.5" fill="#1E293B" />
+                            <circle cx="25" cy="44" r="2.8" fill="#F8FAFC" />
+                            <circle cx="49" cy="44" r="6.5" fill="#1E293B" />
+                            <circle cx="49" cy="44" r="2.8" fill="#F8FAFC" />
+                            <circle cx="56" cy="38" r="2" fill="#FBBF24" />
+                        </svg>
+                    <?php endif; ?>
                 </div>
-                <span class="text-xs font-extrabold tracking-wider uppercase text-white leading-tight"><?= "Australia-Wide Delivery" ?></span>
-                <span class="text-[11px] text-sky-200 -mt-1.5">Express 7-10 days</span>
+                <span class="text-xs font-extrabold tracking-wider uppercase text-white leading-tight"><?= esc_html($badge_title) ?></span>
+                <?php if (!empty($badge_sub)): ?>
+                    <span class="text-[11px] <?= esc_attr($badge_color_cls) ?> -mt-1.5"><?= esc_html($badge_sub) ?></span>
+                <?php endif; ?>
             </div>
-
-            <!-- Card 2 -->
-            <div class="group rounded-2xl border-2 border-dashed border-sky-300/40 bg-white/10 p-4 sm:p-5 backdrop-blur-sm flex flex-col items-center text-center gap-3 hover:bg-white/15 hover:-translate-y-1 transition-all">
-                <div class="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-white p-2 sm:p-2.5 shadow-lg shadow-black/25 border-2 border-white/90 group-hover:scale-105 transition-transform duration-300 shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="w-10 h-10 sm:w-11 sm:h-11 shrink-0" fill="none" aria-hidden="true">
-                        <ellipse cx="32" cy="55" rx="18" ry="2.5" fill="#0C4161" fill-opacity="0.15" />
-                        <path d="M32 7L15 13.5V28C15 41.5 22.2 50 32 53.5C41.8 50 49 41.5 49 28V13.5L32 7Z" fill="#D97706" />
-                        <path d="M32 10L18 15.5V28C18 39.5 23.8 47 32 50.2C40.2 47 46 39.5 46 28V15.5L32 10Z" fill="#F59E0B" />
-                        <path d="M32 12.5L20.5 17V28C20.5 38 25.2 44.5 32 47.5C38.8 44.5 43.5 38 43.5 28V17L32 12.5Z" fill="#FBBF24" />
-                        <circle cx="32" cy="30" r="11" fill="#10B981" />
-                        <path d="M28 30H36M32 26V34" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
-                        <circle cx="43" cy="18" r="4" fill="#38BDF8" stroke="#FFFFFF" stroke-width="1.5" />
-                        <path d="M41.5 18L42.5 19L44.5 17" stroke="#FFFFFF" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                </div>
-                <span class="text-xs font-extrabold tracking-wider uppercase text-white leading-tight"><?= "100% Genuine Sun Pharma" ?></span>
-                <span class="text-[11px] text-amber-200 -mt-1.5">Batch verified</span>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="group rounded-2xl border-2 border-dashed border-sky-300/40 bg-white/10 p-4 sm:p-5 backdrop-blur-sm flex flex-col items-center text-center gap-3 hover:bg-white/15 hover:-translate-y-1 transition-all">
-                <div class="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-white p-2 sm:p-2.5 shadow-lg shadow-black/25 border-2 border-white/90 group-hover:scale-105 transition-transform duration-300 shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="w-10 h-10 sm:w-11 sm:h-11 shrink-0" fill="none" aria-hidden="true">
-                        <ellipse cx="32" cy="55" rx="18" ry="2.5" fill="#0C4161" fill-opacity="0.15" />
-                        <path d="M32 7L16 13.5V27C16 40.5 23 48.5 32 52.5C41 48.5 48 40.5 48 27V13.5L32 7Z" fill="#059669" />
-                        <path d="M32 10L18.5 15.5V27C18.5 38.5 24.5 45.8 32 49.2C39.5 45.8 45.5 38.5 45.5 27V15.5L32 10Z" fill="#10B981" />
-                        <path d="M32 12.5L21 17V27C21 37 26 43 32 46.2C38 43 43 37 43 27V17L32 12.5Z" fill="#34D399" />
-                        <circle cx="32" cy="29" r="10" fill="#065F46" />
-                        <path d="M27 29L30.5 32.5L37 25.5" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M24 46L21 53L27 50L32 52L29 46" fill="#F59E0B" stroke="#D97706" stroke-width="1" />
-                        <path d="M40 46L43 53L37 50L32 52L35 46" fill="#F59E0B" stroke="#D97706" stroke-width="1" />
-                    </svg>
-                </div>
-                <span class="text-xs font-extrabold tracking-wider uppercase text-white leading-tight"><?= "Transit Insurance" ?></span>
-                <span class="text-[11px] text-emerald-200 -mt-1.5">Guaranteed delivery</span>
-            </div>
-
-            <!-- Card 4 -->
-            <div class="group rounded-2xl border-2 border-dashed border-sky-300/40 bg-white/10 p-4 sm:p-5 backdrop-blur-sm flex flex-col items-center text-center gap-3 hover:bg-white/15 hover:-translate-y-1 transition-all">
-                <div class="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-white p-2 sm:p-2.5 shadow-lg shadow-black/25 border-2 border-white/90 group-hover:scale-105 transition-transform duration-300 shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="w-10 h-10 sm:w-11 sm:h-11 shrink-0" fill="none" aria-hidden="true">
-                        <ellipse cx="32" cy="55" rx="20" ry="2.5" fill="#0C4161" fill-opacity="0.15" />
-                        <rect x="13" y="18" width="38" height="30" rx="3" fill="#B45309" />
-                        <rect x="15" y="16" width="34" height="29" rx="2.5" fill="#D97706" />
-                        <path d="M15 27H49M32 16V45" stroke="#92400E" stroke-width="2.5" />
-                        <rect x="18" y="32" width="11" height="8" rx="1.5" fill="#FFFFFF" />
-                        <line x1="20" y1="35" x2="27" y2="35" stroke="#64748B" stroke-width="1.2" />
-                        <line x1="20" y1="37.5" x2="25" y2="37.5" stroke="#64748B" stroke-width="1.2" />
-                        <rect x="35" y="30" width="12" height="11" rx="2.5" fill="#0284C7" />
-                        <path d="M38 30V27C38 25.3 39.3 24 41 24C42.7 24 44 25.3 44 27V30" stroke="#F59E0B" stroke-width="2.2" stroke-linecap="round" />
-                        <circle cx="41" cy="35.5" r="1.5" fill="#FFFFFF" />
-                    </svg>
-                </div>
-                <span class="text-xs font-extrabold tracking-wider uppercase text-white leading-tight"><?= "Discreet Delivery" ?></span>
-                <span class="text-[11px] text-sky-200 -mt-1.5">100% plain parcel</span>
-            </div>
-
+            <?php endforeach; ?>
         </div>
     </div>
     <?php endif; ?>
