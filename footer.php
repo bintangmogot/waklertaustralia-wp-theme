@@ -2,17 +2,22 @@
 /**
  * The template for displaying the footer
  */
-$footer_desc = get_field('footer_description', 'option') ?: "Waklert Australia provides clear information about a focused range of armodafinil products, ordering and delivery options.";
-$footer_address = get_field('location_text', 'option') ?: get_field('footer_address', 'option') ?: "50 Holt Street, Surry Hills, 2010";
-$footer_email = get_field('support_email', 'option') ?: get_field('footer_email', 'option') ?: "orders@waklertaustralia.com.au";
-$footer_contact_heading = get_field('footer_contact_heading', 'option') ?: "Get in Touch with Us";
-$working_days = get_field('working_days', 'option') ?: "Monday to Sunday";
-$office_hours = get_field('office_hours', 'option') ?: "24/7";
-$payments_heading = get_field('footer_payments_heading', 'option') ?: "Payment Accepted";
-$shipping_heading = get_field('footer_shipping_heading', 'option') ?: "Shipping Partner";
+$footer_desc = get_field('footer_description', 'option');
+$footer_address = get_field('location_text', 'option') ?: get_field('footer_address', 'option');
+$footer_email = get_field('support_email', 'option') ?: get_field('footer_email', 'option');
+$footer_contact_heading = get_field('footer_contact_heading', 'option');
+$working_days = get_field('working_days', 'option');
+$office_hours = get_field('office_hours', 'option');
+$payments_heading = get_field('footer_payments_heading', 'option');
+$shipping_heading = get_field('footer_shipping_heading', 'option');
 $payment_images = get_field('footer_payment_images', 'option');
 $shipping_images = get_field('footer_shipping_images', 'option');
-$copyright_text = get_field('copyright_text', 'option') ?: sprintf('© %s Waklert Australia. All rights reserved.', date('Y'));
+$copyright_text = get_field('copyright_text', 'option');
+$disclaimer = get_field('disclaimer_en', 'option');
+$ssl_text = get_field('ssl_text', 'option');
+$dispatch_text = get_field('dispatch_text', 'option');
+$checkout_text = get_field('checkout_text', 'option');
+
 $footer_menu_locations = get_nav_menu_locations();
 $footer_menus = [];
 
@@ -65,56 +70,24 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
 ?>
 <footer class="relative isolate overflow-hidden bg-ink text-ink-foreground">
     <?php waklert_output_pattern_rings(); ?>
-        <?php
+
+    <?php
     $pre_footer_enabled = get_field('pre_footer_badges_enabled', 'option');
-    if ($pre_footer_enabled === null) {
-        $pre_footer_enabled = true;
-    }
     $pre_footer_badges = get_field('pre_footer_badges', 'option');
-
-    // Default badges if none configured
-    if (empty($pre_footer_badges) || !is_array($pre_footer_badges)) {
-        $pre_footer_badges = [
-            [
-                'icon'           => 'truck',
-                'title'          => 'Australia-Wide Delivery',
-                'subtitle'       => 'Express 7-10 days',
-                'subtitle_color' => 'sky',
-            ],
-            [
-                'icon'           => 'shield_pharma',
-                'title'          => '100% Genuine Sun Pharma',
-                'subtitle'       => 'Batch verified',
-                'subtitle_color' => 'amber',
-            ],
-            [
-                'icon'           => 'shield_insurance',
-                'title'          => 'Transit Insurance',
-                'subtitle'       => 'Guaranteed delivery',
-                'subtitle_color' => 'emerald',
-            ],
-            [
-                'icon'           => 'parcel',
-                'title'          => 'Discreet Delivery',
-                'subtitle'       => '100% plain parcel',
-                'subtitle_color' => 'sky',
-            ],
-        ];
-    }
-
     $color_classes = [
         'sky'     => 'text-sky-200',
         'amber'   => 'text-amber-200',
         'emerald' => 'text-emerald-200',
     ];
     ?>
-    <?php if (!is_front_page() && !empty($pre_footer_enabled)): ?>
+    <?php if (!is_front_page() && !empty($pre_footer_enabled) && !empty($pre_footer_badges) && is_array($pre_footer_badges)): ?>
     <!-- 2-Tone Dashed Inner Page Badge Strip (Editable in WP Admin -> Theme Settings -> Footer) -->
     <div class="relative isolate overflow-hidden bg-gradient-to-r from-[#082a3f] via-[#0c4161] to-[#125883] bg-pattern-dots-dark py-10 text-white border-b-2 border-dashed border-sky-400/30">
         <?php waklert_output_pattern_rings(); ?>
         <div class="container-site relative z-10 grid grid-cols-2 gap-4 md:grid-cols-4 sm:gap-6">
             <?php foreach ($pre_footer_badges as $idx => $badge):
                 $badge_title = $badge['title'] ?? '';
+                if (trim((string) $badge_title) === '') continue;
                 $badge_sub = $badge['subtitle'] ?? '';
                 $badge_color_key = $badge['subtitle_color'] ?? 'sky';
                 $badge_color_cls = $color_classes[$badge_color_key] ?? 'text-sky-200';
@@ -123,10 +96,10 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
             ?>
             <div class="group rounded-2xl border-2 border-dashed border-sky-300/40 bg-white/10 p-4 sm:p-5 backdrop-blur-sm flex flex-col items-center text-center gap-3 hover:bg-white/15 hover:-translate-y-1 transition-all">
                 <div class="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-white p-2 sm:p-2.5 shadow-lg shadow-black/25 border-2 border-white/90 group-hover:scale-105 transition-transform duration-300 shrink-0">
-                    <?php if ($badge_icon_type === 'custom' && !empty($badge_custom_icon)):
-                        $icon_url = is_array($badge_custom_icon) ? ($badge_custom_icon['url'] ?? '') : (is_numeric($badge_custom_icon) ? wp_get_attachment_image_url($badge_custom_icon, 'full') : $badge_custom_icon);
+                    <?php if ($badge_icon_type === 'custom' && !empty($badge_custom_icon)): 
+                        $c_url = is_array($badge_custom_icon) ? ($badge_custom_icon['url'] ?? '') : (is_numeric($badge_custom_icon) ? wp_get_attachment_image_url($badge_custom_icon, 'full') : $badge_custom_icon);
                     ?>
-                        <img src="<?= esc_url($icon_url) ?>" alt="<?= esc_attr($badge_title) ?>" class="w-10 h-10 sm:w-11 sm:h-11 object-contain shrink-0" />
+                        <img src="<?= esc_url($c_url) ?>" alt="<?= esc_attr($badge_title) ?>" class="w-10 h-10 sm:w-11 sm:h-11 object-contain shrink-0">
                     <?php elseif ($badge_icon_type === 'shield_pharma'): ?>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="w-10 h-10 sm:w-11 sm:h-11 shrink-0" fill="none" aria-hidden="true">
                             <ellipse cx="32" cy="55" rx="18" ry="2.5" fill="#0C4161" fill-opacity="0.15" />
@@ -193,55 +166,105 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
         <!-- Column 1 -->
         <div class="lg:col-span-2 pr-0 lg:pr-8">
             <?php waklert_the_logo('h-12 sm:h-[53px] w-auto max-w-[264px] sm:max-w-[312px] object-contain', 'footer'); ?>
+
+            <?php if (!empty($footer_desc)): ?>
             <p class="mt-5 text-[13px] leading-relaxed text-ink-foreground/80">
-                <?= $footer_desc ?>
+                <?= esc_html($footer_desc) ?>
             </p>
-            <?php $disclaimer = get_field('disclaimer_en', 'option') ?: "This website provides general information only and is not a substitute for advice from a qualified health professional."; ?>
+            <?php endif; ?>
+
+            <?php if (!empty($disclaimer)): ?>
             <p class="mt-2 text-[13px] leading-relaxed text-ink-foreground/80">
                 <strong class="text-white"><?= "Medical Website Disclaimer:" ?></strong>
                 <?= esc_html($disclaimer) ?>
             </p>
+            <?php endif; ?>
 
+            <?php if (!empty($ssl_text) || !empty($dispatch_text) || !empty($checkout_text)): ?>
+            <div class="mt-5 flex flex-wrap items-center gap-2 pt-1 text-xs">
+                <?php if (!empty($ssl_text)): ?>
+                <span class="inline-flex items-center gap-1.5 rounded-lg bg-white/5 border border-sky-400/30 px-2.5 py-1 text-sky-200">
+                    <svg class="w-3.5 h-3.5 text-sky-300 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    <span><?= esc_html($ssl_text) ?></span>
+                </span>
+                <?php endif; ?>
+                <?php if (!empty($dispatch_text)): ?>
+                <span class="inline-flex items-center gap-1.5 rounded-lg bg-white/5 border border-amber-400/30 px-2.5 py-1 text-amber-200">
+                    <svg class="w-3.5 h-3.5 text-amber-300 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="5" width="14" height="11" rx="1.5"/><path d="M15 8h4.5l3.5 4.5v3.5h-8V8z"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg>
+                    <span><?= esc_html($dispatch_text) ?></span>
+                </span>
+                <?php endif; ?>
+                <?php if (!empty($checkout_text)): ?>
+                <span class="inline-flex items-center gap-1.5 rounded-lg bg-white/5 border border-emerald-400/30 px-2.5 py-1 text-emerald-200">
+                    <svg class="w-3.5 h-3.5 text-emerald-300 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 5.25 3.4 10.15 8 11.35 4.6-1.2 8-6.1 8-11.35V6l-8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+                    <span><?= esc_html($checkout_text) ?></span>
+                </span>
+                <?php endif; ?>
+            </div>
+            <?php endif; ?>
+
+            <?php if (!empty($footer_contact_heading)): ?>
             <h3 class="text-[15px] font-bold text-white mb-4 mt-8" style="color: #fff !important">
                 <?= esc_html($footer_contact_heading) ?>
             </h3>
+            <?php endif; ?>
 
+            <?php
+            $whatsapp_raw = get_field('whatsapp_button_url', 'option') ?: get_field('whatsapp_number', 'option');
+            $whatsapp     = function_exists('waklert_format_whatsapp_url') ? waklert_format_whatsapp_url($whatsapp_raw) : esc_url($whatsapp_raw ?: home_url('/contact/'));
+            $has_contact_details = !empty($footer_address) || !empty($whatsapp_raw) || !empty($footer_email) || !empty($working_days) || !empty($office_hours);
+            ?>
+
+            <?php if ($has_contact_details): ?>
             <div class="mt-4 space-y-3.5">
+                <?php if (!empty($footer_address)): ?>
                 <div class="flex items-start gap-3 text-[13px] text-ink-foreground/80">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mt-0.5 text-[#FFD700] shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
                     <span><?= esc_html($footer_address) ?></span>
                 </div>
+                <?php endif; ?>
+
+                <?php if (!empty($whatsapp_raw)): ?>
                 <div class="flex items-center gap-3 text-[13px] text-ink-foreground/80">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#FFD700] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                     <span>WhatsApp &rarr;</span>
-                    <?php
-                    $whatsapp_raw = get_field('whatsapp_button_url', 'option') ?: get_field('whatsapp_number', 'option');
-                    $whatsapp     = function_exists('waklert_format_whatsapp_url') ? waklert_format_whatsapp_url($whatsapp_raw) : esc_url($whatsapp_raw ?: home_url('/contact/'));
-                    ?>
                     <a href="<?= esc_url($whatsapp) ?>" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/40 px-2.5 py-0.5 text-xs font-bold text-emerald-300 hover:bg-emerald-500/30 transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#25D366]" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.67-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
                         <span>Chat Live</span>
                     </a>
                 </div>
+                <?php endif; ?>
+
+                <?php if (!empty($footer_email)): ?>
                 <div class="flex items-center gap-3 text-[13px] text-ink-foreground/80">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-sky-400 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                     <a href="mailto:<?= esc_attr($footer_email) ?>" class="hover:text-white transition-colors"><?= esc_html($footer_email) ?></a>
                 </div>
+                <?php endif; ?>
+
+                <?php if (!empty($working_days)): ?>
                 <div class="flex items-center gap-3 text-[13px] text-ink-foreground/80">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-amber-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
                     <span><strong class="text-white font-medium">Working Days:</strong> <?= esc_html($working_days) ?></span>
                 </div>
+                <?php endif; ?>
+
+                <?php if (!empty($office_hours)): ?>
                 <div class="flex items-center gap-3 text-[13px] text-ink-foreground/80">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-amber-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                     <span><strong class="text-white font-medium">Office Hours:</strong> <?= esc_html($office_hours) ?></span>
                 </div>
+                <?php endif; ?>
             </div>
+            <?php endif; ?>
 
-            <h3 class="text-[15px] font-bold text-white mb-3 mt-8" style="color: #fff !important">
-                <?= esc_html($payments_heading) ?>
-            </h3>
-            <div class="w-fit max-w-full rounded-2xl border-2 border-dashed border-white/15 bg-white/5 p-4 flex items-center gap-5 flex-wrap">
-                <?php if (!empty($payment_images) && is_array($payment_images)) : ?>
+            <?php if (!empty($payment_images) && is_array($payment_images)) : ?>
+                <?php if (!empty($payments_heading)): ?>
+                <h3 class="text-[15px] font-bold text-white mb-3 mt-8" style="color: #fff !important">
+                    <?= esc_html($payments_heading) ?>
+                </h3>
+                <?php endif; ?>
+                <div class="w-fit max-w-full rounded-2xl border-2 border-dashed border-white/15 bg-white/5 p-4 flex items-center gap-5 flex-wrap">
                     <?php foreach ($payment_images as $pay) : 
                         $img_src = '';
                         if (!empty($pay['image'])) {
@@ -258,18 +281,16 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
                     ?>
                         <img src="<?= esc_url($img_src) ?>" alt="<?= esc_attr($alt_val) ?>" class="footer-payment-logo object-contain h-8 sm:h-9 w-auto hover:scale-105 transition-transform" style="height: 34px; max-height: 36px; width: auto; max-width: 160px; object-fit: contain;">
                     <?php endforeach; ?>
-                <?php else : ?>
-                    <img src="<?= esc_url(get_theme_file_uri('/assets/images/commonwealth-white.png')) ?>" alt="Commonwealth Bank" class="footer-payment-logo object-contain h-8 sm:h-9 w-auto hover:scale-105 transition-transform" style="height: 34px; max-height: 36px; width: auto; max-width: 160px; object-fit: contain;">
-                    <img src="<?= esc_url(get_theme_file_uri('/assets/images/osko-white.png')) ?>" alt="Osko by BPAY" class="footer-payment-logo object-contain h-7 sm:h-8 w-auto hover:scale-105 transition-transform" style="height: 28px; max-height: 32px; width: auto; max-width: 125px; object-fit: contain;">
-                    <img src="<?= esc_url(get_theme_file_uri('/assets/images/payid-white.png')) ?>" alt="PayID" class="footer-payment-logo object-contain h-7 sm:h-8 w-auto hover:scale-105 transition-transform" style="height: 28px; max-height: 32px; width: auto; max-width: 90px; object-fit: contain;">
-                <?php endif; ?>
-            </div>
+                </div>
+            <?php endif; ?>
 
-            <h3 class="text-[15px] font-bold text-white mb-3 mt-8" style="color: #fff !important">
-                <?= esc_html($shipping_heading) ?>
-            </h3>
-            <div class="w-fit max-w-full rounded-2xl border-2 border-dashed border-white/15 bg-white/5 p-4 flex items-center gap-5 flex-wrap">
-                <?php if (!empty($shipping_images) && is_array($shipping_images)) : ?>
+            <?php if (!empty($shipping_images) && is_array($shipping_images)) : ?>
+                <?php if (!empty($shipping_heading)): ?>
+                <h3 class="text-[15px] font-bold text-white mb-3 mt-8" style="color: #fff !important">
+                    <?= esc_html($shipping_heading) ?>
+                </h3>
+                <?php endif; ?>
+                <div class="w-fit max-w-full rounded-2xl border-2 border-dashed border-white/15 bg-white/5 p-4 flex items-center gap-5 flex-wrap">
                     <?php foreach ($shipping_images as $ship) : 
                         $img_src = '';
                         if (!empty($ship['image'])) {
@@ -286,10 +307,8 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
                     ?>
                         <img src="<?= esc_url($img_src) ?>" alt="<?= esc_attr($alt_val) ?>" class="footer-shipping-logo object-contain h-10 sm:h-11 w-auto hover:scale-105 transition-transform" style="height: 40px; max-height: 44px; width: auto; max-width: 150px; object-fit: contain;">
                     <?php endforeach; ?>
-                <?php else : ?>
-                    <img src="<?= esc_url(get_theme_file_uri('/assets/images/australia-post.png')) ?>" alt="Australia Post" class="footer-shipping-logo object-contain h-10 sm:h-11 w-auto hover:scale-105 transition-transform" style="height: 40px; max-height: 44px; width: auto; max-width: 150px; object-fit: contain;">
-                <?php endif; ?>
-            </div>
+                </div>
+            <?php endif; ?>
         </div>
 
         <!-- Column 2 -->
@@ -307,7 +326,11 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
 
     <div class="relative z-10 border-t border-white/10">
         <div class="container-site flex flex-col items-center justify-between gap-3 py-5 text-xs text-ink-foreground/60 sm:flex-row">
-            <p><?= wp_kses_post($copyright_text) ?></p>
+            <?php if (!empty($copyright_text)): ?>
+                <p><?= wp_kses_post($copyright_text) ?></p>
+            <?php else: ?>
+                <p>&copy; <?= esc_html(date('Y')) ?> <?= esc_html(get_bloginfo('name') ?: 'Waklert Australia') ?>. All rights reserved.</p>
+            <?php endif; ?>
             <?php if (function_exists('is_product') && is_product()): ?>
                 <a href="https://www.flaticon.com/uicons" class="transition-colors hover:text-white" target="_blank" rel="noopener noreferrer">UIcons by Flaticon</a>
             <?php endif; ?>
