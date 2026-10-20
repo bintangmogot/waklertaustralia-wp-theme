@@ -198,3 +198,151 @@ if (!function_exists('waklert_get_product_review_summary')) {
         return $cache[$product_id];
     }
 }
+
+if (!function_exists('waklert_sort_product_variations')) {
+    /**
+     * Sort available product variations in logical ascending order:
+     * 1. Pack count (tablet / quantity count) ascending: 30, 50, 60, 100, 120, 200, 240, 300, 400, 480, 500, 900, 1000.
+     * 2. Total price ascending if pack count is equal or zero.
+     * 3. Variation ID ascending as fallback.
+     */
+    function waklert_sort_product_variations(&$variations, $product = null) {
+        if (!is_array($variations) || count($variations) <= 1) {
+            return;
+        }
+
+        $items = [];
+        foreach ($variations as $var) {
+            $var_id = (int) ($var['variation_id'] ?? 0);
+            $var_product = $var_id ? wc_get_product($var_id) : null;
+            $pack_count = 0;
+            if ($product && $var_product && function_exists('waklert_get_product_pack_count')) {
+                $pack_count = (int) waklert_get_product_pack_count($product, $var_product);
+            }
+            if (!$pack_count && !empty($var['attributes'])) {
+                foreach ($var['attributes'] as $attr_val) {
+                    if (preg_match('/\b(\d+)\b/', (string) $attr_val, $m)) {
+                        $pack_count = (int) $m[1];
+                        break;
+                    }
+                }
+            }
+
+            $price = isset($var['display_price']) && is_numeric($var['display_price'])
+                ? (float) $var['display_price']
+                : 0.0;
+
+            $items[] = [
+                'data'  => $var,
+                'pack'  => $pack_count,
+                'price' => $price,
+                'id'    => $var_id,
+            ];
+        }
+
+        usort($items, static function ($a, $b) {
+            if ($a['pack'] > 0 && $b['pack'] > 0 && $a['pack'] !== $b['pack']) {
+                return $a['pack'] <=> $b['pack'];
+            }
+            if ($a['price'] !== $b['price']) {
+                return $a['price'] <=> $b['price'];
+            }
+            return $a['id'] <=> $b['id'];
+        });
+
+        $variations = array_column($items, 'data');
+    }
+}
+
+if (!function_exists('waklert_sync_all_variations_menu_order')) {
+    /**
+     * Idempotently synchronize database menu_order and attribute terms for all variable products
+     * so that WP Admin backend and core WooCommerce queries are also perfectly ordered.
+     */
+    function waklert_sync_all_variations_menu_order() {
+        if (!function_exists('wc_get_products')) {
+            return 0;
+        }
+
+        global $wpdb;
+        $products = wc_get_products(['limit' => -1, 'type' => 'variable']);
+        $updated_count = 0;
+
+        foreach ($products as $prod) {
+            $children = $prod->get_children();
+            if (empty($children)) continue;
+
+            $items = [];
+            foreach ($children as $cid) {
+                $vp = wc_get_product($cid);
+                if (!$vp) continue;
+
+                $pack_count = (int) waklert_get_product_pack_count($prod, $vp);
+                if (!$pack_count) {
+                    $attrs = $vp->get_attributes();
+                    foreach ($attrs as $aval) {
+                        if (preg_match('/\b(\d+)\b/', (string) $aval, $m)) {
+                            $pack_count = (int) $m[1];
+                            break;
+                        }
+                    }
+                }
+                $price = (float) $vp->get_price();
+
+                $items[] = [
+                    'id'    => $cid,
+                    'pack'  => $pack_count,
+                    'price' => $price,
+                ];
+            }
+
+            usort($items, static function ($a, $b) {
+                if ($a['pack'] > 0 && $b['pack'] > 0 && $a['pack'] !== $b['pack']) {
+                    return $a['pack'] <=> $b['pack'];
+                }
+                if ($a['price'] !== $b['price']) {
+                    return $a['price'] <=> $b['price'];
+                }
+                return $a['id'] <=> $b['id'];
+            });
+
+            foreach ($items as $idx => $item) {
+                $new_order = $idx + 1;
+                $current_order = (int) $wpdb->get_var($wpdb->prepare("SELECT menu_order FROM $wpdb->posts WHERE ID = %d", $item['id']));
+                if ($current_order !== $new_order) {
+                    $wpdb->update($wpdb->posts, ['menu_order' => $new_order], ['ID' => $item['id']], ['%d'], ['%d']);
+                    clean_post_cache($item['id']);
+                    $updated_count++;
+                }
+            }
+
+            wc_delete_product_transients($prod->get_id());
+        }
+
+        if (taxonomy_exists('pa_pack-size')) {
+            $terms = get_terms([
+                'taxonomy'   => 'pa_pack-size',
+                'hide_empty' => false,
+            ]);
+            if (!is_wp_error($terms) && !empty($terms)) {
+                $term_items = [];
+                foreach ($terms as $t) {
+                    $num = 0;
+                    if (preg_match('/\b(\d+)\b/', $t->name, $m)) {
+                        $num = (int) $m[1];
+                    }
+                    $term_items[] = ['term_id' => $t->term_id, 'num' => $num];
+                }
+                usort($term_items, static function ($a, $b) {
+                    return $a['num'] <=> $b['num'];
+                });
+                foreach ($term_items as $tidx => $titem) {
+                    update_term_meta($titem['term_id'], 'order', $tidx + 1);
+                }
+            }
+        }
+
+        return $updated_count;
+    }
+}
+

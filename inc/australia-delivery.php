@@ -26,7 +26,7 @@ add_action('acf/init', static function () {
  * Replaces legacy Perth suburban posts with the 8 requested metropolitan delivery hubs.
  */
 function waklert_auto_sync_delivery_cities() {
-    $target_version = '20261019_v4';
+    $target_version = '20261019_v5';
     $current_version = get_option('waklert_delivery_cities_migration_ver');
     $force = isset($_GET['sync_cities_now']) && $_GET['sync_cities_now'] === '1';
 
@@ -221,7 +221,12 @@ function waklert_auto_sync_delivery_cities() {
     // 6. Ensure Support CTA representative media image is imported & configured
     waklert_sync_support_cta_media();
 
-    // 7. Flush rewrites & mark migration complete
+    // 7. Synchronize variation menu_order across all products to ensure ascending pack sizes
+    if (function_exists('waklert_sync_all_variations_menu_order')) {
+        waklert_sync_all_variations_menu_order();
+    }
+
+    // 8. Flush rewrites & mark migration complete
     flush_rewrite_rules(false);
     update_option('waklert_delivery_cities_migration_ver', $target_version);
 }

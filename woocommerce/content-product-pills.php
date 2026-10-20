@@ -67,6 +67,9 @@ $in_stock = $product->is_in_stock();
             $first_price = "";
             if ( $product->is_type('variable') ) {
                 $variations = $product->get_available_variations();
+                if (function_exists('waklert_sort_product_variations')) {
+                    waklert_sort_product_variations($variations, $product);
+                }
                 $count = 0;
                 foreach ($variations as $var) {
                     $label = "";
