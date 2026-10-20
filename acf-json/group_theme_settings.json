@@ -566,7 +566,7 @@
             "name": "ssl_text",
             "aria-label": "",
             "type": "text",
-            "instructions": "",
+            "instructions": "Displayed in footer trust badges. If left empty, this badge will disappear.",
             "required": false,
             "conditional_logic": false,
             "wrapper": {
@@ -574,9 +574,9 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
+            "default_value": "256-Bit SSL Encryption",
             "maxlength": "",
-            "placeholder": "",
+            "placeholder": "e.g. 256-Bit SSL Encryption",
             "prepend": "",
             "append": ""
         },
@@ -586,7 +586,7 @@
             "name": "dispatch_text",
             "aria-label": "",
             "type": "text",
-            "instructions": "",
+            "instructions": "Displayed in footer trust badges. If left empty, this badge will disappear.",
             "required": false,
             "conditional_logic": false,
             "wrapper": {
@@ -594,9 +594,9 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
+            "default_value": "AU Express Dispatch",
             "maxlength": "",
-            "placeholder": "",
+            "placeholder": "e.g. AU Express Dispatch",
             "prepend": "",
             "append": ""
         },
@@ -606,7 +606,7 @@
             "name": "checkout_text",
             "aria-label": "",
             "type": "text",
-            "instructions": "",
+            "instructions": "Displayed in footer trust badges. If left empty, this badge will disappear.",
             "required": false,
             "conditional_logic": false,
             "wrapper": {
@@ -614,9 +614,9 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
+            "default_value": "Encrypted Checkout",
             "maxlength": "",
-            "placeholder": "",
+            "placeholder": "e.g. Encrypted Checkout",
             "prepend": "",
             "append": ""
         },
@@ -686,7 +686,7 @@
             "name": "footer_payment_images",
             "aria-label": "",
             "type": "repeater",
-            "instructions": "Upload accepted payment logos (e.g. Commonwealth Bank, Osko, PayID). If left empty, default Australian bank and payment logos are displayed.",
+            "instructions": "Upload accepted payment logos (e.g. Commonwealth Bank, Osko, PayID). If left empty, this section will disappear.",
             "required": false,
             "conditional_logic": false,
             "wrapper": {
@@ -776,7 +776,7 @@
             "name": "footer_shipping_images",
             "aria-label": "",
             "type": "repeater",
-            "instructions": "Upload shipping partner logos (e.g. Australia Post). If left empty, default Australia Post logo is displayed.",
+            "instructions": "Upload shipping partner logos (e.g. Australia Post). If left empty, this section will disappear.",
             "required": false,
             "conditional_logic": false,
             "wrapper": {
@@ -902,5 +902,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1792503117
+    "modified": 1792504396
 }

@@ -58,7 +58,8 @@
 <!-- Trust Bar -->
 <div class="relative overflow-hidden w-full bg-gradient-to-r from-[#082a3f] via-[#0c4161] to-[#0f4f75] bg-pattern-dots-dark border-b border-sky-400/20 text-white text-[13px]" data-testid="trust-bar">
     <div class="container-site relative z-10 flex h-9 items-center justify-between gap-2 px-4 font-medium tracking-wide sm:gap-4">
-        <?php $topbar_left = get_field('topbar_left', 'option') ?: '7-10 Day Delivery | Australia-wide dispatch'; ?>
+        <?php $topbar_left = get_field('topbar_left', 'option'); ?>
+        <?php if (!empty($topbar_left)): ?>
         <p class="min-w-0 flex-1 truncate text-[10px] opacity-95 sm:flex-none sm:overflow-visible sm:text-[13px] sm:whitespace-nowrap flex items-center gap-1.5">
             <!-- Colorful Delivery Van SVG -->
             <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -72,8 +73,10 @@
             </svg>
             <span><?php echo esc_html($topbar_left); ?></span>
         </p>
+        <?php endif; ?>
 
-        <?php $topbar_center = get_field('topbar_center', 'option') ?: 'Free Shipping on Orders Over $299'; ?>
+        <?php $topbar_center = get_field('topbar_center', 'option'); ?>
+        <?php if (!empty($topbar_center)): ?>
         <p class="hidden md:flex items-center gap-1.5 opacity-95 text-amber-300 font-semibold">
             <!-- Colorful Star SVG -->
             <svg class="w-4 h-4 text-amber-400" viewBox="0 0 24 24" fill="currentColor">
@@ -81,22 +84,25 @@
             </svg>
             <span><?php echo esc_html($topbar_center); ?></span>
         </p>
+        <?php endif; ?>
 
-        <div class="flex shrink-0 items-center md:hidden">
-            <?php
-            $support_phone = get_field('whatsapp_number', 'option') ?: '+61 488 841 833';
+        <?php 
+        $support_phone = get_field('whatsapp_number', 'option');
+        if (!empty($support_phone)): 
             $clean_phone = preg_replace('/[^0-9]/', '', $support_phone);
             if (strpos($clean_phone, '0') === 0) {
                 $clean_phone = '61' . substr($clean_phone, 1);
             }
             $tel_phone = '+' . $clean_phone;
-            ?>
+        ?>
+        <div class="flex shrink-0 items-center md:hidden">
             <a href="tel:<?php echo esc_attr($tel_phone); ?>" aria-label="Call <?php echo esc_attr($support_phone); ?>" class="inline-flex shrink-0 items-center gap-1.5 text-[10px] text-white/90 transition-colors hover:text-white sm:text-[13px] font-semibold bg-white/10 hover:bg-white/20 px-2.5 py-1 rounded-full border border-white/20">
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-emerald-300"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/><path d="M14.05 2a9 9 0 0 1 8 7.94"/><path d="M14.05 6A5 5 0 0 1 18 10"/></svg>
                 <span class="whitespace-nowrap"><?php echo esc_html($support_phone); ?></span>
             </a>
         </div>
+        <?php endif; ?>
     </div>
 </div>
 
