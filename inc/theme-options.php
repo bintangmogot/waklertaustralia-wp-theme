@@ -70,28 +70,38 @@ add_filter('acf/settings/load_json', function($paths) {
 
 /**
  * Synchronize Header & Top Bar Theme Settings across local, staging (InstaWP), and live environments:
- * - Removes duplicate/stale DB field group overrides for group_theme_settings so ACF JSON is authoritative
+ * - Imports acf-json/group_theme_settings.json into any existing DB field group so WP Admin labels update immediately without deleting the JSON file
  * - Seeds live Header & Top Bar values once so WP Admin reflects the live configuration out of the box
  */
-add_action('init', function() {
-    $target_ver = '20261021_header_settings_v1';
+add_action('acf/init', function() {
+    $target_ver = '20261021_header_settings_v2';
     if (get_option('waklert_header_settings_sync_ver') === $target_ver) {
         return;
     }
 
-    // 1. Remove any stale DB field group posts for group_theme_settings so acf-json/group_theme_settings.json takes effect immediately
-    $acf_posts = get_posts([
-        'post_type'      => 'acf-field-group',
-        'posts_per_page' => -1,
-        'post_status'    => 'any',
-    ]);
-    if (!empty($acf_posts)) {
-        foreach ($acf_posts as $p) {
-            if ($p->post_name === 'group_theme_settings' || $p->post_excerpt === 'group_theme_settings' || $p->post_excerpt === 'theme-settings') {
-                if (function_exists('acf_delete_field_group')) {
-                    acf_delete_field_group($p->ID);
-                } else {
-                    wp_delete_post($p->ID, true);
+    // 1. If a DB field group exists for group_theme_settings, sync it from acf-json/group_theme_settings.json
+    $json_path = get_stylesheet_directory() . '/acf-json/group_theme_settings.json';
+    if (file_exists($json_path) && function_exists('acf_import_field_group')) {
+        $json_data = json_decode(file_get_contents($json_path), true);
+        if (is_array($json_data) && !empty($json_data['key'])) {
+            $acf_posts = get_posts([
+                'post_type'      => 'acf-field-group',
+                'posts_per_page' => -1,
+                'post_status'    => 'any',
+            ]);
+            if (!empty($acf_posts)) {
+                $first_matched = false;
+                foreach ($acf_posts as $p) {
+                    if ($p->post_name === 'group_theme_settings' || $p->post_excerpt === 'group_theme_settings' || $p->post_excerpt === 'theme-settings') {
+                        if (!$first_matched) {
+                            $first_matched = true;
+                            $json_data['ID'] = $p->ID;
+                            acf_import_field_group($json_data);
+                        } else {
+                            // Remove duplicate DB post directly without triggering acf_delete_field_group JSON unlink
+                            wp_delete_post($p->ID, true);
+                        }
+                    }
                 }
             }
         }
