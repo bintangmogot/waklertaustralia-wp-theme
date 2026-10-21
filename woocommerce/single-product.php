@@ -475,11 +475,11 @@ $product_specs = [
             <?php endif; ?>
 
             <?php if ($trust_items): ?>
-                <div class="grid grid-cols-1 gap-3.5 border-t-2 border-dashed border-sky-200/80 pt-6 sm:grid-cols-3">
+                <div class="grid grid-cols-3 gap-3 sm:gap-3.5 border-t-2 border-dashed border-sky-200/80 pt-6">
                     <!-- 1. AU Express Dispatch -->
-                    <div class="flex items-center gap-3 rounded-2xl border-2 border-dashed border-sky-300/80 bg-gradient-to-br from-white to-sky-50/60 p-3.5 shadow-sm hover:border-[#0c4161] hover:shadow-md transition-all">
-                        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-sky-50 text-sky-600 border border-sky-200">
-                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class="flex flex-col items-center justify-center text-center gap-2 rounded-2xl border-2 border-dashed border-sky-300/80 bg-gradient-to-br from-white to-sky-50/60 p-3.5 sm:p-4 shadow-sm hover:border-[#0c4161] hover:shadow-md transition-all">
+                        <div class="flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-sky-50 text-sky-600 border border-sky-200">
+                            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect x="1" y="5" width="14" height="11" rx="1.5" fill="#38BDF8" fill-opacity="0.3" stroke="#38BDF8" stroke-width="1.8"/>
                                 <path d="M15 8h4.5l3.5 4.5v3.5h-8V8z" fill="#F59E0B" stroke="#F59E0B" stroke-width="1.8"/>
                                 <circle cx="6" cy="18" r="2.2" fill="#FFFFFF" stroke="#38BDF8" stroke-width="1.5"/>
@@ -487,36 +487,36 @@ $product_specs = [
                             </svg>
                         </div>
                         <div>
-                            <h4 class="text-xs font-bold text-slate-900 leading-snug">AU Express</h4>
-                            <p class="text-[11px] text-slate-500">7-10 day delivery</p>
+                            <h4 class="text-xs sm:text-[13px] font-bold text-slate-900 leading-snug">AU Express</h4>
+                            <p class="text-[11px] text-slate-500 mt-0.5">7-10 day delivery</p>
                         </div>
                     </div>
 
                     <!-- 2. Encrypted Checkout -->
-                    <div class="flex items-center gap-3 rounded-2xl border-2 border-dashed border-sky-300/80 bg-gradient-to-br from-white to-sky-50/60 p-3.5 shadow-sm hover:border-[#0c4161] hover:shadow-md transition-all">
-                        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-50 text-amber-600 border border-amber-200">
-                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class="flex flex-col items-center justify-center text-center gap-2 rounded-2xl border-2 border-dashed border-sky-300/80 bg-gradient-to-br from-white to-sky-50/60 p-3.5 sm:p-4 shadow-sm hover:border-[#0c4161] hover:shadow-md transition-all">
+                        <div class="flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-amber-50 text-amber-600 border border-amber-200">
+                            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M12 2L4 6v6c0 5.25 3.4 10.15 8 11.35 4.6-1.2 8-6.1 8-11.35V6l-8-4z" fill="#F59E0B" fill-opacity="0.3" stroke="#F59E0B" stroke-width="1.8"/>
                                 <path d="M9 12l2 2 4-4" stroke="#0C4161" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                         </div>
                         <div>
-                            <h4 class="text-xs font-bold text-slate-900 leading-snug">256-Bit SSL</h4>
-                            <p class="text-[11px] text-slate-500">Encrypted checkout</p>
+                            <h4 class="text-xs sm:text-[13px] font-bold text-slate-900 leading-snug">256-Bit SSL</h4>
+                            <p class="text-[11px] text-slate-500 mt-0.5">Encrypted checkout</p>
                         </div>
                     </div>
 
                     <!-- 3. Quality Verified -->
-                    <div class="flex items-center gap-3 rounded-2xl border-2 border-dashed border-sky-300/80 bg-gradient-to-br from-white to-sky-50/60 p-3.5 shadow-sm hover:border-[#0c4161] hover:shadow-md transition-all">
-                        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 border border-emerald-200">
-                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class="flex flex-col items-center justify-center text-center gap-2 rounded-2xl border-2 border-dashed border-sky-300/80 bg-gradient-to-br from-white to-sky-50/60 p-3.5 sm:p-4 shadow-sm hover:border-[#0c4161] hover:shadow-md transition-all">
+                        <div class="flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 border border-emerald-200">
+                            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="12" cy="12" r="9" fill="#10B981" fill-opacity="0.2" stroke="#10B981" stroke-width="1.8"/>
                                 <path d="M8.5 12.5l2.5 2.5 5-5" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                         </div>
                         <div>
-                            <h4 class="text-xs font-bold text-slate-900 leading-snug">Sun Pharma</h4>
-                            <p class="text-[11px] text-slate-500">100% genuine seal</p>
+                            <h4 class="text-xs sm:text-[13px] font-bold text-slate-900 leading-snug">Sun Pharma</h4>
+                            <p class="text-[11px] text-slate-500 mt-0.5">100% genuine seal</p>
                         </div>
                     </div>
                 </div>
