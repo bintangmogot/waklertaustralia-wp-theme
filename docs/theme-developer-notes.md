@@ -4,13 +4,15 @@
 
 ---
 
-## 1. Phone Number in Header (ACF-controlled)
+## 1. Phone Number in Header (ACF-controlled, Zero Hardcoding)
 
-The header phone number is fully admin-editable via **WP Admin → Theme Settings → Header & Contact Phone Number** (ACF field: `header_phone_number`).
+The header phone button is 100% admin-editable via **WP Admin → Theme Settings → Header & Top Bar**:
+- **Header & Contact Phone Number** (`whatsapp_number`)
+- **Header Phone Button Text** (`whatsapp_button_text`)
+- **Header Phone Button Link / URL** (`whatsapp_button_url`)
 
-- **Fallback chain:** `header_phone_number` → `whatsapp_number` → hardcoded `0488 841 833`  
-- **Format:** Server-side formatted to AU standard `04XX XXX XXX`  
-- **Link:** Generates a `tel:` link (works natively on mobile)  
+- **Zero Hardcoding:** No hardcoded phone number fallback in `header.php`. If cleared in WP Admin, the phone button hides cleanly.
+- **Styling:** Solid brand blue (`bg-[#0c4161]`) pill button with white phone icon and white text.
 - **Locations:** Appears in:
   - Trust bar (small-screen pill, `md:hidden`)
   - Desktop header right actions (hidden on `<sm`)
