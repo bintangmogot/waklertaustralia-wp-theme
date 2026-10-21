@@ -150,3 +150,176 @@ add_action('acf/init', function() {
 
     update_option('waklert_header_settings_sync_ver', $target_ver);
 }, 20);
+
+/**
+ * Synchronize Page Modules ACF schema & seed semantically aligned icon presets + descriptions
+ * across all pages (Homepage, About Us, Buyer's Guide, Track Order) so WP Admin shows the exact
+ * matching colorful icon preset and description for every card out of the box.
+ */
+add_action('acf/init', function() {
+    $target_ver = '20261021_section_icons_v3';
+    if (get_option('waklert_section_icons_sync_ver') === $target_ver) {
+        return;
+    }
+
+    // 1. If a DB field group exists for group_page_modules, sync it from acf-json/group_page_modules.json
+    $json_path = get_stylesheet_directory() . '/acf-json/group_page_modules.json';
+    if (file_exists($json_path) && function_exists('acf_import_field_group')) {
+        $json_data = json_decode(file_get_contents($json_path), true);
+        if (is_array($json_data) && !empty($json_data['key'])) {
+            $acf_posts = get_posts([
+                'post_type'      => 'acf-field-group',
+                'posts_per_page' => -1,
+                'post_status'    => 'any',
+            ]);
+            if (!empty($acf_posts)) {
+                $first_matched = false;
+                foreach ($acf_posts as $p) {
+                    if ($p->post_name === 'group_page_modules' || $p->post_excerpt === 'group_page_modules' || $p->post_excerpt === 'page-modules') {
+                        if (!$first_matched) {
+                            $first_matched = true;
+                            $json_data['ID'] = $p->ID;
+                            acf_import_field_group($json_data);
+                        } else {
+                            wp_delete_post($p->ID, true);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // 2. Seed icon_preset and badge descriptions across all published pages using modules
+    if (function_exists('waklert_detect_icon_preset_from_text')) {
+        $pages = get_posts([
+            'post_type'      => 'page',
+            'posts_per_page' => -1,
+            'post_status'    => 'any',
+        ]);
+
+        $default_badge_descs = [
+            "Tracked delivery via Australia Post to all states and territories.",
+            "Direct batch-tested pharmaceuticals from accredited manufacturers.",
+            "Encrypted checkout with local PayID & Australian bank EFT.",
+            "Shipped in generic, unbranded satchels for complete privacy."
+        ];
+
+        foreach ($pages as $page) {
+            $pid = $page->ID;
+            $layouts = get_post_meta($pid, 'modules', true);
+            if (!is_array($layouts) || empty($layouts)) {
+                continue;
+            }
+
+            foreach ($layouts as $m_idx => $layout_name) {
+                // A. why_choose_us -> audiences repeater
+                if ($layout_name === 'why_choose_us') {
+                    $count = (int) get_post_meta($pid, "modules_{$m_idx}_audiences", true);
+                    for ($r = 0; $r < $count; $r++) {
+                        $title = (string) get_post_meta($pid, "modules_{$m_idx}_audiences_{$r}_title", true);
+                        $desc  = (string) get_post_meta($pid, "modules_{$m_idx}_audiences_{$r}_desc", true);
+                        $preset = waklert_detect_icon_preset_from_text($title, $desc, 'parcel_guarantee');
+                        update_post_meta($pid, "modules_{$m_idx}_audiences_{$r}_icon_preset", $preset);
+                        update_post_meta($pid, "_modules_{$m_idx}_audiences_{$r}_icon_preset", 'field_wcu_a_icon_preset');
+                        // Clear legacy monochrome stroke="currentColor" wireframe SVGs so WP Admin is clean
+                        $old_svg = (string) get_post_meta($pid, "modules_{$m_idx}_audiences_{$r}_icon_svg", true);
+                        if (stripos($old_svg, 'stroke="currentColor"') !== false) {
+                            update_post_meta($pid, "modules_{$m_idx}_audiences_{$r}_icon_svg", '');
+                        }
+                    }
+                }
+
+                // B. trust_strip -> badges repeater
+                if ($layout_name === 'trust_strip') {
+                    $count = (int) get_post_meta($pid, "modules_{$m_idx}_badges", true);
+                    for ($r = 0; $r < $count; $r++) {
+                        $label = (string) get_post_meta($pid, "modules_{$m_idx}_badges_{$r}_label", true);
+                        $desc  = (string) get_post_meta($pid, "modules_{$m_idx}_badges_{$r}_desc", true);
+                        $lower = strtolower(trim($label));
+                        if (trim($desc) === '' || (str_contains($lower, 'checkout') && str_contains($lower, 'delivery') && str_contains($desc, 'active ingredient'))) {
+                            if (str_contains($lower, 'focused') || str_contains($lower, 'category')) {
+                                $desc = 'Dedicated exclusively to genuine armodafinil tablets and verified pack sizes.';
+                            } elseif (str_contains($lower, 'checkout') && str_contains($lower, 'delivery')) {
+                                $desc = 'Transparent shipping options, transit estimates, and Australia Post tracking at checkout.';
+                            } elseif (str_contains($lower, 'listing') || str_contains($lower, 'detail')) {
+                                $desc = 'Clear active ingredient, strength, manufacturer, and pack options on every page.';
+                            } elseif (str_contains($lower, 'support') || str_contains($lower, 'question')) {
+                                $desc = 'Direct Australian customer care via SMS, WhatsApp, and email 7 days a week.';
+                            } elseif (str_contains($lower, 'sealed')) {
+                                $desc = 'Original factory-sealed blister packs from licensed pharmaceutical manufacturers.';
+                            } elseif (str_contains($lower, 'discreet')) {
+                                $desc = 'Plain, unmarked satchels with no external branding for complete privacy.';
+                            } elseif (str_contains($lower, 'checkout') || str_contains($lower, 'secure')) {
+                                $desc = 'Encrypted AUD checkout supporting local PayID and Australian bank transfer.';
+                            } else {
+                                $desc = $default_badge_descs[$r % 4] ?? $default_badge_descs[0];
+                            }
+                            update_post_meta($pid, "modules_{$m_idx}_badges_{$r}_desc", $desc);
+                            update_post_meta($pid, "_modules_{$m_idx}_badges_{$r}_desc", 'field_ts_desc_en');
+                        }
+                        $preset = waklert_detect_icon_preset_from_text($label, $desc, 'australia_delivery');
+                        update_post_meta($pid, "modules_{$m_idx}_badges_{$r}_icon_preset", $preset);
+                        update_post_meta($pid, "_modules_{$m_idx}_badges_{$r}_icon_preset", 'field_ts_icon_preset');
+                        $old_svg = (string) get_post_meta($pid, "modules_{$m_idx}_badges_{$r}_icon_svg", true);
+                        if (stripos($old_svg, 'stroke="currentColor"') !== false) {
+                            update_post_meta($pid, "modules_{$m_idx}_badges_{$r}_icon_svg", '');
+                        }
+                    }
+                }
+
+                // C. how_to_order -> steps repeater
+                if ($layout_name === 'how_to_order') {
+                    $sec_desc = (string) get_post_meta($pid, "modules_{$m_idx}_description", true);
+                    if (trim($sec_desc) === '') {
+                        update_post_meta($pid, "modules_{$m_idx}_description", 'Simple, transparent, and private. Ordering Armodafinil across Australia takes just 3 straightforward steps.');
+                        update_post_meta($pid, "_modules_{$m_idx}_description", 'field_hto_desc_en');
+                    }
+                    $count = (int) get_post_meta($pid, "modules_{$m_idx}_steps", true);
+                    for ($r = 0; $r < $count; $r++) {
+                        $title = (string) get_post_meta($pid, "modules_{$m_idx}_steps_{$r}_title", true);
+                        $desc  = (string) get_post_meta($pid, "modules_{$m_idx}_steps_{$r}_desc", true);
+                        $preset = waklert_detect_icon_preset_from_text($title, $desc, 'browse_catalogue');
+                        update_post_meta($pid, "modules_{$m_idx}_steps_{$r}_icon_preset", $preset);
+                        update_post_meta($pid, "_modules_{$m_idx}_steps_{$r}_icon_preset", 'field_hto_s_icon_preset');
+                        $old_svg = (string) get_post_meta($pid, "modules_{$m_idx}_steps_{$r}_icon_svg", true);
+                        if (stripos($old_svg, 'stroke="currentColor"') !== false) {
+                            update_post_meta($pid, "modules_{$m_idx}_steps_{$r}_icon_svg", '');
+                        }
+                    }
+                }
+
+                // D. about_delivery -> list_items repeater
+                if ($layout_name === 'about_delivery') {
+                    $count = (int) get_post_meta($pid, "modules_{$m_idx}_list_items", true);
+                    for ($r = 0; $r < $count; $r++) {
+                        $title = (string) get_post_meta($pid, "modules_{$m_idx}_list_items_{$r}_title", true);
+                        $desc  = (string) get_post_meta($pid, "modules_{$m_idx}_list_items_{$r}_desc", true);
+                        $preset = waklert_detect_icon_preset_from_text($title, $desc, 'express_shipping');
+                        update_post_meta($pid, "modules_{$m_idx}_list_items_{$r}_icon_preset", $preset);
+                        update_post_meta($pid, "_modules_{$m_idx}_list_items_{$r}_icon_preset", 'field_ad_icon_preset');
+                        $old_svg = (string) get_post_meta($pid, "modules_{$m_idx}_list_items_{$r}_icon_svg", true);
+                        if (stripos($old_svg, 'stroke="currentColor"') !== false) {
+                            update_post_meta($pid, "modules_{$m_idx}_list_items_{$r}_icon_svg", '');
+                        }
+                    }
+                }
+
+                // E. about_mission
+                if ($layout_name === 'about_mission') {
+                    $m_preset = (string) get_post_meta($pid, "modules_{$m_idx}_mission_icon_preset", true);
+                    if ($m_preset === '') {
+                        update_post_meta($pid, "modules_{$m_idx}_mission_icon_preset", 'browse_catalogue');
+                        update_post_meta($pid, "_modules_{$m_idx}_mission_icon_preset", 'field_am_mission_icon_preset');
+                    }
+                    $v_preset = (string) get_post_meta($pid, "modules_{$m_idx}_vision_icon_preset", true);
+                    if ($v_preset === '') {
+                        update_post_meta($pid, "modules_{$m_idx}_vision_icon_preset", 'medical_rx_clarity');
+                        update_post_meta($pid, "_modules_{$m_idx}_vision_icon_preset", 'field_am_vision_icon_preset');
+                    }
+                }
+            }
+        }
+    }
+
+    update_option('waklert_section_icons_sync_ver', $target_ver);
+}, 25);

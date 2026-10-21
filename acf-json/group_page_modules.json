@@ -351,29 +351,73 @@
                             "collapsed": "",
                             "sub_fields": [
                                 {
-                                    "key": "field_ts_icon",
-                                    "label": "Icon SVG",
-                                    "name": "icon_svg",
+                                    "key": "field_ts_icon_preset",
+                                    "label": "Icon Style (Preset)",
+                                    "name": "icon_preset",
                                     "aria-label": "",
-                                    "type": "textarea",
-                                    "instructions": "",
+                                    "type": "select",
+                                    "instructions": "Choose a matching colorful icon or leave on Auto-Match to automatically select the best icon for the title & description.",
                                     "required": false,
                                     "conditional_logic": false,
                                     "wrapper": {
-                                        "width": "",
+                                        "width": "50",
                                         "class": "",
                                         "id": ""
                                     },
-                                    "rows": 3,
-                                    "default_value": "",
-                                    "new_lines": "",
-                                    "maxlength": "",
+                                    "choices": {
+                                        "auto": "✨ Auto-Match from Title & Description (Recommended)",
+                                        "parcel_guarantee": "🛡️ Parcel Guarantee / Reship or Refund (\"If it doesn't land, we fix it\")",
+                                        "live_chat_support": "💬 Real People on Chat / 24/7 SMS & Support",
+                                        "medical_rx_clarity": "📋 Straight-Up Medicine Info / Schedule 4 & Rx Clarity",
+                                        "aud_checkout": "💳 Simple AUD Checkout / PayID & Secure Payment",
+                                        "express_shipping": "🚚 Fast Domestic Express Shipping / Australia Post Van",
+                                        "australia_delivery": "🇦🇺 Australia-Wide Delivery / Tracked Parcel Map",
+                                        "browse_catalogue": "💊 Focused Armodafinil Range / Blister Pack Catalogue",
+                                        "listing_details": "🔍 Clear Listing Details / Compare Strengths & Packs",
+                                        "returning_loyalty": "⭐ Returning Customers / Fast Reorder & Loyalty",
+                                        "discreet_sealed": "📦 Discreet Plain Packaging / Sealed Pharmacy Pack",
+                                        "po_box_delivery": "📮 PO Box & Parcel Locker Delivery",
+                                        "no_customs": "✅ Smooth Domestic Dispatch / No Customs Hassle",
+                                        "affordable_value": "💰 Affordable Direct Pricing / Best Value"
+                                    },
+                                    "default_value": "auto",
+                                    "return_format": "value",
+                                    "multiple": 0,
+                                    "allow_null": 0,
+                                    "ui": 1,
+                                    "ajax": 0,
                                     "placeholder": "",
                                     "parent_repeater": "field_ts_badges"
                                 },
                                 {
+                                    "key": "field_ts_icon_image",
+                                    "label": "Custom Icon Image / SVG (Optional)",
+                                    "name": "icon_image",
+                                    "aria-label": "",
+                                    "type": "image",
+                                    "instructions": "Optional: Upload your own colorful PNG/SVG/WebP icon (e.g. from Flaticon.com or SVGRepo.com). Overrides the preset above.",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "array",
+                                    "preview_size": "thumbnail",
+                                    "library": "all",
+                                    "min_width": 0,
+                                    "min_height": 0,
+                                    "min_size": 0,
+                                    "max_width": 0,
+                                    "max_height": 0,
+                                    "max_size": 0,
+                                    "mime_types": "svg,png,webp,jpg,jpeg",
+                                    "parent_repeater": "field_ts_badges"
+                                },
+                                {
                                     "key": "field_ts_label_en",
-                                    "label": "Label",
+                                    "label": "Badge Title",
                                     "name": "label",
                                     "aria-label": "",
                                     "type": "text",
@@ -381,7 +425,7 @@
                                     "required": false,
                                     "conditional_logic": false,
                                     "wrapper": {
-                                        "width": "",
+                                        "width": "50",
                                         "class": "",
                                         "id": ""
                                     },
@@ -390,6 +434,48 @@
                                     "placeholder": "",
                                     "prepend": "",
                                     "append": "",
+                                    "parent_repeater": "field_ts_badges"
+                                },
+                                {
+                                    "key": "field_ts_desc_en",
+                                    "label": "Badge Description",
+                                    "name": "desc",
+                                    "aria-label": "",
+                                    "type": "textarea",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "rows": 2,
+                                    "default_value": "",
+                                    "new_lines": "",
+                                    "maxlength": "",
+                                    "placeholder": "",
+                                    "parent_repeater": "field_ts_badges"
+                                },
+                                {
+                                    "key": "field_ts_icon",
+                                    "label": "Custom SVG Code (Advanced Optional)",
+                                    "name": "icon_svg",
+                                    "aria-label": "",
+                                    "type": "textarea",
+                                    "instructions": "Optional raw <svg> code if not using the preset or image upload above.",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "100",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "rows": 2,
+                                    "default_value": "",
+                                    "new_lines": "",
+                                    "maxlength": "",
+                                    "placeholder": "",
                                     "parent_repeater": "field_ts_badges"
                                 }
                             ]
@@ -480,7 +566,7 @@
                 "layout_why_choose_us": {
                     "key": "layout_why_choose_us",
                     "name": "why_choose_us",
-                    "label": "Audiences (Who Uses Modafinil)",
+                    "label": "Why Choose Us / Benefit Cards",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -545,7 +631,7 @@
                         },
                         {
                             "key": "field_wcu_audiences",
-                            "label": "Audiences",
+                            "label": "Cards / Benefits",
                             "name": "audiences",
                             "aria-label": "",
                             "type": "repeater",
@@ -560,34 +646,78 @@
                             "min": 0,
                             "max": 0,
                             "rows_per_page": 20,
-                            "layout": "table",
-                            "button_label": "Add Row",
+                            "layout": "block",
+                            "button_label": "Add Card",
                             "collapsed": "",
                             "sub_fields": [
                                 {
-                                    "key": "field_wcu_a_icon",
-                                    "label": "Icon SVG",
-                                    "name": "icon_svg",
+                                    "key": "field_wcu_a_icon_preset",
+                                    "label": "Icon Style (Preset)",
+                                    "name": "icon_preset",
                                     "aria-label": "",
-                                    "type": "textarea",
-                                    "instructions": "",
+                                    "type": "select",
+                                    "instructions": "Choose a matching colorful icon or leave on Auto-Match to automatically select the best icon for the title & description.",
                                     "required": false,
                                     "conditional_logic": false,
                                     "wrapper": {
-                                        "width": "",
+                                        "width": "50",
                                         "class": "",
                                         "id": ""
                                     },
-                                    "default_value": "",
-                                    "new_lines": "",
-                                    "maxlength": "",
+                                    "choices": {
+                                        "auto": "✨ Auto-Match from Title & Description (Recommended)",
+                                        "parcel_guarantee": "🛡️ Parcel Guarantee / Reship or Refund (\"If it doesn't land, we fix it\")",
+                                        "live_chat_support": "💬 Real People on Chat / 24/7 SMS & Support",
+                                        "medical_rx_clarity": "📋 Straight-Up Medicine Info / Schedule 4 & Rx Clarity",
+                                        "aud_checkout": "💳 Simple AUD Checkout / PayID & Secure Payment",
+                                        "express_shipping": "🚚 Fast Domestic Express Shipping / Australia Post Van",
+                                        "australia_delivery": "🇦🇺 Australia-Wide Delivery / Tracked Parcel Map",
+                                        "browse_catalogue": "💊 Focused Armodafinil Range / Blister Pack Catalogue",
+                                        "listing_details": "🔍 Clear Listing Details / Compare Strengths & Packs",
+                                        "returning_loyalty": "⭐ Returning Customers / Fast Reorder & Loyalty",
+                                        "discreet_sealed": "📦 Discreet Plain Packaging / Sealed Pharmacy Pack",
+                                        "po_box_delivery": "📮 PO Box & Parcel Locker Delivery",
+                                        "no_customs": "✅ Smooth Domestic Dispatch / No Customs Hassle",
+                                        "affordable_value": "💰 Affordable Direct Pricing / Best Value"
+                                    },
+                                    "default_value": "auto",
+                                    "return_format": "value",
+                                    "multiple": 0,
+                                    "allow_null": 0,
+                                    "ui": 1,
+                                    "ajax": 0,
                                     "placeholder": "",
-                                    "rows": "",
+                                    "parent_repeater": "field_wcu_audiences"
+                                },
+                                {
+                                    "key": "field_wcu_a_icon_image",
+                                    "label": "Custom Icon Image / SVG (Optional)",
+                                    "name": "icon_image",
+                                    "aria-label": "",
+                                    "type": "image",
+                                    "instructions": "Optional: Upload your own colorful PNG/SVG/WebP icon (e.g. from Flaticon.com or SVGRepo.com). Overrides the preset above.",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "array",
+                                    "preview_size": "thumbnail",
+                                    "library": "all",
+                                    "min_width": 0,
+                                    "min_height": 0,
+                                    "min_size": 0,
+                                    "max_width": 0,
+                                    "max_height": 0,
+                                    "max_size": 0,
+                                    "mime_types": "svg,png,webp,jpg,jpeg",
                                     "parent_repeater": "field_wcu_audiences"
                                 },
                                 {
                                     "key": "field_wcu_a_title_en",
-                                    "label": "Title",
+                                    "label": "Card Title",
                                     "name": "title",
                                     "aria-label": "",
                                     "type": "text",
@@ -595,7 +725,7 @@
                                     "required": false,
                                     "conditional_logic": false,
                                     "wrapper": {
-                                        "width": "",
+                                        "width": "50",
                                         "class": "",
                                         "id": ""
                                     },
@@ -608,7 +738,7 @@
                                 },
                                 {
                                     "key": "field_wcu_a_desc_en",
-                                    "label": "Desc",
+                                    "label": "Card Description",
                                     "name": "desc",
                                     "aria-label": "",
                                     "type": "textarea",
@@ -616,7 +746,7 @@
                                     "required": false,
                                     "conditional_logic": false,
                                     "wrapper": {
-                                        "width": "",
+                                        "width": "50",
                                         "class": "",
                                         "id": ""
                                     },
@@ -624,7 +754,28 @@
                                     "new_lines": "",
                                     "maxlength": "",
                                     "placeholder": "",
-                                    "rows": "",
+                                    "rows": 3,
+                                    "parent_repeater": "field_wcu_audiences"
+                                },
+                                {
+                                    "key": "field_wcu_a_icon",
+                                    "label": "Custom SVG Code (Advanced Optional)",
+                                    "name": "icon_svg",
+                                    "aria-label": "",
+                                    "type": "textarea",
+                                    "instructions": "Optional raw <svg> code if not using the preset or image upload above.",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "100",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "new_lines": "",
+                                    "maxlength": "",
+                                    "placeholder": "",
+                                    "rows": 2,
                                     "parent_repeater": "field_wcu_audiences"
                                 }
                             ]
@@ -1176,6 +1327,26 @@
                             "append": ""
                         },
                         {
+                            "key": "field_hto_desc_en",
+                            "label": "Section Subtitle / Description",
+                            "name": "description",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "Simple, transparent, and private. Ordering Armodafinil across Australia takes just 3 straightforward steps.",
+                            "rows": 2,
+                            "new_lines": "",
+                            "maxlength": "",
+                            "placeholder": ""
+                        },
+                        {
                             "key": "field_hto_steps",
                             "label": "Steps",
                             "name": "steps",
@@ -1192,34 +1363,78 @@
                             "min": 0,
                             "max": 0,
                             "rows_per_page": 20,
-                            "layout": "table",
-                            "button_label": "Add Row",
+                            "layout": "block",
+                            "button_label": "Add Step",
                             "collapsed": "",
                             "sub_fields": [
                                 {
-                                    "key": "field_hto_s_icon",
-                                    "label": "Icon SVG",
-                                    "name": "icon_svg",
+                                    "key": "field_hto_s_icon_preset",
+                                    "label": "Icon Style (Preset)",
+                                    "name": "icon_preset",
                                     "aria-label": "",
-                                    "type": "textarea",
-                                    "instructions": "",
+                                    "type": "select",
+                                    "instructions": "Choose a matching colorful icon or leave on Auto-Match to automatically select the best icon for the title & description.",
                                     "required": false,
                                     "conditional_logic": false,
                                     "wrapper": {
-                                        "width": "",
+                                        "width": "50",
                                         "class": "",
                                         "id": ""
                                     },
-                                    "default_value": "",
-                                    "new_lines": "",
-                                    "maxlength": "",
+                                    "choices": {
+                                        "auto": "✨ Auto-Match from Title & Description (Recommended)",
+                                        "parcel_guarantee": "🛡️ Parcel Guarantee / Reship or Refund (\"If it doesn't land, we fix it\")",
+                                        "live_chat_support": "💬 Real People on Chat / 24/7 SMS & Support",
+                                        "medical_rx_clarity": "📋 Straight-Up Medicine Info / Schedule 4 & Rx Clarity",
+                                        "aud_checkout": "💳 Simple AUD Checkout / PayID & Secure Payment",
+                                        "express_shipping": "🚚 Fast Domestic Express Shipping / Australia Post Van",
+                                        "australia_delivery": "🇦🇺 Australia-Wide Delivery / Tracked Parcel Map",
+                                        "browse_catalogue": "💊 Focused Armodafinil Range / Blister Pack Catalogue",
+                                        "listing_details": "🔍 Clear Listing Details / Compare Strengths & Packs",
+                                        "returning_loyalty": "⭐ Returning Customers / Fast Reorder & Loyalty",
+                                        "discreet_sealed": "📦 Discreet Plain Packaging / Sealed Pharmacy Pack",
+                                        "po_box_delivery": "📮 PO Box & Parcel Locker Delivery",
+                                        "no_customs": "✅ Smooth Domestic Dispatch / No Customs Hassle",
+                                        "affordable_value": "💰 Affordable Direct Pricing / Best Value"
+                                    },
+                                    "default_value": "auto",
+                                    "return_format": "value",
+                                    "multiple": 0,
+                                    "allow_null": 0,
+                                    "ui": 1,
+                                    "ajax": 0,
                                     "placeholder": "",
-                                    "rows": "",
+                                    "parent_repeater": "field_hto_steps"
+                                },
+                                {
+                                    "key": "field_hto_s_icon_image",
+                                    "label": "Custom Icon Image / SVG (Optional)",
+                                    "name": "icon_image",
+                                    "aria-label": "",
+                                    "type": "image",
+                                    "instructions": "Optional: Upload your own colorful PNG/SVG/WebP icon (e.g. from Flaticon.com or SVGRepo.com). Overrides the preset above.",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "array",
+                                    "preview_size": "thumbnail",
+                                    "library": "all",
+                                    "min_width": 0,
+                                    "min_height": 0,
+                                    "min_size": 0,
+                                    "max_width": 0,
+                                    "max_height": 0,
+                                    "max_size": 0,
+                                    "mime_types": "svg,png,webp,jpg,jpeg",
                                     "parent_repeater": "field_hto_steps"
                                 },
                                 {
                                     "key": "field_hto_s_t_en",
-                                    "label": "Title",
+                                    "label": "Step Title",
                                     "name": "title",
                                     "aria-label": "",
                                     "type": "text",
@@ -1227,7 +1442,7 @@
                                     "required": false,
                                     "conditional_logic": false,
                                     "wrapper": {
-                                        "width": "",
+                                        "width": "50",
                                         "class": "",
                                         "id": ""
                                     },
@@ -1240,7 +1455,7 @@
                                 },
                                 {
                                     "key": "field_hto_s_d_en",
-                                    "label": "Desc",
+                                    "label": "Step Description",
                                     "name": "desc",
                                     "aria-label": "",
                                     "type": "textarea",
@@ -1248,7 +1463,7 @@
                                     "required": false,
                                     "conditional_logic": false,
                                     "wrapper": {
-                                        "width": "",
+                                        "width": "50",
                                         "class": "",
                                         "id": ""
                                     },
@@ -1256,7 +1471,28 @@
                                     "new_lines": "",
                                     "maxlength": "",
                                     "placeholder": "",
-                                    "rows": "",
+                                    "rows": 3,
+                                    "parent_repeater": "field_hto_steps"
+                                },
+                                {
+                                    "key": "field_hto_s_icon",
+                                    "label": "Custom SVG Code (Advanced Optional)",
+                                    "name": "icon_svg",
+                                    "aria-label": "",
+                                    "type": "textarea",
+                                    "instructions": "Optional raw <svg> code if not using the preset or image upload above.",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "100",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "new_lines": "",
+                                    "maxlength": "",
+                                    "placeholder": "",
+                                    "rows": 2,
                                     "parent_repeater": "field_hto_steps"
                                 }
                             ]
@@ -1566,28 +1802,156 @@
                             "label": "Mission Heading",
                             "name": "mission_heading",
                             "type": "text",
-                            "default_value": "Our Mission"
+                            "default_value": "Our Approach"
                         },
                         {
                             "key": "field_483eab146da44",
                             "label": "Mission Desc",
                             "name": "mission_desc",
                             "type": "textarea",
-                            "default_value": "We exist to ensure Malaysians have access to high-quality, genuine Modafinil — delivered fast, discreetly, and reliably across Peninsular, Sabah, and Sarawak."
+                            "rows": 3,
+                            "default_value": "We organise armodafinil product information so customers can compare brands, strengths and batch details with clarity."
+                        },
+                        {
+                            "key": "field_am_mission_icon_preset",
+                            "label": "Mission Card Icon Style",
+                            "name": "mission_icon_preset",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Choose a matching colorful icon or leave on Auto-Match to automatically select the best icon for the title & description.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "auto": "✨ Auto-Match from Title & Description (Recommended)",
+                                "parcel_guarantee": "🛡️ Parcel Guarantee / Reship or Refund (\"If it doesn't land, we fix it\")",
+                                "live_chat_support": "💬 Real People on Chat / 24/7 SMS & Support",
+                                "medical_rx_clarity": "📋 Straight-Up Medicine Info / Schedule 4 & Rx Clarity",
+                                "aud_checkout": "💳 Simple AUD Checkout / PayID & Secure Payment",
+                                "express_shipping": "🚚 Fast Domestic Express Shipping / Australia Post Van",
+                                "australia_delivery": "🇦🇺 Australia-Wide Delivery / Tracked Parcel Map",
+                                "browse_catalogue": "💊 Focused Armodafinil Range / Blister Pack Catalogue",
+                                "listing_details": "🔍 Clear Listing Details / Compare Strengths & Packs",
+                                "returning_loyalty": "⭐ Returning Customers / Fast Reorder & Loyalty",
+                                "discreet_sealed": "📦 Discreet Plain Packaging / Sealed Pharmacy Pack",
+                                "po_box_delivery": "📮 PO Box & Parcel Locker Delivery",
+                                "no_customs": "✅ Smooth Domestic Dispatch / No Customs Hassle",
+                                "affordable_value": "💰 Affordable Direct Pricing / Best Value"
+                            },
+                            "default_value": "browse_catalogue",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 1,
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_am_mission_icon_image",
+                            "label": "Mission Custom Icon Image (Optional)",
+                            "name": "mission_icon_image",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "Optional: Upload your own colorful PNG/SVG/WebP icon (e.g. from Flaticon.com or SVGRepo.com). Overrides the preset above.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "preview_size": "thumbnail",
+                            "library": "all",
+                            "min_width": 0,
+                            "min_height": 0,
+                            "min_size": 0,
+                            "max_width": 0,
+                            "max_height": 0,
+                            "max_size": 0,
+                            "mime_types": "svg,png,webp,jpg,jpeg"
                         },
                         {
                             "key": "field_5eaf710cafea4",
                             "label": "Vision Heading",
                             "name": "vision_heading",
                             "type": "text",
-                            "default_value": "Why Choose Us?"
+                            "default_value": "Information First"
                         },
                         {
                             "key": "field_b6b97d8f0f494",
                             "label": "Vision Desc",
                             "name": "vision_desc",
                             "type": "textarea",
-                            "default_value": "Thousands of Malaysian customers have trusted ModafinilMY since we began operations. We stock genuine Modalert and Modvigil from licensed Indian pharmaceutical manufacturers."
+                            "rows": 3,
+                            "default_value": "We use plain English, state clearly that armodafinil is prescription-only in Australia, and encourage customers to speak to a doctor before ordering."
+                        },
+                        {
+                            "key": "field_am_vision_icon_preset",
+                            "label": "Vision Card Icon Style",
+                            "name": "vision_icon_preset",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Choose a matching colorful icon or leave on Auto-Match to automatically select the best icon for the title & description.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "auto": "✨ Auto-Match from Title & Description (Recommended)",
+                                "parcel_guarantee": "🛡️ Parcel Guarantee / Reship or Refund (\"If it doesn't land, we fix it\")",
+                                "live_chat_support": "💬 Real People on Chat / 24/7 SMS & Support",
+                                "medical_rx_clarity": "📋 Straight-Up Medicine Info / Schedule 4 & Rx Clarity",
+                                "aud_checkout": "💳 Simple AUD Checkout / PayID & Secure Payment",
+                                "express_shipping": "🚚 Fast Domestic Express Shipping / Australia Post Van",
+                                "australia_delivery": "🇦🇺 Australia-Wide Delivery / Tracked Parcel Map",
+                                "browse_catalogue": "💊 Focused Armodafinil Range / Blister Pack Catalogue",
+                                "listing_details": "🔍 Clear Listing Details / Compare Strengths & Packs",
+                                "returning_loyalty": "⭐ Returning Customers / Fast Reorder & Loyalty",
+                                "discreet_sealed": "📦 Discreet Plain Packaging / Sealed Pharmacy Pack",
+                                "po_box_delivery": "📮 PO Box & Parcel Locker Delivery",
+                                "no_customs": "✅ Smooth Domestic Dispatch / No Customs Hassle",
+                                "affordable_value": "💰 Affordable Direct Pricing / Best Value"
+                            },
+                            "default_value": "medical_rx_clarity",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 1,
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_am_vision_icon_image",
+                            "label": "Vision Custom Icon Image (Optional)",
+                            "name": "vision_icon_image",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "Optional: Upload your own colorful PNG/SVG/WebP icon (e.g. from Flaticon.com or SVGRepo.com). Overrides the preset above.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "preview_size": "thumbnail",
+                            "library": "all",
+                            "min_width": 0,
+                            "min_height": 0,
+                            "min_size": 0,
+                            "max_width": 0,
+                            "max_height": 0,
+                            "max_size": 0,
+                            "mime_types": "svg,png,webp,jpg,jpeg"
                         }
                     ]
                 },
@@ -1661,13 +2025,71 @@
                             "label": "List Items",
                             "name": "list_items",
                             "type": "repeater",
-                            "layout": "table",
+                            "layout": "block",
                             "sub_fields": [
                                 {
-                                    "key": "field_5a458ff2de144",
-                                    "label": "Icon SVG",
-                                    "name": "icon_svg",
-                                    "type": "textarea",
+                                    "key": "field_ad_icon_preset",
+                                    "label": "Icon Style (Preset)",
+                                    "name": "icon_preset",
+                                    "aria-label": "",
+                                    "type": "select",
+                                    "instructions": "Choose a matching colorful icon or leave on Auto-Match to automatically select the best icon for the title & description.",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "auto": "✨ Auto-Match from Title & Description (Recommended)",
+                                        "parcel_guarantee": "🛡️ Parcel Guarantee / Reship or Refund (\"If it doesn't land, we fix it\")",
+                                        "live_chat_support": "💬 Real People on Chat / 24/7 SMS & Support",
+                                        "medical_rx_clarity": "📋 Straight-Up Medicine Info / Schedule 4 & Rx Clarity",
+                                        "aud_checkout": "💳 Simple AUD Checkout / PayID & Secure Payment",
+                                        "express_shipping": "🚚 Fast Domestic Express Shipping / Australia Post Van",
+                                        "australia_delivery": "🇦🇺 Australia-Wide Delivery / Tracked Parcel Map",
+                                        "browse_catalogue": "💊 Focused Armodafinil Range / Blister Pack Catalogue",
+                                        "listing_details": "🔍 Clear Listing Details / Compare Strengths & Packs",
+                                        "returning_loyalty": "⭐ Returning Customers / Fast Reorder & Loyalty",
+                                        "discreet_sealed": "📦 Discreet Plain Packaging / Sealed Pharmacy Pack",
+                                        "po_box_delivery": "📮 PO Box & Parcel Locker Delivery",
+                                        "no_customs": "✅ Smooth Domestic Dispatch / No Customs Hassle",
+                                        "affordable_value": "💰 Affordable Direct Pricing / Best Value"
+                                    },
+                                    "default_value": "auto",
+                                    "return_format": "value",
+                                    "multiple": 0,
+                                    "allow_null": 0,
+                                    "ui": 1,
+                                    "ajax": 0,
+                                    "placeholder": "",
+                                    "parent_repeater": "field_3da652fbdede4"
+                                },
+                                {
+                                    "key": "field_ad_icon_image",
+                                    "label": "Custom Icon Image / SVG (Optional)",
+                                    "name": "icon_image",
+                                    "aria-label": "",
+                                    "type": "image",
+                                    "instructions": "Optional: Upload your own colorful PNG/SVG/WebP icon (e.g. from Flaticon.com or SVGRepo.com). Overrides the preset above.",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "array",
+                                    "preview_size": "thumbnail",
+                                    "library": "all",
+                                    "min_width": 0,
+                                    "min_height": 0,
+                                    "min_size": 0,
+                                    "max_width": 0,
+                                    "max_height": 0,
+                                    "max_size": 0,
+                                    "mime_types": "svg,png,webp,jpg,jpeg",
                                     "parent_repeater": "field_3da652fbdede4"
                                 },
                                 {
@@ -1675,16 +2097,41 @@
                                     "label": "Title",
                                     "name": "title",
                                     "type": "text",
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    },
                                     "parent_repeater": "field_3da652fbdede4"
                                 },
                                 {
                                     "key": "field_c514df4f69834",
-                                    "label": "Desc",
+                                    "label": "Description",
                                     "name": "desc",
                                     "type": "textarea",
+                                    "rows": 2,
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "parent_repeater": "field_3da652fbdede4"
+                                },
+                                {
+                                    "key": "field_5a458ff2de144",
+                                    "label": "Custom SVG Code (Advanced Optional)",
+                                    "name": "icon_svg",
+                                    "type": "textarea",
+                                    "rows": 2,
+                                    "wrapper": {
+                                        "width": "100",
+                                        "class": "",
+                                        "id": ""
+                                    },
                                     "parent_repeater": "field_3da652fbdede4"
                                 }
-                            ]
+                            ],
+                            "button_label": "Add Delivery Feature"
                         }
                     ]
                 },
@@ -2400,15 +2847,60 @@
                             "sub_fields": [
                                 {
                                     "key": "field_to_trust_type",
-                                    "label": "Icon Type",
+                                    "label": "Icon Style (Preset)",
                                     "name": "card_type",
                                     "type": "select",
                                     "choices": {
-                                        "shipping": "Australia Post Express Van (Free Shipping)",
-                                        "support": "24/7 Verified Support Shield",
-                                        "payment": "100% Encrypted Payment Shield"
+                                        "shipping": "🚚 Australia Post Express Van (Free Shipping)",
+                                        "support": "💬 24/7 Verified Support",
+                                        "payment": "💳 100% Encrypted AUD Checkout",
+                                        "auto": "✨ Auto-Match from Title & Description (Recommended)",
+                                        "parcel_guarantee": "🛡️ Parcel Guarantee / Reship or Refund (\"If it doesn't land, we fix it\")",
+                                        "live_chat_support": "💬 Real People on Chat / 24/7 SMS & Support",
+                                        "medical_rx_clarity": "📋 Straight-Up Medicine Info / Schedule 4 & Rx Clarity",
+                                        "aud_checkout": "💳 Simple AUD Checkout / PayID & Secure Payment",
+                                        "express_shipping": "🚚 Fast Domestic Express Shipping / Australia Post Van",
+                                        "australia_delivery": "🇦🇺 Australia-Wide Delivery / Tracked Parcel Map",
+                                        "browse_catalogue": "💊 Focused Armodafinil Range / Blister Pack Catalogue",
+                                        "listing_details": "🔍 Clear Listing Details / Compare Strengths & Packs",
+                                        "returning_loyalty": "⭐ Returning Customers / Fast Reorder & Loyalty",
+                                        "discreet_sealed": "📦 Discreet Plain Packaging / Sealed Pharmacy Pack",
+                                        "po_box_delivery": "📮 PO Box & Parcel Locker Delivery",
+                                        "no_customs": "✅ Smooth Domestic Dispatch / No Customs Hassle",
+                                        "affordable_value": "💰 Affordable Direct Pricing / Best Value"
                                     },
-                                    "default_value": "shipping"
+                                    "default_value": "shipping",
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    }
+                                },
+                                {
+                                    "key": "field_to_trust_icon_image",
+                                    "label": "Custom Icon Image / SVG (Optional)",
+                                    "name": "icon_image",
+                                    "aria-label": "",
+                                    "type": "image",
+                                    "instructions": "Optional: Upload your own colorful PNG/SVG/WebP icon (e.g. from Flaticon.com or SVGRepo.com). Overrides the preset above.",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "array",
+                                    "preview_size": "thumbnail",
+                                    "library": "all",
+                                    "min_width": 0,
+                                    "min_height": 0,
+                                    "min_size": 0,
+                                    "max_width": 0,
+                                    "max_height": 0,
+                                    "max_size": 0,
+                                    "mime_types": "svg,png,webp,jpg,jpeg",
+                                    "parent_repeater": "field_to_trust_cards"
                                 },
                                 {
                                     "key": "field_to_trust_title",
@@ -4275,6 +4767,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1791997815,
+    "modified": 1792586495,
     "local_file": "C:laragonwwwwaklertaustralia.com/wp-content/themes/waklertaustralia.com-wp/acf-json/group_page_modules.json"
 }

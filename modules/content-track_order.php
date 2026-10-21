@@ -236,44 +236,27 @@ if (empty($trust_cards) || !is_array($trust_cards)) {
             $ctype = $card['card_type'] ?? 'shipping';
             $ctitle = $card['title'] ?? '';
             $cdesc = $card['description'] ?? '';
+            $cimage = $card['icon_image'] ?? null;
             if (!$ctitle) continue;
+
+            $legacy_map = [
+                'shipping' => 'express_shipping',
+                'support'  => 'live_chat_support',
+                'payment'  => 'aud_checkout',
+            ];
+            $resolved_preset = $legacy_map[$ctype] ?? $ctype;
+            $card_icon_html = waklert_render_card_icon([
+                'icon_image'     => $cimage,
+                'icon_preset'    => $resolved_preset,
+                'title'          => $ctitle,
+                'desc'           => $cdesc,
+                'default_preset' => 'express_shipping',
+                'size_class'     => 'w-10 h-10 shrink-0',
+            ]);
         ?>
         <div class="rounded-2xl border-2 border-dashed border-sky-200/90 bg-white p-6 shadow-xs hover:border-sky-400 hover:shadow-md transition-all flex flex-col items-center text-center">
             <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-white p-2 shadow-lg shadow-black/10 border-2 border-sky-100 mb-4 shrink-0">
-                <?php if ($ctype === 'support'): ?>
-                    <!-- 24/7 Support Shield SVG -->
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="w-10 h-10 shrink-0" fill="none" aria-hidden="true">
-                        <ellipse cx="32" cy="55" rx="18" ry="2.5" fill="#0C4161" fill-opacity="0.15" />
-                        <path d="M32 7L16 13.5V27C16 40.5 23 48.5 32 52.5C41 48.5 48 40.5 48 27V13.5L32 7Z" fill="#0284C7" />
-                        <path d="M32 10L18.5 15.5V27C18.5 38.5 24.5 45.8 32 49.2C39.5 45.8 45.5 38.5 45.5 27V15.5L32 10Z" fill="#38BDF8" />
-                        <circle cx="32" cy="29" r="10" fill="#0C4161" />
-                        <path d="M26 29H38M32 23V35" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" />
-                    </svg>
-                <?php elseif ($ctype === 'payment'): ?>
-                    <!-- Secure Lock Shield SVG (Amber/Gold tones) -->
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="w-10 h-10 shrink-0" fill="none" aria-hidden="true">
-                        <ellipse cx="32" cy="55" rx="18" ry="2.5" fill="#0C4161" fill-opacity="0.15" />
-                        <path d="M32 7L16 13.5V27C16 40.5 23 48.5 32 52.5C41 48.5 48 40.5 48 27V13.5L32 7Z" fill="#D97706" />
-                        <path d="M32 10L18.5 15.5V27C18.5 38.5 24.5 45.8 32 49.2C39.5 45.8 45.5 38.5 45.5 27V15.5L32 10Z" fill="#F59E0B" />
-                        <rect x="25" y="27" width="14" height="12" rx="2.5" fill="#FFFFFF" />
-                        <path d="M28 27V23C28 20.8 29.8 19 32 19C34.2 19 36 20.8 36 23V27" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" />
-                        <circle cx="32" cy="33" r="1.5" fill="#B45309" />
-                    </svg>
-                <?php else: ?>
-                    <!-- AusPost Delivery Van SVG -->
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="w-10 h-10 shrink-0" fill="none" aria-hidden="true">
-                        <ellipse cx="32" cy="55" rx="20" ry="2.5" fill="#0C4161" fill-opacity="0.15" />
-                        <rect x="6" y="20" width="34" height="24" rx="3" fill="#DC2626" />
-                        <path d="M40 25H49.5C51.5 25 53.2 26.2 54 28L57.5 35.5C57.8 36.2 58 37 58 37.8V44H40V25Z" fill="#B91C1C" />
-                        <path d="M42 27H49L53.5 35H42V27Z" fill="#FEE2E2" />
-                        <rect x="10" y="27" width="26" height="5" rx="1.5" fill="#FFFFFF" fill-opacity="0.9" />
-                        <circle cx="18" cy="46" r="6.5" fill="#1E293B" stroke="#F1F5F9" stroke-width="2" />
-                        <circle cx="18" cy="46" r="2.5" fill="#FFFFFF" />
-                        <circle cx="48" cy="46" r="6.5" fill="#1E293B" stroke="#F1F5F9" stroke-width="2" />
-                        <circle cx="48" cy="46" r="2.5" fill="#FFFFFF" />
-                        <circle cx="56" cy="40" r="1.5" fill="#FBBF24" />
-                    </svg>
-                <?php endif; ?>
+                <?= $card_icon_html ?>
             </div>
             <h3 class="font-heading font-extrabold text-slate-900 text-base mb-2"><?= esc_html($ctitle) ?></h3>
             <p class="text-xs sm:text-sm text-slate-600 leading-relaxed m-0">
