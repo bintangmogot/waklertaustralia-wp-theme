@@ -166,13 +166,8 @@
         <!-- Right Actions -->
         <div class="flex items-center gap-2 sm:gap-3 ml-auto lg:ml-0">
             <?php if ($header_btn_text !== '' && $header_btn_href !== ''): ?>
-            <!-- Mobile Quick Call Button (Phone icon on small mobile screens) -->
-            <a href="<?= esc_attr($header_btn_href) ?>" aria-label="Call <?= esc_attr($header_btn_text) ?>" class="flex sm:hidden h-10 w-10 items-center justify-center rounded-xl bg-[#0c4161] border border-sky-400/30 text-white hover:bg-[#082a3f] transition-colors shadow-xs">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" class="h-4.5 w-4.5 text-white"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            </a>
-
-            <!-- Header Phone Number Button (Solid Blue Background & White Icon) -->
-            <a href="<?= esc_attr($header_btn_href) ?>" aria-label="Call <?= esc_attr($header_btn_text) ?>" class="hidden sm:inline-flex items-center gap-2 sm:gap-2.5 px-3.5 sm:px-4 py-1.5 rounded-full bg-[#0c4161] hover:bg-[#082a3f] text-white transition-all group shadow-sm">
+            <!-- Header Phone Number Button (Hidden on mobile; Solid Blue Background & White Icon on desktop) -->
+            <a href="<?= esc_attr($header_btn_href) ?>" aria-label="Call <?= esc_attr($header_btn_text) ?>" class="hidden md:inline-flex items-center gap-2 sm:gap-2.5 px-3.5 sm:px-4 py-1.5 rounded-full bg-[#0c4161] hover:bg-[#082a3f] text-white transition-all group shadow-sm">
                 <span class="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-white/15 text-white transition-colors group-hover:bg-white/25">
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5 sm:h-4 sm:w-4 text-white"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                 </span>
