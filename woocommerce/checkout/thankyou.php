@@ -20,7 +20,11 @@
 defined( 'ABSPATH' ) || exit;
 
 $contact_email = function_exists( 'get_field' ) ? get_field( 'contact_email', 'option' ) : '';
-$contact_email = sanitize_email( $contact_email ?: 'orders@modafinil-australia.com' );
+if ( empty( $contact_email ) || strpos( $contact_email, 'support@' ) !== false || strpos( $contact_email, 'modafinil' ) !== false ) {
+    $contact_email = 'orders@waklertaustralia.com.au';
+} else {
+    $contact_email = sanitize_email( $contact_email );
+}
 ?>
 
 <div class="woocommerce-order max-w-3xl mx-auto py-8 lg:py-12">
