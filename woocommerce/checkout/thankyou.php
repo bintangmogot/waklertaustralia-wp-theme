@@ -337,24 +337,72 @@ $bacs_acc      = '48880531';
                         margin-top: 2rem !important;
                         margin-bottom: 2rem !important;
                     }
-                    .woocommerce-customer-details .col2-set {
-                        display: grid !important;
-                        grid-template-columns: 1fr !important;
+                    /* Customer addresses layout: Force 1 column on mobile, 2 columns on desktop */
+                    .woocommerce .woocommerce-customer-details .col2-set,
+                    .woocommerce-page .woocommerce-customer-details .col2-set,
+                    .woocommerce-customer-details .col2-set,
+                    .woocommerce-customer-details .woocommerce-columns--addresses,
+                    section.woocommerce-columns--addresses {
+                        display: flex !important;
+                        flex-direction: column !important;
                         gap: 1.5rem !important;
                         width: 100% !important;
                     }
-                    @media (min-width: 640px) {
-                        .woocommerce-customer-details .col2-set {
-                            grid-template-columns: 1fr 1fr !important;
-                        }
-                    }
-                    .woocommerce-customer-details .col2-set .col-1,
-                    .woocommerce-customer-details .col2-set .col-2,
-                    .woocommerce-customer-details .woocommerce-column {
+                    .woocommerce .woocommerce-customer-details .col-1,
+                    .woocommerce .woocommerce-customer-details .col-2,
+                    .woocommerce-page .woocommerce-customer-details .col-1,
+                    .woocommerce-page .woocommerce-customer-details .col-2,
+                    .woocommerce .col2-set .col-1,
+                    .woocommerce .col2-set .col-2,
+                    .woocommerce-page .col2-set .col-1,
+                    .woocommerce-page .col2-set .col-2,
+                    .woocommerce-customer-details .col-1,
+                    .woocommerce-customer-details .col-2,
+                    .woocommerce-customer-details .woocommerce-column,
+                    div.woocommerce-column--billing-address,
+                    div.woocommerce-column--shipping-address {
                         float: none !important;
                         width: 100% !important;
                         max-width: 100% !important;
+                        flex: 1 1 100% !important;
                         box-sizing: border-box !important;
+                        clear: both !important;
+                    }
+                    @media (max-width: 767px) {
+                        .woocommerce-customer-details .col2-set,
+                        .woocommerce-customer-details .woocommerce-columns--addresses,
+                        section.woocommerce-columns--addresses {
+                            display: flex !important;
+                            flex-direction: column !important;
+                            gap: 1.5rem !important;
+                        }
+                        .woocommerce-customer-details .col-1,
+                        .woocommerce-customer-details .col-2,
+                        div.woocommerce-column--billing-address,
+                        div.woocommerce-column--shipping-address {
+                            float: none !important;
+                            width: 100% !important;
+                            clear: both !important;
+                            display: block !important;
+                            margin-bottom: 1.5rem !important;
+                        }
+                    }
+                    @media (min-width: 768px) {
+                        .woocommerce .woocommerce-customer-details .col2-set,
+                        .woocommerce-page .woocommerce-customer-details .col2-set,
+                        .woocommerce-customer-details .col2-set,
+                        .woocommerce-customer-details .woocommerce-columns--addresses,
+                        section.woocommerce-columns--addresses {
+                            display: grid !important;
+                            grid-template-columns: 1fr 1fr !important;
+                            gap: 1.5rem !important;
+                        }
+                        .woocommerce-customer-details .col-1,
+                        .woocommerce-customer-details .col-2,
+                        div.woocommerce-column--billing-address,
+                        div.woocommerce-column--shipping-address {
+                            margin-bottom: 0 !important;
+                        }
                     }
                     .woocommerce-customer-details address {
                         display: block !important;
