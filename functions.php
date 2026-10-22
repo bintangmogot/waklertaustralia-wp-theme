@@ -628,32 +628,82 @@ function modmy_fix_zero_pack_sizes() {
 // Custom BACS display format
 add_action("woocommerce_thankyou_bacs", "modmy_custom_bacs_details", 5);
 function modmy_custom_bacs_details($order_id) {
-    $gateways = WC()->payment_gateways->payment_gateways();
-    if (!isset($gateways["bacs"])) return;
-    
-    $bacs = $gateways["bacs"];
-    $bacs_accounts = $bacs->account_details;
-    if (empty($bacs_accounts)) return;
+    $gateways = function_exists('WC') && WC()->payment_gateways ? WC()->payment_gateways->payment_gateways() : [];
+    $bacs = $gateways["bacs"] ?? null;
+    $bacs_accounts = $bacs ? $bacs->account_details : [];
+    if (empty($bacs_accounts)) {
+        $bacs_accounts = [
+            [
+                'bank_name'      => 'Commonwealth Bank',
+                'account_name'   => 'Steven Waldberg',
+                'sort_code'      => '062 948',
+                'account_number' => '48880531',
+                'bic'            => '',
+            ]
+        ];
+    }
     
     echo "<style>.woocommerce-bacs-bank-details { display: none !important; }</style>";
     echo "<div class=\"custom-bacs-details mt-8 mb-8 p-6 bg-[#F0F7FF] border border-[#BDE0FF] rounded-2xl text-center text-foreground\">";
     echo "<h3 class=\"font-bold text-xl mb-4 text-foreground\">Bank Details</h3>";
     
     foreach ($bacs_accounts as $account) {
-        $bank_name = !empty($account["bank_name"]) ? $account["bank_name"] : "ING Bank";
+        $bank_name = !empty($account["bank_name"]) ? $account["bank_name"] : "Commonwealth Bank";
         $account_name = !empty($account["account_name"]) ? $account["account_name"] : "Steven Waldberg";
-        $sort_code = !empty($account["sort_code"]) ? $account["sort_code"] : "923100";
-        $account_number = !empty($account["account_number"]) ? $account["account_number"] : "320629252";
-        $bic = !empty($account["bic"]) ? $account["bic"] : "INGBAU2S";
+        $sort_code = !empty($account["sort_code"]) ? $account["sort_code"] : "062 948";
+        $account_number = !empty($account["account_number"]) ? $account["account_number"] : "48880531";
+        $bic = !empty($account["bic"]) ? $account["bic"] : "";
+
+        // Override if database still contains old bank details
+        if (stripos($bank_name, 'ING') !== false || stripos($account_name, 'Sean') !== false || $account_number === '306528842') {
+            $bank_name = "Commonwealth Bank";
+            $account_name = "Steven Waldberg";
+            $sort_code = "062 948";
+            $account_number = "48880531";
+            $bic = "";
+        }
         
         echo "<p class=\"mb-1 text-lg\"><strong>Bank:</strong> " . esc_html($bank_name) . "</p>";
         echo "<p class=\"mb-1 text-lg\"><strong>Account Name:</strong> " . esc_html($account_name) . "</p>";
         echo "<p class=\"mb-1 text-lg\"><strong>BSB:</strong> " . esc_html($sort_code) . "</p>";
         echo "<p class=\"mb-1 text-lg\"><strong>Account Number:</strong> " . esc_html($account_number) . "</p>";
-        echo "<p class=\"mb-4 text-lg\"><strong>SWIFT/BIC:</strong> " . esc_html($bic) . "</p>";
+        if (!empty($bic)) {
+            echo "<p class=\"mb-4 text-lg\"><strong>SWIFT/BIC:</strong> " . esc_html($bic) . "</p>";
+        }
     }
     echo "</div>";
 }
+
+// Auto-sync bank details and orders email to ensure remote/live and local are identical
+add_action('init', function () {
+    $current_email = get_option('options_contact_email');
+    if ($current_email !== 'orders@waklertaustralia.com.au') {
+        update_option('options_contact_email', 'orders@waklertaustralia.com.au');
+        update_option('options_footer_email', 'orders@waklertaustralia.com.au');
+        update_option('options_support_email', 'orders@waklertaustralia.com.au');
+    }
+
+    $bacs = get_option('woocommerce_bacs_accounts');
+    if (empty($bacs) || !isset($bacs[0]['account_name']) || $bacs[0]['account_name'] !== 'Steven Waldberg' || ($bacs[0]['bank_name'] ?? '') !== 'Commonwealth Bank') {
+        update_option('woocommerce_bacs_accounts', array(
+            array(
+                'account_name'   => 'Steven Waldberg',
+                'account_number' => '48880531',
+                'bank_name'      => 'Commonwealth Bank',
+                'sort_code'      => '062 948',
+                'iban'           => '',
+                'bic'            => '',
+                'country_code'   => 'AU',
+            )
+        ));
+    }
+
+    $bacs_settings = get_option('woocommerce_bacs_settings');
+    if (is_array($bacs_settings) && isset($bacs_settings['instructions']) && stripos($bacs_settings['instructions'], 'Malaysian Post') !== false) {
+        $bacs_settings['instructions'] = str_ireplace('Malaysian Post', 'Australian Post', $bacs_settings['instructions']);
+        update_option('woocommerce_bacs_settings', $bacs_settings);
+    }
+});
 
 // Added missing function
 function modmy_get_post_category($post_id) {
