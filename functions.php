@@ -97,17 +97,6 @@ add_filter('gform_submit_button', function($button, $form) {
     }
     return $button;
 }, 10, 2);
-add_action( "woocommerce_thankyou", "modafinil_add_shipping_note_thankyou", 5 );
-function modafinil_add_shipping_note_thankyou( $order_id ) {
-    ?>
-    <div class="shipping-notice-thankyou mt-8 mb-8 p-6 bg-blue-50 border-l-4 border-blue-500 rounded">
-        <h3 class="text-blue-700 font-bold mb-2">Note</h3>
-        <p class="text-blue-700 mb-4">Please <strong>DO NOT</strong> reference anything related to medicine or website name. Just mention your order number.</p>
-        <p class="text-blue-700 mb-4">The average shipping time is 7 - 10 business days. Please note that delivery may take up to 30 days from the date of dispatch due to potential disruptions in postal services caused by weather issues or natural disaster.</p>
-        <p class="text-blue-700 font-semibold">waklertaustralia.com</p>
-    </div>
-    <?php
-}
 
 
 add_action("wp_head", function() {
