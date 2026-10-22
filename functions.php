@@ -9,11 +9,12 @@ define('MODMY_THEME_DIR', get_stylesheet_directory());
 define('MODMY_THEME_URI', get_stylesheet_directory_uri());
 
 /** Render the subtle orbit-line background used across Waklert blue sections. */
-function waklert_output_pattern_rings() {
+function waklert_output_pattern_rings($extra_class = '') {
+    $class = $extra_class ? ' ' . trim(esc_attr($extra_class)) : '';
     ?>
-    <div aria-hidden="true" class="pointer-events-none absolute -right-40 -top-48 z-0 h-[34rem] w-[34rem] rounded-full border border-white/10"></div>
-    <div aria-hidden="true" class="pointer-events-none absolute -right-20 -top-28 z-0 h-[26rem] w-[26rem] rounded-full border border-white/10"></div>
-    <div aria-hidden="true" class="pointer-events-none absolute -bottom-64 left-[34%] z-0 h-[32rem] w-[32rem] rounded-full border border-white/5"></div>
+    <div aria-hidden="true" class="pointer-events-none absolute -right-40 -top-48 z-0 h-[34rem] w-[34rem] rounded-full border border-white/10<?= $class ?>"></div>
+    <div aria-hidden="true" class="pointer-events-none absolute -right-20 -top-28 z-0 h-[26rem] w-[26rem] rounded-full border border-white/10<?= $class ?>"></div>
+    <div aria-hidden="true" class="pointer-events-none absolute -bottom-64 left-[34%] z-0 h-[32rem] w-[32rem] rounded-full border border-white/5<?= $class ?>"></div>
     <?php
 }
 

@@ -64,10 +64,10 @@ if (empty($mobile_img_url)) {
 
     <!-- MAIN HERO CONTENT CONTAINER (with pattern rings, dots & text) -->
     <div class="relative md:min-h-[580px] lg:min-h-[640px] md:flex md:items-center -mt-12 sm:-mt-16 md:mt-0 z-20">
-        <!-- Background dot pattern (masked at top on mobile so dots dissolve into gradient seamlessly) -->
-        <div class="pointer-events-none absolute inset-0 bg-pattern-dots-dark hero-mobile-dots-fade z-0" aria-hidden="true"></div>
+        <!-- Background dot pattern (hidden on mobile, visible on md+) -->
+        <div class="pointer-events-none absolute inset-0 hidden md:block bg-pattern-dots-dark z-0" aria-hidden="true"></div>
 
-        <?php waklert_output_pattern_rings(); ?>
+        <?php waklert_output_pattern_rings('hidden md:block'); ?>
 
         <!-- TABLET & DESKTOP ONLY: Background Right-Anchored Image (>= md) -->
         <div class="pointer-events-none absolute inset-0 z-0 overflow-hidden hidden md:block">
