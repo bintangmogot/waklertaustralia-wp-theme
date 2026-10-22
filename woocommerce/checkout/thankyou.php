@@ -332,6 +332,54 @@ $bacs_acc      = '48880531';
                         font-weight: 700 !important;
                         color: #0F172A !important;
                     }
+                    .woocommerce-customer-details {
+                        width: 100% !important;
+                        margin-top: 2rem !important;
+                        margin-bottom: 2rem !important;
+                    }
+                    .woocommerce-customer-details .col2-set {
+                        display: grid !important;
+                        grid-template-columns: 1fr !important;
+                        gap: 1.5rem !important;
+                        width: 100% !important;
+                    }
+                    @media (min-width: 640px) {
+                        .woocommerce-customer-details .col2-set {
+                            grid-template-columns: 1fr 1fr !important;
+                        }
+                    }
+                    .woocommerce-customer-details .col2-set .col-1,
+                    .woocommerce-customer-details .col2-set .col-2,
+                    .woocommerce-customer-details .woocommerce-column {
+                        float: none !important;
+                        width: 100% !important;
+                        max-width: 100% !important;
+                        box-sizing: border-box !important;
+                    }
+                    .woocommerce-customer-details address {
+                        display: block !important;
+                        background: #FFFFFF !important;
+                        border: 1px solid #E2E8F0 !important;
+                        border-radius: 1.25rem !important;
+                        padding: 1.5rem !important;
+                        font-style: normal !important;
+                        font-size: 0.9375rem !important;
+                        line-height: 1.65 !important;
+                        color: #334155 !important;
+                        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04) !important;
+                        width: 100% !important;
+                        box-sizing: border-box !important;
+                    }
+                    .woocommerce-customer-details address p {
+                        display: flex !important;
+                        align-items: center !important;
+                        gap: 0.5rem !important;
+                        margin-top: 0.75rem !important;
+                        margin-bottom: 0 !important;
+                        color: #475569 !important;
+                        font-size: 0.875rem !important;
+                        word-break: break-all !important;
+                    }
                     .woocommerce-customer-details h2.woocommerce-column__title {
                         font-family: var(--font-heading, inherit);
                         font-size: 1.125rem !important;
@@ -339,15 +387,8 @@ $bacs_acc      = '48880531';
                         color: #0F172A !important;
                         margin-top: 0 !important;
                         margin-bottom: 0.75rem !important;
-                    }
-                    .woocommerce-customer-details .col2-set {
-                        display: grid !important;
-                        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
-                        gap: 1.5rem !important;
-                    }
-                    .woocommerce-customer-details address {
-                        border-radius: 1.25rem !important;
-                        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.04) !important;
+                        padding-bottom: 0.5rem !important;
+                        border-bottom: 2px solid #E2E8F0 !important;
                     }
                 </style>
                 <?php do_action( 'woocommerce_thankyou_' . $order->get_payment_method(), $order->get_id() ); ?>
