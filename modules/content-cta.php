@@ -15,7 +15,11 @@ $wa_number = preg_replace('/[^0-9]/', '', get_field('whatsapp_number', 'option')
 $btn_url = get_sub_field('button_url') ?: ($is_buyers_guide ? home_url('/shop/') : "https://wa.me/{$wa_number}");
 
 $btn2 = get_sub_field('secondary_button_text') ?: ($is_buyers_guide ? "Contact Us" : "Send an email");
-$btn2_url = get_sub_field('secondary_button_url') ?: 'mailto:orders@waklertaustralia.com.au';
+$default_cta_email = get_field('contact_email', 'option') ?: 'modaaust@gmail.com';
+if (strpos($default_cta_email, '@waklertaustralia') !== false || strpos($default_cta_email, 'example.com') !== false) {
+    $default_cta_email = 'modaaust@gmail.com';
+}
+$btn2_url = get_sub_field('secondary_button_url') ?: ('mailto:' . $default_cta_email);
 ?>
 <section class="py-4 pb-10 bg-white" data-testid="cta-section">
     <div class="container-custom max-w-4xl">

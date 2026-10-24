@@ -663,13 +663,37 @@ function modmy_custom_bacs_details($order_id) {
     echo "</div>";
 }
 
-// Auto-sync bank details and orders email to ensure remote/live and local are identical
+// Auto-sync bank details and store notification emails to modaaust@gmail.com
 add_action('init', function () {
+    $target_email = 'modaaust@gmail.com';
     $current_email = get_option('options_contact_email');
-    if ($current_email !== 'orders@waklertaustralia.com.au') {
-        update_option('options_contact_email', 'orders@waklertaustralia.com.au');
-        update_option('options_footer_email', 'orders@waklertaustralia.com.au');
-        update_option('options_support_email', 'orders@waklertaustralia.com.au');
+    if ($current_email !== $target_email) {
+        update_option('options_contact_email', $target_email);
+        update_option('options_footer_email', $target_email);
+        update_option('options_support_email', $target_email);
+    }
+
+    if (get_option('admin_email') !== $target_email) {
+        update_option('admin_email', $target_email);
+    }
+    if (get_option('new_admin_email') !== $target_email) {
+        update_option('new_admin_email', $target_email);
+    }
+    if (get_option('woocommerce_stock_email_recipient') !== $target_email) {
+        update_option('woocommerce_stock_email_recipient', $target_email);
+    }
+
+    foreach (['new_order', 'cancelled_order', 'failed_order'] as $email_key) {
+        $opt_key = 'woocommerce_' . $email_key . '_settings';
+        $settings = get_option($opt_key);
+        if (is_array($settings)) {
+            if (($settings['recipient'] ?? '') !== $target_email) {
+                $settings['recipient'] = $target_email;
+                update_option($opt_key, $settings);
+            }
+        } else {
+            update_option($opt_key, array('recipient' => $target_email, 'enabled' => 'yes'));
+        }
     }
 
     $bacs = get_option('woocommerce_bacs_accounts');
@@ -693,6 +717,62 @@ add_action('init', function () {
         update_option('woocommerce_bacs_settings', $bacs_settings);
     }
 });
+
+/**
+ * Route all store notifications (orders, inquiries, admin alerts) to modaaust@gmail.com
+ */
+add_filter('woocommerce_email_recipient_new_order', function($recipient, $order = null) {
+    return 'modaaust@gmail.com';
+}, 9999, 2);
+
+add_filter('woocommerce_email_recipient_cancelled_order', function($recipient, $order = null) {
+    return 'modaaust@gmail.com';
+}, 9999, 2);
+
+add_filter('woocommerce_email_recipient_failed_order', function($recipient, $order = null) {
+    return 'modaaust@gmail.com';
+}, 9999, 2);
+
+// Add Bcc on customer order emails so modaaust@gmail.com receives a direct copy of all order receipts & bank payment instructions
+add_filter('woocommerce_email_headers', function($headers, $email_id, $order = null) {
+    if (in_array($email_id, ['customer_on_hold_order', 'customer_processing_order', 'customer_completed_order', 'new_order'])) {
+        $headers .= "Bcc: modaaust@gmail.com\r\n";
+    }
+    return $headers;
+}, 9999, 3);
+
+// Route any administrative/inquiry email or emails destined for old waklertaustralia addresses to modaaust@gmail.com
+add_filter('wp_mail', function($args) {
+    $target_email = 'modaaust@gmail.com';
+    $is_string = is_string($args['to'] ?? null);
+    $recipients = (array) ($args['to'] ?? []);
+    $new_recipients = [];
+    $modified = false;
+
+    foreach ($recipients as $recipient) {
+        $clean = trim((string) $recipient);
+        if (
+            stripos($clean, '@waklertaustralia.com') !== false ||
+            stripos($clean, '@waklertaustralia.com.au') !== false ||
+            stripos($clean, 'admin@example.com') !== false ||
+            stripos($clean, 'support@') !== false ||
+            stripos($clean, 'orders@') !== false
+        ) {
+            $new_recipients[] = $target_email;
+            $modified = true;
+        } else {
+            $new_recipients[] = $clean;
+        }
+    }
+
+    if ($modified) {
+        $unique = array_values(array_unique($new_recipients));
+        $args['to'] = ($is_string && count($unique) === 1) ? $unique[0] : $unique;
+    }
+
+    return $args;
+}, 9999);
+
 
 // Added missing function
 function modmy_get_post_category($post_id) {

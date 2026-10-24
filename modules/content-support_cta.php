@@ -31,7 +31,10 @@ if ($sms_url === '') {
 
 $contact_label = get_sub_field('email_btn_text') ?: 'Email Support';
 $contact_url = trim((string) get_sub_field('email_btn_url'));
-$default_email = function_exists('get_field') ? (get_field('support_email', 'option') ?: get_field('contact_email', 'option') ?: 'support@waklertaustralia.com') : 'support@waklertaustralia.com';
+$default_email = function_exists('get_field') ? (get_field('support_email', 'option') ?: get_field('contact_email', 'option') ?: 'modaaust@gmail.com') : 'modaaust@gmail.com';
+if (strpos($default_email, '@waklertaustralia') !== false || strpos($default_email, 'example.com') !== false) {
+    $default_email = 'modaaust@gmail.com';
+}
 
 if ($contact_url === '') {
     $contact_url = 'mailto:' . $default_email;
