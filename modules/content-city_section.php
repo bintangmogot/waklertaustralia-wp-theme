@@ -118,7 +118,7 @@ unset($c_item);
         <!-- City Pills Container -->
         <div class="max-w-4xl mx-auto flex flex-wrap justify-center items-center gap-2.5 sm:gap-3 md:gap-3.5">
             <?php foreach ($cities_list as $city): ?>
-            <div class="inline-flex items-center bg-white/10 hover:bg-white/15 border border-white/20 hover:border-amber-400/50 text-white rounded-full px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm md:text-[15px] font-semibold tracking-wide backdrop-blur-sm transition-colors duration-200 cursor-default select-none">
+            <div class="inline-flex items-center bg-white/10 hover:bg-white/15 border border-white/20 hover:border-amber-400/50 text-white rounded-full px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm md:text-[15px] font-semibold tracking-wide backdrop-blur-sm transition-colors duration-200 cursor-text select-text">
                 <span class="text-white"><?= esc_html($city['name']) ?></span>
                 <?php if (!empty($city['checkmark'])): ?>
                 <span class="text-amber-300 font-bold ml-1.5" aria-hidden="true">✓</span>
@@ -155,7 +155,7 @@ unset($c_item);
         <!-- City Pills Container -->
         <div class="max-w-4xl mx-auto flex flex-wrap justify-center items-center gap-2.5 sm:gap-3 md:gap-3.5">
             <?php foreach ($cities_list as $city): ?>
-            <div class="inline-flex items-center bg-white hover:bg-sky-50 border border-sky-200 hover:border-[#0c4161] text-[#0c4161] rounded-full px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm md:text-[15px] font-semibold tracking-wide shadow-2xs transition-colors duration-200 cursor-default select-none">
+            <div class="inline-flex items-center bg-white hover:bg-sky-50 border border-sky-200 hover:border-[#0c4161] text-[#0c4161] rounded-full px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm md:text-[15px] font-semibold tracking-wide shadow-2xs transition-colors duration-200 cursor-text select-text">
                 <span class="text-slate-800 hover:text-[#0c4161]"><?= esc_html($city['name']) ?></span>
                 <?php if (!empty($city['checkmark'])): ?>
                 <span class="text-emerald-600 font-bold ml-1.5" aria-hidden="true">✓</span>
