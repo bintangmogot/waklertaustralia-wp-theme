@@ -69,6 +69,10 @@ $bacs_acc      = '48880531';
 
             <!-- Hero Header Card -->
             <div class="text-center mb-8">
+                <!-- Status Check Circle: Blue Circle (#0284C7) with White Checkmark Icon -->
+                <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[#0284C7] text-white shadow-lg ring-8 ring-sky-100 mb-6">
+                    <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                </div>
                 <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs sm:text-sm font-semibold mb-4 shadow-xs">
                     <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                     <?php echo $is_bacs ? 'Order Placed • Awaiting Bank Transfer' : 'Order Placed Successfully'; ?>
