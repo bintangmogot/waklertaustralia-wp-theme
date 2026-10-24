@@ -334,7 +334,7 @@ function waklert_sync_support_cta_media() {
                             'sms_btn_text'    => 'SMS',
                             'sms_btn_url'     => 'sms:0488841833',
                             'email_btn_text'  => 'Email Support',
-                            'email_btn_url'   => 'mailto:support@waklertaustralia.com',
+                            'email_btn_url'   => 'mailto:modaaust@gmail.com',
                             'image'           => $found_id,
                         ];
 

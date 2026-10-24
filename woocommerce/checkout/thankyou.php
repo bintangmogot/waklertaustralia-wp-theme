@@ -13,8 +13,8 @@ defined( 'ABSPATH' ) || exit;
 
 // Dynamic options with rock-solid Australian defaults
 $contact_email = function_exists( 'get_field' ) ? get_field( 'contact_email', 'option' ) : '';
-if ( empty( $contact_email ) || strpos( $contact_email, 'support@' ) !== false || strpos( $contact_email, 'modafinil' ) !== false ) {
-    $contact_email = 'orders@waklertaustralia.com.au';
+if ( empty( $contact_email ) || strpos( $contact_email, 'modafinil' ) !== false || strpos( $contact_email, 'example.com' ) !== false || strpos( $contact_email, '@waklertaustralia' ) !== false ) {
+    $contact_email = 'modaaust@gmail.com';
 } else {
     $contact_email = sanitize_email( $contact_email );
 }

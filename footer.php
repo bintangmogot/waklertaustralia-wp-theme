@@ -4,7 +4,7 @@
  */
 $footer_desc = get_field('footer_description', 'option');
 $footer_address = get_field('location_text', 'option') ?: get_field('footer_address', 'option');
-$footer_email = get_field('support_email', 'option') ?: get_field('footer_email', 'option');
+$footer_email = get_field('support_email', 'option') ?: get_field('footer_email', 'option') ?: 'modaaust@gmail.com';
 $footer_contact_heading = get_field('footer_contact_heading', 'option');
 $working_days = get_field('working_days', 'option');
 $office_hours = get_field('office_hours', 'option');
