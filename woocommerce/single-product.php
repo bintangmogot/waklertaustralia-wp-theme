@@ -634,29 +634,4 @@ if (have_rows('modules', $product->get_id())) {
 }
 ?>
 
-<!-- Related Products -->
-<section class="section-padding relative overflow-hidden bg-gradient-to-b from-[#f8fafc] via-[#f0f6fa] to-[#eef5fa] bg-pattern-dots border-t-2 border-dashed border-sky-200/80">
-    <div class="container-site relative z-10">
-        <div class="text-center mb-10">
-            <span class="inline-flex items-center gap-2 rounded-full bg-sky-100 border border-sky-300/80 px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-[#0c4161] shadow-sm mb-3">
-                Alternative Choices
-            </span>
-            <h2 class="font-heading text-2xl md:text-4xl font-extrabold text-[#0c4161]">
-                <?= "Related Armodafinil Products" ?>
-            </h2>
-        </div>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-            <?php
-            $related_products = wc_get_related_products($product->get_id(), 4);
-            foreach ($related_products as $related_product_id) {
-                $post_object = get_post($related_product_id);
-                setup_postdata($GLOBALS['post'] =& $post_object);
-                wc_get_template_part('content', 'product');
-            }
-            wp_reset_postdata();
-            ?>
-        </div>
-    </div>
-</section>
-
 <?php get_footer('shop'); ?>
