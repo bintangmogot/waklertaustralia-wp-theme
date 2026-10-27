@@ -68,14 +68,16 @@ $bacs_acc      = '48880531';
             ?>
 
             <!-- Hero Header Card -->
-            <div class="text-center mb-8">
+            <div class="flex flex-col items-center text-center mb-8">
                 <!-- Status Check Circle: Blue Circle (#0284C7) with White Checkmark Icon -->
-                <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[#0284C7] text-white shadow-lg ring-8 ring-sky-100 mb-6">
+                <div class="flex items-center justify-center w-20 h-20 rounded-full bg-[#0284C7] text-white shadow-lg ring-8 ring-sky-100 mb-5">
                     <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                 </div>
-                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs sm:text-sm font-semibold mb-4 shadow-xs">
-                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <?php echo $is_bacs ? 'Order Placed • Awaiting Bank Transfer' : 'Order Placed Successfully'; ?>
+                <div class="mb-4">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs sm:text-sm font-semibold shadow-xs">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <?php echo $is_bacs ? 'Order Placed &bull; Awaiting Bank Transfer' : 'Order Placed Successfully'; ?>
+                    </div>
                 </div>
                 
                 <h1 class="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground tracking-tight mb-3">
@@ -315,6 +317,22 @@ $bacs_acc      = '48880531';
                         margin-bottom: 1.25rem !important;
                         padding-bottom: 1rem !important;
                         border-bottom: 1px solid #E2E8F0 !important;
+                    }
+                    /* Ensure no table layout on mobile order details */
+                    @media (max-width: 767px) {
+                        .woocommerce-order-details table.shop_table,
+                        .woocommerce-order-details table.woocommerce-table--order-details,
+                        table.woocommerce-table--order-details {
+                            display: none !important;
+                        }
+                        .order-details-mobile-stack {
+                            display: block !important;
+                        }
+                    }
+                    @media (min-width: 768px) {
+                        .order-details-mobile-stack {
+                            display: none !important;
+                        }
                     }
                     .woocommerce-table--order-details {
                         width: 100% !important;
