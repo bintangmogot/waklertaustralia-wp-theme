@@ -28,6 +28,10 @@ $bacs_bank     = 'Commonwealth Bank';
 $bacs_name     = 'Steven Waldberg';
 $bacs_bsb      = '062 948';
 $bacs_acc      = '48880531';
+$bacs_warning_note = function_exists( 'get_field' ) ? get_field( 'bacs_transfer_warning', 'option' ) : '';
+if ( empty( $bacs_warning_note ) ) {
+    $bacs_warning_note = 'Please do not mention Waklert or Armodafinil on your bank transfer - JUST THE ORDER NUMBER';
+}
 ?>
 
 <div class="woocommerce-order max-w-3xl mx-auto py-5 sm:py-12 px-2.5 sm:px-6">
@@ -279,6 +283,7 @@ $bacs_acc      = '48880531';
                     <div class="flex-1 text-center sm:text-left">
                         <h4 class="font-heading font-extrabold text-foreground text-sm sm:text-base mb-1">Australia Post Express Dispatch</h4>
                         <p class="text-xs sm:text-sm text-muted-foreground mb-0">Shipped in discreet plain packaging. No medicine or website names appear on the parcel. Delivery typically within 7-10 business days once payment clears.</p>
+                        <p class="mt-3 text-sm sm:text-base font-bold text-[#b92d5d] mb-0 leading-snug" style="color: #b92d5d;"><?php echo wp_kses_post( $bacs_warning_note ); ?></p>
                     </div>
                     <div class="shrink-0 text-center sm:text-right">
                         <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-muted text-foreground">AusPost Express</span>
