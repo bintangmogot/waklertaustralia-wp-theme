@@ -1,6 +1,6 @@
 <?php
 /**
- * Email Header - Waklert Australia Bespoke Design
+ * Email Header - Waklert Australia Design (matching Armodafinil Direct)
  *
  * @see     https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates\Emails
@@ -13,15 +13,6 @@ $store_name = $store_name ?? get_bloginfo( 'name', 'display' );
 if ( empty( $store_name ) ) {
     $store_name = 'Waklert Australia';
 }
-
-$logo_url = function_exists( 'waklert_get_logo_url' ) ? waklert_get_logo_url( 'header' ) : '';
-if ( empty( $logo_url ) ) {
-    $theme_logo = get_template_directory() . '/assets/images/waklert-australia-logo.png';
-    if ( file_exists( $theme_logo ) ) {
-        $logo_url = get_template_directory_uri() . '/assets/images/waklert-australia-logo.png';
-    }
-}
-$header_image_url = home_url( '/' );
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -31,56 +22,49 @@ $header_image_url = home_url( '/' );
 		<title><?php echo esc_html( $store_name ); ?></title>
 	</head>
 	<body <?php echo is_rtl() ? 'rightmargin' : 'leftmargin'; ?>="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
-		<table width="100%" id="outer_wrapper" role="presentation" cellpadding="0" cellspacing="0" border="0">
+		<table width="100%" id="outer_wrapper" role="presentation">
 			<tr>
-				<td><!-- Deliberately empty for responsive centering --></td>
-				<td width="640" style="max-width: 640px; margin: 0 auto;">
+				<td></td>
+				<td width="600">
 					<div id="wrapper" dir="<?php echo is_rtl() ? 'rtl' : 'ltr'; ?>">
 						<table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="inner_wrapper" role="presentation">
 							<tr>
 								<td align="center" valign="top">
-									
-									<!-- Brand Top Bar / Logo Header -->
-									<table border="0" cellpadding="0" cellspacing="0" width="100%" id="template_brand_header" role="presentation" style="margin-bottom: 20px;">
-										<tr>
-											<td align="center" style="padding: 24px 20px 12px 20px;">
-												<?php if ( $logo_url ) : ?>
-													<a href="<?php echo esc_url( $header_image_url ); ?>" target="_blank" style="text-decoration: none; display: inline-block;">
-														<img src="<?php echo esc_url( $logo_url ); ?>" alt="<?php echo esc_attr( $store_name ); ?>" width="240" style="max-width: 240px; height: auto; display: block; border: 0; outline: none;" />
-													</a>
-												<?php else : ?>
-													<a href="<?php echo esc_url( $header_image_url ); ?>" target="_blank" style="text-decoration: none; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 26px; font-weight: 800; color: #0C4161; letter-spacing: -0.5px;">
-														<?php echo esc_html( $store_name ); ?>
-													</a>
-												<?php endif; ?>
-												<p style="margin: 6px 0 0 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 600; color: #64748B; letter-spacing: 0.3px; text-transform: uppercase;">
-													Official Australian Express Order Confirmation
-												</p>
-											</td>
-										</tr>
-									</table>
+                                    
+                                    <!-- Preheader Preview Text for Email Clients -->
+                                    <div style="display: none; font-size: 1px; color: #ffffff; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all;">
+                                        Waklert Australia - Thank you for your order.
+                                    </div>
 
-									<!-- Main Container Card -->
+                                    <!-- HTML Logo matching Armodafinil Direct format -->
+                                    <div id="template_header_image" style="margin-bottom: 24px; text-align: center;">
+                                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" style="color: #0c4161; font-weight: normal; text-decoration: none; display: inline-block;">
+                                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin: 0 auto;">
+                                                <tr>
+                                                    <!-- Icon box -->
+                                                    <td valign="middle" style="padding-right: 12px;">
+                                                        <div style="width: 40px; height: 40px; border-radius: 12px; background-color: #0c4161; text-align: center; line-height: 40px;">
+                                                            <span style="color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 19px; font-weight: bold; letter-spacing: -0.5px;">W</span>
+                                                        </div>
+                                                    </td>
+                                                    <!-- Text -->
+                                                    <td valign="middle" style="text-align: left;">
+                                                        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 22px; font-weight: 800; color: #09152b; line-height: 1.1; mso-line-height-rule: exactly;">Waklert</div>
+                                                        <div style="font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #0284c7; margin-top: 4px; line-height: 1; font-weight: 700;">Australia</div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </a>
+                                    </div>
+
 									<table border="0" cellpadding="0" cellspacing="0" width="100%" id="template_container" role="presentation">
 										<tr>
 											<td align="center" valign="top">
-												<!-- Gradient Banner Header -->
+												<!-- Header -->
 												<table border="0" cellpadding="0" cellspacing="0" width="100%" id="template_header" role="presentation">
 													<tr>
-														<td id="header_wrapper" align="center">
-															<!-- Success Check Icon Badge -->
-															<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin: 0 auto 16px auto;">
-																<tr>
-																	<td align="center" valign="middle" style="width: 56px; height: 56px; background-color: #0284C7; border-radius: 50%; box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);">
-																		<!-- White Checkmark Icon -->
-																		<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: 0 auto;">
-																			<path d="M5 13l4 4L19 7" stroke="#FFFFFF" />
-																		</svg>
-																	</td>
-																</tr>
-															</table>
+														<td id="header_wrapper">
 															<h1><?php echo esc_html( $email_heading ); ?></h1>
-															<p class="email-subheading">Thank you for shopping with Waklert Australia</p>
 														</td>
 													</tr>
 												</table>
@@ -89,11 +73,12 @@ $header_image_url = home_url( '/' );
 										</tr>
 										<tr>
 											<td align="center" valign="top">
-												<!-- Body Content -->
+												<!-- Body -->
 												<table border="0" cellpadding="0" cellspacing="0" width="100%" id="template_body" role="presentation">
 													<tr>
 														<td valign="top" id="body_content">
-															<table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
+															<!-- Content -->
+															<table border="0" cellpadding="20" cellspacing="0" width="100%" role="presentation">
 																<tr>
 																	<td valign="top" id="body_content_inner_cell">
 																		<div id="body_content_inner">

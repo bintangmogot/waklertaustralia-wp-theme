@@ -31,9 +31,9 @@ if ($sms_url === '') {
 
 $contact_label = get_sub_field('email_btn_text') ?: 'Email Support';
 $contact_url = trim((string) get_sub_field('email_btn_url'));
-$default_email = function_exists('get_field') ? (get_field('support_email', 'option') ?: get_field('contact_email', 'option') ?: 'modaaust@gmail.com') : 'modaaust@gmail.com';
-if (strpos($default_email, '@waklertaustralia') !== false || strpos($default_email, 'example.com') !== false) {
-    $default_email = 'modaaust@gmail.com';
+$default_email = function_exists('get_field') ? (get_field('support_email', 'option') ?: get_field('contact_email', 'option') ?: 'orders@waklertaustralia.com.au') : 'orders@waklertaustralia.com.au';
+if (strpos($default_email, 'example.com') !== false || strpos($default_email, 'hoppingmad') !== false || strpos($default_email, 'modaaust') !== false) {
+    $default_email = 'orders@waklertaustralia.com.au';
 }
 
 if ($contact_url === '') {

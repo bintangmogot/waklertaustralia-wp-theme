@@ -1,6 +1,6 @@
 <?php
 /**
- * Customer processing order email - Waklert Australia Design
+ * Customer processing order email
  *
  * @see https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates\Emails
@@ -14,19 +14,9 @@ defined( 'ABSPATH' ) || exit;
  */
 do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
 
-<p style="font-size: 16px; font-weight: 700; color: #0C4161; margin-bottom: 12px;">
-<?php
-if ( ! empty( $order->get_billing_first_name() ) ) {
-	printf( esc_html__( 'Hi %s,', 'woocommerce' ), esc_html( $order->get_billing_first_name() ) );
-} else {
-	printf( esc_html__( 'Hi there,', 'woocommerce' ) );
-}
-?>
-</p>
-
-<p style="margin-bottom: 16px; color: #334155;">
-	Great news! We have received your order <strong style="color: #0C4161;">#<?php echo esc_html( $order->get_order_number() ); ?></strong> and your payment has been confirmed. Your order is now being carefully prepared and packaged for <strong>Australia Post Express dispatch</strong>.
-</p>
+<?php /* translators: %s: Customer first name */ ?>
+<p><?php printf( esc_html__( 'Hi %s,', 'woocommerce' ), esc_html( $order->get_billing_first_name() ?: 'there' ) ); ?></p>
+<p><?php esc_html_e( "Just to let you know — we've received your order, and it is now being processed:", 'woocommerce' ); ?></p>
 
 <?php
 /*
@@ -51,9 +41,7 @@ do_action( 'woocommerce_email_customer_details', $order, $sent_to_admin, $plain_
  * Show user-defined additional content
  */
 if ( $additional_content ) {
-	echo '<div style="margin-top: 24px; padding: 16px; background-color: #F8FAFC; border-radius: 12px; border: 1px solid #E2E8F0;">';
 	echo wp_kses_post( wpautop( wptexturize( $additional_content ) ) );
-	echo '</div>';
 }
 
 /*
