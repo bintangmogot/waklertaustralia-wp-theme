@@ -14,7 +14,7 @@ defined( 'ABSPATH' ) || exit;
 // Dynamic options with rock-solid Australian defaults
 $contact_email = function_exists( 'get_field' ) ? get_field( 'contact_email', 'option' ) : '';
 if ( empty( $contact_email ) || strpos( $contact_email, 'modafinil' ) !== false || strpos( $contact_email, 'example.com' ) !== false || strpos( $contact_email, '@waklertaustralia' ) !== false ) {
-    $contact_email = 'modaaust@gmail.com';
+    $contact_email = 'steven@hoppingmad.com.au';
 } else {
     $contact_email = sanitize_email( $contact_email );
 }
