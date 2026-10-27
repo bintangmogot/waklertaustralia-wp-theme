@@ -20,9 +20,9 @@ if (strpos($wa_url, 'wa.me/60') !== false) {
 
 // Email
 $email_title   = get_sub_field('email_title') ?: "Email Support";
-$email_address = get_sub_field('contact_email') ?: (get_field('contact_email', 'option') ?: "modaaust@gmail.com");
-if (strpos($email_address, 'example.com') !== false || strpos($email_address, '@waklertaustralia') !== false) {
-    $email_address = 'modaaust@gmail.com';
+$email_address = get_sub_field('contact_email') ?: (get_field('contact_email', 'option') ?: "orders@waklertaustralia.com.au");
+if (strpos($email_address, 'example.com') !== false || strpos($email_address, 'hoppingmad') !== false || strpos($email_address, 'modaaust') !== false) {
+    $email_address = 'orders@waklertaustralia.com.au';
 }
 $email_subtext = get_sub_field('email_subtext') ?: "Within 24 hours";
 

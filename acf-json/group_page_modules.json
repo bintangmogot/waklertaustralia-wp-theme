@@ -2229,7 +2229,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "modaaust@gmail.com"
+                            "default_value": "orders@waklertaustralia.com.au"
                         },
                         {
                             "key": "field_contact_email_subtext",
@@ -4423,8 +4423,8 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "mailto:modaaust@gmail.com",
-                            "placeholder": "mailto:modaaust@gmail.com"
+                            "default_value": "mailto:orders@waklertaustralia.com.au",
+                            "placeholder": "mailto:orders@waklertaustralia.com.au"
                         },
                         {
                             "key": "field_scta_image",

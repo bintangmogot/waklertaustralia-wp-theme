@@ -663,45 +663,49 @@ function modmy_custom_bacs_details($order_id) {
     echo "</div>";
 }
 
-// Auto-sync bank details and store notification emails to steven@hoppingmad.com.au & modaaust@gmail.com
+// Project-specific mail routing matching Armodafinil Direct pattern.
+// Display email is strictly orders@waklertaustralia.com.au - Steven's email is NEVER displayed publicly.
+define( 'WAKLERT_NOTIFICATION_EMAILS', 'orders@waklertaustralia.com.au, modaaust@gmail.com' );
+
+// Auto-sync bank details and ensure public displayed email is orders@waklertaustralia.com.au
 add_action('init', function () {
-    $forward_email = 'steven@hoppingmad.com.au, modaaust@gmail.com';
-    $primary_email = 'steven@hoppingmad.com.au';
+    $display_email = 'orders@waklertaustralia.com.au';
     $current_email = get_option('options_contact_email');
-    if ($current_email !== $primary_email && $current_email !== 'modaaust@gmail.com') {
-        update_option('options_contact_email', $primary_email);
-        update_option('options_footer_email', $primary_email);
-        update_option('options_support_email', $primary_email);
+    if ($current_email !== $display_email) {
+        update_option('options_contact_email', $display_email);
+        update_option('options_footer_email', $display_email);
+        update_option('options_support_email', $display_email);
     }
 
-    if (get_option('admin_email') !== $primary_email) {
-        update_option('admin_email', $primary_email);
+    if (get_option('admin_email') !== $display_email) {
+        update_option('admin_email', $display_email);
     }
-    if (get_option('new_admin_email') !== $primary_email) {
-        update_option('new_admin_email', $primary_email);
+    if (get_option('new_admin_email') !== $display_email) {
+        update_option('new_admin_email', $display_email);
     }
-    if (get_option('woocommerce_stock_email_recipient') !== $forward_email) {
-        update_option('woocommerce_stock_email_recipient', $forward_email);
+    if (get_option('woocommerce_stock_email_recipient') !== WAKLERT_NOTIFICATION_EMAILS) {
+        update_option('woocommerce_stock_email_recipient', WAKLERT_NOTIFICATION_EMAILS);
     }
 
+    // Set order notification recipients (New, Cancelled, Failed) to deliver to orders + Steve's email
     foreach (['new_order', 'cancelled_order', 'failed_order'] as $email_key) {
         $opt_key = 'woocommerce_' . $email_key . '_settings';
         $settings = get_option($opt_key);
         if (is_array($settings)) {
-            if (($settings['recipient'] ?? '') !== $forward_email) {
-                $settings['recipient'] = $forward_email;
+            if (($settings['recipient'] ?? '') !== WAKLERT_NOTIFICATION_EMAILS) {
+                $settings['recipient'] = WAKLERT_NOTIFICATION_EMAILS;
                 update_option($opt_key, $settings);
             }
         } else {
-            update_option($opt_key, array('recipient' => $forward_email, 'enabled' => 'yes'));
+            update_option($opt_key, array('recipient' => WAKLERT_NOTIFICATION_EMAILS, 'enabled' => 'yes'));
         }
     }
 
-    // Set professional WooCommerce email sender & colors
+    // Set professional WooCommerce email sender & colors matching Armodafinil Direct structure
     update_option('woocommerce_email_from_name', 'Waklert Australia');
     update_option('woocommerce_email_from_address', 'orders@waklertaustralia.com.au');
     update_option('woocommerce_email_base_color', '#0C4161');
-    update_option('woocommerce_email_background_color', '#F1F5F9');
+    update_option('woocommerce_email_background_color', '#F0F6FA');
     update_option('woocommerce_email_body_background_color', '#FFFFFF');
     update_option('woocommerce_email_text_color', '#0F172A');
     update_option('woocommerce_email_footer_text', 'Waklert Australia &bull; Domestic Australia Post Express Delivery');
@@ -728,32 +732,34 @@ add_action('init', function () {
     }
 });
 
-/**
- * Route all store notifications (orders, inquiries, admin alerts) to steven@hoppingmad.com.au & modaaust@gmail.com
- */
-add_filter('woocommerce_email_recipient_new_order', function($recipient, $order = null) {
-    return 'steven@hoppingmad.com.au, modaaust@gmail.com';
-}, 9999, 2);
+// WooCommerce operational notifications are delivered to orders@waklertaustralia.com.au & Steve's email
+foreach ( array(
+    'woocommerce_email_recipient_new_order',
+    'woocommerce_email_recipient_cancelled_order',
+    'woocommerce_email_recipient_failed_order',
+    'woocommerce_email_recipient_admin_payment_gateway_enabled',
+) as $waklert_email_filter ) {
+    add_filter( $waklert_email_filter, function() {
+        return WAKLERT_NOTIFICATION_EMAILS;
+    }, 9999 );
+}
 
-add_filter('woocommerce_email_recipient_cancelled_order', function($recipient, $order = null) {
-    return 'steven@hoppingmad.com.au, modaaust@gmail.com';
-}, 9999, 2);
-
-add_filter('woocommerce_email_recipient_failed_order', function($recipient, $order = null) {
-    return 'steven@hoppingmad.com.au, modaaust@gmail.com';
-}, 9999, 2);
-
-// Add Bcc on customer order confirmation emails so steven@hoppingmad.com.au & modaaust@gmail.com receive a direct copy
+// Add Bcc on customer order emails so Steve receives a direct copy of all order receipts & bank payment instructions
 add_filter('woocommerce_email_headers', function($headers, $email_id, $order = null) {
     if (in_array($email_id, ['customer_on_hold_order', 'customer_processing_order', 'customer_completed_order', 'new_order'])) {
-        $headers .= "Bcc: steven@hoppingmad.com.au, modaaust@gmail.com\r\n";
+        $headers .= "Bcc: modaaust@gmail.com\r\n";
     }
     return $headers;
 }, 9999, 3);
 
-// Route any administrative/inquiry email or emails destined for old waklertaustralia addresses to steven@hoppingmad.com.au & modaaust@gmail.com
+// Gravity Forms contact notifications go to WAKLERT_NOTIFICATION_EMAILS
+add_filter('gform_notification', function($notification, $form) {
+    $notification['to'] = WAKLERT_NOTIFICATION_EMAILS;
+    return $notification;
+}, 10, 2);
+
+// Route any administrative/inquiry email destined for old system addresses to WAKLERT_NOTIFICATION_EMAILS
 add_filter('wp_mail', function($args) {
-    $target_emails = ['steven@hoppingmad.com.au', 'modaaust@gmail.com'];
     $is_string = is_string($args['to'] ?? null);
     $recipients = (array) ($args['to'] ?? []);
     $new_recipients = [];
@@ -762,15 +768,12 @@ add_filter('wp_mail', function($args) {
     foreach ($recipients as $recipient) {
         $clean = trim((string) $recipient);
         if (
-            stripos($clean, '@waklertaustralia.com') !== false ||
-            stripos($clean, '@waklertaustralia.com.au') !== false ||
             stripos($clean, 'admin@example.com') !== false ||
-            stripos($clean, 'support@') !== false ||
-            stripos($clean, 'orders@') !== false
+            stripos($clean, 'support@waklertaustralia.com') !== false ||
+            stripos($clean, 'hoppingmad') !== false
         ) {
-            foreach ($target_emails as $te) {
-                $new_recipients[] = $te;
-            }
+            $new_recipients[] = 'orders@waklertaustralia.com.au';
+            $new_recipients[] = 'modaaust@gmail.com';
             $modified = true;
         } else {
             $new_recipients[] = $clean;
@@ -784,93 +787,6 @@ add_filter('wp_mail', function($args) {
 
     return $args;
 }, 9999);
-
-/**
- * Render bespoke branded Bank Transfer & Payment Instructions card inside WooCommerce Order Confirmation emails
- */
-add_action('woocommerce_email_before_order_table', function($order, $sent_to_admin, $plain_text, $email) {
-    if ($plain_text || $order->get_payment_method() !== 'bacs') {
-        return;
-    }
-
-    $bacs_bank     = 'Commonwealth Bank';
-    $bacs_name     = 'Steven Waldberg';
-    $bacs_bsb      = '062 948';
-    $bacs_acc      = '48880531';
-    $order_num     = $order->get_order_number();
-    $order_total   = $order->get_formatted_order_total();
-    $contact_email = 'steven@hoppingmad.com.au';
-    ?>
-    <!-- Styled Bank Transfer Card for Email -->
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="email-bank-card" style="margin-bottom: 28px; background-color: #FFFDF9; border: 2px solid #EAB308; border-radius: 16px; overflow: hidden;" role="presentation">
-        <tr>
-            <td style="padding: 20px 22px; background: linear-gradient(180deg, #FEFCE8 0%, #FFFDF9 100%);">
-                <!-- Header Badge -->
-                <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="margin-bottom: 16px;">
-                    <tr>
-                        <td align="left" valign="middle">
-                            <span style="display: inline-block; padding: 4px 10px; background-color: #FEF08A; border: 1px solid #EAB308; border-radius: 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 11px; font-weight: 800; color: #854D0E; text-transform: uppercase; letter-spacing: 0.5px;">
-                                &#9888; Action Required &bull; Bank Transfer Details
-                            </span>
-                            <h3 style="margin: 8px 0 2px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 800; color: #0C4161;">
-                                <?php echo esc_html($bacs_bank); ?> (EFT / PayID / NetBank)
-                            </h3>
-                            <p style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 13px; color: #64748B;">
-                                Please transfer the exact order amount below to reserve same-day dispatch.
-                            </p>
-                        </td>
-                        <td align="right" valign="top">
-                            <span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 11px; font-weight: 700; color: #64748B; text-transform: uppercase; display: block;">Total Due</span>
-                            <strong style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 20px; font-weight: 800; color: #0284C7;"><?php echo wp_kses_post($order_total); ?></strong>
-                        </td>
-                    </tr>
-                </table>
-
-                <!-- Bank Fields Grid Table -->
-                <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="background-color: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; margin-bottom: 14px;">
-                    <tr>
-                        <td style="padding: 12px 16px; border-bottom: 1px solid #F1F5F9; width: 45%;">
-                            <span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 11px; font-weight: 700; color: #64748B; text-transform: uppercase; display: block; margin-bottom: 2px;">Account Name</span>
-                            <strong style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 15px; color: #0F172A;"><?php echo esc_html($bacs_name); ?></strong>
-                        </td>
-                        <td style="padding: 12px 16px; border-bottom: 1px solid #F1F5F9; width: 55%;">
-                            <span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 11px; font-weight: 700; color: #64748B; text-transform: uppercase; display: block; margin-bottom: 2px;">Bank</span>
-                            <strong style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 15px; color: #0F172A;"><?php echo esc_html($bacs_bank); ?> (Australia)</strong>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px 16px;">
-                            <span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 11px; font-weight: 700; color: #64748B; text-transform: uppercase; display: block; margin-bottom: 2px;">BSB Code</span>
-                            <strong style="font-family: monospace, Courier; font-size: 17px; font-weight: 800; color: #0C4161; letter-spacing: 1px;"><?php echo esc_html($bacs_bsb); ?></strong>
-                        </td>
-                        <td style="padding: 12px 16px;">
-                            <span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 11px; font-weight: 700; color: #64748B; text-transform: uppercase; display: block; margin-bottom: 2px;">Account Number</span>
-                            <strong style="font-family: monospace, Courier; font-size: 17px; font-weight: 800; color: #0C4161; letter-spacing: 1px;"><?php echo esc_html($bacs_acc); ?></strong>
-                        </td>
-                    </tr>
-                </table>
-
-                <!-- Critical Reference Notice -->
-                <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="background-color: #FEF9C3; border: 1px dashed #CA8A04; border-radius: 10px; margin-bottom: 14px;">
-                    <tr>
-                        <td style="padding: 12px 16px;">
-                            <p style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 13px; color: #854D0E; line-height: 1.5;">
-                                <strong style="color: #713F12;">Transfer Reference:</strong> Please enter only <strong style="font-family: monospace; font-size: 14px; color: #0C4161; background: #FFFFFF; padding: 2px 6px; border-radius: 4px; border: 1px solid #EAB308;">Order #<?php echo esc_html($order_num); ?></strong>.<br>
-                                <span style="font-size: 12px; color: #A16207;">* Do NOT reference medicine or website names to prevent bank holds or delays.</span>
-                            </p>
-                        </td>
-                    </tr>
-                </table>
-
-                <!-- Step 2: Proof of payment instruction -->
-                <p style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 13px; color: #475569; line-height: 1.5;">
-                    Once transferred, reply to this email or send your receipt to <a href="mailto:<?php echo esc_attr($contact_email); ?>" style="color: #0284C7; font-weight: 700; text-decoration: underline;"><?php echo esc_html($contact_email); ?></a> for instant priority processing.
-                </p>
-            </td>
-        </tr>
-    </table>
-    <?php
-}, 8, 4);
 
 
 // Added missing function
