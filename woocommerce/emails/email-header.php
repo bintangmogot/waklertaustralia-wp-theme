@@ -73,17 +73,6 @@ $header_image_url = home_url( '/' );
 												<table border="0" cellpadding="0" cellspacing="0" width="100%" id="template_header" role="presentation">
 													<tr>
 														<td id="header_wrapper" align="center">
-															<!-- Success Check Icon Badge -->
-															<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin: 0 auto 16px auto;">
-																<tr>
-																	<td align="center" valign="middle" style="width: 52px; height: 52px; background-color: #0284C7; border-radius: 50%; box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);">
-																		<!-- White Checkmark Icon -->
-																		<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: 0 auto;">
-																			<path d="M5 13l4 4L19 7" stroke="#FFFFFF" />
-																		</svg>
-																	</td>
-																</tr>
-															</table>
 															<h1><?php echo esc_html( $email_heading ); ?></h1>
 															<p class="email-subheading">Thank you for shopping with Waklert Australia</p>
 														</td>
