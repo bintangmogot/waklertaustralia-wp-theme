@@ -40,7 +40,7 @@ if ( $show_downloads ) {
 	);
 }
 ?>
-<section class="woocommerce-order-details bg-card border border-border/80 rounded-2xl sm:rounded-3xl p-5 sm:p-7 shadow-xs mb-8">
+<section class="woocommerce-order-details bg-card border border-border/80 rounded-2xl sm:rounded-3xl p-3.5 sm:p-7 shadow-xs mb-6 sm:mb-8">
 	<?php do_action( 'woocommerce_order_details_before_order_table', $order ); ?>
 
 	<h2 class="woocommerce-order-details__title font-heading text-xl sm:text-2xl font-extrabold text-foreground mb-4 pb-3 border-b border-border/80 flex items-center justify-between">
@@ -50,45 +50,47 @@ if ( $show_downloads ) {
 		</span>
 	</h2>
 
-	<!-- Mobile Clean Card Stack (visible on < md screen) -->
-	<div class="order-details-mobile-stack md:hidden space-y-4 mb-5">
-		<div class="text-xs uppercase font-extrabold text-muted-foreground tracking-wider mb-2">Items Ordered</div>
-		<?php
-		foreach ( $order_items as $item_id => $item ) :
-			$product = $item->get_product();
-			$qty     = $item->get_quantity();
-			$subtotal = $order->get_formatted_line_subtotal( $item );
-			?>
-			<div class="bg-muted/30 border border-border/70 rounded-xl p-3.5 flex items-start justify-between gap-3">
-				<div class="flex-1">
-					<div class="font-bold text-sm text-foreground leading-snug">
-						<?php echo wp_kses_post( $item->get_name() ); ?>
-					</div>
-					<div class="text-xs text-muted-foreground mt-1">
-						Quantity: <strong class="text-foreground"><?php echo esc_html( $qty ); ?></strong>
-					</div>
-					<?php wc_display_item_meta( $item ); ?>
-					<?php if ( $show_purchase_note && $product && $product->get_purchase_note() ) : ?>
-						<div class="mt-2 text-xs text-amber-800 bg-amber-50 p-2 rounded border border-amber-200">
-							<?php echo wp_kses_post( wpautop( do_shortcode( $product->get_purchase_note() ) ) ); ?>
+	<!-- Mobile Flat Clean List (NO nested tables, NO nested boxes) -->
+	<div class="order-details-mobile-stack md:hidden mb-2">
+		<!-- Ordered Items -->
+		<div class="divide-y divide-border/60 mb-4">
+			<?php
+			foreach ( $order_items as $item_id => $item ) :
+				$product = $item->get_product();
+				$qty     = $item->get_quantity();
+				$subtotal = $order->get_formatted_line_subtotal( $item );
+				?>
+				<div class="py-3 first:pt-0 last:pb-3 flex items-start justify-between gap-3">
+					<div class="flex-1 pr-2">
+						<div class="font-bold text-sm text-foreground leading-snug">
+							<?php echo wp_kses_post( $item->get_name() ); ?>
 						</div>
-					<?php endif; ?>
+						<div class="text-xs text-muted-foreground mt-1 flex items-center gap-2">
+							<span>Qty: <strong class="text-foreground font-semibold"><?php echo esc_html( $qty ); ?></strong></span>
+						</div>
+						<?php wc_display_item_meta( $item ); ?>
+						<?php if ( $show_purchase_note && $product && $product->get_purchase_note() ) : ?>
+							<div class="mt-2 text-xs text-amber-800 bg-amber-50/80 p-2.5 rounded-lg border border-amber-200">
+								<?php echo wp_kses_post( wpautop( do_shortcode( $product->get_purchase_note() ) ) ); ?>
+							</div>
+						<?php endif; ?>
+					</div>
+					<div class="text-right shrink-0">
+						<span class="font-extrabold text-sm text-foreground font-mono"><?php echo wp_kses_post( $subtotal ); ?></span>
+					</div>
 				</div>
-				<div class="text-right shrink-0">
-					<span class="font-bold text-sm text-foreground font-mono"><?php echo wp_kses_post( $subtotal ); ?></span>
-				</div>
-			</div>
-		<?php endforeach; ?>
+			<?php endforeach; ?>
+		</div>
 
-		<!-- Mobile Summary Breakdown List -->
-		<div class="bg-muted/20 border border-border/60 rounded-xl p-4 space-y-2.5 mt-4">
+		<!-- Summary Breakdown (clean flat rows) -->
+		<div class="border-t-2 border-border/70 pt-3 space-y-2.5">
 			<?php
 			foreach ( $order->get_order_item_totals() as $key => $total ) :
 				$is_grand_total = ( $key === 'order_total' );
 				?>
-				<div class="flex items-center justify-between text-sm <?php echo $is_grand_total ? 'pt-2.5 border-t border-border font-extrabold text-base' : 'text-muted-foreground'; ?>">
-					<span><?php echo esc_html( $total['label'] ); ?></span>
-					<span class="<?php echo $is_grand_total ? 'text-primary font-mono text-lg font-extrabold' : 'text-foreground font-medium'; ?>">
+				<div class="flex items-center justify-between text-sm <?php echo $is_grand_total ? 'pt-2.5 border-t border-border/80 font-black text-base' : 'text-muted-foreground'; ?>">
+					<span class="<?php echo $is_grand_total ? 'text-foreground font-extrabold' : 'text-muted-foreground text-xs font-semibold'; ?>"><?php echo esc_html( $total['label'] ); ?></span>
+					<span class="<?php echo $is_grand_total ? 'text-primary font-mono text-xl font-black' : 'text-foreground font-medium text-xs sm:text-sm'; ?>">
 						<?php echo wp_kses_post( $total['value'] ); ?>
 					</span>
 				</div>
@@ -96,7 +98,7 @@ if ( $show_downloads ) {
 		</div>
 
 		<?php if ( $order->get_customer_note() ) : ?>
-			<div class="bg-muted/20 border border-border/60 rounded-xl p-3.5 text-xs text-muted-foreground">
+			<div class="mt-4 pt-3 border-t border-border/60 text-xs text-muted-foreground">
 				<span class="font-bold text-foreground block mb-1"><?php esc_html_e( 'Note:', 'woocommerce' ); ?></span>
 				<?php echo wp_kses( nl2br( wc_wptexturize_order_note( $order->get_customer_note() ) ), array( 'br' => array() ) ); ?>
 			</div>

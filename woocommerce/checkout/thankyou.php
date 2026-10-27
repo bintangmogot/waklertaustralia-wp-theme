@@ -30,7 +30,7 @@ $bacs_bsb      = '062 948';
 $bacs_acc      = '48880531';
 ?>
 
-<div class="woocommerce-order max-w-3xl mx-auto py-8 sm:py-12 px-4 sm:px-6">
+<div class="woocommerce-order max-w-3xl mx-auto py-5 sm:py-12 px-2.5 sm:px-6">
 
 	<?php if ( $order ) : ?>
 
@@ -94,7 +94,7 @@ $bacs_acc      = '48880531';
             </div>
 
             <!-- Order Key Summary Grid -->
-            <div class="bg-card border border-border/80 rounded-2xl sm:rounded-3xl p-5 sm:p-7 shadow-xs mb-8">
+            <div class="bg-card border border-border/80 rounded-2xl sm:rounded-3xl p-3.5 sm:p-7 shadow-xs mb-6 sm:mb-8">
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 divide-y md:divide-y-0 md:divide-x divide-border/60">
                     <div class="flex flex-col pt-2 md:pt-0">
                         <span class="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">Order Number</span>
@@ -133,7 +133,7 @@ $bacs_acc      = '48880531';
 
             <?php if ( $is_bacs ) : ?>
                 <!-- Commonwealth Bank Transfer Card -->
-                <div class="bg-gradient-to-b from-[#FAF5E8]/60 to-[#FFFDF9] border-2 border-[#EAB308]/40 rounded-3xl p-6 sm:p-8 shadow-sm mb-8 relative overflow-hidden">
+                <div class="bg-gradient-to-b from-[#FAF5E8]/60 to-[#FFFDF9] border-2 border-[#EAB308]/40 rounded-3xl p-4 sm:p-8 shadow-sm mb-6 sm:mb-8 relative overflow-hidden">
                     <!-- Brand Top Bar -->
                     <div class="flex flex-wrap items-center justify-between gap-3 pb-5 mb-6 border-b border-[#EAB308]/30">
                         <div class="flex items-center gap-3">
@@ -272,7 +272,7 @@ $bacs_acc      = '48880531';
                 </div>
 
                 <!-- Australia Post Reassurance Card -->
-                <div class="bg-card border border-border/80 rounded-2xl p-5 mb-8 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 shadow-xs">
+                <div class="bg-card border border-border/80 rounded-2xl p-3.5 sm:p-5 mb-6 sm:mb-8 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 shadow-xs">
                     <div class="w-12 h-12 rounded-2xl bg-[#DC2626]/10 text-[#DC2626] flex items-center justify-center shrink-0">
                         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
                     </div>
@@ -317,6 +317,48 @@ $bacs_acc      = '48880531';
                         margin-bottom: 1.25rem !important;
                         padding-bottom: 1rem !important;
                         border-bottom: 1px solid #E2E8F0 !important;
+                    }
+                    /* Full-width responsive mobile enhancements & no table-in-table */
+                    @media (max-width: 640px) {
+                        .container-custom {
+                            padding-inline: 0.5rem !important;
+                        }
+                        .section-padding {
+                            padding-block: 1rem !important;
+                        }
+                        .woocommerce-order {
+                            padding-left: 0.25rem !important;
+                            padding-right: 0.25rem !important;
+                        }
+                        .thank-you-hooks-wrapper {
+                            background: transparent !important;
+                            border: none !important;
+                            border-radius: 0 !important;
+                            box-shadow: none !important;
+                            padding: 0 !important;
+                            margin-top: 1rem !important;
+                        }
+                        .thank-you-hooks-wrapper > p {
+                            display: none !important;
+                        }
+                        .woocommerce-order-details {
+                            padding: 1rem !important;
+                            border-radius: 1.25rem !important;
+                        }
+                        .woocommerce-customer-details address {
+                            padding: 1rem !important;
+                            border-radius: 1.25rem !important;
+                        }
+                    }
+                    .thank-you-hooks-wrapper {
+                        background: transparent !important;
+                        border: none !important;
+                        border-radius: 0 !important;
+                        box-shadow: none !important;
+                        padding: 0 !important;
+                    }
+                    .thank-you-hooks-wrapper > p {
+                        display: none !important;
                     }
                     /* Ensure no table layout on mobile order details */
                     @media (max-width: 767px) {
@@ -466,11 +508,15 @@ $bacs_acc      = '48880531';
             </div>
 
             <!-- Return to Home CTA -->
-            <div class="text-center mt-10 pt-6 border-t border-border/60">
-                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-full border border-border text-foreground font-bold hover:bg-muted transition-all shadow-xs hover:shadow-sm text-sm">
-                    <svg class="w-4 h-4 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            <div class="mt-10 pt-8 border-t border-border/60 flex flex-col items-center text-center">
+                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-primary hover:bg-primary-dark text-white font-extrabold text-base tracking-wide transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 ring-4 ring-primary/10 w-full sm:w-auto">
+                    <svg class="w-5 h-5 text-white/90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
                     <span>Return to Shop Homepage</span>
                 </a>
+                <p class="text-xs text-muted-foreground mt-3 flex items-center justify-center gap-1.5">
+                    <svg class="w-3.5 h-3.5 text-emerald-600 inline shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    <span>Your order confirmation &amp; tax invoice have been dispatched to your email</span>
+                </p>
             </div>
 
 		<?php endif; ?>

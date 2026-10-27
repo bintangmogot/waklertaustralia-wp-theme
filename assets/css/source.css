@@ -1641,12 +1641,17 @@ input[type="radio"], input[type="checkbox"] {
   @apply !text-foreground;
 }
 
-/* Payment gateway instructions */
+/* Payment gateway instructions - Flat wrapper (no nested card) */
 .thank-you-hooks-wrapper {
-  @apply !bg-card !border !border-border !rounded-2xl !shadow-sm !p-6 md:!p-8;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin-top: 1.5rem !important;
 }
-.thank-you-hooks-wrapper h2 {
-  @apply !font-heading !text-xl !font-bold !text-foreground !mb-6 !pb-4 !border-b !border-border;
+.thank-you-hooks-wrapper > p {
+  display: none !important; /* Hide duplicate raw instructions text */
 }
 
 
