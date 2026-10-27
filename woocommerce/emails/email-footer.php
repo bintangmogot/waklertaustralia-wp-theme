@@ -9,10 +9,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-// Public support email is strictly orders@waklertaustralia.com.au - Steven's email is NEVER displayed publicly.
-$support_email = 'orders@waklertaustralia.com.au';
-$phone_display = function_exists( 'get_field' ) ? ( get_field( 'whatsapp_button_text', 'option' ) ?: '0488 841 833' ) : '0488 841 833';
-$site_url      = home_url( '/' );
+$site_url = home_url( '/' );
 ?>
 																		</div>
 																	</td>
@@ -35,21 +32,6 @@ $site_url      = home_url( '/' );
 									<table border="0" cellpadding="0" cellspacing="0" width="100%" id="template_footer" role="presentation">
 										<tr>
 											<td valign="top" style="padding: 24px 20px 32px 20px; text-align: center;">
-												
-												<!-- Trust & Support Badge Box -->
-												<table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="margin-bottom: 20px; background-color: #F8FAFC; border: 1px dashed #CBD5E1; border-radius: 14px;">
-													<tr>
-														<td style="padding: 16px 20px; text-align: center;">
-															<p style="margin: 0 0 6px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 700; color: #0C4161;">
-																Need Help or Have Any Questions?
-															</p>
-															<p style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 13px; color: #475569; line-height: 1.5;">
-																Direct Australian customer support: <a href="mailto:<?php echo esc_attr( $support_email ); ?>" style="color: #0284C7; font-weight: 700; text-decoration: none;"><?php echo esc_html( $support_email ); ?></a>
-																&bull; Phone / SMS: <strong style="color: #0F172A;"><?php echo esc_html( $phone_display ); ?></strong>
-															</p>
-														</td>
-													</tr>
-												</table>
 
 												<!-- Australia Post Express Guarantee -->
 												<p style="margin: 0 0 10px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 12px; color: #64748B; line-height: 1.5;">
