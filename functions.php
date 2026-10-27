@@ -752,6 +752,16 @@ add_filter('woocommerce_email_headers', function($headers, $email_id, $order = n
     return $headers;
 }, 9999, 3);
 
+// Remove WooCommerce mobile app promotion link from all email footers
+add_action('init', function() {
+    if (function_exists('WC') && WC()->mailer()) {
+        remove_action('woocommerce_email_footer', array(WC()->mailer(), 'mobile_messaging'), 9);
+    }
+});
+add_action('woocommerce_email', function($email_class) {
+    remove_action('woocommerce_email_footer', array($email_class, 'mobile_messaging'), 9);
+});
+
 // Gravity Forms contact notifications go to WAKLERT_NOTIFICATION_EMAILS
 add_filter('gform_notification', function($notification, $form) {
     $notification['to'] = WAKLERT_NOTIFICATION_EMAILS;
