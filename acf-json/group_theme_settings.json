@@ -888,6 +888,100 @@
             "maxlength": "",
             "placeholder": "",
             "rows": ""
+        },
+        {
+            "key": "field_theme_tab_checkout",
+            "label": "Checkout & Thank You",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_checkout_payid_number",
+            "label": "PayID Number",
+            "name": "payid_number",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "PayID phone number or identifier displayed on the thank you page (e.g. 0402 222 605).",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "0402 222 605",
+            "placeholder": "0402 222 605",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_checkout_bacs_warning",
+            "label": "Transfer Reference / Description Warning Callout",
+            "name": "checkout_bacs_warning",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Dark blue callout text shown under PayID instructions.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "* Use the below BSB & account details to make the transfer. Simply mention your order number in the comment section. DO NOT reference anything related to medicine or website name. Just mention your order number.",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": "",
+            "rows": 3
+        },
+        {
+            "key": "field_checkout_receipt_notice",
+            "label": "Payment Done Notice",
+            "name": "checkout_receipt_notice",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Instruction notice below the bank cards (use {email} as placeholder for the contact email).",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "* Once your payment is done, just send the transaction copy to {email} and we'll ship your order immediately.",
+            "maxlength": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_checkout_shipping_note",
+            "label": "Shipping Notice / Note",
+            "name": "checkout_shipping_note",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Estimated delivery timeline note shown above the order details table.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "The average shipping time is 10 - 15 days. Please note that delivery may take up to 30 days from the date of dispatch due to potential disruptions in postal services caused by weather issues or natural disaster.",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": "",
+            "rows": 3
         }
     ],
     "location": [
@@ -911,5 +1005,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1792584873
+    "modified": 1793152418
 }

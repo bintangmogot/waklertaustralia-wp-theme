@@ -246,8 +246,26 @@ add_filter('woocommerce_gateway_description', function($description, $gateway_id
     return $description;
 }, 99, 2);
 
-add_filter('woocommerce_bacs_instructions', function($instructions, $order) {
-    return str_replace('Malaysian Post', 'Australian Post', $instructions);
-}, 99, 2);
+add_filter('woocommerce_bacs_instructions', function($instructions, $order = null) {
+    return 'Your order is nearly complete and your one step closer to getting your products – please complete your payment using EFT or PayID below with your order number and we will send the product immediately and also send you an Australia Post tracking number.';
+}, 9999, 2);
+
+/**
+ * Output PayID details directly under BACS bank details in customer order emails
+ */
+add_action('woocommerce_email_before_order_table', function($order, $sent_to_admin, $plain_text = false) {
+    if (!$order || $sent_to_admin) {
+        return;
+    }
+    if ($order->get_payment_method() !== 'bacs') {
+        return;
+    }
+    $payid_number = function_exists('get_field') ? (get_field('payid_number', 'option') ?: '0402 222 605') : '0402 222 605';
+    if ($plain_text) {
+        echo "\nPayID: " . $payid_number . "\n\n";
+    } else {
+        echo '<p class="bacs-payid-email" style="color: #dc2626 !important; font-weight: 700 !important; font-size: 16px !important; margin: 16px 0 24px 0 !important; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Helvetica, Arial, sans-serif;">PayID: ' . esc_html($payid_number) . '</p>';
+    }
+}, 11, 3);
 
 require_once __DIR__ . '/cart-shipping-insurance.php';

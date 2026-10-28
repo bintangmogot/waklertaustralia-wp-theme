@@ -74,7 +74,7 @@ add_filter('acf/settings/load_json', function($paths) {
  * - Seeds live Header & Top Bar values once so WP Admin reflects the live configuration out of the box
  */
 add_action('acf/init', function() {
-    $target_ver = '20261021_header_settings_v2';
+    $target_ver = '20261028_checkout_settings_v1';
     if (get_option('waklert_header_settings_sync_ver') === $target_ver) {
         return;
     }
@@ -147,6 +147,24 @@ add_action('acf/init', function() {
     delete_option('_options_field_whatsapp_button_text');
     delete_option('options_field_whatsapp_button_url');
     delete_option('_options_field_whatsapp_button_url');
+
+    // 3. Seed Checkout & Thank You options
+    if (get_option('options_payid_number') === false) {
+        update_option('options_payid_number', '0402 222 605');
+        update_option('_options_payid_number', 'field_checkout_payid_number');
+    }
+    if (get_option('options_checkout_bacs_warning') === false) {
+        update_option('options_checkout_bacs_warning', '* Use the below BSB & account details to make the transfer. Simply mention your order number in the comment section. DO NOT reference anything related to medicine or website name. Just mention your order number.');
+        update_option('_options_checkout_bacs_warning', 'field_checkout_bacs_warning');
+    }
+    if (get_option('options_checkout_receipt_notice') === false) {
+        update_option('options_checkout_receipt_notice', "* Once your payment is done, just send the transaction copy to {email} and we'll ship your order immediately.");
+        update_option('_options_checkout_receipt_notice', 'field_checkout_receipt_notice');
+    }
+    if (get_option('options_checkout_shipping_note') === false) {
+        update_option('options_checkout_shipping_note', 'The average shipping time is 10 - 15 days. Please note that delivery may take up to 30 days from the date of dispatch due to potential disruptions in postal services caused by weather issues or natural disaster.');
+        update_option('_options_checkout_shipping_note', 'field_checkout_shipping_note');
+    }
 
     update_option('waklert_header_settings_sync_ver', $target_ver);
 }, 20);
