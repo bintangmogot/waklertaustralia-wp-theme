@@ -3,7 +3,9 @@
  * Module: Hero Section
  * Waklert Australia editorial storefront introduction.
  * Features Australian tradie holding Waklert 150 product box.
- * Responsive right-anchor layout with seamless desktop blend and zero dark overlay on desktop.
+ * Responsive right-anchor layout with seamless desktop blend.
+ * 100% dynamic: admin can customize desktop & mobile images via ACF Pro module,
+ * with ultra-optimized WebP fallbacks (35KB desktop, 56KB mobile) for instant loading.
  */
 
 $location      = get_sub_field('location_text') ?: 'Australia-wide delivery';
@@ -15,49 +17,109 @@ $primary_link  = get_sub_field('primary_button_link') ?: wc_get_page_permalink('
 $secondary_btn = trim((string) get_sub_field('secondary_button_text'));
 $secondary_link = trim((string) get_sub_field('secondary_button_link'));
 
-// Image handling: supports ACF Image array, ID, URL, or falls back to bundled tradie photo
-$hero_img = get_sub_field('background_image') ?: get_sub_field('hero_image');
-if (is_array($hero_img)) {
-    $hero_img_url = $hero_img['url'] ?? '';
-} elseif (is_numeric($hero_img)) {
-    $hero_img_url = wp_get_attachment_image_url($hero_img, 'full');
-} elseif (is_string($hero_img) && $hero_img !== '') {
-    $hero_img_url = $hero_img;
-} else {
-    $hero_img_url = '';
+// -----------------------------------------------------------------------------
+// Desktop Hero Image Handling
+// -----------------------------------------------------------------------------
+$desktop_img           = get_sub_field('background_image') ?: get_sub_field('hero_image');
+$desktop_attachment_id = 0;
+$desktop_img_url       = '';
+$desktop_alt           = $heading;
+
+if (is_array($desktop_img)) {
+    $desktop_attachment_id = !empty($desktop_img['ID']) ? (int) $desktop_img['ID'] : 0;
+    $desktop_img_url       = $desktop_img['url'] ?? '';
+    if (!empty($desktop_img['alt'])) {
+        $desktop_alt = $desktop_img['alt'];
+    }
+} elseif (is_numeric($desktop_img) && (int) $desktop_img > 0) {
+    $desktop_attachment_id = (int) $desktop_img;
+    $desktop_img_url       = wp_get_attachment_image_url($desktop_attachment_id, 'full') ?: '';
+    $alt = get_post_meta($desktop_attachment_id, '_wp_attachment_image_alt', true);
+    if (!empty($alt)) {
+        $desktop_alt = $alt;
+    }
+} elseif (is_string($desktop_img) && $desktop_img !== '') {
+    $desktop_img_url = $desktop_img;
 }
 
-// Fallback to bundled tradie photo if empty or legacy image from previous clone
-// Cache-busted with query string to bypass stale aggressive browser/Nginx caching
-if (empty($hero_img_url) || str_contains($hero_img_url, 'kl-skyline')) {
-    $hero_img_url = get_theme_file_uri('assets/images/hero-tradie-v2.png?v=20261013v2');
+$is_custom_desktop = !empty($desktop_img_url) && !str_contains($desktop_img_url, 'kl-skyline');
+if (!$is_custom_desktop) {
+    $desktop_webp_url = get_theme_file_uri('assets/images/hero-tradie-v2.webp');
+    $desktop_png_url  = get_theme_file_uri('assets/images/hero-tradie-v2.png');
 }
-// Bundled mobile image: friendly tradie holding Waklert 150 box at outdoor site
-$mobile_img = get_sub_field('mobile_image') ?: get_sub_field('hero_image_mobile');
+
+// -----------------------------------------------------------------------------
+// Mobile Hero Image Handling
+// -----------------------------------------------------------------------------
+$mobile_img           = get_sub_field('mobile_image') ?: get_sub_field('hero_image_mobile');
+$mobile_attachment_id = 0;
+$mobile_img_url       = '';
+$mobile_alt           = $heading;
+
 if (is_array($mobile_img)) {
-    $mobile_img_url = $mobile_img['url'] ?? '';
-} elseif (is_numeric($mobile_img)) {
-    $mobile_img_url = wp_get_attachment_image_url($mobile_img, 'full');
+    $mobile_attachment_id = !empty($mobile_img['ID']) ? (int) $mobile_img['ID'] : 0;
+    $mobile_img_url       = $mobile_img['url'] ?? '';
+    if (!empty($mobile_img['alt'])) {
+        $mobile_alt = $mobile_img['alt'];
+    }
+} elseif (is_numeric($mobile_img) && (int) $mobile_img > 0) {
+    $mobile_attachment_id = (int) $mobile_img;
+    $mobile_img_url       = wp_get_attachment_image_url($mobile_attachment_id, 'full') ?: '';
+    $alt = get_post_meta($mobile_attachment_id, '_wp_attachment_image_alt', true);
+    if (!empty($alt)) {
+        $mobile_alt = $alt;
+    }
 } elseif (is_string($mobile_img) && $mobile_img !== '') {
     $mobile_img_url = $mobile_img;
-} else {
-    $mobile_img_url = '';
 }
-if (empty($mobile_img_url)) {
-    $mobile_img_url = get_theme_file_uri('assets/images/hero-mobile-tradie.png?v=20261013m1');
+
+$is_custom_mobile = !empty($mobile_img_url);
+if (!$is_custom_mobile) {
+    // If admin set a custom desktop image but no mobile image, use the custom desktop image
+    if ($is_custom_desktop) {
+        $mobile_img_url       = $desktop_img_url;
+        $mobile_attachment_id = $desktop_attachment_id;
+        $mobile_alt           = $desktop_alt;
+        $is_custom_mobile     = true;
+    } else {
+        $mobile_webp_url = get_theme_file_uri('assets/images/hero-mobile-tradie.webp');
+        $mobile_png_url  = get_theme_file_uri('assets/images/hero-mobile-tradie.png');
+    }
 }
 ?>
 
 <section data-testid="hero-section" class="relative isolate overflow-hidden bg-[#0C4161] text-primary-foreground">
     <!-- MOBILE ONLY: Top Image (< md) -->
     <div class="relative block md:hidden w-full overflow-hidden bg-[#0C4161]">
-        <img 
-            src="<?= esc_url($mobile_img_url) ?>" 
-            alt="<?= esc_attr($heading) ?>" 
-            class="w-full h-auto object-cover max-h-[440px] object-top"
-            loading="eager"
-            fetchpriority="high"
-        />
+        <?php if ($is_custom_mobile): ?>
+            <img 
+                src="<?= esc_url($mobile_img_url) ?>" 
+                <?php if ($mobile_attachment_id && function_exists('wp_get_attachment_image_srcset')): 
+                    $m_srcset = wp_get_attachment_image_srcset($mobile_attachment_id, 'full');
+                    if ($m_srcset): ?>
+                        srcset="<?= esc_attr($m_srcset) ?>"
+                        sizes="(max-width: 768px) 100vw, 736px"
+                    <?php endif; ?>
+                <?php endif; ?>
+                alt="<?= esc_attr($mobile_alt) ?>" 
+                class="w-full h-auto object-cover max-h-[440px] object-top"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+            />
+        <?php else: ?>
+            <picture>
+                <source srcset="<?= esc_url($mobile_webp_url) ?>" type="image/webp">
+                <img 
+                    src="<?= esc_url($mobile_png_url) ?>" 
+                    alt="<?= esc_attr($heading) ?>" 
+                    class="w-full h-auto object-cover max-h-[440px] object-top"
+                    loading="eager"
+                    fetchpriority="high"
+                    decoding="async"
+                />
+            </picture>
+        <?php endif; ?>
         <!-- Gradient transition between image and content (< md) -->
         <div class="pointer-events-none absolute inset-x-0 bottom-0 h-36 sm:h-44 bg-gradient-to-t from-[#0C4161] via-[#0C4161]/80 to-transparent z-10" aria-hidden="true"></div>
     </div>
@@ -71,13 +133,35 @@ if (empty($mobile_img_url)) {
 
         <!-- TABLET & DESKTOP ONLY: Background Right-Anchored Image (>= md) -->
         <div class="pointer-events-none absolute inset-0 z-0 overflow-hidden hidden md:block">
-            <img 
-                src="<?= esc_url($hero_img_url) ?>" 
-                alt="<?= esc_attr($heading) ?>" 
-                class="h-full w-full object-cover"
-                loading="eager"
-                fetchpriority="high"
-            />
+            <?php if ($is_custom_desktop): ?>
+                <img 
+                    src="<?= esc_url($desktop_img_url) ?>" 
+                    <?php if ($desktop_attachment_id && function_exists('wp_get_attachment_image_srcset')): 
+                        $d_srcset = wp_get_attachment_image_srcset($desktop_attachment_id, 'full');
+                        if ($d_srcset): ?>
+                            srcset="<?= esc_attr($d_srcset) ?>"
+                            sizes="(max-width: 1024px) 100vw, 1024px"
+                        <?php endif; ?>
+                    <?php endif; ?>
+                    alt="<?= esc_attr($desktop_alt) ?>" 
+                    class="h-full w-full object-cover"
+                    loading="eager"
+                    fetchpriority="high"
+                    decoding="async"
+                />
+            <?php else: ?>
+                <picture>
+                    <source srcset="<?= esc_url($desktop_webp_url) ?>" type="image/webp">
+                    <img 
+                        src="<?= esc_url($desktop_png_url) ?>" 
+                        alt="<?= esc_attr($heading) ?>" 
+                        class="h-full w-full object-cover"
+                        loading="eager"
+                        fetchpriority="high"
+                        decoding="async"
+                    />
+                </picture>
+            <?php endif; ?>
             <!-- Tablet backdrop overlay (md to lg) for text contrast, hidden on desktop lg+ -->
             <div class="absolute inset-0 bg-[#0C4161]/75 lg:hidden" aria-hidden="true"></div>
         </div>

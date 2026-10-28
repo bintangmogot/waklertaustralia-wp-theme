@@ -85,15 +85,40 @@
                     "sub_fields": [
                         {
                             "key": "field_hero_bg",
-                            "label": "Hero Image (Right Column)",
+                            "label": "Hero Image (Desktop)",
                             "name": "background_image",
                             "aria-label": "",
                             "type": "image",
-                            "instructions": "Upload right column hero photo (Aussie tradie). Defaults to bundled photo.",
+                            "instructions": "Upload desktop / tablet hero image (Right column). Recommended format: WebP or JPG (~1024x576 or 1200x675). Leave empty to use the fast default Aussie tradie photo.",
                             "required": false,
                             "conditional_logic": false,
                             "wrapper": {
-                                "width": "",
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "preview_size": "medium",
+                            "library": "all",
+                            "min_width": 0,
+                            "min_height": 0,
+                            "min_size": 0,
+                            "max_width": 0,
+                            "max_height": 0,
+                            "max_size": 0,
+                            "mime_types": ""
+                        },
+                        {
+                            "key": "field_hero_mobile_image",
+                            "label": "Hero Image (Mobile)",
+                            "name": "mobile_image",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "Optional hero image for phones (<768px). Recommended format: WebP or JPG (~736x550). Leave empty to use desktop image or fast default.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "50",
                                 "class": "",
                                 "id": ""
                             },
