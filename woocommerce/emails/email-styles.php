@@ -51,9 +51,9 @@ body {
 #template_container {
 	background-color: <?php echo esc_attr( $card_bg ); ?>;
 	border: 1px solid <?php echo esc_attr( $border_color ); ?>;
-	border-radius: 12px;
+	border-radius: 20px;
 	overflow: hidden;
-	box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+	box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
 }
 
 /* Header Gradient */
