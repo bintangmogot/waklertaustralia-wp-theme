@@ -51,7 +51,7 @@ if ( empty( $shipping_note ) ) {
 }
 ?>
 
-<div class="woocommerce-order max-w-3xl mx-auto py-5 sm:py-12 px-2.5 sm:px-6">
+<div class="woocommerce-order max-w-3xl mx-auto py-4 sm:py-8 px-2.5 sm:px-6">
 
 	<?php if ( $order ) : ?>
 
@@ -90,7 +90,7 @@ if ( empty( $shipping_note ) ) {
             ?>
 
             <!-- Hero Header Card -->
-            <div class="flex flex-col items-center text-center mb-8">
+            <div class="flex flex-col items-center text-center mb-4 sm:mb-5">
                 <!-- Status Check Circle: Blue Circle (#0284C7) with White Checkmark Icon -->
                 <div class="flex items-center justify-center w-20 h-20 rounded-full bg-[#0284C7] text-white shadow-lg ring-8 ring-sky-100 mb-5">
                     <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
@@ -102,7 +102,7 @@ if ( empty( $shipping_note ) ) {
                     </div>
                 </div>
                 
-                <h1 class="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground tracking-tight mb-3">
+                <h1 class="font-heading text-2xl sm:text-3xl font-extrabold text-foreground tracking-tight mb-1.5">
                     <?php if ( $customer_first_name ) : ?>
                         Congratulations, <?php echo esc_html( $customer_first_name ); ?>!
                     <?php else : ?>
@@ -110,7 +110,7 @@ if ( empty( $shipping_note ) ) {
                     <?php endif; ?>
                 </h1>
                 
-                <p class="text-muted-foreground text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
+                <p class="text-muted-foreground text-xs sm:text-sm max-w-xl mx-auto leading-relaxed mb-0">
                     <?php if ( $is_bacs ) : ?>
                         Thank you for your order. Please complete your payment using <strong class="text-[#DC2626] font-bold" style="color: #dc2626;">EFT</strong> or <strong class="text-[#DC2626] font-bold" style="color: #dc2626;">PayID</strong> below.
                     <?php else : ?>
@@ -120,7 +120,7 @@ if ( empty( $shipping_note ) ) {
             </div>
 
             <!-- Order Key Summary Grid -->
-            <div class="bg-card border border-border/80 rounded-2xl sm:rounded-3xl p-3.5 sm:p-7 shadow-xs mb-6 sm:mb-8">
+            <div class="bg-card border border-border/80 rounded-2xl p-3 sm:px-5 sm:py-3.5 shadow-xs mb-3.5 sm:mb-4">
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 divide-y md:divide-y-0 md:divide-x divide-border/60">
                     <div class="flex flex-col pt-2 md:pt-0">
                         <span class="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">Order Number</span>
@@ -159,19 +159,19 @@ if ( empty( $shipping_note ) ) {
 
             <?php if ( $is_bacs ) : ?>
                 <!-- Commonwealth Bank Transfer Card -->
-                <div class="bg-gradient-to-b from-[#FAF5E8]/60 to-[#FFFDF9] border-2 border-[#EAB308]/40 rounded-3xl p-4 sm:p-8 shadow-sm mb-6 sm:mb-8 relative overflow-hidden">
+                <div class="bg-gradient-to-b from-[#FAF5E8]/60 to-[#FFFDF9] border-2 border-[#EAB308]/40 rounded-2xl p-3.5 sm:p-5 shadow-xs mb-3.5 sm:mb-4 relative overflow-hidden">
                     <!-- Brand Top Bar -->
-                    <div class="flex flex-wrap items-center justify-between gap-3 pb-5 mb-6 border-b border-[#EAB308]/30">
+                    <div class="flex flex-wrap items-center justify-between gap-2.5 pb-3 mb-3.5 border-b border-[#EAB308]/30">
                         <div class="flex items-center gap-3">
                             <!-- Commonwealth Bank Yellow Diamond Badge -->
-                            <div class="w-11 h-11 rounded-xl bg-[#FFCC00] flex items-center justify-center shadow-xs border border-amber-300">
+                            <div class="w-9 h-9 rounded-lg bg-[#FFCC00] flex items-center justify-center shadow-xs border border-amber-300">
                                 <svg class="w-6 h-6 text-[#1A1A1A]" viewBox="0 0 24 24" fill="currentColor">
                                     <path d="M12 2L2 12l10 10 10-10L12 2zm0 4.2L17.8 12 12 17.8 6.2 12 12 6.2z"/>
                                 </svg>
                             </div>
                             <div>
                                 <div class="flex items-center gap-2">
-                                    <h2 class="font-heading text-lg sm:text-xl font-extrabold text-[#1A1A1A] leading-tight">Commonwealth Bank</h2>
+                                    <h2 class="font-heading text-base sm:text-lg font-extrabold text-[#1A1A1A] leading-tight">Commonwealth Bank</h2>
                                     <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-[#FFCC00]/40 text-[#854D0E] border border-[#EAB308]/40">Verified</span>
                                 </div>
                                 <p class="text-xs text-muted-foreground">Official Direct Bank Transfer (EFT / NetBank / PayID)</p>
@@ -179,15 +179,15 @@ if ( empty( $shipping_note ) ) {
                         </div>
                         <div class="text-right">
                             <span class="text-xs font-semibold text-muted-foreground uppercase tracking-wider block">Amount to Transfer</span>
-                            <span class="text-2xl sm:text-3xl font-extrabold text-foreground font-heading"><?php echo wp_kses_post( $order_total ); ?></span>
+                            <span class="text-xl sm:text-2xl font-extrabold text-foreground font-heading"><?php echo wp_kses_post( $order_total ); ?></span>
                         </div>
                     </div>
 
                     <!-- Interactive Banking Fields Grid -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-3">
                         
                         <!-- Account Name -->
-                        <div class="bg-white/90 border border-border/80 rounded-2xl p-4 flex items-center justify-between gap-3 shadow-xs hover:border-primary/50 transition-colors">
+                        <div class="bg-white/95 border border-border/80 rounded-xl py-2 px-3 sm:py-2.5 sm:px-3.5 flex items-center justify-between gap-2 shadow-xs hover:border-primary/50 transition-colors">
                             <div>
                                 <span class="text-[11px] uppercase tracking-wider font-bold text-muted-foreground block mb-0.5">Account Name</span>
                                 <span class="text-base sm:text-lg font-bold text-foreground select-all"><?php echo esc_html( $bacs_name ); ?></span>
@@ -199,7 +199,7 @@ if ( empty( $shipping_note ) ) {
                         </div>
 
                         <!-- Bank Name -->
-                        <div class="bg-white/90 border border-border/80 rounded-2xl p-4 flex items-center justify-between gap-3 shadow-xs">
+                        <div class="bg-white/95 border border-border/80 rounded-xl py-2 px-3 sm:py-2.5 sm:px-3.5 flex items-center justify-between gap-2 shadow-xs">
                             <div>
                                 <span class="text-[11px] uppercase tracking-wider font-bold text-muted-foreground block mb-0.5">Bank</span>
                                 <span class="text-base sm:text-lg font-bold text-foreground"><?php echo esc_html( $bacs_bank ); ?></span>
@@ -208,7 +208,7 @@ if ( empty( $shipping_note ) ) {
                         </div>
 
                         <!-- BSB -->
-                        <div class="bg-white/90 border border-border/80 rounded-2xl p-4 flex items-center justify-between gap-3 shadow-xs hover:border-primary/50 transition-colors">
+                        <div class="bg-white/95 border border-border/80 rounded-xl py-2 px-3 sm:py-2.5 sm:px-3.5 flex items-center justify-between gap-2 shadow-xs hover:border-primary/50 transition-colors">
                             <div>
                                 <span class="text-[11px] uppercase tracking-wider font-bold text-muted-foreground block mb-0.5">BSB Code</span>
                                 <span class="text-xl sm:text-2xl font-mono font-extrabold text-foreground tracking-wider select-all"><?php echo esc_html( $bacs_bsb ); ?></span>
@@ -220,7 +220,7 @@ if ( empty( $shipping_note ) ) {
                         </div>
 
                         <!-- Account Number -->
-                        <div class="bg-white/90 border border-border/80 rounded-2xl p-4 flex items-center justify-between gap-3 shadow-xs hover:border-primary/50 transition-colors">
+                        <div class="bg-white/95 border border-border/80 rounded-xl py-2 px-3 sm:py-2.5 sm:px-3.5 flex items-center justify-between gap-2 shadow-xs hover:border-primary/50 transition-colors">
                             <div>
                                 <span class="text-[11px] uppercase tracking-wider font-bold text-muted-foreground block mb-0.5">Account Number</span>
                                 <span class="text-xl sm:text-2xl font-mono font-extrabold text-foreground tracking-wider select-all"><?php echo esc_html( $bacs_acc ); ?></span>
@@ -232,7 +232,7 @@ if ( empty( $shipping_note ) ) {
                         </div>
 
                         <!-- PayID Card (Prominent display with Copy) -->
-                        <div class="bg-white/90 border border-border/80 rounded-2xl p-4 flex items-center justify-between gap-3 shadow-xs hover:border-primary/50 transition-colors sm:col-span-2">
+                        <div class="bg-white/95 border border-border/80 rounded-xl py-2 px-3 sm:py-2.5 sm:px-3.5 flex items-center justify-between gap-2 shadow-xs hover:border-primary/50 transition-colors sm:col-span-2">
                             <div>
                                 <span class="text-[11px] uppercase tracking-wider font-bold block mb-0.5 text-[#D97706]" style="color: #d97706;">PayID</span>
                                 <span class="text-xl sm:text-2xl font-mono font-extrabold text-[#0C4161] tracking-wider select-all"><?php echo esc_html( $payid_number ); ?></span>
@@ -246,7 +246,7 @@ if ( empty( $shipping_note ) ) {
                     </div>
 
                     <!-- Callout Warning Box with bold red DO NOT and highlighted keywords -->
-                    <div class="bg-[#0C4161] text-white rounded-2xl p-4 sm:p-5 shadow-sm">
+                    <div class="bg-[#0C4161] text-white rounded-xl py-2.5 px-3.5 sm:py-3 sm:px-4 shadow-xs">
                         <p class="text-xs sm:text-sm leading-relaxed mb-0 font-normal">
                             <?php
                             $warning_html = esc_html( $checkout_bacs_warning );
@@ -276,7 +276,7 @@ if ( empty( $shipping_note ) ) {
                 </div>
 
                 <!-- Receipt Email Dispatch Notice -->
-                <p class="text-xs sm:text-sm text-muted-foreground italic text-center mb-6">
+                <p class="text-xs text-muted-foreground italic text-center mb-3">
                     <?php
                     $receipt_notice_text = str_replace(
                         '{email}',
@@ -288,7 +288,7 @@ if ( empty( $shipping_note ) ) {
                 </p>
 
                 <!-- Shipping Timeline Note -->
-                <div class="bg-card border border-border/80 rounded-2xl p-4 sm:p-5 mb-6 sm:mb-8 shadow-xs">
+                <div class="bg-card border border-border/80 rounded-xl py-2.5 px-3.5 sm:py-3 sm:px-4 mb-3.5 sm:mb-4 shadow-xs">
                     <h4 class="font-bold text-foreground text-sm sm:text-base mb-1.5">Note</h4>
                     <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-0">
                         <?php echo esc_html( $shipping_note ); ?>

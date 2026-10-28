@@ -40,18 +40,22 @@ if ( $show_downloads ) {
 	);
 }
 ?>
-<section class="woocommerce-order-details bg-card border border-border/80 rounded-2xl sm:rounded-3xl p-3.5 sm:p-7 shadow-xs mb-6 sm:mb-8">
+<section class="woocommerce-order-details bg-card border border-border/80 rounded-2xl p-3 sm:px-5 sm:py-4 shadow-xs mb-3.5 sm:mb-5">
 	<?php do_action( 'woocommerce_order_details_before_order_table', $order ); ?>
 
-	<h2 class="woocommerce-order-details__title font-heading text-xl sm:text-2xl font-extrabold text-foreground mb-4 pb-3 border-b border-border/80 flex items-center justify-between">
+	<h2 class="woocommerce-order-details__title font-heading text-lg sm:text-xl font-extrabold text-[#0C4161] mb-3 pb-2 border-b border-border/80 flex items-center justify-between">
 		<span><?php esc_html_e( 'Order details', 'woocommerce' ); ?></span>
-		<span class="text-xs font-semibold uppercase tracking-wider text-muted-foreground px-2.5 py-1 rounded-full bg-muted">
+		<span class="text-xs font-bold uppercase tracking-wider text-[#0284C7] px-2.5 py-0.5 rounded-full bg-sky-50 border border-sky-200">
 			Order #<?php echo esc_html( $order->get_order_number() ); ?>
 		</span>
 	</h2>
 
 	<!-- Mobile Flat Clean List (NO nested tables, NO nested boxes) -->
 	<div class="order-details-mobile-stack md:hidden mb-2">
+		<div class="bg-[#0C4161] text-white flex items-center justify-between py-2 px-3.5 rounded-lg text-xs font-bold uppercase tracking-wider mb-2">
+			<span><?php esc_html_e( 'Product', 'woocommerce' ); ?></span>
+			<span><?php esc_html_e( 'Total', 'woocommerce' ); ?></span>
+		</div>
 		<!-- Ordered Items -->
 		<div class="divide-y divide-border/60 mb-4">
 			<?php
@@ -62,7 +66,7 @@ if ( $show_downloads ) {
 				?>
 				<div class="py-3 first:pt-0 last:pb-3 flex items-start justify-between gap-3">
 					<div class="flex-1 pr-2">
-						<div class="font-bold text-sm text-foreground leading-snug">
+						<div class="font-bold text-sm text-[#0C4161] leading-snug">
 							<?php echo wp_kses_post( $item->get_name() ); ?>
 						</div>
 						<div class="text-xs text-muted-foreground mt-1 flex items-center gap-2">
@@ -88,9 +92,9 @@ if ( $show_downloads ) {
 			foreach ( $order->get_order_item_totals() as $key => $total ) :
 				$is_grand_total = ( $key === 'order_total' );
 				?>
-				<div class="flex items-center justify-between text-sm <?php echo $is_grand_total ? 'pt-2.5 border-t border-border/80 font-black text-base' : 'text-muted-foreground'; ?>">
-					<span class="<?php echo $is_grand_total ? 'text-foreground font-extrabold' : 'text-muted-foreground text-xs font-semibold'; ?>"><?php echo esc_html( $total['label'] ); ?></span>
-					<span class="<?php echo $is_grand_total ? 'text-primary font-mono text-xl font-black' : 'text-foreground font-medium text-xs sm:text-sm'; ?>">
+				<div class="flex items-center justify-between text-sm <?php echo $is_grand_total ? 'pt-2 pb-2 px-3 bg-[#F0F7FC] border border-[#BAE6FD] rounded-lg font-black text-base mt-1' : 'text-muted-foreground'; ?>">
+					<span class="<?php echo $is_grand_total ? 'text-[#0C4161] font-extrabold' : 'text-muted-foreground text-xs font-semibold'; ?>"><?php echo esc_html( $total['label'] ); ?></span>
+					<span class="<?php echo $is_grand_total ? 'text-[#0284C7] font-mono text-lg font-black' : 'text-foreground font-medium text-xs sm:text-sm'; ?>">
 						<?php echo wp_kses_post( $total['value'] ); ?>
 					</span>
 				</div>
@@ -109,9 +113,9 @@ if ( $show_downloads ) {
 	<div class="hidden md:block overflow-x-auto">
 		<table class="woocommerce-table woocommerce-table--order-details shop_table order_details w-full text-left border-collapse">
 			<thead>
-				<tr class="border-b border-border/80">
-					<th class="woocommerce-table__product-name product-name py-3 px-4 text-xs font-bold uppercase tracking-wider text-muted-foreground"><?php esc_html_e( 'Product', 'woocommerce' ); ?></th>
-					<th class="woocommerce-table__product-table product-total py-3 px-4 text-xs font-bold uppercase tracking-wider text-muted-foreground text-right"><?php esc_html_e( 'Total', 'woocommerce' ); ?></th>
+				<tr class="bg-[#0C4161] text-white">
+					<th class="woocommerce-table__product-name product-name py-2.5 px-3.5 text-xs font-bold uppercase tracking-wider text-white"><?php esc_html_e( 'Product', 'woocommerce' ); ?></th>
+					<th class="woocommerce-table__product-table product-total py-2.5 px-3.5 text-xs font-bold uppercase tracking-wider text-white text-right"><?php esc_html_e( 'Total', 'woocommerce' ); ?></th>
 				</tr>
 			</thead>
 
@@ -144,9 +148,9 @@ if ( $show_downloads ) {
 				foreach ( $order->get_order_item_totals() as $key => $total ) {
 					$is_grand_total = ( $key === 'order_total' );
 					?>
-					<tr class="<?php echo $is_grand_total ? 'bg-primary/5 font-bold' : ''; ?>">
-						<th scope="row" class="py-3 px-4 text-sm font-semibold text-muted-foreground"><?php echo esc_html( $total['label'] ); ?></th>
-						<td class="py-3 px-4 text-right text-sm font-bold <?php echo $is_grand_total ? 'text-primary font-mono text-xl' : 'text-foreground'; ?>">
+					<tr class="<?php echo $is_grand_total ? 'bg-[#F0F7FC] border-y-2 border-[#BAE6FD]' : ''; ?>">
+						<th scope="row" class="py-2.5 px-3.5 text-xs sm:text-sm <?php echo $is_grand_total ? 'text-[#0C4161] font-extrabold' : 'font-semibold text-muted-foreground'; ?>"><?php echo esc_html( $total['label'] ); ?></th>
+						<td class="py-2.5 px-3.5 text-right text-xs sm:text-sm font-bold <?php echo $is_grand_total ? 'text-[#0284C7] font-black text-lg sm:text-xl font-heading' : 'text-foreground'; ?>">
 							<?php echo wp_kses_post( $total['value'] ); ?>
 						</td>
 					</tr>
