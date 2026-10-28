@@ -40,21 +40,20 @@ if ( $show_downloads ) {
 	);
 }
 ?>
-<section class="woocommerce-order-details mb-6 sm:mb-8">
+<section class="woocommerce-order-details bg-card border border-border/80 rounded-2xl sm:rounded-3xl p-3.5 sm:p-7 shadow-xs mb-6 sm:mb-8">
 	<?php do_action( 'woocommerce_order_details_before_order_table', $order ); ?>
 
-	<h2 class="woocommerce-order-details__title font-heading text-xl sm:text-2xl font-extrabold text-[#0C4161] mb-4">
-		<?php esc_html_e( 'Order details', 'woocommerce' ); ?>
+	<h2 class="woocommerce-order-details__title font-heading text-xl sm:text-2xl font-extrabold text-foreground mb-4 pb-3 border-b border-border/80 flex items-center justify-between">
+		<span><?php esc_html_e( 'Order details', 'woocommerce' ); ?></span>
+		<span class="text-xs font-semibold uppercase tracking-wider text-muted-foreground px-2.5 py-1 rounded-full bg-muted">
+			Order #<?php echo esc_html( $order->get_order_number() ); ?>
+		</span>
 	</h2>
 
 	<!-- Mobile Flat Clean List (NO nested tables, NO nested boxes) -->
 	<div class="order-details-mobile-stack md:hidden mb-2">
-		<div class="bg-[#0C4161] text-white flex items-center justify-between py-2.5 px-4 rounded-lg text-xs font-bold uppercase tracking-wider mb-3">
-			<span><?php esc_html_e( 'Product', 'woocommerce' ); ?></span>
-			<span><?php esc_html_e( 'Total', 'woocommerce' ); ?></span>
-		</div>
 		<!-- Ordered Items -->
-		<div class="divide-y divide-border/60 mb-4 bg-white border border-border/80 rounded-xl p-3.5">
+		<div class="divide-y divide-border/60 mb-4">
 			<?php
 			foreach ( $order_items as $item_id => $item ) :
 				$product = $item->get_product();
@@ -110,9 +109,9 @@ if ( $show_downloads ) {
 	<div class="hidden md:block overflow-x-auto">
 		<table class="woocommerce-table woocommerce-table--order-details shop_table order_details w-full text-left border-collapse">
 			<thead>
-				<tr class="bg-[#0C4161] text-white">
-					<th class="woocommerce-table__product-name product-name py-3.5 px-4 text-sm font-bold text-white"><?php esc_html_e( 'Product', 'woocommerce' ); ?></th>
-					<th class="woocommerce-table__product-table product-total py-3.5 px-4 text-sm font-bold text-white text-right"><?php esc_html_e( 'Total', 'woocommerce' ); ?></th>
+				<tr class="border-b border-border/80">
+					<th class="woocommerce-table__product-name product-name py-3 px-4 text-xs font-bold uppercase tracking-wider text-muted-foreground"><?php esc_html_e( 'Product', 'woocommerce' ); ?></th>
+					<th class="woocommerce-table__product-table product-total py-3 px-4 text-xs font-bold uppercase tracking-wider text-muted-foreground text-right"><?php esc_html_e( 'Total', 'woocommerce' ); ?></th>
 				</tr>
 			</thead>
 

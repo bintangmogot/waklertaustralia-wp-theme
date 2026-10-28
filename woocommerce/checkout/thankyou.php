@@ -1,6 +1,6 @@
 <?php
 /**
- * Thankyou page - Waklert Australia Exact Redesign
+ * Thankyou page - Waklert Australia Reverted Layout with Exact Content & Formatting
  *
  * @see https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
@@ -11,7 +11,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-// Dynamic options with rock-solid Australian defaults (ACF Theme Settings editable)
+// Dynamic options with rock-solid Australian defaults
 $contact_email = function_exists( 'get_field' ) ? get_field( 'contact_email', 'option' ) : '';
 if ( empty( $contact_email ) || strpos( $contact_email, 'modafinil' ) !== false || strpos( $contact_email, 'example.com' ) !== false || strpos( $contact_email, '@waklertaustralia' ) !== false ) {
     $contact_email = 'orders@waklertaustralia.com.au';
@@ -19,11 +19,15 @@ if ( empty( $contact_email ) || strpos( $contact_email, 'modafinil' ) !== false 
     $contact_email = sanitize_email( $contact_email );
 }
 
+$phone_display = function_exists( 'get_field' ) ? ( get_field( 'whatsapp_button_text', 'option' ) ?: '0488 841 833' ) : '0488 841 833';
+$phone_raw     = preg_replace( '/[^0-9]/', '', $phone_display );
+$whatsapp_url  = 'https://wa.me/61' . ltrim( $phone_raw, '0' );
+
 // Bank account details
-$bacs_bank = 'Commonwealth Bank';
-$bacs_name = 'Steven Waldberg';
-$bacs_bsb  = '062 948';
-$bacs_acc  = '48880531';
+$bacs_bank     = 'Commonwealth Bank';
+$bacs_name     = 'Steven Waldberg';
+$bacs_bsb      = '062 948';
+$bacs_acc      = '48880531';
 
 // PayID details (ACF editable with fallback)
 $payid_number = function_exists( 'get_field' ) ? ( get_field( 'payid_number', 'option' ) ?: '0402 222 605' ) : '0402 222 605';
@@ -47,7 +51,7 @@ if ( empty( $shipping_note ) ) {
 }
 ?>
 
-<div class="woocommerce-order max-w-5xl mx-auto py-6 sm:py-10 px-4 sm:px-6">
+<div class="woocommerce-order max-w-3xl mx-auto py-5 sm:py-12 px-2.5 sm:px-6">
 
 	<?php if ( $order ) : ?>
 
@@ -77,73 +81,172 @@ if ( empty( $shipping_note ) ) {
             $is_bacs = ( $order->get_payment_method() === 'bacs' );
             $order_num = $order->get_order_number();
             $order_total = $order->get_formatted_order_total();
-            $customer_name = $order->get_billing_first_name() ? $order->get_billing_first_name() : 'Customer';
-            $order_date_formatted = wc_format_datetime( $order->get_date_created(), 'j F Y' );
-            $payment_method_title = $is_bacs ? 'Pay via Direct Bank Transfer' : wp_strip_all_tags( $order->get_payment_method_title() );
+            $customer_first_name = $order->get_billing_first_name();
+            $email_subject = rawurlencode( 'Payment Receipt - Order #' . $order_num );
+            $email_body    = rawurlencode( "Hi,\n\nI have completed the bank transfer for Order #" . $order_num . " (" . wp_strip_all_tags( $order_total ) . ").\n\nPlease find my transaction receipt attached.\n\nThank you,\n" . $customer_first_name );
+            $mailto_url    = 'mailto:' . esc_attr( $contact_email ) . '?subject=' . $email_subject . '&body=' . $email_body;
+            $wa_text       = rawurlencode( 'Hi, here is my payment receipt for Order #' . $order_num . ' (' . wp_strip_all_tags( $order_total ) . ').' );
+            $wa_full_url   = $whatsapp_url . '?text=' . $wa_text;
             ?>
 
-            <!-- Top Header: Congratulations, [Customer First Name] -->
-            <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0C4161] tracking-tight mb-6 sm:mb-8 font-heading">
-                Congratulations, <?php echo esc_html( $customer_name ); ?>
-            </h1>
-
-            <!-- Two-Column Responsive Grid -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-8">
+            <!-- Hero Header Card -->
+            <div class="flex flex-col items-center text-center mb-8">
+                <!-- Status Check Circle: Blue Circle (#0284C7) with White Checkmark Icon -->
+                <div class="flex items-center justify-center w-20 h-20 rounded-full bg-[#0284C7] text-white shadow-lg ring-8 ring-sky-100 mb-5">
+                    <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <div class="mb-4">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs sm:text-sm font-semibold shadow-xs">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <?php echo $is_bacs ? 'Order Placed &bull; Awaiting Bank Transfer' : 'Order Placed Successfully'; ?>
+                    </div>
+                </div>
                 
-                <!-- Left Column: Order Summary Card -->
-                <div class="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-6 sm:p-7 shadow-xs">
-                    <!-- Site Logo -->
-                    <div class="flex items-center justify-center mb-5">
-                        <?php
-                        $logo_url = function_exists( 'waklert_get_logo_url' ) ? waklert_get_logo_url( 'header' ) : '';
-                        if ( ! $logo_url ) {
-                            $theme_logo = get_template_directory() . '/assets/images/waklert-australia-logo.png';
-                            if ( file_exists( $theme_logo ) ) {
-                                $logo_url = get_template_directory_uri() . '/assets/images/waklert-australia-logo.png';
-                            }
-                        }
-                        if ( $logo_url ) : ?>
-                            <img src="<?php echo esc_url( $logo_url ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ?: 'Waklert Australia' ); ?>" class="h-10 sm:h-12 w-auto max-w-[240px] object-contain" />
-                        <?php else : ?>
-                            <span class="font-heading text-xl font-extrabold text-[#0C4161]">WAKLERT AUSTRALIA</span>
-                        <?php endif; ?>
+                <h1 class="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground tracking-tight mb-3">
+                    <?php if ( $customer_first_name ) : ?>
+                        Congratulations, <?php echo esc_html( $customer_first_name ); ?>!
+                    <?php else : ?>
+                        Thank You for Your Order!
+                    <?php endif; ?>
+                </h1>
+                
+                <p class="text-muted-foreground text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
+                    <?php if ( $is_bacs ) : ?>
+                        Thank you for your order. Please complete your payment using <strong class="text-[#DC2626] font-bold" style="color: #dc2626;">EFT</strong> or <strong class="text-[#DC2626] font-bold" style="color: #dc2626;">PayID</strong> below.
+                    <?php else : ?>
+                        Your order has been received and is now being prepared for express delivery.
+                    <?php endif; ?>
+                </p>
+            </div>
+
+            <!-- Order Key Summary Grid -->
+            <div class="bg-card border border-border/80 rounded-2xl sm:rounded-3xl p-3.5 sm:p-7 shadow-xs mb-6 sm:mb-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 divide-y md:divide-y-0 md:divide-x divide-border/60">
+                    <div class="flex flex-col pt-2 md:pt-0">
+                        <span class="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">Order Number</span>
+                        <strong class="text-foreground text-lg sm:text-xl font-bold font-mono">#<?php echo esc_html( $order_num ); ?></strong>
                     </div>
 
-                    <!-- Order Total Amount -->
-                    <div class="text-center font-extrabold text-3xl sm:text-4xl text-[#0C4161] mb-5 tracking-tight font-heading">
-                        <?php echo wp_kses_post( $order_total ); ?>
+                    <div class="flex flex-col pt-3 md:pt-0 md:pl-6">
+                        <span class="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">Date</span>
+                        <strong class="text-foreground text-base sm:text-lg font-bold"><?php echo esc_html( wc_format_datetime( $order->get_date_created() ) ); ?></strong>
                     </div>
 
-                    <!-- Divider -->
-                    <hr class="border-slate-200 mb-5">
+                    <div class="flex flex-col pt-3 md:pt-0 md:pl-6">
+                        <span class="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">Total Due</span>
+                        <strong class="text-primary text-xl sm:text-2xl font-extrabold"><?php echo wp_kses_post( $order_total ); ?></strong>
+                    </div>
 
-                    <!-- Order Info Metadata List -->
-                    <div class="bg-slate-50/70 border border-slate-100 rounded-xl p-4 divide-y divide-slate-200/80">
-                        <div class="flex items-center justify-between py-2.5 first:pt-1">
-                            <span class="text-xs sm:text-sm text-slate-600 font-medium">Order Number:</span>
-                            <strong class="text-xs sm:text-sm text-slate-900 font-bold font-mono">#<?php echo esc_html( $order_num ); ?></strong>
-                        </div>
-                        <div class="flex items-center justify-between py-2.5">
-                            <span class="text-xs sm:text-sm text-slate-600 font-medium">Date:</span>
-                            <strong class="text-xs sm:text-sm text-slate-900 font-bold"><?php echo esc_html( $order_date_formatted ); ?></strong>
-                        </div>
-                        <div class="flex items-center justify-between py-2.5 last:pb-1">
-                            <span class="text-xs sm:text-sm text-slate-600 font-medium">Payment Method:</span>
-                            <strong class="text-xs sm:text-sm text-slate-900 font-bold text-right"><?php echo esc_html( $payment_method_title ); ?></strong>
-                        </div>
+                    <div class="flex flex-col pt-3 md:pt-0 md:pl-6">
+                        <span class="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">Payment Method</span>
+                        <strong class="text-foreground text-sm sm:text-base font-bold leading-tight"><?php echo wp_kses_post( $order->get_payment_method_title() ); ?></strong>
                     </div>
                 </div>
 
-                <!-- Right Column: Payment Instructions & Bank Details -->
-                <div class="lg:col-span-7 flex flex-col">
-                    
-                    <!-- Intro Text with bold red EFT and PayID -->
-                    <p class="text-sm sm:text-base font-semibold text-slate-900 mb-4 leading-relaxed">
-                        Thank you for your order. Please complete your payment using <strong class="font-extrabold text-[#DC2626]" style="color: #dc2626;">EFT</strong> or <strong class="font-extrabold text-[#DC2626]" style="color: #dc2626;">PayID</strong> below.
-                    </p>
+                <?php if ( $order->get_billing_email() ) : ?>
+                    <div class="mt-5 pt-4 border-t border-border/60 flex flex-wrap items-center justify-between text-xs sm:text-sm text-muted-foreground gap-2">
+                        <div>
+                            <span>Confirmation sent to: </span>
+                            <strong class="text-foreground"><?php echo esc_html( $order->get_billing_email() ); ?></strong>
+                        </div>
+                        <span class="inline-flex items-center gap-1.5 text-emerald-700 font-medium">
+                            <svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            Tax Invoice Generated
+                        </span>
+                    </div>
+                <?php endif; ?>
+            </div>
 
-                    <!-- Dark Navy Callout Box with bold red DO NOT and highlighted keywords -->
-                    <div class="bg-[#0C4161] text-white rounded-xl p-4 sm:p-5 shadow-sm mb-6">
+            <?php if ( $is_bacs ) : ?>
+                <!-- Commonwealth Bank Transfer Card -->
+                <div class="bg-gradient-to-b from-[#FAF5E8]/60 to-[#FFFDF9] border-2 border-[#EAB308]/40 rounded-3xl p-4 sm:p-8 shadow-sm mb-6 sm:mb-8 relative overflow-hidden">
+                    <!-- Brand Top Bar -->
+                    <div class="flex flex-wrap items-center justify-between gap-3 pb-5 mb-6 border-b border-[#EAB308]/30">
+                        <div class="flex items-center gap-3">
+                            <!-- Commonwealth Bank Yellow Diamond Badge -->
+                            <div class="w-11 h-11 rounded-xl bg-[#FFCC00] flex items-center justify-center shadow-xs border border-amber-300">
+                                <svg class="w-6 h-6 text-[#1A1A1A]" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2L2 12l10 10 10-10L12 2zm0 4.2L17.8 12 12 17.8 6.2 12 12 6.2z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <h2 class="font-heading text-lg sm:text-xl font-extrabold text-[#1A1A1A] leading-tight">Commonwealth Bank</h2>
+                                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-[#FFCC00]/40 text-[#854D0E] border border-[#EAB308]/40">Verified</span>
+                                </div>
+                                <p class="text-xs text-muted-foreground">Official Direct Bank Transfer (EFT / NetBank / PayID)</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-xs font-semibold text-muted-foreground uppercase tracking-wider block">Amount to Transfer</span>
+                            <span class="text-2xl sm:text-3xl font-extrabold text-foreground font-heading"><?php echo wp_kses_post( $order_total ); ?></span>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Banking Fields Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-6">
+                        
+                        <!-- Account Name -->
+                        <div class="bg-white/90 border border-border/80 rounded-2xl p-4 flex items-center justify-between gap-3 shadow-xs hover:border-primary/50 transition-colors">
+                            <div>
+                                <span class="text-[11px] uppercase tracking-wider font-bold text-muted-foreground block mb-0.5">Account Name</span>
+                                <span class="text-base sm:text-lg font-bold text-foreground select-all"><?php echo esc_html( $bacs_name ); ?></span>
+                            </div>
+                            <button type="button" onclick="copyValue('<?php echo esc_js( $bacs_name ); ?>', this)" class="copy-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-border text-xs font-bold text-foreground bg-muted/40 hover:bg-muted transition-all active:scale-95 cursor-pointer">
+                                <svg class="w-3.5 h-3.5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                <span>Copy</span>
+                            </button>
+                        </div>
+
+                        <!-- Bank Name -->
+                        <div class="bg-white/90 border border-border/80 rounded-2xl p-4 flex items-center justify-between gap-3 shadow-xs">
+                            <div>
+                                <span class="text-[11px] uppercase tracking-wider font-bold text-muted-foreground block mb-0.5">Bank</span>
+                                <span class="text-base sm:text-lg font-bold text-foreground"><?php echo esc_html( $bacs_bank ); ?></span>
+                            </div>
+                            <span class="text-xs font-semibold text-muted-foreground px-2.5 py-1 bg-muted/40 rounded-lg">Australia</span>
+                        </div>
+
+                        <!-- BSB -->
+                        <div class="bg-white/90 border border-border/80 rounded-2xl p-4 flex items-center justify-between gap-3 shadow-xs hover:border-primary/50 transition-colors">
+                            <div>
+                                <span class="text-[11px] uppercase tracking-wider font-bold text-muted-foreground block mb-0.5">BSB Code</span>
+                                <span class="text-xl sm:text-2xl font-mono font-extrabold text-foreground tracking-wider select-all"><?php echo esc_html( $bacs_bsb ); ?></span>
+                            </div>
+                            <button type="button" onclick="copyValue('<?php echo esc_js( str_replace(' ', '', $bacs_bsb) ); ?>', this)" class="copy-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-border text-xs font-bold text-foreground bg-muted/40 hover:bg-muted transition-all active:scale-95 cursor-pointer">
+                                <svg class="w-3.5 h-3.5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                <span>Copy</span>
+                            </button>
+                        </div>
+
+                        <!-- Account Number -->
+                        <div class="bg-white/90 border border-border/80 rounded-2xl p-4 flex items-center justify-between gap-3 shadow-xs hover:border-primary/50 transition-colors">
+                            <div>
+                                <span class="text-[11px] uppercase tracking-wider font-bold text-muted-foreground block mb-0.5">Account Number</span>
+                                <span class="text-xl sm:text-2xl font-mono font-extrabold text-foreground tracking-wider select-all"><?php echo esc_html( $bacs_acc ); ?></span>
+                            </div>
+                            <button type="button" onclick="copyValue('<?php echo esc_js( $bacs_acc ); ?>', this)" class="copy-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-border text-xs font-bold text-foreground bg-muted/40 hover:bg-muted transition-all active:scale-95 cursor-pointer">
+                                <svg class="w-3.5 h-3.5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                <span>Copy</span>
+                            </button>
+                        </div>
+
+                        <!-- PayID Card (Prominent display with Copy) -->
+                        <div class="bg-white/90 border border-border/80 rounded-2xl p-4 flex items-center justify-between gap-3 shadow-xs hover:border-primary/50 transition-colors sm:col-span-2">
+                            <div>
+                                <span class="text-[11px] uppercase tracking-wider font-bold block mb-0.5 text-[#D97706]" style="color: #d97706;">PayID</span>
+                                <span class="text-xl sm:text-2xl font-mono font-extrabold text-[#0C4161] tracking-wider select-all"><?php echo esc_html( $payid_number ); ?></span>
+                            </div>
+                            <button type="button" onclick="copyValue('<?php echo esc_js( preg_replace('/\s+/', '', $payid_number) ); ?>', this)" class="copy-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-border text-xs font-bold text-foreground bg-muted/40 hover:bg-muted transition-all active:scale-95 cursor-pointer">
+                                <svg class="w-3.5 h-3.5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                <span>Copy</span>
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <!-- Callout Warning Box with bold red DO NOT and highlighted keywords -->
+                    <div class="bg-[#0C4161] text-white rounded-2xl p-4 sm:p-5 shadow-sm">
                         <p class="text-xs sm:text-sm leading-relaxed mb-0 font-normal">
                             <?php
                             $warning_html = esc_html( $checkout_bacs_warning );
@@ -155,82 +258,44 @@ if ( empty( $shipping_note ) ) {
                         </p>
                     </div>
 
-                    <!-- PayID Row with Copy Button -->
-                    <div class="flex items-center justify-between py-2.5 border-b border-slate-200/80 mb-5">
-                        <div class="flex items-baseline gap-2">
-                            <span class="text-[#D97706] font-extrabold text-base sm:text-lg" style="color: #d97706;">PayID:</span>
-                            <span class="text-[#0C4161] font-black text-base sm:text-lg tracking-wide select-all font-mono"><?php echo esc_html( $payid_number ); ?></span>
-                        </div>
-                        <button type="button" onclick="copyValue('<?php echo esc_js( preg_replace('/\s+/', '', $payid_number) ); ?>', this)" class="copy-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-300 text-xs font-bold text-[#0C4161] bg-white hover:bg-slate-50 transition-all active:scale-95 cursor-pointer shadow-2xs">
-                            <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                            <span>Copy</span>
-                        </button>
-                    </div>
-
-                    <!-- Or use bank transfer -->
-                    <div class="text-slate-700 font-semibold text-xs sm:text-sm mb-3">
-                        Or use bank transfer:
-                    </div>
-
-                    <!-- Bank Details List -->
-                    <div class="space-y-1.5 text-slate-800 text-sm sm:text-base mb-6">
-                        <div class="font-bold text-slate-900"><?php echo esc_html( $bacs_name ); ?>:</div>
-                        <div><span class="font-bold">Bank:</span> <?php echo esc_html( $bacs_bank ); ?></div>
-                        <div><span class="font-bold">BSB:</span> <?php echo esc_html( $bacs_bsb ); ?></div>
-                        <div><span class="font-bold">Account number:</span> <?php echo esc_html( $bacs_acc ); ?></div>
-                    </div>
-
-                    <!-- Badges Row -->
-                    <div class="flex flex-wrap items-center gap-3">
-                        <!-- Commonwealth Bank Badge -->
-                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-slate-200 bg-white shadow-2xs h-11">
-                            <div class="w-6 h-6 rounded bg-[#FFCC00] flex items-center justify-center shrink-0 shadow-2xs">
-                                <svg class="w-3.5 h-3.5 text-[#1A1A1A]" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 2L2 12l10 10 10-10L12 2zm0 4.2L17.8 12 12 17.8 6.2 12 12 6.2z"/>
-                                </svg>
+                    <!-- Payment Badges Row -->
+                    <div class="mt-5 pt-4 border-t border-[#EAB308]/30 flex flex-wrap items-center justify-center gap-3">
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-border/80 bg-white shadow-2xs h-10">
+                            <div class="w-5 h-5 rounded bg-[#FFCC00] flex items-center justify-center shrink-0">
+                                <svg class="w-3 h-3 text-[#1A1A1A]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 12l10 10 10-10L12 2zm0 4.2L17.8 12 12 17.8 6.2 12 12 6.2z"/></svg>
                             </div>
-                            <div class="text-[11px] leading-tight font-bold text-slate-800">
-                                <span>Commonwealth</span><br><span>Bank</span>
-                            </div>
+                            <span class="text-xs font-bold text-foreground">Commonwealth Bank</span>
                         </div>
-
-                        <!-- PayID Badge -->
-                        <div class="inline-flex items-center justify-center px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white shadow-2xs h-11">
-                            <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/payid.png' ); ?>" alt="PayID" class="h-6 w-auto object-contain" />
+                        <div class="inline-flex items-center justify-center px-3 py-1.5 rounded-xl border border-border/80 bg-white shadow-2xs h-10">
+                            <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/payid.png' ); ?>" alt="PayID" class="h-5 w-auto object-contain" />
                         </div>
-
-                        <!-- Osko Badge -->
-                        <div class="inline-flex items-center justify-center px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white shadow-2xs h-11">
-                            <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/osko.jpg' ); ?>" alt="Osko" class="h-6 w-auto object-contain" />
+                        <div class="inline-flex items-center justify-center px-3 py-1.5 rounded-xl border border-border/80 bg-white shadow-2xs h-10">
+                            <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/osko.jpg' ); ?>" alt="Osko" class="h-5 w-auto object-contain" />
                         </div>
                     </div>
-
                 </div>
 
-            </div>
-
-            <!-- Receipt Dispatch Notice (Green Circle 1 in Image 4) -->
-            <?php
-            $receipt_notice_text = str_replace(
-                '{email}',
-                '<a href="mailto:' . esc_attr( $contact_email ) . '" class="font-bold text-slate-900 underline">' . esc_html( $contact_email ) . '</a>',
-                esc_html( $checkout_receipt_notice )
-            );
-            ?>
-            <p class="text-xs sm:text-sm text-slate-600 italic mb-6">
-                <?php echo $receipt_notice_text; ?>
-            </p>
-
-            <!-- Divider -->
-            <hr class="border-slate-200 my-6">
-
-            <!-- Shipping Note (Green Circle 2 in Image 4) -->
-            <div class="mb-8">
-                <h3 class="font-bold text-slate-900 text-sm sm:text-base mb-2">Note</h3>
-                <p class="text-slate-600 text-xs sm:text-sm leading-relaxed max-w-4xl">
-                    <?php echo esc_html( $shipping_note ); ?>
+                <!-- Receipt Email Dispatch Notice -->
+                <p class="text-xs sm:text-sm text-muted-foreground italic text-center mb-6">
+                    <?php
+                    $receipt_notice_text = str_replace(
+                        '{email}',
+                        '<a href="mailto:' . esc_attr( $contact_email ) . '" class="font-bold text-foreground underline">' . esc_html( $contact_email ) . '</a>',
+                        esc_html( $checkout_receipt_notice )
+                    );
+                    echo $receipt_notice_text;
+                    ?>
                 </p>
-            </div>
+
+                <!-- Shipping Timeline Note -->
+                <div class="bg-card border border-border/80 rounded-2xl p-4 sm:p-5 mb-6 sm:mb-8 shadow-xs">
+                    <h4 class="font-bold text-foreground text-sm sm:text-base mb-1.5">Note</h4>
+                    <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-0">
+                        <?php echo esc_html( $shipping_note ); ?>
+                    </p>
+                </div>
+
+            <?php endif; ?>
 
             <!-- WooCommerce Hook Outputs (Styled cleanly) -->
             <div class="thank-you-hooks-wrapper">
@@ -241,54 +306,71 @@ if ( empty( $shipping_note ) ) {
                     .shipping-notice-thankyou { 
                         display: none !important; 
                     }
-                    /* Modern order items table styling matching Image 3 */
+                    /* Modern order items table styling */
                     .woocommerce-order-details {
-                        background: transparent !important;
-                        border: none !important;
-                        padding: 0 !important;
-                        margin-bottom: 2rem !important;
-                        box-shadow: none !important;
+                        background: #FFFFFF;
+                        border: 1px solid #E2E8F0;
+                        border-radius: 1.5rem;
+                        padding: 1.5rem;
+                        margin-bottom: 2rem;
+                        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+                    }
+                    @media (min-width: 640px) {
+                        .woocommerce-order-details { padding: 2rem; }
                     }
                     .woocommerce-order-details h2.woocommerce-order-details__title {
                         font-family: var(--font-heading, inherit);
-                        font-size: 1.5rem !important;
+                        font-size: 1.25rem !important;
                         font-weight: 800 !important;
-                        color: #0C4161 !important;
+                        color: #0F172A !important;
                         margin-top: 0 !important;
                         margin-bottom: 1.25rem !important;
-                        padding-bottom: 0 !important;
-                        border-bottom: none !important;
+                        padding-bottom: 1rem !important;
+                        border-bottom: 1px solid #E2E8F0 !important;
                     }
-                    .woocommerce-table--order-details thead tr {
-                        background-color: #0C4161 !important;
-                        color: #FFFFFF !important;
+                    /* Full-width responsive mobile enhancements */
+                    @media (max-width: 640px) {
+                        .container-custom {
+                            padding-inline: 0.5rem !important;
+                        }
+                        .section-padding {
+                            padding-block: 1rem !important;
+                        }
+                        .woocommerce-order {
+                            padding-left: 0.25rem !important;
+                            padding-right: 0.25rem !important;
+                        }
+                        .thank-you-hooks-wrapper {
+                            background: transparent !important;
+                            border: none !important;
+                            border-radius: 0 !important;
+                            box-shadow: none !important;
+                            padding: 0 !important;
+                            margin-top: 1rem !important;
+                        }
+                        .thank-you-hooks-wrapper > p {
+                            display: none !important;
+                        }
+                        .woocommerce-order-details {
+                            padding: 1rem !important;
+                            border-radius: 1.25rem !important;
+                        }
+                        .woocommerce-customer-details address {
+                            padding: 1rem !important;
+                            border-radius: 1.25rem !important;
+                        }
                     }
-                    .woocommerce-table--order-details thead th {
-                        color: #FFFFFF !important;
-                        font-weight: 700 !important;
-                        font-size: 0.9375rem !important;
-                        padding: 0.875rem 1rem !important;
+                    .thank-you-hooks-wrapper {
+                        background: transparent !important;
                         border: none !important;
+                        border-radius: 0 !important;
+                        box-shadow: none !important;
+                        padding: 0 !important;
                     }
-                    .woocommerce-table--order-details tbody td {
-                        padding: 1rem 1rem !important;
-                        border-bottom: 1px solid #E2E8F0 !important;
+                    .thank-you-hooks-wrapper > p {
+                        display: none !important;
                     }
-                    .woocommerce-table--order-details tfoot th {
-                        padding: 0.875rem 1rem !important;
-                        font-weight: 600 !important;
-                        color: #64748B !important;
-                        text-align: left !important;
-                        border-bottom: 1px solid #E2E8F0 !important;
-                    }
-                    .woocommerce-table--order-details tfoot td {
-                        padding: 0.875rem 1rem !important;
-                        text-align: right !important;
-                        font-weight: 700 !important;
-                        color: #0F172A !important;
-                        border-bottom: 1px solid #E2E8F0 !important;
-                    }
-                    /* Mobile Order Details adjustments */
+                    /* Ensure no table layout on mobile order details */
                     @media (max-width: 767px) {
                         .woocommerce-order-details table.shop_table,
                         .woocommerce-order-details table.woocommerce-table--order-details,
@@ -304,6 +386,132 @@ if ( empty( $shipping_note ) ) {
                             display: none !important;
                         }
                     }
+                    .woocommerce-table--order-details {
+                        width: 100% !important;
+                        border-collapse: collapse !important;
+                    }
+                    .woocommerce-table--order-details th,
+                    .woocommerce-table--order-details td {
+                        padding: 0.875rem 0.5rem !important;
+                        border-bottom: 1px solid #F1F5F9 !important;
+                        font-size: 0.875rem !important;
+                    }
+                    .woocommerce-table--order-details tfoot th {
+                        font-weight: 600 !important;
+                        color: #64748B !important;
+                        text-align: left !important;
+                    }
+                    .woocommerce-table--order-details tfoot td {
+                        text-align: right !important;
+                        font-weight: 700 !important;
+                        color: #0F172A !important;
+                    }
+                    .woocommerce-customer-details {
+                        width: 100% !important;
+                        margin-top: 2rem !important;
+                        margin-bottom: 2rem !important;
+                    }
+                    /* Customer addresses layout: Force 1 column on mobile, 2 columns on desktop */
+                    .woocommerce .woocommerce-customer-details .col2-set,
+                    .woocommerce-page .woocommerce-customer-details .col2-set,
+                    .woocommerce-customer-details .col2-set,
+                    .woocommerce-customer-details .woocommerce-columns--addresses,
+                    section.woocommerce-columns--addresses {
+                        display: flex !important;
+                        flex-direction: column !important;
+                        gap: 1.5rem !important;
+                        width: 100% !important;
+                    }
+                    .woocommerce .woocommerce-customer-details .col-1,
+                    .woocommerce .woocommerce-customer-details .col-2,
+                    .woocommerce-page .woocommerce-customer-details .col-1,
+                    .woocommerce-page .woocommerce-customer-details .col-2,
+                    .woocommerce .col2-set .col-1,
+                    .woocommerce .col2-set .col-2,
+                    .woocommerce-page .col2-set .col-1,
+                    .woocommerce-page .col2-set .col-2,
+                    .woocommerce-customer-details .col-1,
+                    .woocommerce-customer-details .col-2,
+                    .woocommerce-customer-details .woocommerce-column,
+                    div.woocommerce-column--billing-address,
+                    div.woocommerce-column--shipping-address {
+                        float: none !important;
+                        width: 100% !important;
+                        max-width: 100% !important;
+                        flex: 1 1 100% !important;
+                        box-sizing: border-box !important;
+                        clear: both !important;
+                    }
+                    @media (max-width: 767px) {
+                        .woocommerce-customer-details .col2-set,
+                        .woocommerce-customer-details .woocommerce-columns--addresses,
+                        section.woocommerce-columns--addresses {
+                            display: flex !important;
+                            flex-direction: column !important;
+                            gap: 1.5rem !important;
+                        }
+                        .woocommerce-customer-details .col-1,
+                        .woocommerce-customer-details .col-2,
+                        div.woocommerce-column--billing-address,
+                        div.woocommerce-column--shipping-address {
+                            float: none !important;
+                            width: 100% !important;
+                            clear: both !important;
+                            display: block !important;
+                            margin-bottom: 1.5rem !important;
+                        }
+                    }
+                    @media (min-width: 768px) {
+                        .woocommerce .woocommerce-customer-details .col2-set,
+                        .woocommerce-page .woocommerce-customer-details .col2-set,
+                        .woocommerce-customer-details .col2-set,
+                        .woocommerce-customer-details .woocommerce-columns--addresses,
+                        section.woocommerce-columns--addresses {
+                            display: grid !important;
+                            grid-template-columns: 1fr 1fr !important;
+                            gap: 1.5rem !important;
+                        }
+                        .woocommerce-customer-details .col-1,
+                        .woocommerce-customer-details .col-2,
+                        div.woocommerce-column--billing-address,
+                        div.woocommerce-column--shipping-address {
+                            margin-bottom: 0 !important;
+                        }
+                    }
+                    .woocommerce-customer-details address {
+                        display: block !important;
+                        background: #FFFFFF !important;
+                        border: 1px solid #E2E8F0 !important;
+                        border-radius: 1.25rem !important;
+                        padding: 1.5rem !important;
+                        font-style: normal !important;
+                        font-size: 0.9375rem !important;
+                        line-height: 1.65 !important;
+                        color: #334155 !important;
+                        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04) !important;
+                        width: 100% !important;
+                        box-sizing: border-box !important;
+                    }
+                    .woocommerce-customer-details address p {
+                        display: flex !important;
+                        align-items: center !important;
+                        gap: 0.5rem !important;
+                        margin-top: 0.75rem !important;
+                        margin-bottom: 0 !important;
+                        color: #475569 !important;
+                        font-size: 0.875rem !important;
+                        word-break: break-all !important;
+                    }
+                    .woocommerce-customer-details h2.woocommerce-column__title {
+                        font-family: var(--font-heading, inherit);
+                        font-size: 1.125rem !important;
+                        font-weight: 800 !important;
+                        color: #0F172A !important;
+                        margin-top: 0 !important;
+                        margin-bottom: 0.75rem !important;
+                        padding-bottom: 0.5rem !important;
+                        border-bottom: 2px solid #E2E8F0 !important;
+                    }
                 </style>
                 <?php do_action( 'woocommerce_thankyou_' . $order->get_payment_method(), $order->get_id() ); ?>
                 <?php do_action( 'woocommerce_thankyou', $order->get_id() ); ?>
@@ -317,8 +525,8 @@ if ( empty( $shipping_note ) ) {
             $shop_page_url = apply_filters( 'woocommerce_return_to_shop_redirect', $shop_page_url );
             ?>
             <!-- Return to Shop CTA -->
-            <div class="mt-10 pt-8 border-t border-slate-200 flex flex-col items-center text-center">
-                <a href="<?php echo esc_url( $shop_page_url ); ?>" class="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-primary hover:bg-primary-dark text-white font-extrabold text-sm sm:text-base tracking-wide transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 ring-4 ring-primary/10 w-full sm:w-auto">
+            <div class="mt-10 pt-8 border-t border-border/60 flex flex-col items-center text-center">
+                <a href="<?php echo esc_url( $shop_page_url ); ?>" class="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-primary hover:bg-primary-dark text-white font-extrabold text-base tracking-wide transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 ring-4 ring-primary/10 w-full sm:w-auto">
                     <svg class="w-5 h-5 text-white/90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
                     <span>Return to Shop</span>
                 </a>
