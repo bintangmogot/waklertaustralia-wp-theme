@@ -161,7 +161,7 @@ if ( empty( $shipping_note ) ) {
                 <!-- Commonwealth Bank Transfer Card -->
                 <div class="bg-gradient-to-b from-[#FAF5E8]/60 to-[#FFFDF9] border-2 border-[#EAB308]/40 rounded-2xl p-3.5 sm:p-5 shadow-xs mb-3.5 sm:mb-4 relative overflow-hidden">
                     <!-- Brand Top Bar -->
-                    <div class="flex items-center justify-between gap-2 pb-3 mb-3.5 border-b border-[#EAB308]/30">
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pb-3 mb-3.5 border-b border-[#EAB308]/30">
                         <div class="flex items-center gap-3 min-w-0 shrink">
                             <!-- Commonwealth Bank Yellow Diamond Badge -->
                             <div class="w-9 h-9 shrink-0 rounded-lg bg-[#FFCC00] flex items-center justify-center shadow-xs border border-amber-300">
@@ -174,7 +174,7 @@ if ( empty( $shipping_note ) ) {
                                     <h2 class="font-heading text-sm sm:text-lg font-extrabold text-[#1A1A1A] leading-tight">Commonwealth Bank</h2>
                                     <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-[#FFCC00]/40 text-[#854D0E] border border-[#EAB308]/40">Verified</span>
                                 </div>
-                                <p class="text-xs text-muted-foreground hidden sm:block">Official Direct Bank Transfer (EFT / NetBank / PayID)</p>
+                                <p class="text-xs text-muted-foreground">Official Direct Bank Transfer (EFT / NetBank / PayID)</p>
                             </div>
                         </div>
                         <div class="text-right shrink-0">
