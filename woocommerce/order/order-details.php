@@ -90,12 +90,29 @@ if ( $show_downloads ) {
 		<div class="border-t-2 border-border/70 pt-3 space-y-2.5">
 			<?php
 			foreach ( $order->get_order_item_totals() as $key => $total ) :
-				$is_grand_total = ( $key === 'order_total' );
+				$is_grand_total  = ( $key === 'order_total' );
+				$is_shipping     = ( $key === 'shipping' );
+				// Split shipping price from method label
+				$mob_shipping_method = '';
+				$mob_shipping_price  = $total['value'];
+				if ( $is_shipping ) {
+					$mob_raw = wp_kses_post( $total['value'] );
+					if ( strpos( $mob_raw, ' via ' ) !== false ) {
+						$mob_parts           = explode( ' via ', $mob_raw, 2 );
+						$mob_shipping_price  = $mob_parts[0];
+						$mob_shipping_method = $mob_parts[1];
+					}
+				}
 				?>
 				<div class="flex items-center justify-between text-sm <?php echo $is_grand_total ? 'pt-2 pb-2 px-3 bg-[#F0F7FC] border border-[#BAE6FD] rounded-lg font-black text-base mt-1' : 'text-muted-foreground'; ?>">
 					<span class="<?php echo $is_grand_total ? 'text-[#0C4161] font-extrabold' : 'text-muted-foreground text-xs font-semibold'; ?>"><?php echo esc_html( $total['label'] ); ?></span>
 					<span class="<?php echo $is_grand_total ? 'text-[#0284C7] font-mono text-lg font-black' : 'text-foreground font-medium text-xs sm:text-sm'; ?>">
-						<?php echo wp_kses_post( $total['value'] ); ?>
+						<?php if ( $is_shipping && $mob_shipping_method ) : ?>
+							<span class="block text-right"><?php echo $mob_shipping_price; ?></span>
+							<span class="block text-right text-[10px] text-muted-foreground font-normal mt-0.5"><?php echo esc_html( wp_strip_all_tags( $mob_shipping_method ) ); ?></span>
+						<?php else : ?>
+							<?php echo wp_kses_post( $total['value'] ); ?>
+						<?php endif; ?>
 					</span>
 				</div>
 			<?php endforeach; ?>
