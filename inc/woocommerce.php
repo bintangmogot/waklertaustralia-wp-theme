@@ -273,10 +273,6 @@ add_action('woocommerce_email_before_order_table', function($order, $sent_to_adm
         $gateways = WC()->payment_gateways()->payment_gateways();
         if (isset($gateways['bacs'])) {
             $gateways['bacs']->instructions = '';
-            remove_action('woocommerce_email_before_order_table', array($gateways['bacs'], 'email_instructions'), 10);
-            if (!$sent_to_admin && 'bacs' === $order->get_payment_method() && $order->has_status('on-hold')) {
-                $gateways['bacs']->bank_details($order->get_id());
-            }
         }
     }
 }, 1, 3);
