@@ -52,9 +52,9 @@ if ( $show_downloads ) {
 
 	<!-- Mobile Flat Clean List (NO nested tables, NO nested boxes) -->
 	<div class="order-details-mobile-stack md:hidden mb-2">
-		<div class="bg-[#0C4161] text-white flex items-center justify-between py-2 px-3.5 rounded-lg text-xs font-bold uppercase tracking-wider mb-2">
-			<span><?php esc_html_e( 'Product', 'woocommerce' ); ?></span>
-			<span><?php esc_html_e( 'Total', 'woocommerce' ); ?></span>
+		<div class="bg-[#0C4161] text-white flex items-center justify-between py-2 px-3.5 rounded-lg text-xs font-bold uppercase tracking-wider mb-2" style="background-color: #0C4161 !important; color: #FFFFFF !important;">
+			<span style="color: #FFFFFF !important; -webkit-text-fill-color: #FFFFFF !important;"><?php esc_html_e( 'Product', 'woocommerce' ); ?></span>
+			<span style="color: #FFFFFF !important; -webkit-text-fill-color: #FFFFFF !important;"><?php esc_html_e( 'Total', 'woocommerce' ); ?></span>
 		</div>
 		<!-- Ordered Items -->
 		<div class="divide-y divide-border/60 mb-4">
@@ -113,9 +113,9 @@ if ( $show_downloads ) {
 	<div class="hidden md:block overflow-x-auto">
 		<table class="woocommerce-table woocommerce-table--order-details shop_table order_details w-full text-left border-collapse">
 			<thead>
-				<tr class="bg-[#0C4161] text-white">
-					<th class="woocommerce-table__product-name product-name py-2.5 px-3.5 text-xs font-bold uppercase tracking-wider text-white"><?php esc_html_e( 'Product', 'woocommerce' ); ?></th>
-					<th class="woocommerce-table__product-table product-total py-2.5 px-3.5 text-xs font-bold uppercase tracking-wider text-white text-right"><?php esc_html_e( 'Total', 'woocommerce' ); ?></th>
+				<tr class="bg-[#0C4161] text-white" style="background-color: #0C4161 !important;">
+					<th class="woocommerce-table__product-name product-name py-2.5 px-3.5 text-xs font-bold uppercase tracking-wider text-white" style="color: #FFFFFF !important; -webkit-text-fill-color: #FFFFFF !important; background-color: #0C4161 !important; border: none !important;"><?php esc_html_e( 'Product', 'woocommerce' ); ?></th>
+					<th class="woocommerce-table__product-table product-total py-2.5 px-3.5 text-xs font-bold uppercase tracking-wider text-white text-right" style="color: #FFFFFF !important; -webkit-text-fill-color: #FFFFFF !important; background-color: #0C4161 !important; border: none !important;"><?php esc_html_e( 'Total', 'woocommerce' ); ?></th>
 				</tr>
 			</thead>
 
@@ -148,9 +148,9 @@ if ( $show_downloads ) {
 				foreach ( $order->get_order_item_totals() as $key => $total ) {
 					$is_grand_total = ( $key === 'order_total' );
 					?>
-					<tr class="<?php echo $is_grand_total ? 'bg-[#F0F7FC] border-y-2 border-[#BAE6FD]' : ''; ?>">
-						<th scope="row" class="py-2.5 px-3.5 text-xs sm:text-sm <?php echo $is_grand_total ? 'text-[#0C4161] font-extrabold' : 'font-semibold text-muted-foreground'; ?>"><?php echo esc_html( $total['label'] ); ?></th>
-						<td class="py-2.5 px-3.5 text-right text-xs sm:text-sm font-bold <?php echo $is_grand_total ? 'text-[#0284C7] font-black text-lg sm:text-xl font-heading' : 'text-foreground'; ?>">
+					<tr class="<?php echo $is_grand_total ? 'bg-[#F0F7FC] border-y-2 border-[#BAE6FD]' : ''; ?>" <?php if ( $is_grand_total ) echo 'style="background-color: #F0F7FC !important;"'; ?>>
+						<th scope="row" class="py-2.5 px-3.5 text-xs sm:text-sm <?php echo $is_grand_total ? 'text-[#0C4161] font-extrabold' : 'font-semibold text-muted-foreground'; ?>" <?php if ( $is_grand_total ) echo 'style="color: #0C4161 !important;"'; ?>><?php echo esc_html( $total['label'] ); ?></th>
+						<td class="py-2.5 px-3.5 text-right text-xs sm:text-sm font-bold <?php echo $is_grand_total ? 'text-[#0284C7] font-black text-lg sm:text-xl font-heading' : 'text-foreground'; ?>" <?php if ( $is_grand_total ) echo 'style="color: #0284C7 !important;"'; ?>>
 							<?php echo wp_kses_post( $total['value'] ); ?>
 						</td>
 					</tr>
