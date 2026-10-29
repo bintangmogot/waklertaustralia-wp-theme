@@ -146,12 +146,29 @@ if ( $show_downloads ) {
 			<tfoot class="border-t-2 border-border/80 divide-y divide-border/40">
 				<?php
 				foreach ( $order->get_order_item_totals() as $key => $total ) {
-					$is_grand_total = ( $key === 'order_total' );
+					$is_grand_total  = ( $key === 'order_total' );
+					$is_shipping     = ( $key === 'shipping' );
+					// For shipping: split price from method label
+					$shipping_method = '';
+					$shipping_price  = $total['value'];
+					if ( $is_shipping ) {
+						$raw = wp_kses_post( $total['value'] );
+						if ( strpos( $raw, ' via ' ) !== false ) {
+							$parts          = explode( ' via ', $raw, 2 );
+							$shipping_price  = $parts[0];
+							$shipping_method = $parts[1];
+						}
+					}
 					?>
 					<tr class="<?php echo $is_grand_total ? 'bg-[#F0F7FC] border-y-2 border-[#BAE6FD]' : ''; ?>" <?php if ( $is_grand_total ) echo 'style="background-color: #F0F7FC !important;"'; ?>>
 						<th scope="row" class="py-2.5 px-3.5 text-xs sm:text-sm <?php echo $is_grand_total ? 'text-[#0C4161] font-extrabold' : 'font-semibold text-muted-foreground'; ?>" <?php if ( $is_grand_total ) echo 'style="color: #0C4161 !important;"'; ?>><?php echo esc_html( $total['label'] ); ?></th>
 						<td class="py-2.5 px-3.5 text-right text-xs sm:text-sm font-bold <?php echo $is_grand_total ? 'text-[#0284C7] font-black text-lg sm:text-xl font-heading' : 'text-foreground'; ?>" <?php if ( $is_grand_total ) echo 'style="color: #0284C7 !important;"'; ?>>
-							<?php echo wp_kses_post( $total['value'] ); ?>
+							<?php if ( $is_shipping && $shipping_method ) : ?>
+								<?php echo $shipping_price; ?>
+								<div class="text-muted-foreground font-normal text-xs mt-0.5"><?php echo esc_html( wp_strip_all_tags( $shipping_method ) ); ?></div>
+							<?php else : ?>
+								<?php echo wp_kses_post( $total['value'] ); ?>
+							<?php endif; ?>
 						</td>
 					</tr>
 					<?php
