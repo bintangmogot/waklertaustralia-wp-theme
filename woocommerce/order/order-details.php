@@ -92,15 +92,14 @@ if ( $show_downloads ) {
 			foreach ( $order->get_order_item_totals() as $key => $total ) :
 				$is_grand_total  = ( $key === 'order_total' );
 				$is_shipping     = ( $key === 'shipping' );
-				// Split shipping price from method label
+				// Split shipping price from method label (parse shipped_via small tag)
 				$mob_shipping_method = '';
 				$mob_shipping_price  = $total['value'];
 				if ( $is_shipping ) {
 					$mob_raw = wp_kses_post( $total['value'] );
-					if ( strpos( $mob_raw, ' via ' ) !== false ) {
-						$mob_parts           = explode( ' via ', $mob_raw, 2 );
-						$mob_shipping_price  = $mob_parts[0];
-						$mob_shipping_method = $mob_parts[1];
+					if ( preg_match( '|<small[^>]*class=.shipped_via.[^>]*>(.*?)</small>|is', $mob_raw, $via_match ) ) {
+						$mob_shipping_method = trim( preg_replace( '|^via\s+|i', '', strip_tags( $via_match[1] ) ) );
+						$mob_shipping_price  = trim( preg_replace( '|<small[^>]*class=.shipped_via.[^>]*>.*?</small>|is', '', $mob_raw ) );
 					}
 				}
 				?>
@@ -165,15 +164,14 @@ if ( $show_downloads ) {
 				foreach ( $order->get_order_item_totals() as $key => $total ) {
 					$is_grand_total  = ( $key === 'order_total' );
 					$is_shipping     = ( $key === 'shipping' );
-					// For shipping: split price from method label
+					// For shipping: parse <small class="shipped_via"> tag properly
 					$shipping_method = '';
 					$shipping_price  = $total['value'];
 					if ( $is_shipping ) {
 						$raw = wp_kses_post( $total['value'] );
-						if ( strpos( $raw, ' via ' ) !== false ) {
-							$parts          = explode( ' via ', $raw, 2 );
-							$shipping_price  = $parts[0];
-							$shipping_method = $parts[1];
+						if ( preg_match( '|<small[^>]*class=.shipped_via.[^>]*>(.*?)</small>|is', $raw, $via_match ) ) {
+							$shipping_method = trim( preg_replace( '|^via\s+|i', '', strip_tags( $via_match[1] ) ) );
+							$shipping_price  = trim( preg_replace( '|<small[^>]*class=.shipped_via.[^>]*>.*?</small>|is', '', $raw ) );
 						}
 					}
 					?>
