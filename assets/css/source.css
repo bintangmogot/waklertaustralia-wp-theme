@@ -1602,7 +1602,13 @@ input[type="radio"], input[type="checkbox"] {
 .woocommerce-order .woocommerce-table--customer-details {
   @apply !w-full !border-collapse !text-sm !mb-8;
 }
-.woocommerce-order .woocommerce-table--order-details th,
+.woocommerce-order .woocommerce-table--order-details thead tr {
+  @apply !bg-[#0C4161];
+}
+.woocommerce-order .woocommerce-table--order-details thead th {
+  @apply !font-bold !text-white !py-2.5 !px-3.5 !border-none !text-left;
+  color: #FFFFFF !important;
+}
 .woocommerce-order .woocommerce-table--customer-details th {
   @apply !font-semibold !text-foreground !py-3 !border-b !border-border !text-left;
 }

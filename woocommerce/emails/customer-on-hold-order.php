@@ -36,16 +36,30 @@ if ( empty( $warning_copy ) ) {
 
 <p style="margin: 0 0 16px 0; font-size: 15px; line-height: 1.6; color: #0F172A; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;"><?php echo esc_html( $intro_copy ); ?></p>
 
-<p style="margin: 0 0 16px 0; font-size: 15px; line-height: 1.6; color: #0F172A; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;"><?php echo esc_html( $instruction_copy ); ?></p>
-
-<p style="margin: 0 0 24px 0; font-size: 15px; line-height: 1.6; color: #DC2626; font-weight: 700; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+<p style="margin: 0 0 16px 0; font-size: 15px; line-height: 1.6; color: #0F172A; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
     <?php
-    $formatted_warning = esc_html( $warning_copy );
-    $formatted_warning = str_ireplace( 'DO NOT', '<strong style="color: #DC2626; font-weight: 800;">DO NOT</strong>', $formatted_warning );
-    $formatted_warning = str_ireplace( 'WAKLERT', '<strong style="color: #0C4161; font-weight: 800;">WAKLERT</strong>', $formatted_warning );
-    $formatted_warning = str_ireplace( 'Armodafinil', '<strong style="color: #0C4161; font-weight: 800;">Armodafinil</strong>', $formatted_warning );
-    echo $formatted_warning;
+    $formatted_instruction = wp_kses_post( $instruction_copy );
+    // Clean any plain strong tags around targets to prevent double wrapping
+    $formatted_instruction = preg_replace( '/<strong>\s*(EFT or PayID)\s*<\/strong>/i', '$1', $formatted_instruction );
+    $formatted_instruction = preg_replace( '/<strong>\s*(order number)\s*<\/strong>/i', '$1', $formatted_instruction );
+    if ( strpos( $formatted_instruction, '#E32400' ) === false && strpos( $formatted_instruction, '#e32400' ) === false ) {
+        $formatted_instruction = str_ireplace(
+            'EFT or PayID',
+            '<strong style="color: #E32400; font-weight: 700;">EFT or PayID</strong>',
+            $formatted_instruction
+        );
+        $formatted_instruction = str_ireplace(
+            'order number',
+            '<strong style="color: #E32400; font-weight: 700;">order number</strong>',
+            $formatted_instruction
+        );
+    }
+    echo $formatted_instruction;
     ?>
+</p>
+
+<p style="margin: 0 0 24px 0; font-size: 15px; line-height: 1.6; color: #0F172A; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    <strong style="color: #0F172A; font-weight: 800;"><?php echo esc_html( wp_strip_all_tags( $warning_copy ) ); ?></strong>
 </p>
 
 <?php

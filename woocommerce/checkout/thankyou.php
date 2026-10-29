@@ -258,21 +258,22 @@ if ( empty( $shipping_note ) ) {
                         </p>
                     </div>
 
-                    <!-- Payment Badges Row -->
-                    <div class="mt-5 pt-4 border-t border-[#EAB308]/30 flex flex-wrap items-center justify-center gap-3">
-                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-border/80 bg-white shadow-2xs h-10">
-                            <div class="w-5 h-5 rounded bg-[#FFCC00] flex items-center justify-center shrink-0">
+                    <!-- Payment Badges Row (Exact Logo Height Matching Reference Image) -->
+                    <div class="mt-3.5 pt-3 border-t border-[#EAB308]/30 flex flex-wrap items-center justify-center gap-3">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl border border-slate-200/90 bg-white shadow-2xs h-10">
+                            <div class="w-4.5 h-4.5 rounded bg-[#FFCC00] flex items-center justify-center shrink-0">
                                 <svg class="w-3 h-3 text-[#1A1A1A]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 12l10 10 10-10L12 2zm0 4.2L17.8 12 12 17.8 6.2 12 12 6.2z"/></svg>
                             </div>
-                            <span class="text-xs font-bold text-foreground">Commonwealth Bank</span>
+                            <span class="text-xs font-bold text-slate-800">Commonwealth Bank</span>
                         </div>
-                        <div class="inline-flex items-center justify-center px-3 py-1.5 rounded-xl border border-border/80 bg-white shadow-2xs h-10">
-                            <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/payid.png' ); ?>" alt="PayID" class="h-5 w-auto object-contain" />
+                        <div class="inline-flex items-center justify-center px-3.5 py-1.5 rounded-xl border border-slate-200/90 bg-white shadow-2xs h-10">
+                            <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/payid.png' ); ?>" alt="PayID" style="height: 18px; max-height: 18px; width: auto; object-fit: contain; display: block;" />
                         </div>
-                        <div class="inline-flex items-center justify-center px-3 py-1.5 rounded-xl border border-border/80 bg-white shadow-2xs h-10">
-                            <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/osko.jpg' ); ?>" alt="Osko" class="h-5 w-auto object-contain" />
+                        <div class="inline-flex items-center justify-center px-3.5 py-1.5 rounded-xl border border-slate-200/90 bg-white shadow-2xs h-10">
+                            <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/osko.jpg' ); ?>" alt="Osko" style="height: 18px; max-height: 18px; width: auto; object-fit: contain; display: block;" />
                         </div>
                     </div>
+                </div>
                 </div>
 
                 <!-- Receipt Email Dispatch Notice -->
@@ -375,36 +376,82 @@ if ( empty( $shipping_note ) ) {
                         .woocommerce-order-details table.shop_table,
                         .woocommerce-order-details table.woocommerce-table--order-details,
                         table.woocommerce-table--order-details {
-                            display: none !important;
-                        }
-                        .order-details-mobile-stack {
-                            display: block !important;
-                        }
-                    }
-                    @media (min-width: 768px) {
-                        .order-details-mobile-stack {
-                            display: none !important;
-                        }
-                    }
-                    .woocommerce-table--order-details {
                         width: 100% !important;
-                        border-collapse: collapse !important;
+                        border-collapse: separate !important;
+                        border-spacing: 0 !important;
+                        border: 1px solid #E2E8F0 !important;
+                        border-radius: 0.75rem !important;
+                        overflow: hidden !important;
                     }
-                    .woocommerce-table--order-details th,
-                    .woocommerce-table--order-details td {
-                        padding: 0.875rem 0.5rem !important;
+                    .woocommerce-table--order-details thead tr,
+                    .woocommerce-order .woocommerce-table--order-details thead tr,
+                    table.woocommerce-table--order-details thead tr {
+                        background-color: #0C4161 !important;
+                    }
+                    .woocommerce-table--order-details thead th,
+                    .woocommerce-order .woocommerce-table--order-details thead th,
+                    table.woocommerce-table--order-details thead th,
+                    th.woocommerce-table__product-name,
+                    th.woocommerce-table__product-table {
+                        color: #FFFFFF !important;
+                        -webkit-text-fill-color: #FFFFFF !important;
+                        font-weight: 800 !important;
+                        font-size: 0.75rem !important;
+                        text-transform: uppercase !important;
+                        letter-spacing: 0.05em !important;
+                        padding: 0.625rem 0.875rem !important;
+                        border: none !important;
+                    }
+                    .woocommerce-table--order-details tbody td {
+                        padding: 0.75rem 0.875rem !important;
                         border-bottom: 1px solid #F1F5F9 !important;
                         font-size: 0.875rem !important;
+                        color: #1E293B !important;
+                    }
+                    .woocommerce-table--order-details tbody td a {
+                        color: #0C4161 !important;
+                        font-weight: 700 !important;
+                        text-decoration: underline !important;
+                    }
+                    .woocommerce-table--order-details tbody td a:hover {
+                        color: #0284C7 !important;
                     }
                     .woocommerce-table--order-details tfoot th {
                         font-weight: 600 !important;
-                        color: #64748B !important;
+                        color: #475569 !important;
                         text-align: left !important;
+                        padding: 0.625rem 0.875rem !important;
+                        border-top: 1px solid #F1F5F9 !important;
+                        font-size: 0.875rem !important;
                     }
                     .woocommerce-table--order-details tfoot td {
                         text-align: right !important;
                         font-weight: 700 !important;
                         color: #0F172A !important;
+                        padding: 0.625rem 0.875rem !important;
+                        border-top: 1px solid #F1F5F9 !important;
+                        font-size: 0.875rem !important;
+                    }
+                    .woocommerce-table--order-details tfoot tr:has(.woocommerce-Price-amount),
+                    .woocommerce-table--order-details tfoot tr.order-total,
+                    .woocommerce-order .woocommerce-table--order-details tfoot tr.order-total {
+                        background-color: #F0F7FC !important;
+                        border-top: 2px solid #BAE6FD !important;
+                        border-bottom: 2px solid #BAE6FD !important;
+                    }
+                    .woocommerce-table--order-details tfoot tr:has(.woocommerce-Price-amount) th,
+                    .woocommerce-table--order-details tfoot tr.order-total th {
+                        color: #0C4161 !important;
+                        font-weight: 800 !important;
+                        font-size: 0.9375rem !important;
+                    }
+                    .woocommerce-table--order-details tfoot tr:has(.woocommerce-Price-amount) td,
+                    .woocommerce-table--order-details tfoot tr.order-total td,
+                    .woocommerce-table--order-details tfoot tr:has(.woocommerce-Price-amount) td span,
+                    .woocommerce-table--order-details tfoot tr.order-total td span {
+                        color: #0284C7 !important;
+                        font-weight: 900 !important;
+                        font-size: 1.125rem !important;
                     }
                     .woocommerce-customer-details {
                         width: 100% !important;
