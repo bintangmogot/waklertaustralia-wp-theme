@@ -273,9 +273,26 @@ add_action('woocommerce_email_before_order_table', function($order, $sent_to_adm
         $gateways = WC()->payment_gateways()->payment_gateways();
         if (isset($gateways['bacs'])) {
             $gateways['bacs']->instructions = '';
+            remove_action('woocommerce_email_before_order_table', array($gateways['bacs'], 'email_instructions'), 10);
+            if (!$sent_to_admin && 'bacs' === $order->get_payment_method() && $order->has_status('on-hold')) {
+                $gateways['bacs']->bank_details($order->get_id());
+            }
         }
     }
 }, 1, 3);
+
+/**
+ * Global mail filter: Ensure Modafinil and "one step closer" rogue BACS text
+ * never reaches any sent customer email.
+ */
+add_filter('wp_mail', function($args) {
+    if (isset($args['message'])) {
+        $args['message'] = preg_replace('/<p[^>]*>[^<]*one step closer[^<]*<\/p>\s*/is', '', $args['message']);
+        $args['message'] = preg_replace('/<p[^>]*>[^<]*nearly complete.*?Modafinil[^<]*<\/p>\s*/is', '', $args['message']);
+        $args['message'] = preg_replace('/Your order is nearly complete and your one step closer[^\r\n]*/i', '', $args['message']);
+    }
+    return $args;
+}, 9999);
 
 /**
  * Output PayID details directly under BACS bank details in customer order emails
