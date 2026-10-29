@@ -246,10 +246,36 @@ add_filter('woocommerce_gateway_description', function($description, $gateway_id
     return $description;
 }, 99, 2);
 
-add_filter('woocommerce_bacs_instructions', function($instructions, $order = null) {
-    // Return empty so customer email uses the exact on-hold email template copy without duplicate BACS text
-    return '';
-}, 9999, 2);
+/**
+ * Completely suppress redundant core BACS instructions in emails & thank-you pages
+ * so that only the modern custom on-hold email copy and custom BACS card are used.
+ */
+add_filter('option_woocommerce_bacs_settings', function($value) {
+    if (is_array($value)) {
+        $value['instructions'] = '';
+    }
+    return $value;
+}, 9999);
+
+add_filter('woocommerce_bacs_instructions', '__return_empty_string', 9999, 2);
+
+add_action('woocommerce_init', function() {
+    if (function_exists('WC') && WC()->payment_gateways()) {
+        $gateways = WC()->payment_gateways()->payment_gateways();
+        if (isset($gateways['bacs'])) {
+            $gateways['bacs']->instructions = '';
+        }
+    }
+}, 999);
+
+add_action('woocommerce_email_before_order_table', function($order, $sent_to_admin, $plain_text = false) {
+    if (function_exists('WC') && WC()->payment_gateways()) {
+        $gateways = WC()->payment_gateways()->payment_gateways();
+        if (isset($gateways['bacs'])) {
+            $gateways['bacs']->instructions = '';
+        }
+    }
+}, 1, 3);
 
 /**
  * Output PayID details directly under BACS bank details in customer order emails
