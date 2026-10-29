@@ -68,7 +68,27 @@ if ( empty( $warning_copy ) ) {
  * @hooked WC_Structured_Data::generate_order_data() Generates structured data.
  * @hooked WC_Structured_Data::output_structured_data() Outputs structured data.
  */
+ob_start();
 do_action( 'woocommerce_email_order_details', $order, $sent_to_admin, $plain_text, $email );
+$email_order_details_output = ob_get_clean();
+
+// Purge rogue BACS instruction text containing Modafinil or "one step closer"
+$email_order_details_output = preg_replace(
+    '/<p[^>]*>[^<]*one step closer[^<]*<\/p>\s*/is',
+    '',
+    $email_order_details_output
+);
+$email_order_details_output = preg_replace(
+    '/<p[^>]*>[^<]*nearly complete.*?Modafinil[^<]*<\/p>\s*/is',
+    '',
+    $email_order_details_output
+);
+$email_order_details_output = preg_replace(
+    '/Your order is nearly complete and your one step closer[^\r\n]*/i',
+    '',
+    $email_order_details_output
+);
+echo $email_order_details_output;
 
 /*
  * @hooked WC_Emails::order_meta() Shows order meta data.
