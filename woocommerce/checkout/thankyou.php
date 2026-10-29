@@ -161,8 +161,8 @@ if ( empty( $shipping_note ) ) {
                 <!-- Commonwealth Bank Transfer Card -->
                 <div class="bg-gradient-to-b from-[#FAF5E8]/60 to-[#FFFDF9] border-2 border-[#EAB308]/40 rounded-2xl p-3.5 sm:p-5 shadow-xs mb-3.5 sm:mb-4 relative overflow-hidden">
                     <!-- Brand Top Bar -->
-                    <div class="flex flex-wrap items-center justify-between gap-2.5 pb-3 mb-3.5 border-b border-[#EAB308]/30">
-                        <div class="flex items-center gap-3">
+                    <div class="flex items-center justify-between gap-2 pb-3 mb-3.5 border-b border-[#EAB308]/30">
+                        <div class="flex items-center gap-3 min-w-0 shrink">
                             <!-- Commonwealth Bank Yellow Diamond Badge -->
                             <div class="w-9 h-9 rounded-lg bg-[#FFCC00] flex items-center justify-center shadow-xs border border-amber-300">
                                 <svg class="w-6 h-6 text-[#1A1A1A]" viewBox="0 0 24 24" fill="currentColor">
@@ -171,15 +171,15 @@ if ( empty( $shipping_note ) ) {
                             </div>
                             <div>
                                 <div class="flex items-center gap-2">
-                                    <h2 class="font-heading text-base sm:text-lg font-extrabold text-[#1A1A1A] leading-tight">Commonwealth Bank</h2>
+                                    <h2 class="font-heading text-sm sm:text-lg font-extrabold text-[#1A1A1A] leading-tight">Commonwealth Bank</h2>
                                     <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-[#FFCC00]/40 text-[#854D0E] border border-[#EAB308]/40">Verified</span>
                                 </div>
-                                <p class="text-xs text-muted-foreground">Official Direct Bank Transfer (EFT / NetBank / PayID)</p>
+                                <p class="text-xs text-muted-foreground hidden sm:block">Official Direct Bank Transfer (EFT / NetBank / PayID)</p>
                             </div>
                         </div>
-                        <div class="text-right">
-                            <span class="text-xs font-semibold text-muted-foreground uppercase tracking-wider block">Amount to Transfer</span>
-                            <span class="text-xl sm:text-2xl font-extrabold text-foreground font-heading"><?php echo wp_kses_post( $order_total ); ?></span>
+                        <div class="text-right shrink-0">
+                            <span class="text-[10px] sm:text-xs font-semibold text-muted-foreground uppercase tracking-wider block">Amount to Transfer</span>
+                            <span class="text-lg sm:text-2xl font-extrabold text-foreground font-heading"><?php echo wp_kses_post( $order_total ); ?></span>
                         </div>
                     </div>
 
@@ -195,7 +195,7 @@ if ( empty( $shipping_note ) ) {
                             ?>
                         </p>
                     </div>
-                    <!-- Interactive Banking Fields Grid -->
+                    <!-- Interactive Banking Fields Grid (mt-3 gap from warning above) -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-3">
                         
                         <!-- Account Name -->
