@@ -434,26 +434,25 @@ if ( empty( $shipping_note ) ) {
                         border-top: 1px solid #F1F5F9 !important;
                         font-size: 0.875rem !important;
                     }
-                    .woocommerce-table--order-details tfoot tr:has(.woocommerce-Price-amount),
                     .woocommerce-table--order-details tfoot tr.order-total,
                     .woocommerce-order .woocommerce-table--order-details tfoot tr.order-total {
                         background-color: #F0F7FC !important;
                         border-top: 2px solid #BAE6FD !important;
                         border-bottom: 2px solid #BAE6FD !important;
                     }
-                    .woocommerce-table--order-details tfoot tr:has(.woocommerce-Price-amount) th,
-                    .woocommerce-table--order-details tfoot tr.order-total th {
+                    .woocommerce-table--order-details tfoot tr.order-total th,
+                    .woocommerce-order .woocommerce-table--order-details tfoot tr.order-total th {
                         color: #0C4161 !important;
-                        font-weight: 800 !important;
-                        font-size: 0.9375rem !important;
+                        font-weight: 900 !important;
+                        font-size: 1.25rem !important;
                     }
-                    .woocommerce-table--order-details tfoot tr:has(.woocommerce-Price-amount) td,
                     .woocommerce-table--order-details tfoot tr.order-total td,
-                    .woocommerce-table--order-details tfoot tr:has(.woocommerce-Price-amount) td span,
-                    .woocommerce-table--order-details tfoot tr.order-total td span {
+                    .woocommerce-table--order-details tfoot tr.order-total td bdi,
+                    .woocommerce-table--order-details tfoot tr.order-total td span,
+                    .woocommerce-order .woocommerce-table--order-details tfoot tr.order-total td {
                         color: #0284C7 !important;
                         font-weight: 900 !important;
-                        font-size: 1.125rem !important;
+                        font-size: 1.625rem !important;
                     }
                     .woocommerce-customer-details {
                         width: 100% !important;
