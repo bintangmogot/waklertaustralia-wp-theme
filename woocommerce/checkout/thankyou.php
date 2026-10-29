@@ -183,6 +183,18 @@ if ( empty( $shipping_note ) ) {
                         </div>
                     </div>
 
+                    <!-- Callout Warning Box with bold red DO NOT and highlighted keywords -->
+                    <div class="bg-[#0C4161] text-white rounded-xl py-2.5 px-3.5 sm:py-3 sm:px-4 shadow-xs">
+                        <p class="text-xs sm:text-sm leading-relaxed mb-0 font-normal">
+                            <?php
+                            $warning_html = esc_html( $checkout_bacs_warning );
+                            $warning_html = str_ireplace( 'DO NOT', '<strong class="font-black text-[#FF4D4F]" style="color: #ff4d4f; font-weight: 800;">DO NOT</strong>', $warning_html );
+                            $warning_html = str_ireplace( 'medicine', '<strong class="font-bold text-[#FFB703]" style="color: #ffb703; font-weight: 700;">medicine</strong>', $warning_html );
+                            $warning_html = str_ireplace( 'website', '<strong class="font-bold text-[#FFB703]" style="color: #ffb703; font-weight: 700;">website</strong>', $warning_html );
+                            echo $warning_html;
+                            ?>
+                        </p>
+                    </div>
                     <!-- Interactive Banking Fields Grid -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-3">
                         
@@ -245,18 +257,6 @@ if ( empty( $shipping_note ) ) {
 
                     </div>
 
-                    <!-- Callout Warning Box with bold red DO NOT and highlighted keywords -->
-                    <div class="bg-[#0C4161] text-white rounded-xl py-2.5 px-3.5 sm:py-3 sm:px-4 shadow-xs">
-                        <p class="text-xs sm:text-sm leading-relaxed mb-0 font-normal">
-                            <?php
-                            $warning_html = esc_html( $checkout_bacs_warning );
-                            $warning_html = str_ireplace( 'DO NOT', '<strong class="font-black text-[#FF4D4F]" style="color: #ff4d4f; font-weight: 800;">DO NOT</strong>', $warning_html );
-                            $warning_html = str_ireplace( 'medicine', '<strong class="font-bold text-[#FFB703]" style="color: #ffb703; font-weight: 700;">medicine</strong>', $warning_html );
-                            $warning_html = str_ireplace( 'website', '<strong class="font-bold text-[#FFB703]" style="color: #ffb703; font-weight: 700;">website</strong>', $warning_html );
-                            echo $warning_html;
-                            ?>
-                        </p>
-                    </div>
 
                     <!-- Payment Badges Row (Exact Logo Height Matching Reference Image) -->
                     <div class="mt-3.5 pt-3 border-t border-[#EAB308]/30 flex flex-wrap items-center justify-center gap-3">
