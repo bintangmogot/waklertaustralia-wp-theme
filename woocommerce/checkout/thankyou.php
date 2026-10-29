@@ -299,7 +299,7 @@ if ( empty( $shipping_note ) ) {
             <?php endif; ?>
 
             <!-- WooCommerce Hook Outputs (Styled cleanly) -->
-            <div class="thank-you-hooks-wrapper">
+            <div class="thank-you-hooks-wrapper" style="max-width: 48rem; margin-left: auto; margin-right: auto;">
                 <style>
                     /* Hide redundant duplicate plain BACS and old note */
                     .custom-bacs-details,
@@ -458,8 +458,11 @@ if ( empty( $shipping_note ) ) {
                     }
                     .woocommerce-customer-details {
                         width: 100% !important;
+                        max-width: 48rem !important;
                         margin-top: 2rem !important;
                         margin-bottom: 2rem !important;
+                        margin-left: auto !important;
+                        margin-right: auto !important;
                     }
                     /* Customer addresses layout: Force 1 column on mobile, 2 columns on desktop */
                     .woocommerce .woocommerce-customer-details .col2-set,
