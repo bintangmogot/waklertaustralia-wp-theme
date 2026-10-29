@@ -166,6 +166,20 @@ add_action('acf/init', function() {
         update_option('_options_checkout_shipping_note', 'field_checkout_shipping_note');
     }
 
+    // 4. Seed Order Confirmation Email options
+    if (get_option('options_email_on_hold_intro') === false) {
+        update_option('options_email_on_hold_intro', "We've received your order and it's currently on hold until we can confirm your payment has been processed.");
+        update_option('_options_email_on_hold_intro', 'field_email_on_hold_intro');
+    }
+    if (get_option('options_email_on_hold_instruction') === false) {
+        update_option('options_email_on_hold_instruction', 'Please complete your payment using EFT or PayID below with your order number and we will send the product immediately and also send you an Australian Post tracking number.');
+        update_option('_options_email_on_hold_instruction', 'field_email_on_hold_instruction');
+    }
+    if (get_option('options_email_on_hold_warning') === false) {
+        update_option('options_email_on_hold_warning', 'Please DO NOT mention WAKLERT or Armodafinil on your bank transfer description.');
+        update_option('_options_email_on_hold_warning', 'field_email_on_hold_warning');
+    }
+
     update_option('waklert_header_settings_sync_ver', $target_ver);
 }, 20);
 

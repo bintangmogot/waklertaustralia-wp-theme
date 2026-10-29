@@ -247,7 +247,8 @@ add_filter('woocommerce_gateway_description', function($description, $gateway_id
 }, 99, 2);
 
 add_filter('woocommerce_bacs_instructions', function($instructions, $order = null) {
-    return 'Your order is nearly complete and your one step closer to getting your products – please complete your payment using EFT or PayID below with your order number and we will send the product immediately and also send you an Australia Post tracking number.';
+    // Return empty so customer email uses the exact on-hold email template copy without duplicate BACS text
+    return '';
 }, 9999, 2);
 
 /**

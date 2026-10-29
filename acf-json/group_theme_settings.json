@@ -982,6 +982,64 @@
             "maxlength": "",
             "placeholder": "",
             "rows": 3
+        },
+        {
+            "key": "field_email_on_hold_intro",
+            "label": "Order Confirmation Email - Intro Message",
+            "name": "email_on_hold_intro",
+            "aria_label": "",
+            "type": "textarea",
+            "instructions": "Intro paragraph shown after 'Hi [Customer Name],' in order confirmation emails.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "We've received your order and it's currently on hold until we can confirm your payment has been processed.",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": "",
+            "rows": 2
+        },
+        {
+            "key": "field_email_on_hold_instruction",
+            "label": "Order Confirmation Email - Payment Instruction",
+            "name": "email_on_hold_instruction",
+            "aria_label": "",
+            "type": "textarea",
+            "instructions": "Payment instruction paragraph in order confirmation emails.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Please complete your payment using EFT or PayID below with your order number and we will send the product immediately and also send you an Australian Post tracking number.",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": "",
+            "rows": 2
+        },
+        {
+            "key": "field_email_on_hold_warning",
+            "label": "Order Confirmation Email - Transfer Warning Note",
+            "name": "email_on_hold_warning",
+            "aria_label": "",
+            "type": "text",
+            "instructions": "Warning note in order confirmation emails (DO NOT, WAKLERT, Armodafinil are styled automatically).",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Please DO NOT mention WAKLERT or Armodafinil on your bank transfer description.",
+            "maxlength": "",
+            "placeholder": ""
         }
     ],
     "location": [
@@ -1005,5 +1063,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1793152418
+    "modified": 1793232849
 }
