@@ -164,7 +164,7 @@ if ( empty( $shipping_note ) ) {
                     <div class="flex items-center justify-between gap-2 pb-3 mb-3.5 border-b border-[#EAB308]/30">
                         <div class="flex items-center gap-3 min-w-0 shrink">
                             <!-- Commonwealth Bank Yellow Diamond Badge -->
-                            <div class="w-9 h-9 rounded-lg bg-[#FFCC00] flex items-center justify-center shadow-xs border border-amber-300">
+                            <div class="w-9 h-9 shrink-0 rounded-lg bg-[#FFCC00] flex items-center justify-center shadow-xs border border-amber-300">
                                 <svg class="w-6 h-6 text-[#1A1A1A]" viewBox="0 0 24 24" fill="currentColor">
                                     <path d="M12 2L2 12l10 10 10-10L12 2zm0 4.2L17.8 12 12 17.8 6.2 12 12 6.2z"/>
                                 </svg>
@@ -184,7 +184,7 @@ if ( empty( $shipping_note ) ) {
                     </div>
 
                     <!-- Callout Warning Box with bold red DO NOT and highlighted keywords -->
-                    <div class="bg-[#0C4161] text-white rounded-xl py-2.5 px-3.5 sm:py-3 sm:px-4 shadow-xs">
+                    <div class="bg-[#0C4161] text-white rounded-xl py-2.5 px-3.5 sm:py-3 sm:px-4 shadow-xs mb-3">
                         <p class="text-xs sm:text-sm leading-relaxed mb-0 font-normal">
                             <?php
                             $warning_html = esc_html( $checkout_bacs_warning );
