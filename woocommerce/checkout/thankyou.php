@@ -177,14 +177,14 @@ if ( empty( $shipping_note ) ) {
                                 <p class="text-xs text-muted-foreground">Official Direct Bank Transfer (EFT / NetBank / PayID)</p>
                             </div>
                         </div>
-                        <div class="text-right shrink-0">
-                            <span class="text-[10px] sm:text-xs font-semibold text-muted-foreground uppercase tracking-wider block">Amount to Transfer</span>
-                            <span class="text-lg sm:text-2xl font-extrabold text-foreground font-heading"><?php echo wp_kses_post( $order_total ); ?></span>
+                        <div class="text-center sm:text-right w-full sm:w-auto shrink-0 pt-1 sm:pt-0">
+                            <span class="text-xs sm:text-xs font-semibold text-muted-foreground uppercase tracking-wider block mb-0.5">Amount to Transfer</span>
+                            <span class="text-3xl sm:text-2xl font-black sm:font-extrabold text-foreground font-heading"><?php echo wp_kses_post( $order_total ); ?></span>
                         </div>
                     </div>
 
                     <!-- Callout Warning Box with bold red DO NOT and highlighted keywords -->
-                    <div class="bg-[#0C4161] text-white rounded-xl py-2.5 px-3.5 sm:py-3 sm:px-4 shadow-xs mb-3">
+                    <div class="bg-[#0C4161] text-white rounded-xl py-2.5 px-3.5 sm:py-3 sm:px-4 shadow-xs mb-3.5 sm:mb-4">
                         <p class="text-xs sm:text-sm leading-relaxed mb-0 font-normal">
                             <?php
                             $warning_html = esc_html( $checkout_bacs_warning );
@@ -196,7 +196,7 @@ if ( empty( $shipping_note ) ) {
                         </p>
                     </div>
                     <!-- Interactive Banking Fields Grid (mt-3 gap from warning above) -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-3">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-3 mt-3.5 sm:mt-4">
                         
                         <!-- Account Name -->
                         <div class="bg-white/95 border border-border/80 rounded-xl py-2 px-3 sm:py-2.5 sm:px-3.5 flex items-center justify-between gap-2 shadow-xs hover:border-primary/50 transition-colors">
@@ -274,7 +274,6 @@ if ( empty( $shipping_note ) ) {
                         </div>
                     </div>
                 </div>
-                </div>
 
                 <!-- Receipt Email Dispatch Notice -->
                 <p class="text-xs text-muted-foreground italic text-center mb-3">
@@ -289,7 +288,7 @@ if ( empty( $shipping_note ) ) {
                 </p>
 
                 <!-- Shipping Timeline Note -->
-                <div class="bg-card border border-border/80 rounded-xl py-2.5 px-3.5 sm:py-3 sm:px-4 mb-3.5 sm:mb-4 shadow-xs">
+                <div class="bg-card border border-border/80 rounded-xl py-2.5 px-3.5 sm:py-3 sm:px-4 mb-3.5 sm:mb-4 shadow-xs" style="max-width: 48rem; margin-left: auto; margin-right: auto;">
                     <h4 class="font-bold text-foreground text-sm sm:text-base mb-1.5">Note</h4>
                     <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-0">
                         <?php echo esc_html( $shipping_note ); ?>
