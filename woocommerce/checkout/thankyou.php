@@ -315,6 +315,9 @@ if ( empty( $shipping_note ) ) {
                         padding: 1.5rem;
                         margin-bottom: 2rem;
                         box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+                        max-width: 48rem;
+                        margin-left: auto;
+                        margin-right: auto;
                     }
                     @media (min-width: 640px) {
                         .woocommerce-order-details { padding: 2rem; }
