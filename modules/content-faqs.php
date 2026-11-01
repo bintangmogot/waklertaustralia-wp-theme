@@ -9,8 +9,8 @@
  * - Smooth hover and expansion animations
  */
 
-$eyebrow = get_sub_field('eyebrow') ?: "FAQ";
-$show_eyebrow = get_sub_field('show_eyebrow') !== false;
+$badge = get_sub_field('eyebrow') ?: "FAQ";
+$show_badge = get_sub_field('show_eyebrow') !== false;
 $heading = get_sub_field('heading') ?: "Frequently Asked Questions";
 $show_link = get_sub_field('show_full_faq_link') !== false;
 $link = get_sub_field('link_text') ?: "Full FAQ";
@@ -20,18 +20,15 @@ $link_url = get_sub_field('link_url') ?: home_url('/faq');
     <div class="container-custom max-w-4xl relative z-10">
         <!-- Section Header -->
         <div class="text-center max-w-3xl mx-auto mb-10 md:mb-12">
-            <?php if($show_eyebrow): ?>
+            <?php if($show_badge): ?>
             <span class="inline-flex items-center gap-2 bg-sky-100 text-[#0c4161] border border-sky-300 text-xs font-black uppercase tracking-widest px-4 py-1.5 rounded-full mb-3 shadow-xs">
                 <span class="w-2 h-2 rounded-full bg-[#0c4161] animate-pulse-subtle"></span>
-                <?= esc_html($eyebrow) ?>
+                <?= esc_html($badge) ?>
             </span>
             <?php endif; ?>
             <h2 class="font-heading text-2xl md:text-4xl font-black text-ink tracking-tight mb-3">
                 <?= esc_html($heading) ?>
             </h2>
-            <p class="text-sm md:text-base text-muted-foreground leading-relaxed max-w-xl mx-auto">
-                Practical information regarding ordering, domestic shipping, and Armodafinil prescription requirements in Australia.
-            </p>
         </div>
 
         <div class="space-y-4">
