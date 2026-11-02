@@ -34,7 +34,7 @@
                 "class": "",
                 "id": ""
             },
-            "message": "<strong>Where do I change things on the website?</strong><br><br><strong>Top bar &amp; header button</strong> → tab <em>Header &amp; Top Bar</em><br><strong>Email, phone, address, hours</strong> → tab <em>Contact Info</em><br><strong>Text under the footer logo, medical disclaimer, copyright</strong> → tab <em>Footer: Text</em><br><strong>Payment &amp; shipping logos in footer</strong> → tab <em>Footer: Logos</em><br><strong>4 trust cards above the footer (inner pages)</strong> → tab <em>Footer: Trust Cards</em><br><strong>Product page texts (badge, free shipping, trust icons, specs labels, no-reviews)</strong> → tab <em>Product Pages</em><br><strong>Bank transfer / PayID / order email wording</strong> → tab <em>Checkout &amp; Emails</em><br><strong>Footer link columns (Trending, Quick Links, Cities, Info) and the main menu</strong> → Appearance &rarr; Menus (not here)<br><strong>Page content (hero, FAQs, product sections)</strong> → edit the page itself<br><br>After clicking Update, the site cache is cleared automatically, so changes show on the front end within seconds.",
+            "message": "<strong>Where do I change things on the website?</strong><br><br><strong>Top bar &amp; header button</strong> → tab <em>Header &amp; Top Bar</em><br><strong>Email, phone, address, hours</strong> → tab <em>Contact Info</em><br><strong>Text under the footer logo, medical disclaimer, copyright</strong> → tab <em>Footer: Text</em><br><strong>Payment &amp; shipping logos in footer</strong> → tab <em>Footer: Logos</em><br><strong>4 trust cards above the footer (inner pages)</strong> → tab <em>Footer: Trust Cards</em><br><strong>Product page texts (badge, free shipping, trust icons, specs labels, no-reviews)</strong> → tab <em>Product Pages</em><br><strong>Small labels (header dropdown, footer labels, reviews, shop comparison, thank you page)</strong> → tab <em>Site Text</em><br><strong>Bank transfer / PayID / order email wording</strong> → tab <em>Checkout &amp; Emails</em><br><strong>Footer link columns (Trending, Quick Links, Cities, Info) and the main menu</strong> → Appearance &rarr; Menus (not here)<br><strong>Page content (hero, FAQs, product sections)</strong> → edit the page itself<br><br>After clicking Update, the site cache is cleared automatically, so changes show on the front end within seconds.",
             "new_lines": "",
             "esc_html": 0
         },
@@ -1186,6 +1186,852 @@
             "instructions": "Shown in the product reviews area, on shop product cards and in the catalog comparison when a product has no reviews."
         },
         {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_tab_site_text",
+            "label": "Site Text",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_site_text_guide",
+            "label": "What is this tab?",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "message": "Small labels and messages that appear around the site (header dropdown, footer labels, product reviews, shop comparison, thank you page). Each box shows where it is used.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_acc_header_support_dropdown",
+            "label": "Header: Support Dropdown",
+            "name": "",
+            "type": "accordion",
+            "instructions": "",
+            "open": 0,
+            "multi_expand": 1,
+            "endpoint": 0
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_header_support_badge",
+            "label": "Small Label",
+            "name": "header_support_badge",
+            "type": "text",
+            "instructions": "Small amber label at the top of the support card in the header dropdown.",
+            "default_value": "Support Desk",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_header_support_heading",
+            "label": "Heading",
+            "name": "header_support_heading",
+            "type": "text",
+            "instructions": "Heading of the support card in the header dropdown.",
+            "default_value": "Need a hand?",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_header_support_text",
+            "label": "Text",
+            "name": "header_support_text",
+            "type": "textarea",
+            "instructions": "Paragraph in the support card in the header dropdown.",
+            "default_value": "Find clear information about products, ordering and express Australia delivery.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_header_support_link_text",
+            "label": "Button Text",
+            "name": "header_support_link_text",
+            "type": "text",
+            "instructions": "Button at the bottom of the support card.",
+            "default_value": "Visit the FAQs",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_header_support_link_url",
+            "label": "Button Link",
+            "name": "header_support_link_url",
+            "type": "text",
+            "instructions": "Page address for the button, e.g. /faq/ or a full https:// link.",
+            "default_value": "/faq/",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_acc_footer_labels",
+            "label": "Footer Labels",
+            "name": "",
+            "type": "accordion",
+            "instructions": "",
+            "open": 0,
+            "multi_expand": 1,
+            "endpoint": 0
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_footer_disclaimer_label",
+            "label": "Disclaimer Label",
+            "name": "footer_disclaimer_label",
+            "type": "text",
+            "instructions": "Bold word(s) before the medical disclaimer paragraph in the footer.",
+            "default_value": "Medical Website Disclaimer:",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_footer_whatsapp_label",
+            "label": "WhatsApp Row Label",
+            "name": "footer_whatsapp_label",
+            "type": "text",
+            "instructions": "Label in the footer contact block, before the chat button.",
+            "default_value": "WhatsApp",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_footer_chat_label",
+            "label": "WhatsApp Button Text",
+            "name": "footer_chat_label",
+            "type": "text",
+            "instructions": "Text on the green chat button in the footer.",
+            "default_value": "Chat Live",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_footer_working_days_label",
+            "label": "Working Days Label",
+            "name": "footer_working_days_label",
+            "type": "text",
+            "instructions": "Label before the working days in the footer contact block.",
+            "default_value": "Working Days:",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_footer_office_hours_label",
+            "label": "Office Hours Label",
+            "name": "footer_office_hours_label",
+            "type": "text",
+            "instructions": "Label before the office hours in the footer contact block.",
+            "default_value": "Office Hours:",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_acc_product_reviews_section",
+            "label": "Product Reviews Section",
+            "name": "",
+            "type": "accordion",
+            "instructions": "",
+            "open": 0,
+            "multi_expand": 1,
+            "endpoint": 0
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_reviews_badge",
+            "label": "Badge",
+            "name": "reviews_badge",
+            "type": "text",
+            "instructions": "Small pill above the reviews heading on product pages.",
+            "default_value": "Verified reviews",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_reviews_title",
+            "label": "Heading",
+            "name": "reviews_title",
+            "type": "text",
+            "instructions": "Reviews section heading on product pages.",
+            "default_value": "What our customers say",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_reviews_subtitle",
+            "label": "Subheading",
+            "name": "reviews_subtitle",
+            "type": "text",
+            "instructions": "Line under the reviews heading.",
+            "default_value": "Real experiences from verified buyers",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_reviews_rating_label",
+            "label": "Rating Box Label",
+            "name": "reviews_rating_label",
+            "type": "text",
+            "instructions": "Label above the average rating number.",
+            "default_value": "Customer rating",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_reviews_empty_text",
+            "label": "No Reviews Message",
+            "name": "reviews_empty_text",
+            "type": "text",
+            "instructions": "Shown in the reviews area when a product has no reviews.",
+            "default_value": "No reviews yet. Be the first to review this product.",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_reviews_form_heading",
+            "label": "Review Form Heading",
+            "name": "reviews_form_heading",
+            "type": "text",
+            "instructions": "Heading of the review form. The product name is added after it.",
+            "default_value": "Write a Review",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_reviews_required_note",
+            "label": "Form Note: Required",
+            "name": "reviews_required_note",
+            "type": "text",
+            "instructions": "Small note next to the Submit button.",
+            "default_value": "All fields are required.",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_reviews_submit_label",
+            "label": "Submit Button Text",
+            "name": "reviews_submit_label",
+            "type": "text",
+            "instructions": "Text on the review form button.",
+            "default_value": "Submit Review",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_reviews_moderation_note",
+            "label": "Form Note: Moderation",
+            "name": "reviews_moderation_note",
+            "type": "text",
+            "instructions": "Small note under the Submit button.",
+            "default_value": "Moderated before publishing",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_acc_shop_product_comparison",
+            "label": "Shop: Product Comparison",
+            "name": "",
+            "type": "accordion",
+            "instructions": "",
+            "open": 0,
+            "multi_expand": 1,
+            "endpoint": 0
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_comparison_badge",
+            "label": "Badge",
+            "name": "comparison_badge",
+            "type": "text",
+            "instructions": "Small pill above the comparison heading on the shop page.",
+            "default_value": "Product comparison",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_comparison_title",
+            "label": "Heading",
+            "name": "comparison_title",
+            "type": "text",
+            "instructions": "Comparison section heading on the shop page.",
+            "default_value": "Compare our products",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_comparison_text",
+            "label": "Intro Text",
+            "name": "comparison_text",
+            "type": "textarea",
+            "instructions": "Paragraph under the comparison heading.",
+            "default_value": "Compare listed product details, pack sizes and current prices. Prices and availability come from the product listings.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_comparison_view_packs",
+            "label": "Link: Pack Sizes",
+            "name": "comparison_view_packs",
+            "type": "text",
+            "instructions": "Link text on each comparison card.",
+            "default_value": "View pack sizes and prices",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_comparison_view_options",
+            "label": "Link: Product Options",
+            "name": "comparison_view_options",
+            "type": "text",
+            "instructions": "Button text on each comparison card.",
+            "default_value": "View product options",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_comparison_unavailable",
+            "label": "Message: Prices Unavailable",
+            "name": "comparison_unavailable",
+            "type": "text",
+            "instructions": "Shown on a card when pack sizes cannot be loaded.",
+            "default_value": "Pack sizes and prices are currently unavailable.",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_comparison_empty",
+            "label": "Message: No Products",
+            "name": "comparison_empty",
+            "type": "text",
+            "instructions": "Shown when there are no products to compare.",
+            "default_value": "No products are currently available to compare.",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_comparison_disclaimer",
+            "label": "Disclaimer",
+            "name": "comparison_disclaimer",
+            "type": "textarea",
+            "instructions": "Small print under the comparison cards.",
+            "default_value": "Product information is for comparison only. Speak with a qualified health professional about medicine selection.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_acc_thank_you_page_labels",
+            "label": "Thank You Page Labels",
+            "name": "",
+            "type": "accordion",
+            "instructions": "",
+            "open": 0,
+            "multi_expand": 1,
+            "endpoint": 0
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_thankyou_heading_named",
+            "label": "Heading (with name)",
+            "name": "thankyou_heading_named",
+            "type": "text",
+            "instructions": "Main heading when the customer's first name is known. {name} is replaced by it.",
+            "default_value": "Congratulations, {name}!",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_thankyou_heading",
+            "label": "Heading (no name)",
+            "name": "thankyou_heading",
+            "type": "text",
+            "instructions": "Main heading when the first name is unknown.",
+            "default_value": "Thank You for Your Order!",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_thankyou_order_number_label",
+            "label": "Label: Order Number",
+            "name": "thankyou_order_number_label",
+            "type": "text",
+            "instructions": "Order summary box.",
+            "default_value": "Order Number",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_thankyou_payment_method_label",
+            "label": "Label: Payment Method",
+            "name": "thankyou_payment_method_label",
+            "type": "text",
+            "instructions": "Order summary box.",
+            "default_value": "Payment Method",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_thankyou_confirmation_label",
+            "label": "Label: Confirmation Sent",
+            "name": "thankyou_confirmation_label",
+            "type": "text",
+            "instructions": "Before the customer's email address.",
+            "default_value": "Confirmation sent to:",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_thankyou_invoice_label",
+            "label": "Label: Tax Invoice",
+            "name": "thankyou_invoice_label",
+            "type": "text",
+            "instructions": "Green tick label under the order summary.",
+            "default_value": "Tax Invoice Generated",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_thankyou_account_name_label",
+            "label": "Label: Account Name",
+            "name": "thankyou_account_name_label",
+            "type": "text",
+            "instructions": "Bank details card.",
+            "default_value": "Account Name",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_thankyou_account_number_label",
+            "label": "Label: Account Number",
+            "name": "thankyou_account_number_label",
+            "type": "text",
+            "instructions": "Bank details card.",
+            "default_value": "Account Number",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "key": "field_st_thankyou_email_note",
+            "label": "Email Note",
+            "name": "thankyou_email_note",
+            "type": "text",
+            "instructions": "Small line at the bottom of the thank you page.",
+            "default_value": "Your order confirmation & tax invoice have been dispatched to your email",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_theme_tab_checkout",
             "label": "Checkout & Emails",
             "name": "",
@@ -1359,5 +2205,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1793591888
+    "modified": 1793616300
 }

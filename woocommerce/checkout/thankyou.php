@@ -104,9 +104,9 @@ if ( empty( $shipping_note ) ) {
                 
                 <h1 class="font-heading text-2xl sm:text-3xl font-extrabold text-foreground tracking-tight mb-1.5">
                     <?php if ( $customer_first_name ) : ?>
-                        Congratulations, <?php echo esc_html( $customer_first_name ); ?>!
+                        <?php echo esc_html( str_replace( '{name}', $customer_first_name, waklert_text( 'thankyou_heading_named' ) ) ); ?>
                     <?php else : ?>
-                        Thank You for Your Order!
+                        <?= esc_html(waklert_text('thankyou_heading')) ?>
                     <?php endif; ?>
                 </h1>
                 
@@ -123,7 +123,7 @@ if ( empty( $shipping_note ) ) {
             <div class="bg-card border border-border/80 rounded-2xl p-3 sm:px-5 sm:py-3.5 shadow-xs mb-3.5 sm:mb-4">
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 divide-y md:divide-y-0 md:divide-x divide-border/60">
                     <div class="flex flex-col pt-2 md:pt-0">
-                        <span class="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">Order Number</span>
+                        <span class="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1"><?= esc_html(waklert_text('thankyou_order_number_label')) ?></span>
                         <strong class="text-foreground text-lg sm:text-xl font-bold font-mono">#<?php echo esc_html( $order_num ); ?></strong>
                     </div>
 
@@ -138,7 +138,7 @@ if ( empty( $shipping_note ) ) {
                     </div>
 
                     <div class="flex flex-col pt-3 md:pt-0 md:pl-6">
-                        <span class="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">Payment Method</span>
+                        <span class="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1"><?= esc_html(waklert_text('thankyou_payment_method_label')) ?></span>
                         <strong class="text-foreground text-sm sm:text-base font-bold leading-tight"><?php echo wp_kses_post( $order->get_payment_method_title() ); ?></strong>
                     </div>
                 </div>
@@ -146,12 +146,12 @@ if ( empty( $shipping_note ) ) {
                 <?php if ( $order->get_billing_email() ) : ?>
                     <div class="mt-5 pt-4 border-t border-border/60 flex flex-wrap items-center justify-between text-xs sm:text-sm text-muted-foreground gap-2">
                         <div>
-                            <span>Confirmation sent to: </span>
+                            <span><?= esc_html(waklert_text('thankyou_confirmation_label')) ?> </span>
                             <strong class="text-foreground"><?php echo esc_html( $order->get_billing_email() ); ?></strong>
                         </div>
                         <span class="inline-flex items-center gap-1.5 text-emerald-700 font-medium">
                             <svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            Tax Invoice Generated
+                            <?= esc_html(waklert_text('thankyou_invoice_label')) ?>
                         </span>
                     </div>
                 <?php endif; ?>
@@ -201,7 +201,7 @@ if ( empty( $shipping_note ) ) {
                         <!-- Account Name -->
                         <div class="bg-white/95 border border-border/80 rounded-xl py-2 px-3 sm:py-2.5 sm:px-3.5 flex items-center justify-between gap-2 shadow-xs hover:border-primary/50 transition-colors">
                             <div>
-                                <span class="text-[11px] uppercase tracking-wider font-bold text-muted-foreground block mb-0.5">Account Name</span>
+                                <span class="text-[11px] uppercase tracking-wider font-bold text-muted-foreground block mb-0.5"><?= esc_html(waklert_text('thankyou_account_name_label')) ?></span>
                                 <span class="text-base sm:text-lg font-bold text-foreground select-all"><?php echo esc_html( $bacs_name ); ?></span>
                             </div>
                             <button type="button" onclick="copyValue('<?php echo esc_js( $bacs_name ); ?>', this)" class="copy-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-border text-xs font-bold text-foreground bg-muted/40 hover:bg-muted transition-all active:scale-95 cursor-pointer">
@@ -234,7 +234,7 @@ if ( empty( $shipping_note ) ) {
                         <!-- Account Number -->
                         <div class="bg-white/95 border border-border/80 rounded-xl py-2 px-3 sm:py-2.5 sm:px-3.5 flex items-center justify-between gap-2 shadow-xs hover:border-primary/50 transition-colors">
                             <div>
-                                <span class="text-[11px] uppercase tracking-wider font-bold text-muted-foreground block mb-0.5">Account Number</span>
+                                <span class="text-[11px] uppercase tracking-wider font-bold text-muted-foreground block mb-0.5"><?= esc_html(waklert_text('thankyou_account_number_label')) ?></span>
                                 <span class="text-xl sm:text-2xl font-mono font-extrabold text-foreground tracking-wider select-all"><?php echo esc_html( $bacs_acc ); ?></span>
                             </div>
                             <button type="button" onclick="copyValue('<?php echo esc_js( $bacs_acc ); ?>', this)" class="copy-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-border text-xs font-bold text-foreground bg-muted/40 hover:bg-muted transition-all active:scale-95 cursor-pointer">
@@ -583,7 +583,7 @@ if ( empty( $shipping_note ) ) {
                 </a>
                 <p class="text-xs text-muted-foreground mt-3 flex items-center justify-center gap-1.5">
                     <svg class="w-3.5 h-3.5 text-emerald-600 inline shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                    <span>Your order confirmation &amp; tax invoice have been dispatched to your email</span>
+                    <span><?= esc_html(waklert_text('thankyou_email_note')) ?></span>
                 </p>
             </div>
 
