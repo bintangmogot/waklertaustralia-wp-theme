@@ -59,7 +59,8 @@ function modmy_register_post_types() {
         'public'             => true,
         'publicly_queryable' => true,
         'show_ui'            => true,
-        'show_in_menu'       => true,
+        'show_in_menu'       => false, // hidden from the admin menu; edit at wp-admin/edit.php?post_type=city
+        'show_in_admin_bar'  => false,
         'query_var'          => true,
         'rewrite'            => false, // city URLs sit at the site root (/sydney/); see routing below
         'capability_type'    => 'post',
