@@ -3468,14 +3468,14 @@
                                     "parent_repeater": "field_faq_categories",
                                     "sub_fields": [
                                         {
-                                            "key": "field_faq_q_en",
+                                            "key": "field_faq_page_q",
                                             "label": "Question",
                                             "name": "question",
                                             "type": "text",
                                             "parent_repeater": "field_faq_cat_items"
                                         },
                                         {
-                                            "key": "field_faq_a_en",
+                                            "key": "field_faq_page_a",
                                             "label": "Answer",
                                             "name": "answer",
                                             "type": "wysiwyg",
