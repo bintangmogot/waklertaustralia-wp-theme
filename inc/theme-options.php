@@ -86,7 +86,7 @@ add_action('wp_update_nav_menu', function() {
  * into the database field group. Field names are unchanged, so saved values are kept.
  */
 add_action('acf/init', function() {
-    $target_ver = '20261101_theme_settings_tabs_v1';
+    $target_ver = '20261102_theme_settings_tabs_v2';
     if (get_option('waklert_theme_settings_tabs_ver') === $target_ver || !function_exists('acf_import_field_group')) {
         return;
     }
@@ -101,6 +101,11 @@ add_action('acf/init', function() {
         ]);
         $first_matched = false;
         foreach ($acf_posts as $p) {
+            // Product Page Presentation now lives inside Theme Settings (Product Pages tab)
+            if ($p->post_name === 'group_waklert_product_presentation_settings' || $p->post_excerpt === 'group_waklert_product_presentation_settings') {
+                wp_delete_post($p->ID, true);
+                continue;
+            }
             if ($p->post_name === 'group_theme_settings' || $p->post_excerpt === 'group_theme_settings' || $p->post_excerpt === 'theme-settings') {
                 if (!$first_matched) {
                     $first_matched = true;
