@@ -105,7 +105,7 @@ add_filter( 'request', function ( $query_vars ) {
     return $query_vars;
 } );
 
-// 301: old /buy-modafinil/{city}/ -> /{city}/ ; cities that are not published (Draft) -> homepage
+// 301: old /buy-modafinil/{city}/ -> /{city}/ ; cities that are not published (Draft) -> shop page
 add_action( 'template_redirect', function () {
     global $wp;
     $path = (string) $wp->request;
@@ -128,7 +128,7 @@ add_action( 'template_redirect', function () {
         return;
     }
 
-    // Draft / private / trashed city: send visitors and search engines to the homepage.
+    // Draft / private city: send visitors and search engines to the shop page.
     $drafted = get_posts( array(
         'post_type'      => 'city',
         'name'           => $slug,
@@ -137,7 +137,7 @@ add_action( 'template_redirect', function () {
         'fields'         => 'ids',
     ) );
     if ( $drafted ) {
-        wp_safe_redirect( home_url( '/' ), 301 );
+        wp_safe_redirect( function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'shop' ) : home_url( '/shop/' ), 301 );
         exit;
     }
 }, 1 );
