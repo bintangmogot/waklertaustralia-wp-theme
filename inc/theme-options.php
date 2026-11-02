@@ -54,10 +54,17 @@ function waklert_format_whatsapp_url($phone_or_url = null) {
 }
 
 /**
- * Configure ACF JSON save and load paths for automatic sync
+ * Configure ACF JSON save and load paths for automatic sync.
+ * ACF only writes (or deletes) the acf-json files on the local site. On live they come from Git, so
+ * "Update from Remote" in cPanel always finds a clean folder and can pull.
  */
+function waklert_is_local_site() {
+    $host = (string) wp_parse_url(home_url(), PHP_URL_HOST);
+    return (bool) preg_match('/\.(test|local|localhost)$/i', $host);
+}
+
 add_filter('acf/settings/save_json', function($path) {
-    return get_stylesheet_directory() . '/acf-json';
+    return waklert_is_local_site() ? get_stylesheet_directory() . '/acf-json' : '';
 });
 
 add_filter('acf/settings/load_json', function($paths) {
