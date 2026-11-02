@@ -9,6 +9,8 @@ $read = static function ($name) use ($args) {
     return isset($args['fields']) ? ($args['fields'][$name] ?? '') : get_field($name);
 };
 
+// h2 when this layout is embedded inside another page (e.g. the homepage already has an h1)
+$hero_tag     = (($args['heading_tag'] ?? 'h1') === 'h2') ? 'h2' : 'h1';
 $city         = trim((string) $read('city_name')) ?: get_the_title();
 $region       = $read('region') ?: 'Australia';
 $days         = $read('delivery_days');
@@ -117,9 +119,9 @@ $whatsapp     = function_exists('waklert_format_whatsapp_url') ? waklert_format_
             </div>
 
             <!-- Main Heading -->
-            <h1 class="max-w-2xl font-heading text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-black leading-[1.12] tracking-tight text-white drop-shadow-sm">
+            <<?= $hero_tag ?> class="max-w-2xl font-heading text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-black leading-[1.12] tracking-tight text-white drop-shadow-sm">
                 <?= esc_html($read('hero_heading') ?: "Armodafinil Delivery to {$city}") ?>
-            </h1>
+            </<?= $hero_tag ?>>
 
             <!-- Subtitle -->
             <p class="mt-4 sm:mt-5 max-w-xl text-sm sm:text-base leading-relaxed text-sky-100/90 font-medium">

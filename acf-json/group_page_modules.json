@@ -3886,6 +3886,44 @@
                         }
                     ]
                 },
+                "layout_city_page": {
+                    "key": "layout_city_page",
+                    "name": "city_page",
+                    "label": "City Page (full, from Australia Delivery)",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_cp_city",
+                            "label": "City",
+                            "name": "city",
+                            "aria-label": "",
+                            "type": "post_object",
+                            "instructions": "Shows every section of this city's page here (hero, delivery facts, products, FAQs, CTA). Edit the content under Australia Delivery. The city can stay in Draft.",
+                            "required": 1,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "post_type": [
+                                "city"
+                            ],
+                            "post_status": [
+                                "publish",
+                                "draft",
+                                "private"
+                            ],
+                            "return_format": "id",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 1,
+                            "bidirectional_target": []
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
                 "layout_dosage_guide": {
                     "key": "layout_dosage_guide",
                     "name": "dosage_guide",
@@ -4792,6 +4830,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1792586495,
+    "modified": 1793608762,
     "local_file": "C:laragonwwwwaklertaustralia.com/wp-content/themes/waklertaustralia.com-wp/acf-json/group_page_modules.json"
 }

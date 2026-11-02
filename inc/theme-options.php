@@ -86,35 +86,42 @@ add_action('wp_update_nav_menu', function() {
  * into the database field group. Field names are unchanged, so saved values are kept.
  */
 add_action('acf/init', function() {
-    $target_ver = '20261102_theme_settings_tabs_v2';
+    $target_ver = '20261102_theme_settings_tabs_v3';
     if (get_option('waklert_theme_settings_tabs_ver') === $target_ver || !function_exists('acf_import_field_group')) {
         return;
     }
 
-    $json_path = get_stylesheet_directory() . '/acf-json/group_theme_settings.json';
-    $json_data = file_exists($json_path) ? json_decode(file_get_contents($json_path), true) : null;
-    if (is_array($json_data) && !empty($json_data['key'])) {
-        $acf_posts = get_posts([
-            'post_type'      => 'acf-field-group',
-            'posts_per_page' => -1,
-            'post_status'    => 'any',
-        ]);
+    $acf_posts = get_posts([
+        'post_type'      => 'acf-field-group',
+        'posts_per_page' => -1,
+        'post_status'    => 'any',
+    ]);
+
+    foreach (['group_theme_settings', 'group_page_modules'] as $group_key) {
+        $json_path = get_stylesheet_directory() . '/acf-json/' . $group_key . '.json';
+        $json_data = file_exists($json_path) ? json_decode(file_get_contents($json_path), true) : null;
+        if (!is_array($json_data) || empty($json_data['key'])) {
+            continue;
+        }
         $first_matched = false;
         foreach ($acf_posts as $p) {
-            // Product Page Presentation now lives inside Theme Settings (Product Pages tab)
-            if ($p->post_name === 'group_waklert_product_presentation_settings' || $p->post_excerpt === 'group_waklert_product_presentation_settings') {
-                wp_delete_post($p->ID, true);
+            if ($p->post_name !== $group_key && $p->post_excerpt !== $group_key) {
                 continue;
             }
-            if ($p->post_name === 'group_theme_settings' || $p->post_excerpt === 'group_theme_settings' || $p->post_excerpt === 'theme-settings') {
-                if (!$first_matched) {
-                    $first_matched = true;
-                    $json_data['ID'] = $p->ID;
-                    acf_import_field_group($json_data);
-                } else {
-                    wp_delete_post($p->ID, true);
-                }
+            if (!$first_matched) {
+                $first_matched = true;
+                $json_data['ID'] = $p->ID;
+                acf_import_field_group($json_data);
+            } else {
+                wp_delete_post($p->ID, true);
             }
+        }
+    }
+
+    // Product Page Presentation now lives inside Theme Settings (Product Pages tab)
+    foreach ($acf_posts as $p) {
+        if ($p->post_name === 'group_waklert_product_presentation_settings' || $p->post_excerpt === 'group_waklert_product_presentation_settings') {
+            wp_delete_post($p->ID, true);
         }
     }
 
