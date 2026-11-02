@@ -69,6 +69,54 @@ add_filter('acf/settings/load_json', function($paths) {
 });
 
 /**
+ * Clear the page cache (LiteSpeed) whenever Theme Settings or a menu is saved,
+ * so footer/header edits show on the front end straight away.
+ */
+add_action('acf/save_post', function($post_id) {
+    if ($post_id === 'options') {
+        do_action('litespeed_purge_all');
+    }
+}, 20);
+add_action('wp_update_nav_menu', function() {
+    do_action('litespeed_purge_all');
+});
+
+/**
+ * One-time import of the reorganised Theme Settings tabs (acf-json/group_theme_settings.json)
+ * into the database field group. Field names are unchanged, so saved values are kept.
+ */
+add_action('acf/init', function() {
+    $target_ver = '20261101_theme_settings_tabs_v1';
+    if (get_option('waklert_theme_settings_tabs_ver') === $target_ver || !function_exists('acf_import_field_group')) {
+        return;
+    }
+
+    $json_path = get_stylesheet_directory() . '/acf-json/group_theme_settings.json';
+    $json_data = file_exists($json_path) ? json_decode(file_get_contents($json_path), true) : null;
+    if (is_array($json_data) && !empty($json_data['key'])) {
+        $acf_posts = get_posts([
+            'post_type'      => 'acf-field-group',
+            'posts_per_page' => -1,
+            'post_status'    => 'any',
+        ]);
+        $first_matched = false;
+        foreach ($acf_posts as $p) {
+            if ($p->post_name === 'group_theme_settings' || $p->post_excerpt === 'group_theme_settings' || $p->post_excerpt === 'theme-settings') {
+                if (!$first_matched) {
+                    $first_matched = true;
+                    $json_data['ID'] = $p->ID;
+                    acf_import_field_group($json_data);
+                } else {
+                    wp_delete_post($p->ID, true);
+                }
+            }
+        }
+    }
+
+    update_option('waklert_theme_settings_tabs_ver', $target_ver);
+}, 21);
+
+/**
  * Synchronize Header & Top Bar Theme Settings across local, staging (InstaWP), and live environments:
  * - Imports acf-json/group_theme_settings.json into any existing DB field group so WP Admin labels update immediately without deleting the JSON file
  * - Seeds live Header & Top Bar values once so WP Admin reflects the live configuration out of the box

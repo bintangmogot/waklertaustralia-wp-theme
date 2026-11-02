@@ -3,8 +3,44 @@
     "title": "Theme Settings",
     "fields": [
         {
+            "key": "field_tab_start_here",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0,
+            "instructions": "",
+            "label": "Start Here"
+        },
+        {
+            "key": "field_theme_start_here",
+            "label": "How this page works",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "<strong>Where do I change things on the website?</strong><br><br><strong>Top bar &amp; header button</strong> → tab <em>Header &amp; Top Bar</em><br><strong>Email, phone, address, hours</strong> → tab <em>Contact Info</em><br><strong>Text under the footer logo, medical disclaimer, copyright</strong> → tab <em>Footer: Text</em><br><strong>Payment &amp; shipping logos in footer</strong> → tab <em>Footer: Logos</em><br><strong>4 trust cards above the footer (inner pages)</strong> → tab <em>Footer: Trust Cards</em><br><strong>Bank transfer / PayID / order email wording</strong> → tab <em>Checkout &amp; Emails</em><br><strong>Footer link columns (Trending, Quick Links, Cities, Info) and the main menu</strong> → Appearance &rarr; Menus (not here)<br><strong>Page content (hero, FAQs, product sections)</strong> → edit the page itself<br><br>After clicking Update, the site cache is cleared automatically, so changes show on the front end within seconds.",
+            "new_lines": "",
+            "esc_html": 0
+        },
+        {
             "key": "field_tab_header_top_bar",
-            "label": "Header &amp; Top Bar",
+            "label": "Header & Top Bar",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -26,7 +62,7 @@
             "name": "site_logo",
             "aria-label": "",
             "type": "image",
-            "instructions": "Upload or choose the primary website logo. If empty, the WordPress Customizer logo will be used.",
+            "instructions": "Main logo in the header (and the footer, unless a separate footer logo is set in Footer: Text).",
             "required": 0,
             "conditional_logic": false,
             "wrapper": {
@@ -47,11 +83,11 @@
         },
         {
             "key": "field_topbar_left",
-            "label": "Top Bar Left Text",
+            "label": "Top Bar: Left Text",
             "name": "topbar_left",
             "aria-label": "",
             "type": "text",
-            "instructions": "",
+            "instructions": "Small text at the left of the dark bar above the header.",
             "required": false,
             "conditional_logic": false,
             "wrapper": {
@@ -67,11 +103,11 @@
         },
         {
             "key": "field_topbar_center",
-            "label": "Top Bar Center Text",
+            "label": "Top Bar: Centre Text",
             "name": "topbar_center",
             "aria-label": "",
             "type": "text",
-            "instructions": "",
+            "instructions": "Small text in the middle of the dark bar above the header.",
             "required": false,
             "conditional_logic": false,
             "wrapper": {
@@ -86,32 +122,12 @@
             "append": ""
         },
         {
-            "key": "field_whatsapp_number",
-            "label": "Header & Contact Phone Number",
-            "name": "whatsapp_number",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "Australian contact phone number (e.g. 0488 841 833). Displayed in the header, mobile drawer and top bar. Leave empty to hide the phone button.",
-            "required": false,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "0488 841 833",
-            "maxlength": "",
-            "placeholder": "0488 841 833",
-            "prepend": "",
-            "append": ""
-        },
-        {
             "key": "field_whatsapp_button_text",
-            "label": "Header Phone Button Text",
+            "label": "Header Phone Button: Text",
             "name": "whatsapp_button_text",
             "aria-label": "",
             "type": "text",
-            "instructions": "Custom text or phone number shown on the header phone button (e.g. 0488 841 833). Leave blank to automatically format the phone number above.",
+            "instructions": "Text on the phone button in the header (e.g. 0488 841 833).",
             "required": false,
             "conditional_logic": false,
             "wrapper": {
@@ -127,11 +143,11 @@
         },
         {
             "key": "field_whatsapp_button_url",
-            "label": "Header Phone Button Link / URL",
+            "label": "Header Phone Button: Link",
             "name": "whatsapp_button_url",
             "aria-label": "",
             "type": "text",
-            "instructions": "Optional custom link or phone number for the header button (e.g. tel:0488841833). If left blank, it defaults to calling the phone number above.",
+            "instructions": "Link behind the header phone button (e.g. tel:0488841833). Leave empty to use the phone number from Contact Info.",
             "required": false,
             "conditional_logic": false,
             "wrapper": {
@@ -144,6 +160,168 @@
             "placeholder": "tel:0488841833",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_waklert_tab_contact",
+            "label": "Contact Info",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_waklert_support_email",
+            "label": "Support Email",
+            "name": "support_email",
+            "aria-label": "",
+            "type": "email",
+            "instructions": "Shown in the footer, the Support banner and on the contact page.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "orders@waklertaustralia.com.au",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_whatsapp_number",
+            "label": "Phone / WhatsApp Number",
+            "name": "whatsapp_number",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Used for the footer \"Chat Live\" WhatsApp button and the phone links on contact, FAQ and delivery sections (e.g. 0488 841 833).",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "0488 841 833",
+            "maxlength": "",
+            "placeholder": "0488 841 833",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_waklert_location_text",
+            "label": "Address",
+            "name": "location_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Shown in the footer contact block (e.g. 50 Holt Street, Surry Hills, 2010).",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "50 Holt Street, Surry Hills, 2010",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_waklert_working_days",
+            "label": "Working Days",
+            "name": "working_days",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Shown in the footer contact block (e.g. Monday to Sunday).",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Monday to Sunday",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_waklert_office_hours",
+            "label": "Office Hours",
+            "name": "office_hours",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Shown in the footer contact block (e.g. 24/7).",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "24/7",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_waklert_footer_contact_heading",
+            "label": "Footer Contact Heading",
+            "name": "footer_contact_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Heading above the address, WhatsApp and email in the footer (e.g. Get in Touch with Us).",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Get in Touch with Us",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_waklert_support_cta_image",
+            "label": "Support Banner Image",
+            "name": "support_cta_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Photo in the \"Need help?\" Support banner shown above the footer on the homepage.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": ""
         },
         {
             "key": "field_waklert_tab_social",
@@ -215,8 +393,8 @@
             "placeholder": ""
         },
         {
-            "key": "field_waklert_tab_contact",
-            "label": "Contact Info",
+            "key": "field_tab_footer",
+            "label": "Footer: Text",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -233,31 +411,12 @@
             "selected": 0
         },
         {
-            "key": "field_waklert_support_email",
-            "label": "Support Email",
-            "name": "support_email",
-            "aria-label": "",
-            "type": "email",
-            "instructions": "Used for the support contact address.",
-            "required": false,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "orders@waklertaustralia.com.au",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_waklert_support_cta_image",
-            "label": "Support CTA Representative Image (Guy with Phone)",
-            "name": "support_cta_image",
+            "key": "field_footer_logo",
+            "label": "Footer Logo",
+            "name": "footer_logo",
             "aria-label": "",
             "type": "image",
-            "instructions": "Global representative image for the Support CTA banner. Defaults to bundled guy with phone photo.",
+            "instructions": "Optional. Leave empty to reuse the Site Logo.",
             "required": 0,
             "conditional_logic": false,
             "wrapper": {
@@ -265,7 +424,7 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "array",
+            "return_format": "id",
             "preview_size": "medium",
             "library": "all",
             "min_width": 0,
@@ -277,12 +436,12 @@
             "mime_types": ""
         },
         {
-            "key": "field_waklert_working_days",
-            "label": "Working Days",
-            "name": "working_days",
+            "key": "field_footer_description",
+            "label": "Footer Description",
+            "name": "footer_description",
             "aria-label": "",
-            "type": "text",
-            "instructions": "Displayed in the footer contact section (e.g. 'Monday to Sunday').",
+            "type": "textarea",
+            "instructions": "The paragraph directly under the logo in the footer.",
             "required": false,
             "conditional_logic": false,
             "wrapper": {
@@ -290,19 +449,19 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "Monday to Sunday",
+            "default_value": "Waklert Australia provides clear information about a focused range of armodafinil products, ordering and delivery options.",
+            "new_lines": "",
             "maxlength": "",
             "placeholder": "",
-            "prepend": "",
-            "append": ""
+            "rows": ""
         },
         {
-            "key": "field_waklert_office_hours",
-            "label": "Office Hours",
-            "name": "office_hours",
+            "key": "field_disclaimer",
+            "label": "Medical Disclaimer",
+            "name": "disclaimer_en",
             "aria-label": "",
-            "type": "text",
-            "instructions": "Displayed in the footer contact section (e.g. '24/7').",
+            "type": "textarea",
+            "instructions": "The \"Medical Website Disclaimer:\" paragraph under the footer description. Leave empty to hide it.",
             "required": false,
             "conditional_logic": false,
             "wrapper": {
@@ -310,19 +469,97 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "24/7",
+            "default_value": "This website provides general information only and is not a substitute for advice from a qualified health professional.",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": "",
+            "rows": ""
+        },
+        {
+            "key": "field_waklert_ssl_text",
+            "label": "Footer Pill 1 (Security)",
+            "name": "ssl_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Small green/blue pill under the disclaimer. Leave empty to hide.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "256-Bit SSL Encryption",
+            "maxlength": "",
+            "placeholder": "e.g. 256-Bit SSL Encryption",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_waklert_dispatch_text",
+            "label": "Footer Pill 2 (Dispatch)",
+            "name": "dispatch_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Small amber pill under the disclaimer. Leave empty to hide.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "AU Express Dispatch",
+            "maxlength": "",
+            "placeholder": "e.g. AU Express Dispatch",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_waklert_checkout_text",
+            "label": "Footer Pill 3 (Checkout)",
+            "name": "checkout_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Small green pill under the disclaimer. Leave empty to hide.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Encrypted Checkout",
+            "maxlength": "",
+            "placeholder": "e.g. Encrypted Checkout",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_waklert_copyright_text",
+            "label": "Copyright Line",
+            "name": "copyright_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Bottom bar of the footer. Leave empty for the automatic \"© year Site name\" line.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
             "append": ""
         },
         {
-            "key": "field_tab_footer",
-            "label": "Footer",
+            "key": "field_tab_footer_logos",
             "name": "",
             "aria-label": "",
             "type": "tab",
-            "instructions": "",
             "required": 0,
             "conditional_logic": false,
             "wrapper": {
@@ -332,7 +569,207 @@
             },
             "placement": "top",
             "endpoint": 0,
-            "selected": 0
+            "selected": 0,
+            "instructions": "",
+            "label": "Footer: Logos"
+        },
+        {
+            "key": "field_waklert_footer_payments_heading",
+            "label": "Payments Heading",
+            "name": "footer_payments_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Heading above the payment logos in the footer.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Payment Accepted",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_waklert_footer_payment_images",
+            "label": "Payment Accepted Logos",
+            "name": "footer_payment_images",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Upload accepted payment logos (e.g. Commonwealth Bank, Osko, PayID). If left empty, this section will disappear.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "button_label": "Add Payment Method",
+            "min": 0,
+            "max": 0,
+            "rows_per_page": 20,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_waklert_payment_img",
+                    "label": "Logo Image",
+                    "name": "image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "min_width": 0,
+                    "min_height": 0,
+                    "min_size": 0,
+                    "max_width": 0,
+                    "max_height": 0,
+                    "max_size": 0,
+                    "mime_types": "",
+                    "parent_repeater": "field_waklert_footer_payment_images"
+                },
+                {
+                    "key": "field_waklert_payment_alt",
+                    "label": "Label / Alt Text",
+                    "name": "alt_text",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Alt text or name (e.g. 'Commonwealth Bank', 'Osko', 'PayID').",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_waklert_footer_payment_images"
+                }
+            ]
+        },
+        {
+            "key": "field_waklert_footer_shipping_heading",
+            "label": "Shipping Heading",
+            "name": "footer_shipping_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Heading above the shipping partner logos in the footer.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Shipping Partner",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_waklert_footer_shipping_images",
+            "label": "Shipping Partner Logos",
+            "name": "footer_shipping_images",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Upload shipping partner logos (e.g. Australia Post). If left empty, this section will disappear.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "button_label": "Add Shipping Partner",
+            "min": 0,
+            "max": 0,
+            "rows_per_page": 20,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_waklert_shipping_img",
+                    "label": "Logo Image",
+                    "name": "image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "min_width": 0,
+                    "min_height": 0,
+                    "min_size": 0,
+                    "max_width": 0,
+                    "max_height": 0,
+                    "max_size": 0,
+                    "mime_types": "",
+                    "parent_repeater": "field_waklert_footer_shipping_images"
+                },
+                {
+                    "key": "field_waklert_shipping_alt",
+                    "label": "Label / Alt Text",
+                    "name": "alt_text",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Alt text or name (e.g. 'Australia Post').",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_waklert_footer_shipping_images"
+                }
+            ]
+        },
+        {
+            "key": "field_tab_footer_trust",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0,
+            "instructions": "",
+            "label": "Footer: Trust Cards"
         },
         {
             "key": "field_pre_footer_badges_enabled",
@@ -525,373 +962,8 @@
             ]
         },
         {
-            "key": "field_footer_logo",
-            "label": "Footer Logo",
-            "name": "footer_logo",
-            "aria-label": "",
-            "type": "image",
-            "instructions": "Optional footer logo. If empty, the primary site logo will be used.",
-            "required": 0,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "id",
-            "preview_size": "medium",
-            "library": "all",
-            "min_width": 0,
-            "min_height": 0,
-            "min_size": 0,
-            "max_width": 0,
-            "max_height": 0,
-            "max_size": 0,
-            "mime_types": ""
-        },
-        {
-            "key": "field_footer_description",
-            "label": "Footer Description",
-            "name": "footer_description",
-            "aria-label": "",
-            "type": "textarea",
-            "instructions": "",
-            "required": false,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "Waklert Australia provides clear information about a focused range of armodafinil products, ordering and delivery options.",
-            "new_lines": "",
-            "maxlength": "",
-            "placeholder": "",
-            "rows": ""
-        },
-        {
-            "key": "field_waklert_ssl_text",
-            "label": "SSL Text",
-            "name": "ssl_text",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "Displayed in footer trust badges. If left empty, this badge will disappear.",
-            "required": false,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "256-Bit SSL Encryption",
-            "maxlength": "",
-            "placeholder": "e.g. 256-Bit SSL Encryption",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_waklert_dispatch_text",
-            "label": "Dispatch Text",
-            "name": "dispatch_text",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "Displayed in footer trust badges. If left empty, this badge will disappear.",
-            "required": false,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "AU Express Dispatch",
-            "maxlength": "",
-            "placeholder": "e.g. AU Express Dispatch",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_waklert_checkout_text",
-            "label": "Checkout Text",
-            "name": "checkout_text",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "Displayed in footer trust badges. If left empty, this badge will disappear.",
-            "required": false,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "Encrypted Checkout",
-            "maxlength": "",
-            "placeholder": "e.g. Encrypted Checkout",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_waklert_location_text",
-            "label": "Location / Address Text",
-            "name": "location_text",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "Address displayed in the footer contact block.",
-            "required": false,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "50 Holt Street, Surry Hills, 2010",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_waklert_footer_contact_heading",
-            "label": "Contact Section Heading",
-            "name": "footer_contact_heading",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "Heading displayed above contact information in footer.",
-            "required": false,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "Get in Touch with Us",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_waklert_footer_payments_heading",
-            "label": "Payment Accepted Heading",
-            "name": "footer_payments_heading",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "Heading displayed above payment method logos in footer.",
-            "required": false,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "Payment Accepted",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_waklert_footer_payment_images",
-            "label": "Payment Accepted Logos",
-            "name": "footer_payment_images",
-            "aria-label": "",
-            "type": "repeater",
-            "instructions": "Upload accepted payment logos (e.g. Commonwealth Bank, Osko, PayID). If left empty, this section will disappear.",
-            "required": false,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "layout": "table",
-            "button_label": "Add Payment Method",
-            "min": 0,
-            "max": 0,
-            "rows_per_page": 20,
-            "collapsed": "",
-            "sub_fields": [
-                {
-                    "key": "field_waklert_payment_img",
-                    "label": "Logo Image",
-                    "name": "image",
-                    "aria-label": "",
-                    "type": "image",
-                    "instructions": "",
-                    "required": 1,
-                    "conditional_logic": false,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "array",
-                    "preview_size": "medium",
-                    "library": "all",
-                    "min_width": 0,
-                    "min_height": 0,
-                    "min_size": 0,
-                    "max_width": 0,
-                    "max_height": 0,
-                    "max_size": 0,
-                    "mime_types": "",
-                    "parent_repeater": "field_waklert_footer_payment_images"
-                },
-                {
-                    "key": "field_waklert_payment_alt",
-                    "label": "Label / Alt Text",
-                    "name": "alt_text",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "Alt text or name (e.g. 'Commonwealth Bank', 'Osko', 'PayID').",
-                    "required": false,
-                    "conditional_logic": false,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_waklert_footer_payment_images"
-                }
-            ]
-        },
-        {
-            "key": "field_waklert_footer_shipping_heading",
-            "label": "Shipping Partner Heading",
-            "name": "footer_shipping_heading",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "Heading displayed above shipping partner logos in footer.",
-            "required": false,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "Shipping Partner",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_waklert_footer_shipping_images",
-            "label": "Shipping Partner Logos",
-            "name": "footer_shipping_images",
-            "aria-label": "",
-            "type": "repeater",
-            "instructions": "Upload shipping partner logos (e.g. Australia Post). If left empty, this section will disappear.",
-            "required": false,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "layout": "table",
-            "button_label": "Add Shipping Partner",
-            "min": 0,
-            "max": 0,
-            "rows_per_page": 20,
-            "collapsed": "",
-            "sub_fields": [
-                {
-                    "key": "field_waklert_shipping_img",
-                    "label": "Logo Image",
-                    "name": "image",
-                    "aria-label": "",
-                    "type": "image",
-                    "instructions": "",
-                    "required": 1,
-                    "conditional_logic": false,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "array",
-                    "preview_size": "medium",
-                    "library": "all",
-                    "min_width": 0,
-                    "min_height": 0,
-                    "min_size": 0,
-                    "max_width": 0,
-                    "max_height": 0,
-                    "max_size": 0,
-                    "mime_types": "",
-                    "parent_repeater": "field_waklert_footer_shipping_images"
-                },
-                {
-                    "key": "field_waklert_shipping_alt",
-                    "label": "Label / Alt Text",
-                    "name": "alt_text",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "Alt text or name (e.g. 'Australia Post').",
-                    "required": false,
-                    "conditional_logic": false,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_waklert_footer_shipping_images"
-                }
-            ]
-        },
-        {
-            "key": "field_waklert_copyright_text",
-            "label": "Copyright Text",
-            "name": "copyright_text",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": false,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_disclaimer",
-            "label": "Disclaimer",
-            "name": "disclaimer_en",
-            "aria-label": "",
-            "type": "textarea",
-            "instructions": "",
-            "required": false,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "This website provides general information only and is not a substitute for advice from a qualified health professional.",
-            "new_lines": "",
-            "maxlength": "",
-            "placeholder": "",
-            "rows": ""
-        },
-        {
             "key": "field_theme_tab_checkout",
-            "label": "Checkout & Thank You",
+            "label": "Checkout & Emails",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -1063,5 +1135,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1793232849
+    "modified": 1793548777
 }
