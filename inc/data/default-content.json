@@ -1,0 +1,59 @@
+{
+    "_note": "Default content copied into WP Admin fields when they are empty. Edit here or in WP Admin.",
+    "faq_items": [
+        {
+            "question": "Is Armodafinil legal in Australia?",
+            "answer": "In Australia, armodafinil is a Schedule 4 prescription-only medication. You should hold a valid prescription from an Australian-registered medical practitioner before purchasing or using armodafinil."
+        },
+        {
+            "question": "How long does shipping take within Australia?",
+            "answer": "All orders are dispatched locally within Australia. Express domestic deliveries typically arrive within 2-5 business days depending on whether your delivery address is in a metro city (Sydney, Melbourne, Brisbane) or regional/remote location."
+        },
+        {
+            "question": "Do you deliver to PO Boxes and Parcel Lockers?",
+            "answer": "Yes, we ship via Australia Post which delivers directly to residential street addresses, Australian PO Boxes, and Australia Post 24/7 Parcel Lockers nationwide."
+        },
+        {
+            "question": "How is my privacy protected during shipping?",
+            "answer": "All orders are packaged in plain, unbranded Australia Post satchels with zero mention of pharmaceuticals, Waklert, or medication on the exterior."
+        }
+    ],
+    "site_text": {
+        "header_support_badge": "Support Desk",
+        "header_support_heading": "Need a hand?",
+        "header_support_text": "Find clear information about products, ordering and express Australia delivery.",
+        "header_support_link_text": "Visit the FAQs",
+        "header_support_link_url": "/faq/",
+        "footer_disclaimer_label": "Medical Website Disclaimer:",
+        "footer_whatsapp_label": "WhatsApp",
+        "footer_chat_label": "Chat Live",
+        "footer_working_days_label": "Working Days:",
+        "footer_office_hours_label": "Office Hours:",
+        "reviews_badge": "Verified reviews",
+        "reviews_title": "What our customers say",
+        "reviews_subtitle": "Real experiences from verified buyers",
+        "reviews_rating_label": "Customer rating",
+        "reviews_empty_text": "No reviews yet. Be the first to review this product.",
+        "reviews_form_heading": "Write a Review",
+        "reviews_required_note": "All fields are required.",
+        "reviews_submit_label": "Submit Review",
+        "reviews_moderation_note": "Moderated before publishing",
+        "comparison_badge": "Product comparison",
+        "comparison_title": "Compare our products",
+        "comparison_text": "Compare listed product details, pack sizes and current prices. Prices and availability come from the product listings.",
+        "comparison_view_packs": "View pack sizes and prices",
+        "comparison_view_options": "View product options",
+        "comparison_unavailable": "Pack sizes and prices are currently unavailable.",
+        "comparison_empty": "No products are currently available to compare.",
+        "comparison_disclaimer": "Product information is for comparison only. Speak with a qualified health professional about medicine selection.",
+        "thankyou_heading_named": "Congratulations, {name}!",
+        "thankyou_heading": "Thank You for Your Order!",
+        "thankyou_order_number_label": "Order Number",
+        "thankyou_payment_method_label": "Payment Method",
+        "thankyou_confirmation_label": "Confirmation sent to:",
+        "thankyou_invoice_label": "Tax Invoice Generated",
+        "thankyou_account_name_label": "Account Name",
+        "thankyou_account_number_label": "Account Number",
+        "thankyou_email_note": "Your order confirmation & tax invoice have been dispatched to your email"
+    }
+}
