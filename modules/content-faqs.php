@@ -66,12 +66,7 @@ $link_url = get_sub_field('link_url') ?: home_url('/faq');
                 endwhile;
             else:
                 // Default FAQs
-                $defaults = [
-                    ['q' => "Is Armodafinil legal in Australia?", 'a' => "In Australia, armodafinil is a Schedule 4 prescription-only medication. You should hold a valid prescription from an Australian-registered medical practitioner before purchasing or using armodafinil."],
-                    ['q' => "How long does shipping take within Australia?", 'a' => "All orders are dispatched locally within Australia. Express domestic deliveries typically arrive within 2-5 business days depending on whether your delivery address is in a metro city (Sydney, Melbourne, Brisbane) or regional/remote location."],
-                    ['q' => "Do you deliver to PO Boxes and Parcel Lockers?", 'a' => "Yes, we ship via Australia Post which delivers directly to residential street addresses, Australian PO Boxes, and Australia Post 24/7 Parcel Lockers nationwide."],
-                    ['q' => "How is my privacy protected during shipping?", 'a' => "All orders are packaged in plain, unbranded Australia Post satchels with zero mention of pharmaceuticals, Waklert, or medication on the exterior."]
-                ];
+                $defaults = array_map(static fn($d) => ['q' => $d['question'], 'a' => $d['answer']], waklert_default_faq_items());
                 foreach ($defaults as $f):
             ?>
             <details class="group bg-white border-2 border-dashed border-sky-300/80 open:border-[#0c4161] hover:border-[#0c4161] rounded-2xl overflow-hidden shadow-xs hover:shadow-lg transition-all duration-300">

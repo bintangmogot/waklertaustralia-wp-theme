@@ -129,6 +129,58 @@ add_action('acf/init', function() {
 }, 21);
 
 /**
+ * Default FAQ questions, shown by the FAQs module when no items have been entered.
+ */
+function waklert_default_faq_items() {
+    return [
+        ['question' => 'Is Armodafinil legal in Australia?', 'answer' => 'In Australia, armodafinil is a Schedule 4 prescription-only medication. You should hold a valid prescription from an Australian-registered medical practitioner before purchasing or using armodafinil.'],
+        ['question' => 'How long does shipping take within Australia?', 'answer' => 'All orders are dispatched locally within Australia. Express domestic deliveries typically arrive within 2-5 business days depending on whether your delivery address is in a metro city (Sydney, Melbourne, Brisbane) or regional/remote location.'],
+        ['question' => 'Do you deliver to PO Boxes and Parcel Lockers?', 'answer' => 'Yes, we ship via Australia Post which delivers directly to residential street addresses, Australian PO Boxes, and Australia Post 24/7 Parcel Lockers nationwide.'],
+        ['question' => 'How is my privacy protected during shipping?', 'answer' => 'All orders are packaged in plain, unbranded Australia Post satchels with zero mention of pharmaceuticals, Waklert, or medication on the exterior.'],
+    ];
+}
+
+/**
+ * One-time: copy the default FAQs into every FAQs module that has no items, so the questions
+ * visitors see on the site are the same ones editable in WP Admin (Pages -> Modules -> FAQs -> FAQ Items).
+ */
+add_action('acf/init', function() {
+    $target_ver = '20261102_faq_defaults_v1';
+    if (get_option('waklert_faq_defaults_ver') === $target_ver) {
+        return;
+    }
+
+    $posts = get_posts([
+        'post_type'      => 'any',
+        'post_status'    => 'any',
+        'posts_per_page' => -1,
+        'fields'         => 'ids',
+        'meta_key'       => 'modules',
+    ]);
+    foreach ($posts as $pid) {
+        $layouts = get_post_meta($pid, 'modules', true);
+        if (!is_array($layouts)) {
+            continue;
+        }
+        foreach ($layouts as $idx => $layout_name) {
+            if ($layout_name !== 'faqs' || (int) get_post_meta($pid, "modules_{$idx}_faq_items", true) > 0) {
+                continue;
+            }
+            foreach (waklert_default_faq_items() as $r => $row) {
+                update_post_meta($pid, "modules_{$idx}_faq_items_{$r}_question", $row['question']);
+                update_post_meta($pid, "_modules_{$idx}_faq_items_{$r}_question", 'field_faq_q_en');
+                update_post_meta($pid, "modules_{$idx}_faq_items_{$r}_answer", '<p>' . $row['answer'] . '</p>');
+                update_post_meta($pid, "_modules_{$idx}_faq_items_{$r}_answer", 'field_faq_a_en');
+            }
+            update_post_meta($pid, "modules_{$idx}_faq_items", count(waklert_default_faq_items()));
+            update_post_meta($pid, "_modules_{$idx}_faq_items", 'field_faq_items');
+        }
+    }
+
+    update_option('waklert_faq_defaults_ver', $target_ver);
+}, 30);
+
+/**
  * Synchronize Header & Top Bar Theme Settings across local, staging (InstaWP), and live environments:
  * - Imports acf-json/group_theme_settings.json into any existing DB field group so WP Admin labels update immediately without deleting the JSON file
  * - Seeds live Header & Top Bar values once so WP Admin reflects the live configuration out of the box
