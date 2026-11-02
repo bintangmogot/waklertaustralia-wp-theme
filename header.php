@@ -113,7 +113,7 @@
 
         $header_btn_url_raw = trim((string) get_field('whatsapp_button_url', 'option'));
         if ($header_btn_url_raw !== '' && stripos($header_btn_url_raw, 'wa.me') === false) {
-            if (preg_match('~^(tel:|sms:|mailto:|https?://|/|#)~i', $header_btn_url_raw)) {
+            if (preg_match('#^(tel:|sms:|mailto:|https?://|/|#)#i', $header_btn_url_raw)) {
                 $header_btn_href = $header_btn_url_raw;
             } else {
                 $header_btn_href = 'tel:' . preg_replace('/\D+/', '', $header_btn_url_raw);
@@ -238,14 +238,14 @@
                     </svg>
                 </div>
                 <div>
-                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-amber-600"><?= esc_html(waklert_text('header_support_badge')) ?></span>
-                    <h3 class="text-sm font-extrabold text-[#0c4161]"><?= esc_html(waklert_text('header_support_heading')) ?></h3>
+                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-amber-600">Support Desk</span>
+                    <h3 class="text-sm font-extrabold text-[#0c4161]">Need a hand?</h3>
                 </div>
             </div>
-            <p class="text-xs leading-relaxed text-slate-600"><?= esc_html(waklert_text('header_support_text')) ?></p>
+            <p class="text-xs leading-relaxed text-slate-600">Find clear information about products, ordering and express Australia delivery.</p>
         </div>
-        <a href="<?= esc_url(waklert_text_url('header_support_link_url')) ?>" class="flex items-center justify-between bg-gradient-to-r from-[#0c4161] to-[#125883] px-4 py-2.5 sm:px-5 sm:py-3 text-xs font-bold text-white transition-colors hover:from-[#09324c] hover:to-[#0c4161]">
-            <span><?= esc_html(waklert_text('header_support_link_text')) ?></span>
+        <a href="<?= esc_url(home_url('/faq/')) ?>" class="flex items-center justify-between bg-gradient-to-r from-[#0c4161] to-[#125883] px-4 py-2.5 sm:px-5 sm:py-3 text-xs font-bold text-white transition-colors hover:from-[#09324c] hover:to-[#0c4161]">
+            <span>Visit the FAQs</span>
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
         </a>
     </div>

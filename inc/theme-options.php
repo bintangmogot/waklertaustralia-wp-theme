@@ -86,7 +86,7 @@ add_action('wp_update_nav_menu', function() {
  * into the database field group. Field names are unchanged, so saved values are kept.
  */
 add_action('acf/init', function() {
-    $target_ver = '20261102_theme_settings_tabs_v4';
+    $target_ver = '20261102_theme_settings_tabs_v3';
     if (get_option('waklert_theme_settings_tabs_ver') === $target_ver || !function_exists('acf_import_field_group')) {
         return;
     }
@@ -179,25 +179,6 @@ add_action('acf/init', function() {
 
     update_option('waklert_faq_defaults_ver', $target_ver);
 }, 30);
-
-/**
- * Show the default FAQs inside the FAQ Items repeater whenever it is empty, so the questions
- * visitors see are always the ones editable in WP Admin (saving the page keeps them).
- */
-add_filter('acf/load_value/key=field_faq_items', function($value) {
-    if (!empty($value) && (is_array($value) || (int) $value > 0)) {
-        return $value;
-    }
-
-    $rows = [];
-    foreach (waklert_default_faq_items() as $row) {
-        $rows[] = [
-            'field_faq_q_en' => $row['question'],
-            'field_faq_a_en' => '<p>' . $row['answer'] . '</p>',
-        ];
-    }
-    return $rows;
-}, 20);
 
 /**
  * Synchronize Header & Top Bar Theme Settings across local, staging (InstaWP), and live environments:

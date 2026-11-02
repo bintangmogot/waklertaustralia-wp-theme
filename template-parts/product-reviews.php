@@ -47,7 +47,7 @@ foreach ($rating_counts as $star => $count) {
     $rating_percentages[$star] = $rating_count > 0 ? (int) round(($count / $rating_count) * 100) : 0;
 }
 
-$rating_label = waklert_text('reviews_rating_label');
+$rating_label = 'Customer rating';
 if ($average_rating !== null) {
     if ((float) $average_rating >= 4.5) {
         $rating_label = 'Excellent';
@@ -66,16 +66,16 @@ if ($average_rating !== null) {
         <header class="mb-10 flex flex-col items-center justify-center text-center">
             <span class="mb-4 inline-flex items-center gap-1.5 rounded-full bg-primary-softer px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-primary-dark">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-accent" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 2.9 6.2 6.8 1-4.9 4.8L18 21l-6-3.2L5.9 21l1.2-7-5-4.8 6.9-1L12 2Z"/></svg>
-                <?= esc_html(waklert_text('reviews_badge')) ?>
+                Verified reviews
             </span>
-            <h2 class="mb-2 font-heading text-3xl font-extrabold tracking-tight text-slate-900 md:text-4xl"><?= esc_html(waklert_text('reviews_title')) ?></h2>
-            <p class="text-sm font-medium text-slate-500 md:text-base"><?= esc_html(waklert_text('reviews_subtitle')) ?></p>
+            <h2 class="mb-2 font-heading text-3xl font-extrabold tracking-tight text-slate-900 md:text-4xl">What our customers say</h2>
+            <p class="text-sm font-medium text-slate-500 md:text-base">Real experiences from verified buyers</p>
         </header>
 
         <?php if ($review_count > 0 && $rating_count > 0): ?>
             <div class="mb-8 flex flex-col gap-8 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm md:flex-row md:gap-16 md:p-10">
                 <div class="flex shrink-0 flex-col justify-center">
-                    <div class="mb-2 text-sm font-semibold text-slate-500"><?= esc_html(waklert_text('reviews_rating_label')) ?></div>
+                    <div class="mb-2 text-sm font-semibold text-slate-500">Customer rating</div>
                     <div class="mb-3 text-5xl font-extrabold text-slate-900"><?= esc_html(number_format((float) $average_rating, 1)) ?></div>
                     <div class="mb-3 flex gap-0.5" aria-label="<?= esc_attr(number_format((float) $average_rating, 1)) ?> out of 5 stars">
                         <?php for ($star = 1; $star <= 5; $star++): ?>
@@ -164,7 +164,7 @@ if ($average_rating !== null) {
             </div>
         <?php else: ?>
             <div class="mb-8 rounded-2xl border border-dashed border-slate-300 bg-white p-8 text-center md:p-12">
-                <p class="font-medium text-slate-500"><?= esc_html(waklert_text('reviews_empty_text')) ?></p>
+                <p class="font-medium text-slate-500">No reviews yet. Be the first to review this product.</p>
             </div>
         <?php endif; ?>
 
@@ -173,7 +173,7 @@ if ($average_rating !== null) {
                 <span class="flex h-10 w-10 items-center justify-center rounded-full bg-primary-softer text-primary-dark">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                 </span>
-                <h3 class="font-bold text-slate-900"><?= esc_html(waklert_text('reviews_form_heading')) ?> <span class="font-normal text-slate-400">for <?= esc_html($product_name) ?></span></h3>
+                <h3 class="font-bold text-slate-900">Write a Review <span class="font-normal text-slate-400">for <?= esc_html($product_name) ?></span></h3>
             </div>
 
             <form id="waklert-product-review-form" class="space-y-4" data-endpoint="<?= esc_url(admin_url('admin-ajax.php')) ?>">
@@ -210,13 +210,13 @@ if ($average_rating !== null) {
                 </label>
 
                 <div class="flex flex-col items-center justify-between gap-4 pt-2 sm:flex-row">
-                    <p class="w-full text-left text-[10px] text-slate-400 sm:w-auto"><?= esc_html(waklert_text('reviews_required_note')) ?></p>
+                    <p class="w-full text-left text-[10px] text-slate-400 sm:w-auto">All fields are required.</p>
                     <div class="flex w-full flex-col items-end sm:w-auto">
                         <button type="submit" class="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-5 py-2.5 sm:px-8 sm:py-3.5 text-xs sm:text-sm font-bold text-primary-foreground transition-colors hover:bg-primary-dark focus:outline-none focus:ring-4 focus:ring-primary/20 disabled:cursor-wait disabled:opacity-70 sm:w-auto">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m22 2-7 20-4-9-9-4 20-7ZM22 2 11 13"/></svg>
-                            <?= esc_html(waklert_text('reviews_submit_label')) ?>
+                            Submit Review
                         </button>
-                        <span class="mt-2 text-[10px] font-medium text-slate-400"><?= esc_html(waklert_text('reviews_moderation_note')) ?></span>
+                        <span class="mt-2 text-[10px] font-medium text-slate-400">Moderated before publishing</span>
                     </div>
                 </div>
 

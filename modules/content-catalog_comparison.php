@@ -107,10 +107,10 @@ $get_variations = static function ($product) {
     <?php waklert_output_pattern_rings(); ?>
     <div class="container-site relative z-10">
         <header class="mx-auto mb-8 max-w-3xl text-center md:mb-10">
-            <span class="mb-4 inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary-foreground"><?= esc_html(waklert_text('comparison_badge')) ?></span>
-            <h2 class="font-heading text-2xl font-black text-primary-foreground md:text-4xl"><?= esc_html(waklert_text('comparison_title')) ?></h2>
+            <span class="mb-4 inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary-foreground">Product comparison</span>
+            <h2 class="font-heading text-2xl font-black text-primary-foreground md:text-4xl">Compare our products</h2>
             <p class="mt-3 text-base leading-relaxed text-primary-foreground/80">
-                <?= esc_html(waklert_text('comparison_text')) ?>
+                Compare listed product details, pack sizes and current prices. Prices and availability come from the product listings.
             </p>
         </header>
 
@@ -184,7 +184,7 @@ $get_variations = static function ($product) {
                     <?php if ($variations): ?>
                         <details class="mt-4 mb-4 rounded-xl border border-border bg-background px-4 py-3">
                             <summary class="cursor-pointer font-semibold text-primary-dark marker:text-primary">
-                                <?= esc_html(waklert_text('comparison_view_packs')) ?>
+                                View pack sizes and prices
                             </summary>
                             <ul class="mt-3 divide-y divide-border text-sm">
                                 <?php foreach ($variations as $variation_row): ?>
@@ -209,7 +209,7 @@ $get_variations = static function ($product) {
                         </details>
                     <?php elseif ($product->is_type('variable')): ?>
                         <p class="mt-4 rounded-xl border border-border bg-background px-4 py-3 text-sm text-muted-foreground">
-                            <?= esc_html(waklert_text('comparison_unavailable')) ?>
+                            Pack sizes and prices are currently unavailable.
                         </p>
                     <?php else: ?>
                         <?php $pack_size = $get_pack_size($product); ?>
@@ -220,19 +220,19 @@ $get_variations = static function ($product) {
                     <?php endif; ?>
 
                     <a href="<?= esc_url(get_permalink($product->get_id())) ?>" class="mt-auto inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 sm:px-5 sm:py-3 text-xs sm:text-sm font-bold text-primary-foreground transition-colors hover:bg-primary-dark">
-                        <?= esc_html(waklert_text('comparison_view_options')) ?>
+                        View product options
                     </a>
                 </article>
             <?php endforeach; ?>
             <?php if (!$catalog_products): ?>
                 <p class="col-span-full rounded-xl border border-white/20 bg-white/10 p-6 text-center text-primary-foreground">
-                    <?= esc_html(waklert_text('comparison_empty')) ?>
+                    No products are currently available to compare.
                 </p>
             <?php endif; ?>
         </div>
 
         <p class="mx-auto mt-6 max-w-3xl text-center text-sm leading-relaxed text-primary-foreground/80">
-            <?= esc_html(waklert_text('comparison_disclaimer')) ?>
+            Product information is for comparison only. Speak with a qualified health professional about medicine selection.
         </p>
     </div>
 </section>
