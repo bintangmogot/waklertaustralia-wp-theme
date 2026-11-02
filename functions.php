@@ -28,6 +28,7 @@ require_once MODMY_THEME_DIR . '/inc/enqueue.php';
 
 // 3. ACF Theme Options (Global settings)
 require_once MODMY_THEME_DIR . '/inc/theme-options.php';
+require_once MODMY_THEME_DIR . '/inc/content-seed.php';
 
 // 4. Shortcodes
 require_once MODMY_THEME_DIR . '/inc/shortcodes.php';

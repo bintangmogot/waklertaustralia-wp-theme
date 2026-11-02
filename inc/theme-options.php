@@ -140,45 +140,7 @@ function waklert_default_faq_items() {
     ];
 }
 
-/**
- * One-time: copy the default FAQs into every FAQs module that has no items, so the questions
- * visitors see on the site are the same ones editable in WP Admin (Pages -> Modules -> FAQs -> FAQ Items).
- */
-add_action('acf/init', function() {
-    $target_ver = '20261102_faq_defaults_v1';
-    if (get_option('waklert_faq_defaults_ver') === $target_ver) {
-        return;
-    }
-
-    $posts = get_posts([
-        'post_type'      => 'any',
-        'post_status'    => 'any',
-        'posts_per_page' => -1,
-        'fields'         => 'ids',
-        'meta_key'       => 'modules',
-    ]);
-    foreach ($posts as $pid) {
-        $layouts = get_post_meta($pid, 'modules', true);
-        if (!is_array($layouts)) {
-            continue;
-        }
-        foreach ($layouts as $idx => $layout_name) {
-            if ($layout_name !== 'faqs' || (int) get_post_meta($pid, "modules_{$idx}_faq_items", true) > 0) {
-                continue;
-            }
-            foreach (waklert_default_faq_items() as $r => $row) {
-                update_post_meta($pid, "modules_{$idx}_faq_items_{$r}_question", $row['question']);
-                update_post_meta($pid, "_modules_{$idx}_faq_items_{$r}_question", 'field_faq_q_en');
-                update_post_meta($pid, "modules_{$idx}_faq_items_{$r}_answer", '<p>' . $row['answer'] . '</p>');
-                update_post_meta($pid, "_modules_{$idx}_faq_items_{$r}_answer", 'field_faq_a_en');
-            }
-            update_post_meta($pid, "modules_{$idx}_faq_items", count(waklert_default_faq_items()));
-            update_post_meta($pid, "_modules_{$idx}_faq_items", 'field_faq_items');
-        }
-    }
-
-    update_option('waklert_faq_defaults_ver', $target_ver);
-}, 30);
+/* The one-time seed that copies these defaults into the admin FAQ lists lives in inc/content-seed.php. */
 
 /**
  * Synchronize Header & Top Bar Theme Settings across local, staging (InstaWP), and live environments:
