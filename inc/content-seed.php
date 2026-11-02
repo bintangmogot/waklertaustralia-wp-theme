@@ -7,7 +7,7 @@
  * A FAQs module that already has at least one written question is never touched.
  */
 
-const WAKLERT_CONTENT_SEED_VERSION = '20261102_faq_seed_v2';
+const WAKLERT_CONTENT_SEED_VERSION = '20261102_content_seed_v3';
 
 /** True when any row of this FAQs module already has a question typed in. */
 function waklert_faq_module_has_content($post_id, $idx) {
@@ -43,6 +43,26 @@ function waklert_seed_faq_module($post_id, $idx) {
     update_post_meta($post_id, "_modules_{$idx}_faq_items", 'field_faq_items');
 }
 
+/** Default Badge and Description of the Reviews Carousel, filled in only where the admin field is empty. */
+function waklert_reviews_carousel_text_defaults() {
+    return [
+        'badge'       => ['field_rc_badge', 'Customer Reviews'],
+        'description' => ['field_rc_description', 'Real feedback from verified Australian buyers — shift workers, students, and professionals across the country.'],
+        'button_text' => ['field_rc_button_text', 'Read All Reviews'],
+        'button_url'  => ['field_rc_button_url', '/reviews'],
+    ];
+}
+
+function waklert_seed_reviews_carousel_text($post_id, $idx) {
+    foreach (waklert_reviews_carousel_text_defaults() as $name => [$field_key, $value]) {
+        if (trim((string) get_post_meta($post_id, "modules_{$idx}_{$name}", true)) !== '') {
+            continue;
+        }
+        update_post_meta($post_id, "modules_{$idx}_{$name}", $value);
+        update_post_meta($post_id, "_modules_{$idx}_{$name}", $field_key);
+    }
+}
+
 add_action('init', function() {
     if (get_option('waklert_content_seed_version') === WAKLERT_CONTENT_SEED_VERSION) {
         return;
@@ -63,6 +83,9 @@ add_action('init', function() {
         foreach ($layouts as $idx => $layout_name) {
             if ($layout_name === 'faqs' && !waklert_faq_module_has_content($post_id, $idx)) {
                 waklert_seed_faq_module($post_id, $idx);
+            }
+            if ($layout_name === 'reviews_carousel') {
+                waklert_seed_reviews_carousel_text($post_id, $idx);
             }
         }
     }

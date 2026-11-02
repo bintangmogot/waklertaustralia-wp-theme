@@ -9,8 +9,12 @@
  * - Lift & hover animations
  */
 
-$tag = "Customer Reviews";
+$tag = get_sub_field('badge') ?: "Customer Reviews";
 $heading = get_sub_field('title') ?: "What Australian Customers Say";
+$description = get_sub_field('description') ?: "Real feedback from verified Australian buyers — shift workers, students, and professionals across the country.";
+$button_text = get_sub_field('button_text') ?: "Read All Reviews";
+$button_url = get_sub_field('button_url') ?: '/reviews';
+$button_href = preg_match('#^https?://#i', $button_url) ? $button_url : home_url('/' . ltrim($button_url, '/'));
 
 $reviews = get_sub_field('reviews');
 ?>
@@ -26,7 +30,7 @@ $reviews = get_sub_field('reviews');
                 <?= esc_html($heading) ?>
             </h2>
             <p class="text-sm md:text-base text-muted-foreground leading-relaxed max-w-xl mx-auto">
-                Real feedback from verified Australian buyers — shift workers, students, and professionals across the country.
+                <?= esc_html($description) ?>
             </p>
         </div>
 
@@ -136,8 +140,8 @@ $reviews = get_sub_field('reviews');
         </div>
 
         <div class="text-center mt-8">
-            <a href="<?= home_url('/reviews') ?>" class="inline-flex items-center gap-2 border-2 border-dashed border-sky-300/90 bg-white hover:bg-[#0c4161] text-[#0c4161] hover:text-white font-extrabold px-5 py-2.5 sm:px-8 sm:py-3.5 rounded-full transition-all duration-300 uppercase tracking-wider sm:tracking-widest text-xs shadow-sm hover:shadow-md hover:-translate-y-0.5">
-                <span>Read All Reviews</span>
+            <a href="<?= esc_url($button_href) ?>" class="inline-flex items-center gap-2 border-2 border-dashed border-sky-300/90 bg-white hover:bg-[#0c4161] text-[#0c4161] hover:text-white font-extrabold px-5 py-2.5 sm:px-8 sm:py-3.5 rounded-full transition-all duration-300 uppercase tracking-wider sm:tracking-widest text-xs shadow-sm hover:shadow-md hover:-translate-y-0.5">
+                <span><?= esc_html($button_text) ?></span>
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
             </a>
         </div>

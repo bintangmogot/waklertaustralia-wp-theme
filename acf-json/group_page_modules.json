@@ -816,12 +816,92 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_rc_badge",
+                            "label": "Badge",
+                            "name": "badge",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Small label above the heading, e.g. Customer Reviews.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
                             "key": "field_rc_title_en",
                             "label": "Title",
                             "name": "title",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_rc_description",
+                            "label": "Description",
+                            "name": "description",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "Short paragraph under the heading.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "rows": 3,
+                            "placeholder": "",
+                            "new_lines": ""
+                        },
+                        {
+                            "key": "field_rc_button_text",
+                            "label": "Button Text",
+                            "name": "button_text",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Text on the button under the review cards.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_rc_button_url",
+                            "label": "Button Link",
+                            "name": "button_url",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Page address for the button, e.g. /reviews or a full https:// link.",
                             "required": false,
                             "conditional_logic": false,
                             "wrapper": {
