@@ -4,18 +4,45 @@
  * Edit in WP Admin -> Theme Settings -> Site Text. The defaults below are used only if a field is empty.
  */
 
-/** Default content lives in inc/data/default-content.json (no text hardcoded in PHP). */
-function waklert_default_content($section) {
-    static $data = null;
-    if ($data === null) {
-        $path = get_theme_file_path('/inc/data/default-content.json');
-        $data = file_exists($path) ? (json_decode(file_get_contents($path), true) ?: []) : [];
-    }
-    return $data[$section] ?? [];
-}
-
 function waklert_text_defaults() {
-    return waklert_default_content('site_text');
+    return [
+        "header_support_badge" => "Support Desk",
+        "header_support_heading" => "Need a hand?",
+        "header_support_text" => "Find clear information about products, ordering and express Australia delivery.",
+        "header_support_link_text" => "Visit the FAQs",
+        "header_support_link_url" => "/faq/",
+        "footer_disclaimer_label" => "Medical Website Disclaimer:",
+        "footer_whatsapp_label" => "WhatsApp",
+        "footer_chat_label" => "Chat Live",
+        "footer_working_days_label" => "Working Days:",
+        "footer_office_hours_label" => "Office Hours:",
+        "reviews_badge" => "Verified reviews",
+        "reviews_title" => "What our customers say",
+        "reviews_subtitle" => "Real experiences from verified buyers",
+        "reviews_rating_label" => "Customer rating",
+        "reviews_empty_text" => "No reviews yet. Be the first to review this product.",
+        "reviews_form_heading" => "Write a Review",
+        "reviews_required_note" => "All fields are required.",
+        "reviews_submit_label" => "Submit Review",
+        "reviews_moderation_note" => "Moderated before publishing",
+        "comparison_badge" => "Product comparison",
+        "comparison_title" => "Compare our products",
+        "comparison_text" => "Compare listed product details, pack sizes and current prices. Prices and availability come from the product listings.",
+        "comparison_view_packs" => "View pack sizes and prices",
+        "comparison_view_options" => "View product options",
+        "comparison_unavailable" => "Pack sizes and prices are currently unavailable.",
+        "comparison_empty" => "No products are currently available to compare.",
+        "comparison_disclaimer" => "Product information is for comparison only. Speak with a qualified health professional about medicine selection.",
+        "thankyou_heading_named" => "Congratulations, {name}!",
+        "thankyou_heading" => "Thank You for Your Order!",
+        "thankyou_order_number_label" => "Order Number",
+        "thankyou_payment_method_label" => "Payment Method",
+        "thankyou_confirmation_label" => "Confirmation sent to:",
+        "thankyou_invoice_label" => "Tax Invoice Generated",
+        "thankyou_account_name_label" => "Account Name",
+        "thankyou_account_number_label" => "Account Number",
+        "thankyou_email_note" => "Your order confirmation & tax invoice have been dispatched to your email",
+    ];
 }
 
 function waklert_text($name) {

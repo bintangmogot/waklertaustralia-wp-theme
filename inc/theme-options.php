@@ -132,7 +132,12 @@ add_action('acf/init', function() {
  * Default FAQ questions, shown by the FAQs module when no items have been entered.
  */
 function waklert_default_faq_items() {
-    return waklert_default_content('faq_items');
+    return [
+        ['question' => 'Is Armodafinil legal in Australia?', 'answer' => 'In Australia, armodafinil is a Schedule 4 prescription-only medication. You should hold a valid prescription from an Australian-registered medical practitioner before purchasing or using armodafinil.'],
+        ['question' => 'How long does shipping take within Australia?', 'answer' => 'All orders are dispatched locally within Australia. Express domestic deliveries typically arrive within 2-5 business days depending on whether your delivery address is in a metro city (Sydney, Melbourne, Brisbane) or regional/remote location.'],
+        ['question' => 'Do you deliver to PO Boxes and Parcel Lockers?', 'answer' => 'Yes, we ship via Australia Post which delivers directly to residential street addresses, Australian PO Boxes, and Australia Post 24/7 Parcel Lockers nationwide.'],
+        ['question' => 'How is my privacy protected during shipping?', 'answer' => 'All orders are packaged in plain, unbranded Australia Post satchels with zero mention of pharmaceuticals, Waklert, or medication on the exterior.'],
+    ];
 }
 
 /**
@@ -180,13 +185,8 @@ add_action('acf/init', function() {
  * visitors see are always the ones editable in WP Admin (saving the page keeps them).
  */
 add_filter('acf/load_value/key=field_faq_items', function($value) {
-    // Keep the saved items if at least one has question text; blank rows count as empty.
-    if (is_array($value)) {
-        foreach ($value as $row) {
-            if (is_array($row) && trim((string) ($row['field_faq_q_en'] ?? '')) !== '') {
-                return $value;
-            }
-        }
+    if (!empty($value) && (is_array($value) || (int) $value > 0)) {
+        return $value;
     }
 
     $rows = [];
