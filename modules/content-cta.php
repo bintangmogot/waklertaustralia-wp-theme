@@ -11,8 +11,11 @@ $desc = get_sub_field('description') ?: ($is_buyers_guide
     : "We are available all the time to handle any questions, offer advice or reassure you about your purchase.");
 
 $btn = get_sub_field('button_text') ?: ($is_buyers_guide ? "Browse Products" : "WhatsApp Us");
-$wa_number = preg_replace('/[^0-9]/', '', get_field('whatsapp_number', 'option') ?: '61488841833');
-$btn_url = get_sub_field('button_url') ?: ($is_buyers_guide ? home_url('/shop/') : "https://wa.me/{$wa_number}");
+$wa_url = function_exists('waklert_format_whatsapp_url') ? waklert_format_whatsapp_url(get_field('whatsapp_number', 'option')) : 'https://wa.me/61488841833';
+$btn_url = get_sub_field('button_url') ?: ($is_buyers_guide ? home_url('/shop/') : $wa_url);
+if (function_exists('waklert_format_whatsapp_url') && stripos($btn_url, 'wa.me') !== false) {
+    $btn_url = waklert_format_whatsapp_url($btn_url);
+}
 
 $btn2 = get_sub_field('secondary_button_text') ?: ($is_buyers_guide ? "Contact Us" : "Send an email");
 $default_cta_email = get_field('contact_email', 'option') ?: 'orders@waklertaustralia.com.au';

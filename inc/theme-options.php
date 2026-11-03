@@ -34,7 +34,8 @@ function waklert_format_whatsapp_url($phone_or_url = null) {
         if (strpos($val, 'wa.me/60') !== false) {
             return 'https://wa.me/61488841833';
         }
-        return $val;
+        // A leading 0 does not work on WhatsApp, so use the country code 61 instead
+        return preg_replace('#(wa\.me/)\+?0+#i', '${1}61', $val);
     }
 
     // Strip all non-digits
@@ -51,6 +52,23 @@ function waklert_format_whatsapp_url($phone_or_url = null) {
     }
 
     return 'https://wa.me/' . $clean;
+}
+
+/**
+ * Build a tel:/sms: link in international format (+61...) from a local Australian number.
+ * A leading 0 is replaced by the country code 61 so the link works from anywhere.
+ */
+function waklert_format_tel_url($value, $scheme = 'tel') {
+    $clean = preg_replace('/\D+/', '', (string) preg_replace('/^(tel|sms):/i', '', trim((string) $value)));
+    if ($clean === '') {
+        return '';
+    }
+    if (str_starts_with($clean, '0')) {
+        $clean = '61' . substr($clean, 1);
+    } elseif (strlen($clean) === 9 && str_starts_with($clean, '4')) {
+        $clean = '61' . $clean;
+    }
+    return $scheme . ':+' . $clean;
 }
 
 /**
@@ -93,7 +111,7 @@ add_action('wp_update_nav_menu', function() {
  * into the database field group. Field names are unchanged, so saved values are kept.
  */
 add_action('acf/init', function() {
-    $target_ver = '20261103_theme_settings_tabs_v7';
+    $target_ver = '20261103_theme_settings_tabs_v8';
     if (get_option('waklert_theme_settings_tabs_ver') === $target_ver || !function_exists('acf_import_field_group')) {
         return;
     }

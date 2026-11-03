@@ -332,7 +332,7 @@ function waklert_sync_support_cta_media() {
                             'chat_btn_text'   => 'Contact Support',
                             'chat_btn_url'    => 'https://wa.me/61488841833',
                             'sms_btn_text'    => 'SMS',
-                            'sms_btn_url'     => 'sms:0488841833',
+                            'sms_btn_url'     => 'sms:+61488841833',
                             'email_btn_text'  => 'Email Support',
                             'email_btn_url'   => 'mailto:orders@waklertaustralia.com.au',
                             'image'           => $found_id,

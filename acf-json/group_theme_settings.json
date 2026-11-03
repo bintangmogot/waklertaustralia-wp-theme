@@ -162,6 +162,260 @@
             "append": ""
         },
         {
+            "key": "field_hdr_acc_dropdown",
+            "label": "Shop Menu Dropdown (desktop)",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 1,
+            "endpoint": 0
+        },
+        {
+            "key": "field_menu_dropdown_heading",
+            "label": "Dropdown Heading",
+            "name": "menu_dropdown_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Top strip of the product dropdown in the main menu.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Genuine Armodafinil Catalogue",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_menu_dropdown_badge",
+            "label": "Dropdown Delivery Badge",
+            "name": "menu_dropdown_badge",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Small pill on the right of the top strip.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "AU Express 7-10 Days",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_menu_dropdown_note",
+            "label": "Dropdown Bottom Note",
+            "name": "menu_dropdown_note",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Text with the tick at the bottom of the dropdown.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Free Express Delivery on $299+",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_menu_dropdown_button_text",
+            "label": "Dropdown Button Text",
+            "name": "menu_dropdown_button_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Explore All Products",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_menu_dropdown_button_url",
+            "label": "Dropdown Button Link",
+            "name": "menu_dropdown_button_url",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Relative (/shop/) or full URL",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "/shop/",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_hdr_acc_mobile_help",
+            "label": "Mobile Menu Help Card",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 1,
+            "endpoint": 0
+        },
+        {
+            "key": "field_mobile_help_eyebrow",
+            "label": "Small Label",
+            "name": "mobile_help_eyebrow",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Support Desk",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_mobile_help_title",
+            "label": "Title",
+            "name": "mobile_help_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Need a hand?",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_mobile_help_text",
+            "label": "Text",
+            "name": "mobile_help_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Find clear information about products, ordering and express Australia delivery.",
+            "maxlength": "",
+            "rows": 2,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_mobile_help_button_text",
+            "label": "Button Text",
+            "name": "mobile_help_button_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Visit the FAQs",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_mobile_help_button_url",
+            "label": "Button Link",
+            "name": "mobile_help_button_url",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Relative (/faq/) or full URL",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "/faq/",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_hdr_acc_end",
+            "label": "Accordion Endpoint",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 1
+        },
+        {
             "key": "field_waklert_tab_contact",
             "label": "Contact Info",
             "name": "",
@@ -273,6 +527,86 @@
                 "id": ""
             },
             "default_value": "24/7",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_footer_whatsapp_label",
+            "label": "Footer: WhatsApp Label",
+            "name": "footer_whatsapp_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Shown before the Chat button in the footer.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "WhatsApp",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_footer_chat_button",
+            "label": "Footer: Chat Button",
+            "name": "footer_chat_button_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Chat Live",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_footer_working_days_label",
+            "label": "Footer: Working Days Label",
+            "name": "working_days_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Working Days:",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_footer_office_hours_label",
+            "label": "Footer: Office Hours Label",
+            "name": "office_hours_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Office Hours:",
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
@@ -476,6 +810,26 @@
             "rows": ""
         },
         {
+            "key": "field_disclaimer_label",
+            "label": "Medical Disclaimer Label",
+            "name": "disclaimer_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Bold text before the disclaimer.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Medical Website Disclaimer:",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_waklert_ssl_text",
             "label": "Footer Pill 1 (Security)",
             "name": "ssl_text",
@@ -550,6 +904,26 @@
                 "id": ""
             },
             "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_icon_credit_text",
+            "label": "Icon Credit (product pages)",
+            "name": "icon_credit_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Credit link for the icon set, shown at the bottom of product pages. Required by the icon licence.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "UIcons by Flaticon",
             "maxlength": "",
             "placeholder": "",
             "prepend": "",

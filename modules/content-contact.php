@@ -17,6 +17,9 @@ $wa_url    = get_sub_field('whatsapp_url') ?: (get_field('whatsapp_number', 'opt
 if (strpos($wa_url, 'wa.me/60') !== false) {
     $wa_url = "https://wa.me/61488841833";
 }
+if (function_exists('waklert_format_whatsapp_url')) {
+    $wa_url = waklert_format_whatsapp_url($wa_url);
+}
 
 // Email
 $email_title   = get_sub_field('email_title') ?: "Email Support";

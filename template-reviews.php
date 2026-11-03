@@ -126,19 +126,19 @@ get_header();
                                     <?= esc_html($title) ?>
                                 </h3>
                                 <p class="text-sm text-slate-600 leading-relaxed italic">
-                                    &ldquo;<?= esc_html($body) ?>&rdquo;
+                                    &ldquo;<?= esc_html(trim(wp_strip_all_tags($body))) ?>&rdquo;
                                 </p>
                             </div>
 
                             <!-- Bottom 2-Tone Solid Navy Strip -->
                             <div class="bg-gradient-to-r from-[#0c4161] to-[#125883] p-4 sm:p-5 flex items-center justify-between gap-3 text-white">
-                                <div class="flex items-center gap-3">
+                                <div class="flex min-w-0 items-center gap-3">
                                     <!-- Vibrant Amber Reviewer Avatar -->
                                     <div class="w-9 h-9 rounded-full bg-gradient-to-br from-amber-400 to-amber-500 text-[#0c4161] flex items-center justify-center font-extrabold text-sm uppercase shadow-sm shrink-0">
                                         <?= substr($reviewer, 0, 1) ?>
                                     </div>
-                                    <div>
-                                        <p class="font-bold text-sm text-white flex items-center gap-1.5 whitespace-nowrap">
+                                    <div class="min-w-0">
+                                        <p class="font-bold text-sm text-white flex items-center gap-1.5 leading-snug">
                                             <?= esc_html($reviewer) ?>
                                         </p>
                                         <p class="text-[11px] text-sky-200 font-medium"><?= esc_html($meta) ?></p>

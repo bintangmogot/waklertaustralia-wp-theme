@@ -38,6 +38,15 @@
             "maxlength": ""
         },
         {
+            "key": "field_waklert_product_menu_brand",
+            "label": "Menu Brand Label",
+            "name": "product_menu_brand",
+            "type": "text",
+            "instructions": "Short brand shown in the main menu product dropdown, e.g. Sun Pharma. Leave empty to use the Manufacturer.",
+            "default_value": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_waklert_product_packaging",
             "label": "Packaging",
             "name": "product_packaging",

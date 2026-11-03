@@ -69,7 +69,7 @@ $reviews = get_sub_field('reviews');
                         <?= esc_html($title) ?>
                     </h4>
                     <p class="text-xs md:text-sm text-slate-600 leading-relaxed italic">
-                        &ldquo;<?= esc_html($body) ?>&rdquo;
+                        &ldquo;<?= esc_html(trim(wp_strip_all_tags($body))) ?>&rdquo;
                     </p>
                 </div>
 

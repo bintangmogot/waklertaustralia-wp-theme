@@ -8,7 +8,7 @@
  * The same defaults are the safety net the module templates fall back to.
  */
 
-const WAKLERT_CONTENT_SEED_VERSION = '20261103_content_seed_v5';
+const WAKLERT_CONTENT_SEED_VERSION = '20261103_content_seed_v6';
 
 /**
  * Default text per module layout.
@@ -220,7 +220,7 @@ function waklert_module_defaults() {
     return $defaults;
 }
 
-/** Default text of the Theme Settings -> Shop Page tab: option name => [ACF field key, value]. */
+/** Default text of the Theme Settings fields: option name => [ACF field key, value]. */
 function waklert_option_defaults() {
     return [
         'shop_card_button_text'        => ['field_shop_card_button_text', 'BUY NOW'],
@@ -230,6 +230,25 @@ function waklert_option_defaults() {
         'shop_card_unit_prefix'        => ['field_shop_card_unit_prefix', 'From'],
         'shop_card_unit_suffix'        => ['field_shop_card_unit_suffix', '/tab'],
         'shop_card_delivery_label'     => ['field_shop_card_delivery', 'AU Express'],
+        // Header & Top Bar tab
+        'menu_dropdown_heading'        => ['field_menu_dropdown_heading', 'Genuine Armodafinil Catalogue'],
+        'menu_dropdown_badge'          => ['field_menu_dropdown_badge', 'AU Express 7-10 Days'],
+        'menu_dropdown_note'           => ['field_menu_dropdown_note', 'Free Express Delivery on $299+'],
+        'menu_dropdown_button_text'    => ['field_menu_dropdown_button_text', 'Explore All Products'],
+        'menu_dropdown_button_url'     => ['field_menu_dropdown_button_url', '/shop/'],
+        'mobile_help_eyebrow'          => ['field_mobile_help_eyebrow', 'Support Desk'],
+        'mobile_help_title'            => ['field_mobile_help_title', 'Need a hand?'],
+        'mobile_help_text'             => ['field_mobile_help_text', 'Find clear information about products, ordering and express Australia delivery.'],
+        'mobile_help_button_text'      => ['field_mobile_help_button_text', 'Visit the FAQs'],
+        'mobile_help_button_url'       => ['field_mobile_help_button_url', '/faq/'],
+        // Contact Info tab
+        'footer_whatsapp_label'        => ['field_footer_whatsapp_label', 'WhatsApp'],
+        'footer_chat_button_text'      => ['field_footer_chat_button', 'Chat Live'],
+        'working_days_label'           => ['field_footer_working_days_label', 'Working Days:'],
+        'office_hours_label'           => ['field_footer_office_hours_label', 'Office Hours:'],
+        // Footer: Text tab
+        'disclaimer_label'             => ['field_disclaimer_label', 'Medical Website Disclaimer:'],
+        'icon_credit_text'             => ['field_icon_credit_text', 'UIcons by Flaticon'],
     ];
 }
 

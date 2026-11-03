@@ -122,7 +122,7 @@ get_header();
                     <a href="<?= esc_url(home_url('/shop/')) ?>" class="inline-flex items-center gap-2 rounded-full bg-[#0c4161] hover:bg-[#082c42] text-white px-6 py-3 text-sm font-bold shadow-sm transition-colors">
                         Browse Catalogue
                     </a>
-                    <a href="<?= esc_url(home_url('/contact/')) ?>" class="inline-flex items-center gap-2 rounded-full bg-white hover:bg-slate-50 text-[#0c4161] border border-sky-200 px-6 py-3 text-sm font-bold shadow-xs transition-colors">
+                    <a href="<?= esc_url(function_exists('waklert_format_whatsapp_url') ? waklert_format_whatsapp_url() : 'https://wa.me/61488841833') ?>" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full bg-white hover:bg-slate-50 text-[#0c4161] border border-sky-200 px-6 py-3 text-sm font-bold shadow-xs transition-colors">
                         Contact Support &rarr;
                     </a>
                 </div>

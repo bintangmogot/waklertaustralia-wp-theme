@@ -11,51 +11,45 @@ if (!defined('ABSPATH')) {
 /**
  * Helper to fetch product metadata for rich navigation cards
  */
-function waklert_get_product_menu_meta($title, $url = '') {
+function waklert_get_product_menu_meta($title, $url = '', $object_id = 0) {
     $meta = [
         'badge'          => '',
-        'badge_bg'       => '',
         'is_best_seller' => false,
-        'brand'          => 'Pharmaceutical Grade',
-        'price'          => 'From $125',
+        'brand'          => '',
+        'price'          => '',
         'icon_color'     => '#0284C7',
         'dot_color'      => '#F59E0B',
     ];
 
-    $lower = strtolower($title);
-    if (strpos($lower, 'waklert 150') !== false) {
-        $meta['badge']          = 'Best Seller';
-        $meta['is_best_seller'] = true;
-        $meta['brand']          = 'Sun Pharma • 150mg';
-        $meta['price']          = 'From $150 ($3/tab)';
-        $meta['icon_color']     = '#0C4161';
-        $meta['dot_color']      = '#F59E0B';
-    } elseif (strpos($lower, 'waklert 50') !== false) {
-        $meta['brand']      = 'Sun Pharma • 50mg';
-        $meta['price']      = 'From $95';
-        $meta['icon_color'] = '#10B981';
-        $meta['dot_color']  = '#0C4161';
-    } elseif (strpos($lower, 'artvigil') !== false) {
-        $meta['brand']      = 'HAB Pharma • 150mg';
-        $meta['price']      = 'From $125';
-        $meta['icon_color'] = '#0284C7';
-        $meta['dot_color']  = '#6366F1';
-    } elseif (strpos($lower, 'armodacharge') !== false) {
-        $meta['brand']      = 'Centurion Labs • 150mg';
-        $meta['price']      = 'From $125';
-        $meta['icon_color'] = '#8B5CF6';
-        $meta['dot_color']  = '#38BDF8';
-    } elseif (strpos($lower, 'armod 150') !== false) {
-        $meta['brand']      = 'Signature Brand • 150mg';
-        $meta['price']      = 'From $220';
-        $meta['icon_color'] = '#D97706';
-        $meta['dot_color']  = '#0C4161';
-    } elseif (strpos($lower, 'armod 50') !== false) {
-        $meta['brand']      = 'Signature Brand • 50mg';
-        $meta['price']      = 'From $180';
-        $meta['icon_color'] = '#0D9488';
-        $meta['dot_color']  = '#F59E0B';
+    // Brand, strength, price and badge are read from the product (Products -> edit product)
+    $product_id = absint($object_id) ?: ($url ? url_to_postid($url) : 0);
+    $product = $product_id && function_exists('wc_get_product') ? wc_get_product($product_id) : null;
+    if (!$product) {
+        return $meta;
     }
+
+    $manufacturer = get_field('product_menu_brand', $product->get_id())
+        ?: get_field('product_manufacturer', $product->get_id())
+        ?: (function_exists('waklert_get_product_attribute_by_label') ? waklert_get_product_attribute_by_label($product, '/manufacturer|brand/i') : '')
+        ?: $product->get_meta('brand');
+    $strength = function_exists('waklert_get_product_strength') ? waklert_get_product_strength($product) : '';
+    $meta['brand'] = implode(' • ', array_filter([trim((string) $manufacturer), trim((string) $strength)]));
+
+    $price = $product->get_price();
+    if ($price !== '') {
+        $meta['price'] = trim(waklert_option_text('shop_card_unit_prefix') . ' $' . number_format((float) $price, 0));
+        $unit_price = function_exists('waklert_get_product_unit_price') ? waklert_get_product_unit_price($product) : null;
+        if ($unit_price !== null) {
+            $meta['price'] .= ' ($' . rtrim(rtrim(number_format($unit_price, 2), '0'), '.') . waklert_option_text('shop_card_unit_suffix') . ')';
+        }
+    }
+
+    $badge = trim((string) get_field('product_badge', $product->get_id()));
+    if ($badge === '' && $product->is_featured()) {
+        $badge = waklert_get_product_presentation_option('best_seller_label', 'Best Seller');
+    }
+    $meta['badge'] = $badge;
+    $meta['is_best_seller'] = $badge !== '';
 
     return $meta;
 }
@@ -108,9 +102,9 @@ class Waklert_Desktop_Nav_Walker extends Walker_Nav_Menu {
             $output .= '<div class="bg-gradient-to-r from-[#0c4161] via-[#0e4a70] to-[#125883] px-4 py-2.5 flex items-center justify-between border-b border-sky-400/20">';
             $output .= '<div class="flex items-center gap-2">';
             $output .= '<span class="flex h-5 w-5 items-center justify-center rounded-lg bg-amber-400/20 border border-amber-400/40 text-amber-300 text-xs font-black">★</span>';
-            $output .= '<span class="text-xs font-black uppercase tracking-wider text-white">Genuine Armodafinil Catalogue</span>';
+            $output .= '<span class="text-xs font-black uppercase tracking-wider text-white">' . esc_html(waklert_option_text('menu_dropdown_heading')) . '</span>';
             $output .= '</div>';
-            $output .= '<span class="text-[11px] font-bold text-sky-200 bg-white/10 px-2.5 py-0.5 rounded-full border border-sky-300/30">AU Express 7-10 Days</span>';
+            $output .= '<span class="text-[11px] font-bold text-sky-200 bg-white/10 px-2.5 py-0.5 rounded-full border border-sky-300/30">' . esc_html(waklert_option_text('menu_dropdown_badge')) . '</span>';
             $output .= '</div>';
 
             // 2-Column Product Grid
@@ -125,14 +119,14 @@ class Waklert_Desktop_Nav_Walker extends Walker_Nav_Menu {
             $output .= '</ul>';
 
             // Dropdown Footer Strip
-            $shop_url = esc_url(home_url('/shop/'));
+            $shop_url = esc_url(waklert_resolve_link(waklert_option_text('menu_dropdown_button_url')));
             $output .= '<div class="bg-gradient-to-r from-sky-50 via-slate-50 to-amber-50/60 px-4 py-3 border-t-2 border-dashed border-sky-200/80 flex items-center justify-between text-xs">';
             $output .= '<div class="flex items-center gap-1.5 font-bold text-slate-700">';
             $output .= '<svg class="w-4 h-4 text-emerald-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>';
-            $output .= '<span>Free Express Delivery on $299+</span>';
+            $output .= '<span>' . esc_html(waklert_option_text('menu_dropdown_note')) . '</span>';
             $output .= '</div>';
             $output .= '<a href="' . $shop_url . '" class="inline-flex items-center gap-1.5 font-black text-[#0c4161] hover:text-amber-600 bg-white hover:bg-sky-50 px-3 py-1.5 rounded-full border-2 border-dashed border-sky-300 shadow-sm transition-all hover:scale-105">';
-            $output .= '<span>Explore All Products</span>';
+            $output .= '<span>' . esc_html(waklert_option_text('menu_dropdown_button_text')) . '</span>';
             $output .= '<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>';
             $output .= '</a>';
             $output .= '</div>';
@@ -206,18 +200,18 @@ class Waklert_Desktop_Nav_Walker extends Walker_Nav_Menu {
 
             // Text Info
             $output .= '<div class="min-w-0 flex-1">';
-            $output .= '<div class="flex items-center justify-between gap-1">';
-            $output .= '<h4 class="text-[13px] font-extrabold text-[#0c4161] whitespace-nowrap group-hover/pcard:text-[#082a3f]">' . $title . '</h4>';
+            $output .= '<div class="flex items-center justify-between gap-1.5">';
+            $output .= '<h4 class="min-w-0 text-[13px] font-extrabold leading-snug text-[#0c4161] group-hover/pcard:text-[#082a3f]">' . $title . '</h4>';
             if (!empty($meta['is_best_seller'])) {
                 $output .= '<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-amber-50 text-amber-900 border border-amber-300/80 shrink-0 shadow-2xs">';
                 $output .= '<svg class="w-3 h-3 text-amber-600 shrink-0 animate-point-to-product" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>';
-                $output .= '<span class="font-caveat font-bold text-[13px] leading-none text-amber-950 tracking-normal select-none">Best Seller</span>';
+                $output .= '<span class="font-caveat font-bold text-[13px] leading-none text-amber-950 tracking-normal select-none">' . esc_html($meta['badge']) . '</span>';
                 $output .= '</span>';
             }
             $output .= '</div>';
-            $output .= '<p class="text-[11px] text-slate-500 font-medium truncate">' . $meta['brand'] . '</p>';
+            $output .= '<p class="text-[11px] text-slate-500 font-medium truncate">' . esc_html($meta['brand']) . '</p>';
             $output .= '<div class="mt-1 flex items-center justify-between">';
-            $output .= '<span class="text-[10.5px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">' . $meta['price'] . '</span>';
+            $output .= '<span class="text-[10.5px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">' . esc_html($meta['price']) . '</span>';
             $output .= '<span class="text-[11px] font-bold text-slate-400 group-hover/pcard:text-[#0c4161] group-hover/pcard:translate-x-0.5 transition-all">→</span>';
             $output .= '</div>';
             $output .= '</div>';
@@ -313,13 +307,13 @@ class Waklert_Mobile_Nav_Walker extends Walker_Nav_Menu {
             if (!empty($meta['is_best_seller'])) {
                 $output .= '<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-50 text-amber-900 border border-amber-300/80 shrink-0 shadow-2xs">';
                 $output .= '<svg class="w-3 h-3 text-amber-600 shrink-0 animate-point-to-product" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>';
-                $output .= '<span class="font-caveat font-bold text-[13px] leading-none text-amber-950 tracking-normal select-none">Best Seller</span>';
+                $output .= '<span class="font-caveat font-bold text-[13px] leading-none text-amber-950 tracking-normal select-none">' . esc_html($meta['badge']) . '</span>';
                 $output .= '</span>';
             }
             $output .= '</div>';
             $output .= '<div class="flex items-center justify-between text-[10px] text-slate-500 font-medium">';
-            $output .= '<span class="truncate">' . $meta['brand'] . '</span>';
-            $output .= '<span class="font-bold text-emerald-700 bg-emerald-50 px-1 rounded">' . $meta['price'] . '</span>';
+            $output .= '<span class="truncate">' . esc_html($meta['brand']) . '</span>';
+            $output .= '<span class="font-bold text-emerald-700 bg-emerald-50 px-1 rounded">' . esc_html($meta['price']) . '</span>';
             $output .= '</div>';
             $output .= '</div>';
 

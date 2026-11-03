@@ -103,7 +103,7 @@
             } else {
                 $display_phone = trim((string) preg_replace('/^\+?61\s*/', '0', $raw_phone));
             }
-            $tel_phone = 'tel:' . preg_replace('/\D+/', '', $display_phone ?: $raw_phone);
+            $tel_phone = waklert_format_tel_url($display_phone ?: $raw_phone);
         }
 
         $header_btn_text = trim((string) get_field('whatsapp_button_text', 'option'));
@@ -113,10 +113,12 @@
 
         $header_btn_url_raw = trim((string) get_field('whatsapp_button_url', 'option'));
         if ($header_btn_url_raw !== '' && stripos($header_btn_url_raw, 'wa.me') === false) {
-            if (preg_match('#^(tel:|sms:|mailto:|https?://|/|#)#i', $header_btn_url_raw)) {
+            if (preg_match('#^(tel:|sms:)#i', $header_btn_url_raw)) {
+                $header_btn_href = waklert_format_tel_url($header_btn_url_raw, strtolower(substr($header_btn_url_raw, 0, 3)));
+            } elseif (preg_match('#^(mailto:|https?://|/|\#)#i', $header_btn_url_raw)) {
                 $header_btn_href = $header_btn_url_raw;
             } else {
-                $header_btn_href = 'tel:' . preg_replace('/\D+/', '', $header_btn_url_raw);
+                $header_btn_href = waklert_format_tel_url($header_btn_url_raw);
             }
         } else {
             $header_btn_href = $tel_phone;
@@ -238,14 +240,14 @@
                     </svg>
                 </div>
                 <div>
-                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-amber-600">Support Desk</span>
-                    <h3 class="text-sm font-extrabold text-[#0c4161]">Need a hand?</h3>
+                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-amber-600"><?= esc_html(waklert_option_text('mobile_help_eyebrow')) ?></span>
+                    <h3 class="text-sm font-extrabold text-[#0c4161]"><?= esc_html(waklert_option_text('mobile_help_title')) ?></h3>
                 </div>
             </div>
-            <p class="text-xs leading-relaxed text-slate-600">Find clear information about products, ordering and express Australia delivery.</p>
+            <p class="text-xs leading-relaxed text-slate-600"><?= esc_html(waklert_option_text('mobile_help_text')) ?></p>
         </div>
-        <a href="<?= esc_url(home_url('/faq/')) ?>" class="flex items-center justify-between bg-gradient-to-r from-[#0c4161] to-[#125883] px-4 py-2.5 sm:px-5 sm:py-3 text-xs font-bold text-white transition-colors hover:from-[#09324c] hover:to-[#0c4161]">
-            <span>Visit the FAQs</span>
+        <a href="<?= esc_url(waklert_resolve_link(waklert_option_text('mobile_help_button_url'))) ?>" class="flex items-center justify-between bg-gradient-to-r from-[#0c4161] to-[#125883] px-4 py-2.5 sm:px-5 sm:py-3 text-xs font-bold text-white transition-colors hover:from-[#09324c] hover:to-[#0c4161]">
+            <span><?= esc_html(waklert_option_text('mobile_help_button_text')) ?></span>
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
         </a>
     </div>

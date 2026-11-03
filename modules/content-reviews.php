@@ -142,7 +142,7 @@ $average_stars = round($average_rating);
                             <?= esc_html($title) ?>
                         </h3>
                         <p class="text-xs sm:text-sm text-slate-600 leading-relaxed italic">
-                            &ldquo;<?= esc_html($body) ?>&rdquo;
+                            &ldquo;<?= esc_html(trim(wp_strip_all_tags($body))) ?>&rdquo;
                         </p>
                     </div>
 

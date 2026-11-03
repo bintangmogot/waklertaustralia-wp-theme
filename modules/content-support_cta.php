@@ -13,10 +13,11 @@ $description = get_sub_field('desc') ?: get_sub_field('description') ?: waklert_
 
 $chat_label = get_sub_field('chat_btn_text') ?: waklert_module_default('support_cta', 'chat_btn_text');
 $chat_url = trim((string) get_sub_field('chat_btn_url'));
-if ($chat_url === '') {
+if ($chat_url === '' || str_starts_with($chat_url, '/') || str_starts_with($chat_url, '#') || (preg_match('#^https?://#i', $chat_url) && stripos($chat_url, 'wa.me') === false && stripos($chat_url, 'whatsapp') === false)) {
+    // This button carries the WhatsApp icon, so it must always open WhatsApp
     $chat_url = function_exists('waklert_format_whatsapp_url') ? waklert_format_whatsapp_url() : 'https://wa.me/61488841833';
-} elseif (str_starts_with($chat_url, '/') || str_starts_with($chat_url, '#') || preg_match('#^https?://#i', $chat_url)) {
-    // Valid link or relative path
+} elseif (preg_match('#^https?://#i', $chat_url)) {
+    // Valid WhatsApp link
 } else {
     $chat_url = function_exists('waklert_format_whatsapp_url') ? waklert_format_whatsapp_url($chat_url) : 'https://wa.me/61488841833';
 }
@@ -24,9 +25,10 @@ if ($chat_url === '') {
 $sms_label = get_sub_field('sms_btn_text') ?: waklert_module_default('support_cta', 'sms_btn_text');
 $sms_url = trim((string) get_sub_field('sms_btn_url'));
 if ($sms_url === '') {
-    $sms_url = 'sms:0488841833';
-} elseif (!preg_match('#^(sms:|tel:)#i', $sms_url)) {
-    $sms_url = 'sms:' . preg_replace('/\s+/', '', $sms_url);
+    $sms_url = 'sms:+61488841833';
+} else {
+    $sms_scheme = preg_match('#^tel:#i', $sms_url) ? 'tel' : 'sms';
+    $sms_url = function_exists('waklert_format_tel_url') ? waklert_format_tel_url($sms_url, $sms_scheme) : 'sms:+61488841833';
 }
 
 $contact_label = get_sub_field('email_btn_text') ?: waklert_module_default('support_cta', 'email_btn_text');
