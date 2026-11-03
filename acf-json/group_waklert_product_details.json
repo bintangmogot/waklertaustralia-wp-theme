@@ -3,13 +3,59 @@
     "title": "Product Page Details",
     "fields": [
         {
+            "key": "field_waklert_product_tab_badge",
+            "label": "Badge & Menu",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
             "key": "field_waklert_product_badge",
             "label": "Product Badge",
             "name": "product_badge",
             "type": "text",
             "instructions": "Optional badge shown above the product title, for example Best Seller. Leave blank to hide it.",
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
             "default_value": "",
             "maxlength": 32
+        },
+        {
+            "key": "field_waklert_product_menu_brand",
+            "label": "Menu Brand Label",
+            "name": "product_menu_brand",
+            "type": "text",
+            "instructions": "Short brand shown in the main menu product dropdown, e.g. Sun Pharma. Leave empty to use the Manufacturer.",
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_waklert_product_tab_specs",
+            "label": "Product Specs",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_waklert_product_specs_note",
+            "label": "",
+            "name": "",
+            "type": "message",
+            "message": "Rows shown in the Product specs box on the product page. Leave a value empty to hide that row. Strength comes from the pack size and is not edited here.",
+            "new_lines": "wpautop",
+            "esc_html": 0
         },
         {
             "key": "field_waklert_product_active_ingredient",
@@ -17,6 +63,11 @@
             "name": "product_active_ingredient",
             "type": "text",
             "instructions": "Enter the value to display in Product specs.",
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
             "default_value": "",
             "maxlength": ""
         },
@@ -26,6 +77,11 @@
             "name": "product_indication",
             "type": "text",
             "instructions": "Optional product information. Only enter approved, verified copy.",
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
             "default_value": "",
             "maxlength": ""
         },
@@ -34,15 +90,12 @@
             "label": "Manufacturer",
             "name": "product_manufacturer",
             "type": "text",
-            "default_value": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_waklert_product_menu_brand",
-            "label": "Menu Brand Label",
-            "name": "product_menu_brand",
-            "type": "text",
-            "instructions": "Short brand shown in the main menu product dropdown, e.g. Sun Pharma. Leave empty to use the Manufacturer.",
+            "instructions": "",
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
             "default_value": "",
             "maxlength": ""
         },
@@ -51,6 +104,12 @@
             "label": "Packaging",
             "name": "product_packaging",
             "type": "text",
+            "instructions": "",
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
             "default_value": "",
             "maxlength": ""
         },
@@ -59,6 +118,12 @@
             "label": "Delivery Time",
             "name": "product_delivery_time",
             "type": "text",
+            "instructions": "",
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
             "default_value": "",
             "maxlength": ""
         }
@@ -81,5 +146,5 @@
     "active": true,
     "description": "Product specific content displayed on the WooCommerce product page.",
     "show_in_rest": 0,
-    "modified": 1791190000
+    "modified": 1793700000
 }

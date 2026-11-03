@@ -155,6 +155,12 @@ $product_specs = [
         'value' => get_field('product_delivery_time', $product_id),
     ],
 ];
+
+// Leave out any spec row the admin left empty, so no "Not listed" rows are shown
+$product_specs = array_values(array_filter($product_specs, static function ($spec) {
+    return trim((string) ($spec['label'] ?? '')) !== ''
+        && trim(wp_strip_all_tags((string) ($spec['value'] ?? ''))) !== '';
+}));
 ?>
 
 <div class="relative overflow-hidden bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots py-4 md:py-6 border-b border-sky-100">
@@ -522,6 +528,7 @@ $product_specs = [
                 </div>
             <?php endif; ?>
 
+            <?php if (!empty($product_specs)): ?>
             <details open class="mt-6 overflow-hidden rounded-3xl border-2 border-dashed border-sky-300/80 bg-white shadow-sm">
                 <summary class="group flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 font-bold text-[#0c4161] bg-sky-50/60 border-b border-dashed border-sky-200 marker:hidden [&::-webkit-details-marker]:hidden">
                     <span class="inline-flex items-center gap-2 text-sm sm:text-base font-heading">
@@ -539,17 +546,15 @@ $product_specs = [
                         <?php
                         $spec_label = trim((string) ($spec['label'] ?? ''));
                         $spec_value = trim(wp_strip_all_tags((string) ($spec['value'] ?? '')));
-                        if ($spec_label === '') {
-                            continue;
-                        }
                         ?>
                         <div class="flex items-start justify-between gap-4 py-3 text-sm">
                             <dt class="text-slate-500 font-medium"><?= esc_html($spec_label) ?></dt>
-                            <dd class="text-right font-bold text-[#0c4161]"><?= esc_html($spec_value !== '' ? $spec_value : 'Not listed') ?></dd>
+                            <dd class="text-right font-bold text-[#0c4161]"><?= esc_html($spec_value) ?></dd>
                         </div>
                     <?php endforeach; ?>
                 </dl>
             </details>
+            <?php endif; ?>
         </div>
     </div>
     <!-- ACF: Extra Tabs (Removed as requested) -->
