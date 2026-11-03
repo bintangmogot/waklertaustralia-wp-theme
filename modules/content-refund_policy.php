@@ -37,7 +37,7 @@ $default_sections = [
         <!-- Breadcrumbs -->
         <div class="mb-3">
             <nav aria-label="Breadcrumb" class="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border border-dashed border-sky-300/80 bg-white/90 px-3.5 py-1 text-xs font-medium text-slate-500 shadow-xs backdrop-blur">
-                <a href="<?= esc_url(home_url('/')) ?>" class="font-bold text-slate-600 transition-colors hover:text-[#0c4161]">Home</a>
+                <a href="<?= esc_url(home_url('/')) ?>" class="font-bold text-slate-600 transition-colors hover:text-[#0c4161]"><?= esc_html(waklert_option_text('breadcrumb_home_label')) ?></a>
                 <span class="text-sky-300 font-normal">/</span>
                 <span aria-current="page" class="font-extrabold text-[#0c4161]">Refund Policy</span>
             </nav>

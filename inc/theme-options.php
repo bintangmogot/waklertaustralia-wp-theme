@@ -111,7 +111,7 @@ add_action('wp_update_nav_menu', function() {
  * into the database field group. Field names are unchanged, so saved values are kept.
  */
 add_action('acf/init', function() {
-    $target_ver = '20261103_theme_settings_tabs_v8';
+    $target_ver = '20261103_theme_settings_tabs_v9';
     if (get_option('waklert_theme_settings_tabs_ver') === $target_ver || !function_exists('acf_import_field_group')) {
         return;
     }

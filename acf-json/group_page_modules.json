@@ -2198,6 +2198,26 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_am_mission_label",
+                            "label": "Left Card Label",
+                            "name": "mission_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Small label above the left card heading, e.g. Core Purpose",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
                             "key": "field_5acecaf188104",
                             "label": "Mission Heading",
                             "name": "mission_heading",
@@ -2274,6 +2294,26 @@
                             "max_height": 0,
                             "max_size": 0,
                             "mime_types": "svg,png,webp,jpg,jpeg"
+                        },
+                        {
+                            "key": "field_am_vision_label",
+                            "label": "Right Card Label",
+                            "name": "vision_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Small label above the right card heading, e.g. Medical Clarity",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
                         },
                         {
                             "key": "field_5eaf710cafea4",
@@ -2362,6 +2402,26 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_ap_eyebrow",
+                            "label": "Small Label",
+                            "name": "eyebrow",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Pill above the heading, e.g. Product Portfolio",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
                             "key": "field_7d1f064846a34",
                             "label": "Heading",
                             "name": "heading",
@@ -2397,6 +2457,66 @@
                                     "parent_repeater": "field_1bfab0f22cce4"
                                 }
                             ]
+                        },
+                        {
+                            "key": "field_ap_badge",
+                            "label": "Card Badge",
+                            "name": "badge_text",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Badge on every product card, e.g. 100% Genuine",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_ap_link_text",
+                            "label": "Card Link Text",
+                            "name": "link_text",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "e.g. View in catalogue",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_ap_link_url",
+                            "label": "Card Link",
+                            "name": "link_url",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Relative (/shop/) or full URL",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
                         }
                     ]
                 },
@@ -2406,6 +2526,26 @@
                     "label": "About Delivery",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_ad_eyebrow",
+                            "label": "Small Label",
+                            "name": "eyebrow",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Pill above the heading, e.g. Shipping & Dispatch",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
                         {
                             "key": "field_0d03ea4ccab84",
                             "label": "Heading",

@@ -1336,6 +1336,62 @@
             ]
         },
         {
+            "key": "field_tab_page_labels",
+            "label": "Page Labels",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_page_labels_guide",
+            "label": "What is this tab?",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Small fixed texts that repeat on many pages, such as the breadcrumb. Page-specific text is edited on the page itself.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_breadcrumb_home_label",
+            "label": "Breadcrumb: Home",
+            "name": "breadcrumb_home_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "The first link of the breadcrumb on inner pages (Home / About Us).",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Home",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_tab_product_pages",
             "label": "Product Pages",
             "name": "",

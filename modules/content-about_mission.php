@@ -4,13 +4,15 @@
  * Waklert Australia 2-tone Dashed & Patterned Theme
  */
 
-$m_head   = get_sub_field('mission_heading') ?: 'Our Approach';
-$m_desc   = get_sub_field('mission_desc') ?: 'We organise armodafinil product information so customers can compare brands, strengths and batch details with clarity.';
+$m_head   = get_sub_field('mission_heading') ?: waklert_module_default('about_mission', 'mission_heading');
+$m_label  = get_sub_field('mission_label') ?: waklert_module_default('about_mission', 'mission_label');
+$m_desc   = get_sub_field('mission_desc') ?: waklert_module_default('about_mission', 'mission_desc');
 $m_preset = (string) (get_sub_field('mission_icon_preset') ?: 'browse_catalogue');
 $m_image  = get_sub_field('mission_icon_image');
 
-$v_head   = get_sub_field('vision_heading') ?: 'Information First';
-$v_desc   = get_sub_field('vision_desc') ?: 'We use plain English, state clearly that armodafinil is prescription-only in Australia, and encourage customers to speak to a doctor before ordering.';
+$v_head   = get_sub_field('vision_heading') ?: waklert_module_default('about_mission', 'vision_heading');
+$v_label  = get_sub_field('vision_label') ?: waklert_module_default('about_mission', 'vision_label');
+$v_desc   = get_sub_field('vision_desc') ?: waklert_module_default('about_mission', 'vision_desc');
 $v_preset = (string) (get_sub_field('vision_icon_preset') ?: 'medical_rx_clarity');
 $v_image  = get_sub_field('vision_icon_image');
 
@@ -48,7 +50,7 @@ $v_icon = waklert_render_card_icon([
                         <?= $m_icon ?>
                     </span>
                     <div>
-                        <span class="text-[11px] font-black uppercase tracking-widest text-[#0c4161]/70">Core Purpose</span>
+                        <span class="text-[11px] font-black uppercase tracking-widest text-[#0c4161]/70"><?= esc_html($m_label) ?></span>
                         <h2 class="font-heading font-black text-xl sm:text-2xl text-[#0c4161] m-0"><?= esc_html($m_head) ?></h2>
                     </div>
                 </div>
@@ -66,7 +68,7 @@ $v_icon = waklert_render_card_icon([
                         <?= $v_icon ?>
                     </span>
                     <div>
-                        <span class="text-[11px] font-black uppercase tracking-widest text-amber-700">Medical Clarity</span>
+                        <span class="text-[11px] font-black uppercase tracking-widest text-amber-700"><?= esc_html($v_label) ?></span>
                         <h2 class="font-heading font-black text-xl sm:text-2xl text-slate-900 m-0"><?= esc_html($v_head) ?></h2>
                     </div>
                 </div>

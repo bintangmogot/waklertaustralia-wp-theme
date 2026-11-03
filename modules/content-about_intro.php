@@ -4,9 +4,9 @@
  * Waklert Australia 2-tone Dashed & Patterned Theme
  */
 
-$tag = get_sub_field('tag') ?: 'About Waklert Australia';
-$heading = get_sub_field('heading') ?: "Australia's Focused Minds. Your Reliable Supplier.";
-$desc = get_sub_field('desc') ?: "Waklert Australia was founded to provide Australian professionals, shift workers, and students with reliable access to genuine pharmaceutical-grade Armodafinil.";
+$tag = get_sub_field('tag') ?: waklert_module_default('about_intro', 'tag');
+$heading = get_sub_field('heading') ?: waklert_module_default('about_intro', 'heading');
+$desc = get_sub_field('desc') ?: waklert_module_default('about_intro', 'desc');
 ?>
 
 <!-- 2-Tone Patterned Header -->
@@ -15,9 +15,9 @@ $desc = get_sub_field('desc') ?: "Waklert Australia was founded to provide Austr
         <!-- Breadcrumb Pill -->
         <div class="mb-3">
             <nav aria-label="Breadcrumb" class="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border border-dashed border-sky-300/80 bg-white/90 px-3.5 py-1 text-xs font-medium text-slate-500 shadow-xs backdrop-blur">
-                <a href="<?= esc_url(home_url('/')) ?>" class="font-bold text-slate-600 transition-colors hover:text-[#0c4161]">Home</a>
+                <a href="<?= esc_url(home_url('/')) ?>" class="font-bold text-slate-600 transition-colors hover:text-[#0c4161]"><?= esc_html(waklert_option_text('breadcrumb_home_label')) ?></a>
                 <span class="text-sky-300 font-normal">/</span>
-                <span aria-current="page" class="font-extrabold text-[#0c4161]">About Us</span>
+                <span aria-current="page" class="font-extrabold text-[#0c4161]"><?= esc_html(get_the_title()) ?></span>
             </nav>
         </div>
 

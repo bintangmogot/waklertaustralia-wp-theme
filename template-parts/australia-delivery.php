@@ -102,7 +102,7 @@ $whatsapp     = function_exists('waklert_format_whatsapp_url') ? waklert_format_
             <!-- Breadcrumbs Pill -->
             <div class="mb-5 sm:mb-6">
                 <nav aria-label="Breadcrumb" class="inline-flex max-w-full flex-wrap items-center gap-1.5 rounded-full border border-dashed border-sky-300/50 bg-white/10 px-3.5 py-1 text-xs font-medium text-sky-200 backdrop-blur-sm">
-                    <a class="font-bold text-white transition-colors hover:text-amber-300" href="<?= esc_url(home_url('/')) ?>">Home</a>
+                    <a class="font-bold text-white transition-colors hover:text-amber-300" href="<?= esc_url(home_url('/')) ?>"><?= esc_html(waklert_option_text('breadcrumb_home_label')) ?></a>
                     <span aria-hidden="true" class="text-sky-300/60">/</span>
                     <a class="text-sky-200 transition-colors hover:text-white" href="<?= esc_url(home_url('/sitemap/')) ?>">Australia Delivery</a>
                     <span aria-hidden="true" class="text-sky-300/60">/</span>

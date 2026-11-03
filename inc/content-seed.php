@@ -8,7 +8,7 @@
  * The same defaults are the safety net the module templates fall back to.
  */
 
-const WAKLERT_CONTENT_SEED_VERSION = '20261103_content_seed_v6';
+const WAKLERT_CONTENT_SEED_VERSION = '20261103_content_seed_v7';
 
 /**
  * Default text per module layout.
@@ -175,6 +175,40 @@ function waklert_module_defaults() {
                 ],
             ],
         ],
+        'about_intro' => [
+            'fields' => [
+                'tag'     => ['field_3e7787969b6a4', 'About Waklert Australia'],
+                'heading' => ['field_f2349bf4f6724', "Australia's Focused Minds. Your Reliable Supplier."],
+                'desc'    => ['field_c475fe4ca3274', 'Waklert Australia was founded to provide Australian professionals, shift workers, and students with reliable access to genuine pharmaceutical-grade Armodafinil.'],
+            ],
+        ],
+        'about_mission' => [
+            'fields' => [
+                'mission_label'   => ['field_am_mission_label', 'Core Purpose'],
+                'mission_heading' => ['field_5acecaf188104', 'Our Approach'],
+                'mission_desc'    => ['field_483eab146da44', 'We organise armodafinil product information so customers can compare brands, strengths and batch details with clarity.'],
+                'vision_label'    => ['field_am_vision_label', 'Medical Clarity'],
+                'vision_heading'  => ['field_5eaf710cafea4', 'Information First'],
+                'vision_desc'     => ['field_b6b97d8f0f494', 'We use plain English, state clearly that armodafinil is prescription-only in Australia, and encourage customers to speak to a doctor before ordering.'],
+            ],
+        ],
+        'about_products' => [
+            'fields' => [
+                'eyebrow'   => ['field_ap_eyebrow', 'Product Portfolio'],
+                'heading'   => ['field_7d1f064846a34', 'Our Armodafinil Range'],
+                'desc'      => ['field_9e5242778e824', 'The catalogue is limited to armodafinil products. Final product names and availability are confirmed on the product pages.'],
+                'badge_text' => ['field_ap_badge', '100% Genuine'],
+                'link_text' => ['field_ap_link_text', 'View in catalogue'],
+                'link_url'  => ['field_ap_link_url', '/shop/'],
+            ],
+        ],
+        'about_delivery' => [
+            'fields' => [
+                'eyebrow' => ['field_ad_eyebrow', 'Shipping & Dispatch'],
+                'heading' => ['field_0d03ea4ccab84', 'Delivery Across Australia'],
+                'desc'    => ['field_db0fe9dccbec4', 'Current delivery options, transit times, and parcel tracking are confirmed during ordering and dispatch.'],
+            ],
+        ],
         'reviews_carousel' => [
             'fields' => [
                 'badge'          => ['field_rc_badge', 'Customer Reviews'],
@@ -249,6 +283,8 @@ function waklert_option_defaults() {
         // Footer: Text tab
         'disclaimer_label'             => ['field_disclaimer_label', 'Medical Website Disclaimer:'],
         'icon_credit_text'             => ['field_icon_credit_text', 'UIcons by Flaticon'],
+        // Page Labels tab
+        'breadcrumb_home_label'        => ['field_breadcrumb_home_label', 'Home'],
     ];
 }
 

@@ -4,8 +4,9 @@
  * Waklert Australia 2-tone Dashed & Patterned Theme
  */
 
-$heading = get_sub_field('heading') ?: 'Delivery Across Australia';
-$desc = get_sub_field('desc') ?: 'Current delivery options, transit times, and parcel tracking are confirmed during ordering and dispatch.';
+$heading = get_sub_field('heading') ?: waklert_module_default('about_delivery', 'heading');
+$eyebrow = get_sub_field('eyebrow') ?: waklert_module_default('about_delivery', 'eyebrow');
+$desc = get_sub_field('desc') ?: waklert_module_default('about_delivery', 'desc');
 $items = get_sub_field('list_items') ?: [];
 
 if (!$heading && !$desc && !$items) {
@@ -19,7 +20,7 @@ $fallback_presets = ['australia_delivery', 'express_shipping', 'discreet_sealed'
     <div class="container-site max-w-5xl">
         <div class="text-center max-w-3xl mx-auto mb-8">
             <span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 border border-sky-300/80 px-3 py-0.5 text-[11px] font-black uppercase tracking-[0.16em] text-[#0c4161]">
-                Shipping &amp; Dispatch
+                <?= esc_html($eyebrow) ?>
             </span>
             <h2 class="mt-2 font-heading font-black text-2xl sm:text-3xl md:text-4xl text-[#0c4161]"><?= esc_html($heading) ?></h2>
             <?php if ($desc): ?>
