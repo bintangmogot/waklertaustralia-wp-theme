@@ -621,13 +621,14 @@ function modmy_custom_bacs_details($order_id) {
     $gateways = function_exists('WC') && WC()->payment_gateways ? WC()->payment_gateways->payment_gateways() : [];
     $bacs = $gateways["bacs"] ?? null;
     $bacs_accounts = $bacs ? $bacs->account_details : [];
+    $bank = waklert_bank_details();
     if (empty($bacs_accounts)) {
         $bacs_accounts = [
             [
-                'bank_name'      => 'Commonwealth Bank',
-                'account_name'   => 'Steven Waldberg',
-                'sort_code'      => '062 948',
-                'account_number' => '48880531',
+                'bank_name'      => $bank['bank'],
+                'account_name'   => $bank['name'],
+                'sort_code'      => $bank['bsb'],
+                'account_number' => $bank['number'],
                 'bic'            => '',
             ]
         ];
@@ -638,18 +639,18 @@ function modmy_custom_bacs_details($order_id) {
     echo "<h3 class=\"font-bold text-xl mb-4 text-foreground\">Bank Details</h3>";
     
     foreach ($bacs_accounts as $account) {
-        $bank_name = !empty($account["bank_name"]) ? $account["bank_name"] : "Commonwealth Bank";
-        $account_name = !empty($account["account_name"]) ? $account["account_name"] : "Steven Waldberg";
-        $sort_code = !empty($account["sort_code"]) ? $account["sort_code"] : "062 948";
-        $account_number = !empty($account["account_number"]) ? $account["account_number"] : "48880531";
+        $bank_name = !empty($account["bank_name"]) ? $account["bank_name"] : $bank['bank'];
+        $account_name = !empty($account["account_name"]) ? $account["account_name"] : $bank['name'];
+        $sort_code = !empty($account["sort_code"]) ? $account["sort_code"] : $bank['bsb'];
+        $account_number = !empty($account["account_number"]) ? $account["account_number"] : $bank['number'];
         $bic = !empty($account["bic"]) ? $account["bic"] : "";
 
         // Override if database still contains old bank details
         if (stripos($bank_name, 'ING') !== false || stripos($account_name, 'Sean') !== false || $account_number === '306528842') {
-            $bank_name = "Commonwealth Bank";
-            $account_name = "Steven Waldberg";
-            $sort_code = "062 948";
-            $account_number = "48880531";
+            $bank_name = $bank['bank'];
+            $account_name = $bank['name'];
+            $sort_code = $bank['bsb'];
+            $account_number = $bank['number'];
             $bic = "";
         }
         
@@ -711,14 +712,16 @@ add_action('init', function () {
     update_option('woocommerce_email_text_color', '#0F172A');
     update_option('woocommerce_email_footer_text', 'Waklert Australia &bull; Domestic Australia Post Express Delivery');
 
+    // WooCommerce bank transfer account follows Theme Settings -> Checkout & Emails -> Bank Transfer Details
+    $bank = waklert_bank_details();
     $bacs = get_option('woocommerce_bacs_accounts');
-    if (empty($bacs) || !isset($bacs[0]['account_name']) || $bacs[0]['account_name'] !== 'Steven Waldberg' || ($bacs[0]['bank_name'] ?? '') !== 'Commonwealth Bank') {
+    if (empty($bacs) || !isset($bacs[0]['account_name']) || $bacs[0]['account_name'] !== $bank['name'] || ($bacs[0]['bank_name'] ?? '') !== $bank['bank'] || ($bacs[0]['account_number'] ?? '') !== $bank['number'] || ($bacs[0]['sort_code'] ?? '') !== $bank['bsb']) {
         update_option('woocommerce_bacs_accounts', array(
             array(
-                'account_name'   => 'Steven Waldberg',
-                'account_number' => '48880531',
-                'bank_name'      => 'Commonwealth Bank',
-                'sort_code'      => '062 948',
+                'account_name'   => $bank['name'],
+                'account_number' => $bank['number'],
+                'bank_name'      => $bank['bank'],
+                'sort_code'      => $bank['bsb'],
                 'iban'           => '',
                 'bic'            => '',
                 'country_code'   => 'AU',

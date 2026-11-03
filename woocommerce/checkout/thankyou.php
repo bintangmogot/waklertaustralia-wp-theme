@@ -12,43 +12,34 @@
 defined( 'ABSPATH' ) || exit;
 
 // Dynamic options with rock-solid Australian defaults
-$contact_email = function_exists( 'get_field' ) ? get_field( 'contact_email', 'option' ) : '';
-if ( empty( $contact_email ) || strpos( $contact_email, 'modafinil' ) !== false || strpos( $contact_email, 'example.com' ) !== false || strpos( $contact_email, '@waklertaustralia' ) !== false ) {
-    $contact_email = 'orders@waklertaustralia.com.au';
-} else {
-    $contact_email = sanitize_email( $contact_email );
-}
+// Every text on this page is edited in WP Admin -> Theme Settings -> Checkout & Emails
+$contact_email = sanitize_email( (string) get_field( 'support_email', 'option' ) );
 
-$phone_display = function_exists( 'get_field' ) ? ( get_field( 'whatsapp_button_text', 'option' ) ?: '0488 841 833' ) : '0488 841 833';
-$phone_raw     = preg_replace( '/[^0-9]/', '', $phone_display );
-$whatsapp_url  = 'https://wa.me/61' . ltrim( $phone_raw, '0' );
+$phone_raw    = preg_replace( '/[^0-9]/', '', (string) get_field( 'whatsapp_number', 'option' ) );
+$whatsapp_url = 'https://wa.me/61' . ltrim( $phone_raw, '0' );
 
 // Bank account details
-$bacs_bank     = 'Commonwealth Bank';
-$bacs_name     = 'Steven Waldberg';
-$bacs_bsb      = '062 948';
-$bacs_acc      = '48880531';
+$bank      = waklert_bank_details();
+$bacs_bank = $bank['bank'];
+$bacs_name = $bank['name'];
+$bacs_bsb  = $bank['bsb'];
+$bacs_acc  = $bank['number'];
 
-// PayID details (ACF editable with fallback)
-$payid_number = function_exists( 'get_field' ) ? ( get_field( 'payid_number', 'option' ) ?: '0402 222 605' ) : '0402 222 605';
+$payid_number            = waklert_option_text( 'payid_number' );
+$checkout_bacs_warning   = waklert_option_text( 'checkout_bacs_warning' );
+$checkout_receipt_notice = waklert_option_text( 'checkout_receipt_notice' );
+$shipping_note           = waklert_option_text( 'checkout_shipping_note' );
 
-// Warning callout message (ACF editable with fallback)
-$checkout_bacs_warning = function_exists( 'get_field' ) ? get_field( 'checkout_bacs_warning', 'option' ) : '';
-if ( empty( $checkout_bacs_warning ) ) {
-    $checkout_bacs_warning = '* Use the below BSB & account details to make the transfer. Simply mention your order number in the comment section. DO NOT reference anything related to medicine or website name. Just mention your order number.';
-}
-
-// Receipt dispatch notice (ACF editable with fallback)
-$checkout_receipt_notice = function_exists( 'get_field' ) ? get_field( 'checkout_receipt_notice', 'option' ) : '';
-if ( empty( $checkout_receipt_notice ) ) {
-    $checkout_receipt_notice = "* Once your payment is done, just send the transaction copy to {email} and we'll ship your order immediately.";
-}
-
-// Shipping Note (ACF editable with fallback)
-$shipping_note = function_exists( 'get_field' ) ? get_field( 'checkout_shipping_note', 'option' ) : '';
-if ( empty( $shipping_note ) ) {
-    $shipping_note = 'The average shipping time is 10 - 15 days. Please note that delivery may take up to 30 days from the date of dispatch due to potential disruptions in postal services caused by weather issues or natural disaster.';
-}
+// Optional logo overrides (Theme Settings); the bundled logos are the safety net
+$logo_src = static function ( $field, $fallback ) {
+    $img = get_field( $field, 'option' );
+    $url = is_array( $img ) ? ( $img['url'] ?? '' ) : ( is_numeric( $img ) ? wp_get_attachment_image_url( (int) $img, 'full' ) : (string) $img );
+    return $url ?: get_template_directory_uri() . $fallback;
+};
+// **word** in a text becomes bold red
+$bold_red = static function ( $text ) {
+    return preg_replace( '/\*\*(.+?)\*\*/', '<strong class="text-[#DC2626] font-bold" style="color: #dc2626;">$1</strong>', esc_html( $text ) );
+};
 ?>
 
 <div class="woocommerce-order max-w-3xl mx-auto py-4 sm:py-8 px-2.5 sm:px-6">
@@ -64,13 +55,13 @@ if ( empty( $shipping_note ) ) {
                 <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-destructive/10 text-destructive mb-6 ring-8 ring-destructive/5">
                     <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </div>
-                <h1 class="font-heading text-3xl sm:text-4xl font-extrabold text-foreground mb-3"><?php esc_html_e( 'Order Payment Failed', 'woocommerce' ); ?></h1>
-                <p class="text-muted-foreground text-base sm:text-lg max-w-xl mx-auto mb-8"><?php esc_html_e( 'Unfortunately your order payment could not be completed. Please re-attempt your payment or select direct bank transfer.', 'woocommerce' ); ?></p>
+                <h1 class="font-heading text-3xl sm:text-4xl font-extrabold text-foreground mb-3"><?php echo esc_html( waklert_option_text( 'thankyou_failed_title' ) ); ?></h1>
+                <p class="text-muted-foreground text-base sm:text-lg max-w-xl mx-auto mb-8"><?php echo esc_html( waklert_option_text( 'thankyou_failed_text' ) ); ?></p>
                 
                 <div class="flex flex-wrap items-center justify-center gap-4">
-                    <a href="<?php echo esc_url( $order->get_checkout_payment_url() ); ?>" class="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-primary text-white font-bold hover:bg-primary-dark transition-all shadow-md hover:shadow-lg"><?php esc_html_e( 'Retry Payment', 'woocommerce' ); ?></a>
+                    <a href="<?php echo esc_url( $order->get_checkout_payment_url() ); ?>" class="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-primary text-white font-bold hover:bg-primary-dark transition-all shadow-md hover:shadow-lg"><?php echo esc_html( waklert_option_text( 'thankyou_failed_retry' ) ); ?></a>
                     <?php if ( is_user_logged_in() ) : ?>
-                        <a href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>" class="inline-flex items-center justify-center px-8 py-3.5 rounded-full border-2 border-border text-foreground font-bold hover:bg-muted transition-all"><?php esc_html_e( 'My Account', 'woocommerce' ); ?></a>
+                        <a href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>" class="inline-flex items-center justify-center px-8 py-3.5 rounded-full border-2 border-border text-foreground font-bold hover:bg-muted transition-all"><?php echo esc_html( waklert_option_text( 'thankyou_failed_account' ) ); ?></a>
                     <?php endif; ?>
                 </div>
             </div>
@@ -98,23 +89,23 @@ if ( empty( $shipping_note ) ) {
                 <div class="mb-4">
                     <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs sm:text-sm font-semibold shadow-xs">
                         <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                        <?php echo $is_bacs ? 'Order Placed &bull; Awaiting Bank Transfer' : 'Order Placed Successfully'; ?>
+                        <?php echo esc_html( waklert_option_text( $is_bacs ? 'thankyou_status_bacs' : 'thankyou_status_paid' ) ); ?>
                     </div>
                 </div>
                 
                 <h1 class="font-heading text-2xl sm:text-3xl font-extrabold text-foreground tracking-tight mb-1.5">
                     <?php if ( $customer_first_name ) : ?>
-                        Congratulations, <?php echo esc_html( $customer_first_name ); ?>!
+                        <?php echo esc_html( str_replace( '{name}', $customer_first_name, waklert_option_text( 'thankyou_title_named' ) ) ); ?>
                     <?php else : ?>
-                        Thank You for Your Order!
+                        <?php echo esc_html( waklert_option_text( 'thankyou_title' ) ); ?>
                     <?php endif; ?>
                 </h1>
                 
                 <p class="text-muted-foreground text-xs sm:text-sm max-w-xl mx-auto leading-relaxed mb-0">
                     <?php if ( $is_bacs ) : ?>
-                        Thank you for your order. Please complete your payment using <strong class="text-[#DC2626] font-bold" style="color: #dc2626;">EFT</strong> or <strong class="text-[#DC2626] font-bold" style="color: #dc2626;">PayID</strong> below.
+                        <?php echo wp_kses_post( $bold_red( waklert_option_text( 'thankyou_intro_bacs' ) ) ); ?>
                     <?php else : ?>
-                        Your order has been received and is now being prepared for express delivery.
+                        <?php echo esc_html( waklert_option_text( 'thankyou_intro_default' ) ); ?>
                     <?php endif; ?>
                 </p>
             </div>
@@ -123,22 +114,22 @@ if ( empty( $shipping_note ) ) {
             <div class="bg-card border border-border/80 rounded-2xl p-3 sm:px-5 sm:py-3.5 shadow-xs mb-3.5 sm:mb-4">
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 divide-y md:divide-y-0 md:divide-x divide-border/60">
                     <div class="flex flex-col pt-2 md:pt-0">
-                        <span class="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">Order Number</span>
+                        <span class="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1"><?php echo esc_html( waklert_option_text( 'thankyou_label_order' ) ); ?></span>
                         <strong class="text-foreground text-lg sm:text-xl font-bold font-mono">#<?php echo esc_html( $order_num ); ?></strong>
                     </div>
 
                     <div class="flex flex-col pt-3 md:pt-0 md:pl-6">
-                        <span class="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">Date</span>
+                        <span class="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1"><?php echo esc_html( waklert_option_text( 'thankyou_label_date' ) ); ?></span>
                         <strong class="text-foreground text-base sm:text-lg font-bold"><?php echo esc_html( wc_format_datetime( $order->get_date_created() ) ); ?></strong>
                     </div>
 
                     <div class="flex flex-col pt-3 md:pt-0 md:pl-6">
-                        <span class="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">Total Due</span>
+                        <span class="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1"><?php echo esc_html( waklert_option_text( 'thankyou_label_total' ) ); ?></span>
                         <strong class="text-primary text-xl sm:text-2xl font-extrabold"><?php echo wp_kses_post( $order_total ); ?></strong>
                     </div>
 
                     <div class="flex flex-col pt-3 md:pt-0 md:pl-6">
-                        <span class="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">Payment Method</span>
+                        <span class="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1"><?php echo esc_html( waklert_option_text( 'thankyou_label_payment' ) ); ?></span>
                         <strong class="text-foreground text-sm sm:text-base font-bold leading-tight"><?php echo wp_kses_post( $order->get_payment_method_title() ); ?></strong>
                     </div>
                 </div>
@@ -146,12 +137,12 @@ if ( empty( $shipping_note ) ) {
                 <?php if ( $order->get_billing_email() ) : ?>
                     <div class="mt-5 pt-4 border-t border-border/60 flex flex-wrap items-center justify-between text-xs sm:text-sm text-muted-foreground gap-2">
                         <div>
-                            <span>Confirmation sent to: </span>
+                            <span><?php echo esc_html( waklert_option_text( 'thankyou_label_sent_to' ) ); ?> </span>
                             <strong class="text-foreground"><?php echo esc_html( $order->get_billing_email() ); ?></strong>
                         </div>
                         <span class="inline-flex items-center gap-1.5 text-emerald-700 font-medium">
                             <svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            Tax Invoice Generated
+                            <?php echo esc_html( waklert_option_text( 'thankyou_label_invoice' ) ); ?>
                         </span>
                     </div>
                 <?php endif; ?>
@@ -171,14 +162,14 @@ if ( empty( $shipping_note ) ) {
                             </div>
                             <div>
                                 <div class="flex items-center gap-2">
-                                    <h2 class="font-heading text-sm sm:text-lg font-extrabold text-[#1A1A1A] leading-tight">Commonwealth Bank</h2>
-                                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-[#FFCC00]/40 text-[#854D0E] border border-[#EAB308]/40">Verified</span>
+                                    <h2 class="font-heading text-sm sm:text-lg font-extrabold text-[#1A1A1A] leading-tight"><?php echo esc_html( $bacs_bank ); ?></h2>
+                                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-[#FFCC00]/40 text-[#854D0E] border border-[#EAB308]/40"><?php echo esc_html( waklert_option_text( 'bank_card_badge' ) ); ?></span>
                                 </div>
-                                <p class="text-xs text-muted-foreground">Official Direct Bank Transfer (EFT / NetBank / PayID)</p>
+                                <p class="text-xs text-muted-foreground"><?php echo esc_html( waklert_option_text( 'bank_card_subtitle' ) ); ?></p>
                             </div>
                         </div>
                         <div class="text-center sm:text-right w-full sm:w-auto shrink-0 pt-1 sm:pt-0">
-                            <span class="text-xs sm:text-xs font-semibold text-muted-foreground uppercase tracking-wider block mb-0.5">Amount to Transfer</span>
+                            <span class="text-xs sm:text-xs font-semibold text-muted-foreground uppercase tracking-wider block mb-0.5"><?php echo esc_html( waklert_option_text( 'bank_card_amount_label' ) ); ?></span>
                             <span class="text-3xl sm:text-2xl font-black sm:font-extrabold text-foreground font-heading"><?php echo wp_kses_post( $order_total ); ?></span>
                         </div>
                     </div>
@@ -201,57 +192,57 @@ if ( empty( $shipping_note ) ) {
                         <!-- Account Name -->
                         <div class="bg-white/95 border border-border/80 rounded-xl py-2 px-3 sm:py-2.5 sm:px-3.5 flex items-center justify-between gap-2 shadow-xs hover:border-primary/50 transition-colors">
                             <div>
-                                <span class="text-[11px] uppercase tracking-wider font-bold text-muted-foreground block mb-0.5">Account Name</span>
+                                <span class="text-[11px] uppercase tracking-wider font-bold text-muted-foreground block mb-0.5"><?php echo esc_html( waklert_option_text( 'bank_label_account_name' ) ); ?></span>
                                 <span class="text-base sm:text-lg font-bold text-foreground select-all"><?php echo esc_html( $bacs_name ); ?></span>
                             </div>
                             <button type="button" onclick="copyValue('<?php echo esc_js( $bacs_name ); ?>', this)" class="copy-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-border text-xs font-bold text-foreground bg-muted/40 hover:bg-muted transition-all active:scale-95 cursor-pointer">
                                 <svg class="w-3.5 h-3.5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                                <span>Copy</span>
+                                <span><?php echo esc_html( waklert_option_text( 'bank_copy_label' ) ); ?></span>
                             </button>
                         </div>
 
                         <!-- Bank Name -->
                         <div class="bg-white/95 border border-border/80 rounded-xl py-2 px-3 sm:py-2.5 sm:px-3.5 flex items-center justify-between gap-2 shadow-xs">
                             <div>
-                                <span class="text-[11px] uppercase tracking-wider font-bold text-muted-foreground block mb-0.5">Bank</span>
+                                <span class="text-[11px] uppercase tracking-wider font-bold text-muted-foreground block mb-0.5"><?php echo esc_html( waklert_option_text( 'bank_label_bank' ) ); ?></span>
                                 <span class="text-base sm:text-lg font-bold text-foreground"><?php echo esc_html( $bacs_bank ); ?></span>
                             </div>
-                            <span class="text-xs font-semibold text-muted-foreground px-2.5 py-1 bg-muted/40 rounded-lg">Australia</span>
+                            <span class="text-xs font-semibold text-muted-foreground px-2.5 py-1 bg-muted/40 rounded-lg"><?php echo esc_html( $bank['country'] ); ?></span>
                         </div>
 
                         <!-- BSB -->
                         <div class="bg-white/95 border border-border/80 rounded-xl py-2 px-3 sm:py-2.5 sm:px-3.5 flex items-center justify-between gap-2 shadow-xs hover:border-primary/50 transition-colors">
                             <div>
-                                <span class="text-[11px] uppercase tracking-wider font-bold text-muted-foreground block mb-0.5">BSB Code</span>
+                                <span class="text-[11px] uppercase tracking-wider font-bold text-muted-foreground block mb-0.5"><?php echo esc_html( waklert_option_text( 'bank_label_bsb' ) ); ?></span>
                                 <span class="text-xl sm:text-2xl font-mono font-extrabold text-foreground tracking-wider select-all"><?php echo esc_html( $bacs_bsb ); ?></span>
                             </div>
                             <button type="button" onclick="copyValue('<?php echo esc_js( str_replace(' ', '', $bacs_bsb) ); ?>', this)" class="copy-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-border text-xs font-bold text-foreground bg-muted/40 hover:bg-muted transition-all active:scale-95 cursor-pointer">
                                 <svg class="w-3.5 h-3.5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                                <span>Copy</span>
+                                <span><?php echo esc_html( waklert_option_text( 'bank_copy_label' ) ); ?></span>
                             </button>
                         </div>
 
                         <!-- Account Number -->
                         <div class="bg-white/95 border border-border/80 rounded-xl py-2 px-3 sm:py-2.5 sm:px-3.5 flex items-center justify-between gap-2 shadow-xs hover:border-primary/50 transition-colors">
                             <div>
-                                <span class="text-[11px] uppercase tracking-wider font-bold text-muted-foreground block mb-0.5">Account Number</span>
+                                <span class="text-[11px] uppercase tracking-wider font-bold text-muted-foreground block mb-0.5"><?php echo esc_html( waklert_option_text( 'bank_label_account_number' ) ); ?></span>
                                 <span class="text-xl sm:text-2xl font-mono font-extrabold text-foreground tracking-wider select-all"><?php echo esc_html( $bacs_acc ); ?></span>
                             </div>
                             <button type="button" onclick="copyValue('<?php echo esc_js( $bacs_acc ); ?>', this)" class="copy-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-border text-xs font-bold text-foreground bg-muted/40 hover:bg-muted transition-all active:scale-95 cursor-pointer">
                                 <svg class="w-3.5 h-3.5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                                <span>Copy</span>
+                                <span><?php echo esc_html( waklert_option_text( 'bank_copy_label' ) ); ?></span>
                             </button>
                         </div>
 
                         <!-- PayID Card (Prominent display with Copy) -->
                         <div class="bg-white/95 border border-border/80 rounded-xl py-2 px-3 sm:py-2.5 sm:px-3.5 flex items-center justify-between gap-2 shadow-xs hover:border-primary/50 transition-colors sm:col-span-2">
                             <div>
-                                <span class="text-[11px] uppercase tracking-wider font-bold block mb-0.5 text-[#D97706]" style="color: #d97706;">PayID</span>
+                                <span class="text-[11px] uppercase tracking-wider font-bold block mb-0.5 text-[#D97706]" style="color: #d97706;"><?php echo esc_html( waklert_option_text( 'bank_label_payid' ) ); ?></span>
                                 <span class="text-xl sm:text-2xl font-mono font-extrabold text-[#0C4161] tracking-wider select-all"><?php echo esc_html( $payid_number ); ?></span>
                             </div>
                             <button type="button" onclick="copyValue('<?php echo esc_js( preg_replace('/\s+/', '', $payid_number) ); ?>', this)" class="copy-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-border text-xs font-bold text-foreground bg-muted/40 hover:bg-muted transition-all active:scale-95 cursor-pointer">
                                 <svg class="w-3.5 h-3.5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                                <span>Copy</span>
+                                <span><?php echo esc_html( waklert_option_text( 'bank_copy_label' ) ); ?></span>
                             </button>
                         </div>
 
@@ -264,13 +255,13 @@ if ( empty( $shipping_note ) ) {
                             <div class="w-4.5 h-4.5 rounded bg-[#FFCC00] flex items-center justify-center shrink-0">
                                 <svg class="w-3 h-3 text-[#1A1A1A]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 12l10 10 10-10L12 2zm0 4.2L17.8 12 12 17.8 6.2 12 12 6.2z"/></svg>
                             </div>
-                            <span class="text-xs font-bold text-slate-800">Commonwealth Bank</span>
+                            <span class="text-xs font-bold text-slate-800"><?php echo esc_html( $bacs_bank ); ?></span>
                         </div>
                         <div class="inline-flex items-center justify-center px-3.5 py-1.5 rounded-xl border border-slate-200/90 bg-white shadow-2xs h-10">
-                            <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/payid.png' ); ?>" alt="PayID" style="height: 18px; max-height: 18px; width: auto; object-fit: contain; display: block;" />
+                            <img src="<?php echo esc_url( $logo_src( 'thankyou_payid_logo', '/assets/images/payid.png' ) ); ?>" alt="<?php echo esc_attr( waklert_option_text( 'bank_label_payid' ) ); ?>" style="height: 18px; max-height: 18px; width: auto; object-fit: contain; display: block;" />
                         </div>
                         <div class="inline-flex items-center justify-center px-3.5 py-1.5 rounded-xl border border-slate-200/90 bg-white shadow-2xs h-10">
-                            <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/osko.jpg' ); ?>" alt="Osko" style="height: 18px; max-height: 18px; width: auto; object-fit: contain; display: block;" />
+                            <img src="<?php echo esc_url( $logo_src( 'thankyou_osko_logo', '/assets/images/osko.jpg' ) ); ?>" alt="Osko" style="height: 18px; max-height: 18px; width: auto; object-fit: contain; display: block;" />
                         </div>
                     </div>
                 </div>
@@ -289,7 +280,7 @@ if ( empty( $shipping_note ) ) {
 
                 <!-- Shipping Timeline Note -->
                 <div class="bg-card border border-border/80 rounded-xl py-2.5 px-3.5 sm:py-3 sm:px-4 mb-3.5 sm:mb-4 shadow-xs" style="max-width: 48rem; margin-left: auto; margin-right: auto;">
-                    <h4 class="font-bold text-foreground text-sm sm:text-base mb-1.5">Note</h4>
+                    <h4 class="font-bold text-foreground text-sm sm:text-base mb-1.5"><?php echo esc_html( waklert_option_text( 'thankyou_note_heading' ) ); ?></h4>
                     <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-0">
                         <?php echo esc_html( $shipping_note ); ?>
                     </p>
@@ -579,11 +570,11 @@ if ( empty( $shipping_note ) ) {
             <div class="mt-10 pt-8 border-t border-border/60 flex flex-col items-center text-center">
                 <a href="<?php echo esc_url( $shop_page_url ); ?>" class="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-primary hover:bg-primary-dark text-white font-extrabold text-base tracking-wide transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 ring-4 ring-primary/10 w-full sm:w-auto">
                     <svg class="w-5 h-5 text-white/90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
-                    <span>Return to Shop</span>
+                    <span><?php echo esc_html( waklert_option_text( 'thankyou_shop_button' ) ); ?></span>
                 </a>
                 <p class="text-xs text-muted-foreground mt-3 flex items-center justify-center gap-1.5">
                     <svg class="w-3.5 h-3.5 text-emerald-600 inline shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                    <span>Your order confirmation &amp; tax invoice have been dispatched to your email</span>
+                    <span><?php echo esc_html( waklert_option_text( 'thankyou_footer_note' ) ); ?></span>
                 </p>
             </div>
 
@@ -619,7 +610,7 @@ function copyValue(text, btn) {
 
 function showCopied(btn) {
     var originalHTML = btn.innerHTML;
-    btn.innerHTML = '<svg class="w-3.5 h-3.5 text-emerald-600 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg><span class="text-emerald-700 font-bold">Copied!</span>';
+    btn.innerHTML = '<svg class="w-3.5 h-3.5 text-emerald-600 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg><span class="text-emerald-700 font-bold">' + <?php echo wp_json_encode( waklert_option_text( 'bank_copied_label' ) ); ?> + '</span>';
     btn.classList.add('border-emerald-300', 'bg-emerald-50');
     setTimeout(function() {
         btn.innerHTML = originalHTML;

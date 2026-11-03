@@ -8,7 +8,7 @@
  * The same defaults are the safety net the module templates fall back to.
  */
 
-const WAKLERT_CONTENT_SEED_VERSION = '20261103_content_seed_v10';
+const WAKLERT_CONTENT_SEED_VERSION = '20261103_content_seed_v11';
 
 /**
  * Default text per module layout.
@@ -346,8 +346,58 @@ function waklert_option_defaults() {
         // Footer: Text tab
         'disclaimer_label'             => ['field_disclaimer_label', 'Medical Website Disclaimer:'],
         'icon_credit_text'             => ['field_icon_credit_text', 'UIcons by Flaticon'],
+        // Checkout & Emails tab
+        'bank_transfer_bank_name' => ['field_ty_bank_transfer_bank_name', 'Commonwealth Bank'],
+        'bank_transfer_account_name' => ['field_ty_bank_transfer_account_name', 'Steven Waldberg'],
+        'bank_transfer_bsb' => ['field_ty_bank_transfer_bsb', '062 948'],
+        'bank_transfer_account_number' => ['field_ty_bank_transfer_account_number', '48880531'],
+        'bank_transfer_country' => ['field_ty_bank_transfer_country', 'Australia'],
+        'thankyou_status_bacs' => ['field_ty_thankyou_status_bacs', 'Order Placed • Awaiting Bank Transfer'],
+        'thankyou_status_paid' => ['field_ty_thankyou_status_paid', 'Order Placed Successfully'],
+        'thankyou_title_named' => ['field_ty_thankyou_title_named', 'Congratulations, {name}!'],
+        'thankyou_title' => ['field_ty_thankyou_title', 'Thank You for Your Order!'],
+        'thankyou_intro_bacs' => ['field_ty_thankyou_intro_bacs', 'Thank you for your order. Please complete your payment using **EFT** or **PayID** below.'],
+        'thankyou_intro_default' => ['field_ty_thankyou_intro_default', 'Your order has been received and is now being prepared for express delivery.'],
+        'thankyou_label_order' => ['field_ty_thankyou_label_order', 'Order Number'],
+        'thankyou_label_date' => ['field_ty_thankyou_label_date', 'Date'],
+        'thankyou_label_total' => ['field_ty_thankyou_label_total', 'Total Due'],
+        'thankyou_label_payment' => ['field_ty_thankyou_label_payment', 'Payment Method'],
+        'thankyou_label_sent_to' => ['field_ty_thankyou_label_sent_to', 'Confirmation sent to:'],
+        'thankyou_label_invoice' => ['field_ty_thankyou_label_invoice', 'Tax Invoice Generated'],
+        'bank_card_badge' => ['field_ty_bank_card_badge', 'Verified'],
+        'bank_card_subtitle' => ['field_ty_bank_card_subtitle', 'Official Direct Bank Transfer (EFT / NetBank / PayID)'],
+        'bank_card_amount_label' => ['field_ty_bank_card_amount_label', 'Amount to Transfer'],
+        'bank_label_account_name' => ['field_ty_bank_label_account_name', 'Account Name'],
+        'bank_label_bank' => ['field_ty_bank_label_bank', 'Bank'],
+        'bank_label_bsb' => ['field_ty_bank_label_bsb', 'BSB Code'],
+        'bank_label_account_number' => ['field_ty_bank_label_account_number', 'Account Number'],
+        'bank_label_payid' => ['field_ty_bank_label_payid', 'PayID'],
+        'bank_copy_label' => ['field_ty_bank_copy_label', 'Copy'],
+        'bank_copied_label' => ['field_ty_bank_copied_label', 'Copied!'],
+        'thankyou_note_heading' => ['field_ty_thankyou_note_heading', 'Note'],
+        'thankyou_shop_button' => ['field_ty_thankyou_shop_button', 'Return to Shop'],
+        'thankyou_footer_note' => ['field_ty_thankyou_footer_note', 'Your order confirmation & tax invoice have been dispatched to your email'],
+        'thankyou_failed_title' => ['field_ty_thankyou_failed_title', 'Order Payment Failed'],
+        'thankyou_failed_retry' => ['field_ty_thankyou_failed_retry', 'Retry Payment'],
+        'thankyou_failed_account' => ['field_ty_thankyou_failed_account', 'My Account'],
+        'thankyou_failed_text' => ['field_ty_thankyou_failed_text', 'Unfortunately your order payment could not be completed. Please re-attempt your payment or select direct bank transfer.'],
+        'payid_number' => ['field_checkout_payid_number', '0402 222 605'],
+        'checkout_bacs_warning' => ['field_checkout_bacs_warning', '* Use the below BSB & account details to make the transfer. Simply mention your order number in the comment section. DO NOT reference anything related to medicine or website name. Just mention your order number.'],
+        'checkout_receipt_notice' => ['field_checkout_receipt_notice', '* Once your payment is done, just send the transaction copy to {email} and we\'ll ship your order immediately.'],
+        'checkout_shipping_note' => ['field_checkout_shipping_note', 'The average shipping time is 10 - 15 days. Please note that delivery may take up to 30 days from the date of dispatch due to potential disruptions in postal services caused by weather issues or natural disaster.'],
         // Page Labels tab
         'breadcrumb_home_label'        => ['field_breadcrumb_home_label', 'Home'],
+    ];
+}
+
+/** Bank transfer details (Theme Settings -> Checkout & Emails) used by the thank-you page, the BACS block and WooCommerce. */
+function waklert_bank_details() {
+    return [
+        'bank'    => waklert_option_text('bank_transfer_bank_name'),
+        'name'    => waklert_option_text('bank_transfer_account_name'),
+        'bsb'     => waklert_option_text('bank_transfer_bsb'),
+        'number'  => waklert_option_text('bank_transfer_account_number'),
+        'country' => waklert_option_text('bank_transfer_country'),
     ];
 }
 
