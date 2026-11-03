@@ -15,7 +15,7 @@ if (empty($eyebrow) && isset($row['eyebrow'])) {
     $eyebrow = $row['eyebrow'];
 }
 if ($eyebrow === null || $eyebrow === '') {
-    $eyebrow = 'Knowledge & Resources';
+    $eyebrow = waklert_module_default('blog_section', 'eyebrow');
 }
 
 $title = get_sub_field('title');
@@ -23,7 +23,7 @@ if (empty($title) && isset($row['title'])) {
     $title = $row['title'];
 }
 if (empty($title)) {
-    $title = get_sub_field('heading') ?: ($row['heading'] ?? 'Latest Articles & Guides');
+    $title = get_sub_field('heading') ?: ($row['heading'] ?? waklert_module_default('blog_section', 'title'));
 }
 
 $subtitle = get_sub_field('subtitle');
@@ -31,7 +31,7 @@ if (empty($subtitle) && isset($row['subtitle'])) {
     $subtitle = $row['subtitle'];
 }
 if (empty($subtitle)) {
-    $subtitle = get_sub_field('description') ?: ($row['description'] ?? 'Helpful insights, dosage guides, and research on Armodafinil and cognitive performance.');
+    $subtitle = get_sub_field('description') ?: ($row['description'] ?? waklert_module_default('blog_section', 'subtitle'));
 }
 
 $posts_count = get_sub_field('posts_count');
@@ -57,7 +57,13 @@ if (is_home() || is_archive() || (is_page() && get_the_ID() === (int) get_option
 
 $button_text = !empty(get_sub_field('button_text')) 
     ? get_sub_field('button_text') 
-    : (!empty($row['button_text']) ? $row['button_text'] : 'View All Articles');
+    : (!empty($row['button_text']) ? $row['button_text'] : waklert_module_default('blog_section', 'button_text'));
+
+$read_more_label   = get_sub_field('read_more_label') ?: waklert_module_default('blog_section', 'read_more_label');
+$read_time_label   = get_sub_field('read_time_label') ?: waklert_module_default('blog_section', 'read_time_label');
+$default_category  = get_sub_field('default_category') ?: waklert_module_default('blog_section', 'default_category');
+$placeholder_label = get_sub_field('placeholder_label') ?: waklert_module_default('blog_section', 'placeholder_label');
+$empty_text        = get_sub_field('empty_text') ?: waklert_module_default('blog_section', 'empty_text');
 
 $button_url = !empty(get_sub_field('button_url')) 
     ? get_sub_field('button_url') 
@@ -136,7 +142,7 @@ if (empty($articles)) {
                 $categories = get_the_category($post_id);
                 $cat_label = (!empty($categories) && $categories[0]->name !== 'Uncategorized') 
                     ? $categories[0]->name 
-                    : 'Armodafinil Guide';
+                    : $default_category;
 
                 // Reading time calculation (~200 wpm)
                 $plain_text = strip_tags($article->post_content);
@@ -183,7 +189,7 @@ if (empty($articles)) {
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                                 </svg>
                             </div>
-                            <span class="text-xs font-bold tracking-widest uppercase text-white/80">Waklert Knowledge</span>
+                            <span class="text-xs font-bold tracking-widest uppercase text-white/80"><?= esc_html($placeholder_label) ?></span>
                         </div>
                     <?php endif; ?>
 
@@ -211,7 +217,7 @@ if (empty($articles)) {
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 text-amber-500">
                                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z" clip-rule="evenodd" />
                                 </svg>
-                                <?= esc_html($read_time) ?> min read
+                                <?= esc_html($read_time) ?> <?= esc_html($read_time_label) ?>
                             </span>
                         </div>
 
@@ -231,7 +237,7 @@ if (empty($articles)) {
 
                 <!-- Two-Tone Footer Block -->
                 <a href="<?= esc_url($permalink) ?>" class="bg-[#f0f6fa] group-hover:bg-[#0c4161] p-3 px-4 sm:p-4 sm:px-6 border-t-2 border-dashed border-sky-200/80 flex items-center justify-between transition-colors duration-300 text-xs sm:text-sm font-black text-[#0c4161] group-hover:text-white mt-auto">
-                    <span>Read Full Guide</span>
+                    <span><?= esc_html($read_more_label) ?></span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 sm:w-4 sm:h-4 transform group-hover:translate-x-1.5 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
@@ -241,7 +247,7 @@ if (empty($articles)) {
         </div>
         <?php else: ?>
         <div class="text-center py-12 bg-white rounded-2xl border-2 border-dashed border-sky-300/80 p-8">
-            <p class="text-slate-500 font-medium">No articles published yet.</p>
+            <p class="text-slate-500 font-medium"><?= esc_html($empty_text) ?></p>
         </div>
         <?php endif; ?>
 

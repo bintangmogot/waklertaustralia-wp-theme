@@ -1186,6 +1186,218 @@
             "instructions": "Shown in the product reviews area, on shop product cards and in the catalog comparison when a product has no reviews."
         },
         {
+            "key": "field_tab_shop_page",
+            "label": "Shop Page",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_shop_page_guide",
+            "label": "What is this tab?",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Fixed texts on the <strong>product cards</strong> shown on the Shop page (/shop/). The Shop page banner, SEO text and FAQs are edited in <strong>Pages &rarr; Shop &rarr; Page Modules</strong>. The \"Best Seller\" badge text is in the Product Pages tab.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_shop_acc_buttons",
+            "label": "1. Product Card Button",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 1,
+            "multi_expand": 1,
+            "endpoint": 0
+        },
+        {
+            "key": "field_shop_card_button_text",
+            "label": "Buy Button Text",
+            "name": "shop_card_button_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Button at the bottom of every product card (opens the product page).",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "BUY NOW",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_shop_card_out_of_stock",
+            "label": "Out of Stock Text",
+            "name": "shop_card_out_of_stock_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Shown on the badge and in place of the button when a product is sold out.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Out of Stock",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_shop_acc_labels",
+            "label": "2. Product Card Labels",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 1,
+            "endpoint": 0
+        },
+        {
+            "key": "field_shop_card_in_stock",
+            "label": "In Stock Badge",
+            "name": "shop_card_in_stock_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Green badge on the top left of the card.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "In Stock",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_shop_card_read_more",
+            "label": "Read More Link",
+            "name": "shop_card_read_more_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Link shown under long product descriptions.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Read more",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_shop_card_unit_prefix",
+            "label": "Price per Tablet: Word Before",
+            "name": "shop_card_unit_prefix",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Shows as \"From $1.50/tab\". This is the word before the price.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "From",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_shop_card_unit_suffix",
+            "label": "Price per Tablet: Word After",
+            "name": "shop_card_unit_suffix",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "This is the part after the price, e.g. /tab.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "/tab",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_shop_card_delivery",
+            "label": "Delivery Label",
+            "name": "shop_card_delivery_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Small truck label next to the price.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "AU Express",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_theme_tab_checkout",
             "label": "Checkout & Emails",
             "name": "",

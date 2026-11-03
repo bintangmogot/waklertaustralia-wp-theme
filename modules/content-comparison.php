@@ -9,9 +9,16 @@
  * - Lift & hover animations
  */
 
-$tag = get_sub_field('tag') ?: "Know Before You Order";
-$heading = get_sub_field('heading') ?: "Waklert vs Coffee vs Energy Drinks";
-$desc = get_sub_field('description') ?: "See why thousands of Australian shift workers and professionals choose Waklert over high-sugar stimulants.";
+$tag = get_sub_field('tag') ?: waklert_module_default('comparison', 'tag');
+$heading = get_sub_field('heading') ?: waklert_module_default('comparison', 'heading');
+$desc = get_sub_field('description') ?: waklert_module_default('comparison', 'description');
+$attribute_label = get_sub_field('attribute_label') ?: waklert_module_default('comparison', 'attribute_label');
+$badge_label = get_sub_field('badge_label') ?: waklert_module_default('comparison', 'badge_label');
+$product_label = get_sub_field('product_label') ?: waklert_module_default('comparison', 'product_label');
+$coffee_label = get_sub_field('coffee_label') ?: waklert_module_default('comparison', 'coffee_label');
+$energy_label = get_sub_field('energy_label') ?: waklert_module_default('comparison', 'energy_label');
+$footer_note = get_sub_field('footer_note') ?: waklert_module_default('comparison', 'footer_note');
+$footer_badge = get_sub_field('footer_badge') ?: waklert_module_default('comparison', 'footer_badge');
 
 // Feature row colorful micro-icons
 $feature_icons = [
@@ -37,14 +44,7 @@ if (have_rows('rows')) {
 }
 
 if (empty($rows)) {
-    $rows = [
-        ['feature' => 'Effect Duration', 'modafinil' => '10-15 hours', 'coffee' => '2-4 hours', 'energy' => '1-3 hours', 'key' => 'duration'],
-        ['feature' => 'Crash Effect', 'modafinil' => 'Smooth / None', 'coffee' => 'Moderate dip', 'energy' => 'Severe crash', 'key' => 'crash'],
-        ['feature' => 'Focus Quality', 'modafinil' => 'Deep, calm focus', 'coffee' => 'Mild alertness', 'energy' => 'Jittery spikes', 'key' => 'focus'],
-        ['feature' => 'Habit Risk', 'modafinil' => 'Very low', 'coffee' => 'Moderate caffeine cycle', 'energy' => 'High sugar / caffeine', 'key' => 'safety'],
-        ['feature' => 'Sleep Disruption', 'modafinil' => 'Low (morning dose)', 'coffee' => 'Moderate', 'energy' => 'High', 'key' => 'sleep'],
-        ['feature' => 'Cost per Day', 'modafinil' => '~AUD $3 - $5', 'coffee' => '~AUD $5 - $9', 'energy' => '~AUD $4 - $7', 'key' => 'cost'],
-    ];
+    $rows = waklert_module_default_rows('comparison', 'rows');
 }
 ?>
 <section class="section-padding bg-gradient-to-b from-[#f8fafc] via-[#eff6fb] to-[#f8fafc] bg-pattern-dots border-t-2 border-dashed border-sky-200/80 relative isolate overflow-hidden" data-testid="comparison-table">
@@ -69,20 +69,20 @@ if (empty($rows)) {
                     <thead>
                         <tr>
                             <th class="py-5 px-5 md:px-6 bg-[#0c4161] text-white font-heading font-black text-sm uppercase tracking-wider w-[34%]">
-                                Key Attribute
+                                <?= esc_html($attribute_label) ?>
                             </th>
                             <!-- Highlighted Waklert Column -->
                             <th class="py-5 px-5 md:px-6 bg-[#082c42] text-white font-heading font-black text-center text-sm md:text-base border-x-2 border-dashed border-amber-400/60 relative w-[26%]">
                                 <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400 text-slate-950 text-[10px] font-black uppercase tracking-widest mb-1 shadow-xs">
-                                    ★ RECOMMENDED
+                                    <?= esc_html($badge_label) ?>
                                 </div>
-                                <span class="block text-white text-lg">Waklert 150</span>
+                                <span class="block text-white text-lg"><?= esc_html($product_label) ?></span>
                             </th>
                             <th class="py-5 px-4 md:px-6 bg-[#0c4161] text-white/90 font-heading font-bold text-center text-sm uppercase tracking-wider w-[20%]">
-                                Coffee
+                                <?= esc_html($coffee_label) ?>
                             </th>
                             <th class="py-5 px-4 md:px-6 bg-[#0c4161] text-white/90 font-heading font-bold text-center text-sm uppercase tracking-wider w-[20%]">
-                                Energy Drinks
+                                <?= esc_html($energy_label) ?>
                             </th>
                         </tr>
                     </thead>
@@ -130,9 +130,9 @@ if (empty($rows)) {
             <div class="p-4 px-6 bg-slate-50 border-t-2 border-dashed border-sky-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-slate-500">
                 <span class="flex items-center gap-2">
                     <svg class="w-3.5 h-3.5 text-emerald-600 shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                    <span>Armodafinil offers sustained wakefulness without sugar crashes or high liquid intake.</span>
+                    <span><?= esc_html($footer_note) ?></span>
                 </span>
-                <span class="font-bold text-[#0c4161]">100% Genuine Sun Pharma Batch Tested</span>
+                <span class="font-bold text-[#0c4161]"><?= esc_html($footer_badge) ?></span>
             </div>
         </div>
     </div>

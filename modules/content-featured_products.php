@@ -4,9 +4,12 @@
  * Matches the original React design exactly
  */
 
-$tag = get_sub_field('subheading') ?: "MOST POPULAR in 2026";
+$tag = get_sub_field('subheading') ?: waklert_module_default('featured_products', 'subheading');
 
-$heading = get_sub_field('title') ?: "Armodafinil Products";
+$heading = get_sub_field('title') ?: waklert_module_default('featured_products', 'title');
+$description = get_sub_field('description') ?: waklert_module_default('featured_products', 'description');
+$button_text = get_sub_field('button_text') ?: waklert_module_default('featured_products', 'button_text');
+$button_href = waklert_resolve_link(get_sub_field('button_url') ?: waklert_module_default('featured_products', 'button_url'));
 
 // Featured product slugs (matching original JS: HOME_PRODUCT_SLUGS)
 $featured_slugs = ['waklert-150mg', 'artvigil-50mg', 'armod-50mg-armodafinil'];
@@ -43,7 +46,7 @@ if (!$products) {
                 <?= esc_html($heading) ?>
             </h2>
             <p class="text-sm md:text-base text-muted-foreground max-w-xl mx-auto leading-relaxed">
-                Genuine Sun Pharma and HAB Pharma Armodafinil tablets shipped domestically across Australia.
+                <?= esc_html($description) ?>
             </p>
         </div>
 
@@ -65,8 +68,8 @@ if (!$products) {
         </div>
 
         <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <a href="<?= wc_get_page_permalink('shop') ?>" class="inline-flex items-center gap-2 border-2 border-primary-light text-primary-dark font-bold px-5 py-2.5 sm:px-7 sm:py-3 rounded-full hover:bg-primary-light hover:text-white hover:border-primary-light transition-all uppercase tracking-wider sm:tracking-widest text-xs sm:text-sm">
-                <?= "View All Products" ?>
+            <a href="<?= esc_url($button_href) ?>" class="inline-flex items-center gap-2 border-2 border-primary-light text-primary-dark font-bold px-5 py-2.5 sm:px-7 sm:py-3 rounded-full hover:bg-primary-light hover:text-white hover:border-primary-light transition-all uppercase tracking-wider sm:tracking-widest text-xs sm:text-sm">
+                <?= esc_html($button_text) ?>
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
             </a>
         </div>

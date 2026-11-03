@@ -7,9 +7,10 @@
  * - Dashed borders & Lift/scale animations
  */
 
-$tag = get_sub_field('tag') ?: "Simple Process";
-$heading = get_sub_field('heading') ?: "Three Steps from Product Information to Delivery";
-$description = get_sub_field('description') ?: "Simple, transparent, and private. Ordering Armodafinil across Australia takes just 3 straightforward steps.";
+$tag = get_sub_field('tag') ?: waklert_module_default('how_to_order', 'tag');
+$heading = get_sub_field('heading') ?: waklert_module_default('how_to_order', 'heading');
+$description = get_sub_field('description') ?: waklert_module_default('how_to_order', 'description');
+$step_label = get_sub_field('step_label') ?: waklert_module_default('how_to_order', 'step_label');
 
 $is_about_page = is_page('about-us');
 $section_classes = $is_about_page 
@@ -55,37 +56,18 @@ if (have_rows('steps')) {
 }
 
 if (empty($step_items)) {
-    $defaults = [
-        [
-            'preset' => 'browse_catalogue',
-            'title'  => "Review the Range",
-            'desc'   => "Compare available armodafinil brands, strengths and pack sizes. Read the product information before making a selection.",
-            'step'   => "01",
-        ],
-        [
-            'preset' => 'aud_checkout',
-            'title'  => "Confirm Your Order",
-            'desc'   => "Choose an available payment method at checkout. Order details are handled through the secure checkout process.",
-            'step'   => "02",
-        ],
-        [
-            'preset' => 'express_shipping',
-            'title'  => "Track Delivery",
-            'desc'   => "When an order is dispatched, Australia Post tracking details are provided so you can follow its progress.",
-            'step'   => "03",
-        ],
-    ];
-    foreach ($defaults as $card) {
+    $defaults = waklert_module_default_rows('how_to_order', 'steps');
+    foreach ($defaults as $i => $card) {
         $step_items[] = [
             'icon'  => waklert_render_card_icon([
-                'icon_preset' => $card['preset'],
+                'icon_preset' => $card['icon_preset'],
                 'title'       => $card['title'],
                 'desc'        => $card['desc'],
                 'size_class'  => 'w-14 h-14 shrink-0',
             ]),
             'title' => $card['title'],
             'desc'  => $card['desc'],
-            'step'  => $card['step'],
+            'step'  => sprintf('%02d', $i + 1),
         ];
     }
 }
@@ -120,7 +102,7 @@ if (empty($step_items)) {
                     <div class="bg-white p-6 pb-6 flex flex-col items-center text-center justify-start relative min-h-[205px]">
                         <!-- Step Badge -->
                         <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-900 border border-amber-300 text-[11px] font-black tracking-widest uppercase mb-4 shadow-xs">
-                            <span>STEP <?= esc_html($card['step']) ?></span>
+                            <span><?= esc_html($step_label) ?> <?= esc_html($card['step']) ?></span>
                         </div>
 
                         <!-- Colorful Vector Illustration -->

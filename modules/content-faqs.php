@@ -11,10 +11,10 @@
 
 $badge = get_sub_field('eyebrow') ?: "FAQ";
 $show_badge = get_sub_field('show_eyebrow') !== false;
-$heading = get_sub_field('heading') ?: "Frequently Asked Questions";
+$heading = get_sub_field('heading') ?: waklert_module_default('faqs', 'heading');
 $show_link = get_sub_field('show_full_faq_link') !== false;
-$link = get_sub_field('link_text') ?: "Full FAQ";
-$link_url = get_sub_field('link_url') ?: home_url('/faq');
+$link = get_sub_field('link_text') ?: waklert_module_default('faqs', 'link_text');
+$link_url = waklert_resolve_link(get_sub_field('link_url') ?: waklert_module_default('faqs', 'link_url'));
 ?>
 <section class="section-padding bg-gradient-to-b from-[#f8fafc] via-[#eff6fb] to-[#f8fafc] bg-pattern-dots border-t-2 border-dashed border-sky-200/80 relative isolate overflow-hidden" data-testid="faq-strip">
     <div class="container-custom max-w-4xl relative z-10">

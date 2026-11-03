@@ -8,55 +8,15 @@
  */
 
 $fallback_presets = ['australia_delivery', 'discreet_sealed', 'aud_checkout', 'live_chat_support'];
-$default_descs = [
-    "Tracked delivery via Australia Post to all states and territories.",
-    "Direct batch-tested pharmaceuticals from accredited manufacturers.",
-    "Encrypted checkout with local PayID & Australian bank EFT.",
-    "Shipped in generic, unbranded satchels for complete privacy."
-];
-
-/**
- * Generate a context-aware fallback description if the badge's `desc` subfield is left empty.
- */
-if (!function_exists('waklert_default_trust_badge_desc')) {
-    function waklert_default_trust_badge_desc(string $label, int $idx, array $default_descs): string {
-        $lower = strtolower(trim($label));
-        if (str_contains($lower, 'focused') || str_contains($lower, 'category') || str_contains($lower, 'range')) {
-            return 'Dedicated exclusively to genuine armodafinil tablets and verified pack sizes.';
-        }
-        if (str_contains($lower, 'checkout') && str_contains($lower, 'delivery')) {
-            return 'Transparent shipping options, transit estimates, and Australia Post tracking at checkout.';
-        }
-        if (str_contains($lower, 'listing') || str_contains($lower, 'detail')) {
-            return 'Clear active ingredient, strength, manufacturer, and pack options on every page.';
-        }
-        if (str_contains($lower, 'support') || str_contains($lower, 'question') || str_contains($lower, 'chat')) {
-            return 'Direct Australian customer care via SMS, WhatsApp, and email 7 days a week.';
-        }
-        if (str_contains($lower, 'sealed')) {
-            return 'Original factory-sealed blister packs from licensed pharmaceutical manufacturers.';
-        }
-        if (str_contains($lower, 'discreet')) {
-            return 'Plain, unmarked satchels with no external branding for complete privacy.';
-        }
-        if (str_contains($lower, 'checkout') || str_contains($lower, 'payid') || str_contains($lower, 'secure')) {
-            return 'Encrypted AUD checkout supporting local PayID and Australian bank transfer.';
-        }
-        if (str_contains($lower, 'australia') || str_contains($lower, 'delivery') || str_contains($lower, 'shipping')) {
-            return 'Tracked delivery via Australia Post to metro, regional, and PO Box addresses.';
-        }
-        return $default_descs[$idx % 4] ?? $default_descs[0];
-    }
-}
 
 $trust_items = [];
 if (have_rows('badges')) {
     $idx = 0;
     while (have_rows('badges')) {
         the_row();
-        $label       = (string) (get_sub_field('label') ?: 'Guaranteed Service');
+        $label       = (string) get_sub_field('label');
         $custom_desc = trim((string) get_sub_field('desc'));
-        $desc        = $custom_desc !== '' ? $custom_desc : waklert_default_trust_badge_desc($label, $idx, $default_descs);
+        $desc        = $custom_desc !== '' ? $custom_desc : waklert_default_trust_badge_desc($label, $idx);
         $icon_preset = (string) (get_sub_field('icon_preset') ?: 'auto');
         $icon_image  = get_sub_field('icon_image');
         $icon_svg    = (string) get_sub_field('icon_svg');
@@ -81,37 +41,16 @@ if (have_rows('badges')) {
 }
 
 if (empty($trust_items)) {
-    $defaults = [
-        [
-            'preset' => 'australia_delivery',
-            'title'  => "Australia-wide Delivery",
-            'desc'   => "Tracked delivery via Australia Post to all states and territories.",
-        ],
-        [
-            'preset' => 'discreet_sealed',
-            'title'  => "Sealed Product Packaging",
-            'desc'   => "Direct batch-tested pharmaceuticals from accredited manufacturers.",
-        ],
-        [
-            'preset' => 'aud_checkout',
-            'title'  => "Secure Local Checkout",
-            'desc'   => "Encrypted checkout with local PayID & Australian bank EFT.",
-        ],
-        [
-            'preset' => 'po_box_delivery',
-            'title'  => "Discreet Packaging",
-            'desc'   => "Shipped in generic, unbranded satchels for complete privacy.",
-        ],
-    ];
+    $defaults = waklert_module_default_rows('trust_strip', 'badges');
     foreach ($defaults as $card) {
         $trust_items[] = [
             'icon'  => waklert_render_card_icon([
-                'icon_preset' => $card['preset'],
-                'title'       => $card['title'],
+                'icon_preset' => $card['icon_preset'],
+                'title'       => $card['label'],
                 'desc'        => $card['desc'],
                 'size_class'  => 'w-14 h-14 shrink-0',
             ]),
-            'title' => $card['title'],
+            'title' => $card['label'],
             'desc'  => $card['desc'],
         ];
     }

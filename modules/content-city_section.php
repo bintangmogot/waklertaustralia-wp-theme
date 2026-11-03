@@ -11,17 +11,17 @@ $is_navy     = ($theme_style !== 'light');
 
 $tag = get_sub_field('tag');
 if ($tag === null || $tag === '') {
-    $tag = 'SHIPPING NATIONWIDE';
+    $tag = waklert_module_default('city_section', 'tag');
 }
 
 $heading = get_sub_field('title');
 if ($heading === null || $heading === '') {
-    $heading = 'Delivered Everywhere in Australia';
+    $heading = waklert_module_default('city_section', 'title');
 }
 
 $desc = get_sub_field('description');
 if ($desc === null || $desc === '') {
-    $desc = 'Metro cities, regional towns, or remote FIFO camps — we ship to your address.';
+    $desc = waklert_module_default('city_section', 'description');
 }
 
 // 1. Check quick_cities textarea
@@ -65,16 +65,9 @@ if (empty($cities_list) && have_rows('cities_list')) {
 
 // 3. Fallback to default 8 Australian delivery cities
 if (empty($cities_list)) {
-    $cities_list = [
-        ['name' => 'Sydney', 'checkmark' => true],
-        ['name' => 'Melbourne', 'checkmark' => true],
-        ['name' => 'Adelaide', 'checkmark' => true],
-        ['name' => 'Darwin', 'checkmark' => true],
-        ['name' => 'Brisbane', 'checkmark' => true],
-        ['name' => 'Gold Coast', 'checkmark' => true],
-        ['name' => 'Hobart', 'checkmark' => true],
-        ['name' => 'Canberra', 'checkmark' => true],
-    ];
+    foreach (waklert_module_default_rows('city_section', 'cities_list') as $default_city) {
+        $cities_list[] = ['name' => $default_city['city_name'], 'checkmark' => !empty($default_city['has_checkmark'])];
+    }
 }
 
 // 4. Ensure legacy Perth references are mapped to Canberra

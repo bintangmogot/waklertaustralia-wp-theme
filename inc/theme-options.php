@@ -93,7 +93,7 @@ add_action('wp_update_nav_menu', function() {
  * into the database field group. Field names are unchanged, so saved values are kept.
  */
 add_action('acf/init', function() {
-    $target_ver = '20261102_theme_settings_tabs_v5';
+    $target_ver = '20261103_theme_settings_tabs_v6';
     if (get_option('waklert_theme_settings_tabs_ver') === $target_ver || !function_exists('acf_import_field_group')) {
         return;
     }
@@ -129,6 +129,15 @@ add_action('acf/init', function() {
     foreach ($acf_posts as $p) {
         if ($p->post_name === 'group_waklert_product_presentation_settings' || $p->post_excerpt === 'group_waklert_product_presentation_settings') {
             wp_delete_post($p->ID, true);
+        }
+    }
+
+    // Fields removed from the JSON are not removed from the database copy by the import above
+    global $wpdb;
+    foreach (['field_hero_stats'] as $removed_key) {
+        $removed_ids = $wpdb->get_col($wpdb->prepare("SELECT ID FROM {$wpdb->posts} WHERE post_type = 'acf-field' AND post_name = %s", $removed_key));
+        foreach ($removed_ids as $removed_id) {
+            acf_delete_field((int) $removed_id);
         }
     }
 

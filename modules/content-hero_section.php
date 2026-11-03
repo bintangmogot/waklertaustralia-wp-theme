@@ -8,11 +8,11 @@
  * with ultra-optimized WebP fallbacks (35KB desktop, 56KB mobile) for instant loading.
  */
 
-$location      = get_sub_field('location_text') ?: 'Australia-wide delivery';
-$heading       = get_sub_field('heading') ?: 'Waklert in Australia, delivered on-time & hassle-free.';
-$subtitle      = get_sub_field('subtitle') ?: 'Waklert Australia — Generic Armodafinil';
-$description   = get_sub_field('description') ?: 'Waklert Australia supplies genuine, high-grade Armodafinil, including Sun Pharma’s Waklert 150mg and 50mg, without the standard pharmacy markups. Every order is packed discreetly and shipped with full Australia Post tracking to Sydney, Melbourne, Brisbane, Perth, Adelaide, and regional towns nationwide, with quick AUD checkout via PayID and direct EFT.';
-$primary_btn   = get_sub_field('primary_button_text') ?: 'View Products';
+$location      = get_sub_field('location_text') ?: waklert_module_default('hero_section', 'location_text');
+$heading       = get_sub_field('heading') ?: waklert_module_default('hero_section', 'heading');
+$subtitle      = get_sub_field('subtitle') ?: waklert_module_default('hero_section', 'subtitle');
+$description   = get_sub_field('description') ?: waklert_module_default('hero_section', 'description');
+$primary_btn   = get_sub_field('primary_button_text') ?: waklert_module_default('hero_section', 'primary_button_text');
 $primary_link  = get_sub_field('primary_button_link') ?: wc_get_page_permalink('shop');
 $secondary_btn = trim((string) get_sub_field('secondary_button_text'));
 $secondary_link = trim((string) get_sub_field('secondary_button_link'));
@@ -210,59 +210,42 @@ if (!$is_custom_mobile) {
                     <?php endif; ?>
                 </div>
 
-                <!-- 3 Colorful Micro Feature Badges (Dashed Border + Dual Tone + Colorful Vector Icons) -->
+                <!-- Feature badges (editable in the module: Feature Badges) -->
+                <?php
+                $hero_badge_icons = [
+                    'truck'  => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-5 h-5" fill="none"><rect x="2" y="8" width="18" height="15" rx="2" fill="#EF4444"/><path d="M20 12H26L29 16V23H20V12Z" fill="#DC2626"/><path d="M21 14H25L27.5 17H21V14Z" fill="#93C5FD"/><circle cx="8" cy="23" r="3" fill="#1E293B"/><circle cx="8" cy="23" r="1.2" fill="#F8FAFC"/><circle cx="24" cy="23" r="3" fill="#1E293B"/><circle cx="24" cy="23" r="1.2" fill="#F8FAFC"/></svg>',
+                    'shield' => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-5 h-5" fill="none"><path d="M16 3L6 7V15C6 22 10.5 27 16 29C21.5 27 26 22 26 15V7L16 3Z" fill="#F59E0B"/><path d="M16 5.5L8 9V15C8 20.8 11.6 25 16 26.8C20.4 25 24 20.8 24 15V9L16 5.5Z" fill="#FBBF24"/><circle cx="16" cy="16" r="6" fill="#10B981"/><path d="M13.5 16L15.2 17.8L18.8 14.2" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+                    'lock'   => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-5 h-5" fill="none"><rect x="6" y="13" width="20" height="15" rx="3" fill="#0C4161"/><path d="M10 13V9C10 5.686 12.686 3 16 3C19.314 3 22 5.686 22 9V13" stroke="#F59E0B" stroke-width="3" stroke-linecap="round"/><circle cx="16" cy="20" r="2.5" fill="#10B981"/><path d="M16 22.5V25" stroke="#10B981" stroke-width="2" stroke-linecap="round"/></svg>',
+                ];
+                $hero_badges = [];
+                if (have_rows('feature_badges')) {
+                    while (have_rows('feature_badges')) {
+                        the_row();
+                        $hero_badges[] = [
+                            'title'    => (string) get_sub_field('title'),
+                            'subtitle' => (string) get_sub_field('subtitle'),
+                            'icon'     => (string) get_sub_field('icon'),
+                        ];
+                    }
+                } else {
+                    $hero_badges = waklert_module_default_rows('hero_section', 'feature_badges');
+                }
+                ?>
+                <?php if ($hero_badges): ?>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-2">
+                    <?php foreach ($hero_badges as $badge): ?>
                     <div class="group flex items-center gap-2.5 rounded-xl border border-dashed border-white/30 bg-white/10 hover:bg-white/15 backdrop-blur-sm p-2.5 px-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-400/80">
                         <div class="w-8 h-8 rounded-lg bg-white/90 p-1 flex items-center justify-center shrink-0 shadow-xs transition-transform duration-300 group-hover:scale-110">
-                            <!-- Colorful Truck Icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-5 h-5" fill="none">
-                                <rect x="2" y="8" width="18" height="15" rx="2" fill="#EF4444"/>
-                                <path d="M20 12H26L29 16V23H20V12Z" fill="#DC2626"/>
-                                <path d="M21 14H25L27.5 17H21V14Z" fill="#93C5FD"/>
-                                <circle cx="8" cy="23" r="3" fill="#1E293B"/>
-                                <circle cx="8" cy="23" r="1.2" fill="#F8FAFC"/>
-                                <circle cx="24" cy="23" r="3" fill="#1E293B"/>
-                                <circle cx="24" cy="23" r="1.2" fill="#F8FAFC"/>
-                            </svg>
+                            <?= $hero_badge_icons[$badge['icon']] ?? $hero_badge_icons['shield'] ?>
                         </div>
                         <div class="leading-tight">
-                            <span class="block text-[11px] font-extrabold text-white">Express Delivery</span>
-                            <span class="block text-[10px] text-white/75 font-medium">Domestic AU Post</span>
+                            <span class="block text-[11px] font-extrabold text-white"><?= esc_html($badge['title']) ?></span>
+                            <span class="block text-[10px] text-white/75 font-medium"><?= esc_html($badge['subtitle']) ?></span>
                         </div>
                     </div>
-
-                    <div class="group flex items-center gap-2.5 rounded-xl border border-dashed border-white/30 bg-white/10 hover:bg-white/15 backdrop-blur-sm p-2.5 px-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-400/80">
-                        <div class="w-8 h-8 rounded-lg bg-white/90 p-1 flex items-center justify-center shrink-0 shadow-xs transition-transform duration-300 group-hover:scale-110">
-                            <!-- Colorful Shield / Pharma Icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-5 h-5" fill="none">
-                                <path d="M16 3L6 7V15C6 22 10.5 27 16 29C21.5 27 26 22 26 15V7L16 3Z" fill="#F59E0B"/>
-                                <path d="M16 5.5L8 9V15C8 20.8 11.6 25 16 26.8C20.4 25 24 20.8 24 15V9L16 5.5Z" fill="#FBBF24"/>
-                                <circle cx="16" cy="16" r="6" fill="#10B981"/>
-                                <path d="M13.5 16L15.2 17.8L18.8 14.2" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                        <div class="leading-tight">
-                            <span class="block text-[11px] font-extrabold text-white">Genuine Quality</span>
-                            <span class="block text-[10px] text-white/75 font-medium">Sun Pharma Grade</span>
-                        </div>
-                    </div>
-
-                    <div class="group flex items-center gap-2.5 rounded-xl border border-dashed border-white/30 bg-white/10 hover:bg-white/15 backdrop-blur-sm p-2.5 px-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-400/80">
-                        <div class="w-8 h-8 rounded-lg bg-white/90 p-1 flex items-center justify-center shrink-0 shadow-xs transition-transform duration-300 group-hover:scale-110">
-                            <!-- Colorful Lock / Privacy Icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-5 h-5" fill="none">
-                                <rect x="6" y="13" width="20" height="15" rx="3" fill="#0C4161"/>
-                                <path d="M10 13V9C10 5.686 12.686 3 16 3C19.314 3 22 5.686 22 9V13" stroke="#F59E0B" stroke-width="3" stroke-linecap="round"/>
-                                <circle cx="16" cy="20" r="2.5" fill="#10B981"/>
-                                <path d="M16 22.5V25" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                        </div>
-                        <div class="leading-tight">
-                            <span class="block text-[11px] font-extrabold text-white">Discreet Packaging</span>
-                            <span class="block text-[10px] text-white/75 font-medium">100% Privacy</span>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>

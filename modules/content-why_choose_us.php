@@ -9,8 +9,8 @@
  */
 
 $tag = get_sub_field('tag');
-$heading = get_sub_field('heading') ?: "Why Buy Modafinil from Waklert Australia?";
-$desc = get_sub_field('description') ?: "At Waklert Australia, we pride ourselves on providing a quick, reliable, and affordable service for all your Modafinil and Armodafinil needs. Here's why you should choose us:";
+$heading = get_sub_field('heading') ?: waklert_module_default('why_choose_us', 'heading');
+$desc = get_sub_field('description') ?: waklert_module_default('why_choose_us', 'description');
 
 $is_about_page = is_page('about-us');
 
@@ -57,33 +57,12 @@ if (have_rows('audiences')) {
 
 // Fallback cards if repeater is empty
 if (empty($items)) {
-    $default_cards = [
-        [
-            'preset' => 'parcel_guarantee',
-            'title'  => "If it doesn't land, we fix it",
-            'desc'   => "Every order ships with Australia Post tracking. If a parcel stalls or goes missing in transit, we reship it free of charge or issue a full refund.",
-        ],
-        [
-            'preset' => 'live_chat_support',
-            'title'  => "Real people on chat",
-            'desc'   => "Have a question before or after ordering? Reach our local support team via SMS, WhatsApp, or email 7 days a week for fast, practical answers.",
-        ],
-        [
-            'preset' => 'medical_rx_clarity',
-            'title'  => "Straight up about what we sell - no candy coating",
-            'desc'   => "Armodafinil is a Schedule 4 prescription medicine in Australia. We provide clear batch details, strength guides, and transparent ordering information.",
-        ],
-        [
-            'preset' => 'aud_checkout',
-            'title'  => "Simple AUD checkout",
-            'desc'   => "Pay securely in Australian Dollars (AUD) using local PayID or direct bank transfer — no hidden international conversion fees or complicated steps.",
-        ],
-    ];
+    $default_cards = waklert_module_default_rows('why_choose_us', 'audiences');
 
     foreach ($default_cards as $card) {
         $items[] = [
             'icon'  => waklert_render_card_icon([
-                'icon_preset' => $card['preset'],
+                'icon_preset' => $card['icon_preset'],
                 'title'       => $card['title'],
                 'desc'        => $card['desc'],
                 'size_class'  => 'w-14 h-14 shrink-0',

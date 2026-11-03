@@ -307,40 +307,95 @@
                             "placeholder": ""
                         },
                         {
-                            "key": "field_hero_stats",
-                            "label": "Hero Stats",
-                            "name": "stats",
+                            "key": "field_hero_badges",
+                            "label": "Feature Badges",
+                            "name": "feature_badges",
                             "aria-label": "",
                             "type": "repeater",
-                            "instructions": "The 3 stats boxes at the bottom of the hero section.",
-                            "required": 0,
-                            "conditional_logic": 0,
+                            "instructions": "Small badges shown under the hero buttons.",
+                            "required": false,
+                            "conditional_logic": false,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
                                 "id": ""
                             },
-                            "layout": "table",
-                            "pagination": 0,
+                            "layout": "block",
+                            "button_label": "Add Badge",
                             "min": 0,
-                            "max": 3,
-                            "collapsed": "",
-                            "button_label": "Add Stat",
+                            "max": 0,
                             "rows_per_page": 20,
+                            "collapsed": "",
                             "sub_fields": [
                                 {
-                                    "key": "field_hero_stat_value",
-                                    "label": "Value (e.g. 2,000+)",
-                                    "name": "value",
+                                    "key": "field_hero_badge_title",
+                                    "label": "Title",
+                                    "name": "title",
+                                    "aria-label": "",
                                     "type": "text",
-                                    "required": 1
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "40",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_hero_badges"
                                 },
                                 {
-                                    "key": "field_hero_stat_label_en",
-                                    "label": "Label",
-                                    "name": "label",
+                                    "key": "field_hero_badge_sub",
+                                    "label": "Subtitle",
+                                    "name": "subtitle",
+                                    "aria-label": "",
                                     "type": "text",
-                                    "required": 1
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "40",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_hero_badges"
+                                },
+                                {
+                                    "key": "field_hero_badge_icon",
+                                    "label": "Icon",
+                                    "name": "icon",
+                                    "aria-label": "",
+                                    "type": "select",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "20",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "truck": "Delivery truck",
+                                        "shield": "Shield / quality",
+                                        "lock": "Lock / privacy"
+                                    },
+                                    "default_value": "truck",
+                                    "return_format": "value",
+                                    "multiple": 0,
+                                    "allow_null": 0,
+                                    "ui": 1,
+                                    "ajax": 0,
+                                    "placeholder": "",
+                                    "parent_repeater": "field_hero_badges"
                                 }
                             ]
                         }
@@ -556,6 +611,26 @@
                             "append": ""
                         },
                         {
+                            "key": "field_fp_desc",
+                            "label": "Description",
+                            "name": "description",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "rows": 3,
+                            "placeholder": "",
+                            "new_lines": ""
+                        },
+                        {
                             "key": "field_fp_products",
                             "label": "Products",
                             "name": "products",
@@ -583,6 +658,46 @@
                             "elements": [],
                             "return_format": "object",
                             "bidirectional_target": []
+                        },
+                        {
+                            "key": "field_fp_button_text",
+                            "label": "Button Text",
+                            "name": "button_text",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_fp_button_url",
+                            "label": "Button Link",
+                            "name": "button_url",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Relative (/shop/) or full URL",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
                         }
                     ],
                     "min": "",
@@ -902,6 +1017,26 @@
                             "aria-label": "",
                             "type": "text",
                             "instructions": "Page address for the button, e.g. /reviews or a full https:// link.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_rc_verified_label",
+                            "label": "Verified Label",
+                            "name": "verified_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Shown under each reviewer name, e.g. ✓ Verified Buyer",
                             "required": false,
                             "conditional_logic": false,
                             "wrapper": {
@@ -1275,6 +1410,106 @@
                             "rows": ""
                         },
                         {
+                            "key": "field_comp_attr_label",
+                            "label": "First Column Heading",
+                            "name": "attribute_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "e.g. Key Attribute",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_comp_badge_label",
+                            "label": "Highlight Badge",
+                            "name": "badge_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Badge above the highlighted product column",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_comp_product_label",
+                            "label": "Highlighted Column Heading",
+                            "name": "product_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "e.g. Waklert 150",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_comp_coffee_label",
+                            "label": "Column 3 Heading",
+                            "name": "coffee_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "e.g. Coffee",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_comp_energy_label",
+                            "label": "Column 4 Heading",
+                            "name": "energy_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "e.g. Energy Drinks",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
                             "key": "field_comp_rows",
                             "label": "Rows",
                             "name": "rows",
@@ -1380,6 +1615,46 @@
                                     "parent_repeater": "field_comp_rows"
                                 }
                             ]
+                        },
+                        {
+                            "key": "field_comp_footer_note",
+                            "label": "Footer Note",
+                            "name": "footer_note",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Text with the tick at the bottom of the table",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_comp_footer_badge",
+                            "label": "Footer Highlight",
+                            "name": "footer_badge",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Bold text at the bottom right",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
                         }
                     ],
                     "min": "",
@@ -1450,6 +1725,26 @@
                             "new_lines": "",
                             "maxlength": "",
                             "placeholder": ""
+                        },
+                        {
+                            "key": "field_hto_step_label",
+                            "label": "Step Label",
+                            "name": "step_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Small word shown before each number, e.g. STEP",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
                         },
                         {
                             "key": "field_hto_steps",
@@ -3203,6 +3498,106 @@
                             "placeholder": "",
                             "prepend": "",
                             "append": ""
+                        },
+                        {
+                            "key": "field_blog_sec_read_more",
+                            "label": "Card Link Text",
+                            "name": "read_more_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "e.g. Read Full Guide",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_blog_sec_read_time",
+                            "label": "Read Time Word",
+                            "name": "read_time_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "e.g. min read (shown after the number)",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_blog_sec_default_cat",
+                            "label": "Default Category Badge",
+                            "name": "default_category",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Used when a post has no category",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_blog_sec_placeholder",
+                            "label": "Image Placeholder Text",
+                            "name": "placeholder_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Shown on cards without a featured image",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_blog_sec_empty",
+                            "label": "No Articles Message",
+                            "name": "empty_text",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
                         }
                     ],
                     "min": "",
@@ -4512,6 +4907,26 @@
                             },
                             "default_value": "https://wa.me/61488841833",
                             "placeholder": "https://wa.me/61488841833"
+                        },
+                        {
+                            "key": "field_scta_sms_text",
+                            "label": "SMS Button Text",
+                            "name": "sms_btn_text",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "e.g. SMS",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
                         },
                         {
                             "key": "field_scta_sms_url",

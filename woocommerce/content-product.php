@@ -34,6 +34,9 @@ $in_stock = $product->is_in_stock();
 $unit_price = waklert_get_product_unit_price($product);
 $review_summary = waklert_get_product_review_summary($product->get_id());
 $no_reviews_text = waklert_get_product_presentation_option('product_no_reviews_text', 'No reviews yet');
+$in_stock_label = waklert_option_text('shop_card_in_stock_label');
+$out_of_stock_label = waklert_option_text('shop_card_out_of_stock_label');
+$best_seller_label = waklert_get_product_presentation_option('best_seller_label', 'Best Seller');
 ?>
 <article class="group relative flex flex-col overflow-hidden rounded-3xl border-2 border-dashed border-sky-300/80 hover:border-[#0c4161] bg-white shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
     <!-- Badges -->
@@ -43,11 +46,11 @@ $no_reviews_text = waklert_get_product_presentation_option('product_no_reviews_t
             <svg class="w-3 h-3 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
             </svg>
-            <?= "In Stock" ?>
+            <?= esc_html($in_stock_label) ?>
         </span>
         <?php else: ?>
         <span class="inline-flex items-center gap-1 rounded-full bg-rose-500 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white shadow-sm">
-            <?= "Out of Stock" ?>
+            <?= esc_html($out_of_stock_label) ?>
         </span>
         <?php endif; ?>
 
@@ -56,7 +59,7 @@ $no_reviews_text = waklert_get_product_presentation_option('product_no_reviews_t
             <svg class="w-3 h-3 text-white fill-current" viewBox="0 0 24 24">
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
             </svg>
-            <?= "Best Seller" ?>
+            <?= esc_html($best_seller_label) ?>
         </span>
         <?php endif; ?>
     </div>
@@ -81,7 +84,7 @@ $no_reviews_text = waklert_get_product_presentation_option('product_no_reviews_t
             </p>
             <?php if ($excerpt_length > 80): ?>
             <button type="button" aria-expanded="false" aria-controls="<?= esc_attr($description_id) ?>" data-product-description-toggle class="mt-1 text-xs font-bold text-[#0c4161] hover:text-amber-600 transition-colors">
-                Read more &rarr;
+                <?= esc_html(waklert_option_text('shop_card_read_more_label')) ?> &rarr;
             </button>
             <?php endif; ?>
         </div>
@@ -95,7 +98,7 @@ $no_reviews_text = waklert_get_product_presentation_option('product_no_reviews_t
                 </p>
                 <?php if ($unit_price !== null): ?>
                 <span class="mt-1 inline-flex items-center rounded-full bg-emerald-50 border border-emerald-200 px-2 py-0.5 text-[11px] font-bold text-emerald-800">
-                    From <?= wp_kses_post(wc_price($unit_price, array('decimals' => 2))) ?>/tab
+                    <?= esc_html(waklert_option_text('shop_card_unit_prefix')) ?> <?= wp_kses_post(wc_price($unit_price, array('decimals' => 2))) ?><?= esc_html(waklert_option_text('shop_card_unit_suffix')) ?>
                 </span>
                 <?php endif; ?>
             </div>
@@ -108,7 +111,7 @@ $no_reviews_text = waklert_get_product_presentation_option('product_no_reviews_t
                     <circle cx="5.5" cy="18.5" r="2.5"/>
                     <circle cx="18.5" cy="18.5" r="2.5"/>
                 </svg>
-                AU Express
+                <?= esc_html(waklert_option_text('shop_card_delivery_label')) ?>
             </span>
         </div>
 
@@ -140,12 +143,11 @@ $no_reviews_text = waklert_get_product_presentation_option('product_no_reviews_t
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0 transition-transform group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
-                <span class="inline sm:hidden">Select Pack</span>
-                <span class="hidden sm:inline"><?= "Select Pack Size" ?></span>
+                <span><?= esc_html(waklert_option_text('shop_card_button_text')) ?></span>
             </a>
             <?php else: ?>
             <span class="flex w-full items-center justify-center rounded-xl bg-slate-100 px-2.5 py-2 sm:px-4 sm:py-3 text-[11px] sm:text-xs md:text-sm font-bold uppercase tracking-tight sm:tracking-wider text-slate-400">
-                <?= "Out of Stock" ?>
+                <?= esc_html($out_of_stock_label) ?>
             </span>
             <?php endif; ?>
             </div>

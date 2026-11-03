@@ -7,11 +7,11 @@
 
 $GLOBALS['waklert_support_cta_rendered'] = true;
 
-$eyebrow = get_sub_field('eyebrow') ?: get_sub_field('tag') ?: 'Need Help?';
-$title = get_sub_field('title') ?: 'Talk to us via SMS or WhatsApp - 24/7.';
-$description = get_sub_field('desc') ?: get_sub_field('description') ?: 'We are available all the time to handle any questions, offer advice or reassure you about your purchase.';
+$eyebrow = get_sub_field('eyebrow') ?: get_sub_field('tag') ?: waklert_module_default('support_cta', 'eyebrow');
+$title = get_sub_field('title') ?: waklert_module_default('support_cta', 'title');
+$description = get_sub_field('desc') ?: get_sub_field('description') ?: waklert_module_default('support_cta', 'desc');
 
-$chat_label = get_sub_field('chat_btn_text') ?: 'Contact Support';
+$chat_label = get_sub_field('chat_btn_text') ?: waklert_module_default('support_cta', 'chat_btn_text');
 $chat_url = trim((string) get_sub_field('chat_btn_url'));
 if ($chat_url === '') {
     $chat_url = function_exists('waklert_format_whatsapp_url') ? waklert_format_whatsapp_url() : 'https://wa.me/61488841833';
@@ -21,7 +21,7 @@ if ($chat_url === '') {
     $chat_url = function_exists('waklert_format_whatsapp_url') ? waklert_format_whatsapp_url($chat_url) : 'https://wa.me/61488841833';
 }
 
-$sms_label = get_sub_field('sms_btn_text') ?: 'SMS';
+$sms_label = get_sub_field('sms_btn_text') ?: waklert_module_default('support_cta', 'sms_btn_text');
 $sms_url = trim((string) get_sub_field('sms_btn_url'));
 if ($sms_url === '') {
     $sms_url = 'sms:0488841833';
@@ -29,7 +29,7 @@ if ($sms_url === '') {
     $sms_url = 'sms:' . preg_replace('/\s+/', '', $sms_url);
 }
 
-$contact_label = get_sub_field('email_btn_text') ?: 'Email Support';
+$contact_label = get_sub_field('email_btn_text') ?: waklert_module_default('support_cta', 'email_btn_text');
 $contact_url = trim((string) get_sub_field('email_btn_url'));
 $default_email = function_exists('get_field') ? (get_field('support_email', 'option') ?: get_field('contact_email', 'option') ?: 'orders@waklertaustralia.com.au') : 'orders@waklertaustralia.com.au';
 if (strpos($default_email, 'example.com') !== false || strpos($default_email, 'hoppingmad') !== false || strpos($default_email, 'modaaust') !== false) {
