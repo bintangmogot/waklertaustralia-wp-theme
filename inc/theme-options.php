@@ -445,3 +445,20 @@ add_action('acf/init', function() {
 
     update_option('waklert_section_icons_sync_ver', $target_ver);
 }, 25);
+
+/**
+ * Page Hero fields that only make sense on one page type are hidden elsewhere in the editor:
+ * Trust Cards are shown on the Shop page only, Bullets everywhere except the Shop page.
+ */
+function waklert_editing_shop_page() {
+    $post_id = isset($_GET['post']) ? (int) $_GET['post'] : (int) get_the_ID();
+    return $post_id > 0 && function_exists('wc_get_page_id') && $post_id === (int) wc_get_page_id('shop');
+}
+
+add_filter('acf/prepare_field/key=field_page_hero_trust_cards', function($field) {
+    return is_admin() && !waklert_editing_shop_page() ? false : $field;
+});
+
+add_filter('acf/prepare_field/key=field_page_hero_bullets', function($field) {
+    return is_admin() && waklert_editing_shop_page() ? false : $field;
+});
