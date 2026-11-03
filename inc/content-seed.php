@@ -8,7 +8,7 @@
  * The same defaults are the safety net the module templates fall back to.
  */
 
-const WAKLERT_CONTENT_SEED_VERSION = '20261103_content_seed_v4';
+const WAKLERT_CONTENT_SEED_VERSION = '20261103_content_seed_v5';
 
 /**
  * Default text per module layout.
