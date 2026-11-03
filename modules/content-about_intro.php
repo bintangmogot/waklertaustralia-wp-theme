@@ -36,7 +36,7 @@ $desc = get_sub_field('desc') ?: waklert_module_default('about_intro', 'desc');
         </h1>
 
         <?php if ($desc): ?>
-        <p class="mx-auto mt-4 max-w-2xl text-sm md:text-base leading-relaxed text-slate-600 whitespace-pre-line">
+        <p class="mx-auto mt-4 max-w-4xl text-sm md:text-base leading-relaxed text-slate-600 whitespace-pre-line">
             <?= esc_html($desc) ?>
         </p>
         <?php endif; ?>
