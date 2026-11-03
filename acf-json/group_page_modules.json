@@ -2846,6 +2846,99 @@
                                     "required": false
                                 }
                             ]
+                        },
+                        {
+                            "key": "field_page_hero_trust_cards",
+                            "label": "Trust Cards (Shop page only)",
+                            "name": "trust_cards",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "The three small cards under the hero on the Shop page. Other pages do not show them.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "block",
+                            "button_label": "Add Card",
+                            "min": 0,
+                            "max": 0,
+                            "rows_per_page": 20,
+                            "collapsed": "",
+                            "sub_fields": [
+                                {
+                                    "key": "field_page_hero_trust_title",
+                                    "label": "Title",
+                                    "name": "title",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "40",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_page_hero_trust_cards"
+                                },
+                                {
+                                    "key": "field_page_hero_trust_sub",
+                                    "label": "Subtitle",
+                                    "name": "subtitle",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "40",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_page_hero_trust_cards"
+                                },
+                                {
+                                    "key": "field_page_hero_trust_icon",
+                                    "label": "Icon",
+                                    "name": "icon",
+                                    "aria-label": "",
+                                    "type": "select",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "20",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "shield": "Shield / genuine",
+                                        "truck": "Delivery truck",
+                                        "lock": "Lock / privacy"
+                                    },
+                                    "default_value": "shield",
+                                    "return_format": "value",
+                                    "multiple": 0,
+                                    "allow_null": 0,
+                                    "ui": 1,
+                                    "ajax": 0,
+                                    "placeholder": "",
+                                    "parent_repeater": "field_page_hero_trust_cards"
+                                }
+                            ]
                         }
                     ]
                 },

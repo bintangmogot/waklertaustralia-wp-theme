@@ -103,53 +103,40 @@ if (is_home()) :
             </p>
         <?php endif; ?>
 
-        <!-- 3 Two-Tone Dashed Micro Trust Cards -->
+        <!-- Trust cards (editable in the module: Trust Cards) -->
+        <?php
+        $trust_icons = [
+            'shield' => ['bg-amber-400/20 text-amber-300 border-amber-300/40', '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L4 6v6c0 5.25 3.4 10.15 8 11.35 4.6-1.2 8-6.1 8-11.35V6l-8-4z" fill="#F59E0B" fill-opacity="0.3" stroke="#F59E0B" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'],
+            'truck'  => ['bg-sky-400/20 text-sky-300 border-sky-300/40', '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="5" width="14" height="11" rx="1.5" fill="#38BDF8" fill-opacity="0.3" stroke="#38BDF8" stroke-width="1.8"/><path d="M15 8h4.5l3.5 4.5v3.5h-8V8z" fill="#F59E0B" stroke="#F59E0B" stroke-width="1.8"/><circle cx="6" cy="18" r="2.2" fill="#FFFFFF" stroke="#38BDF8" stroke-width="1.5"/><circle cx="18" cy="18" r="2.2" fill="#FFFFFF" stroke="#F59E0B" stroke-width="1.5"/></svg>'],
+            'lock'   => ['bg-emerald-400/20 text-emerald-300 border-emerald-300/40', '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="11" width="18" height="11" rx="2" fill="#34D399" fill-opacity="0.3" stroke="#34D399" stroke-width="1.8"/><path d="M7 11V7a5 5 0 0110 0v4" stroke="#FFFFFF" stroke-width="1.8"/><circle cx="12" cy="16" r="1.5" fill="#34D399"/></svg>'],
+        ];
+        $trust_cards = [];
+        if (have_rows('trust_cards')) {
+            while (have_rows('trust_cards')) {
+                the_row();
+                $trust_cards[] = ['title' => (string) get_sub_field('title'), 'subtitle' => (string) get_sub_field('subtitle'), 'icon' => (string) get_sub_field('icon')];
+            }
+        } else {
+            $trust_cards = waklert_module_default_rows('page_hero', 'trust_cards');
+        }
+        ?>
+        <?php if ($trust_cards) : ?>
         <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3.5 max-w-3xl mx-auto text-left">
-            <!-- Trust Card 1 -->
+            <?php foreach ($trust_cards as $card) :
+                $icon = $trust_icons[$card['icon']] ?? $trust_icons['shield'];
+            ?>
             <div class="rounded-2xl border-2 border-dashed border-sky-300/40 bg-white/10 p-3.5 backdrop-blur-sm flex items-center gap-3 hover:bg-white/15 transition-all">
-                <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-400/20 text-amber-300 border border-amber-300/40">
-                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2L4 6v6c0 5.25 3.4 10.15 8 11.35 4.6-1.2 8-6.1 8-11.35V6l-8-4z" fill="#F59E0B" fill-opacity="0.3" stroke="#F59E0B" stroke-width="1.8"/>
-                        <path d="M9 12l2 2 4-4" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+                <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border <?php echo esc_attr($icon[0]); ?>">
+                    <?php echo $icon[1]; ?>
                 </div>
                 <div>
-                    <h4 class="text-xs font-bold text-white leading-snug">100% Genuine</h4>
-                    <p class="text-[11px] text-sky-200">Sun Pharma certified batches</p>
+                    <h4 class="text-xs font-bold text-white leading-snug"><?php echo esc_html($card['title']); ?></h4>
+                    <p class="text-[11px] text-sky-200"><?php echo esc_html($card['subtitle']); ?></p>
                 </div>
             </div>
-
-            <!-- Trust Card 2 -->
-            <div class="rounded-2xl border-2 border-dashed border-sky-300/40 bg-white/10 p-3.5 backdrop-blur-sm flex items-center gap-3 hover:bg-white/15 transition-all">
-                <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-sky-400/20 text-sky-300 border border-sky-300/40">
-                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="1" y="5" width="14" height="11" rx="1.5" fill="#38BDF8" fill-opacity="0.3" stroke="#38BDF8" stroke-width="1.8"/>
-                        <path d="M15 8h4.5l3.5 4.5v3.5h-8V8z" fill="#F59E0B" stroke="#F59E0B" stroke-width="1.8"/>
-                        <circle cx="6" cy="18" r="2.2" fill="#FFFFFF" stroke="#38BDF8" stroke-width="1.5"/>
-                        <circle cx="18" cy="18" r="2.2" fill="#FFFFFF" stroke="#F59E0B" stroke-width="1.5"/>
-                    </svg>
-                </div>
-                <div>
-                    <h4 class="text-xs font-bold text-white leading-snug">Express AU Post</h4>
-                    <p class="text-[11px] text-sky-200">Fast Australia-wide dispatch</p>
-                </div>
-            </div>
-
-            <!-- Trust Card 3 -->
-            <div class="rounded-2xl border-2 border-dashed border-sky-300/40 bg-white/10 p-3.5 backdrop-blur-sm flex items-center gap-3 hover:bg-white/15 transition-all">
-                <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-400/20 text-emerald-300 border border-emerald-300/40">
-                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="3" y="11" width="18" height="11" rx="2" fill="#34D399" fill-opacity="0.3" stroke="#34D399" stroke-width="1.8"/>
-                        <path d="M7 11V7a5 5 0 0110 0v4" stroke="#FFFFFF" stroke-width="1.8"/>
-                        <circle cx="12" cy="16" r="1.5" fill="#34D399"/>
-                    </svg>
-                </div>
-                <div>
-                    <h4 class="text-xs font-bold text-white leading-snug">Discreet Parcel</h4>
-                    <p class="text-[11px] text-sky-200">100% plain packaging</p>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
+        <?php endif; ?>
     </div>
 </section>
 <?php else : ?>

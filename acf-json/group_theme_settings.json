@@ -1186,6 +1186,24 @@
             "instructions": "Shown in the product reviews area, on shop product cards and in the catalog comparison when a product has no reviews."
         },
         {
+            "key": "field_pp_acc_end",
+            "label": "Accordion Endpoint",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 1
+        },
+        {
             "key": "field_tab_shop_page",
             "label": "Shop Page",
             "name": "",
@@ -1396,6 +1414,24 @@
             "placeholder": "",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_shop_acc_end",
+            "label": "Accordion Endpoint",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 1
         },
         {
             "key": "field_theme_tab_checkout",

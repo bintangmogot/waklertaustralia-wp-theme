@@ -161,6 +161,20 @@ function waklert_module_defaults() {
                 ],
             ],
         ],
+        'page_hero' => [
+            'repeaters' => [
+                'trust_cards' => [
+                    'key'   => 'field_page_hero_trust_cards',
+                    'check' => 'title',
+                    'subs'  => ['title' => 'field_page_hero_trust_title', 'subtitle' => 'field_page_hero_trust_sub', 'icon' => 'field_page_hero_trust_icon'],
+                    'rows'  => [
+                        ['title' => '100% Genuine', 'subtitle' => 'Sun Pharma certified batches', 'icon' => 'shield'],
+                        ['title' => 'Express AU Post', 'subtitle' => 'Fast Australia-wide dispatch', 'icon' => 'truck'],
+                        ['title' => 'Discreet Parcel', 'subtitle' => '100% plain packaging', 'icon' => 'lock'],
+                    ],
+                ],
+            ],
+        ],
         'reviews_carousel' => [
             'fields' => [
                 'badge'          => ['field_rc_badge', 'Customer Reviews'],
@@ -367,6 +381,10 @@ function waklert_seed_trust_badge_descriptions($post_id, $idx) {
 function waklert_seed_module($post_id, $idx, $layout) {
     $defaults = waklert_module_defaults()[$layout] ?? null;
     if (!$defaults) {
+        return;
+    }
+    // The trust cards only exist on the Shop page hero
+    if ($layout === 'page_hero' && (!function_exists('wc_get_page_id') || (int) $post_id !== (int) wc_get_page_id('shop'))) {
         return;
     }
 
