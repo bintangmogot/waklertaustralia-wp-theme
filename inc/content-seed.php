@@ -8,7 +8,7 @@
  * The same defaults are the safety net the module templates fall back to.
  */
 
-const WAKLERT_CONTENT_SEED_VERSION = '20261103_content_seed_v8';
+const WAKLERT_CONTENT_SEED_VERSION = '20261103_content_seed_v10';
 
 /**
  * Default text per module layout.
@@ -240,6 +240,36 @@ function waklert_module_defaults() {
                 'form_title' => ['field_contact_form_title', 'Send Us a Message'],
                 'form_text' => ['field_contact_form_text', 'Have an enquiry about your order or our armodafinil products? Submit your details and our team will get in touch promptly.'],
                 'form_id' => ['field_contact_form_id', '1'],
+            ],
+        ],
+        'faq_page' => [
+            'fields' => [
+                'breadcrumb_label'  => ['field_faq_breadcrumb', 'FAQ'],
+                'eyebrow'           => ['field_faq_2a7a6c8b5b25', 'FAQ & Support'],
+                'heading'           => ['field_faq_43944e673ca3', 'Frequently Asked Questions'],
+                'description'       => ['field_faq_51a7b0956e3c', 'General information about armodafinil products, Australian prescription requirements, ordering and delivery.'],
+                'questions_label'   => ['field_faq_questions_label', 'questions'],
+                'question_label'    => ['field_faq_question_label', 'question'],
+                'cta_eyebrow'       => ['field_faq_cta_eyebrow', 'Direct Customer Care'],
+                'cta_heading'       => ['field_faq_f9e298bbadda', 'Still Have Questions?'],
+                'cta_desc'          => ['field_faq_1322847629cc', 'Contact our Australian support team for assistance with orders, Australia Post tracking, and product information.'],
+                'cta_whatsapp_text' => ['field_faq_cta_whatsapp', 'WhatsApp Support'],
+                'cta_btn_text'      => ['field_faq_5db0c02a932d', 'Contact Us'],
+                'cta_btn_link'      => ['field_faq_dc6de8b02bb6', '/contact/'],
+            ],
+        ],
+        'reviews' => [
+            'fields' => [
+                'eyebrow'        => ['field_rv_eyebrow', 'Verified Customer Experiences'],
+                'heading'        => ['field_c1b546c89e524', 'What Australian Customers Say'],
+                'description'    => ['field_6f47fd49d5334', 'Real testimonials from Waklert Australia users across Australia.'],
+                'summary_text'   => ['field_rv_summary', 'Based on {count} verified Australian customer ratings'],
+                'score_suffix'   => ['field_rv_score_suffix', '/ 5.0'],
+                'badge_1'        => ['field_rv_badge_1', '100% Genuine Orders'],
+                'badge_2'        => ['field_rv_badge_2', 'Fast Delivery Feedback'],
+                'default_meta'   => ['field_rv_default_meta', 'Verified Buyer'],
+                'verified_label' => ['field_rv_verified', 'Verified'],
+                'empty_text'     => ['field_rv_empty', 'No reviews found yet.'],
             ],
         ],
         'reviews_carousel' => [

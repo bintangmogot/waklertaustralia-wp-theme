@@ -4,14 +4,19 @@
  * Waklert Australia 2-tone Dashed & Patterned Theme
  */
 
-$eyebrow = get_sub_field('eyebrow') ?: 'FAQ & Support';
-$heading = get_sub_field('heading') ?: 'Frequently Asked Questions';
-$desc = get_sub_field('description') ?: 'General information about armodafinil products, Australian prescription requirements, ordering and delivery.';
+$eyebrow = get_sub_field('eyebrow') ?: waklert_module_default('faq_page', 'eyebrow');
+$heading = get_sub_field('heading') ?: waklert_module_default('faq_page', 'heading');
+$desc = get_sub_field('description') ?: waklert_module_default('faq_page', 'description');
+$breadcrumb_label = get_sub_field('breadcrumb_label') ?: waklert_module_default('faq_page', 'breadcrumb_label');
+$questions_label = get_sub_field('questions_label') ?: waklert_module_default('faq_page', 'questions_label');
+$question_label = get_sub_field('question_label') ?: waklert_module_default('faq_page', 'question_label');
+$cta_eyebrow = get_sub_field('cta_eyebrow') ?: waklert_module_default('faq_page', 'cta_eyebrow');
+$cta_whatsapp = get_sub_field('cta_whatsapp_text') ?: waklert_module_default('faq_page', 'cta_whatsapp_text');
 $categories = get_sub_field('faq_categories') ?: [];
-$cta_heading = get_sub_field('cta_heading') ?: 'Still Have Questions?';
-$cta_desc = get_sub_field('cta_desc') ?: 'Contact our Australian support team for assistance with orders, Australia Post tracking, and product information.';
-$cta_btn = get_sub_field('cta_btn_text') ?: 'Contact Us';
-$cta_link = get_sub_field('cta_btn_link') ?: home_url('/contact/');
+$cta_heading = get_sub_field('cta_heading') ?: waklert_module_default('faq_page', 'cta_heading');
+$cta_desc = get_sub_field('cta_desc') ?: waklert_module_default('faq_page', 'cta_desc');
+$cta_btn = get_sub_field('cta_btn_text') ?: waklert_module_default('faq_page', 'cta_btn_text');
+$cta_link = waklert_resolve_link(get_sub_field('cta_btn_link') ?: waklert_module_default('faq_page', 'cta_btn_link'));
 
 $whatsapp_number = function_exists('get_field') ? get_field('whatsapp_number', 'option') : '';
 if (!$whatsapp_number && function_exists('waklert_get_whatsapp_number')) {
@@ -28,7 +33,7 @@ $whatsapp_url = function_exists('waklert_format_whatsapp_url') ? waklert_format_
             <nav aria-label="Breadcrumb" class="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border border-dashed border-sky-300/80 bg-white/90 px-3.5 py-1 text-xs font-medium text-slate-500 shadow-xs backdrop-blur">
                 <a href="<?= esc_url(home_url('/')) ?>" class="font-bold text-slate-600 transition-colors hover:text-[#0c4161]"><?= esc_html(waklert_option_text('breadcrumb_home_label')) ?></a>
                 <span class="text-sky-300 font-normal">/</span>
-                <span aria-current="page" class="font-extrabold text-[#0c4161]">FAQ</span>
+                <span aria-current="page" class="font-extrabold text-[#0c4161]"><?= esc_html($breadcrumb_label) ?></span>
             </nav>
         </div>
 
@@ -92,7 +97,7 @@ $whatsapp_url = function_exists('waklert_format_whatsapp_url') ? waklert_format_
                         </h2>
                     </div>
                     <span class="inline-flex items-center rounded-full bg-slate-100 border border-slate-200/60 px-2.5 py-0.5 text-xs font-bold text-slate-500">
-                        <?= count($items) ?> questions
+                        <?= count($items) ?> <?= esc_html(count($items) === 1 ? $question_label : $questions_label) ?>
                     </span>
                 </div>
                 <?php endif; ?>
@@ -143,7 +148,7 @@ $whatsapp_url = function_exists('waklert_format_whatsapp_url') ? waklert_format_
         <div class="rounded-3xl border-2 border-dashed border-sky-300/80 bg-gradient-to-br from-[#f0f6fa] via-white to-sky-50/50 p-8 sm:p-10 md:p-12 shadow-xs text-center">
             <span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 border border-sky-300/80 px-3.5 py-1 text-xs font-black uppercase tracking-[0.16em] text-[#0c4161] shadow-2xs">
                 <span class="h-1.5 w-1.5 rounded-full bg-amber-500 animate-pulse" aria-hidden="true"></span>
-                Direct Customer Care
+                <?= esc_html($cta_eyebrow) ?>
             </span>
             <h2 class="mt-3 font-heading text-xl sm:text-2xl md:text-3xl font-black text-[#0c4161]">
                 <?= esc_html($cta_heading) ?>
@@ -156,7 +161,7 @@ $whatsapp_url = function_exists('waklert_format_whatsapp_url') ? waklert_format_
                     <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.41a8.17 8.17 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.188 8.188 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.26-1.5-1.41-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.44.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.22-.19-.47-.32z"/>
                     </svg>
-                    WhatsApp Support &rarr;
+                    <?= esc_html($cta_whatsapp) ?> &rarr;
                 </a>
                 <a href="<?= esc_url($cta_link) ?>" class="inline-flex items-center gap-2 rounded-full bg-[#0c4161] hover:bg-[#082c42] text-white font-bold px-6 py-3 text-xs sm:text-sm shadow-sm transition-colors">
                     <?= esc_html($cta_btn) ?> &rarr;

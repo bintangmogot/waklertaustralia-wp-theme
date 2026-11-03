@@ -3,8 +3,16 @@
  * Customer Reviews Module
  */
 
-$heading = get_sub_field('heading') ?: "What Australian Customers Say";
-$desc = get_sub_field('description') ?: "Real testimonials from Waklert Australia users across Australia.";
+$heading = get_sub_field('heading') ?: waklert_module_default('reviews', 'heading');
+$desc = get_sub_field('description') ?: waklert_module_default('reviews', 'description');
+$eyebrow = get_sub_field('eyebrow') ?: waklert_module_default('reviews', 'eyebrow');
+$summary_text = get_sub_field('summary_text') ?: waklert_module_default('reviews', 'summary_text');
+$score_suffix = get_sub_field('score_suffix') ?: waklert_module_default('reviews', 'score_suffix');
+$badge_1 = get_sub_field('badge_1') ?: waklert_module_default('reviews', 'badge_1');
+$badge_2 = get_sub_field('badge_2') ?: waklert_module_default('reviews', 'badge_2');
+$default_meta = get_sub_field('default_meta') ?: waklert_module_default('reviews', 'default_meta');
+$verified_label = get_sub_field('verified_label') ?: waklert_module_default('reviews', 'verified_label');
+$empty_text = get_sub_field('empty_text') ?: waklert_module_default('reviews', 'empty_text');
 
 // Run query first to calculate dynamic stats
 $reviews_query = new WP_Query([
@@ -48,7 +56,7 @@ $average_stars = round($average_rating);
             <div class="text-center max-w-2xl mx-auto mb-8">
                 <span class="inline-flex items-center gap-2 rounded-full bg-sky-100 border border-sky-300/80 px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-[#0c4161] shadow-sm mb-4">
                     <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                    Verified Customer Experiences
+                    <?= esc_html($eyebrow) ?>
                 </span>
                 <h1 class="font-heading text-3xl md:text-5xl font-extrabold text-[#0c4161] tracking-tight mb-4">
                     <?= esc_html($heading) ?>
@@ -76,10 +84,10 @@ $average_stars = round($average_rating);
                                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                                 </svg>
                             <?php endfor; ?>
-                            <span class="ml-1 text-lg font-black text-slate-900"><?= number_format($average_rating, 1) ?> / 5.0</span>
+                            <span class="ml-1 text-lg font-black text-slate-900"><?= number_format($average_rating, 1) ?> <?= esc_html($score_suffix) ?></span>
                         </div>
                         <p class="text-xs sm:text-sm font-semibold text-slate-500">
-                            <?= sprintf("Based on %d verified Australian customer ratings", $total_reviews) ?>
+                            <?= esc_html(str_replace('{count}', (string) $total_reviews, $summary_text)) ?>
                         </p>
                     </div>
                 </div>
@@ -88,13 +96,13 @@ $average_stars = round($average_rating);
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
                         </svg>
-                        100% Genuine Orders
+                        <?= esc_html($badge_1) ?>
                     </span>
                     <span class="inline-flex items-center gap-1.5 rounded-full bg-sky-50 border border-sky-300 px-3.5 py-1.5 text-xs font-bold text-[#0c4161]">
                         <svg class="w-3.5 h-3.5 text-sky-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        Fast Delivery Feedback
+                        <?= esc_html($badge_2) ?>
                     </span>
                 </div>
             </div>
@@ -107,7 +115,7 @@ $average_stars = round($average_rating);
                 while ($reviews_query->have_posts()): $reviews_query->the_post();
                     $post_id = get_the_ID();
                     $name = get_field('name', $post_id) ?: get_the_title();
-                    $meta = get_field('reviewer_meta', $post_id) ?: "Verified Buyer";
+                    $meta = get_field('reviewer_meta', $post_id) ?: $default_meta;
                     
                     $title = get_the_title();
                     $body = get_the_content();
@@ -165,7 +173,7 @@ $average_stars = round($average_rating);
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 text-emerald-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
                             </svg>
-                            <?= "Verified" ?>
+                            <?= esc_html($verified_label) ?>
                         </span>
                     </div>
                 </div>
@@ -173,7 +181,7 @@ $average_stars = round($average_rating);
                 wp_reset_postdata();
             else: ?>
                 <div class="col-span-full py-16 text-center text-slate-500 bg-white rounded-3xl border-2 border-dashed border-sky-200 p-8">
-                    <p class="text-lg font-bold text-[#0c4161]"><?= "No reviews found yet." ?></p>
+                    <p class="text-lg font-bold text-[#0c4161]"><?= esc_html($empty_text) ?></p>
                 </div>
             <?php endif; ?>
         </div>

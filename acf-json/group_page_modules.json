@@ -3512,6 +3512,26 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_rv_eyebrow",
+                            "label": "Small Label",
+                            "name": "eyebrow",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Pill above the heading, e.g. Verified Customer Experiences",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
                             "key": "field_c1b546c89e524",
                             "label": "Heading",
                             "name": "heading",
@@ -3524,6 +3544,146 @@
                             "name": "description",
                             "type": "text",
                             "default_value": "Real testimonials from ModafinilMY users across Malaysia."
+                        },
+                        {
+                            "key": "field_rv_summary",
+                            "label": "Rating Summary Text",
+                            "name": "summary_text",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Line under the score. {count} is replaced by the number of reviews, e.g. Based on {count} verified Australian customer ratings",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_rv_score_suffix",
+                            "label": "Score Suffix",
+                            "name": "score_suffix",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Shown after the average score, e.g. / 5.0",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_rv_badge_1",
+                            "label": "Badge 1",
+                            "name": "badge_1",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "e.g. 100% Genuine Orders",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_rv_badge_2",
+                            "label": "Badge 2",
+                            "name": "badge_2",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "e.g. Fast Delivery Feedback",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_rv_default_meta",
+                            "label": "Default Reviewer Line",
+                            "name": "default_meta",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Shown under a name when the review has none, e.g. Verified Buyer",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_rv_verified",
+                            "label": "Card Badge",
+                            "name": "verified_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Green badge on each review card, e.g. Verified",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_rv_empty",
+                            "label": "No Reviews Message",
+                            "name": "empty_text",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Shown when there are no reviews yet",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
                         }
                     ]
                 },
@@ -4327,6 +4487,26 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_faq_breadcrumb",
+                            "label": "Breadcrumb Label",
+                            "name": "breadcrumb_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Current page name in the breadcrumb, e.g. FAQ",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
                             "key": "field_faq_2a7a6c8b5b25",
                             "label": "Eyebrow",
                             "name": "eyebrow",
@@ -4376,6 +4556,66 @@
                             },
                             "default_value": "Everything you need to know about buying Modafinil in Malaysia.",
                             "placeholder": ""
+                        },
+                        {
+                            "key": "field_faq_questions_label",
+                            "label": "Count Word (many)",
+                            "name": "questions_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Shown after the number of questions, e.g. questions",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_faq_question_label",
+                            "label": "Count Word (one)",
+                            "name": "question_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Used when a category has one question, e.g. question",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_faq_cta_eyebrow",
+                            "label": "Support Box: Small Label",
+                            "name": "cta_eyebrow",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Pill above the support box heading, e.g. Direct Customer Care",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
                         },
                         {
                             "key": "field_faq_f9e298bbadda",
@@ -4444,6 +4684,26 @@
                             },
                             "default_value": "https://wa.me/60185754182",
                             "placeholder": ""
+                        },
+                        {
+                            "key": "field_faq_cta_whatsapp",
+                            "label": "Support Box: WhatsApp Button Text",
+                            "name": "cta_whatsapp_text",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "e.g. WhatsApp Support (an arrow is added). The number comes from Theme Settings.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
                         },
                         {
                             "key": "field_faq_categories",
