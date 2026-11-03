@@ -2801,7 +2801,7 @@
                 "layout_page_hero": {
                     "key": "layout_page_hero",
                     "name": "page_hero",
-                    "label": "Page Hero",
+                    "label": "Shop Hero",
                     "display": "block",
                     "sub_fields": [
                         {
