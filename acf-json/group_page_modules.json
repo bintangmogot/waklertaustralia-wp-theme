@@ -2682,6 +2682,46 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_contact_breadcrumb",
+                            "label": "Breadcrumb Label",
+                            "name": "breadcrumb_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Current page name in the breadcrumb, e.g. Contact Us",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_contact_eyebrow",
+                            "label": "Small Label",
+                            "name": "eyebrow",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Pill above the heading, e.g. Direct Customer Support",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
                             "key": "field_94d2494262974",
                             "label": "Heading",
                             "name": "heading",
@@ -2742,6 +2782,66 @@
                             "default_value": "https://wa.me/61488841833"
                         },
                         {
+                            "key": "field_contact_wa_badge",
+                            "label": "WhatsApp Badge",
+                            "name": "wa_badge",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "e.g. Fast Reply",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_contact_wa_link",
+                            "label": "WhatsApp Link Text",
+                            "name": "wa_link_text",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "e.g. Chat Now (an arrow is added)",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_contact_wa_subtext",
+                            "label": "WhatsApp Reply Time",
+                            "name": "wa_subtext",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Line under the number",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
                             "key": "field_contact_email_title",
                             "label": "Email Title",
                             "name": "email_title",
@@ -2787,6 +2887,46 @@
                             "default_value": "Within 24 hours"
                         },
                         {
+                            "key": "field_contact_email_timeframe",
+                            "label": "Email Timeframe Label",
+                            "name": "email_timeframe_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Word before the timeframe, e.g. Response timeframe:",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_contact_email_link",
+                            "label": "Email Link Text",
+                            "name": "email_link_text",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "e.g. Send Mail (an arrow is added)",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
                             "key": "field_contact_hours_title",
                             "label": "Operating Hours Title",
                             "name": "hours_title",
@@ -2800,6 +2940,26 @@
                                 "id": ""
                             },
                             "default_value": "OPERATING HOURS"
+                        },
+                        {
+                            "key": "field_contact_hours_mon_fri_label",
+                            "label": "Row 1 Label",
+                            "name": "hours_mon_fri_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "e.g. Monday – Friday",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
                         },
                         {
                             "key": "field_contact_hours_mon_fri",
@@ -2817,6 +2977,26 @@
                             "default_value": "8:00 AM – 8:00 PM AEST"
                         },
                         {
+                            "key": "field_contact_hours_sat_label",
+                            "label": "Row 2 Label",
+                            "name": "hours_sat_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "e.g. Saturday",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
                             "key": "field_contact_hours_sat",
                             "label": "Hours: Saturday",
                             "name": "hours_sat",
@@ -2830,6 +3010,26 @@
                                 "id": ""
                             },
                             "default_value": "9:00 AM – 5:00 PM AEST"
+                        },
+                        {
+                            "key": "field_contact_hours_sun_label",
+                            "label": "Row 3 Label",
+                            "name": "hours_sun_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "e.g. Sunday & Public Holidays",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
                         },
                         {
                             "key": "field_contact_hours_sun",
@@ -2922,6 +3122,26 @@
                             "default_value": "https://maps.google.com/?q=50+Holt+St,+Surry+Hills+NSW+2010,+Australia"
                         },
                         {
+                            "key": "field_contact_directions_text",
+                            "label": "Directions Button Text",
+                            "name": "directions_text",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "e.g. Open in Google Maps",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
                             "key": "field_contact_maps_url",
                             "label": "Google Maps Embed URL",
                             "name": "google_maps_url",
@@ -2935,6 +3155,88 @@
                                 "id": ""
                             },
                             "default_value": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.729113645068!2d151.2091490757531!3d-33.88636402035985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ae2183c50979%3A0x8e8334863e467d3c!2s50%20Holt%20St%2C%20Surry%20Hills%20NSW%202010%2C%20Australia!5e0!3m2!1sen!2sau!4v1728725700000!5m2!1sen!2sau"
+                        },
+                        {
+                            "key": "field_contact_form_eyebrow",
+                            "label": "Form: Small Label",
+                            "name": "form_eyebrow",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "e.g. Online Enquiry",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_contact_form_title",
+                            "label": "Form: Title",
+                            "name": "form_title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "e.g. Send Us a Message",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_contact_form_text",
+                            "label": "Form: Text",
+                            "name": "form_text",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "rows": 3,
+                            "placeholder": "",
+                            "new_lines": ""
+                        },
+                        {
+                            "key": "field_contact_form_id",
+                            "label": "Form: Gravity Form ID",
+                            "name": "form_id",
+                            "aria-label": "",
+                            "type": "number",
+                            "instructions": "Number of the form in Forms (the form fields themselves are edited there).",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "min": 1,
+                            "max": "",
+                            "step": 1,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
                         }
                     ]
                 },

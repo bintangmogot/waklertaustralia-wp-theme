@@ -4,50 +4,58 @@
  * Waklert Australia 2-tone Dashed & Patterned Theme
  */
 
-$heading = get_sub_field('heading') ?: "Have Questions? We Are Here.";
+$heading = get_sub_field('heading') ?: waklert_module_default('contact', 'heading');
 $desc    = get_sub_field('description');
 if (empty($desc) || strpos($desc, 'English and Australia') !== false) {
-    $desc = "Our Australian customer care team is here to assist with product information, tracking updates, and order support.";
+    $desc = waklert_module_default('contact', 'description');
 }
+$breadcrumb_label = get_sub_field('breadcrumb_label') ?: waklert_module_default('contact', 'breadcrumb_label');
+$eyebrow = get_sub_field('eyebrow') ?: waklert_module_default('contact', 'eyebrow');
 
-// WhatsApp
-$wa_title  = get_sub_field('whatsapp_title') ?: "WhatsApp (Fastest Option)";
-$wa_number = get_sub_field('whatsapp_number') ?: "+61 488 841 833";
-$wa_url    = get_sub_field('whatsapp_url') ?: (get_field('whatsapp_number', 'option') ?: "https://wa.me/61488841833");
-if (strpos($wa_url, 'wa.me/60') !== false) {
-    $wa_url = "https://wa.me/61488841833";
-}
+// WhatsApp (number and link fall back to Theme Settings)
+$wa_title   = get_sub_field('whatsapp_title') ?: waklert_module_default('contact', 'whatsapp_title');
+$wa_badge   = get_sub_field('wa_badge') ?: waklert_module_default('contact', 'wa_badge');
+$wa_link    = get_sub_field('wa_link_text') ?: waklert_module_default('contact', 'wa_link_text');
+$wa_subtext = get_sub_field('wa_subtext') ?: waklert_module_default('contact', 'wa_subtext');
+$wa_number  = get_sub_field('whatsapp_number') ?: get_field('whatsapp_number', 'option');
+$wa_url     = get_sub_field('whatsapp_url') ?: get_field('whatsapp_number', 'option');
 if (function_exists('waklert_format_whatsapp_url')) {
     $wa_url = waklert_format_whatsapp_url($wa_url);
 }
 
-// Email
-$email_title   = get_sub_field('email_title') ?: "Email Support";
-$email_address = get_sub_field('contact_email') ?: (get_field('contact_email', 'option') ?: "orders@waklertaustralia.com.au");
-if (strpos($email_address, 'example.com') !== false || strpos($email_address, 'hoppingmad') !== false || strpos($email_address, 'modaaust') !== false) {
-    $email_address = 'orders@waklertaustralia.com.au';
-}
-$email_subtext = get_sub_field('email_subtext') ?: "Within 24 hours";
+// Email (address falls back to Theme Settings)
+$email_title    = get_sub_field('email_title') ?: waklert_module_default('contact', 'email_title');
+$email_address  = get_sub_field('contact_email') ?: get_field('support_email', 'option');
+$email_timeframe_label = get_sub_field('email_timeframe_label') ?: waklert_module_default('contact', 'email_timeframe_label');
+$email_subtext  = get_sub_field('email_subtext') ?: waklert_module_default('contact', 'email_subtext');
+$email_link     = get_sub_field('email_link_text') ?: waklert_module_default('contact', 'email_link_text');
 
 // Operating Hours
-$hours_title   = get_sub_field('hours_title') ?: "Operating Hours (AEST)";
-$hours_mon_fri = get_sub_field('hours_mon_fri') ?: "8:00 AM – 8:00 PM AEST";
-$hours_sat     = get_sub_field('hours_sat') ?: "9:00 AM – 5:00 PM AEST";
-$hours_sun     = get_sub_field('hours_sun') ?: "Limited (WhatsApp only)";
+$hours_title         = get_sub_field('hours_title') ?: waklert_module_default('contact', 'hours_title');
+$hours_mon_fri_label = get_sub_field('hours_mon_fri_label') ?: waklert_module_default('contact', 'hours_mon_fri_label');
+$hours_mon_fri       = get_sub_field('hours_mon_fri') ?: waklert_module_default('contact', 'hours_mon_fri');
+$hours_sat_label     = get_sub_field('hours_sat_label') ?: waklert_module_default('contact', 'hours_sat_label');
+$hours_sat           = get_sub_field('hours_sat') ?: waklert_module_default('contact', 'hours_sat');
+$hours_sun_label     = get_sub_field('hours_sun_label') ?: waklert_module_default('contact', 'hours_sun_label');
+$hours_sun           = get_sub_field('hours_sun') ?: waklert_module_default('contact', 'hours_sun');
 
 // Map & Address
-$address_title   = get_sub_field('address_title') ?: "Waklert Australia Support Office";
-$address_line_1  = get_sub_field('address_line_1') ?: "50 Holt St";
-$address_line_2  = get_sub_field('address_city_state_zip') ?: "Surry Hills NSW 2010";
-$address_country = get_sub_field('address_country') ?: "Australia";
+$address_title   = get_sub_field('address_title') ?: waklert_module_default('contact', 'address_title');
+$address_line_1  = get_sub_field('address_line_1') ?: waklert_module_default('contact', 'address_line_1');
+$address_line_2  = get_sub_field('address_city_state_zip') ?: waklert_module_default('contact', 'address_city_state_zip');
+$address_country = get_sub_field('address_country') ?: waklert_module_default('contact', 'address_country');
+$directions_text = get_sub_field('directions_text') ?: waklert_module_default('contact', 'directions_text');
+$form_eyebrow    = get_sub_field('form_eyebrow') ?: waklert_module_default('contact', 'form_eyebrow');
+$form_title      = get_sub_field('form_title') ?: waklert_module_default('contact', 'form_title');
+$form_text       = get_sub_field('form_text') ?: waklert_module_default('contact', 'form_text');
+$form_id         = (int) (get_sub_field('form_id') ?: waklert_module_default('contact', 'form_id'));
 
 // Directions URL (link to open in Google Maps)
 $entered_directions = trim((string) (get_sub_field('directions_url') ?: ''));
 $default_directions = "https://maps.google.com/?q=" . urlencode($address_line_1 . ', ' . $address_line_2 . ', ' . $address_country);
 $directions_url     = $entered_directions ?: $default_directions;
 
-// Official Google Maps Embed URL specifically for 50 Holt St, Surry Hills NSW 2010
-$default_map_embed = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.729113645068!2d151.2069395!3d-33.8862948!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ae21d2054155%3A0x88d02fd98fa53a3a!2s50%20Holt%20St%2C%20Surry%20Hills%20NSW%202010!5e0!3m2!1sen!2sau!4v1728725700000!5m2!1sen!2sau";
+$default_map_embed = waklert_module_default('contact', 'google_maps_url');
 
 $entered_embed = trim((string) (get_sub_field('google_maps_url') ?: ''));
 
@@ -75,7 +83,7 @@ if (strpos($entered_embed, 'maps.app.goo.gl') !== false || strpos($entered_embed
             <nav aria-label="Breadcrumb" class="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border border-dashed border-sky-300/80 bg-white/90 px-3.5 py-1 text-xs font-medium text-slate-500 shadow-xs backdrop-blur">
                 <a href="<?= esc_url(home_url('/')) ?>" class="font-bold text-slate-600 transition-colors hover:text-[#0c4161]"><?= esc_html(waklert_option_text('breadcrumb_home_label')) ?></a>
                 <span class="text-sky-300 font-normal">/</span>
-                <span aria-current="page" class="font-extrabold text-[#0c4161]">Contact Us</span>
+                <span aria-current="page" class="font-extrabold text-[#0c4161]"><?= esc_html($breadcrumb_label) ?></span>
             </nav>
         </div>
 
@@ -83,7 +91,7 @@ if (strpos($entered_embed, 'maps.app.goo.gl') !== false || strpos($entered_embed
         <div class="mb-2.5">
             <span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 border border-sky-300/80 px-3.5 py-1 text-xs font-black uppercase tracking-[0.16em] text-[#0c4161] shadow-xs">
                 <span class="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true"></span>
-                Direct Customer Support
+                <?= esc_html($eyebrow) ?>
             </span>
         </div>
 
@@ -116,14 +124,14 @@ if (strpos($entered_embed, 'maps.app.goo.gl') !== false || strpos($entered_embed
                             <h2 class="font-heading text-base font-bold text-slate-900"><?= esc_html($wa_title) ?></h2>
                             <span class="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-bold text-emerald-800">
                                 <span class="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                                Fast Reply
+                                <?= esc_html($wa_badge) ?>
                             </span>
                         </div>
                         <p class="mt-1 font-mono text-base font-bold text-emerald-700"><?= esc_html($wa_number) ?></p>
-                        <p class="mt-1 text-xs text-slate-500">Typically replies within 15–30 minutes during business hours.</p>
+                        <p class="mt-1 text-xs text-slate-500"><?= esc_html($wa_subtext) ?></p>
                     </div>
                     <span class="hidden sm:inline-flex items-center text-xs font-bold text-emerald-600 group-hover:translate-x-1 transition-transform">
-                        Chat Now &rarr;
+                        <?= esc_html($wa_link) ?> &rarr;
                     </span>
                 </div>
             </a>
@@ -139,10 +147,10 @@ if (strpos($entered_embed, 'maps.app.goo.gl') !== false || strpos($entered_embed
                     <div class="min-w-0 flex-1">
                         <h2 class="font-heading text-base font-bold text-slate-900"><?= esc_html($email_title) ?></h2>
                         <p class="mt-1 font-mono text-sm font-semibold text-[#0c4161] break-all"><?= esc_html($email_address) ?></p>
-                        <p class="mt-1 text-xs text-slate-500">Response timeframe: <?= esc_html($email_subtext) ?></p>
+                        <p class="mt-1 text-xs text-slate-500"><?= esc_html($email_timeframe_label) ?> <?= esc_html($email_subtext) ?></p>
                     </div>
                     <span class="hidden sm:inline-flex items-center text-xs font-bold text-sky-700 group-hover:translate-x-1 transition-transform">
-                        Send Mail &rarr;
+                        <?= esc_html($email_link) ?> &rarr;
                     </span>
                 </div>
             </a>
@@ -159,15 +167,15 @@ if (strpos($entered_embed, 'maps.app.goo.gl') !== false || strpos($entered_embed
                 </div>
                 <div class="space-y-3 text-sm">
                     <div class="flex items-center justify-between border-b border-slate-100 pb-2">
-                        <span class="text-slate-600 font-medium">Monday – Friday</span>
+                        <span class="text-slate-600 font-medium"><?= esc_html($hours_mon_fri_label) ?></span>
                         <span class="font-bold text-slate-900"><?= esc_html($hours_mon_fri) ?></span>
                     </div>
                     <div class="flex items-center justify-between border-b border-slate-100 pb-2">
-                        <span class="text-slate-600 font-medium">Saturday</span>
+                        <span class="text-slate-600 font-medium"><?= esc_html($hours_sat_label) ?></span>
                         <span class="font-bold text-slate-900"><?= esc_html($hours_sat) ?></span>
                     </div>
                     <div class="flex items-center justify-between">
-                        <span class="text-slate-600 font-medium">Sunday & Public Holidays</span>
+                        <span class="text-slate-600 font-medium"><?= esc_html($hours_sun_label) ?></span>
                         <span class="inline-flex items-center gap-1 rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-bold text-amber-800"><?= esc_html($hours_sun) ?></span>
                     </div>
                 </div>
@@ -192,7 +200,7 @@ if (strpos($entered_embed, 'maps.app.goo.gl') !== false || strpos($entered_embed
                     <p class="text-sm leading-relaxed text-slate-600"><?= esc_html($one_line_address) ?></p>
                     <div class="pt-1">
                         <a href="<?= esc_url($directions_url) ?>" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 rounded-full bg-sky-50 border border-sky-200/80 px-3.5 py-1.5 text-xs font-bold text-[#0c4161] hover:bg-sky-100 transition-colors">
-                            <span>Open in Google Maps</span>
+                            <span><?= esc_html($directions_text) ?></span>
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                             </svg>
@@ -222,14 +230,14 @@ if (strpos($entered_embed, 'maps.app.goo.gl') !== false || strpos($entered_embed
         <div class="rounded-3xl border-2 border-dashed border-sky-300/80 bg-white p-6 sm:p-8 md:p-10 shadow-xs relative">
             <div class="mb-6">
                 <span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 border border-sky-300/80 px-3 py-0.5 text-[11px] font-black uppercase tracking-[0.16em] text-[#0c4161]">
-                    Online Enquiry
+                    <?= esc_html($form_eyebrow) ?>
                 </span>
-                <h2 class="mt-2 font-heading text-2xl font-black text-[#0c4161]">Send Us a Message</h2>
-                <p class="mt-1 text-sm text-slate-500">Have an enquiry about your order or our armodafinil products? Submit your details and our team will get in touch promptly.</p>
+                <h2 class="mt-2 font-heading text-2xl font-black text-[#0c4161]"><?= esc_html($form_title) ?></h2>
+                <p class="mt-1 text-sm text-slate-500"><?= esc_html($form_text) ?></p>
             </div>
 
             <div class="contact-form-wrapper">
-                <?= do_shortcode('[gravityform id="1" title="false" description="false" ajax="true"]') ?>
+                <?= do_shortcode('[gravityform id="' . $form_id . '" title="false" description="false" ajax="true"]') ?>
             </div>
         </div>
 

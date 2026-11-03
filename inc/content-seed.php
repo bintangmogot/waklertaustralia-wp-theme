@@ -8,7 +8,7 @@
  * The same defaults are the safety net the module templates fall back to.
  */
 
-const WAKLERT_CONTENT_SEED_VERSION = '20261103_content_seed_v7';
+const WAKLERT_CONTENT_SEED_VERSION = '20261103_content_seed_v8';
 
 /**
  * Default text per module layout.
@@ -207,6 +207,39 @@ function waklert_module_defaults() {
                 'eyebrow' => ['field_ad_eyebrow', 'Shipping & Dispatch'],
                 'heading' => ['field_0d03ea4ccab84', 'Delivery Across Australia'],
                 'desc'    => ['field_db0fe9dccbec4', 'Current delivery options, transit times, and parcel tracking are confirmed during ordering and dispatch.'],
+            ],
+        ],
+        'contact' => [
+            'fields' => [
+                'breadcrumb_label' => ['field_contact_breadcrumb', 'Contact Us'],
+                'eyebrow' => ['field_contact_eyebrow', 'Direct Customer Support'],
+                'heading' => ['field_94d2494262974', 'Have Questions? We Are Here.'],
+                'description' => ['field_19334cb614cc4', 'Our Australian customer care team is here to assist with product information, tracking updates, and order support.'],
+                'whatsapp_title' => ['field_contact_wa_title', 'WhatsApp (Fastest Option)'],
+                'wa_badge' => ['field_contact_wa_badge', 'Fast Reply'],
+                'wa_link_text' => ['field_contact_wa_link', 'Chat Now'],
+                'wa_subtext' => ['field_contact_wa_subtext', 'Typically replies within 15–30 minutes during business hours.'],
+                'email_title' => ['field_contact_email_title', 'Email Support'],
+                'email_timeframe_label' => ['field_contact_email_timeframe', 'Response timeframe:'],
+                'email_subtext' => ['field_contact_email_subtext', 'Within 24 hours'],
+                'email_link_text' => ['field_contact_email_link', 'Send Mail'],
+                'hours_title' => ['field_contact_hours_title', 'Operating Hours (AEST)'],
+                'hours_mon_fri_label' => ['field_contact_hours_mon_fri_label', 'Monday – Friday'],
+                'hours_mon_fri' => ['field_contact_hours_mon_fri', '8:00 AM – 8:00 PM AEST'],
+                'hours_sat_label' => ['field_contact_hours_sat_label', 'Saturday'],
+                'hours_sat' => ['field_contact_hours_sat', '9:00 AM – 5:00 PM AEST'],
+                'hours_sun_label' => ['field_contact_hours_sun_label', 'Sunday & Public Holidays'],
+                'hours_sun' => ['field_contact_hours_sun', 'Limited (WhatsApp only)'],
+                'address_title' => ['field_contact_address_title', 'Waklert Australia Support Office'],
+                'address_line_1' => ['field_contact_address_line1', '50 Holt St'],
+                'address_city_state_zip' => ['field_contact_address_line2', 'Surry Hills NSW 2010'],
+                'address_country' => ['field_contact_address_country', 'Australia'],
+                'directions_text' => ['field_contact_directions_text', 'Open in Google Maps'],
+                'google_maps_url' => ['field_contact_maps_url', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.729113645068!2d151.2069395!3d-33.8862948!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ae21d2054155%3A0x88d02fd98fa53a3a!2s50%20Holt%20St%2C%20Surry%20Hills%20NSW%202010!5e0!3m2!1sen!2sau!4v1728725700000!5m2!1sen!2sau'],
+                'form_eyebrow' => ['field_contact_form_eyebrow', 'Online Enquiry'],
+                'form_title' => ['field_contact_form_title', 'Send Us a Message'],
+                'form_text' => ['field_contact_form_text', 'Have an enquiry about your order or our armodafinil products? Submit your details and our team will get in touch promptly.'],
+                'form_id' => ['field_contact_form_id', '1'],
             ],
         ],
         'reviews_carousel' => [
