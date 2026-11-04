@@ -123,7 +123,7 @@ if (is_home()) :
             $trust_cards = [];
         }
         ?>
-        <?php if ($trust_cards) : ?>
+        <?php if ($trust_cards && !is_shop()) : ?>
         <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3.5 max-w-3xl mx-auto text-left">
             <?php foreach ($trust_cards as $card) :
                 $icon = $trust_icons[$card['icon']] ?? $trust_icons['shield'];
