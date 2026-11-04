@@ -66,7 +66,7 @@ $best_seller_label = waklert_get_product_presentation_option('best_seller_label'
     </a>
 
     <!-- Product Info -->
-    <div class="flex flex-1 flex-col p-4 md:p-6 border-t border-dashed border-sky-100">
+    <div class="flex flex-1 flex-col p-4 md:p-6 border-t border-solid border-sky-100">
         <h3 class="font-heading text-sm sm:text-base md:text-lg font-extrabold text-slate-900 group-hover:text-[#0c4161] transition-colors leading-snug">
             <a href="<?= esc_url($link) ?>" class="line-clamp-2">
                 <?= esc_html($title) ?>
@@ -87,7 +87,7 @@ $best_seller_label = waklert_get_product_presentation_option('best_seller_label'
         <?php endif; ?>
 
         <!-- Pricing Block -->
-        <div class="mt-4 pt-3 border-t border-dashed border-slate-200/80 flex flex-wrap items-baseline justify-between gap-2">
+        <div class="mt-4 pt-3 border-t border-solid border-slate-200/80 flex flex-wrap items-baseline justify-between gap-2">
             <div>
                 <p class="font-heading text-base md:text-xl font-extrabold text-[#0c4161] leading-tight">
                     <?= wp_kses_post(waklert_get_product_card_price_html($product)) ?>

@@ -78,12 +78,11 @@ if (empty($cities_list)) {
 
 <?php if ($is_navy): ?>
 <!-- Pacific Navy Dark Brand Theme -->
-<section class="section-padding relative isolate overflow-hidden bg-gradient-to-r from-[#082a3f] via-[#0c4161] to-[#125883] bg-pattern-dots-dark text-white border-y-2 border-dashed border-sky-400/40" data-testid="city-section">
+<section class="section-padding relative isolate overflow-hidden bg-gradient-to-r from-[#082a3f] via-[#0c4161] to-[#125883] bg-pattern-dots-dark text-white border-y-2 border-solid border-sky-400/40" data-testid="city-section">
     <!-- Orbit Background Rings -->
     <?php if (function_exists('waklert_output_pattern_rings')) { waklert_output_pattern_rings(); } ?>
 
     <!-- Ambient Center Spotlight -->
-    <div class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,rgba(56,189,248,0.15),transparent_70%)]" aria-hidden="true"></div>
 
     <div class="container-custom relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
         <!-- Section Header -->
@@ -121,7 +120,7 @@ if (empty($cities_list)) {
 
 <?php else: ?>
 <!-- 2-Tone Light Pattern Brand Theme -->
-<section class="section-padding relative isolate overflow-hidden bg-gradient-to-b from-[#f0f6fa] via-[#e9f2f8] to-[#f8fafc] bg-pattern-dots border-y-2 border-dashed border-sky-200/80 text-foreground" data-testid="city-section">
+<section class="section-padding relative isolate overflow-hidden bg-gradient-to-b from-[#f0f6fa] via-[#e9f2f8] to-[#f8fafc] bg-pattern-dots border-y-2 border-solid border-sky-200/80 text-foreground" data-testid="city-section">
     <div class="container-custom relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
         <!-- Section Header -->
         <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12">

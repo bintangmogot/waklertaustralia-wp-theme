@@ -39,7 +39,7 @@ if ( $product->is_type('variable') ) {
 <div class="group relative flex flex-col sm:flex-row bg-white border-2 border-dashed border-sky-300/80 hover:border-[#0c4161] rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-out">
     
     <!-- Image full width, no padding, object-contain so it never cuts -->
-    <a href="<?= esc_url($link) ?>" class="sm:w-2/5 md:w-[42%] relative block bg-radial-[at_center] from-sky-50 to-white shrink-0 overflow-hidden min-h-[220px] sm:min-h-[auto] border-b sm:border-b-0 sm:border-r-2 sm:border-dashed sm:border-sky-200/80 p-4 flex items-center justify-center">
+    <a href="<?= esc_url($link) ?>" class="sm:w-2/5 md:w-[42%] relative block bg-radial-[at_center] from-sky-50 to-white shrink-0 overflow-hidden min-h-[220px] sm:min-h-[auto] border-b sm:border-b-0 sm:border-r-2 sm:border-solid sm:border-sky-200/80 p-4 flex items-center justify-center">
         <img src="<?= esc_url($image) ?>" alt="<?= esc_attr($title) ?>" class="w-full h-full max-h-[240px] object-contain transition-transform duration-500 group-hover:scale-105 group-hover:rotate-1" loading="lazy" />
         <div class="absolute top-3 left-3">
             <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-amber-400 text-slate-950 border border-amber-500/30 shadow-xs">
@@ -50,12 +50,6 @@ if ( $product->is_type('variable') ) {
     
     <div class="p-6 sm:p-7 flex flex-col justify-between flex-1 bg-white">
         <div>
-            <!-- Bestseller / Category Tag -->
-            <div class="inline-flex items-center gap-1.5 text-[11px] font-extrabold uppercase tracking-widest text-amber-600 mb-2">
-                <?= waklert_content_icon('content_product_horizont_icon_ca78f435d3') ?>
-                <?= esc_html(waklert_content('content_product_horizont_text_68bedd3c2a')) ?>
-            </div>
-
             <!-- Title -->
             <a href="<?= esc_url($link) ?>" class="block font-heading text-xl md:text-2xl font-black text-slate-900 leading-tight hover:text-[#0c4161] transition-colors mb-2.5">
                 <?= esc_html($title) ?>
@@ -74,7 +68,7 @@ if ( $product->is_type('variable') ) {
             <?php endif; ?>
         </div>
 
-        <div class="pt-4 border-t-2 border-dashed border-sky-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 mt-auto">
+        <div class="pt-4 border-t-2 border-solid border-sky-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 mt-auto">
             <!-- Price -->
             <div class="text-sm text-slate-600 font-medium">
                 <span class="block text-[11px] uppercase tracking-wider text-slate-400 font-bold"><?= esc_html(waklert_content('content_product_horizont_text_02e33cd22a')) ?></span>

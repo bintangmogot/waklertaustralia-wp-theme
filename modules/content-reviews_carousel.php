@@ -20,7 +20,7 @@ $verified_label = waklert_module_text('verified_label');
 
 $reviews = get_sub_field('reviews');
 ?>
-<section class="section-padding bg-gradient-to-b from-[#f0f6fa] via-[#e9f2f8] to-[#f8fafc] bg-pattern-dots border-t-2 border-dashed border-sky-200/80 relative isolate overflow-hidden" data-testid="testimonials">
+<section class="section-padding bg-gradient-to-b from-[#f0f6fa] via-[#e9f2f8] to-[#f8fafc] bg-pattern-dots border-t-2 border-solid border-sky-200/80 relative isolate overflow-hidden" data-testid="testimonials">
     <div class="container-custom relative z-10">
         <!-- Section Header -->
         <?php if ((waklert_has_content(esc_html($tag))) || (waklert_has_content(esc_html($heading))) || (waklert_has_content(esc_html($description)))): ?><div class="text-center max-w-3xl mx-auto mb-10 md:mb-12">
@@ -49,7 +49,7 @@ $reviews = get_sub_field('reviews');
                     $rating_val = get_field('rating', $post_id) ?: 5;
                     $review_date = get_field('review_date', $post_id) ?: get_the_date('M j, Y', $post_id);
             ?>
-            <div class="group flex flex-col justify-between bg-white border-2 border-dashed border-sky-300/80 hover:border-amber-400 rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex-shrink-0 w-[310px] sm:w-[340px] snap-start">
+            <div class="group flex flex-col justify-between bg-white border-2 border-solid border-sky-300/80 hover:border-amber-400 rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex-shrink-0 w-[310px] sm:w-[340px] snap-start">
                 <!-- Top Half: Crisp White Surface with Golden Stars & Quote -->
                 <div class="p-6 flex-1 flex flex-col justify-start bg-white relative">
                     <!-- Colorful Quote Mark & 5-Star Row -->
@@ -74,7 +74,7 @@ $reviews = get_sub_field('reviews');
                 </div>
 
                 <!-- Bottom Half: Solid Navy Footer with Reviewer Info -->
-                <div class="bg-[#0c4161] group-hover:bg-[#082c42] text-white p-4 px-5 flex items-center justify-between transition-colors duration-300 border-t-2 border-dashed border-white/20">
+                <div class="bg-[#0c4161] group-hover:bg-[#082c42] text-white p-4 px-5 flex items-center justify-between transition-colors duration-300 border-t-2 border-solid border-white/20">
                     <?php if ((waklert_has_content(esc_html(strtoupper(substr($reviewer, 0, 1))))) || (waklert_has_content(esc_html($reviewer))) || (waklert_has_content(esc_html($verified_label)))): ?><div class="flex items-center gap-3">
                         <?php if (waklert_has_content(esc_html(strtoupper(substr($reviewer, 0, 1))))): ?><div class="w-9 h-9 rounded-full bg-gradient-to-br from-amber-400 to-amber-500 text-slate-950 font-black text-sm flex items-center justify-center shadow-xs shrink-0">
                             <?= esc_html(strtoupper(substr($reviewer, 0, 1))) ?>
@@ -98,7 +98,7 @@ $reviews = get_sub_field('reviews');
         </div>
 
         <div class="text-center mt-8">
-            <?php if ((waklert_has_content(esc_html($button_text))) && waklert_has_content(esc_url($button_href))): ?><a href="<?= esc_url($button_href) ?>" class="inline-flex items-center gap-2 border-2 border-dashed border-sky-300/90 bg-white hover:bg-[#0c4161] text-[#0c4161] hover:text-white font-extrabold px-5 py-2.5 sm:px-8 sm:py-3.5 rounded-full transition-all duration-300 uppercase tracking-wider sm:tracking-widest text-xs shadow-sm hover:shadow-md hover:-translate-y-0.5">
+            <?php if ((waklert_has_content(esc_html($button_text))) && waklert_has_content(esc_url($button_href))): ?><a href="<?= esc_url($button_href) ?>" class="inline-flex items-center gap-2 border-2 border-solid border-sky-300/90 bg-white hover:bg-[#0c4161] text-[#0c4161] hover:text-white font-extrabold px-5 py-2.5 sm:px-8 sm:py-3.5 rounded-full transition-all duration-300 uppercase tracking-wider sm:tracking-widest text-xs shadow-sm hover:shadow-md hover:-translate-y-0.5">
                 <?php if (waklert_has_content(esc_html($button_text))): ?><span><?= esc_html($button_text) ?></span><?php endif; ?>
                 <?= waklert_content_icon('content_reviews_carousel_icon_41430d82e3') ?>
             </a><?php endif; ?>

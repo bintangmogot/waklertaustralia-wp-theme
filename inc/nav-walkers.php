@@ -80,7 +80,7 @@ class Waklert_Desktop_Nav_Walker extends Walker_Nav_Menu {
         if ($depth === 0) {
             // Dropdown wrapper with 2-tone dashed container and hover bridge
             $output .= '<div class="sub-menu-dropdown-wrapper absolute top-full left-[-80px] pt-2.5 w-[625px] max-w-[92vw] opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-2 group-hover:translate-y-0 transition-all duration-200 z-50 pointer-events-none group-hover:pointer-events-auto filter drop-shadow-2xl">';
-            $output .= '<div class="rounded-2xl border-2 border-dashed border-sky-300/90 bg-white overflow-hidden shadow-2xl">';
+            $output .= '<div class="rounded-2xl border-2 border-solid border-sky-300/90 bg-white overflow-hidden shadow-2xl">';
             
             // Companion artwork and the entire strip follow their visible text.
             $heading = waklert_option_text('menu_dropdown_heading');
@@ -115,14 +115,14 @@ class Waklert_Desktop_Nav_Walker extends Walker_Nav_Menu {
             $shop_url = esc_url(waklert_resolve_link(waklert_option_text('menu_dropdown_button_url')));
             $show_button = waklert_has_content($button_text) && waklert_has_content($shop_url);
             if (waklert_has_content($note) || $show_button) {
-                $output .= '<div data-testid="menu-dropdown-footer" class="bg-gradient-to-r from-sky-50 via-slate-50 to-amber-50/60 px-4 py-3 border-t-2 border-dashed border-sky-200/80 flex items-center justify-between text-xs">';
+                $output .= '<div data-testid="menu-dropdown-footer" class="bg-gradient-to-r from-sky-50 via-slate-50 to-amber-50/60 px-4 py-3 border-t-2 border-solid border-sky-200/80 flex items-center justify-between text-xs">';
                 if (waklert_has_content($note)) {
                     $output .= '<div class="flex items-center gap-1.5 font-bold text-slate-700">';
                     $output .= waklert_content_icon('nav_walkers_icon_00bc0fe59a');
                     $output .= '<span>' . esc_html($note) . '</span></div>';
                 }
                 if ($show_button) {
-                    $output .= '<a href="' . $shop_url . '" class="inline-flex items-center gap-1.5 font-black text-[#0c4161] hover:text-amber-600 bg-white hover:bg-sky-50 px-3 py-1.5 rounded-full border-2 border-dashed border-sky-300 shadow-sm transition-all hover:scale-105">';
+                    $output .= '<a href="' . $shop_url . '" class="inline-flex items-center gap-1.5 font-black text-[#0c4161] hover:text-amber-600 bg-white hover:bg-sky-50 px-3 py-1.5 rounded-full border-2 border-solid border-sky-300 shadow-sm transition-all hover:scale-105">';
                     $output .= '<span>' . esc_html($button_text) . '</span>';
                     $output .= waklert_content_icon('nav_walkers_icon_2d846cc854');
                     $output .= '</a>';
@@ -157,12 +157,12 @@ class Waklert_Desktop_Nav_Walker extends Walker_Nav_Menu {
 
             if ($is_active) {
                 // Active 2-Tone Nav Pill
-                $link_class = 'inline-flex items-center gap-2 px-4 py-1.5 text-[15.5px] xl:text-[16.5px] font-extrabold rounded-full bg-gradient-to-r from-[#0c4161] via-[#0e4a70] to-[#125883] text-white shadow-md shadow-[#0c4161]/25 border-2 border-dashed border-amber-400 outline-none focus:outline-none focus:ring-0 transition-all duration-200';
+                $link_class = 'inline-flex items-center gap-2 px-4 py-1.5 text-[15.5px] xl:text-[16.5px] font-extrabold rounded-full bg-gradient-to-r from-[#0c4161] via-[#0e4a70] to-[#125883] text-white shadow-md shadow-[#0c4161]/25 border-2 border-solid border-amber-400 outline-none focus:outline-none focus:ring-0 transition-all duration-200';
                 $dot_indicator = '';
                 $chev_color = 'text-amber-300';
             } else {
                 // Inactive Nav Link
-                $link_class = 'inline-flex items-center gap-1.5 px-4 py-1.5 text-[15.5px] xl:text-[16.5px] font-bold rounded-full text-slate-700 hover:text-[#0c4161] hover:bg-sky-50/90 border-2 border-dashed border-transparent hover:border-sky-300/80 outline-none focus:outline-none focus:ring-0 transition-all duration-200 hover:-translate-y-0.5';
+                $link_class = 'inline-flex items-center gap-1.5 px-4 py-1.5 text-[15.5px] xl:text-[16.5px] font-bold rounded-full text-slate-700 hover:text-[#0c4161] hover:bg-sky-50/90 border-2 border-solid border-transparent hover:border-sky-300/80 outline-none focus:outline-none focus:ring-0 transition-all duration-200 hover:-translate-y-0.5';
                 $dot_indicator = '';
                 $chev_color = 'text-slate-400 group-hover:text-[#0c4161]';
             }
@@ -181,10 +181,10 @@ class Waklert_Desktop_Nav_Walker extends Walker_Nav_Menu {
             $img_url = waklert_get_product_menu_image($title, $url, $item->object_id);
 
             $output .= '<li class="list-none">';
-            $output .= '<a href="' . $url . '" class="group/pcard flex items-center gap-3 p-2.5 rounded-xl border-2 border-dashed border-sky-200/80 hover:border-[#0c4161] bg-white hover:bg-sky-50/70 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">';
+            $output .= '<a href="' . $url . '" class="group/pcard flex items-center gap-3 p-2.5 rounded-xl border-2 border-solid border-sky-200/80 hover:border-[#0c4161] bg-white hover:bg-sky-50/70 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">';
             
             // Product Image Box (exact same place with zoom hover)
-            $output .= '<div class="w-12 h-12 rounded-xl bg-white border-2 border-dashed border-sky-200/90 p-1 flex items-center justify-center shrink-0 group-hover/pcard:scale-105 group-hover/pcard:border-[#0c4161] group-hover/pcard:shadow-sm transition-all overflow-hidden">';
+            $output .= '<div class="w-12 h-12 rounded-xl bg-white border-2 border-solid border-sky-200/90 p-1 flex items-center justify-center shrink-0 group-hover/pcard:scale-105 group-hover/pcard:border-[#0c4161] group-hover/pcard:shadow-sm transition-all overflow-hidden">';
             if ($img_url) {
                 $output .= '<img src="' . esc_url($img_url) . '" alt="' . esc_attr($title) . '" class="w-full h-full object-contain transition-transform duration-300 group-hover/pcard:scale-110" loading="lazy" />';
             } else {
@@ -257,11 +257,11 @@ class Waklert_Mobile_Nav_Walker extends Walker_Nav_Menu {
 
             if ($is_active) {
                 // Active 2-Tone Mobile Pill
-                $link_class = 'flex-1 flex items-center gap-2.5 px-4 py-3 rounded-2xl bg-gradient-to-r from-[#0c4161] to-[#125883] text-white font-extrabold text-[15px] border-2 border-dashed border-amber-400 shadow-sm';
+                $link_class = 'flex-1 flex items-center gap-2.5 px-4 py-3 rounded-2xl bg-gradient-to-r from-[#0c4161] to-[#125883] text-white font-extrabold text-[15px] border-2 border-solid border-amber-400 shadow-sm';
                 $indicator = '';
             } else {
                 // Inactive Mobile Link
-                $link_class = 'flex-1 flex items-center gap-2 px-4 py-3 rounded-2xl text-slate-800 hover:text-[#0c4161] hover:bg-sky-50 font-bold text-[15px] border-2 border-dashed border-transparent hover:border-sky-200 transition-all';
+                $link_class = 'flex-1 flex items-center gap-2 px-4 py-3 rounded-2xl text-slate-800 hover:text-[#0c4161] hover:bg-sky-50 font-bold text-[15px] border-2 border-solid border-transparent hover:border-sky-200 transition-all';
                 $indicator = '';
             }
 
@@ -270,7 +270,7 @@ class Waklert_Mobile_Nav_Walker extends Walker_Nav_Menu {
             $output .= '</a>';
 
             if ($has_children) {
-                $output .= '<button type="button" class="mobile-submenu-toggle is-active flex items-center justify-center w-11 h-11 rounded-2xl bg-white border-2 border-dashed border-sky-300 text-[#0c4161] hover:bg-sky-50 transition-colors shrink-0" aria-expanded="true" aria-label="Toggle submenu">';
+                $output .= '<button type="button" class="mobile-submenu-toggle is-active flex items-center justify-center w-11 h-11 rounded-2xl bg-white border-2 border-solid border-sky-300 text-[#0c4161] hover:bg-sky-50 transition-colors shrink-0" aria-expanded="true" aria-label="Toggle submenu">';
                 $output .= waklert_content_icon('nav_walkers_icon_735144bc3c');
                 $output .= '</button>';
             }
@@ -282,10 +282,10 @@ class Waklert_Mobile_Nav_Walker extends Walker_Nav_Menu {
             $img_url = waklert_get_product_menu_image($title, $url, $item->object_id);
 
             $output .= '<li class="list-none w-full">';
-            $output .= '<a href="' . $url . '" class="flex items-center gap-2.5 p-2.5 rounded-xl border-2 border-dashed border-sky-200/90 hover:border-[#0c4161] bg-white transition-all">';
+            $output .= '<a href="' . $url . '" class="flex items-center gap-2.5 p-2.5 rounded-xl border-2 border-solid border-sky-200/90 hover:border-[#0c4161] bg-white transition-all">';
             
             // Product Image Box (exact same place)
-            $output .= '<div class="w-11 h-11 rounded-xl bg-white border-2 border-dashed border-sky-200/90 p-1 flex items-center justify-center shrink-0 overflow-hidden">';
+            $output .= '<div class="w-11 h-11 rounded-xl bg-white border-2 border-solid border-sky-200/90 p-1 flex items-center justify-center shrink-0 overflow-hidden">';
             if ($img_url) {
                 $output .= '<img src="' . esc_url($img_url) . '" alt="' . esc_attr($title) . '" class="w-full h-full object-contain" loading="lazy" />';
             } else {

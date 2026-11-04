@@ -42,11 +42,11 @@ $trust_cards = waklert_module_rows('trust_cards');
 ?>
 
 <!-- 2-Tone Patterned Header -->
-<header class="relative overflow-hidden border-b-2 border-dashed border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-6 sm:py-7 md:py-9" data-testid="track-order-hero">
+<header class="relative overflow-hidden border-b-2 border-solid border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-6 sm:py-7 md:py-9" data-testid="track-order-hero">
     <div class="container-site max-w-5xl mx-auto px-4 relative z-10">
         <!-- Breadcrumbs -->
         <div class="mb-3">
-            <nav aria-label="<?= esc_attr(waklert_content('content_track_order_text_a020ba8c6a')) ?>" class="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border border-dashed border-sky-300/80 bg-white/90 px-3.5 py-1 text-xs font-medium text-slate-500 shadow-xs backdrop-blur">
+            <nav aria-label="<?= esc_attr(waklert_content('content_track_order_text_a020ba8c6a')) ?>" class="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border border-solid border-sky-300/80 bg-white/90 px-3.5 py-1 text-xs font-medium text-slate-500 shadow-xs backdrop-blur">
                 <?php if ((waklert_has_content(esc_html(waklert_option_text('breadcrumb_home_label')))) && waklert_has_content(esc_url(home_url('/')))): ?><a href="<?= esc_url(home_url('/')) ?>" class="font-bold text-slate-600 transition-colors hover:text-[#0c4161]"><?= esc_html(waklert_option_text('breadcrumb_home_label')) ?></a><?php endif; ?>
                 <span class="text-sky-300 font-normal">/</span>
                 <?php if (waklert_has_content(esc_html($page_title))): ?><span aria-current="page" class="font-extrabold text-[#0c4161]"><?= esc_html($page_title) ?></span><?php endif; ?>
@@ -84,7 +84,7 @@ $trust_cards = waklert_module_rows('trust_cards');
     </div>
 
     <!-- Main Australia Post Tracking Tool Card (Clean, Focused Single Card) -->
-    <section class="rounded-3xl border-2 border-dashed border-sky-300/80 bg-white p-6 sm:p-8 md:p-10 shadow-sm relative overflow-hidden" aria-label="<?= esc_attr(waklert_content('content_track_order_text_ed94aa8399')) ?>">
+    <section class="rounded-3xl border-2 border-solid border-sky-300/80 bg-white p-6 sm:p-8 md:p-10 shadow-sm relative overflow-hidden" aria-label="<?= esc_attr(waklert_content('content_track_order_text_ed94aa8399')) ?>">
         <div class="max-w-3xl mx-auto space-y-6">
             <?php if ((waklert_has_content(esc_html($form_heading))) || (waklert_has_content(wp_kses_post($form_instructions)))): ?><div class="text-center sm:text-left">
                 <?php if ((waklert_has_content(esc_html($form_heading)))): ?><div class="inline-flex items-center gap-2 rounded-full bg-sky-100 border border-sky-300/80 px-3 py-1 text-xs font-black uppercase tracking-wider text-[#0c4161] mb-2.5">
@@ -169,7 +169,7 @@ $trust_cards = waklert_module_rows('trust_cards');
     <?php endif; ?>
 
     <!-- "Need Help?" Card -->
-    <section class="rounded-2xl border-2 border-dashed border-sky-300/80 bg-gradient-to-r from-sky-50/60 via-white to-sky-50/40 p-6 sm:p-7 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5" aria-labelledby="need-help-heading">
+    <section class="rounded-2xl border-2 border-solid border-sky-300/80 bg-gradient-to-r from-sky-50/60 via-white to-sky-50/40 p-6 sm:p-7 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5" aria-labelledby="need-help-heading">
         <?php if ((waklert_has_content(esc_html($help_title))) || (waklert_has_content(wp_kses_post($help_desc)))): ?><div class="space-y-1.5 max-w-xl">
             <?php if (waklert_has_content(esc_html($help_title))): ?><h3 id="need-help-heading" class="font-heading text-lg sm:text-xl font-extrabold text-[#0c4161]">
                 <?= esc_html($help_title) ?>
@@ -211,7 +211,7 @@ $trust_cards = waklert_module_rows('trust_cards');
                 'size_class'     => 'w-10 h-10 shrink-0',
             ]);
         ?>
-        <?php if ((waklert_has_content($card_icon_html)) || (waklert_has_content(esc_html($ctitle))) || (waklert_has_content(esc_html($cdesc)))): ?><div class="rounded-2xl border-2 border-dashed border-sky-200/90 bg-white p-6 shadow-xs hover:border-sky-400 hover:shadow-md transition-all flex flex-col items-center text-center">
+        <?php if ((waklert_has_content($card_icon_html)) || (waklert_has_content(esc_html($ctitle))) || (waklert_has_content(esc_html($cdesc)))): ?><div class="rounded-2xl border-2 border-solid border-sky-200/90 bg-white p-6 shadow-xs hover:border-sky-400 hover:shadow-md transition-all flex flex-col items-center text-center">
             <?php if (waklert_has_content($card_icon_html)): ?><div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-white p-2 shadow-lg shadow-black/10 border-2 border-sky-100 mb-4 shrink-0">
                 <?= $card_icon_html ?>
             </div><?php endif; ?>

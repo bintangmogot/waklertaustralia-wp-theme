@@ -28,11 +28,11 @@ $whatsapp_url = function_exists('waklert_format_whatsapp_url') ? waklert_format_
 ?>
 
 <!-- 2-Tone Patterned Header -->
-<header class="relative overflow-hidden border-b-2 border-dashed border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-6 sm:py-7 md:py-9" data-testid="faq-page-hero">
+<header class="relative overflow-hidden border-b-2 border-solid border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-6 sm:py-7 md:py-9" data-testid="faq-page-hero">
     <div class="container-site max-w-4xl mx-auto px-4 relative z-10">
         <!-- Breadcrumbs -->
         <div class="mb-3">
-            <nav aria-label="<?= esc_attr(waklert_content('content_faq_page_text_cfdeea7b5d')) ?>" class="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border border-dashed border-sky-300/80 bg-white/90 px-3.5 py-1 text-xs font-medium text-slate-500 shadow-xs backdrop-blur">
+            <nav aria-label="<?= esc_attr(waklert_content('content_faq_page_text_cfdeea7b5d')) ?>" class="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border border-solid border-sky-300/80 bg-white/90 px-3.5 py-1 text-xs font-medium text-slate-500 shadow-xs backdrop-blur">
                 <?php if ((waklert_has_content(esc_html(waklert_option_text('breadcrumb_home_label')))) && waklert_has_content(esc_url(home_url('/')))): ?><a href="<?= esc_url(home_url('/')) ?>" class="font-bold text-slate-600 transition-colors hover:text-[#0c4161]"><?= esc_html(waklert_option_text('breadcrumb_home_label')) ?></a><?php endif; ?>
                 <span class="text-sky-300 font-normal">/</span>
                 <?php if (waklert_has_content(esc_html($breadcrumb_label))): ?><span aria-current="page" class="font-extrabold text-[#0c4161]"><?= esc_html($breadcrumb_label) ?></span><?php endif; ?>
@@ -65,7 +65,7 @@ $whatsapp_url = function_exists('waklert_format_whatsapp_url') ? waklert_format_
                 $cat_slug = sanitize_title($cat_title);
             ?>
             <?php if (waklert_has_content(esc_html($cat_title)) || waklert_has_content(count($cat['items'] ?? []))): ?><a href="#cat-<?= esc_attr($cat_slug) ?>"
-               class="inline-flex items-center gap-1.5 rounded-full bg-white/95 border border-dashed border-sky-300 px-3.5 py-1.5 text-xs font-bold text-[#0c4161] hover:bg-[#0c4161] hover:text-white hover:border-[#0c4161] transition-all shadow-2xs">
+               class="inline-flex items-center gap-1.5 rounded-full bg-white/95 border border-solid border-sky-300 px-3.5 py-1.5 text-xs font-bold text-[#0c4161] hover:bg-[#0c4161] hover:text-white hover:border-[#0c4161] transition-all shadow-2xs">
                 <?php if (waklert_has_content(esc_html($cat_title))): ?><span><?= esc_html($cat_title) ?></span><?php endif; ?>
                 <?php if (waklert_has_content(count($cat['items'] ?? []))): ?><span class="flex h-4 w-4 items-center justify-center rounded-full bg-sky-100 group-hover:bg-white/20 text-[10px] font-mono text-[#0c4161] font-bold">
                     <?= count($cat['items'] ?? []) ?>
@@ -89,7 +89,7 @@ $whatsapp_url = function_exists('waklert_format_whatsapp_url') ? waklert_format_
             <div id="cat-<?= esc_attr($cat_slug) ?>" class="scroll-mt-28">
                 <!-- Category Section Header -->
                 <?php if ($cat_title): ?>
-                <?php if ((waklert_has_content(sprintf('%02d', $c_idx + 1))) || (waklert_has_content(esc_html($cat_title))) || (waklert_has_content(count($items)) || waklert_has_content(esc_html(count($items) === 1 ? $question_label : $questions_label)))): ?><div class="flex items-center justify-between gap-3 mb-5 pb-3 border-b-2 border-dashed border-sky-200/80">
+                <?php if ((waklert_has_content(sprintf('%02d', $c_idx + 1))) || (waklert_has_content(esc_html($cat_title))) || (waklert_has_content(count($items)) || waklert_has_content(esc_html(count($items) === 1 ? $question_label : $questions_label)))): ?><div class="flex items-center justify-between gap-3 mb-5 pb-3 border-b-2 border-solid border-sky-200/80">
                     <?php if ((waklert_has_content(sprintf('%02d', $c_idx + 1))) || (waklert_has_content(esc_html($cat_title)))): ?><div class="flex items-center gap-2.5">
                         <?php if (waklert_has_content(sprintf('%02d', $c_idx + 1))): ?><span class="flex h-7 w-7 items-center justify-center rounded-lg bg-sky-100 font-mono text-xs font-black text-[#0c4161]">
                             <?= sprintf('%02d', $c_idx + 1) ?>
@@ -111,10 +111,8 @@ $whatsapp_url = function_exists('waklert_format_whatsapp_url') ? waklert_format_
                         $q = $item['question'] ?? '';
                         if (!waklert_has_content($q)) { continue; }
                         $a = $item['answer'] ?? '';
-                        // First item in first category starts open for quick preview
-                        $is_open = ($c_idx === 0 && $i_idx === 0) ? 'open' : '';
                     ?>
-                    <details <?= $is_open ?> class="group rounded-2xl border-2 border-dashed border-sky-200/80 bg-white overflow-hidden shadow-xs hover:border-sky-300 transition-all duration-200 open:border-sky-300 open:shadow-sm">
+                    <details open class="group rounded-2xl border-2 border-solid border-sky-200/80 bg-white overflow-hidden shadow-xs hover:border-sky-300 transition-all duration-200 open:border-sky-300 open:shadow-sm">
                         <summary class="flex items-center justify-between gap-4 p-5 cursor-pointer list-none select-text bg-white transition-colors hover:bg-sky-50/40 group-open:bg-sky-50/50">
                             <?php if ((waklert_has_content(esc_html($q)))): ?><div class="flex items-center gap-3.5 text-left">
                                 <!-- Distinct Question Icon -->
@@ -131,7 +129,7 @@ $whatsapp_url = function_exists('waklert_format_whatsapp_url') ? waklert_format_
                             </div>
                         </summary>
                         <!-- Answer Block with Dashed Divider -->
-                        <?php if (waklert_has_content(wp_kses_post(wpautop($a)))): ?><div class="border-t-2 border-dashed border-sky-200/70 bg-gradient-to-b from-sky-50/30 via-white to-white px-6 pb-6 pt-4 text-sm sm:text-[15px] leading-relaxed text-slate-600 prose max-w-none [&_a]:text-[#0c4161] [&_a]:font-bold hover:[&_a]:underline">
+                        <?php if (waklert_has_content(wp_kses_post(wpautop($a)))): ?><div class="border-t-2 border-solid border-sky-200/70 bg-gradient-to-b from-sky-50/30 via-white to-white px-6 pb-6 pt-4 text-sm sm:text-[15px] leading-relaxed text-slate-600 prose max-w-none [&_a]:text-[#0c4161] [&_a]:font-bold hover:[&_a]:underline">
                             <?= wp_kses_post(wpautop($a)) ?>
                         </div><?php endif; ?>
                     </details>
@@ -143,7 +141,7 @@ $whatsapp_url = function_exists('waklert_format_whatsapp_url') ? waklert_format_
         <?php endif; ?>
 
         <!-- 2-Tone Support CTA Card -->
-        <div class="rounded-3xl border-2 border-dashed border-sky-300/80 bg-gradient-to-br from-[#f0f6fa] via-white to-sky-50/50 p-8 sm:p-10 md:p-12 shadow-xs text-center">
+        <div class="rounded-3xl border-2 border-solid border-sky-300/80 bg-gradient-to-br from-[#f0f6fa] via-white to-sky-50/50 p-8 sm:p-10 md:p-12 shadow-xs text-center">
             <?php if (waklert_has_content(esc_html($cta_eyebrow))): ?><span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 border border-sky-300/80 px-3.5 py-1 text-xs font-black uppercase tracking-[0.16em] text-[#0c4161] shadow-2xs">
                 <span class="h-1.5 w-1.5 rounded-full bg-amber-500 animate-pulse" aria-hidden="true"></span>
                 <?= esc_html($cta_eyebrow) ?>

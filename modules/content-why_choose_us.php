@@ -18,7 +18,7 @@ $is_about_page = is_page('about-us');
 
 $section_classes = $is_about_page 
     ? 'relative isolate overflow-hidden section-padding bg-primary-dark text-white' 
-    : 'section-padding bg-gradient-to-b from-[#f8fafc] via-[#eff6fb] to-[#f8fafc] bg-pattern-dots text-foreground border-y-2 border-dashed border-sky-200/80 relative isolate overflow-hidden';
+    : 'section-padding bg-gradient-to-b from-[#f8fafc] via-[#eff6fb] to-[#f8fafc] bg-pattern-dots text-foreground border-y-2 border-solid border-sky-200/80 relative isolate overflow-hidden';
 
 $tag_classes = $is_about_page
     ? 'inline-flex items-center gap-2 bg-white/10 text-amber-300 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-3 backdrop-blur-sm border border-white/20'
@@ -112,7 +112,7 @@ if (empty($items)) {
                     </div><?php endif; ?>
 
                     <!-- Bottom Half: Solid theme colored block with description -->
-                    <?php if (waklert_has_content($card['desc'])): ?><?php if ((waklert_has_content(esc_html($card['desc'])))): ?><div class="bg-[#0c4161] group-hover:bg-[#082c42] text-white p-5 md:p-6 text-center text-xs md:text-[13px] leading-relaxed font-normal text-white/95 flex-1 flex items-center justify-center transition-colors duration-300 border-t-2 border-dashed border-white/20">
+                    <?php if (waklert_has_content($card['desc'])): ?><?php if ((waklert_has_content(esc_html($card['desc'])))): ?><div class="bg-[#0c4161] group-hover:bg-[#082c42] text-white p-5 md:p-6 text-center text-xs md:text-[13px] leading-relaxed font-normal text-white/95 flex-1 flex items-center justify-center transition-colors duration-300 border-t-2 border-solid border-white/20">
                         <?php if (waklert_has_content(esc_html($card['desc']))): ?><p class="leading-relaxed">
                             <?= esc_html($card['desc']) ?>
                         </p><?php endif; ?>

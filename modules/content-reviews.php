@@ -69,7 +69,7 @@ $average_stars = round($average_rating);
             </div><?php endif; ?>
 
             <!-- 2-Tone Dashed Rating Summary Card -->
-            <div class="rounded-3xl border-2 border-dashed border-sky-300/80 bg-white p-6 md:p-8 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6 hover:shadow-md transition-shadow">
+            <div class="rounded-3xl border-2 border-solid border-sky-300/80 bg-white p-6 md:p-8 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6 hover:shadow-md transition-shadow">
                 <div class="flex items-center gap-4">
                     <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-400 to-amber-500 text-white shadow-md">
                         <!-- Multi-color Shield SVG -->
@@ -117,7 +117,7 @@ $average_stars = round($average_rating);
                     
                     $initial = !empty($name) ? mb_substr($name, 0, 1) : 'M';
                 ?>
-                <div class="group flex flex-col rounded-3xl border-2 border-dashed border-sky-300/80 hover:border-[#0c4161] bg-white shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 overflow-hidden">
+                <div class="group flex flex-col rounded-3xl border-2 border-solid border-sky-300/80 hover:border-[#0c4161] bg-white shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 overflow-hidden">
                     <!-- Top Card Body (Pure White) -->
                     <div class="p-6 md:p-7 flex-1 flex flex-col">
                         <div class="flex items-center justify-between gap-3 mb-4">
@@ -166,7 +166,7 @@ $average_stars = round($average_rating);
                 <?php endwhile;
                 wp_reset_postdata();
             else: ?>
-                <?php if ((waklert_has_content(esc_html($empty_text)))): ?><div class="col-span-full py-16 text-center text-slate-500 bg-white rounded-3xl border-2 border-dashed border-sky-200 p-8">
+                <?php if ((waklert_has_content(esc_html($empty_text)))): ?><div class="col-span-full py-16 text-center text-slate-500 bg-white rounded-3xl border-2 border-solid border-sky-200 p-8">
                     <?php if (waklert_has_content(esc_html($empty_text))): ?><p class="text-lg font-bold text-[#0c4161]"><?= esc_html($empty_text) ?></p><?php endif; ?>
                 </div><?php endif; ?>
             <?php endif; ?>

@@ -82,7 +82,7 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
     ?>
     <?php if (!is_front_page() && !empty($pre_footer_enabled) && !empty($pre_footer_badges) && is_array($pre_footer_badges)): ?>
     <!-- 2-Tone Dashed Inner Page Badge Strip (Editable in WP Admin -> Theme Settings -> Footer) -->
-    <div class="relative isolate overflow-hidden bg-gradient-to-r from-[#082a3f] via-[#0c4161] to-[#125883] bg-pattern-dots-dark py-10 text-white border-b-2 border-dashed border-sky-400/30">
+    <div class="relative isolate overflow-hidden bg-gradient-to-r from-[#082a3f] via-[#0c4161] to-[#125883] bg-pattern-dots-dark py-10 text-white border-b-2 border-solid border-sky-400/30">
         <?php waklert_output_pattern_rings(); ?>
         <div class="container-site relative z-10 grid grid-cols-2 gap-4 md:grid-cols-4 sm:gap-6">
             <?php foreach ($pre_footer_badges as $idx => $badge):
@@ -94,7 +94,7 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
                 $badge_icon_type = $badge['icon'] ?? 'truck';
                 $badge_custom_icon = $badge['custom_icon'] ?? null;
             ?>
-            <div class="group rounded-2xl border-2 border-dashed border-sky-300/40 bg-white/10 p-4 sm:p-5 backdrop-blur-sm flex flex-col items-center text-center gap-3 hover:bg-white/15 hover:-translate-y-1 transition-all">
+            <div class="group rounded-2xl border-2 border-solid border-sky-300/40 bg-white/10 p-4 sm:p-5 backdrop-blur-sm flex flex-col items-center text-center gap-3 hover:bg-white/15 hover:-translate-y-1 transition-all">
                 <div class="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-white p-2 sm:p-2.5 shadow-lg shadow-black/25 border-2 border-white/90 group-hover:scale-105 transition-transform duration-300 shrink-0">
                     <?php if ($badge_icon_type === 'custom' && !empty($badge_custom_icon)): 
                         $c_url = is_array($badge_custom_icon) ? ($badge_custom_icon['url'] ?? '') : (is_numeric($badge_custom_icon) ? wp_get_attachment_image_url($badge_custom_icon, 'full') : $badge_custom_icon);
@@ -222,7 +222,7 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
                     <?= esc_html($payments_heading) ?>
                 </h3>
                 <?php endif; ?>
-                <div class="w-fit max-w-full rounded-2xl border-2 border-dashed border-white/15 bg-white/5 p-4 flex items-center gap-5 flex-wrap">
+                <div class="w-fit max-w-full rounded-2xl border-2 border-solid border-white/15 bg-white/5 p-4 flex items-center gap-5 flex-wrap">
                     <?php foreach ($payment_images as $pay) : 
                         $img_src = '';
                         if (!empty($pay['image'])) {
@@ -248,7 +248,7 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
                     <?= esc_html($shipping_heading) ?>
                 </h3>
                 <?php endif; ?>
-                <div class="w-fit max-w-full rounded-2xl border-2 border-dashed border-white/15 bg-white/5 p-4 flex items-center gap-5 flex-wrap">
+                <div class="w-fit max-w-full rounded-2xl border-2 border-solid border-white/15 bg-white/5 p-4 flex items-center gap-5 flex-wrap">
                     <?php foreach ($shipping_images as $ship) : 
                         $img_src = '';
                         if (!empty($ship['image'])) {

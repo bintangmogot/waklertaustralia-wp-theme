@@ -127,12 +127,12 @@
 </div>
 
 <!-- Header -->
-<header class="sticky top-0 z-50 w-full border-b-2 border-dashed border-sky-200/80 bg-white/95 backdrop-blur-md shadow-sm transition-all">
+<header class="sticky top-0 z-50 w-full border-b-2 border-solid border-sky-200/80 bg-white/95 backdrop-blur-md shadow-sm transition-all">
     <div class="container-site relative flex h-[68px] sm:h-[72px] items-center justify-between gap-4">
 
         <!-- Mobile Menu Toggle -->
         <div class="flex items-center lg:hidden">
-            <button type="button" aria-label="<?= esc_attr(waklert_content('header_text_0b7eb152ba')) ?>" id="mobile-menu-open" class="rounded-xl p-2.5 -ml-1 text-[#0c4161] bg-sky-50 border-2 border-dashed border-sky-300/80 hover:bg-sky-100 hover:border-[#0c4161] transition-all">
+            <button type="button" aria-label="<?= esc_attr(waklert_content('header_text_0b7eb152ba')) ?>" id="mobile-menu-open" class="rounded-xl p-2.5 -ml-1 text-[#0c4161] bg-sky-50 border-2 border-solid border-sky-300/80 hover:bg-sky-100 hover:border-[#0c4161] transition-all">
                 <?= waklert_content_icon('header_icon_a31a0c4c5a') ?>
             </button>
         </div>
@@ -178,24 +178,24 @@
 <!-- Mobile Nav Drawer -->
 <div id="mobile-menu-drawer" class="fixed inset-y-0 left-0 z-[99999] w-[88%] max-w-sm h-screen h-[100dvh] transform overflow-y-auto bg-gradient-to-b from-[#f8fafc] via-[#f0f6fa] to-[#eef5fa] bg-pattern-dots transition-transform duration-300 ease-in-out lg:hidden -translate-x-full shadow-2xl flex flex-col justify-between">
     <div class="shrink-0">
-        <div class="flex h-[68px] items-center justify-between border-b-2 border-dashed border-sky-200/80 bg-white/90 px-6 backdrop-blur">
+        <div class="flex h-[68px] items-center justify-between border-b-2 border-solid border-sky-200/80 bg-white/90 px-6 backdrop-blur">
             <?php waklert_the_logo('h-11 w-auto max-w-[228px] object-contain', 'mobile'); ?>
-            <button type="button" aria-label="<?= esc_attr(waklert_content('header_text_ba014a1153')) ?>" id="mobile-menu-close" class="rounded-xl p-2 text-[#0c4161] bg-sky-50 border border-dashed border-sky-300 hover:bg-sky-100 transition-colors">
+            <button type="button" aria-label="<?= esc_attr(waklert_content('header_text_ba014a1153')) ?>" id="mobile-menu-close" class="rounded-xl p-2 text-[#0c4161] bg-sky-50 border border-solid border-sky-300 hover:bg-sky-100 transition-colors">
                 <?= waklert_content_icon('header_icon_9ffbbe9b97') ?>
             </button>
         </div>
 
-        <nav class="flex flex-col border-b-2 border-dashed border-sky-200/80 py-3 px-4 mobile-nav">
+        <nav class="flex flex-col border-b-2 border-solid border-sky-200/80 py-3 px-4 mobile-nav">
             <?php
             wp_nav_menu([
                 'theme_location' => 'mobile',
                 'container'      => false,
-                'menu_class'     => 'flex flex-col divide-y divide-dashed divide-sky-200/80',
+                'menu_class'     => 'flex flex-col divide-y divide-solid divide-sky-200/80',
                 'fallback_cb'    => function() {
                     wp_nav_menu([
                         'theme_location' => 'primary',
                         'container'      => false,
-                        'menu_class'     => 'flex flex-col divide-y divide-dashed divide-sky-200/80',
+                        'menu_class'     => 'flex flex-col divide-y divide-solid divide-sky-200/80',
                         'fallback_cb'    => false,
                         'walker'         => class_exists('Waklert_Mobile_Nav_Walker') ? new Waklert_Mobile_Nav_Walker() : false,
                     ]);
@@ -228,7 +228,7 @@
     ?>
     <?php if ($show_help_heading || waklert_has_content($help_text) || $show_help_button): ?>
     <!-- 2-Tone Dashed Help Card in Mobile Drawer -->
-    <div data-testid="mobile-help-card" class="mx-6 mb-8 mt-4 shrink-0 rounded-3xl border-2 border-dashed border-sky-300/80 bg-white overflow-hidden shadow-sm transition-all hover:shadow-md">
+    <div data-testid="mobile-help-card" class="mx-6 mb-8 mt-4 shrink-0 rounded-3xl border-2 border-solid border-sky-300/80 bg-white overflow-hidden shadow-sm transition-all hover:shadow-md">
         <?php if ($show_help_heading || waklert_has_content($help_text)): ?>
         <div class="p-5">
             <?php if ($show_help_heading): ?>

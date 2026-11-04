@@ -29,7 +29,7 @@ if (have_rows('modules', $shop_page_id)) {
     // Fallback if no ACF modules are configured for the Shop page
 ?>
 
-<section class="relative isolate overflow-hidden bg-gradient-to-br from-[#082a3f] via-[#0c4161] to-[#125883] bg-pattern-dots-dark text-white py-8 md:py-10 text-center border-b-2 border-dashed border-sky-400/30">
+<section class="relative isolate overflow-hidden bg-gradient-to-br from-[#082a3f] via-[#0c4161] to-[#125883] bg-pattern-dots-dark text-white py-8 md:py-10 text-center border-b-2 border-solid border-sky-400/30">
     <div class="container-site max-w-4xl relative z-10 px-4">
         <span class="inline-flex items-center gap-2 rounded-full border border-amber-400/40 bg-amber-400/15 px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-amber-300 shadow-sm mb-4">
             <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
@@ -69,7 +69,7 @@ if (have_rows('modules', $shop_page_id)) {
 <?php
 // Guide Section from React
 ?>
-<section class="relative overflow-hidden bg-[#eef5fa] bg-pattern-dots py-14 md:py-20 border-t-2 border-dashed border-sky-200/80">
+<section class="relative overflow-hidden bg-[#eef5fa] bg-pattern-dots py-14 md:py-20 border-t-2 border-solid border-sky-200/80">
     <div class="container-site max-w-4xl relative z-10 px-4">
         <div class="text-center mb-10">
             <span class="inline-flex items-center gap-2 rounded-full bg-sky-100 border border-sky-300/80 px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-[#0c4161] shadow-sm mb-3">
@@ -82,35 +82,35 @@ if (have_rows('modules', $shop_page_id)) {
         </div>
         
         <div class="space-y-6">
-            <div class="group rounded-3xl border-2 border-dashed border-sky-300/80 hover:border-[#0c4161] bg-white p-6 sm:p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all">
+            <div class="group rounded-3xl border-2 border-solid border-sky-300/80 hover:border-[#0c4161] bg-white p-6 sm:p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all">
                 <div class="flex items-center gap-3 mb-2">
                     <span class="flex h-8 w-8 items-center justify-center rounded-xl bg-amber-500 text-white font-black text-sm">1</span>
                     <h3 class="font-heading text-xl font-bold text-slate-900 group-hover:text-[#0c4161] transition-colors"><?= esc_html(waklert_content('archive_product_text_35b28c755f')) ?></h3>
                 </div>
                 <p class="mt-2 text-sm leading-relaxed text-slate-600"><?= esc_html(waklert_content('archive_product_text_8ff824cb04')) ?></p>
-                <div class="mt-4 pt-3 border-t border-dashed border-sky-100 flex items-center justify-between">
+                <div class="mt-4 pt-3 border-t border-solid border-sky-100 flex items-center justify-between">
                     <p class="text-xs font-bold text-[#0c4161] bg-sky-50 px-3 py-1 rounded-full"><?= esc_html(waklert_content('archive_product_text_cc1d0dc4be')) ?></p>
                 </div>
             </div>
             
-            <div class="group rounded-3xl border-2 border-dashed border-sky-300/80 hover:border-[#0c4161] bg-white p-6 sm:p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all">
+            <div class="group rounded-3xl border-2 border-solid border-sky-300/80 hover:border-[#0c4161] bg-white p-6 sm:p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all">
                 <div class="flex items-center gap-3 mb-2">
                     <span class="flex h-8 w-8 items-center justify-center rounded-xl bg-sky-600 text-white font-black text-sm">2</span>
                     <h3 class="font-heading text-xl font-bold text-slate-900 group-hover:text-[#0c4161] transition-colors"><?= esc_html(waklert_content('archive_product_text_c1ba514e6a')) ?></h3>
                 </div>
                 <p class="mt-2 text-sm leading-relaxed text-slate-600"><?= esc_html(waklert_content('archive_product_text_a3879d6c30')) ?></p>
-                <div class="mt-4 pt-3 border-t border-dashed border-sky-100 flex items-center justify-between">
+                <div class="mt-4 pt-3 border-t border-solid border-sky-100 flex items-center justify-between">
                     <p class="text-xs font-bold text-[#0c4161] bg-sky-50 px-3 py-1 rounded-full"><?= esc_html(waklert_content('archive_product_text_a886e8071e')) ?></p>
                 </div>
             </div>
 
-            <div class="group rounded-3xl border-2 border-dashed border-sky-300/80 hover:border-[#0c4161] bg-white p-6 sm:p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all">
+            <div class="group rounded-3xl border-2 border-solid border-sky-300/80 hover:border-[#0c4161] bg-white p-6 sm:p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all">
                 <div class="flex items-center gap-3 mb-2">
                     <span class="flex h-8 w-8 items-center justify-center rounded-xl bg-[#0c4161] text-white font-black text-sm">3</span>
                     <h3 class="font-heading text-xl font-bold text-slate-900 group-hover:text-[#0c4161] transition-colors"><?= esc_html(waklert_content('archive_product_text_ab6c6ff57a')) ?></h3>
                 </div>
                 <p class="mt-2 text-sm leading-relaxed text-slate-600"><?= esc_html(waklert_content('archive_product_text_db0ef3129c')) ?></p>
-                <div class="mt-4 pt-3 border-t border-dashed border-sky-100 flex items-center justify-between">
+                <div class="mt-4 pt-3 border-t border-solid border-sky-100 flex items-center justify-between">
                     <p class="text-xs font-bold text-[#0c4161] bg-sky-50 px-3 py-1 rounded-full"><?= esc_html(waklert_content('archive_product_text_9edd96017a')) ?></p>
                 </div>
             </div>

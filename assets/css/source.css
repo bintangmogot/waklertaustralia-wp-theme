@@ -671,7 +671,7 @@ details .prose > :last-child {
   -webkit-overflow-scrolling: touch;
   margin-top: 2rem;
   margin-bottom: 2rem;
-  border: 2px dashed rgba(125, 211, 252, 0.85); /* border-sky-300/80 */
+  border: 2px solid rgba(125, 211, 252, 0.85); /* border-sky-300/80 */
   border-radius: 1.5rem; /* rounded-3xl / 24px */
   background-color: #ffffff;
   box-shadow: 0 4px 20px -4px rgba(12, 65, 97, 0.08), 0 2px 6px -1px rgba(12, 65, 97, 0.04);
@@ -704,7 +704,7 @@ details .prose > :last-child {
   font-size: 0.9375rem;
   line-height: 1.55;
   background-color: #ffffff;
-  border: 2px dashed rgba(125, 211, 252, 0.85);
+  border: 2px solid rgba(125, 211, 252, 0.85);
   border-radius: 1.5rem;
   overflow: hidden;
   box-shadow: 0 4px 20px -4px rgba(12, 65, 97, 0.08);
@@ -738,7 +738,7 @@ details .prose > :last-child {
   vertical-align: middle;
   background: transparent;
   border-bottom: 2px solid rgba(12, 65, 97, 0.3) !important;
-  border-right: 1px dashed rgba(255, 255, 255, 0.18) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.18) !important;
   border-left: none !important;
   border-top: none !important;
   text-align: left;
@@ -749,7 +749,7 @@ details .prose > :last-child {
 .prose th:last-child {
   border-right: none !important;
   background: linear-gradient(135deg, #09344e 0%, #062235 100%) !important;
-  border-left: 1px dashed rgba(255, 255, 255, 0.2) !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.2) !important;
 }
 
 /* Ensure strong, b, span, p inside headers are bright white */
@@ -773,7 +773,7 @@ details .prose > :last-child {
   padding: 1.125rem 1.35rem;
   vertical-align: middle;
   border-bottom: 2px solid rgba(12, 65, 97, 0.3) !important;
-  border-right: 1px dashed rgba(255, 255, 255, 0.18) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.18) !important;
   border-left: none !important;
   border-top: none !important;
 }
@@ -787,7 +787,7 @@ details .prose > :last-child {
 .prose table:not(:has(thead)) tbody tr:first-child th:last-child {
   border-right: none !important;
   background: linear-gradient(135deg, #09344e 0%, #062235 100%) !important;
-  border-left: 1px dashed rgba(255, 255, 255, 0.2) !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.2) !important;
 }
 
 /* Table Body Rows */
@@ -809,7 +809,7 @@ details .prose > :last-child {
 /* Table Body Cells */
 .prose tbody td {
   padding: 1rem 1.35rem;
-  border-bottom: 1px dashed rgba(186, 230, 253, 0.75) !important;
+  border-bottom: 1px solid rgba(186, 230, 253, 0.75) !important;
   border-right: none !important;
   border-left: none !important;
   border-top: none !important;
@@ -827,7 +827,7 @@ details .prose > :last-child {
   font-weight: 800;
   color: #0c4161 !important;
   background-color: rgba(240, 246, 250, 0.5);
-  border-right: 1px dashed rgba(186, 230, 253, 0.65) !important;
+  border-right: 1px solid rgba(186, 230, 253, 0.65) !important;
 }
 
 .prose tbody td:first-child *,
@@ -849,7 +849,7 @@ details .prose > :last-child {
 /* Last Column / Fallback Highlight (when no explicit highlight class is set) */
 .prose table:not(:has(.waklert-highlight-cell)) tbody tr td:last-child {
   background-color: rgba(224, 242, 254, 0.35);
-  border-left: 1px dashed rgba(125, 211, 252, 0.75) !important;
+  border-left: 1px solid rgba(125, 211, 252, 0.75) !important;
   color: #0c4161 !important;
   font-weight: 700;
 }
@@ -880,7 +880,7 @@ details .prose > :last-child {
   background: linear-gradient(135deg, #09344e 0%, #062235 100%) !important;
   color: #ffffff !important;
   font-weight: 800;
-  border-left: 2px dashed rgba(251, 191, 36, 0.65) !important;
+  border-left: 2px solid rgba(251, 191, 36, 0.65) !important;
 }
 
 .prose td.waklert-highlight-cell,
@@ -888,7 +888,7 @@ details .prose > :last-child {
   background-color: rgba(224, 242, 254, 0.4) !important;
   font-weight: 700;
   color: #0c4161 !important;
-  border-left: 1px dashed rgba(125, 211, 252, 0.8) !important;
+  border-left: 1px solid rgba(125, 211, 252, 0.8) !important;
 }
 
 .prose td.waklert-highlight-cell *,
@@ -1289,7 +1289,7 @@ input[type="radio"], input[type="checkbox"] {
 
 /* File Upload styling */
 .woocommerce form .form-row input[type="file"] {
-  @apply !block !w-full !rounded-lg !border-2 !border-dashed !border-border !bg-stone-50 !p-4 !text-sm !text-muted-foreground !cursor-pointer hover:!border-primary hover:!bg-primary-softer !transition-colors;
+  @apply !block !w-full !rounded-lg !border-2 !border-solid !border-border !bg-stone-50 !p-4 !text-sm !text-muted-foreground !cursor-pointer hover:!border-primary hover:!bg-primary-softer !transition-colors;
 }
 
 /* Checkboxes (Terms and Certify) */
@@ -2113,7 +2113,7 @@ a[aria-label="Waklert Australia"] > span:first-child::after {
   border-radius: var(--radius-xl, 1rem);
   padding: 0.5rem;
   box-shadow: 0 16px 36px -6px rgba(9, 21, 43, 0.16), 0 4px 12px -2px rgba(9, 21, 43, 0.08);
-  border: 2px dashed rgba(186, 230, 253, 0.8);
+  border: 2px solid rgba(186, 230, 253, 0.8);
   opacity: 0;
   visibility: hidden;
   transform: translateY(8px);
@@ -2275,15 +2275,13 @@ footer .site-logo-img,
 
 .bg-pattern-dots {
   background-color: #f0f6fa;
-  background-image: radial-gradient(rgba(12, 65, 97, 0.09) 1.2px, transparent 1.2px), 
-                    linear-gradient(180deg, #f0f6fa 0%, #e9f2f8 50%, #f8fafc 100%);
+  background-image: none;
   background-size: 22px 22px, 100% 100%;
 }
 
 .bg-pattern-dots-dark {
   background-color: #0c4161;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.14) 1.2px, transparent 1.2px), 
-                    linear-gradient(135deg, #082a3f 0%, #0c4161 50%, #125883 100%);
+  background-image: none;
   background-size: 24px 24px, 100% 100%;
 }
 
@@ -2300,8 +2298,7 @@ footer .site-logo-img,
 }
 
 .bg-pattern-grid {
-  background-image: linear-gradient(to right, rgba(12, 65, 97, 0.04) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(12, 65, 97, 0.04) 1px, transparent 1px);
+  background-image: none;
   background-size: 24px 24px;
 }
 

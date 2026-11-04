@@ -53,7 +53,7 @@ function modmy_render_blog_loop() {
                             $excerpt = wp_trim_words($plain_text, 22, '...');
                         }
                     ?>
-                        <article id="post-<?php the_ID(); ?>" <?php post_class('group flex flex-col h-full bg-white border-2 border-dashed border-sky-300/80 hover:border-[#0c4161] rounded-2xl overflow-hidden shadow-xs hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 ease-out'); ?>>
+                        <article id="post-<?php the_ID(); ?>" <?php post_class('group flex flex-col h-full bg-white border-2 border-solid border-sky-300/80 hover:border-[#0c4161] rounded-2xl overflow-hidden shadow-xs hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 ease-out'); ?>>
                             <!-- Thumbnail / Visual Media Area -->
                             <a href="<?php echo esc_url($permalink); ?>" class="block relative aspect-[16/10] overflow-hidden bg-slate-900 focus:outline-hidden" tabindex="-1" aria-hidden="true">
                                 <?php if (has_post_thumbnail($post_id)) : ?>
@@ -113,7 +113,7 @@ function modmy_render_blog_loop() {
                             </div>
 
                             <!-- Two-Tone Footer Block -->
-                            <a href="<?php echo esc_url($permalink); ?>" class="bg-[#f0f6fa] group-hover:bg-[#0c4161] p-3 px-4 sm:p-4 sm:px-6 border-t-2 border-dashed border-sky-200/80 flex items-center justify-between transition-colors duration-300 text-xs sm:text-sm font-black text-[#0c4161] group-hover:text-white mt-auto">
+                            <a href="<?php echo esc_url($permalink); ?>" class="bg-[#f0f6fa] group-hover:bg-[#0c4161] p-3 px-4 sm:p-4 sm:px-6 border-t-2 border-solid border-sky-200/80 flex items-center justify-between transition-colors duration-300 text-xs sm:text-sm font-black text-[#0c4161] group-hover:text-white mt-auto">
                                 <span><?= esc_html(waklert_content('index_text_83cfdb2776')) ?></span>
                                 <?= waklert_content_icon('index_icon_76f8373bb5') ?>
                             </a>
@@ -141,11 +141,11 @@ function modmy_render_blog_loop() {
                             } else {
                                 $styled_link = preg_replace(
                                     '/class="([^"]*)"/',
-                                    'class="$1 flex h-10 w-10 items-center justify-center rounded-xl border-2 border-dashed border-sky-200/80 bg-white text-sm font-bold text-[#0c4161] transition-all hover:bg-sky-50 hover:border-sky-300 hover:shadow-xs"',
+                                    'class="$1 flex h-10 w-10 items-center justify-center rounded-xl border-2 border-solid border-sky-200/80 bg-white text-sm font-bold text-[#0c4161] transition-all hover:bg-sky-50 hover:border-sky-300 hover:shadow-xs"',
                                     $page
                                 );
                                 if (strpos($styled_link, 'class=') === false) {
-                                    $styled_link = str_replace('<a ', '<a class="flex h-10 w-10 items-center justify-center rounded-xl border-2 border-dashed border-sky-200/80 bg-white text-sm font-bold text-[#0c4161] transition-all hover:bg-sky-50 hover:border-sky-300 hover:shadow-xs" ', $styled_link);
+                                    $styled_link = str_replace('<a ', '<a class="flex h-10 w-10 items-center justify-center rounded-xl border-2 border-solid border-sky-200/80 bg-white text-sm font-bold text-[#0c4161] transition-all hover:bg-sky-50 hover:border-sky-300 hover:shadow-xs" ', $styled_link);
                                 }
                                 echo '<li>' . $styled_link . '</li>';
                             }
@@ -156,7 +156,7 @@ function modmy_render_blog_loop() {
                 </div>
             <?php else : ?>
                 <div class="col-span-full py-12 text-center">
-                    <div class="mx-auto max-w-xl rounded-3xl border-2 border-dashed border-sky-200/80 bg-white px-6 py-12 shadow-xs md:px-10">
+                    <div class="mx-auto max-w-xl rounded-3xl border-2 border-solid border-sky-200/80 bg-white px-6 py-12 shadow-xs md:px-10">
                         <span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 border border-sky-300/80 px-3.5 py-1 text-xs font-black uppercase tracking-[0.16em] text-[#0c4161]">
                             <?php echo esc_html(is_search() ? waklert_content('pg_index_search') : waklert_content('pg_archive_blog_label')); ?>
                         </span>
@@ -217,7 +217,7 @@ if (is_home() && $has_modules) {
         $subtitle = '';
     }
     ?>
-    <section class="relative overflow-hidden border-b-2 border-dashed border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-10 md:py-14" data-testid="blog-archive-hero">
+    <section class="relative overflow-hidden border-b-2 border-solid border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-10 md:py-14" data-testid="blog-archive-hero">
         <div class="container-site mx-auto max-w-4xl px-4 relative z-10">
             <span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 border border-sky-300/80 px-3.5 py-1 text-xs font-black uppercase tracking-[0.16em] text-[#0c4161] shadow-xs mb-3">
                 <span class="h-1.5 w-1.5 rounded-full bg-amber-500 animate-pulse" aria-hidden="true"></span>

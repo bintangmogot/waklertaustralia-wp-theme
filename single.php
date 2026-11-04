@@ -19,11 +19,11 @@ get_header();
         // Fallback to standard post layout
         while (have_posts()) : the_post(); ?>
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                <header class="relative overflow-hidden border-b-2 border-dashed border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-5 sm:py-6 md:py-7" data-testid="single-post-hero">
+                <header class="relative overflow-hidden border-b-2 border-solid border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-5 sm:py-6 md:py-7" data-testid="single-post-hero">
                     <div class="container-site max-w-4xl mx-auto px-4 relative z-10">
                         <!-- Centered Breadcrumb Pill -->
                         <div class="mb-2.5">
-                            <nav aria-label="<?= esc_attr(waklert_content('single_text_df1e330e39')) ?>" class="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border border-dashed border-sky-300/80 bg-white/90 px-3.5 py-1 text-xs font-medium text-slate-500 shadow-xs backdrop-blur">
+                            <nav aria-label="<?= esc_attr(waklert_content('single_text_df1e330e39')) ?>" class="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border border-solid border-sky-300/80 bg-white/90 px-3.5 py-1 text-xs font-medium text-slate-500 shadow-xs backdrop-blur">
                                 <a href="<?php echo esc_url(home_url('/')); ?>" class="font-bold text-slate-600 transition-colors hover:text-[#0c4161]"><?= esc_html(waklert_option_text('breadcrumb_home_label')) ?></a>
                                 <span class="text-sky-300 font-normal">/</span>
                                 <a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>" class="font-bold text-slate-600 transition-colors hover:text-[#0c4161]"><?= esc_html(waklert_content('single_text_d8fa4a38d5')) ?></a>
@@ -71,7 +71,7 @@ get_header();
                 <div class="bg-background min-h-[50vh] py-6 md:py-10">
                     <div class="container-site max-w-3xl">
                         <?php if (has_post_thumbnail(get_the_ID())) : ?>
-                            <figure class="mb-6 sm:mb-8 overflow-hidden rounded-2xl border-2 border-dashed border-sky-200/80 bg-white p-1.5 shadow-sm">
+                            <figure class="mb-6 sm:mb-8 overflow-hidden rounded-2xl border-2 border-solid border-sky-200/80 bg-white p-1.5 shadow-sm">
                                 <?php echo get_the_post_thumbnail(get_the_ID(), 'large', ['class' => 'h-auto w-full object-cover rounded-xl shadow-xs', 'loading' => 'eager']); ?>
                             </figure>
                         <?php endif; ?>
@@ -79,7 +79,7 @@ get_header();
                         <?php 
                         $intro = get_field('intro') ?: get_the_excerpt(get_the_ID());
                         if (!empty($intro)) : ?>
-                            <div class="mb-6 sm:mb-8 rounded-2xl sm:rounded-3xl border-2 border-dashed border-sky-200/80 bg-white p-6 sm:p-8 shadow-xs prose max-w-none text-slate-600 text-sm sm:text-base leading-relaxed">
+                            <div class="mb-6 sm:mb-8 rounded-2xl sm:rounded-3xl border-2 border-solid border-sky-200/80 bg-white p-6 sm:p-8 shadow-xs prose max-w-none text-slate-600 text-sm sm:text-base leading-relaxed">
                                 <?php echo wp_kses_post(wpautop($intro)); ?>
                             </div>
                         <?php endif; ?>

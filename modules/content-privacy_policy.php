@@ -24,11 +24,11 @@ foreach ($sections as $index => $section) {
 
 <div class="privacy-policy-wrapper">
     <!-- 2-Tone Patterned Header -->
-    <header class="relative overflow-hidden border-b-2 border-dashed border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-6 sm:py-7 md:py-9">
+    <header class="relative overflow-hidden border-b-2 border-solid border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-6 sm:py-7 md:py-9">
         <div class="container-site max-w-4xl mx-auto px-4 relative z-10">
             <!-- Breadcrumbs -->
             <div class="mb-3">
-                <nav aria-label="<?= esc_attr(waklert_content('content_privacy_policy_text_adb2bf7e36')) ?>" class="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border border-dashed border-sky-300/80 bg-white/90 px-3.5 py-1 text-xs font-medium text-slate-500 shadow-xs backdrop-blur">
+                <nav aria-label="<?= esc_attr(waklert_content('content_privacy_policy_text_adb2bf7e36')) ?>" class="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border border-solid border-sky-300/80 bg-white/90 px-3.5 py-1 text-xs font-medium text-slate-500 shadow-xs backdrop-blur">
                     <?php if ((waklert_has_content(esc_html(waklert_option_text('breadcrumb_home_label')))) && waklert_has_content(esc_url(home_url('/')))): ?><a href="<?php echo esc_url(home_url('/')); ?>" class="font-bold text-slate-600 transition-colors hover:text-[#0c4161]"><?= esc_html(waklert_option_text('breadcrumb_home_label')) ?></a><?php endif; ?>
                     <span class="text-sky-300 font-normal">/</span>
                     <?php if (waklert_has_content(esc_html($title))): ?><span aria-current="page" class="max-w-[12rem] sm:max-w-xs md:max-w-md truncate font-extrabold text-[#0c4161]"><?php echo esc_html($title); ?></span><?php endif; ?>
@@ -67,7 +67,7 @@ foreach ($sections as $index => $section) {
             <!-- Sidebar Table of Contents -->
             <aside class="hidden lg:block">
                 <div class="sticky top-28 space-y-4">
-                    <div class="rounded-2xl border-2 border-dashed border-sky-200/80 bg-white p-4 shadow-xs">
+                    <div class="rounded-2xl border-2 border-solid border-sky-200/80 bg-white p-4 shadow-xs">
                         <?php if ((waklert_has_content(esc_html(waklert_content('content_privacy_policy_text_342de8f274'))))): ?><div class="flex items-center gap-2 mb-3 px-2">
                             <span class="h-2 w-2 rounded-full bg-[#0c4161]"></span>
                             <?php if (waklert_has_content(esc_html(waklert_content('content_privacy_policy_text_342de8f274')))): ?><p class="text-xs font-black uppercase tracking-widest text-[#0c4161]"><?= esc_html(waklert_content('content_privacy_policy_text_342de8f274')) ?></p><?php endif; ?>
@@ -93,7 +93,7 @@ foreach ($sections as $index => $section) {
                     </div>
 
                     <?php if ($contact_email) : ?>
-                        <div class="rounded-2xl border-2 border-dashed border-sky-200/80 bg-gradient-to-br from-sky-50/50 to-white p-4 shadow-xs text-center">
+                        <div class="rounded-2xl border-2 border-solid border-sky-200/80 bg-gradient-to-br from-sky-50/50 to-white p-4 shadow-xs text-center">
                             <?php if (waklert_has_content(esc_html(waklert_content('content_privacy_policy_text_139519f2d2')))): ?><p class="text-xs font-black uppercase tracking-wider text-[#0c4161] mb-1"><?= esc_html(waklert_content('content_privacy_policy_text_139519f2d2')) ?></p><?php endif; ?>
                             <?php if (waklert_has_content(esc_html(waklert_content('content_privacy_policy_text_c7b1577db5')))): ?><p class="text-xs text-slate-500 mb-3"><?= esc_html(waklert_content('content_privacy_policy_text_c7b1577db5')) ?></p><?php endif; ?>
                             <?php if (waklert_has_content(esc_html(waklert_content('content_privacy_policy_text_df6423e843')))): ?><a href="mailto:<?php echo esc_attr($contact_email); ?>" class="inline-flex w-full items-center justify-center gap-1.5 rounded-full bg-[#0c4161] hover:bg-[#082c42] px-3.5 py-2 text-xs font-bold text-white transition-colors">
@@ -107,7 +107,7 @@ foreach ($sections as $index => $section) {
 
             <!-- Policy Sections (Single Unified Box) -->
             <div class="min-w-0 space-y-8">
-                <article class="rounded-2xl sm:rounded-3xl border-2 border-dashed border-sky-200/80 bg-white p-6 sm:p-10 shadow-xs divide-y divide-dashed divide-sky-200/80">
+                <article class="rounded-2xl sm:rounded-3xl border-2 border-solid border-sky-200/80 bg-white p-6 sm:p-10 shadow-xs divide-y divide-solid divide-sky-200/80">
                     <?php foreach ($sections as $index => $section) :
                         $section_title = $section['title'] ?? '';
                         $section_content = $section['content'] ?? '';
@@ -130,7 +130,7 @@ foreach ($sections as $index => $section) {
                 </article>
 
                 <?php if ($contact_email) : ?>
-                    <section aria-labelledby="privacy-contact-title" class="rounded-3xl border-2 border-dashed border-sky-300/80 bg-gradient-to-br from-[#f0f6fa] via-white to-sky-50/40 p-6 sm:p-8 md:p-10 shadow-xs">
+                    <section aria-labelledby="privacy-contact-title" class="rounded-3xl border-2 border-solid border-sky-300/80 bg-gradient-to-br from-[#f0f6fa] via-white to-sky-50/40 p-6 sm:p-8 md:p-10 shadow-xs">
                         <div class="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
                             <div class="max-w-xl">
                                 <?php if (waklert_has_content(esc_html(waklert_content('content_privacy_policy_text_0ce2cafd3c')))): ?><span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 border border-sky-300/80 px-3 py-0.5 text-[11px] font-black uppercase tracking-[0.16em] text-[#0c4161]">

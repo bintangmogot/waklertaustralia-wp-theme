@@ -25,11 +25,11 @@ foreach ($sections as $index => $section) {
 <div class="legal-policy-wrapper">
 <?php if (is_singular('post')) : ?>
     <!-- Blog Post Header -->
-    <header class="relative overflow-hidden border-b-2 border-dashed border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-6 sm:py-8 md:py-10" data-testid="single-post-hero">
+    <header class="relative overflow-hidden border-b-2 border-solid border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-6 sm:py-8 md:py-10" data-testid="single-post-hero">
         <div class="container-site max-w-4xl mx-auto px-4 relative z-10">
             <!-- Centered Breadcrumb Pill -->
             <div class="mb-2.5">
-                <nav aria-label="<?= esc_attr(waklert_content('content_legal_policy_text_a67ae81e01')) ?>" class="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border border-dashed border-sky-300/80 bg-white/90 px-3.5 py-1 text-xs font-medium text-slate-500 shadow-xs backdrop-blur">
+                <nav aria-label="<?= esc_attr(waklert_content('content_legal_policy_text_a67ae81e01')) ?>" class="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border border-solid border-sky-300/80 bg-white/90 px-3.5 py-1 text-xs font-medium text-slate-500 shadow-xs backdrop-blur">
                     <?php if ((waklert_has_content(esc_html(waklert_option_text('breadcrumb_home_label')))) && waklert_has_content(esc_url(home_url('/')))): ?><a href="<?php echo esc_url(home_url('/')); ?>" class="font-bold text-slate-600 transition-colors hover:text-[#0c4161]"><?= esc_html(waklert_option_text('breadcrumb_home_label')) ?></a><?php endif; ?>
                     <span class="text-sky-300 font-normal">/</span>
                     <?php if ((waklert_has_content(esc_html(waklert_content('content_legal_policy_text_180e30314a')))) && waklert_has_content(esc_url(get_permalink(get_option('page_for_posts'))))): ?><a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>" class="font-bold text-slate-600 transition-colors hover:text-[#0c4161]"><?= esc_html(waklert_content('content_legal_policy_text_180e30314a')) ?></a><?php endif; ?>
@@ -66,11 +66,11 @@ foreach ($sections as $index => $section) {
     </header>
 <?php else : ?>
     <!-- 2-Tone Patterned Policy Page Header -->
-    <header class="relative overflow-hidden border-b-2 border-dashed border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-6 sm:py-7 md:py-9">
+    <header class="relative overflow-hidden border-b-2 border-solid border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-6 sm:py-7 md:py-9">
         <div class="container-site max-w-4xl mx-auto px-4 relative z-10">
             <!-- Breadcrumbs -->
             <div class="mb-3">
-                <nav aria-label="<?= esc_attr(waklert_content('content_legal_policy_text_a67ae81e01')) ?>" class="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border border-dashed border-sky-300/80 bg-white/90 px-3.5 py-1 text-xs font-medium text-slate-500 shadow-xs backdrop-blur">
+                <nav aria-label="<?= esc_attr(waklert_content('content_legal_policy_text_a67ae81e01')) ?>" class="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border border-solid border-sky-300/80 bg-white/90 px-3.5 py-1 text-xs font-medium text-slate-500 shadow-xs backdrop-blur">
                     <?php if ((waklert_has_content(esc_html(waklert_option_text('breadcrumb_home_label')))) && waklert_has_content(esc_url(home_url('/')))): ?><a href="<?php echo esc_url(home_url('/')); ?>" class="font-bold text-slate-600 transition-colors hover:text-[#0c4161]"><?= esc_html(waklert_option_text('breadcrumb_home_label')) ?></a><?php endif; ?>
                     <span class="text-sky-300 font-normal">/</span>
                     <?php if (waklert_has_content(esc_html($title))): ?><span aria-current="page" class="max-w-[12rem] sm:max-w-xs md:max-w-md truncate font-extrabold text-[#0c4161]"><?php echo esc_html($title); ?></span><?php endif; ?>
@@ -110,7 +110,7 @@ foreach ($sections as $index => $section) {
             <!-- Sidebar Table of Contents -->
             <aside class="hidden lg:block">
                 <div class="sticky top-28 space-y-4">
-                    <div class="rounded-2xl border-2 border-dashed border-sky-200/80 bg-white p-4 shadow-xs">
+                    <div class="rounded-2xl border-2 border-solid border-sky-200/80 bg-white p-4 shadow-xs">
                         <?php if ((waklert_has_content(esc_html(waklert_content('content_legal_policy_text_c8f01c8600'))))): ?><div class="flex items-center gap-2 mb-3 px-2">
                             <span class="h-2 w-2 rounded-full bg-[#0c4161]"></span>
                             <?php if (waklert_has_content(esc_html(waklert_content('content_legal_policy_text_c8f01c8600')))): ?><p class="text-xs font-black uppercase tracking-widest text-[#0c4161]"><?= esc_html(waklert_content('content_legal_policy_text_c8f01c8600')) ?></p><?php endif; ?>
@@ -140,12 +140,12 @@ foreach ($sections as $index => $section) {
             <!-- Policy Sections (Single Unified Box) -->
             <div class="min-w-0 space-y-8">
                 <?php if (has_post_thumbnail(get_the_ID())) : ?>
-                    <figure class="overflow-hidden rounded-2xl border-2 border-dashed border-sky-200/80 bg-white p-1.5 shadow-sm">
+                    <figure class="overflow-hidden rounded-2xl border-2 border-solid border-sky-200/80 bg-white p-1.5 shadow-sm">
                         <?php echo get_the_post_thumbnail(get_the_ID(), 'large', ['class' => 'h-auto w-full object-cover rounded-xl shadow-xs', 'loading' => 'eager']); ?>
                     </figure>
                 <?php endif; ?>
 
-                <article class="rounded-2xl sm:rounded-3xl border-2 border-dashed border-sky-200/80 bg-white p-6 sm:p-10 shadow-xs divide-y divide-dashed divide-sky-200/80">
+                <article class="rounded-2xl sm:rounded-3xl border-2 border-solid border-sky-200/80 bg-white p-6 sm:p-10 shadow-xs divide-y divide-solid divide-sky-200/80">
                     <?php if (is_singular('post') && !empty($intro)) : ?>
                         <?php if (waklert_has_content(wp_kses_post(wpautop($intro)))): ?><div class="pb-6 sm:pb-8 prose max-w-none text-slate-600 text-sm sm:text-base leading-relaxed">
                             <?php echo wp_kses_post(wpautop($intro)); ?>
@@ -174,7 +174,7 @@ foreach ($sections as $index => $section) {
                 </article>
 
                 <?php if ($contact_email) : ?>
-                    <section aria-labelledby="legal-policy-contact-title" class="rounded-3xl border-2 border-dashed border-sky-300/80 bg-gradient-to-br from-[#f0f6fa] via-white to-sky-50/40 p-6 sm:p-8 md:p-10 shadow-xs">
+                    <section aria-labelledby="legal-policy-contact-title" class="rounded-3xl border-2 border-solid border-sky-300/80 bg-gradient-to-br from-[#f0f6fa] via-white to-sky-50/40 p-6 sm:p-8 md:p-10 shadow-xs">
                         <div class="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
                             <div class="max-w-xl">
                                 <?php if (waklert_has_content(esc_html(waklert_content('content_legal_policy_text_c6b00c2a25')))): ?><span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 border border-sky-300/80 px-3 py-0.5 text-[11px] font-black uppercase tracking-[0.16em] text-[#0c4161]">

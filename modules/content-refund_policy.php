@@ -37,11 +37,11 @@ $default_sections = [];
 ?>
 
 <!-- 2-Tone Patterned Header -->
-<header class="relative overflow-hidden border-b-2 border-dashed border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-6 sm:py-7 md:py-9">
+<header class="relative overflow-hidden border-b-2 border-solid border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-6 sm:py-7 md:py-9">
     <div class="container-site max-w-4xl mx-auto px-4 relative z-10">
         <!-- Breadcrumbs -->
         <div class="mb-3">
-            <nav aria-label="<?= esc_attr(waklert_content('content_refund_policy_text_0940110068')) ?>" class="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border border-dashed border-sky-300/80 bg-white/90 px-3.5 py-1 text-xs font-medium text-slate-500 shadow-xs backdrop-blur">
+            <nav aria-label="<?= esc_attr(waklert_content('content_refund_policy_text_0940110068')) ?>" class="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border border-solid border-sky-300/80 bg-white/90 px-3.5 py-1 text-xs font-medium text-slate-500 shadow-xs backdrop-blur">
                 <?php if ((waklert_has_content(esc_html(waklert_option_text('breadcrumb_home_label')))) && waklert_has_content(esc_url(home_url('/')))): ?><a href="<?= esc_url(home_url('/')) ?>" class="font-bold text-slate-600 transition-colors hover:text-[#0c4161]"><?= esc_html(waklert_option_text('breadcrumb_home_label')) ?></a><?php endif; ?>
                 <span class="text-sky-300 font-normal">/</span>
                 <?php if (waklert_has_content(esc_html(waklert_content('content_refund_policy_text_92449f9fdf')))): ?><span aria-current="page" class="font-extrabold text-[#0c4161]"><?= esc_html(waklert_content('content_refund_policy_text_92449f9fdf')) ?></span><?php endif; ?>
@@ -68,14 +68,14 @@ $default_sections = [];
         <div class="mt-6 flex flex-wrap justify-center gap-2.5">
             <?php if (!empty($badges)): ?>
                 <?php foreach ($badges as $item): if (empty($item['badge'])) continue; ?>
-                <?php if (waklert_has_content(esc_html($item['badge']))): ?><span class="inline-flex items-center gap-1.5 rounded-full bg-white/90 border border-dashed border-sky-300 px-3.5 py-1.5 text-xs font-bold text-[#0c4161] shadow-2xs">
+                <?php if (waklert_has_content(esc_html($item['badge']))): ?><span class="inline-flex items-center gap-1.5 rounded-full bg-white/90 border border-solid border-sky-300 px-3.5 py-1.5 text-xs font-bold text-[#0c4161] shadow-2xs">
                     <?= waklert_content_icon('content_refund_policy_icon_032782fb42') ?>
                     <?= esc_html($item['badge']) ?>
                 </span><?php endif; ?>
                 <?php endforeach; ?>
             <?php else: ?>
                 <?php foreach ($default_badges as $b): ?>
-                <?php if (waklert_has_content(esc_html($b))): ?><span class="inline-flex items-center gap-1.5 rounded-full bg-white/90 border border-dashed border-sky-300 px-3.5 py-1.5 text-xs font-bold text-[#0c4161] shadow-2xs">
+                <?php if (waklert_has_content(esc_html($b))): ?><span class="inline-flex items-center gap-1.5 rounded-full bg-white/90 border border-solid border-sky-300 px-3.5 py-1.5 text-xs font-bold text-[#0c4161] shadow-2xs">
                     <?= waklert_content_icon('content_refund_policy_icon_032782fb42') ?>
                     <?= esc_html($b) ?>
                 </span><?php endif; ?>
@@ -89,7 +89,7 @@ $default_sections = [];
     <div class="container-site max-w-4xl space-y-6">
         <?php if (!empty($sections)): ?>
             <?php foreach ($sections as $idx => $section): ?>
-            <article class="rounded-2xl border-2 border-dashed border-sky-200/80 bg-white p-6 sm:p-8 shadow-xs transition-all hover:border-sky-300">
+            <article class="rounded-2xl border-2 border-solid border-sky-200/80 bg-white p-6 sm:p-8 shadow-xs transition-all hover:border-sky-300">
                 <?php if (!empty($section['title'])): ?>
                 <?php if ((waklert_has_content(sprintf('%02d', $idx + 1))) || (waklert_has_content(esc_html($section['title'])))): ?><div class="flex items-center gap-2 mb-2">
                     <?php if (waklert_has_content(sprintf('%02d', $idx + 1))): ?><span class="flex h-6 w-6 items-center justify-center rounded-md bg-sky-100 font-mono text-xs font-bold text-[#0c4161]">
@@ -109,7 +109,7 @@ $default_sections = [];
             <?php endforeach; ?>
         <?php else: ?>
             <?php foreach ($default_sections as $idx => $sec): ?>
-            <article class="rounded-2xl border-2 border-dashed border-sky-200/80 bg-white p-6 sm:p-8 shadow-xs transition-all hover:border-sky-300">
+            <article class="rounded-2xl border-2 border-solid border-sky-200/80 bg-white p-6 sm:p-8 shadow-xs transition-all hover:border-sky-300">
                 <?php if ((waklert_has_content(sprintf('%02d', $idx + 1))) || (waklert_has_content(esc_html($sec['title'])))): ?><div class="flex items-center gap-2 mb-2">
                     <?php if (waklert_has_content(sprintf('%02d', $idx + 1))): ?><span class="flex h-6 w-6 items-center justify-center rounded-md bg-sky-100 font-mono text-xs font-bold text-[#0c4161]">
                         <?= sprintf('%02d', $idx + 1) ?>
@@ -126,7 +126,7 @@ $default_sections = [];
         <?php endif; ?>
 
         <!-- Support Callout Box -->
-        <div class="mt-10 rounded-3xl border-2 border-dashed border-sky-300/80 bg-gradient-to-br from-[#f0f6fa] via-white to-sky-50/40 p-8 sm:p-10 shadow-xs text-center">
+        <div class="mt-10 rounded-3xl border-2 border-solid border-sky-300/80 bg-gradient-to-br from-[#f0f6fa] via-white to-sky-50/40 p-8 sm:p-10 shadow-xs text-center">
             <?php if (waklert_has_content(esc_html(waklert_content('content_refund_policy_text_498ec4e2de')))): ?><span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 border border-sky-300/80 px-3 py-0.5 text-[11px] font-black uppercase tracking-[0.16em] text-[#0c4161]">
                 <?= esc_html(waklert_content('content_refund_policy_text_498ec4e2de')) ?>
             </span><?php endif; ?>

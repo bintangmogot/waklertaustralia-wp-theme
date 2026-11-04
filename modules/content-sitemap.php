@@ -52,11 +52,11 @@ $cities = get_posts([
 ?>
 
 <!-- 2-Tone Patterned Header -->
-<header class="relative overflow-hidden border-b-2 border-dashed border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-6 sm:py-7 md:py-9">
+<header class="relative overflow-hidden border-b-2 border-solid border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-6 sm:py-7 md:py-9">
     <div class="container-site max-w-4xl mx-auto px-4 relative z-10">
         <!-- Breadcrumbs -->
         <div class="mb-3">
-            <nav aria-label="<?= esc_attr(waklert_content('content_sitemap_text_72f641b507')) ?>" class="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border border-dashed border-sky-300/80 bg-white/90 px-3.5 py-1 text-xs font-medium text-slate-500 shadow-xs backdrop-blur">
+            <nav aria-label="<?= esc_attr(waklert_content('content_sitemap_text_72f641b507')) ?>" class="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border border-solid border-sky-300/80 bg-white/90 px-3.5 py-1 text-xs font-medium text-slate-500 shadow-xs backdrop-blur">
                 <?php if ((waklert_has_content(esc_html(waklert_option_text('breadcrumb_home_label')))) && waklert_has_content(esc_url(home_url('/')))): ?><a href="<?= esc_url(home_url('/')) ?>" class="font-bold text-slate-600 transition-colors hover:text-[#0c4161]"><?= esc_html(waklert_option_text('breadcrumb_home_label')) ?></a><?php endif; ?>
                 <span class="text-sky-300 font-normal">/</span>
                 <?php if (waklert_has_content(esc_html(waklert_content('content_sitemap_text_5253e1e160')))): ?><span aria-current="page" class="font-extrabold text-[#0c4161]"><?= esc_html(waklert_content('content_sitemap_text_5253e1e160')) ?></span><?php endif; ?>
@@ -86,7 +86,7 @@ $cities = get_posts([
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             
             <!-- Column 1: Main Pages -->
-            <div class="rounded-2xl border-2 border-dashed border-sky-200/80 bg-white p-6 shadow-xs">
+            <div class="rounded-2xl border-2 border-solid border-sky-200/80 bg-white p-6 shadow-xs">
                 <?php if ((waklert_has_content(esc_html(waklert_content('content_sitemap_text_2531b1c5fd'))))): ?><div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-100">
                     <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-sky-100 text-[#0c4161]">
                         <?= waklert_content_icon('content_sitemap_icon_e97086a627') ?>
@@ -108,7 +108,7 @@ $cities = get_posts([
             </div>
 
             <!-- Column 2: Products -->
-            <div class="rounded-2xl border-2 border-dashed border-sky-200/80 bg-white p-6 shadow-xs">
+            <div class="rounded-2xl border-2 border-solid border-sky-200/80 bg-white p-6 shadow-xs">
                 <?php if ((waklert_has_content(esc_html(waklert_content('content_sitemap_text_28b1ee1ab8'))))): ?><div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-100">
                     <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-100 text-amber-700">
                         <?= waklert_content_icon('content_sitemap_icon_f85561063f') ?>
@@ -134,7 +134,7 @@ $cities = get_posts([
             </div>
 
             <!-- Column 3: Australia Delivery Hubs -->
-            <div class="rounded-2xl border-2 border-dashed border-sky-200/80 bg-white p-6 shadow-xs">
+            <div class="rounded-2xl border-2 border-solid border-sky-200/80 bg-white p-6 shadow-xs">
                 <?php if ((waklert_has_content(esc_html(waklert_content('content_sitemap_text_c7173699c3'))))): ?><div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-100">
                     <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-100 text-emerald-700">
                         <?= waklert_content_icon('content_sitemap_icon_052d9ae2b5') ?>
@@ -160,7 +160,7 @@ $cities = get_posts([
             </div>
 
             <!-- Column 4: Legal & Policies -->
-            <div class="rounded-2xl border-2 border-dashed border-sky-200/80 bg-white p-6 shadow-xs">
+            <div class="rounded-2xl border-2 border-solid border-sky-200/80 bg-white p-6 shadow-xs">
                 <?php if ((waklert_has_content(esc_html(waklert_content('content_sitemap_text_c749dd2e47'))))): ?><div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-100">
                     <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-100 text-slate-700">
                         <?= waklert_content_icon('content_sitemap_icon_af1caec82c') ?>

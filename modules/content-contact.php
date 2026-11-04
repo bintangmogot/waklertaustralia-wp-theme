@@ -78,11 +78,11 @@ if (strpos($entered_embed, 'maps.app.goo.gl') !== false || strpos($entered_embed
 ?>
 
 <!-- 2-Tone Patterned Header -->
-<header class="relative overflow-hidden border-b-2 border-dashed border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-6 sm:py-7 md:py-9">
+<header class="relative overflow-hidden border-b-2 border-solid border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-6 sm:py-7 md:py-9">
     <div class="container-site max-w-4xl mx-auto px-4 relative z-10">
         <!-- Breadcrumbs -->
         <div class="mb-3">
-            <nav aria-label="<?= esc_attr(waklert_content('content_contact_text_ec89f409f4')) ?>" class="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border border-dashed border-sky-300/80 bg-white/90 px-3.5 py-1 text-xs font-medium text-slate-500 shadow-xs backdrop-blur">
+            <nav aria-label="<?= esc_attr(waklert_content('content_contact_text_ec89f409f4')) ?>" class="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border border-solid border-sky-300/80 bg-white/90 px-3.5 py-1 text-xs font-medium text-slate-500 shadow-xs backdrop-blur">
                 <?php if ((waklert_has_content(esc_html(waklert_option_text('breadcrumb_home_label')))) && waklert_has_content(esc_url(home_url('/')))): ?><a href="<?= esc_url(home_url('/')) ?>" class="font-bold text-slate-600 transition-colors hover:text-[#0c4161]"><?= esc_html(waklert_option_text('breadcrumb_home_label')) ?></a><?php endif; ?>
                 <span class="text-sky-300 font-normal">/</span>
                 <?php if (waklert_has_content(esc_html($breadcrumb_label))): ?><span aria-current="page" class="font-extrabold text-[#0c4161]"><?= esc_html($breadcrumb_label) ?></span><?php endif; ?>
@@ -114,7 +114,7 @@ if (strpos($entered_embed, 'maps.app.goo.gl') !== false || strpos($entered_embed
         <div class="space-y-5">
             
             <!-- WhatsApp Card (Fastest Option) -->
-            <a href="<?= esc_url($wa_url) ?>" target="_blank" rel="noopener noreferrer" class="group relative block overflow-hidden rounded-2xl border-2 border-dashed border-emerald-300/80 bg-gradient-to-br from-emerald-50/60 via-white to-emerald-50/30 p-6 shadow-xs transition-all duration-200 hover:border-emerald-400 hover:shadow-md">
+            <a href="<?= esc_url($wa_url) ?>" target="_blank" rel="noopener noreferrer" class="group relative block overflow-hidden rounded-2xl border-2 border-solid border-emerald-300/80 bg-gradient-to-br from-emerald-50/60 via-white to-emerald-50/30 p-6 shadow-xs transition-all duration-200 hover:border-emerald-400 hover:shadow-md">
                 <?php if ((waklert_has_content(esc_html($wa_title))) || (waklert_has_content(esc_html($wa_badge))) || (waklert_has_content(esc_html($wa_number))) || (waklert_has_content(esc_html($wa_subtext))) || (waklert_has_content(esc_html($wa_link)) || waklert_has_content(esc_html(waklert_content('content_contact_text_98dd745a32'))))): ?><div class="flex items-start gap-4">
                     <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-emerald-500 text-white shadow-xs group-hover:scale-105 transition-transform">
                         <?= waklert_content_icon('content_contact_icon_45d7697278') ?>
@@ -137,7 +137,7 @@ if (strpos($entered_embed, 'maps.app.goo.gl') !== false || strpos($entered_embed
             </a>
 
             <!-- Email Card -->
-            <a href="<?= esc_url('mailto:' . $email_address) ?>" class="group relative block overflow-hidden rounded-2xl border-2 border-dashed border-sky-300/80 bg-gradient-to-br from-sky-50/60 via-white to-sky-50/30 p-6 shadow-xs transition-all duration-200 hover:border-sky-400 hover:shadow-md">
+            <a href="<?= esc_url('mailto:' . $email_address) ?>" class="group relative block overflow-hidden rounded-2xl border-2 border-solid border-sky-300/80 bg-gradient-to-br from-sky-50/60 via-white to-sky-50/30 p-6 shadow-xs transition-all duration-200 hover:border-sky-400 hover:shadow-md">
                 <?php if ((waklert_has_content(esc_html($email_title))) || (waklert_has_content(esc_html($email_address))) || (waklert_has_content(esc_html($email_timeframe_label)) || waklert_has_content(esc_html($email_subtext))) || (waklert_has_content(esc_html($email_link)) || waklert_has_content(esc_html(waklert_content('content_contact_text_98dd745a32'))))): ?><div class="flex items-start gap-4">
                     <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#0c4161] text-white shadow-xs group-hover:scale-105 transition-transform">
                         <?= waklert_content_icon('content_contact_icon_ce3ac4136a') ?>
@@ -154,7 +154,7 @@ if (strpos($entered_embed, 'maps.app.goo.gl') !== false || strpos($entered_embed
             </a>
 
             <!-- Operating Hours Card -->
-            <?php if ((waklert_has_content(esc_html($hours_title))) || (waklert_has_content(esc_html($hours_mon_fri_label))) || (waklert_has_content(esc_html($hours_mon_fri))) || (waklert_has_content(esc_html($hours_sat_label))) || (waklert_has_content(esc_html($hours_sat))) || (waklert_has_content(esc_html($hours_sun_label))) || (waklert_has_content(esc_html($hours_sun)))): ?><div class="rounded-2xl border-2 border-dashed border-slate-200/90 bg-white p-6 shadow-xs">
+            <?php if ((waklert_has_content(esc_html($hours_title))) || (waklert_has_content(esc_html($hours_mon_fri_label))) || (waklert_has_content(esc_html($hours_mon_fri))) || (waklert_has_content(esc_html($hours_sat_label))) || (waklert_has_content(esc_html($hours_sat))) || (waklert_has_content(esc_html($hours_sun_label))) || (waklert_has_content(esc_html($hours_sun)))): ?><div class="rounded-2xl border-2 border-solid border-slate-200/90 bg-white p-6 shadow-xs">
                 <?php if ((waklert_has_content(esc_html($hours_title)))): ?><div class="flex items-center gap-2 mb-4">
                     <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-sky-100 text-[#0c4161]">
                         <?= waklert_content_icon('content_contact_icon_3a9844c53a') ?>
@@ -178,7 +178,7 @@ if (strpos($entered_embed, 'maps.app.goo.gl') !== false || strpos($entered_embed
             </div><?php endif; ?>
 
             <!-- Visit Us / Google Maps Card -->
-            <div class="rounded-2xl border-2 border-dashed border-slate-200/90 bg-white overflow-hidden shadow-xs">
+            <div class="rounded-2xl border-2 border-solid border-slate-200/90 bg-white overflow-hidden shadow-xs">
                 <div class="p-6 space-y-3">
                     <?php if ((waklert_has_content(esc_html($address_title)))): ?><div class="flex items-center gap-2 font-heading font-bold text-base text-[#0c4161]">
                         <?= waklert_content_icon('content_contact_icon_ed47200777') ?>
@@ -218,7 +218,7 @@ if (strpos($entered_embed, 'maps.app.goo.gl') !== false || strpos($entered_embed
         </div>
 
         <!-- Right: Message Form Card -->
-        <?php if ((waklert_has_content(esc_html($form_eyebrow))) || (waklert_has_content(esc_html($form_title))) || (waklert_has_content(esc_html($form_text))) || (waklert_has_content(do_shortcode('[gravityform id="' . $form_id . '" title="false" description="false" ajax="true"]')))): ?><div class="rounded-3xl border-2 border-dashed border-sky-300/80 bg-white p-6 sm:p-8 md:p-10 shadow-xs relative">
+        <?php if ((waklert_has_content(esc_html($form_eyebrow))) || (waklert_has_content(esc_html($form_title))) || (waklert_has_content(esc_html($form_text))) || (waklert_has_content(do_shortcode('[gravityform id="' . $form_id . '" title="false" description="false" ajax="true"]')))): ?><div class="rounded-3xl border-2 border-solid border-sky-300/80 bg-white p-6 sm:p-8 md:p-10 shadow-xs relative">
             <?php if ((waklert_has_content(esc_html($form_eyebrow))) || (waklert_has_content(esc_html($form_title))) || (waklert_has_content(esc_html($form_text)))): ?><div class="mb-6">
                 <?php if (waklert_has_content(esc_html($form_eyebrow))): ?><span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 border border-sky-300/80 px-3 py-0.5 text-[11px] font-black uppercase tracking-[0.16em] text-[#0c4161]">
                     <?= esc_html($form_eyebrow) ?>

@@ -90,11 +90,11 @@ if ($delivery_links) {
 
 <main>
     <!-- 2-Tone Patterned Header -->
-    <header class="relative overflow-hidden border-b-2 border-dashed border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-6 sm:py-7 md:py-9">
+    <header class="relative overflow-hidden border-b-2 border-solid border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-6 sm:py-7 md:py-9">
         <div class="container-site max-w-4xl mx-auto px-4 relative z-10">
             <!-- Breadcrumbs -->
             <div class="mb-3">
-                <nav aria-label="<?= esc_attr(waklert_content('page_sitemap_text_1ae8b3bffd')) ?>" class="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border border-dashed border-sky-300/80 bg-white/90 px-3.5 py-1 text-xs font-medium text-slate-500 shadow-xs backdrop-blur">
+                <nav aria-label="<?= esc_attr(waklert_content('page_sitemap_text_1ae8b3bffd')) ?>" class="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border border-solid border-sky-300/80 bg-white/90 px-3.5 py-1 text-xs font-medium text-slate-500 shadow-xs backdrop-blur">
                     <a href="<?= esc_url(home_url('/')) ?>" class="font-bold text-slate-600 transition-colors hover:text-[#0c4161]"><?= esc_html(waklert_option_text('breadcrumb_home_label')) ?></a>
                     <span class="text-sky-300 font-normal">/</span>
                     <span aria-current="page" class="font-extrabold text-[#0c4161]"><?= esc_html(waklert_content('page_sitemap_text_d10228acca')) ?></span>
@@ -122,7 +122,7 @@ if ($delivery_links) {
     <section class="py-7 md:py-10 bg-gradient-to-b from-white via-slate-50/50 to-white">
         <div class="container-site grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
             <?php foreach ($columns as $column): ?>
-            <section class="rounded-2xl border-2 border-dashed border-sky-200/80 bg-white p-6 shadow-xs transition-all hover:border-sky-400 hover:shadow-md">
+            <section class="rounded-2xl border-2 border-solid border-sky-200/80 bg-white p-6 shadow-xs transition-all hover:border-sky-400 hover:shadow-md">
                 <h2 class="mb-4 border-b border-slate-100 pb-3 font-heading text-base font-black text-[#0c4161] uppercase tracking-wider">
                     <?= esc_html($column['title']) ?>
                 </h2>

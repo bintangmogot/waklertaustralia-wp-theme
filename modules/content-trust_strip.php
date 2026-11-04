@@ -60,7 +60,7 @@ if (empty($trust_items)) {
 }
 ?>
 
-<section class="section-padding bg-gradient-to-b from-[#f0f6fa] via-[#e9f3f9] to-[#f8fafc] bg-pattern-dots border-y-2 border-dashed border-sky-200/80 relative isolate overflow-hidden" data-testid="trust-badges">
+<section class="section-padding bg-gradient-to-b from-[#f0f6fa] via-[#e9f3f9] to-[#f8fafc] bg-pattern-dots border-y-2 border-solid border-sky-200/80 relative isolate overflow-hidden" data-testid="trust-badges">
     <div class="container-site relative z-10">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
             <?php foreach ($trust_items as $item): ?>
@@ -76,7 +76,7 @@ if (empty($trust_items)) {
                 </div><?php endif; ?>
 
                 <!-- Bottom Half: Solid theme colored block with description -->
-                <?php if (waklert_has_content($item['desc'])): ?><?php if ((waklert_has_content(esc_html($item['desc'])))): ?><div class="bg-[#0c4161] group-hover:bg-[#082c42] text-white p-4 md:p-5 text-center text-xs md:text-[13px] leading-relaxed font-normal text-white/95 flex-1 flex items-center justify-center transition-colors duration-300 border-t-2 border-dashed border-white/20">
+                <?php if (waklert_has_content($item['desc'])): ?><?php if ((waklert_has_content(esc_html($item['desc'])))): ?><div class="bg-[#0c4161] group-hover:bg-[#082c42] text-white p-4 md:p-5 text-center text-xs md:text-[13px] leading-relaxed font-normal text-white/95 flex-1 flex items-center justify-center transition-colors duration-300 border-t-2 border-solid border-white/20">
                     <?php if (waklert_has_content(esc_html($item['desc']))): ?><p class="leading-relaxed">
                         <?= esc_html($item['desc']) ?>
                     </p><?php endif; ?>

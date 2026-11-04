@@ -163,7 +163,7 @@ if ($average_rating !== null) {
                 <?php endforeach; ?>
             </div>
         <?php else: ?>
-            <div class="mb-8 rounded-2xl border border-dashed border-slate-300 bg-white p-8 text-center md:p-12">
+            <div class="mb-8 rounded-2xl border border-solid border-slate-300 bg-white p-8 text-center md:p-12">
                 <p class="font-medium text-slate-500"><?= esc_html(waklert_content('product_reviews_text_f664708bfd')) ?></p>
             </div>
         <?php endif; ?>

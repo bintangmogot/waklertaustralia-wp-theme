@@ -86,7 +86,7 @@ if (empty($articles)) {
     $articles = $blog_query->posts;
 }
 ?>
-<section class="section-padding bg-gradient-to-b from-[#f0f6fa] via-[#e9f2f8] to-[#f8fafc] bg-pattern-dots border-t-2 border-dashed border-sky-200/80 relative isolate overflow-hidden" data-testid="blog-section">
+<section class="section-padding bg-gradient-to-b from-[#f0f6fa] via-[#e9f2f8] to-[#f8fafc] bg-pattern-dots border-t-2 border-solid border-sky-200/80 relative isolate overflow-hidden" data-testid="blog-section">
     <div class="container-custom relative z-10">
         <!-- Section Header -->
         <?php if (!empty($title) || !empty($eyebrow)): ?>
@@ -149,7 +149,7 @@ if (empty($articles)) {
                     ? $article->post_excerpt 
                     : (!empty($intro_val) ? $intro_val : wp_trim_words($plain_text, 22, '...'));
             ?>
-            <article class="group flex flex-col h-full bg-white border-2 border-dashed border-sky-300/80 hover:border-[#0c4161] rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-out">
+            <article class="group flex flex-col h-full bg-white border-2 border-solid border-sky-300/80 hover:border-[#0c4161] rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-out">
                 <!-- Card Thumbnail / Visual Area -->
                 <a href="<?= esc_url($permalink) ?>" class="block relative aspect-[16/10] overflow-hidden bg-slate-900 focus:outline-hidden" tabindex="-1" aria-hidden="true">
                     <?php if (has_post_thumbnail($post_id)): ?>
@@ -209,7 +209,7 @@ if (empty($articles)) {
                 </div>
 
                 <!-- Two-Tone Footer Block -->
-                <?php if ((waklert_has_content(esc_html($read_more_label))) && waklert_has_content(esc_url($permalink))): ?><a href="<?= esc_url($permalink) ?>" class="bg-[#f0f6fa] group-hover:bg-[#0c4161] p-3 px-4 sm:p-4 sm:px-6 border-t-2 border-dashed border-sky-200/80 flex items-center justify-between transition-colors duration-300 text-xs sm:text-sm font-black text-[#0c4161] group-hover:text-white mt-auto">
+                <?php if ((waklert_has_content(esc_html($read_more_label))) && waklert_has_content(esc_url($permalink))): ?><a href="<?= esc_url($permalink) ?>" class="bg-[#f0f6fa] group-hover:bg-[#0c4161] p-3 px-4 sm:p-4 sm:px-6 border-t-2 border-solid border-sky-200/80 flex items-center justify-between transition-colors duration-300 text-xs sm:text-sm font-black text-[#0c4161] group-hover:text-white mt-auto">
                     <?php if (waklert_has_content(esc_html($read_more_label))): ?><span><?= esc_html($read_more_label) ?></span><?php endif; ?>
                     <?= waklert_content_icon('content_blog_section_icon_605c0cb448') ?>
                 </a><?php endif; ?>
@@ -217,7 +217,7 @@ if (empty($articles)) {
             <?php endforeach; ?>
         </div>
         <?php else: ?>
-        <?php if ((waklert_has_content(esc_html($empty_text)))): ?><div class="text-center py-12 bg-white rounded-2xl border-2 border-dashed border-sky-300/80 p-8">
+        <?php if ((waklert_has_content(esc_html($empty_text)))): ?><div class="text-center py-12 bg-white rounded-2xl border-2 border-solid border-sky-300/80 p-8">
             <?php if (waklert_has_content(esc_html($empty_text))): ?><p class="text-slate-500 font-medium"><?= esc_html($empty_text) ?></p><?php endif; ?>
         </div><?php endif; ?>
         <?php endif; ?>
@@ -225,7 +225,7 @@ if (empty($articles)) {
         <!-- View All Button -->
         <?php if ($show_view_all && !empty($button_text) && !empty($button_url)): ?>
         <div class="mt-10 md:mt-12 text-center">
-            <?php if ((waklert_has_content(esc_html($button_text))) && waklert_has_content(esc_url($button_url))): ?><a href="<?= esc_url($button_url) ?>" class="inline-flex items-center gap-2 border-2 border-dashed border-sky-300/90 bg-white hover:bg-[#0c4161] text-[#0c4161] hover:text-white font-extrabold px-5 py-2.5 sm:px-8 sm:py-3.5 rounded-full transition-all duration-300 uppercase tracking-wider sm:tracking-widest text-xs shadow-sm hover:shadow-md hover:-translate-y-0.5">
+            <?php if ((waklert_has_content(esc_html($button_text))) && waklert_has_content(esc_url($button_url))): ?><a href="<?= esc_url($button_url) ?>" class="inline-flex items-center gap-2 border-2 border-solid border-sky-300/90 bg-white hover:bg-[#0c4161] text-[#0c4161] hover:text-white font-extrabold px-5 py-2.5 sm:px-8 sm:py-3.5 rounded-full transition-all duration-300 uppercase tracking-wider sm:tracking-widest text-xs shadow-sm hover:shadow-md hover:-translate-y-0.5">
                 <?php if (waklert_has_content(esc_html($button_text))): ?><span><?= esc_html($button_text) ?></span><?php endif; ?>
                 <?= waklert_content_icon('content_blog_section_icon_30f6347ddc') ?>
             </a><?php endif; ?>

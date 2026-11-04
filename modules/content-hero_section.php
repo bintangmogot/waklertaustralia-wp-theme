@@ -224,7 +224,7 @@ $mobile_png_url = waklert_content_asset('content_hero_section_image_fe12bd4316')
                 <?php if ($hero_badges): ?>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-2">
                     <?php foreach ($hero_badges as $badge): ?>
-                    <?php if ((waklert_has_content(esc_html($badge['title']))) || (waklert_has_content(esc_html($badge['subtitle'])))): ?><div class="group flex items-center gap-2.5 rounded-xl border border-dashed border-white/30 bg-white/10 hover:bg-white/15 backdrop-blur-sm p-2.5 px-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-400/80">
+                    <?php if ((waklert_has_content(esc_html($badge['title']))) || (waklert_has_content(esc_html($badge['subtitle'])))): ?><div class="group flex items-center gap-2.5 rounded-xl border border-solid border-white/30 bg-white/10 hover:bg-white/15 backdrop-blur-sm p-2.5 px-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-400/80">
                         <div class="w-8 h-8 rounded-lg bg-white/90 p-1 flex items-center justify-center shrink-0 shadow-xs transition-transform duration-300 group-hover:scale-110">
                             <?= $hero_badge_icons[$badge['icon']] ?? $hero_badge_icons['shield'] ?>
                         </div>

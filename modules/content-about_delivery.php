@@ -49,7 +49,7 @@ $fallback_presets = ['australia_delivery', 'express_shipping', 'discreet_sealed'
                     'size_class'     => 'h-10 w-10 shrink-0',
                 ]);
             ?>
-            <div class="relative flex flex-col rounded-2xl border-2 border-dashed border-sky-200/80 bg-gradient-to-br from-sky-50/40 via-white to-transparent p-6 shadow-xs transition-all hover:border-sky-400 hover:shadow-md">
+            <div class="relative flex flex-col rounded-2xl border-2 border-solid border-sky-200/80 bg-gradient-to-br from-sky-50/40 via-white to-transparent p-6 shadow-xs transition-all hover:border-sky-400 hover:shadow-md">
                 <div class="flex items-center gap-3.5 mb-3">
                     <?php if (waklert_has_content($icon_html)): ?><span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white border border-sky-100 shadow-xs">
                         <?= $icon_html ?>

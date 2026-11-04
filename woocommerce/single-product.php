@@ -165,7 +165,7 @@ $product_specs = array_values(array_filter($product_specs, static function ($spe
 
 <div class="relative overflow-hidden bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots py-4 md:py-6 border-b border-sky-100">
     <div class="container-site">
-        <nav class="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-500 rounded-full border border-dashed border-sky-300/80 bg-white/90 px-4 py-1.5 shadow-sm backdrop-blur" data-testid="breadcrumb">
+        <nav class="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-500 rounded-full border border-solid border-sky-300/80 bg-white/90 px-4 py-1.5 shadow-sm backdrop-blur" data-testid="breadcrumb">
             <a href="<?= home_url('/') ?>"
                 class="hover:text-[#0c4161] transition-colors font-bold"><?= esc_html(waklert_content('single_product_text_cfba5e0ecf')) ?></a>
             <span class="text-sky-300">/</span>
@@ -181,7 +181,7 @@ $product_specs = array_values(array_filter($product_specs, static function ($spe
     <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
         <!-- Left Column: Image Area -->
         <div class="md:sticky md:top-24 md:self-start">
-            <div class="rounded-3xl overflow-hidden bg-[radial-gradient(ellipse_at_center,rgba(186,230,253,0.35)_0%,rgba(255,255,255,0.95)_70%)] border-2 border-dashed border-sky-300/80 p-6 md:p-10 flex items-center justify-center relative shadow-sm group hover:shadow-xl hover:border-[#0c4161] transition-all duration-300"
+            <div class="rounded-3xl overflow-hidden bg-[radial-gradient(ellipse_at_center,rgba(186,230,253,0.35)_0%,rgba(255,255,255,0.95)_70%)] border-2 border-solid border-sky-300/80 p-6 md:p-10 flex items-center justify-center relative shadow-sm group hover:shadow-xl hover:border-[#0c4161] transition-all duration-300"
                 data-testid="product-image">
                 <img src="<?= esc_url($image) ?>"
                     alt="<?= esc_attr($product->get_name()) ?>"
@@ -190,7 +190,7 @@ $product_specs = array_values(array_filter($product_specs, static function ($spe
 
             <!-- ACF: Text under product image -->
             <?php if (!empty($text_under_image)): ?>
-                <div class="mt-6 prose prose-slate prose-sm max-w-none rounded-3xl border-2 border-dashed border-sky-200/80 bg-white p-6 shadow-sm">
+                <div class="mt-6 prose prose-slate prose-sm max-w-none rounded-3xl border-2 border-solid border-sky-200/80 bg-white p-6 shadow-sm">
                     <?= $text_under_image ?>
                 </div>
             <?php endif; ?>
@@ -205,7 +205,7 @@ $product_specs = array_values(array_filter($product_specs, static function ($spe
                         <?= esc_html($product_badge) ?>
                     </span>
                 <?php endif; ?>
-                <span class="inline-flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1 text-xs font-bold text-[#0c4161] border border-dashed border-sky-300 shadow-sm">
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1 text-xs font-bold text-[#0c4161] border border-solid border-sky-300 shadow-sm">
                     <span class="h-2 w-2 rounded-full <?= $product->is_in_stock() ? 'bg-emerald-500 animate-pulse' : 'bg-destructive' ?>" aria-hidden="true"></span>
                     <?= esc_html($product->is_in_stock() ? waklert_content('single_product_text_c16cd9dc94') : waklert_content('single_product_text_86bab3b87b')) ?>
                 </span>
@@ -235,7 +235,7 @@ $product_specs = array_values(array_filter($product_specs, static function ($spe
             </div>
 
             <?php if ($free_shipping_message !== '' && is_numeric($free_shipping_threshold) && (float) $free_shipping_threshold > 0): ?>
-                <div class="mb-6 flex items-center gap-3.5 rounded-2xl border-2 border-dashed border-amber-300 bg-gradient-to-r from-amber-50 via-orange-50/50 to-amber-50 p-4 shadow-sm">
+                <div class="mb-6 flex items-center gap-3.5 rounded-2xl border-2 border-solid border-amber-300 bg-gradient-to-r from-amber-50 via-orange-50/50 to-amber-50 p-4 shadow-sm">
                     <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-500 text-white shadow-sm" aria-hidden="true">
                         <!-- Colorful Star/Gift SVG -->
                         <?= waklert_content_icon('single_product_icon_9cc7e1a9c7') ?>
@@ -295,7 +295,7 @@ $product_specs = array_values(array_filter($product_specs, static function ($spe
                                     $sticky_price_label = wp_strip_all_tags(wc_price($price_num));
                                     ?>
                                     <button type="button"
-                                        class="variation-row-btn w-full flex items-center justify-between gap-3 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl border-2 border-dashed text-left transition-all duration-200 <?php echo $is_active ? 'border-[#0c4161] bg-sky-50 text-[#0c4161] active-row shadow-sm' : 'border-sky-200/80 bg-white text-slate-700 hover:border-sky-400 hover:bg-sky-50/40'; ?>"
+                                        class="variation-row-btn w-full flex items-center justify-between gap-3 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl border-2 border-solid text-left transition-all duration-200 <?php echo $is_active ? 'border-[#0c4161] bg-sky-50 text-[#0c4161] active-row shadow-sm' : 'border-sky-200/80 bg-white text-slate-700 hover:border-sky-400 hover:bg-sky-50/40'; ?>"
                                         data-id="<?= esc_attr($variation['variation_id']) ?>"
                                         data-qty="<?= esc_attr($qty_num) ?>" data-price="<?= esc_attr($price_num) ?>"
                                         data-pack-label="<?= esc_attr($display_qty_str) ?>" data-display-price="<?= esc_attr($sticky_price_label) ?>"
@@ -320,7 +320,7 @@ $product_specs = array_values(array_filter($product_specs, static function ($spe
                         <div class="flex items-center gap-3">
                             <label
                                 class="text-xs sm:text-sm font-bold text-[#0c4161]"><?= esc_html(waklert_content('single_product_text_c23a3486a5')) ?></label>
-                            <div class="flex items-center border-2 border-dashed border-sky-300 rounded-xl bg-white shadow-sm overflow-hidden">
+                            <div class="flex items-center border-2 border-solid border-sky-300 rounded-xl bg-white shadow-sm overflow-hidden">
                                 <button type="button" id="qty-dec"
                                     class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center text-slate-500 hover:text-[#0c4161] hover:bg-sky-50 transition-colors font-bold text-base">-</button>
                                 <span id="qty-val" class="w-8 sm:w-10 text-center text-xs sm:text-sm font-extrabold text-[#0c4161]">1</span>
@@ -391,8 +391,8 @@ $product_specs = array_values(array_filter($product_specs, static function ($spe
                         rows.forEach(row => {
                             row.addEventListener('click', function () {
                                 // Update UI states
-                                rows.forEach(r => r.className = "variation-row-btn w-full flex items-center justify-between gap-3 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl border-2 border-dashed text-left transition-all duration-200 border-sky-200/80 bg-white text-slate-700 hover:border-sky-400 hover:bg-sky-50/40");
-                                this.className = "variation-row-btn active-row w-full flex items-center justify-between gap-3 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl border-2 border-dashed text-left transition-all duration-200 border-[#0c4161] bg-sky-50 text-[#0c4161] shadow-sm";
+                                rows.forEach(r => r.className = "variation-row-btn w-full flex items-center justify-between gap-3 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl border-2 border-solid text-left transition-all duration-200 border-sky-200/80 bg-white text-slate-700 hover:border-sky-400 hover:bg-sky-50/40");
+                                this.className = "variation-row-btn active-row w-full flex items-center justify-between gap-3 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl border-2 border-solid text-left transition-all duration-200 border-[#0c4161] bg-sky-50 text-[#0c4161] shadow-sm";
 
                                 // Update Hidden inputs
                                 inputVarId.value = this.dataset.id;
@@ -475,9 +475,9 @@ $product_specs = array_values(array_filter($product_specs, static function ($spe
             <?php endif; ?>
 
             <?php if ($trust_items): ?>
-                <div class="grid grid-cols-3 gap-3 sm:gap-3.5 border-t-2 border-dashed border-sky-200/80 pt-6">
+                <div class="grid grid-cols-3 gap-3 sm:gap-3.5 border-t-2 border-solid border-sky-200/80 pt-6">
                     <!-- 1. AU Express Dispatch -->
-                    <div class="flex flex-col items-center justify-center text-center gap-2 rounded-2xl border-2 border-dashed border-sky-300/80 bg-gradient-to-br from-white to-sky-50/60 p-3.5 sm:p-4 shadow-sm hover:border-[#0c4161] hover:shadow-md transition-all">
+                    <div class="flex flex-col items-center justify-center text-center gap-2 rounded-2xl border-2 border-solid border-sky-300/80 bg-gradient-to-br from-white to-sky-50/60 p-3.5 sm:p-4 shadow-sm hover:border-[#0c4161] hover:shadow-md transition-all">
                         <div class="flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-sky-50 text-sky-600 border border-sky-200">
                             <?= waklert_content_icon('single_product_icon_a30eaef5ef') ?>
                         </div>
@@ -488,7 +488,7 @@ $product_specs = array_values(array_filter($product_specs, static function ($spe
                     </div>
 
                     <!-- 2. Encrypted Checkout -->
-                    <div class="flex flex-col items-center justify-center text-center gap-2 rounded-2xl border-2 border-dashed border-sky-300/80 bg-gradient-to-br from-white to-sky-50/60 p-3.5 sm:p-4 shadow-sm hover:border-[#0c4161] hover:shadow-md transition-all">
+                    <div class="flex flex-col items-center justify-center text-center gap-2 rounded-2xl border-2 border-solid border-sky-300/80 bg-gradient-to-br from-white to-sky-50/60 p-3.5 sm:p-4 shadow-sm hover:border-[#0c4161] hover:shadow-md transition-all">
                         <div class="flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-amber-50 text-amber-600 border border-amber-200">
                             <?= waklert_content_icon('single_product_icon_7149de0b2d') ?>
                         </div>
@@ -499,7 +499,7 @@ $product_specs = array_values(array_filter($product_specs, static function ($spe
                     </div>
 
                     <!-- 3. Quality Verified -->
-                    <div class="flex flex-col items-center justify-center text-center gap-2 rounded-2xl border-2 border-dashed border-sky-300/80 bg-gradient-to-br from-white to-sky-50/60 p-3.5 sm:p-4 shadow-sm hover:border-[#0c4161] hover:shadow-md transition-all">
+                    <div class="flex flex-col items-center justify-center text-center gap-2 rounded-2xl border-2 border-solid border-sky-300/80 bg-gradient-to-br from-white to-sky-50/60 p-3.5 sm:p-4 shadow-sm hover:border-[#0c4161] hover:shadow-md transition-all">
                         <div class="flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 border border-emerald-200">
                             <?= waklert_content_icon('single_product_icon_4ae59b577f') ?>
                         </div>
@@ -512,8 +512,8 @@ $product_specs = array_values(array_filter($product_specs, static function ($spe
             <?php endif; ?>
 
             <?php if (!empty($product_specs)): ?>
-            <details open class="mt-6 overflow-hidden rounded-3xl border-2 border-dashed border-sky-300/80 bg-white shadow-sm">
-                <summary class="group flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 font-bold text-[#0c4161] bg-sky-50/60 border-b border-dashed border-sky-200 marker:hidden [&::-webkit-details-marker]:hidden">
+            <details open class="mt-6 overflow-hidden rounded-3xl border-2 border-solid border-sky-300/80 bg-white shadow-sm">
+                <summary class="group flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 font-bold text-[#0c4161] bg-sky-50/60 border-b border-solid border-sky-200 marker:hidden [&::-webkit-details-marker]:hidden">
                     <span class="inline-flex items-center gap-2 text-sm sm:text-base font-heading">
                         <span class="flex h-7 w-7 items-center justify-center rounded-lg bg-sky-100 text-[#0c4161]">
                             <?= waklert_content_icon('single_product_icon_f2147f7a5a') ?>
@@ -522,7 +522,7 @@ $product_specs = array_values(array_filter($product_specs, static function ($spe
                     </span>
                     <?= waklert_content_icon('single_product_icon_525507ef56') ?>
                 </summary>
-                <dl class="divide-y divide-dashed divide-sky-100 px-5 py-2">
+                <dl class="divide-y divide-solid divide-sky-100 px-5 py-2">
                     <?php foreach ($product_specs as $spec): ?>
                         <?php
                         $spec_label = trim((string) ($spec['label'] ?? ''));
@@ -543,12 +543,12 @@ $product_specs = array_values(array_filter($product_specs, static function ($spe
 
 <?php if ($product->is_in_stock() && !empty($variations)): ?>
     <?php $sticky_default_variation = $variations[$default_variation_index] ?? null; ?>
-    <div id="sticky-product-bar" class="fixed inset-x-0 bottom-0 z-40 translate-y-full border-t-2 border-dashed border-sky-300/80 bg-white/95 opacity-0 shadow-[0_-8px_24px_rgba(12,65,97,0.12)] backdrop-blur-md transition duration-300 pointer-events-none" aria-hidden="true" inert>
+    <div id="sticky-product-bar" class="fixed inset-x-0 bottom-0 z-40 translate-y-full border-t-2 border-solid border-sky-300/80 bg-white/95 opacity-0 shadow-[0_-8px_24px_rgba(12,65,97,0.12)] backdrop-blur-md transition duration-300 pointer-events-none" aria-hidden="true" inert>
         <div class="container-site flex items-center justify-between gap-2 py-2 sm:gap-4 sm:py-3">
             <!-- Left: Product info / Price -->
             <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
                 <?php if ($image !== ''): ?>
-                    <img src="<?= esc_url($image) ?>" alt="" class="hidden min-[420px]:block sm:block h-10 w-10 sm:h-12 sm:w-12 shrink-0 rounded-xl border-2 border-dashed border-sky-200 bg-white object-contain p-1">
+                    <img src="<?= esc_url($image) ?>" alt="" class="hidden min-[420px]:block sm:block h-10 w-10 sm:h-12 sm:w-12 shrink-0 rounded-xl border-2 border-solid border-sky-200 bg-white object-contain p-1">
                 <?php endif; ?>
                 <div class="min-w-0">
                     <p class="hidden sm:block truncate text-xs font-extrabold text-slate-900 sm:text-sm max-w-[200px] md:max-w-none"><?= esc_html($product->get_name()) ?></p>
@@ -584,9 +584,9 @@ if ($acf_main) {
 
 if (!empty(trim(strip_tags($main_desc)))): 
 ?>
-<section class="section-padding relative overflow-hidden bg-gradient-to-b from-[#f0f6fa] via-[#e9f2f8] to-[#f8fafc] bg-pattern-dots border-t-2 border-dashed border-sky-200/80" data-testid="section-product-description">
+<section class="section-padding relative overflow-hidden bg-gradient-to-b from-[#f0f6fa] via-[#e9f2f8] to-[#f8fafc] bg-pattern-dots border-t-2 border-solid border-sky-200/80" data-testid="section-product-description">
     <div class="container-site relative z-10 max-w-5xl">
-        <div class="bg-white rounded-3xl shadow-sm border-2 border-dashed border-sky-300/80 p-6 md:p-12 prose prose-slate max-w-none">
+        <div class="bg-white rounded-3xl shadow-sm border-2 border-solid border-sky-300/80 p-6 md:p-12 prose prose-slate max-w-none">
             <?= apply_filters('the_content', $main_desc); ?>
         </div>
     </div>

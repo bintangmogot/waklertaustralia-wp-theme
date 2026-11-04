@@ -15,7 +15,7 @@ $button_href = waklert_resolve_link(waklert_module_text('button_url'));
 
 $products = get_sub_field('products') ?: [];
 ?>
-<section class="section-padding bg-gradient-to-b from-[#f8fafc] via-[#eff6fb] to-[#f8fafc] bg-pattern-dots border-t-2 border-dashed border-sky-200/80 relative isolate overflow-hidden" data-testid="featured-products">
+<section class="section-padding bg-gradient-to-b from-[#f8fafc] via-[#eff6fb] to-[#f8fafc] bg-pattern-dots border-t-2 border-solid border-sky-200/80 relative isolate overflow-hidden" data-testid="featured-products">
     <div class="container-custom relative z-10">
         <?php if ($tag !== '' || $heading !== '' || $description !== ''): ?>
         <?php if ((waklert_has_content(esc_html($tag))) || (waklert_has_content(esc_html($heading))) || (waklert_has_content(esc_html($description)))): ?><div class="text-center mb-10 md:mb-12">

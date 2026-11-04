@@ -66,7 +66,7 @@ if (trim((string) $image_url) === '') {
 ?>
 <section class="relative overflow-hidden bg-gradient-to-b from-[#f0f6fa] via-[#e9f2f8] to-[#f8fafc] bg-pattern-dots py-8 md:py-12" data-testid="support-cta">
     <div class="container-site max-w-7xl relative z-10">
-        <div class="relative isolate overflow-hidden rounded-[2.5rem] bg-gradient-to-r from-[#0c4160] via-[#165174] to-[#1f5f7f] bg-pattern-dots-dark text-white shadow-2xl border-2 border-dashed border-sky-400/40">
+        <div class="relative isolate overflow-hidden rounded-[2.5rem] bg-gradient-to-r from-[#0c4160] via-[#165174] to-[#1f5f7f] bg-pattern-dots-dark text-white shadow-2xl border-2 border-solid border-sky-400/40">
             <?php waklert_output_pattern_rings(); ?>
             <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-end">
                 
@@ -97,7 +97,7 @@ if (trim((string) $image_url) === '') {
                         <?php endif; ?>
 
                         <?php if ($sms_url !== ''): ?>
-                        <?php if ((waklert_has_content(esc_html($sms_label))) && waklert_has_content(esc_url($sms_url))): ?><a href="<?= esc_url($sms_url) ?>" class="inline-flex items-center gap-2 rounded-full border border-dashed border-white/40 bg-white/10 px-4 py-2.5 sm:px-5 sm:py-3.5 text-xs sm:text-sm font-bold text-white backdrop-blur-sm transition-all hover:bg-white/20 hover:scale-[1.02] active:scale-[0.98]">
+                        <?php if ((waklert_has_content(esc_html($sms_label))) && waklert_has_content(esc_url($sms_url))): ?><a href="<?= esc_url($sms_url) ?>" class="inline-flex items-center gap-2 rounded-full border border-solid border-white/40 bg-white/10 px-4 py-2.5 sm:px-5 sm:py-3.5 text-xs sm:text-sm font-bold text-white backdrop-blur-sm transition-all hover:bg-white/20 hover:scale-[1.02] active:scale-[0.98]">
                             <?= waklert_content_icon('content_support_cta_icon_fb578bb7a9') ?>
                             <?php if (waklert_has_content(esc_html($sms_label))): ?><span><?= esc_html($sms_label) ?></span><?php endif; ?>
                         </a><?php endif; ?>

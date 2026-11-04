@@ -30,9 +30,9 @@ if (is_shop()) {
 
 if (is_home()) :
 ?>
-<section class="relative overflow-hidden border-b-2 border-dashed border-sky-200/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-foreground" data-testid="blog-hero">
+<section class="relative overflow-hidden border-b-2 border-solid border-sky-200/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-foreground" data-testid="blog-hero">
     <div class="container-site relative z-10 py-7 md:py-10 lg:py-12">
-        <div class="grid gap-7 border-b-2 border-dashed border-sky-200/80 pb-8 md:grid-cols-[1.1fr_.9fr] md:items-end md:gap-12 md:pb-10">
+        <div class="grid gap-7 border-b-2 border-solid border-sky-200/80 pb-8 md:grid-cols-[1.1fr_.9fr] md:items-end md:gap-12 md:pb-10">
             <div>
                 <?php if (waklert_has_content(esc_html($eyebrow))): ?><span class="inline-flex items-center gap-2 rounded-full bg-sky-100 border border-sky-300/80 px-3.5 py-1 text-xs font-extrabold uppercase tracking-[0.18em] text-[#0c4161] shadow-sm">
                     <span aria-hidden="true" class="h-2 w-2 rounded-full bg-amber-500 animate-pulse"></span>
@@ -69,7 +69,7 @@ if (is_home()) :
         ?>
         <div class="grid gap-4 py-8 sm:grid-cols-3 sm:gap-6">
             <?php foreach ($blog_topics as $index => $topic) : ?>
-                <div class="group rounded-2xl border-2 border-dashed border-sky-300/80 bg-white p-5 shadow-sm hover:border-[#0c4161] hover:shadow-md hover:-translate-y-1 transition-all">
+                <div class="group rounded-2xl border-2 border-solid border-sky-300/80 bg-white p-5 shadow-sm hover:border-[#0c4161] hover:shadow-md hover:-translate-y-1 transition-all">
                     <div class="flex items-center gap-3 mb-2">
                         <?php if (waklert_has_content(esc_html(str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT)))): ?><span class="flex h-7 w-7 items-center justify-center rounded-lg bg-sky-50 text-xs font-black text-[#0c4161] border border-sky-200">
                             <?php echo esc_html(str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT)); ?>
@@ -84,7 +84,7 @@ if (is_home()) :
     </div>
 </section>
 <?php elseif (is_shop()) : ?>
-<section class="relative isolate overflow-hidden bg-gradient-to-br from-[#082a3f] via-[#0c4161] to-[#125883] bg-pattern-dots-dark text-white text-center border-b-2 border-dashed border-sky-400/30" data-testid="shop-hero">
+<section class="relative isolate overflow-hidden bg-gradient-to-br from-[#082a3f] via-[#0c4161] to-[#125883] bg-pattern-dots-dark text-white text-center border-b-2 border-solid border-sky-400/30" data-testid="shop-hero">
     <?php waklert_output_pattern_rings(); ?>
     <div class="container-site relative z-10 mx-auto max-w-4xl py-8 md:py-12 px-4">
         <!-- Eyebrow Badge -->
@@ -128,7 +128,7 @@ if (is_home()) :
             <?php foreach ($trust_cards as $card) :
                 $icon = $trust_icons[$card['icon']] ?? $trust_icons['shield'];
             ?>
-            <div class="rounded-2xl border-2 border-dashed border-sky-300/40 bg-white/10 p-3.5 backdrop-blur-sm flex items-center gap-3 hover:bg-white/15 transition-all">
+            <div class="rounded-2xl border-2 border-solid border-sky-300/40 bg-white/10 p-3.5 backdrop-blur-sm flex items-center gap-3 hover:bg-white/15 transition-all">
                 <?php if (waklert_has_content($icon[1])): ?><div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border <?php echo esc_attr($icon[0]); ?>">
                     <?php echo $icon[1]; ?>
                 </div><?php endif; ?>
@@ -143,7 +143,7 @@ if (is_home()) :
     </div>
 </section>
 <?php else : ?>
-<section class="relative isolate overflow-hidden bg-gradient-to-br from-[#082a3f] via-[#0c4161] to-[#125883] bg-pattern-dots-dark text-white border-b-2 border-dashed border-sky-400/30" data-testid="page-hero">
+<section class="relative isolate overflow-hidden bg-gradient-to-br from-[#082a3f] via-[#0c4161] to-[#125883] bg-pattern-dots-dark text-white border-b-2 border-solid border-sky-400/30" data-testid="page-hero">
     <?php waklert_output_pattern_rings(); ?>
     <div class="container-site relative z-10 py-8 md:py-12">
         <?php if (waklert_has_content(esc_html($title))): ?><h1 class="font-heading text-3xl font-extrabold tracking-tight md:text-[2.75rem] md:leading-[1.1] text-white">
@@ -161,7 +161,7 @@ if (is_home()) :
                 <?php foreach ($bullets as $bullet) :
                     if (empty($bullet['bullet'])) continue;
                 ?>
-                    <?php if (waklert_has_content(esc_html($bullet['bullet']))): ?><li class="inline-flex items-center gap-2 rounded-full border border-dashed border-sky-300/40 bg-white/10 px-4 py-1.5 text-xs sm:text-sm font-semibold text-white backdrop-blur-sm hover:bg-white/20 transition-all">
+                    <?php if (waklert_has_content(esc_html($bullet['bullet']))): ?><li class="inline-flex items-center gap-2 rounded-full border border-solid border-sky-300/40 bg-white/10 px-4 py-1.5 text-xs sm:text-sm font-semibold text-white backdrop-blur-sm hover:bg-white/20 transition-all">
                         <?= waklert_content_icon('content_page_hero_icon_7408110dcc') ?>
                         <?php if (waklert_has_content(esc_html($bullet['bullet']))): ?><span><?php echo esc_html($bullet['bullet']); ?></span><?php endif; ?>
                     </li><?php endif; ?>

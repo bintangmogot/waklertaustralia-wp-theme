@@ -17,7 +17,7 @@ $desc = waklert_content('content_delivery_cities_text_8466514c20');
 
 $cities_field = get_sub_field('cities');
 ?>
-<section class="section-padding bg-gradient-to-b from-[#f0f6fa] via-[#e9f2f8] to-[#f8fafc] bg-pattern-dots border-t-2 border-dashed border-sky-200/80 relative isolate overflow-hidden" data-testid="city-spotlight">
+<section class="section-padding bg-gradient-to-b from-[#f0f6fa] via-[#e9f2f8] to-[#f8fafc] bg-pattern-dots border-t-2 border-solid border-sky-200/80 relative isolate overflow-hidden" data-testid="city-spotlight">
     <div class="container-custom relative z-10">
         <!-- Section Header -->
         <?php if ((waklert_has_content(esc_html($tag))) || (waklert_has_content(esc_html($heading))) || (waklert_has_content(esc_html($desc)))): ?><div class="text-center max-w-3xl mx-auto mb-10 md:mb-12">
@@ -71,7 +71,7 @@ $cities_field = get_sub_field('cities');
                     }
                     $permalink = get_permalink($city_id);
             ?>
-            <a href="<?= esc_url($permalink) ?>" class="group flex items-center justify-between gap-4 bg-white border-2 border-dashed border-sky-300/80 hover:border-[#0c4161] rounded-2xl p-5 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 ease-out shadow-xs">
+            <a href="<?= esc_url($permalink) ?>" class="group flex items-center justify-between gap-4 bg-white border-2 border-solid border-sky-300/80 hover:border-[#0c4161] rounded-2xl p-5 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 ease-out shadow-xs">
                 <?php if ((waklert_has_content(esc_html($city_name))) || (waklert_has_content(esc_html($region))) || (waklert_has_content(esc_html(waklert_content('content_delivery_cities_text_7149dbb192')))) || (waklert_has_content(esc_html($days)) || waklert_has_content(esc_html(waklert_content('content_delivery_cities_text_e351a5e638'))))): ?><div class="flex items-center gap-3.5 min-w-0">
                     <!-- Colorful Location Pin Icon -->
                     <div class="w-12 h-12 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center shrink-0 shadow-inner transform transition-transform duration-300 group-hover:scale-110">
@@ -120,11 +120,11 @@ $cities_field = get_sub_field('cities');
                         $city_name = str_replace(['Armodafinil Delivery to ', 'Buy Modafinil in ', 'Buy Modafinil '], '', $c->post_title);
                     }
                 ?>
-                <?php if ((waklert_has_content(esc_html($city_name))) && waklert_has_content(get_permalink($c->ID))): ?><a href="<?= get_permalink($c->ID) ?>" class="text-xs border border-dashed border-sky-300/80 bg-white text-slate-700 font-bold px-3.5 py-1.5 rounded-full hover:bg-[#0c4161] hover:text-white hover:border-[#0c4161] transition-all duration-200 shadow-2xs hover:-translate-y-0.5">
+                <?php if ((waklert_has_content(esc_html($city_name))) && waklert_has_content(get_permalink($c->ID))): ?><a href="<?= get_permalink($c->ID) ?>" class="text-xs border border-solid border-sky-300/80 bg-white text-slate-700 font-bold px-3.5 py-1.5 rounded-full hover:bg-[#0c4161] hover:text-white hover:border-[#0c4161] transition-all duration-200 shadow-2xs hover:-translate-y-0.5">
                     <?= esc_html($city_name) ?> <?= waklert_content_icon('manual_check_marker') ?>
                 </a><?php endif; ?>
                 <?php endforeach; ?>
-                <?php if (waklert_has_content(esc_html(waklert_content('content_delivery_cities_text_19bfbe3620')))): ?><span class="text-xs border border-dashed border-amber-300 bg-amber-50 text-amber-900 font-bold px-3.5 py-1.5 rounded-full shadow-2xs">
+                <?php if (waklert_has_content(esc_html(waklert_content('content_delivery_cities_text_19bfbe3620')))): ?><span class="text-xs border border-solid border-amber-300 bg-amber-50 text-amber-900 font-bold px-3.5 py-1.5 rounded-full shadow-2xs">
                     <?= esc_html(waklert_content('content_delivery_cities_text_19bfbe3620')) ?>
                 </span><?php endif; ?>
             </div>

@@ -50,7 +50,7 @@ if (empty($rows)) {
     $rows = [];
 }
 ?>
-<section class="section-padding bg-gradient-to-b from-[#f8fafc] via-[#eff6fb] to-[#f8fafc] bg-pattern-dots border-t-2 border-dashed border-sky-200/80 relative isolate overflow-hidden" data-testid="comparison-table">
+<section class="section-padding bg-gradient-to-b from-[#f8fafc] via-[#eff6fb] to-[#f8fafc] bg-pattern-dots border-t-2 border-solid border-sky-200/80 relative isolate overflow-hidden" data-testid="comparison-table">
     <div class="container-custom max-w-5xl relative z-10">
         <!-- Section Header -->
         <?php if ((waklert_has_content(esc_html($tag))) || (waklert_has_content(esc_html($heading))) || (waklert_has_content(esc_html($desc)))): ?><div class="text-center max-w-3xl mx-auto mb-10 md:mb-12">
@@ -66,7 +66,7 @@ if (empty($rows)) {
         </div><?php endif; ?>
 
         <!-- Comparison Table Card with Dashed Border and Two-Tone Structure -->
-        <div class="bg-white border-2 border-dashed border-sky-300/80 rounded-3xl overflow-hidden shadow-xl hover:border-[#0c4161] transition-all duration-300">
+        <div class="bg-white border-2 border-solid border-sky-300/80 rounded-3xl overflow-hidden shadow-xl hover:border-[#0c4161] transition-all duration-300">
             <div class="overflow-x-auto">
                 <table class="w-full text-sm text-left border-collapse">
                     <thead>
@@ -75,9 +75,11 @@ if (empty($rows)) {
                                 <?= esc_html($attribute_label) ?>
                             </th>
                             <!-- Highlighted Waklert Column -->
-                            <th class="py-5 px-5 md:px-6 bg-[#082c42] text-white font-heading font-black text-center text-sm md:text-base border-x-2 border-dashed border-amber-400/60 relative w-[26%]">
+                            <th class="py-5 px-5 md:px-6 bg-[#082c42] text-white font-heading font-black text-center text-sm md:text-base border-x-2 border-solid border-amber-400/60 relative w-[26%]">
                                 <?php if (waklert_has_content(esc_html($badge_label))): ?><div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400 text-slate-950 text-[10px] font-black uppercase tracking-widest mb-1 shadow-xs">
-                                    <?= esc_html($badge_label) ?>
+                                    <?php foreach (preg_split('/([★☆⭐]\x{FE0F}?)/u', $badge_label, -1, PREG_SPLIT_DELIM_CAPTURE) as $badge_part): ?>
+                                        <?php if (preg_match('/^[★☆⭐]/u', $badge_part)): ?><span class="hidden sm:inline" aria-hidden="true"><?= esc_html($badge_part) ?></span><?php else: ?><?= esc_html($badge_part) ?><?php endif; ?>
+                                    <?php endforeach; ?>
                                 </div><?php endif; ?>
                                 <?php if (waklert_has_content(esc_html($product_label))): ?><span class="block text-white text-lg"><?= esc_html($product_label) ?></span><?php endif; ?>
                             </th>
@@ -108,7 +110,7 @@ if (empty($rows)) {
                             </td>
 
                             <!-- Waklert Value (Clean Pill without bullet dot) -->
-                            <td class="py-4 px-5 md:px-6 text-center bg-sky-50/70 border-x-2 border-dashed border-sky-200/80 font-extrabold text-[#0c4161]">
+                            <td class="py-4 px-5 md:px-6 text-center bg-sky-50/70 border-x-2 border-solid border-sky-200/80 font-extrabold text-[#0c4161]">
                                 <?php if (waklert_has_content(esc_html($r['modafinil']))): ?><span class="inline-flex items-center justify-center px-3.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-300/80 text-xs font-bold shadow-2xs">
                                     <?= esc_html($r['modafinil']) ?>
                                 </span><?php endif; ?>
@@ -130,7 +132,7 @@ if (empty($rows)) {
             </div>
 
             <!-- Bottom Table Footer with Australia Note -->
-            <?php if ((waklert_has_content(esc_html($footer_note))) || (waklert_has_content(esc_html($footer_badge)))): ?><div class="p-4 px-6 bg-slate-50 border-t-2 border-dashed border-sky-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-slate-500">
+            <?php if ((waklert_has_content(esc_html($footer_note))) || (waklert_has_content(esc_html($footer_badge)))): ?><div class="p-4 px-6 bg-slate-50 border-t-2 border-solid border-sky-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-slate-500">
                 <?php if (waklert_has_content(esc_html($footer_note))): ?><span class="flex items-center gap-2">
                     <?= waklert_content_icon('content_comparison_icon_1b701caa03') ?>
                     <?php if (waklert_has_content(esc_html($footer_note))): ?><span><?= esc_html($footer_note) ?></span><?php endif; ?>

@@ -113,3 +113,11 @@ card-description panels follow the same rule. An FAQ without a question does not
 render an empty icon-only accordion. These checks do not alter saved content or
 remove editor fields. Verify with `php tests/menu-empty-content.php` and
 `php tests/module-visibility.php`.
+
+### Restrained border and background treatment
+
+Use solid lines for navigation, section dividers, table rows/columns, reviews,
+FAQ accordions, buttons and internal card dividers. Dashed borders are reserved
+for the outer product-card and key-point-card outlines. Dot/grid textures and
+large circular background rings are disabled. This is presentation only; saved
+page content and artwork fallback rules are unchanged.

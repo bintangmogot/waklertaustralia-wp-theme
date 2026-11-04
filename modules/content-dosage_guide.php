@@ -43,11 +43,11 @@ $faq_items     = is_array($faq_items) ? $faq_items : [];
 ?>
 
 <!-- 2-Tone Patterned Header -->
-<header class="relative overflow-hidden border-b-2 border-dashed border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-6 sm:py-7 md:py-9">
+<header class="relative overflow-hidden border-b-2 border-solid border-sky-300/80 bg-gradient-to-b from-[#f0f6fa] via-[#eef5fa] to-white bg-pattern-dots text-center py-6 sm:py-7 md:py-9">
     <div class="container-site max-w-4xl mx-auto px-4 relative z-10">
         <!-- Breadcrumbs -->
         <div class="mb-3">
-            <nav aria-label="<?= esc_attr(waklert_content('content_dosage_guide_text_07e96eed46')) ?>" class="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border border-dashed border-sky-300/80 bg-white/90 px-3.5 py-1 text-xs font-medium text-slate-500 shadow-xs backdrop-blur">
+            <nav aria-label="<?= esc_attr(waklert_content('content_dosage_guide_text_07e96eed46')) ?>" class="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border border-solid border-sky-300/80 bg-white/90 px-3.5 py-1 text-xs font-medium text-slate-500 shadow-xs backdrop-blur">
                 <?php if ((waklert_has_content(esc_html(waklert_option_text('breadcrumb_home_label')))) && waklert_has_content(esc_url(home_url('/')))): ?><a href="<?= esc_url(home_url('/')) ?>" class="font-bold text-slate-600 transition-colors hover:text-[#0c4161]"><?= esc_html(waklert_option_text('breadcrumb_home_label')) ?></a><?php endif; ?>
                 <span class="text-sky-300 font-normal">/</span>
                 <?php if (waklert_has_content(esc_html(waklert_content('content_dosage_guide_text_3870f2a549')))): ?><span aria-current="page" class="font-extrabold text-[#0c4161]"><?= esc_html(waklert_content('content_dosage_guide_text_3870f2a549')) ?></span><?php endif; ?>
@@ -76,7 +76,7 @@ $faq_items     = is_array($faq_items) ? $faq_items : [];
 
         <!-- Medical Disclaimer Banner -->
         <?php if ($disclaimer_label !== '' || $disclaimer !== ''): ?>
-        <div class="mt-6 mx-auto max-w-3xl flex items-start gap-3 rounded-2xl border-2 border-dashed border-amber-300 bg-amber-50/90 p-4 text-left text-xs sm:text-sm text-amber-950 shadow-xs">
+        <div class="mt-6 mx-auto max-w-3xl flex items-start gap-3 rounded-2xl border-2 border-solid border-amber-300 bg-amber-50/90 p-4 text-left text-xs sm:text-sm text-amber-950 shadow-xs">
             <?= waklert_content_icon('content_dosage_guide_icon_924893f4a8') ?>
             <div>
                 <?php if ($disclaimer_label !== ''): ?><strong class="font-bold text-amber-900"><?= esc_html($disclaimer_label) ?>:</strong> <?php endif; ?>
@@ -111,7 +111,7 @@ $faq_items     = is_array($faq_items) ? $faq_items : [];
         <?php if ($dosage_cards): ?>
             <div class="grid gap-6 md:grid-cols-3">
                 <?php foreach ($dosage_cards as $i => $card): ?>
-                    <article class="flex h-full flex-col justify-between rounded-2xl border-2 border-dashed border-sky-200/80 bg-white p-6 sm:p-7 shadow-xs transition-all duration-200 hover:border-sky-400 hover:shadow-md">
+                    <article class="flex h-full flex-col justify-between rounded-2xl border-2 border-solid border-sky-200/80 bg-white p-6 sm:p-7 shadow-xs transition-all duration-200 hover:border-sky-400 hover:shadow-md">
                         <div>
                             <div class="flex items-center justify-between gap-3 mb-4">
                                 <?php if (waklert_has_content(esc_html(sprintf('%02d', $i + 1)))): ?><span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-sky-100 font-heading text-sm font-black text-[#0c4161]">
@@ -159,7 +159,7 @@ $faq_items     = is_array($faq_items) ? $faq_items : [];
             <div class="grid gap-5 md:grid-cols-2">
                 <?php foreach ($product_cards as $prod): ?>
                     <?php if (empty($prod['link'])) { continue; } ?>
-                    <a href="<?= esc_url($prod['link']) ?>" class="group flex items-center gap-5 rounded-2xl border-2 border-dashed border-sky-200/80 bg-white p-6 shadow-xs transition-all hover:border-sky-400 hover:shadow-md">
+                    <a href="<?= esc_url($prod['link']) ?>" class="group flex items-center gap-5 rounded-2xl border-2 border-solid border-sky-200/80 bg-white p-6 shadow-xs transition-all hover:border-sky-400 hover:shadow-md">
                         <?php if (waklert_has_content(esc_html(strtoupper(substr((string) ($prod['name'] ?? ''), 0, 1))))): ?><div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-sky-100 font-heading text-xl font-black text-[#0c4161] group-hover:bg-[#0c4161] group-hover:text-white transition-colors">
                             <?= esc_html(strtoupper(substr((string) ($prod['name'] ?? ''), 0, 1))) ?>
                         </div><?php endif; ?>
@@ -221,7 +221,7 @@ $faq_items     = is_array($faq_items) ? $faq_items : [];
         <?php if ($timing_items): ?>
             <div class="grid gap-6 md:grid-cols-3">
                 <?php foreach ($timing_items as $item): ?>
-                    <div class="rounded-2xl border-2 border-dashed border-sky-200/80 bg-gradient-to-br from-sky-50/40 via-white to-transparent p-6 shadow-xs">
+                    <div class="rounded-2xl border-2 border-solid border-sky-200/80 bg-gradient-to-br from-sky-50/40 via-white to-transparent p-6 shadow-xs">
                         <?php if (!empty($item['time'])): ?>
                             <?php if (waklert_has_content(esc_html($item['time']))): ?><div class="inline-flex rounded-full bg-[#0c4161] px-3.5 py-1 text-xs font-black text-white mb-3">
                                 <?= esc_html($item['time']) ?>
@@ -263,7 +263,7 @@ $faq_items     = is_array($faq_items) ? $faq_items : [];
         <?php if ($import_checks): ?>
             <div class="grid gap-5 md:grid-cols-2">
                 <?php foreach ($import_checks as $tip): ?>
-                    <div class="flex gap-4 rounded-2xl border-2 border-dashed border-sky-200/80 bg-white p-6 shadow-xs">
+                    <div class="flex gap-4 rounded-2xl border-2 border-solid border-sky-200/80 bg-white p-6 shadow-xs">
                         <?php if (!empty($tip['emoji'])): ?>
                             <?php if (waklert_has_content(esc_html($tip['emoji']))): ?><span class="text-3xl shrink-0 mt-0.5"><?= esc_html($tip['emoji']) ?></span><?php endif; ?>
                         <?php endif; ?>
@@ -301,7 +301,7 @@ $faq_items     = is_array($faq_items) ? $faq_items : [];
 
         <div class="grid gap-4 md:grid-cols-2">
             <?php foreach ($faq_items as $faq): ?>
-                <details class="group rounded-2xl border-2 border-dashed border-sky-200/80 bg-white p-6 shadow-xs transition-all hover:border-sky-400 open:border-sky-400 open:bg-sky-50/20">
+                <details open class="group rounded-2xl border-2 border-solid border-sky-200/80 bg-white p-6 shadow-xs transition-all hover:border-sky-400 open:border-sky-400 open:bg-sky-50/20">
                     <summary class="flex items-center justify-between gap-4 font-heading text-base font-bold text-slate-900 cursor-pointer list-none">
                         <?= esc_html($faq['q'] ?? '') ?>
                         <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-sky-100 text-[#0c4161] group-open:-rotate-180 transition-transform">
@@ -323,7 +323,7 @@ $faq_items     = is_array($faq_items) ? $faq_items : [];
 <!-- Bottom Support CTA -->
 <section class="py-8 md:py-10 bg-white">
     <div class="container-site max-w-4xl text-center">
-        <div class="rounded-3xl border-2 border-dashed border-sky-300/80 bg-gradient-to-br from-[#f0f6fa] via-white to-sky-50/30 p-8 sm:p-12 shadow-xs">
+        <div class="rounded-3xl border-2 border-solid border-sky-300/80 bg-gradient-to-br from-[#f0f6fa] via-white to-sky-50/30 p-8 sm:p-12 shadow-xs">
             <?php if ($cta_heading !== ''): ?>
                 <?php if (waklert_has_content(esc_html($cta_heading))): ?><h2 class="font-heading text-2xl sm:text-3xl md:text-4xl font-black text-[#0c4161] mb-3">
                     <?= esc_html($cta_heading) ?>

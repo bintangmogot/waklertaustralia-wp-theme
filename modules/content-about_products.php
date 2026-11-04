@@ -34,7 +34,7 @@ if (!$heading && !$desc && !$products) {
         <?php if ($products): ?>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             <?php foreach ($products as $idx => $product): ?>
-            <div class="group relative flex flex-col justify-between overflow-hidden rounded-2xl border-2 border-dashed border-sky-200/80 bg-white p-6 shadow-xs transition-all duration-200 hover:border-sky-400 hover:shadow-md">
+            <div class="group relative flex flex-col justify-between overflow-hidden rounded-2xl border-2 border-solid border-sky-200/80 bg-white p-6 shadow-xs transition-all duration-200 hover:border-sky-400 hover:shadow-md">
                 <div>
                     <?php if ((waklert_has_content(sprintf('%02d', $idx + 1))) || (waklert_has_content(esc_html($badge_text)))): ?><div class="flex items-center justify-between gap-2 mb-3">
                         <?php if (waklert_has_content(sprintf('%02d', $idx + 1))): ?><span class="flex h-9 w-9 items-center justify-center rounded-xl bg-sky-100 text-[#0c4161] font-heading font-black text-xs">

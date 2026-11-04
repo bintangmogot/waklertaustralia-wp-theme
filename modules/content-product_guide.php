@@ -47,7 +47,7 @@ if (!$heading && !$desc && !$guide_items) {
                     $item_initial = $item_title ? mb_substr(wp_strip_all_tags($item_title), 0, 1) : '';
                     $product_link = get_sub_field('product_link');
                 ?>
-                <article class="group flex h-full flex-col justify-between rounded-2xl border-2 border-dashed border-sky-200/80 bg-white p-6 sm:p-7 shadow-xs transition-all duration-200 hover:border-sky-400 hover:shadow-md">
+                <article class="group flex h-full flex-col justify-between rounded-2xl border-2 border-solid border-sky-200/80 bg-white p-6 sm:p-7 shadow-xs transition-all duration-200 hover:border-sky-400 hover:shadow-md">
                     <div>
                         <!-- Header with Avatar & Badge -->
                         <?php if ((waklert_has_content(esc_html($item_initial ?: sprintf('%02d', $guide_idx)))) || (waklert_has_content(esc_html(waklert_content('content_product_guide_text_1458f29e94'))))): ?><div class="flex items-center justify-between gap-3 mb-4">
