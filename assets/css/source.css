@@ -2341,3 +2341,9 @@ footer .site-logo-img,
 }
 
 
+
+/* FAQ questions remain selectable inside native accordion summaries. */
+details > summary {
+  -webkit-user-select: text;
+  user-select: text;
+}

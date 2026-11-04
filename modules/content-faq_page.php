@@ -115,7 +115,7 @@ $whatsapp_url = function_exists('waklert_format_whatsapp_url') ? waklert_format_
                         $is_open = ($c_idx === 0 && $i_idx === 0) ? 'open' : '';
                     ?>
                     <details <?= $is_open ?> class="group rounded-2xl border-2 border-dashed border-sky-200/80 bg-white overflow-hidden shadow-xs hover:border-sky-300 transition-all duration-200 open:border-sky-300 open:shadow-sm">
-                        <summary class="flex items-center justify-between gap-4 p-5 cursor-pointer list-none select-none bg-white transition-colors hover:bg-sky-50/40 group-open:bg-sky-50/50">
+                        <summary class="flex items-center justify-between gap-4 p-5 cursor-pointer list-none select-text bg-white transition-colors hover:bg-sky-50/40 group-open:bg-sky-50/50">
                             <div class="flex items-center gap-3.5 text-left">
                                 <!-- Distinct Question Icon -->
                                 <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-sky-100 border border-sky-200/80 shadow-2xs group-hover:scale-105 transition-transform" aria-hidden="true">

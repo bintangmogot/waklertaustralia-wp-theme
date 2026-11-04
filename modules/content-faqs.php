@@ -40,7 +40,7 @@ $link_url = waklert_resolve_link(waklert_module_text('link_url'));
         if (!waklert_module_row_has_content(get_row(true))) { continue; }
             ?>
             <details class="group bg-white border-2 border-dashed border-sky-300/80 open:border-[#0c4161] hover:border-[#0c4161] rounded-2xl overflow-hidden shadow-xs hover:shadow-lg transition-all duration-300">
-                <summary class="flex items-center justify-between gap-4 p-5 md:p-6 cursor-pointer list-none select-none bg-white transition-colors duration-200 group-open:bg-sky-50/60">
+                <summary class="flex items-center justify-between gap-4 p-5 md:p-6 cursor-pointer list-none select-text bg-white transition-colors duration-200 group-open:bg-sky-50/60">
                     <div class="flex items-center gap-3.5 text-left">
                         <!-- Colorful Question Icon SVG -->
                         <div class="w-10 h-10 rounded-xl bg-sky-100 border border-sky-200/80 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform">
@@ -68,7 +68,7 @@ $link_url = waklert_resolve_link(waklert_module_text('link_url'));
                 foreach ($defaults as $f):
             ?>
             <details class="group bg-white border-2 border-dashed border-sky-300/80 open:border-[#0c4161] hover:border-[#0c4161] rounded-2xl overflow-hidden shadow-xs hover:shadow-lg transition-all duration-300">
-                <summary class="flex items-center justify-between gap-4 p-5 md:p-6 cursor-pointer list-none select-none bg-white transition-colors duration-200 group-open:bg-sky-50/60">
+                <summary class="flex items-center justify-between gap-4 p-5 md:p-6 cursor-pointer list-none select-text bg-white transition-colors duration-200 group-open:bg-sky-50/60">
                     <div class="flex items-center gap-3.5 text-left">
                         <div class="w-10 h-10 rounded-xl bg-sky-100 border border-sky-200/80 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform">
                             <?= waklert_content_icon('content_faqs_icon_49f1c3f04c') ?>
