@@ -316,19 +316,6 @@ $product_specs = array_values(array_filter($product_specs, static function ($spe
                             </div>
                         </div>
 
-                        <!-- Quantity Selector -->
-                        <div class="flex items-center gap-3">
-                            <label
-                                class="text-xs sm:text-sm font-bold text-[#0c4161]"><?= esc_html(waklert_content('single_product_text_c23a3486a5')) ?></label>
-                            <div class="flex items-center border-2 border-solid border-sky-300 rounded-xl bg-white shadow-sm overflow-hidden">
-                                <button type="button" id="qty-dec"
-                                    class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center text-slate-500 hover:text-[#0c4161] hover:bg-sky-50 transition-colors font-bold text-base">-</button>
-                                <span id="qty-val" class="w-8 sm:w-10 text-center text-xs sm:text-sm font-extrabold text-[#0c4161]">1</span>
-                                <button type="button" id="qty-inc"
-                                    class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center text-slate-500 hover:text-[#0c4161] hover:bg-sky-50 transition-colors font-bold text-base">+</button>
-                            </div>
-                        </div>
-
                         <!-- Hidden WooCommerce fields required for cart -->
                         <input type="hidden" name="add-to-cart" value="<?= absint($product->get_id()) ?>" />
                         <input type="hidden" name="product_id" value="<?= absint($product->get_id()) ?>" />
@@ -350,17 +337,12 @@ $product_specs = array_values(array_filter($product_specs, static function ($spe
                     </div>
                 </form>
 
-                <!-- Script to handle variation row selection & quantity calculation -->
+                <!-- Script to handle variation selection and price updates -->
                 <script>
                     document.addEventListener('DOMContentLoaded', function () {
                         const rows = document.querySelectorAll('.variation-row-btn');
                         const inputVarId = document.querySelector('input.variation_id');
                         const inputAttr = document.querySelector('input.variation_attribute_hidden');
-                        const inputQty = document.querySelector('input.form-quantity');
-
-                        const qtyVal = document.getElementById('qty-val');
-                        const btnDec = document.getElementById('qty-dec');
-                        const btnInc = document.getElementById('qty-inc');
                         const btnText = document.getElementById('submit-btn-text');
                         const stickyBar = document.getElementById('sticky-product-bar');
                         const stickyPack = document.getElementById('sticky-product-pack');
@@ -370,14 +352,12 @@ $product_specs = array_values(array_filter($product_specs, static function ($spe
 
                         const selectedRow = document.querySelector('.variation-row-btn.active-row') || rows[0];
                         let selectedPrice = parseFloat(selectedRow.dataset.price);
-                        let quantity = 1;
-
                         if (selectedRow) {
                             if (stickyPack) stickyPack.textContent = selectedRow.dataset.packLabel || '';
                         }
 
                         function updateBtnText() {
-                            const total = selectedPrice * quantity;
+                            const total = selectedPrice;
                             btnText.textContent = <?= wp_json_encode(waklert_content('single_product_text_7bbcacafd1'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> + ' - $' + total.toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
                             if (stickyPrice) {
                                 stickyPrice.textContent = '$' + total.toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -446,22 +426,6 @@ $product_specs = array_values(array_filter($product_specs, static function ($spe
                             }
                         }
 
-                        // Quantity listeners
-                        btnDec.addEventListener('click', function () {
-                            if (quantity > 1) {
-                                quantity--;
-                                qtyVal.innerText = quantity;
-                                inputQty.value = quantity;
-                                updateBtnText();
-                            }
-                        });
-
-                        btnInc.addEventListener('click', function () {
-                            quantity++;
-                            qtyVal.innerText = quantity;
-                            inputQty.value = quantity;
-                            updateBtnText();
-                        });
                     });
                 </script>
 

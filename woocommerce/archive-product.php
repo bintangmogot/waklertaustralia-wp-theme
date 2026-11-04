@@ -38,7 +38,7 @@ if (have_rows('modules', $shop_page_id)) {
         <h1 class="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
             <?= esc_html(woocommerce_page_title(false)) ?>
         </h1>
-        <p class="mx-auto mt-3 max-w-2xl text-base leading-relaxed text-sky-100/90 font-medium">
+        <p class="mx-auto mt-3 max-w-4xl text-base leading-relaxed text-sky-100/90 font-medium">
             <?= esc_html(waklert_content('archive_product_text_6962463ffc')) ?>
         </p>
     </div>
