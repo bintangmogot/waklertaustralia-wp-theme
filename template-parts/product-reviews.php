@@ -47,16 +47,16 @@ foreach ($rating_counts as $star => $count) {
     $rating_percentages[$star] = $rating_count > 0 ? (int) round(($count / $rating_count) * 100) : 0;
 }
 
-$rating_label = 'Customer rating';
+$rating_label = waklert_content('product_reviews_text_d00eec6f0f');
 if ($average_rating !== null) {
     if ((float) $average_rating >= 4.5) {
-        $rating_label = 'Excellent';
+        $rating_label = waklert_content('product_reviews_text_166c59aaeb');
     } elseif ((float) $average_rating >= 4.0) {
-        $rating_label = 'Great';
+        $rating_label = waklert_content('product_reviews_text_a9414902c5');
     } elseif ((float) $average_rating >= 3.0) {
-        $rating_label = 'Average';
+        $rating_label = waklert_content('product_reviews_text_e4fa5fa3c9');
     } else {
-        $rating_label = 'Poor';
+        $rating_label = waklert_content('product_reviews_text_0d0e311b7d');
     }
 }
 ?>
@@ -65,33 +65,33 @@ if ($average_rating !== null) {
     <div class="container-site max-w-6xl">
         <header class="mb-10 flex flex-col items-center justify-center text-center">
             <span class="mb-4 inline-flex items-center gap-1.5 rounded-full bg-primary-softer px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-primary-dark">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-accent" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 2.9 6.2 6.8 1-4.9 4.8L18 21l-6-3.2L5.9 21l1.2-7-5-4.8 6.9-1L12 2Z"/></svg>
-                Verified reviews
+                <?= waklert_content_icon('product_reviews_icon_c80fc78e5a') ?>
+                <?= esc_html(waklert_content('product_reviews_text_4a114408dc')) ?>
             </span>
-            <h2 class="mb-2 font-heading text-3xl font-extrabold tracking-tight text-slate-900 md:text-4xl">What our customers say</h2>
-            <p class="text-sm font-medium text-slate-500 md:text-base">Real experiences from verified buyers</p>
+            <h2 class="mb-2 font-heading text-3xl font-extrabold tracking-tight text-slate-900 md:text-4xl"><?= esc_html(waklert_content('product_reviews_text_ea79028f54')) ?></h2>
+            <p class="text-sm font-medium text-slate-500 md:text-base"><?= esc_html(waklert_content('product_reviews_text_85c9c4b152')) ?></p>
         </header>
 
         <?php if ($review_count > 0 && $rating_count > 0): ?>
             <div class="mb-8 flex flex-col gap-8 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm md:flex-row md:gap-16 md:p-10">
                 <div class="flex shrink-0 flex-col justify-center">
-                    <div class="mb-2 text-sm font-semibold text-slate-500">Customer rating</div>
+                    <div class="mb-2 text-sm font-semibold text-slate-500"><?= esc_html(waklert_content('product_reviews_text_d00eec6f0f')) ?></div>
                     <div class="mb-3 text-5xl font-extrabold text-slate-900"><?= esc_html(number_format((float) $average_rating, 1)) ?></div>
                     <div class="mb-3 flex gap-0.5" aria-label="<?= esc_attr(number_format((float) $average_rating, 1)) ?> out of 5 stars">
                         <?php for ($star = 1; $star <= 5; $star++): ?>
                             <span class="flex h-6 w-6 items-center justify-center rounded-sm <?= $star <= $rounded_rating ? 'bg-primary' : 'bg-slate-200' ?>">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-white" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 2.9 6.2 6.8 1-4.9 4.8L18 21l-6-3.2L5.9 21l1.2-7-5-4.8 6.9-1L12 2Z"/></svg>
+                                <?= waklert_content_icon('product_reviews_icon_1af1bd5bdc') ?>
                             </span>
                         <?php endfor; ?>
                     </div>
                     <div class="mb-1 font-bold text-slate-900"><?= esc_html($rating_label) ?></div>
-                    <div class="text-xs font-medium text-slate-500">Based on <?= esc_html(number_format_i18n($review_count)) ?> <?= esc_html(_n('review', 'reviews', $review_count, 'modmy')) ?></div>
+                    <div class="text-xs font-medium text-slate-500"><?= esc_html(waklert_content('product_reviews_text_8cceb457a7')) ?> <?= esc_html(number_format_i18n($review_count)) ?> <?= esc_html(_n('review', 'reviews', $review_count, 'modmy')) ?></div>
                 </div>
 
                 <div class="flex w-full max-w-lg flex-1 flex-col justify-center gap-3">
                     <?php foreach ([5, 4, 3, 2, 1] as $star): ?>
                         <div class="flex items-center gap-4 text-xs font-semibold text-slate-600">
-                            <span class="w-10 whitespace-nowrap"><?= esc_html($star) ?>-star</span>
+                            <span class="w-10 whitespace-nowrap"><?= esc_html($star) ?><?= esc_html(waklert_content('product_reviews_text_7041e9e044')) ?></span>
                             <span class="h-2.5 flex-1 overflow-hidden rounded-full bg-slate-100">
                                 <span class="block h-full rounded-full bg-primary" style="width: <?= esc_attr($rating_percentages[$star]) ?>%"></span>
                             </span>
@@ -104,17 +104,17 @@ if ($average_rating !== null) {
 
         <?php if ($review_count > 1): ?>
             <div class="mb-4 flex justify-end gap-2 pr-2">
-                <button type="button" class="waklert-review-prev flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 transition-colors hover:border-primary-light hover:text-primary-dark" aria-label="Previous reviews">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m15 18-6-6 6-6"/></svg>
+                <button type="button" class="waklert-review-prev flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 transition-colors hover:border-primary-light hover:text-primary-dark" aria-label="<?= esc_attr(waklert_content('product_reviews_text_8bd3fc3c24')) ?>">
+                    <?= waklert_content_icon('product_reviews_icon_42ce6fb0aa') ?>
                 </button>
-                <button type="button" class="waklert-review-next flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 transition-colors hover:border-primary-light hover:text-primary-dark" aria-label="Next reviews">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6"/></svg>
+                <button type="button" class="waklert-review-next flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 transition-colors hover:border-primary-light hover:text-primary-dark" aria-label="<?= esc_attr(waklert_content('product_reviews_text_926ba9028b')) ?>">
+                    <?= waklert_content_icon('product_reviews_icon_ab5a1e9bd7') ?>
                 </button>
             </div>
         <?php endif; ?>
 
         <?php if ($reviews): ?>
-            <div class="waklert-review-slider mb-8 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-8" aria-label="Customer reviews">
+            <div class="waklert-review-slider mb-8 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-8" aria-label="<?= esc_attr(waklert_content('product_reviews_text_7826f3839d')) ?>">
                 <?php foreach ($reviews as $index => $review):
                     $post_id = $review->ID;
                     $title = get_the_title($post_id);
@@ -138,7 +138,7 @@ if ($average_rating !== null) {
                         <?php if (is_numeric($rating_value) && (float) $rating_value >= 1 && (float) $rating_value <= 5): ?>
                             <div class="mb-4 flex gap-0.5" aria-label="<?= esc_attr($rating_value) ?> out of 5 stars">
                                 <?php for ($star = 1; $star <= 5; $star++): ?>
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 <?= $star <= round((float) $rating_value) ? 'text-accent' : 'text-slate-200' ?>" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 2.9 6.2 6.8 1-4.9 4.8L18 21l-6-3.2L5.9 21l1.2-7-5-4.8 6.9-1L12 2Z"/></svg>
+                                    <?= waklert_content_icon_class('manual_product_review_star_1', $star <= round((float) $rating_value) ? 'text-accent' : 'text-slate-200') ?>
                                 <?php endfor; ?>
                             </div>
                         <?php endif; ?>
@@ -155,8 +155,8 @@ if ($average_rating !== null) {
                                 </span>
                             </div>
                             <span class="inline-flex shrink-0 items-center gap-1 rounded bg-primary-softer px-2 py-1 text-[9px] font-bold uppercase tracking-wider text-primary-dark">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>
-                                <?= esc_html($is_verified ? 'Verified' : 'Review') ?>
+                                <?= waklert_content_icon('product_reviews_icon_f39fc56f4c') ?>
+                                <?= esc_html($is_verified ? waklert_content('product_reviews_text_9c8650f458') : waklert_content('product_reviews_text_d94d69c024')) ?>
                             </span>
                         </div>
                     </article>
@@ -164,16 +164,16 @@ if ($average_rating !== null) {
             </div>
         <?php else: ?>
             <div class="mb-8 rounded-2xl border border-dashed border-slate-300 bg-white p-8 text-center md:p-12">
-                <p class="font-medium text-slate-500">No reviews yet. Be the first to review this product.</p>
+                <p class="font-medium text-slate-500"><?= esc_html(waklert_content('product_reviews_text_f664708bfd')) ?></p>
             </div>
         <?php endif; ?>
 
         <div class="relative mx-auto mt-8 max-w-2xl overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm md:p-8">
             <div class="mb-5 flex items-center gap-3 border-b border-slate-100 pb-5">
                 <span class="flex h-10 w-10 items-center justify-center rounded-full bg-primary-softer text-primary-dark">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    <?= waklert_content_icon('product_reviews_icon_d664718216') ?>
                 </span>
-                <h3 class="font-bold text-slate-900">Write a Review <span class="font-normal text-slate-400">for <?= esc_html($product_name) ?></span></h3>
+                <h3 class="font-bold text-slate-900"><?= esc_html(waklert_content('product_reviews_text_5725d99e4b')) ?> <span class="font-normal text-slate-400"><?= esc_html(waklert_content('product_reviews_text_cee93bc836')) ?> <?= esc_html($product_name) ?></span></h3>
             </div>
 
             <form id="waklert-product-review-form" class="space-y-4" data-endpoint="<?= esc_url(admin_url('admin-ajax.php')) ?>">
@@ -183,40 +183,40 @@ if ($average_rating !== null) {
                 <?php wp_nonce_field('waklert_submit_product_review', 'review_nonce'); ?>
 
                 <div>
-                    <label class="mb-1.5 block text-[11px] font-bold uppercase tracking-wider text-slate-700">Your rating</label>
-                    <div class="flex items-center gap-1" role="group" aria-label="Choose a rating">
+                    <label class="mb-1.5 block text-[11px] font-bold uppercase tracking-wider text-slate-700"><?= esc_html(waklert_content('product_reviews_text_0851fba517')) ?></label>
+                    <div class="flex items-center gap-1" role="group" aria-label="<?= esc_attr(waklert_content('product_reviews_text_039b5980e2')) ?>">
                         <?php for ($star = 1; $star <= 5; $star++): ?>
                             <button type="button" class="waklert-review-star text-slate-300 transition-colors hover:text-accent" data-rating="<?= esc_attr($star) ?>" aria-label="<?= esc_attr($star) ?> star<?= $star === 1 ? '' : 's' ?>" aria-pressed="false">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 2.9 6.2 6.8 1-4.9 4.8L18 21l-6-3.2L5.9 21l1.2-7-5-4.8 6.9-1L12 2Z"/></svg>
+                                <?= waklert_content_icon('product_reviews_icon_a9e77712a0') ?>
                             </button>
                         <?php endfor; ?>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 gap-3 md:grid-cols-3">
-                    <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-700">Name
-                        <input type="text" name="reviewer_name" required autocomplete="name" placeholder="Your name" class="mt-1.5 w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm font-normal normal-case tracking-normal text-slate-900 placeholder:text-slate-400 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20">
+                    <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-700"><?= esc_html(waklert_content('product_reviews_text_55fe5282b5')) ?>
+                        <input type="text" name="reviewer_name" required autocomplete="name" placeholder="<?= esc_attr(waklert_content('product_reviews_text_e73e7f1c01')) ?>" class="mt-1.5 w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm font-normal normal-case tracking-normal text-slate-900 placeholder:text-slate-400 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20">
                     </label>
-                    <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-700">Email
-                        <input type="email" name="reviewer_email" required autocomplete="email" placeholder="you@example.com" class="mt-1.5 w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm font-normal normal-case tracking-normal text-slate-900 placeholder:text-slate-400 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20">
+                    <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-700"><?= esc_html(waklert_content('product_reviews_text_7204452a30')) ?>
+                        <input type="email" name="reviewer_email" required autocomplete="email" placeholder="<?= esc_attr(waklert_content('product_reviews_text_398f602b4c')) ?>" class="mt-1.5 w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm font-normal normal-case tracking-normal text-slate-900 placeholder:text-slate-400 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20">
                     </label>
-                    <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-700">Title
-                        <input type="text" name="review_title" required placeholder="Summarize your review" class="mt-1.5 w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm font-normal normal-case tracking-normal text-slate-900 placeholder:text-slate-400 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20">
+                    <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-700"><?= esc_html(waklert_content('product_reviews_text_30463c3dd9')) ?>
+                        <input type="text" name="review_title" required placeholder="<?= esc_attr(waklert_content('product_reviews_text_e7996fbf18')) ?>" class="mt-1.5 w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm font-normal normal-case tracking-normal text-slate-900 placeholder:text-slate-400 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20">
                     </label>
                 </div>
 
-                <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-700">Your review
-                    <textarea name="review_content" required rows="4" placeholder="Share your experience..." class="mt-1.5 w-full resize-y rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm font-normal normal-case tracking-normal text-slate-900 placeholder:text-slate-400 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"></textarea>
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-700"><?= esc_html(waklert_content('product_reviews_text_d6d86fdad8')) ?>
+                    <textarea name="review_content" required rows="4" placeholder="<?= esc_attr(waklert_content('product_reviews_text_95218c1b56')) ?>" class="mt-1.5 w-full resize-y rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm font-normal normal-case tracking-normal text-slate-900 placeholder:text-slate-400 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"></textarea>
                 </label>
 
                 <div class="flex flex-col items-center justify-between gap-4 pt-2 sm:flex-row">
-                    <p class="w-full text-left text-[10px] text-slate-400 sm:w-auto">All fields are required.</p>
+                    <p class="w-full text-left text-[10px] text-slate-400 sm:w-auto"><?= esc_html(waklert_content('product_reviews_text_c35fa8729d')) ?></p>
                     <div class="flex w-full flex-col items-end sm:w-auto">
                         <button type="submit" class="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-5 py-2.5 sm:px-8 sm:py-3.5 text-xs sm:text-sm font-bold text-primary-foreground transition-colors hover:bg-primary-dark focus:outline-none focus:ring-4 focus:ring-primary/20 disabled:cursor-wait disabled:opacity-70 sm:w-auto">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m22 2-7 20-4-9-9-4 20-7ZM22 2 11 13"/></svg>
-                            Submit Review
+                            <?= waklert_content_icon('product_reviews_icon_943143a1b3') ?>
+                            <?= esc_html(waklert_content('product_reviews_text_5b90d92c89')) ?>
                         </button>
-                        <span class="mt-2 text-[10px] font-medium text-slate-400">Moderated before publishing</span>
+                        <span class="mt-2 text-[10px] font-medium text-slate-400"><?= esc_html(waklert_content('product_reviews_text_880d3b6144')) ?></span>
                     </div>
                 </div>
 
@@ -278,7 +278,7 @@ document.addEventListener('DOMContentLoaded', function () {
         message.classList.add('hidden');
 
         if (!Number(ratingInput.value)) {
-            message.textContent = 'Please select a star rating.';
+            message.textContent = <?= wp_json_encode(waklert_content('manual_review_select_rating'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
             message.className = 'rounded-lg bg-red-50 p-4 text-sm font-bold text-red-700';
             return;
         }
@@ -286,7 +286,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const submitButton = form.querySelector('button[type="submit"]');
         const originalButton = submitButton.innerHTML;
         submitButton.disabled = true;
-        submitButton.textContent = 'Submitting...';
+        submitButton.textContent = <?= wp_json_encode(waklert_content('manual_review_submitting'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
 
         try {
             const response = await fetch(form.dataset.endpoint, {
@@ -298,7 +298,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const success = Boolean(result.success);
             message.textContent = success
                 ? result.data.message
-                : (result.data?.message || 'Your review could not be submitted. Please try again.');
+                : (result.data?.message || <?= wp_json_encode(waklert_content('manual_review_failed'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>);
             message.className = success
                 ? 'rounded-lg bg-primary-softer p-4 text-sm font-bold text-primary-dark'
                 : 'rounded-lg bg-red-50 p-4 text-sm font-bold text-red-700';
@@ -308,7 +308,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 setRating(0);
             }
         } catch (error) {
-            message.textContent = 'A network error occurred. Please try again.';
+            message.textContent = <?= wp_json_encode(waklert_content('manual_review_network_failed'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
             message.className = 'rounded-lg bg-red-50 p-4 text-sm font-bold text-red-700';
         } finally {
             submitButton.innerHTML = originalButton;

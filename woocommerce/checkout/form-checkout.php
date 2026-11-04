@@ -23,13 +23,13 @@ do_action( 'woocommerce_before_checkout_form', $checkout );
 
 // If checkout registration is disabled and not logged in, the user cannot checkout.
 if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_required() && ! is_user_logged_in() ) {
-	echo esc_html( apply_filters( 'woocommerce_checkout_must_be_logged_in_message', __( 'You must be logged in to checkout.', 'woocommerce' ) ) );
+	echo esc_html( apply_filters( 'woocommerce_checkout_must_be_logged_in_message', __( waklert_content('form_checkout_text_e88ddba8b7'), 'woocommerce' ) ) );
 	return;
 }
 
 ?>
 
-<form name="checkout" method="post" class="checkout woocommerce-checkout grid gap-6 lg:gap-8 lg:grid-cols-[55fr_45fr]" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data" aria-label="<?php echo esc_attr__( 'Checkout', 'woocommerce' ); ?>">
+<form name="checkout" method="post" class="checkout woocommerce-checkout grid gap-6 lg:gap-8 lg:grid-cols-[55fr_45fr]" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data" aria-label="<?php echo esc_attr__( waklert_content('form_checkout_text_d5b7591187'), 'woocommerce' ); ?>">
 
 	<div class="space-y-4">
 		<?php if ( $checkout->get_checkout_fields() ) : ?>
@@ -55,7 +55,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 		<div class="sticky top-24 rounded-2xl border border-border bg-card p-6 shadow-card lg:p-8">
 			<?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
 			
-			<h3 id="order_review_heading" class="mb-5 font-heading text-xl font-bold text-card-foreground"><?php esc_html_e( 'Your order', 'woocommerce' ); ?></h3>
+			<h3 id="order_review_heading" class="mb-5 font-heading text-xl font-bold text-card-foreground"><?php esc_html_e( waklert_content('form_checkout_text_62694a4f46'), 'woocommerce' ); ?></h3>
 			
 			<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 

@@ -28,7 +28,9 @@ require_once MODMY_THEME_DIR . '/inc/enqueue.php';
 
 // 3. ACF Theme Options (Global settings)
 require_once MODMY_THEME_DIR . '/inc/theme-options.php';
+require_once MODMY_THEME_DIR . '/inc/template-content.php';
 require_once MODMY_THEME_DIR . '/inc/content-seed.php';
+require_once MODMY_THEME_DIR . '/inc/module-visibility.php';
 
 // 4. Shortcodes
 require_once MODMY_THEME_DIR . '/inc/shortcodes.php';
@@ -84,16 +86,15 @@ add_filter('document_title_separator', function($sep) {
 // 11. Custom Gravity Forms submit button markup with envelope icon
 add_filter('gform_submit_button', function($button, $form) {
     if ($form['id'] == 1) {
-        $btn_text = function_exists('modmy_t') ? "Send Message" : "Send Message";
+        $btn_text = (string) ($form['button']['text'] ?? '');
         return sprintf(
             '<button type="submit" id="gform_submit_button_%d" class="button gform_button flex items-center justify-center gap-2 w-full md:w-auto">
                 <span>%s</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
+                %s
             </button>',
             $form['id'],
-            esc_html($btn_text)
+            esc_html($btn_text),
+            waklert_content_icon('manual_contact_submit_icon')
         );
     }
     return $button;
@@ -195,121 +196,6 @@ add_action("manage_review_posts_custom_column", function($column, $post_id) {
     }
 }, 10, 2);
 
-
-// Prefill Product FAQs Module with default Modafinil questions
-add_filter('acf/load_value/key=field_dsg_624949de81', function($value, $post_id, $field) {
-    // Only prefill if it's currently empty or contains only empty rows
-    $is_empty = true;
-    if (!empty($value) && is_array($value)) {
-        foreach ($value as $row) {
-            // Check if either English or Malay question is filled
-            if (!empty($row['field_dsg_ae5395b1a7']) || !empty($row['field_dsg_f3bbb68d4e'])) {
-                $is_empty = false;
-                break;
-            }
-        }
-    }
-
-    if ($is_empty) {
-        // If we are in the context of ACF layout and the field name is faq_items
-        $value = [
-            [
-                'field_dsg_ae5395b1a7' => 'What is Modanil 200mg used for?',
-                'field_dsg_f3bbb68d4e' => 'Apakah kegunaan Modanil 200mg?',
-                'field_dsg_4ececabc41' => 'Modanil 200 mg is useful for the improvement of narcolepsy, obstructive sleep apnea, or shift work sleep disorder.',
-                'field_dsg_462a8df2cf' => 'Modanil 200 mg berguna untuk pembaikan narkolepsi, apnea tidur obstruktif, atau gangguan tidur kerja syif.'
-            ],
-            [
-                'field_dsg_ae5395b1a7' => 'How does Modanil 200mg work?',
-                'field_dsg_f3bbb68d4e' => 'Bagaimanakah Modanil 200mg berfungsi?',
-                'field_dsg_4ececabc41' => 'Modanil works by affecting certain chemicals in the brain that regulate the sleep-wake cycle, helping you stay awake and alert.',
-                'field_dsg_462a8df2cf' => 'Modanil berfungsi dengan mempengaruhi bahan kimia tertentu di dalam otak yang mengawal selitaran tidur-jaga, membantu anda kekal berjaga dan peka.'
-            ],
-            [
-                'field_dsg_ae5395b1a7' => 'How should I take Modanil 200mg?',
-                'field_dsg_f3bbb68d4e' => 'Bagaimanakah cara saya mengambil Modanil 200mg?',
-                'field_dsg_4ececabc41' => 'Take one tablet in the morning with a glass of water. Do not exceed the recommended dose.',
-                'field_dsg_462a8df2cf' => 'Ambil sebiji tablet pada waktu pagi dengan segelas air. Jangan melebihi dos yang disyorkan.'
-            ],
-            [
-                'field_dsg_ae5395b1a7' => 'Can I take Modanil with food?',
-                'field_dsg_f3bbb68d4e' => 'Bolehkah saya mengambil Modanil dengan makanan?',
-                'field_dsg_4ececabc41' => 'Yes, it can be taken with or without food.',
-                'field_dsg_462a8df2cf' => 'Ya, ia boleh diambil dengan atau tanpa makanan.'
-            ],
-            [
-                'field_dsg_ae5395b1a7' => 'What should I do if I miss a dose?',
-                'field_dsg_f3bbb68d4e' => 'Apakah yang harus saya lakukan jika terlepas dos?',
-                'field_dsg_4ececabc41' => 'If you miss a dose, take it as soon as you remember. If it is close to your next dose, skip the missed dose. Do not take a double dose.',
-                'field_dsg_462a8df2cf' => 'Jika anda terlepas dos, ambil sebaik sahaja anda teringat. Jika ia hampir dengan dos seterusnya, abaikan dos yang terlepas. Jangan ambil dos berganda.'
-            ],
-            [
-                'field_dsg_ae5395b1a7' => 'How long does Modanil 200mg last?',
-                'field_dsg_f3bbb68d4e' => 'Berapa lamakah Modanil 200mg bertahan?',
-                'field_dsg_4ececabc41' => 'The effects typically last between 12 to 15 hours.',
-                'field_dsg_462a8df2cf' => 'Kesannya biasanya bertahan antara 12 hingga 15 jam.'
-            ],
-            [
-                'field_dsg_ae5395b1a7' => 'What are the common side effects of Modanil 200mg?',
-                'field_dsg_f3bbb68d4e' => 'Apakah kesan sampingan biasa Modanil 200mg?',
-                'field_dsg_4ececabc41' => 'Common side effects include headache, nausea, nervousness, dizziness, or difficulty sleeping.',
-                'field_dsg_462a8df2cf' => 'Kesan sampingan biasa termasuk sakit kepala, loya, gementar, pening, atau kesukaran tidur.'
-            ]
-        ];
-    }
-    return $value;
-}, 10, 3);
-
-
-
-// Force default_value on the field config itself to bypass JSON cache issues
-add_filter('acf/load_field/key=field_dsg_624949de81', function($field) {
-    $field['default_value'] = [
-        [
-            'field_dsg_ae5395b1a7' => 'What is Modanil 200mg used for?',
-            'field_dsg_f3bbb68d4e' => 'Apakah kegunaan Modanil 200mg?',
-            'field_dsg_4ececabc41' => 'Modanil 200 mg is useful for the improvement of narcolepsy, obstructive sleep apnea, or shift work sleep disorder.',
-            'field_dsg_462a8df2cf' => 'Modanil 200 mg berguna untuk pembaikan narkolepsi, apnea tidur obstruktif, atau gangguan tidur kerja syif.'
-        ],
-        [
-            'field_dsg_ae5395b1a7' => 'How does Modanil 200mg work?',
-            'field_dsg_f3bbb68d4e' => 'Bagaimanakah Modanil 200mg berfungsi?',
-            'field_dsg_4ececabc41' => 'Modanil works by affecting certain chemicals in the brain that regulate the sleep-wake cycle, helping you stay awake and alert.',
-            'field_dsg_462a8df2cf' => 'Modanil berfungsi dengan mempengaruhi bahan kimia tertentu di dalam otak yang mengawal selitaran tidur-jaga, membantu anda kekal berjaga dan peka.'
-        ],
-        [
-            'field_dsg_ae5395b1a7' => 'How should I take Modanil 200mg?',
-            'field_dsg_f3bbb68d4e' => 'Bagaimanakah cara saya mengambil Modanil 200mg?',
-            'field_dsg_4ececabc41' => 'Take one tablet in the morning with a glass of water. Do not exceed the recommended dose.',
-            'field_dsg_462a8df2cf' => 'Ambil sebiji tablet pada waktu pagi dengan segelas air. Jangan melebihi dos yang disyorkan.'
-        ],
-        [
-            'field_dsg_ae5395b1a7' => 'Can I take Modanil with food?',
-            'field_dsg_f3bbb68d4e' => 'Bolehkah saya mengambil Modanil dengan makanan?',
-            'field_dsg_4ececabc41' => 'Yes, it can be taken with or without food.',
-            'field_dsg_462a8df2cf' => 'Ya, ia boleh diambil dengan atau tanpa makanan.'
-        ],
-        [
-            'field_dsg_ae5395b1a7' => 'What should I do if I miss a dose?',
-            'field_dsg_f3bbb68d4e' => 'Apakah yang harus saya lakukan jika terlepas dos?',
-            'field_dsg_4ececabc41' => 'If you miss a dose, take it as soon as you remember. If it is close to your next dose, skip the missed dose. Do not take a double dose.',
-            'field_dsg_462a8df2cf' => 'Jika anda terlepas dos, ambil sebaik sahaja anda teringat. Jika ia hampir dengan dos seterusnya, abaikan dos yang terlepas. Jangan ambil dos berganda.'
-        ],
-        [
-            'field_dsg_ae5395b1a7' => 'How long does Modanil 200mg last?',
-            'field_dsg_f3bbb68d4e' => 'Berapa lamakah Modanil 200mg bertahan?',
-            'field_dsg_4ececabc41' => 'The effects typically last between 12 to 15 hours.',
-            'field_dsg_462a8df2cf' => 'Kesannya biasanya bertahan antara 12 hingga 15 jam.'
-        ],
-        [
-            'field_dsg_ae5395b1a7' => 'What are the common side effects of Modanil 200mg?',
-            'field_dsg_f3bbb68d4e' => 'Apakah kesan sampingan biasa Modanil 200mg?',
-            'field_dsg_4ececabc41' => 'Common side effects include headache, nausea, nervousness, dizziness, or difficulty sleeping.',
-            'field_dsg_462a8df2cf' => 'Kesan sampingan biasa termasuk sakit kepala, loya, gementar, pening, atau kesukaran tidur.'
-        ]
-    ];
-    return $field;
-});
 
 // Keep product copy in the shared Product Summary and Product Description modules.
 if( function_exists('acf_add_local_field_group') ):
@@ -636,7 +522,7 @@ function modmy_custom_bacs_details($order_id) {
     
     echo "<style>.woocommerce-bacs-bank-details { display: none !important; }</style>";
     echo "<div class=\"custom-bacs-details mt-8 mb-8 p-6 bg-[#F0F7FF] border border-[#BDE0FF] rounded-2xl text-center text-foreground\">";
-    echo "<h3 class=\"font-bold text-xl mb-4 text-foreground\">Bank Details</h3>";
+    echo "<h3 class=\"font-bold text-xl mb-4 text-foreground\">" . esc_html(waklert_content('manual_bank_details_heading')) . "</h3>";
     
     foreach ($bacs_accounts as $account) {
         $bank_name = !empty($account["bank_name"]) ? $account["bank_name"] : $bank['bank'];
@@ -645,21 +531,12 @@ function modmy_custom_bacs_details($order_id) {
         $account_number = !empty($account["account_number"]) ? $account["account_number"] : $bank['number'];
         $bic = !empty($account["bic"]) ? $account["bic"] : "";
 
-        // Override if database still contains old bank details
-        if (stripos($bank_name, 'ING') !== false || stripos($account_name, 'Sean') !== false || $account_number === '306528842') {
-            $bank_name = $bank['bank'];
-            $account_name = $bank['name'];
-            $sort_code = $bank['bsb'];
-            $account_number = $bank['number'];
-            $bic = "";
-        }
-        
-        echo "<p class=\"mb-1 text-lg\"><strong>Bank:</strong> " . esc_html($bank_name) . "</p>";
-        echo "<p class=\"mb-1 text-lg\"><strong>Account Name:</strong> " . esc_html($account_name) . "</p>";
-        echo "<p class=\"mb-1 text-lg\"><strong>BSB:</strong> " . esc_html($sort_code) . "</p>";
-        echo "<p class=\"mb-1 text-lg\"><strong>Account Number:</strong> " . esc_html($account_number) . "</p>";
+echo "<p class=\"mb-1 text-lg\"><strong>" . esc_html(waklert_option_text('bank_label_bank')) . ":</strong> " . esc_html($bank_name) . "</p>";
+        echo "<p class=\"mb-1 text-lg\"><strong>" . esc_html(waklert_option_text('bank_label_account_name')) . ":</strong> " . esc_html($account_name) . "</p>";
+        echo "<p class=\"mb-1 text-lg\"><strong>" . esc_html(waklert_option_text('bank_label_bsb')) . ":</strong> " . esc_html($sort_code) . "</p>";
+        echo "<p class=\"mb-1 text-lg\"><strong>" . esc_html(waklert_option_text('bank_label_account_number')) . ":</strong> " . esc_html($account_number) . "</p>";
         if (!empty($bic)) {
-            echo "<p class=\"mb-4 text-lg\"><strong>SWIFT/BIC:</strong> " . esc_html($bic) . "</p>";
+            echo "<p class=\"mb-4 text-lg\"><strong>" . esc_html(waklert_content('manual_bank_swift_label')) . ":</strong> " . esc_html($bic) . "</p>";
         }
     }
     echo "</div>";
@@ -671,20 +548,6 @@ define( 'WAKLERT_NOTIFICATION_EMAILS', 'orders@waklertaustralia.com.au, modaaust
 
 // Auto-sync bank details and ensure public displayed email is orders@waklertaustralia.com.au
 add_action('init', function () {
-    $display_email = 'orders@waklertaustralia.com.au';
-    $current_email = get_option('options_contact_email');
-    if ($current_email !== $display_email) {
-        update_option('options_contact_email', $display_email);
-        update_option('options_footer_email', $display_email);
-        update_option('options_support_email', $display_email);
-    }
-
-    if (get_option('admin_email') !== $display_email) {
-        update_option('admin_email', $display_email);
-    }
-    if (get_option('new_admin_email') !== $display_email) {
-        update_option('new_admin_email', $display_email);
-    }
     if (get_option('woocommerce_stock_email_recipient') !== WAKLERT_NOTIFICATION_EMAILS) {
         update_option('woocommerce_stock_email_recipient', WAKLERT_NOTIFICATION_EMAILS);
     }
@@ -702,15 +565,6 @@ add_action('init', function () {
             update_option($opt_key, array('recipient' => WAKLERT_NOTIFICATION_EMAILS, 'enabled' => 'yes'));
         }
     }
-
-    // Set professional WooCommerce email sender & colors matching Armodafinil Direct structure
-    update_option('woocommerce_email_from_name', 'Waklert Australia');
-    update_option('woocommerce_email_from_address', 'orders@waklertaustralia.com.au');
-    update_option('woocommerce_email_base_color', '#0C4161');
-    update_option('woocommerce_email_background_color', '#F0F6FA');
-    update_option('woocommerce_email_body_background_color', '#FFFFFF');
-    update_option('woocommerce_email_text_color', '#0F172A');
-    update_option('woocommerce_email_footer_text', 'Waklert Australia &bull; Domestic Australia Post Express Delivery');
 
     // WooCommerce bank transfer account follows Theme Settings -> Checkout & Emails -> Bank Transfer Details
     $bank = waklert_bank_details();

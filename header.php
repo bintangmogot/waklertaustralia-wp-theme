@@ -6,15 +6,15 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> class="overflow-x-hidden">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D0FP1NRE56"></script>
+    <?php $measurement_id = trim((string) waklert_content('pg_header_gtm_id')); if ($measurement_id !== '') : ?>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=<?= esc_attr($measurement_id) ?>"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
+      function gtag(){window.dataLayer.push(arguments);}
       gtag('js', new Date());
-
-      gtag('config', 'G-D0FP1NRE56');
+      gtag('config', <?= wp_json_encode($measurement_id, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>);
     </script>
+    <?php endif; ?>
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,7 +27,7 @@
         $og_description = get_the_excerpt();
         $og_image = get_the_post_thumbnail_url($post->ID, 'full');
         if (!$og_image) {
-            $og_image = get_template_directory_uri() . '/screenshot.jpg';
+            $og_image = waklert_content_asset('header_image_9ed1f5bbdf');
         }
         ?>
         <meta property="og:title" content="<?php echo esc_attr($og_title); ?>" />
@@ -47,8 +47,8 @@
     <?php endif; ?>
     <?php wp_head(); ?>
     <?php if (!has_site_icon()) : ?>
-        <link rel="icon" href="<?= esc_url(get_template_directory_uri() . '/assets/images/waklert-site-icon.png') ?>" type="image/png">
-        <link rel="apple-touch-icon" href="<?= esc_url(get_template_directory_uri() . '/assets/images/waklert-site-icon.png') ?>">
+        <link rel="icon" href="<?= esc_url(waklert_content_asset('header_image_18dabadce0')) ?>" type="image/png">
+        <link rel="apple-touch-icon" href="<?= esc_url(waklert_content_asset('header_image_18dabadce0')) ?>">
     <?php endif; ?>
 </head>
 
@@ -62,15 +62,7 @@
         <?php if (!empty($topbar_left)): ?>
         <p class="min-w-0 flex-1 truncate text-[10px] opacity-95 sm:flex-none sm:overflow-visible sm:text-[13px] sm:whitespace-nowrap flex items-center gap-1.5">
             <!-- Colorful Delivery Van SVG -->
-            <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="1" y="5" width="14" height="11" rx="1.5" fill="#38BDF8" fill-opacity="0.3" stroke="#38BDF8" stroke-width="1.5"/>
-                <path d="M15 8h4.5l3.5 4.5v3.5h-8V8z" fill="#F59E0B" stroke="#F59E0B" stroke-width="1.5"/>
-                <circle cx="6" cy="18" r="2.5" fill="#FFFFFF" stroke="#0C4161" stroke-width="1.5"/>
-                <circle cx="18" cy="18" r="2.5" fill="#FFFFFF" stroke="#F59E0B" stroke-width="1.5"/>
-                <circle cx="6" cy="18" r="1" fill="#0C4161"/>
-                <circle cx="18" cy="18" r="1" fill="#F59E0B"/>
-                <path d="M17 11h3" stroke="#FFFFFF" stroke-width="1.2" stroke-linecap="round"/>
-            </svg>
+            <?= waklert_content_icon('header_icon_211072ad49') ?>
             <span><?php echo esc_html($topbar_left); ?></span>
         </p>
         <?php endif; ?>
@@ -79,9 +71,7 @@
         <?php if (!empty($topbar_center)): ?>
         <p class="hidden md:flex items-center gap-1.5 opacity-95 text-amber-300 font-semibold">
             <!-- Colorful Star SVG -->
-            <svg class="w-4 h-4 text-amber-400" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-            </svg>
+            <?= waklert_content_icon('header_icon_91ef0d23aa') ?>
             <span><?php echo esc_html($topbar_center); ?></span>
         </p>
         <?php endif; ?>
@@ -128,7 +118,7 @@
         <div class="flex shrink-0 items-center md:hidden">
             <a href="<?php echo esc_attr($tel_phone); ?>" aria-label="Call <?php echo esc_attr($display_phone); ?>" class="inline-flex shrink-0 items-center gap-1.5 text-[10px] text-white/90 transition-colors hover:text-white sm:text-[13px] font-semibold bg-white/10 hover:bg-white/20 px-2.5 py-1 rounded-full border border-white/20">
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-emerald-300"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/><path d="M14.05 2a9 9 0 0 1 8 7.94"/><path d="M14.05 6A5 5 0 0 1 18 10"/></svg>
+                <?= waklert_content_icon('header_icon_abf8657331') ?>
                 <span class="whitespace-nowrap"><?php echo esc_html($display_phone); ?></span>
             </a>
         </div>
@@ -142,8 +132,8 @@
 
         <!-- Mobile Menu Toggle -->
         <div class="flex items-center lg:hidden">
-            <button type="button" aria-label="Menu" id="mobile-menu-open" class="rounded-xl p-2.5 -ml-1 text-[#0c4161] bg-sky-50 border-2 border-dashed border-sky-300/80 hover:bg-sky-100 hover:border-[#0c4161] transition-all">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            <button type="button" aria-label="<?= esc_attr(waklert_content('header_text_0b7eb152ba')) ?>" id="mobile-menu-open" class="rounded-xl p-2.5 -ml-1 text-[#0c4161] bg-sky-50 border-2 border-dashed border-sky-300/80 hover:bg-sky-100 hover:border-[#0c4161] transition-all">
+                <?= waklert_content_icon('header_icon_a31a0c4c5a') ?>
             </button>
         </div>
 
@@ -171,7 +161,7 @@
             <!-- Header Phone Number Button (Hidden on mobile; Solid Blue Background & White Icon on desktop) -->
             <a href="<?= esc_attr($header_btn_href) ?>" aria-label="Call <?= esc_attr($header_btn_text) ?>" class="hidden md:inline-flex items-center gap-2 sm:gap-2.5 px-3.5 sm:px-4 py-1.5 rounded-full bg-[#0c4161] hover:bg-[#082a3f] text-white transition-all group shadow-sm">
                 <span class="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-white/15 text-white transition-colors group-hover:bg-white/25">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5 sm:h-4 sm:w-4 text-white"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <?= waklert_content_icon('header_icon_7ae7816964') ?>
                 </span>
                 <span class="text-base sm:text-lg lg:text-xl font-black font-heading tracking-tight text-white whitespace-nowrap"><?= esc_html($header_btn_text) ?></span>
             </a>
@@ -190,8 +180,8 @@
     <div class="shrink-0">
         <div class="flex h-[68px] items-center justify-between border-b-2 border-dashed border-sky-200/80 bg-white/90 px-6 backdrop-blur">
             <?php waklert_the_logo('h-11 w-auto max-w-[228px] object-contain', 'mobile'); ?>
-            <button type="button" aria-label="Close menu" id="mobile-menu-close" class="rounded-xl p-2 text-[#0c4161] bg-sky-50 border border-dashed border-sky-300 hover:bg-sky-100 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            <button type="button" aria-label="<?= esc_attr(waklert_content('header_text_ba014a1153')) ?>" id="mobile-menu-close" class="rounded-xl p-2 text-[#0c4161] bg-sky-50 border border-dashed border-sky-300 hover:bg-sky-100 transition-colors">
+                <?= waklert_content_icon('header_icon_9ffbbe9b97') ?>
             </button>
         </div>
 
@@ -219,7 +209,7 @@
         <div class="px-6 pt-5 pb-2">
             <a href="<?= esc_attr($header_btn_href) ?>" class="flex w-full items-center justify-center gap-2.5 rounded-full bg-[#0c4161] px-4 py-2.5 sm:px-5 sm:py-3.5 text-sm sm:text-base font-black text-white shadow-md transition-all hover:shadow-lg hover:bg-[#082a3f]">
                 <span class="flex h-6 w-6 items-center justify-center rounded-full bg-white/20 text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5 text-white"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <?= waklert_content_icon('header_icon_5f623be711') ?>
                 </span>
                 <span><?= esc_html($header_btn_text) ?></span>
             </a>
@@ -233,11 +223,7 @@
             <div class="flex items-center gap-3 mb-2.5">
                 <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-50 text-amber-600 border border-amber-200">
                     <!-- Colorful Help Life Ring SVG -->
-                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="12" cy="12" r="9" stroke="#F59E0B" stroke-width="2"/>
-                        <circle cx="12" cy="12" r="4" stroke="#0C4161" stroke-width="2"/>
-                        <path d="M4.93 4.93L8.5 8.5M15.5 15.5L19.07 19.07M4.93 19.07L8.5 15.5M15.5 8.5L19.07 4.93" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
+                    <?= waklert_content_icon('header_icon_76cdc1cd7a') ?>
                 </div>
                 <div>
                     <span class="text-[10px] font-extrabold uppercase tracking-widest text-amber-600"><?= esc_html(waklert_option_text('mobile_help_eyebrow')) ?></span>
@@ -248,7 +234,7 @@
         </div>
         <a href="<?= esc_url(waklert_resolve_link(waklert_option_text('mobile_help_button_url'))) ?>" class="flex items-center justify-between bg-gradient-to-r from-[#0c4161] to-[#125883] px-4 py-2.5 sm:px-5 sm:py-3 text-xs font-bold text-white transition-colors hover:from-[#09324c] hover:to-[#0c4161]">
             <span><?= esc_html(waklert_option_text('mobile_help_button_text')) ?></span>
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
+            <?= waklert_content_icon('header_icon_d49d6353f9') ?>
         </a>
     </div>
 </div>

@@ -8,19 +8,21 @@
  * with ultra-optimized WebP fallbacks (35KB desktop, 56KB mobile) for instant loading.
  */
 
-$location      = get_sub_field('location_text') ?: waklert_module_default('hero_section', 'location_text');
-$heading       = get_sub_field('heading') ?: waklert_module_default('hero_section', 'heading');
-$subtitle      = get_sub_field('subtitle') ?: waklert_module_default('hero_section', 'subtitle');
-$description   = get_sub_field('description') ?: waklert_module_default('hero_section', 'description');
-$primary_btn   = get_sub_field('primary_button_text') ?: waklert_module_default('hero_section', 'primary_button_text');
-$primary_link  = get_sub_field('primary_button_link') ?: wc_get_page_permalink('shop');
+if (waklert_module_is_empty()) { return; }
+
+$location      = waklert_module_text('location_text');
+$heading       = waklert_module_text('heading');
+$subtitle      = waklert_module_text('subtitle');
+$description   = waklert_module_text('description');
+$primary_btn   = waklert_module_text('primary_button_text');
+$primary_link  = waklert_module_text('primary_button_link');
 $secondary_btn = trim((string) get_sub_field('secondary_button_text'));
 $secondary_link = trim((string) get_sub_field('secondary_button_link'));
 
 // -----------------------------------------------------------------------------
 // Desktop Hero Image Handling
 // -----------------------------------------------------------------------------
-$desktop_img           = get_sub_field('background_image') ?: get_sub_field('hero_image');
+$desktop_img           = get_sub_field('background_image');
 $desktop_attachment_id = 0;
 $desktop_img_url       = '';
 $desktop_alt           = $heading;
@@ -42,16 +44,13 @@ if (is_array($desktop_img)) {
     $desktop_img_url = $desktop_img;
 }
 
-$is_custom_desktop = !empty($desktop_img_url) && !str_contains($desktop_img_url, 'kl-skyline');
-if (!$is_custom_desktop) {
-    $desktop_webp_url = get_theme_file_uri('assets/images/hero-tradie-v2.webp');
-    $desktop_png_url  = get_theme_file_uri('assets/images/hero-tradie-v2.png');
-}
-
+$is_custom_desktop = !empty($desktop_img_url);
+$desktop_webp_url = waklert_content_asset('content_hero_section_image_6583d08075');
+$desktop_png_url = waklert_content_asset('content_hero_section_image_3add29e327');
 // -----------------------------------------------------------------------------
 // Mobile Hero Image Handling
 // -----------------------------------------------------------------------------
-$mobile_img           = get_sub_field('mobile_image') ?: get_sub_field('hero_image_mobile');
+$mobile_img           = get_sub_field('mobile_image');
 $mobile_attachment_id = 0;
 $mobile_img_url       = '';
 $mobile_alt           = $heading;
@@ -74,25 +73,15 @@ if (is_array($mobile_img)) {
 }
 
 $is_custom_mobile = !empty($mobile_img_url);
-if (!$is_custom_mobile) {
-    // If admin set a custom desktop image but no mobile image, use the custom desktop image
-    if ($is_custom_desktop) {
-        $mobile_img_url       = $desktop_img_url;
-        $mobile_attachment_id = $desktop_attachment_id;
-        $mobile_alt           = $desktop_alt;
-        $is_custom_mobile     = true;
-    } else {
-        $mobile_webp_url = get_theme_file_uri('assets/images/hero-mobile-tradie.webp');
-        $mobile_png_url  = get_theme_file_uri('assets/images/hero-mobile-tradie.png');
-    }
-}
+$mobile_webp_url = waklert_content_asset('content_hero_section_image_98dbfb49bd');
+$mobile_png_url = waklert_content_asset('content_hero_section_image_fe12bd4316');
 ?>
 
 <section data-testid="hero-section" class="relative isolate overflow-hidden bg-[#0C4161] text-primary-foreground">
     <!-- MOBILE ONLY: Top Image (< md) -->
-    <div class="relative block md:hidden w-full overflow-hidden bg-[#0C4161]">
+<?php if ($is_custom_mobile || $mobile_webp_url || $mobile_png_url): ?>    <div class="relative block md:hidden w-full overflow-hidden bg-[#0C4161]">
         <?php if ($is_custom_mobile): ?>
-            <img 
+            <?php if (waklert_has_content(esc_url($mobile_img_url))): ?><img
                 src="<?= esc_url($mobile_img_url) ?>" 
                 <?php if ($mobile_attachment_id && function_exists('wp_get_attachment_image_srcset')): 
                     $m_srcset = wp_get_attachment_image_srcset($mobile_attachment_id, 'full');
@@ -106,24 +95,25 @@ if (!$is_custom_mobile) {
                 loading="eager"
                 fetchpriority="high"
                 decoding="async"
-            />
+            /><?php endif; ?>
         <?php else: ?>
             <picture>
                 <source srcset="<?= esc_url($mobile_webp_url) ?>" type="image/webp">
-                <img 
+                <?php if (waklert_has_content(esc_url($mobile_png_url))): ?><img
                     src="<?= esc_url($mobile_png_url) ?>" 
                     alt="<?= esc_attr($heading) ?>" 
                     class="w-full h-auto object-cover max-h-[440px] object-top"
                     loading="eager"
                     fetchpriority="high"
                     decoding="async"
-                />
+                /><?php endif; ?>
             </picture>
         <?php endif; ?>
         <!-- Gradient transition between image and content (< md) -->
         <div class="pointer-events-none absolute inset-x-0 bottom-0 h-36 sm:h-44 bg-gradient-to-t from-[#0C4161] via-[#0C4161]/80 to-transparent z-10" aria-hidden="true"></div>
     </div>
 
+<?php endif; ?>
     <!-- MAIN HERO CONTENT CONTAINER (with pattern rings, dots & text) -->
     <div class="relative md:min-h-[580px] lg:min-h-[640px] md:flex md:items-center -mt-12 sm:-mt-16 md:mt-0 z-20">
         <!-- Background dot pattern (hidden on mobile, visible on md+) -->
@@ -132,9 +122,9 @@ if (!$is_custom_mobile) {
         <?php waklert_output_pattern_rings('hidden md:block'); ?>
 
         <!-- TABLET & DESKTOP ONLY: Background Right-Anchored Image (>= md) -->
-        <div class="pointer-events-none absolute inset-0 z-0 overflow-hidden hidden md:block">
+<?php if ($is_custom_desktop || $desktop_webp_url || $desktop_png_url): ?>        <div class="pointer-events-none absolute inset-0 z-0 overflow-hidden hidden md:block">
             <?php if ($is_custom_desktop): ?>
-                <img 
+                <?php if (waklert_has_content(esc_url($desktop_img_url))): ?><img
                     src="<?= esc_url($desktop_img_url) ?>" 
                     <?php if ($desktop_attachment_id && function_exists('wp_get_attachment_image_srcset')): 
                         $d_srcset = wp_get_attachment_image_srcset($desktop_attachment_id, 'full');
@@ -148,79 +138,79 @@ if (!$is_custom_mobile) {
                     loading="eager"
                     fetchpriority="high"
                     decoding="async"
-                />
+                /><?php endif; ?>
             <?php else: ?>
                 <picture>
                     <source srcset="<?= esc_url($desktop_webp_url) ?>" type="image/webp">
-                    <img 
+                    <?php if (waklert_has_content(esc_url($desktop_png_url))): ?><img
                         src="<?= esc_url($desktop_png_url) ?>" 
                         alt="<?= esc_attr($heading) ?>" 
                         class="h-full w-full object-cover"
                         loading="eager"
                         fetchpriority="high"
                         decoding="async"
-                    />
+                    /><?php endif; ?>
                 </picture>
             <?php endif; ?>
             <!-- Tablet backdrop overlay (md to lg) for text contrast, hidden on desktop lg+ -->
             <div class="absolute inset-0 bg-[#0C4161]/75 lg:hidden" aria-hidden="true"></div>
         </div>
 
+<?php endif; ?>
         <!-- Left Column Content -->
         <div class="container-site relative z-10 w-full pt-2 pb-8 sm:pt-3 sm:pb-10 md:py-12 lg:py-14">
             <div class="max-w-lg lg:max-w-[460px] xl:max-w-[530px]">
                 <?php if ($location): ?>
-                <span class="mb-5 md:mb-6 inline-flex items-center gap-2 md:gap-2.5 rounded-full border border-white/25 bg-white/10 px-4.5 py-2 md:px-5 md:py-2.5 text-xs sm:text-sm md:text-[0.9375rem] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-md shadow-sm">
-                    <svg class="h-4 w-4 md:h-4.5 md:w-4.5 text-amber-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/>
-                        <path d="M15 18H9"/>
-                        <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.24-4.05a1 1 0 0 0-.78-.33H14v10"/>
-                        <circle cx="17" cy="18" r="2"/>
-                        <circle cx="7" cy="18" r="2"/>
-                    </svg>
-                    <span><?= esc_html($location) ?></span>
-                </span>
+                <?php if (waklert_has_content(esc_html($location))): ?><span class="mb-5 md:mb-6 inline-flex items-center gap-2 md:gap-2.5 rounded-full border border-white/25 bg-white/10 px-4.5 py-2 md:px-5 md:py-2.5 text-xs sm:text-sm md:text-[0.9375rem] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-md shadow-sm">
+                    <?= waklert_content_icon('content_hero_section_icon_bda9a58a43') ?>
+                    <?php if (waklert_has_content(esc_html($location))): ?><span><?= esc_html($location) ?></span><?php endif; ?>
+                </span><?php endif; ?>
                 <?php endif; ?>
 
-                <h1 class="mb-4 md:mb-5 font-heading text-3xl sm:text-4xl md:text-[2.75rem] lg:text-[3.125rem] xl:text-[3.4375rem] font-extrabold leading-[1.1] md:leading-[1.08] tracking-tight text-white drop-shadow-sm">
+                <?php if (waklert_has_content(esc_html($heading))): ?><h1 class="mb-4 md:mb-5 font-heading text-3xl sm:text-4xl md:text-[2.75rem] lg:text-[3.125rem] xl:text-[3.4375rem] font-extrabold leading-[1.1] md:leading-[1.08] tracking-tight text-white drop-shadow-sm">
                     <?= esc_html($heading) ?>
-                </h1>
+                </h1><?php endif; ?>
 
                 <?php if ($subtitle): ?>
-                <p class="mb-5 md:mb-6 font-heading text-xl sm:text-2xl md:text-[1.625rem] lg:text-[1.875rem] font-semibold leading-snug text-amber-300/95">
+                <?php if (waklert_has_content(esc_html($subtitle))): ?><p class="mb-5 md:mb-6 font-heading text-xl sm:text-2xl md:text-[1.625rem] lg:text-[1.875rem] font-semibold leading-snug text-amber-300/95">
                     <?= esc_html($subtitle) ?>
-                </p>
+                </p><?php endif; ?>
                 <?php endif; ?>
 
                 <?php if ($description): ?>
-                <p class="mb-7 md:mb-8 text-base sm:text-lg md:text-[1.25rem] lg:text-[1.35rem] leading-relaxed text-white/85">
+                <?php if (waklert_has_content(esc_html($description))): ?><p class="mb-7 md:mb-8 text-base sm:text-lg md:text-[1.25rem] lg:text-[1.35rem] leading-relaxed text-white/85">
                     <?= esc_html($description) ?>
-                </p>
+                </p><?php endif; ?>
                 <?php endif; ?>
 
+                <?php if (($primary_btn !== '' && $primary_link !== '') || ($secondary_btn !== '' && $secondary_link !== '')): ?>
                 <div class="flex flex-wrap gap-2.5 sm:gap-3 md:gap-3.5 mb-8">
-                    <a href="<?= esc_url($primary_link) ?>" class="group inline-flex items-center gap-2 md:gap-2.5 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 px-5 py-2.5 sm:px-7 sm:py-3.5 md:px-8 md:py-4 text-xs sm:text-base md:text-[1.0625rem] font-extrabold uppercase tracking-wide text-slate-950 shadow-lg shadow-amber-500/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-amber-500/30 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
-                        <span><?= esc_html($primary_btn) ?></span>
-                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
-                    </a>
+                    <?php if ((waklert_has_content(esc_html($primary_btn))) && waklert_has_content(esc_url($primary_link))): ?><a href="<?= esc_url($primary_link) ?>" class="group inline-flex items-center gap-2 md:gap-2.5 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 px-5 py-2.5 sm:px-7 sm:py-3.5 md:px-8 md:py-4 text-xs sm:text-base md:text-[1.0625rem] font-extrabold uppercase tracking-wide text-slate-950 shadow-lg shadow-amber-500/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-amber-500/30 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
+                        <?php if (waklert_has_content(esc_html($primary_btn))): ?><span><?= esc_html($primary_btn) ?></span><?php endif; ?>
+                        <?= waklert_content_icon('content_hero_section_icon_609ee66802') ?>
+                    </a><?php endif; ?>
                     <?php if ($secondary_btn !== '' && $secondary_link !== ''): ?>
-                        <a href="<?= esc_url($secondary_link) ?>" class="inline-flex items-center rounded-full border border-white/30 bg-white/10 px-4 py-2.5 sm:px-6 sm:py-3.5 md:px-7 md:py-4 text-xs sm:text-base md:text-[1.0625rem] font-bold uppercase tracking-wide text-white transition hover:bg-white/20 hover:-translate-y-0.5">
+                        <?php if ((waklert_has_content(esc_html($secondary_btn))) && waklert_has_content(esc_url($secondary_link))): ?><a href="<?= esc_url($secondary_link) ?>" class="inline-flex items-center rounded-full border border-white/30 bg-white/10 px-4 py-2.5 sm:px-6 sm:py-3.5 md:px-7 md:py-4 text-xs sm:text-base md:text-[1.0625rem] font-bold uppercase tracking-wide text-white transition hover:bg-white/20 hover:-translate-y-0.5">
                             <?= esc_html($secondary_btn) ?>
-                        </a>
+                        </a><?php endif; ?>
                     <?php endif; ?>
                 </div>
+
+                <?php endif; ?>
 
                 <!-- Feature badges (editable in the module: Feature Badges) -->
                 <?php
                 $hero_badge_icons = [
-                    'truck'  => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-5 h-5" fill="none"><rect x="2" y="8" width="18" height="15" rx="2" fill="#EF4444"/><path d="M20 12H26L29 16V23H20V12Z" fill="#DC2626"/><path d="M21 14H25L27.5 17H21V14Z" fill="#93C5FD"/><circle cx="8" cy="23" r="3" fill="#1E293B"/><circle cx="8" cy="23" r="1.2" fill="#F8FAFC"/><circle cx="24" cy="23" r="3" fill="#1E293B"/><circle cx="24" cy="23" r="1.2" fill="#F8FAFC"/></svg>',
-                    'shield' => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-5 h-5" fill="none"><path d="M16 3L6 7V15C6 22 10.5 27 16 29C21.5 27 26 22 26 15V7L16 3Z" fill="#F59E0B"/><path d="M16 5.5L8 9V15C8 20.8 11.6 25 16 26.8C20.4 25 24 20.8 24 15V9L16 5.5Z" fill="#FBBF24"/><circle cx="16" cy="16" r="6" fill="#10B981"/><path d="M13.5 16L15.2 17.8L18.8 14.2" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-                    'lock'   => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-5 h-5" fill="none"><rect x="6" y="13" width="20" height="15" rx="3" fill="#0C4161"/><path d="M10 13V9C10 5.686 12.686 3 16 3C19.314 3 22 5.686 22 9V13" stroke="#F59E0B" stroke-width="3" stroke-linecap="round"/><circle cx="16" cy="20" r="2.5" fill="#10B981"/><path d="M16 22.5V25" stroke="#10B981" stroke-width="2" stroke-linecap="round"/></svg>',
+                    'truck'  => waklert_content_icon('content_hero_section_icon_1aa793cd5a'),
+                    'shield' => waklert_content_icon('content_hero_section_icon_4171b8782e'),
+                    'lock'   => waklert_content_icon('content_hero_section_icon_e35e028e8f'),
                 ];
                 $hero_badges = [];
                 if (have_rows('feature_badges')) {
                     while (have_rows('feature_badges')) {
                         the_row();
+        if (!waklert_module_row_has_content(get_row(true))) { continue; }
+                        if (!waklert_has_content(get_sub_field('title')) && !waklert_has_content(get_sub_field('subtitle'))) { continue; }
                         $hero_badges[] = [
                             'title'    => (string) get_sub_field('title'),
                             'subtitle' => (string) get_sub_field('subtitle'),
@@ -228,7 +218,7 @@ if (!$is_custom_mobile) {
                         ];
                     }
                 } else {
-                    $hero_badges = waklert_module_default_rows('hero_section', 'feature_badges');
+                    $hero_badges = [];
                 }
                 ?>
                 <?php if ($hero_badges): ?>
@@ -239,8 +229,8 @@ if (!$is_custom_mobile) {
                             <?= $hero_badge_icons[$badge['icon']] ?? $hero_badge_icons['shield'] ?>
                         </div>
                         <div class="leading-tight">
-                            <span class="block text-[11px] font-extrabold text-white"><?= esc_html($badge['title']) ?></span>
-                            <span class="block text-[10px] text-white/75 font-medium"><?= esc_html($badge['subtitle']) ?></span>
+                            <?php if (waklert_has_content(esc_html($badge['title']))): ?><span class="block text-[11px] font-extrabold text-white"><?= esc_html($badge['title']) ?></span><?php endif; ?>
+                            <?php if (waklert_has_content(esc_html($badge['subtitle']))): ?><span class="block text-[10px] text-white/75 font-medium"><?= esc_html($badge['subtitle']) ?></span><?php endif; ?>
                         </div>
                     </div>
                     <?php endforeach; ?>

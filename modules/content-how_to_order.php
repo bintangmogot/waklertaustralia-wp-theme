@@ -7,10 +7,12 @@
  * - Dashed borders & Lift/scale animations
  */
 
-$tag = get_sub_field('tag') ?: waklert_module_default('how_to_order', 'tag');
-$heading = get_sub_field('heading') ?: waklert_module_default('how_to_order', 'heading');
-$description = get_sub_field('description') ?: waklert_module_default('how_to_order', 'description');
-$step_label = get_sub_field('step_label') ?: waklert_module_default('how_to_order', 'step_label');
+if (waklert_module_is_empty()) { return; }
+
+$tag = waklert_module_text('tag');
+$heading = waklert_module_text('heading');
+$description = waklert_module_text('description');
+$step_label = waklert_module_text('step_label');
 
 $is_about_page = is_page('about-us');
 $section_classes = $is_about_page 
@@ -29,6 +31,7 @@ if (have_rows('steps')) {
     $idx = 0;
     while (have_rows('steps')) {
         the_row();
+        if (!waklert_module_row_has_content(get_row(true))) { continue; }
         $step_title  = (string) get_sub_field('title');
         $step_desc   = (string) get_sub_field('desc');
         $icon_preset = (string) (get_sub_field('icon_preset') ?: 'auto');
@@ -56,7 +59,7 @@ if (have_rows('steps')) {
 }
 
 if (empty($step_items)) {
-    $defaults = waklert_module_default_rows('how_to_order', 'steps');
+    $defaults = [];
     foreach ($defaults as $i => $card) {
         $step_items[] = [
             'icon'  => waklert_render_card_icon([
@@ -79,18 +82,18 @@ if (empty($step_items)) {
         <!-- Section Header -->
         <div class="text-center max-w-3xl mx-auto mb-6 md:mb-8">
             <?php if (!empty($tag)): ?>
-                <span class="<?= esc_attr($tag_classes) ?>">
+                <?php if (waklert_has_content(esc_html($tag))): ?><span class="<?= esc_attr($tag_classes) ?>">
                     <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse-subtle"></span>
                     <?= esc_html($tag) ?>
-                </span>
+                </span><?php endif; ?>
             <?php endif; ?>
-            <h2 class="font-heading text-2xl sm:text-3xl md:text-4xl font-extrabold <?= $is_about_page ? 'text-white' : 'text-ink' ?> tracking-tight mb-3.5">
+            <?php if (waklert_has_content(esc_html($heading))): ?><h2 class="font-heading text-2xl sm:text-3xl md:text-4xl font-extrabold <?= $is_about_page ? 'text-white' : 'text-ink' ?> tracking-tight mb-3.5">
                 <?= esc_html($heading) ?>
-            </h2>
+            </h2><?php endif; ?>
             <?php if (!empty($description)): ?>
-                <p class="<?= $is_about_page ? 'text-white/80' : 'text-muted-foreground' ?> text-sm md:text-base leading-relaxed max-w-2xl mx-auto">
+                <?php if (waklert_has_content(esc_html($description))): ?><p class="<?= $is_about_page ? 'text-white/80' : 'text-muted-foreground' ?> text-sm md:text-base leading-relaxed max-w-2xl mx-auto">
                     <?= esc_html($description) ?>
-                </p>
+                </p><?php endif; ?>
             <?php endif; ?>
         </div>
 
@@ -102,7 +105,7 @@ if (empty($step_items)) {
                     <div class="bg-white p-6 pb-6 flex flex-col items-center text-center justify-start relative min-h-[205px]">
                         <!-- Step Badge -->
                         <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-900 border border-amber-300 text-[11px] font-black tracking-widest uppercase mb-4 shadow-xs">
-                            <span><?= esc_html($step_label) ?> <?= esc_html($card['step']) ?></span>
+                            <?php if (waklert_has_content(esc_html($step_label)) || waklert_has_content(esc_html($card['step']))): ?><span><?= esc_html($step_label) ?> <?= esc_html($card['step']) ?></span><?php endif; ?>
                         </div>
 
                         <!-- Colorful Vector Illustration -->
@@ -111,16 +114,16 @@ if (empty($step_items)) {
                         </div>
 
                         <!-- Card Title -->
-                        <h3 class="font-heading font-extrabold text-[18px] md:text-xl text-ink text-center leading-snug tracking-tight">
+                        <?php if (waklert_has_content(esc_html($card['title']))): ?><h3 class="font-heading font-extrabold text-[18px] md:text-xl text-ink text-center leading-snug tracking-tight">
                             <?= esc_html($card['title']) ?>
-                        </h3>
+                        </h3><?php endif; ?>
                     </div>
 
                     <!-- Bottom Half: Solid theme colored block with description -->
                     <div class="bg-[#0c4161] group-hover:bg-[#082c42] text-white p-5 md:p-6 text-center text-xs md:text-[13px] leading-relaxed font-normal text-white/95 flex-1 flex items-center justify-center transition-colors duration-300 border-t-2 border-dashed border-white/20">
-                        <p class="leading-relaxed">
+                        <?php if (waklert_has_content(esc_html($card['desc']))): ?><p class="leading-relaxed">
                             <?= esc_html($card['desc']) ?>
-                        </p>
+                        </p><?php endif; ?>
                     </div>
                 </div>
             <?php endforeach; ?>

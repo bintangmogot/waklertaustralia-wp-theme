@@ -1,0 +1,141 @@
+{
+    "key": "group_wc_page_sitemap_php",
+    "title": "Page Sitemap",
+    "fields": [
+        {
+            "key": "field_wc_page_sitemap_text_d10228acca",
+            "label": "Sitemap",
+            "name": "wc_page_sitemap_text_d10228acca",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: page-sitemap.php",
+            "default_value": "Sitemap",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_page_sitemap_text_0400e6381e",
+            "label": "Site Directory",
+            "name": "wc_page_sitemap_text_0400e6381e",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: page-sitemap.php",
+            "default_value": "Site Directory",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_page_sitemap_text_734b47ec9a",
+            "label": "No links in this category.",
+            "name": "wc_page_sitemap_text_734b47ec9a",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: page-sitemap.php",
+            "default_value": "No links in this category.",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_page_sitemap_text_1ae8b3bffd",
+            "label": "Breadcrumb",
+            "name": "wc_page_sitemap_text_1ae8b3bffd",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: page-sitemap.php",
+            "default_value": "Breadcrumb",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_page_sitemap_text_d880a9db1e",
+            "label": "Browse the main pages, armodafinil products, Australian delivery hubs, and support informa",
+            "name": "wc_page_sitemap_text_d880a9db1e",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: page-sitemap.php",
+            "default_value": "Browse the main pages, armodafinil products, Australian delivery hubs, and support information on this site.",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_page_sitemap_text_b06ab30e65",
+            "label": "Main Pages",
+            "name": "wc_page_sitemap_text_b06ab30e65",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: page-sitemap.php",
+            "default_value": "Main Pages",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_page_sitemap_text_b715e84603",
+            "label": "Shop All Products",
+            "name": "wc_page_sitemap_text_b715e84603",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: page-sitemap.php",
+            "default_value": "Shop All Products",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_page_sitemap_text_cd1740da3a",
+            "label": "Armodafinil Products",
+            "name": "wc_page_sitemap_text_cd1740da3a",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: page-sitemap.php",
+            "default_value": "Armodafinil Products",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_page_sitemap_text_a9b63f003f",
+            "label": "Help & Support",
+            "name": "wc_page_sitemap_text_a9b63f003f",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: page-sitemap.php",
+            "default_value": "Help & Support",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_page_sitemap_text_56c1930aaf",
+            "label": "Policies & Disclaimers",
+            "name": "wc_page_sitemap_text_56c1930aaf",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: page-sitemap.php",
+            "default_value": "Policies & Disclaimers",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_page_sitemap_text_318967dcbb",
+            "label": "Australia Delivery",
+            "name": "wc_page_sitemap_text_318967dcbb",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: page-sitemap.php",
+            "default_value": "Australia Delivery",
+            "rows": 3,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "waklert-content-pages"
+            }
+        ]
+    ],
+    "menu_order": 50,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "description": "Generated template content fields. Source: page-sitemap.php"
+}

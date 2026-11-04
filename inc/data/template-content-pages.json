@@ -1,0 +1,262 @@
+{
+    "pg_header_gtm_id": {
+        "type": "text",
+        "default": "G-D0FP1NRE56",
+        "source": "header.php",
+        "label": "Google Tag Measurement ID",
+        "section": "shared"
+    },
+    "pg_footer_email": {
+        "type": "text",
+        "default": "orders@waklertaustralia.com.au",
+        "source": "footer.php",
+        "label": "Footer support email fallback",
+        "section": "shared"
+    },
+    "pg_seo_default_html": {
+        "type": "text",
+        "default": "<h2>Ordering Waklert in Australia</h2><p>Review product information, available strengths, current prices and delivery details before ordering.</p><h3>Delivery information</h3><p>Orders are sent with tracking to Australian addresses. Check the delivery information shown at checkout for current timeframes and shipping options.</p><h3>Packaging and order updates</h3><p>Order confirmation and tracking updates are sent to the email address provided at checkout. Contact support if you need help with an order.</p>",
+        "source": "modules/content-seo_text.php",
+        "label": "Default SEO content",
+        "section": "pages",
+        "module": "seo_text"
+    },
+    "pg_seo_cta_title": {
+        "type": "text",
+        "default": "Waklert product information",
+        "source": "modules/content-seo_text.php",
+        "label": "Default CTA title",
+        "section": "pages",
+        "module": "seo_text",
+        "field_name": "cta_title",
+        "field_key": "field_seo_text_cta_title_en"
+    },
+    "pg_seo_cta_desc": {
+        "type": "text",
+        "default": "Read product information and ordering details before choosing a product.",
+        "source": "modules/content-seo_text.php",
+        "label": "Default CTA description",
+        "section": "pages",
+        "module": "seo_text",
+        "field_name": "cta_desc",
+        "field_key": "field_seo_text_cta_desc_en"
+    },
+    "pg_archive_title": {
+        "type": "text",
+        "default": "Articles & Guides",
+        "source": "index.php",
+        "label": "Default archive heading",
+        "section": "pages"
+    },
+    "pg_archive_subtitle": {
+        "type": "text",
+        "default": "General information, site updates and resources. Website content is not individual medical advice.",
+        "source": "index.php",
+        "label": "Default archive description",
+        "section": "pages"
+    },
+    "pg_archive_blog_label": {
+        "type": "text",
+        "default": "Waklert Australia Insights",
+        "source": "index.php",
+        "label": "Blog archive label",
+        "section": "pages"
+    },
+    "pg_archive_search_label": {
+        "type": "text",
+        "default": "Search Results",
+        "source": "index.php",
+        "label": "Search results label",
+        "section": "pages"
+    },
+    "pg_archive_empty_search": {
+        "type": "text",
+        "default": "No results found",
+        "source": "index.php",
+        "label": "Empty search heading",
+        "section": "pages"
+    },
+    "pg_archive_empty_blog": {
+        "type": "text",
+        "default": "No articles are published yet",
+        "source": "index.php",
+        "label": "Empty blog heading",
+        "section": "pages"
+    },
+    "pg_archive_empty_search_hint": {
+        "type": "text",
+        "default": "Try a different search term.",
+        "source": "index.php",
+        "label": "Empty search description",
+        "section": "pages"
+    },
+    "pg_archive_empty_blog_hint": {
+        "type": "text",
+        "default": "Please check back for new articles and general information.",
+        "source": "index.php",
+        "label": "Empty blog description",
+        "section": "pages"
+    },
+    "pg_single_blog_label": {
+        "type": "text",
+        "default": "Waklert Australia Insights",
+        "source": "single.php",
+        "label": "Article category fallback",
+        "section": "pages"
+    },
+    "pg_single_author": {
+        "type": "text",
+        "default": "Waklert Australia Team",
+        "source": "single.php",
+        "label": "Article author fallback",
+        "section": "pages"
+    },
+    "pg_404_heading": {
+        "type": "text",
+        "default": "Oops! Page not found",
+        "source": "404.php",
+        "label": "Not found heading",
+        "section": "pages"
+    },
+    "pg_404_description": {
+        "type": "text",
+        "default": "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.",
+        "source": "404.php",
+        "label": "Not found description",
+        "section": "pages"
+    },
+    "pg_404_home": {
+        "type": "text",
+        "default": "Back to Homepage",
+        "source": "404.php",
+        "label": "Not found home button",
+        "section": "pages"
+    },
+    "pg_hero_blog_eyebrow": {
+        "type": "text",
+        "default": "Waklert Australia Insights",
+        "source": "modules/content-page_hero.php",
+        "label": "Blog hero eyebrow",
+        "section": "pages",
+        "module": "page_hero",
+        "field_name": "eyebrow",
+        "field_key": "field_page_hero_eyebrow_en"
+    },
+    "pg_hero_blog_title": {
+        "type": "text",
+        "default": "Clear guides to armodafinil in Australia",
+        "source": "modules/content-page_hero.php",
+        "label": "Blog hero title",
+        "section": "pages",
+        "module": "page_hero",
+        "field_name": "title",
+        "field_key": "field_page_hero_title_en"
+    },
+    "pg_hero_blog_subtitle": {
+        "type": "text",
+        "default": "Browse straightforward articles about product information, ordering and delivery. For advice about your health or medicines, speak with an Australian-registered health professional.",
+        "source": "modules/content-page_hero.php",
+        "label": "Blog hero description",
+        "section": "pages",
+        "module": "page_hero",
+        "field_name": "subtitle",
+        "field_key": "field_page_hero_subtitle_en"
+    },
+    "pg_hero_blog_topic_1_title": {
+        "type": "text",
+        "default": "Product Information",
+        "source": "modules/content-page_hero.php",
+        "label": "Blog topic 1 title",
+        "section": "pages",
+        "module": "page_hero"
+    },
+    "pg_hero_blog_topic_1_desc": {
+        "type": "text",
+        "default": "Dosages, effects & user guides",
+        "source": "modules/content-page_hero.php",
+        "label": "Blog topic 1 description",
+        "section": "pages",
+        "module": "page_hero"
+    },
+    "pg_hero_blog_topic_2_title": {
+        "type": "text",
+        "default": "Ordering & Delivery",
+        "source": "modules/content-page_hero.php",
+        "label": "Blog topic 2 title",
+        "section": "pages",
+        "module": "page_hero"
+    },
+    "pg_hero_blog_topic_2_desc": {
+        "type": "text",
+        "default": "Express shipping & AU tracking",
+        "source": "modules/content-page_hero.php",
+        "label": "Blog topic 2 description",
+        "section": "pages",
+        "module": "page_hero"
+    },
+    "pg_hero_blog_topic_3_title": {
+        "type": "text",
+        "default": "Australian Context",
+        "source": "modules/content-page_hero.php",
+        "label": "Blog topic 3 title",
+        "section": "pages",
+        "module": "page_hero"
+    },
+    "pg_hero_blog_topic_3_desc": {
+        "type": "text",
+        "default": "Domestic insights & safe storage",
+        "source": "modules/content-page_hero.php",
+        "label": "Blog topic 3 description",
+        "section": "pages",
+        "module": "page_hero"
+    },
+    "pg_hero_shop_title": {
+        "type": "text",
+        "default": "Armodafinil Products",
+        "source": "modules/content-page_hero.php",
+        "label": "Shop hero title fallback",
+        "section": "pages",
+        "module": "page_hero"
+    },
+    "pg_hero_shop_subtitle": {
+        "type": "text",
+        "default": "Browse our current range of genuine Armodafinil tablets with fast delivery across Australia.",
+        "source": "modules/content-page_hero.php",
+        "label": "Shop hero description",
+        "section": "pages",
+        "module": "page_hero",
+        "field_name": "subtitle",
+        "field_key": "field_page_hero_subtitle_en"
+    },
+    "pg_hero_shop_eyebrow": {
+        "type": "text",
+        "default": "Full catalogue",
+        "source": "modules/content-page_hero.php",
+        "label": "Shop hero eyebrow",
+        "section": "pages",
+        "module": "page_hero",
+        "field_name": "eyebrow",
+        "field_key": "field_page_hero_eyebrow_en"
+    },
+    "pg_index_category_fallback": {
+        "type": "text",
+        "default": "Armodafinil Guide",
+        "source": "index.php",
+        "label": "Default article category",
+        "section": "pages"
+    },
+    "pg_index_search": {
+        "type": "text",
+        "default": "Search",
+        "source": "index.php",
+        "label": "Search label",
+        "section": "pages"
+    },
+    "pg_index_search_heading": {
+        "type": "text",
+        "default": "Search results for:",
+        "source": "index.php",
+        "label": "Search heading prefix",
+        "section": "pages"
+    }
+}

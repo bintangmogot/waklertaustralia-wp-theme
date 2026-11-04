@@ -5,7 +5,7 @@
  *
  * Runs once per environment. Bump WAKLERT_CONTENT_SEED_VERSION whenever the defaults change.
  * Only empty fields are filled; anything already written in the admin is never touched.
- * The same defaults are the safety net the module templates fall back to.
+ * Frontend modules respect saved empty values instead of substituting defaults.
  */
 
 const WAKLERT_CONTENT_SEED_VERSION = '20261103_content_seed_v11';
@@ -16,378 +16,21 @@ const WAKLERT_CONTENT_SEED_VERSION = '20261103_content_seed_v11';
  * 'repeaters' => repeater name => key, 'check' (sub field that must be filled for the repeater to count as written),
  *                'subs' (sub field name => key), 'rows', optional 'unless' (other fields that already cover the content)
  */
-function waklert_module_defaults() {
-    static $defaults = null;
-    if ($defaults !== null) {
-        return $defaults;
+function waklert_seed_defaults(): array {
+    static $data = null;
+    if ($data === null) {
+        $data = json_decode((string) file_get_contents(MODMY_THEME_DIR . '/inc/data/content-defaults.json'), true) ?: [];
     }
+    return $data;
+}
 
-    $defaults = [
-        'hero_section' => [
-            'fields' => [
-                'location_text'       => ['field_hero_loc_en', 'Australia-wide delivery'],
-                'heading'             => ['field_hero_heading_en', 'Waklert in Australia, delivered on-time & hassle-free.'],
-                'subtitle'            => ['field_hero_sub_en', 'Waklert Australia — Generic Armodafinil'],
-                'description'         => ['field_hero_desc_en', 'Waklert Australia supplies genuine, high-grade Armodafinil, including Sun Pharma’s Waklert 150mg and 50mg, without the standard pharmacy markups. Every order is packed discreetly and shipped with full Australia Post tracking to Sydney, Melbourne, Brisbane, Perth, Adelaide, and regional towns nationwide, with quick AUD checkout via PayID and direct EFT.'],
-                'primary_button_text' => ['field_hero_btn1_en', 'View Products'],
-            ],
-            'repeaters' => [
-                'feature_badges' => [
-                    'key'   => 'field_hero_badges',
-                    'check' => 'title',
-                    'subs'  => ['title' => 'field_hero_badge_title', 'subtitle' => 'field_hero_badge_sub', 'icon' => 'field_hero_badge_icon'],
-                    'rows'  => [
-                        ['title' => 'Express Delivery', 'subtitle' => 'Domestic AU Post', 'icon' => 'truck'],
-                        ['title' => 'Genuine Quality', 'subtitle' => 'Sun Pharma Grade', 'icon' => 'shield'],
-                        ['title' => 'Discreet Packaging', 'subtitle' => '100% Privacy', 'icon' => 'lock'],
-                    ],
-                ],
-            ],
-        ],
-        'featured_products' => [
-            'fields' => [
-                'subheading'  => ['field_fp_tag_en', 'MOST POPULAR in 2026'],
-                'title'       => ['field_fp_title_en', 'Armodafinil Products'],
-                'description' => ['field_fp_desc', 'Genuine Sun Pharma and HAB Pharma Armodafinil tablets shipped domestically across Australia.'],
-                'button_text' => ['field_fp_button_text', 'View All Products'],
-                'button_url'  => ['field_fp_button_url', '/shop/'],
-            ],
-        ],
-        'how_to_order' => [
-            'fields' => [
-                'tag'         => ['field_hto_tag_en', 'Simple Process'],
-                'heading'     => ['field_hto_heading_en', 'Three Steps from Product Information to Delivery'],
-                'description' => ['field_hto_desc_en', 'Simple, transparent, and private. Ordering Armodafinil across Australia takes just 3 straightforward steps.'],
-                'step_label'  => ['field_hto_step_label', 'STEP'],
-            ],
-            'repeaters' => [
-                'steps' => [
-                    'key'   => 'field_hto_steps',
-                    'check' => 'title',
-                    'subs'  => ['title' => 'field_hto_s_t_en', 'desc' => 'field_hto_s_d_en', 'icon_preset' => 'field_hto_s_icon_preset'],
-                    'rows'  => [
-                        ['title' => 'Review the Range', 'desc' => 'Compare available armodafinil brands, strengths and pack sizes. Read the product information before making a selection.', 'icon_preset' => 'browse_catalogue'],
-                        ['title' => 'Confirm Your Order', 'desc' => 'Choose an available payment method at checkout. Order details are handled through the secure checkout process.', 'icon_preset' => 'aud_checkout'],
-                        ['title' => 'Track Delivery', 'desc' => 'When an order is dispatched, Australia Post tracking details are provided so you can follow its progress.', 'icon_preset' => 'express_shipping'],
-                    ],
-                ],
-            ],
-        ],
-        'why_choose_us' => [
-            'fields' => [
-                'heading'     => ['field_wcu_heading_en', 'Why Buy Armodafinil from Waklert Australia?'],
-                'description' => ['field_wcu_desc_en', 'At Waklert Australia, we pride ourselves on providing a quick, reliable, and affordable service for all your Armodafinil needs. Here’s why you should choose us:'],
-            ],
-            'repeaters' => [
-                'audiences' => [
-                    'key'   => 'field_wcu_audiences',
-                    'check' => 'title',
-                    'subs'  => ['title' => 'field_wcu_a_title_en', 'desc' => 'field_wcu_a_desc_en', 'icon_preset' => 'field_wcu_a_icon_preset'],
-                    'rows'  => [
-                        ['title' => 'If it doesn’t land, we fix it', 'desc' => 'Every order ships with Australia Post tracking. If a parcel stalls or goes missing in transit, we reship it free of charge or issue a full refund.', 'icon_preset' => 'parcel_guarantee'],
-                        ['title' => 'Real people on chat', 'desc' => 'Have a question before or after ordering? Reach our local support team via SMS, WhatsApp, or email 7 days a week for fast, practical answers.', 'icon_preset' => 'live_chat_support'],
-                        ['title' => 'Straight up about what we sell - no candy coating', 'desc' => 'Armodafinil is a Schedule 4 prescription medicine in Australia. We provide clear batch details, strength guides, and transparent ordering information.', 'icon_preset' => 'medical_rx_clarity'],
-                        ['title' => 'Simple AUD checkout', 'desc' => 'Pay securely in Australian Dollars (AUD) using local PayID or direct bank transfer — no hidden international conversion fees or complicated steps.', 'icon_preset' => 'aud_checkout'],
-                    ],
-                ],
-            ],
-        ],
-        'city_section' => [
-            'fields' => [
-                'tag'         => ['field_cs_tag', 'SHIPPING NATIONWIDE'],
-                'title'       => ['field_cs_title', 'Delivered Everywhere in Australia'],
-                'description' => ['field_cs_desc', 'Metro cities, regional towns, or remote FIFO camps — we ship to your address.'],
-            ],
-            'repeaters' => [
-                'cities_list' => [
-                    'key'    => 'field_cs_cities_list',
-                    'check'  => 'city_name',
-                    'unless' => ['quick_cities'],
-                    'subs'   => ['city_name' => 'field_cs_city_name', 'has_checkmark' => 'field_cs_has_checkmark'],
-                    'rows'   => [
-                        ['city_name' => 'Sydney', 'has_checkmark' => 1],
-                        ['city_name' => 'Melbourne', 'has_checkmark' => 1],
-                        ['city_name' => 'Adelaide', 'has_checkmark' => 1],
-                        ['city_name' => 'Darwin', 'has_checkmark' => 1],
-                        ['city_name' => 'Brisbane', 'has_checkmark' => 1],
-                        ['city_name' => 'Gold Coast', 'has_checkmark' => 1],
-                        ['city_name' => 'Hobart', 'has_checkmark' => 1],
-                        ['city_name' => 'Canberra', 'has_checkmark' => 1],
-                    ],
-                ],
-            ],
-        ],
-        'comparison' => [
-            'fields' => [
-                'tag'             => ['field_comp_tag_en', 'Know Before You Order'],
-                'heading'         => ['field_comp_heading_en', 'Waklert vs Coffee vs Energy Drinks'],
-                'description'     => ['field_comp_desc_en', 'See why thousands of Australian shift workers and professionals choose Waklert over high-sugar stimulants.'],
-                'attribute_label' => ['field_comp_attr_label', 'Key Attribute'],
-                'badge_label'     => ['field_comp_badge_label', '★ RECOMMENDED'],
-                'product_label'   => ['field_comp_product_label', 'Waklert 150'],
-                'coffee_label'    => ['field_comp_coffee_label', 'Coffee'],
-                'energy_label'    => ['field_comp_energy_label', 'Energy Drinks'],
-                'footer_note'     => ['field_comp_footer_note', 'Armodafinil offers sustained wakefulness without sugar crashes or high liquid intake.'],
-                'footer_badge'    => ['field_comp_footer_badge', '100% Genuine Sun Pharma Batch Tested'],
-            ],
-            'repeaters' => [
-                'rows' => [
-                    'key'   => 'field_comp_rows',
-                    'check' => 'feature',
-                    'subs'  => ['feature' => 'field_comp_f_en', 'modafinil' => 'field_comp_m_en', 'coffee' => 'field_comp_c_en', 'energy' => 'field_comp_e_en'],
-                    'rows'  => [
-                        ['feature' => 'Effect Duration', 'modafinil' => '10-15 hours', 'coffee' => '2-4 hours', 'energy' => '1-3 hours'],
-                        ['feature' => 'Crash Effect', 'modafinil' => 'Smooth / None', 'coffee' => 'Moderate dip', 'energy' => 'Severe crash'],
-                        ['feature' => 'Focus Quality', 'modafinil' => 'Deep, calm focus', 'coffee' => 'Mild alertness', 'energy' => 'Jittery spikes'],
-                        ['feature' => 'Habit Risk', 'modafinil' => 'Very low', 'coffee' => 'Moderate caffeine cycle', 'energy' => 'High sugar / caffeine'],
-                        ['feature' => 'Sleep Disruption', 'modafinil' => 'Low (morning dose)', 'coffee' => 'Moderate', 'energy' => 'High'],
-                        ['feature' => 'Cost per Day', 'modafinil' => '~AUD $3 - $5', 'coffee' => '~AUD $5 - $9', 'energy' => '~AUD $4 - $7'],
-                    ],
-                ],
-            ],
-        ],
-        'trust_strip' => [
-            'repeaters' => [
-                'badges' => [
-                    'key'   => 'field_ts_badges',
-                    'check' => 'label',
-                    'subs'  => ['label' => 'field_ts_label_en', 'desc' => 'field_ts_desc_en', 'icon_preset' => 'field_ts_icon_preset'],
-                    'rows'  => [
-                        ['label' => 'Australia-wide Delivery', 'desc' => 'Tracked delivery via Australia Post to all states and territories.', 'icon_preset' => 'australia_delivery'],
-                        ['label' => 'Sealed Product Packaging', 'desc' => 'Direct batch-tested pharmaceuticals from accredited manufacturers.', 'icon_preset' => 'discreet_sealed'],
-                        ['label' => 'Secure Local Checkout', 'desc' => 'Encrypted checkout with local PayID & Australian bank EFT.', 'icon_preset' => 'aud_checkout'],
-                        ['label' => 'Discreet Packaging', 'desc' => 'Shipped in generic, unbranded satchels for complete privacy.', 'icon_preset' => 'po_box_delivery'],
-                    ],
-                ],
-            ],
-        ],
-        'page_hero' => [
-            'repeaters' => [
-                'trust_cards' => [
-                    'key'   => 'field_page_hero_trust_cards',
-                    'check' => 'title',
-                    'subs'  => ['title' => 'field_page_hero_trust_title', 'subtitle' => 'field_page_hero_trust_sub', 'icon' => 'field_page_hero_trust_icon'],
-                    'rows'  => [
-                        ['title' => '100% Genuine', 'subtitle' => 'Sun Pharma certified batches', 'icon' => 'shield'],
-                        ['title' => 'Express AU Post', 'subtitle' => 'Fast Australia-wide dispatch', 'icon' => 'truck'],
-                        ['title' => 'Discreet Parcel', 'subtitle' => '100% plain packaging', 'icon' => 'lock'],
-                    ],
-                ],
-            ],
-        ],
-        'about_intro' => [
-            'fields' => [
-                'tag'     => ['field_3e7787969b6a4', 'About Waklert Australia'],
-                'heading' => ['field_f2349bf4f6724', "Australia's Focused Minds. Your Reliable Supplier."],
-                'desc'    => ['field_c475fe4ca3274', 'Waklert Australia was founded to provide Australian professionals, shift workers, and students with reliable access to genuine pharmaceutical-grade Armodafinil.'],
-            ],
-        ],
-        'about_mission' => [
-            'fields' => [
-                'mission_label'   => ['field_am_mission_label', 'Core Purpose'],
-                'mission_heading' => ['field_5acecaf188104', 'Our Approach'],
-                'mission_desc'    => ['field_483eab146da44', 'We organise armodafinil product information so customers can compare brands, strengths and batch details with clarity.'],
-                'vision_label'    => ['field_am_vision_label', 'Medical Clarity'],
-                'vision_heading'  => ['field_5eaf710cafea4', 'Information First'],
-                'vision_desc'     => ['field_b6b97d8f0f494', 'We use plain English, state clearly that armodafinil is prescription-only in Australia, and encourage customers to speak to a doctor before ordering.'],
-            ],
-        ],
-        'about_products' => [
-            'fields' => [
-                'eyebrow'   => ['field_ap_eyebrow', 'Product Portfolio'],
-                'heading'   => ['field_7d1f064846a34', 'Our Armodafinil Range'],
-                'desc'      => ['field_9e5242778e824', 'The catalogue is limited to armodafinil products. Final product names and availability are confirmed on the product pages.'],
-                'badge_text' => ['field_ap_badge', '100% Genuine'],
-                'link_text' => ['field_ap_link_text', 'View in catalogue'],
-                'link_url'  => ['field_ap_link_url', '/shop/'],
-            ],
-        ],
-        'about_delivery' => [
-            'fields' => [
-                'eyebrow' => ['field_ad_eyebrow', 'Shipping & Dispatch'],
-                'heading' => ['field_0d03ea4ccab84', 'Delivery Across Australia'],
-                'desc'    => ['field_db0fe9dccbec4', 'Current delivery options, transit times, and parcel tracking are confirmed during ordering and dispatch.'],
-            ],
-        ],
-        'contact' => [
-            'fields' => [
-                'breadcrumb_label' => ['field_contact_breadcrumb', 'Contact Us'],
-                'eyebrow' => ['field_contact_eyebrow', 'Direct Customer Support'],
-                'heading' => ['field_94d2494262974', 'Have Questions? We Are Here.'],
-                'description' => ['field_19334cb614cc4', 'Our Australian customer care team is here to assist with product information, tracking updates, and order support.'],
-                'whatsapp_title' => ['field_contact_wa_title', 'WhatsApp (Fastest Option)'],
-                'wa_badge' => ['field_contact_wa_badge', 'Fast Reply'],
-                'wa_link_text' => ['field_contact_wa_link', 'Chat Now'],
-                'wa_subtext' => ['field_contact_wa_subtext', 'Typically replies within 15–30 minutes during business hours.'],
-                'email_title' => ['field_contact_email_title', 'Email Support'],
-                'email_timeframe_label' => ['field_contact_email_timeframe', 'Response timeframe:'],
-                'email_subtext' => ['field_contact_email_subtext', 'Within 24 hours'],
-                'email_link_text' => ['field_contact_email_link', 'Send Mail'],
-                'hours_title' => ['field_contact_hours_title', 'Operating Hours (AEST)'],
-                'hours_mon_fri_label' => ['field_contact_hours_mon_fri_label', 'Monday – Friday'],
-                'hours_mon_fri' => ['field_contact_hours_mon_fri', '8:00 AM – 8:00 PM AEST'],
-                'hours_sat_label' => ['field_contact_hours_sat_label', 'Saturday'],
-                'hours_sat' => ['field_contact_hours_sat', '9:00 AM – 5:00 PM AEST'],
-                'hours_sun_label' => ['field_contact_hours_sun_label', 'Sunday & Public Holidays'],
-                'hours_sun' => ['field_contact_hours_sun', 'Limited (WhatsApp only)'],
-                'address_title' => ['field_contact_address_title', 'Waklert Australia Support Office'],
-                'address_line_1' => ['field_contact_address_line1', '50 Holt St'],
-                'address_city_state_zip' => ['field_contact_address_line2', 'Surry Hills NSW 2010'],
-                'address_country' => ['field_contact_address_country', 'Australia'],
-                'directions_text' => ['field_contact_directions_text', 'Open in Google Maps'],
-                'google_maps_url' => ['field_contact_maps_url', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.729113645068!2d151.2069395!3d-33.8862948!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ae21d2054155%3A0x88d02fd98fa53a3a!2s50%20Holt%20St%2C%20Surry%20Hills%20NSW%202010!5e0!3m2!1sen!2sau!4v1728725700000!5m2!1sen!2sau'],
-                'form_eyebrow' => ['field_contact_form_eyebrow', 'Online Enquiry'],
-                'form_title' => ['field_contact_form_title', 'Send Us a Message'],
-                'form_text' => ['field_contact_form_text', 'Have an enquiry about your order or our armodafinil products? Submit your details and our team will get in touch promptly.'],
-                'form_id' => ['field_contact_form_id', '1'],
-            ],
-        ],
-        'faq_page' => [
-            'fields' => [
-                'breadcrumb_label'  => ['field_faq_breadcrumb', 'FAQ'],
-                'eyebrow'           => ['field_faq_2a7a6c8b5b25', 'FAQ & Support'],
-                'heading'           => ['field_faq_43944e673ca3', 'Frequently Asked Questions'],
-                'description'       => ['field_faq_51a7b0956e3c', 'General information about armodafinil products, Australian prescription requirements, ordering and delivery.'],
-                'questions_label'   => ['field_faq_questions_label', 'questions'],
-                'question_label'    => ['field_faq_question_label', 'question'],
-                'cta_eyebrow'       => ['field_faq_cta_eyebrow', 'Direct Customer Care'],
-                'cta_heading'       => ['field_faq_f9e298bbadda', 'Still Have Questions?'],
-                'cta_desc'          => ['field_faq_1322847629cc', 'Contact our Australian support team for assistance with orders, Australia Post tracking, and product information.'],
-                'cta_whatsapp_text' => ['field_faq_cta_whatsapp', 'WhatsApp Support'],
-                'cta_btn_text'      => ['field_faq_5db0c02a932d', 'Contact Us'],
-                'cta_btn_link'      => ['field_faq_dc6de8b02bb6', '/contact/'],
-            ],
-        ],
-        'reviews' => [
-            'fields' => [
-                'eyebrow'        => ['field_rv_eyebrow', 'Verified Customer Experiences'],
-                'heading'        => ['field_c1b546c89e524', 'What Australian Customers Say'],
-                'description'    => ['field_6f47fd49d5334', 'Real testimonials from Waklert Australia users across Australia.'],
-                'summary_text'   => ['field_rv_summary', 'Based on {count} verified Australian customer ratings'],
-                'score_suffix'   => ['field_rv_score_suffix', '/ 5.0'],
-                'badge_1'        => ['field_rv_badge_1', '100% Genuine Orders'],
-                'badge_2'        => ['field_rv_badge_2', 'Fast Delivery Feedback'],
-                'default_meta'   => ['field_rv_default_meta', 'Verified Buyer'],
-                'verified_label' => ['field_rv_verified', 'Verified'],
-                'empty_text'     => ['field_rv_empty', 'No reviews found yet.'],
-            ],
-        ],
-        'reviews_carousel' => [
-            'fields' => [
-                'badge'          => ['field_rc_badge', 'Customer Reviews'],
-                'title'          => ['field_rc_title_en', 'What Australian Customers Say'],
-                'description'    => ['field_rc_description', 'Real feedback from verified Australian buyers — shift workers, students, and professionals across the country.'],
-                'button_text'    => ['field_rc_button_text', 'Read All Reviews'],
-                'button_url'     => ['field_rc_button_url', '/reviews'],
-                'verified_label' => ['field_rc_verified_label', '✓ Verified Buyer'],
-            ],
-        ],
-        'faqs' => [
-            'fields' => [
-                'heading'   => ['field_faq_heading_en', 'Frequently Asked Questions'],
-                'link_text' => ['field_faq_link_en', 'Full FAQ'],
-                'link_url'  => ['field_faq_link_url', '/faq'],
-            ],
-        ],
-        'blog_section' => [
-            'fields' => [
-                'eyebrow'           => ['field_blog_sec_eyebrow', 'Knowledge & Resources'],
-                'title'             => ['field_blog_sec_title', 'Latest Articles & Guides'],
-                'subtitle'          => ['field_blog_sec_subtitle', 'Helpful insights, dosage guides, and research on Armodafinil and cognitive performance.'],
-                'button_text'       => ['field_blog_sec_button_text', 'View All Articles'],
-                'read_more_label'   => ['field_blog_sec_read_more', 'Read Full Guide'],
-                'read_time_label'   => ['field_blog_sec_read_time', 'min read'],
-                'default_category'  => ['field_blog_sec_default_cat', 'Armodafinil Guide'],
-                'placeholder_label' => ['field_blog_sec_placeholder', 'Waklert Knowledge'],
-                'empty_text'        => ['field_blog_sec_empty', 'No articles published yet.'],
-            ],
-        ],
-        'support_cta' => [
-            'fields' => [
-                'eyebrow'        => ['field_scta_eyebrow', 'Need Help?'],
-                'title'          => ['field_scta_title', 'Talk to us via SMS or WhatsApp - 24/7.'],
-                'desc'           => ['field_scta_desc', 'We are available all the time to handle any questions, offer advice or reassure you about your purchase.'],
-                'chat_btn_text'  => ['field_scta_chat_text', 'Contact Support'],
-                'sms_btn_text'   => ['field_scta_sms_text', 'SMS'],
-                'email_btn_text' => ['field_scta_email_text', 'Email Support'],
-            ],
-        ],
-    ];
-
-    return $defaults;
+function waklert_module_defaults() {
+    return waklert_seed_defaults()['modules'] ?? [];
 }
 
 /** Default text of the Theme Settings fields: option name => [ACF field key, value]. */
 function waklert_option_defaults() {
-    return [
-        'shop_card_button_text'        => ['field_shop_card_button_text', 'BUY NOW'],
-        'shop_card_out_of_stock_label' => ['field_shop_card_out_of_stock', 'Out of Stock'],
-        'shop_card_in_stock_label'     => ['field_shop_card_in_stock', 'In Stock'],
-        'shop_card_read_more_label'    => ['field_shop_card_read_more', 'Read more'],
-        'shop_card_unit_prefix'        => ['field_shop_card_unit_prefix', 'From'],
-        'shop_card_unit_suffix'        => ['field_shop_card_unit_suffix', '/tab'],
-        'shop_card_delivery_label'     => ['field_shop_card_delivery', 'AU Express'],
-        // Header & Top Bar tab
-        'menu_dropdown_heading'        => ['field_menu_dropdown_heading', 'Genuine Armodafinil Catalogue'],
-        'menu_dropdown_badge'          => ['field_menu_dropdown_badge', 'AU Express 7-10 Days'],
-        'menu_dropdown_note'           => ['field_menu_dropdown_note', 'Free Express Delivery on $299+'],
-        'menu_dropdown_button_text'    => ['field_menu_dropdown_button_text', 'Explore All Products'],
-        'menu_dropdown_button_url'     => ['field_menu_dropdown_button_url', '/shop/'],
-        'mobile_help_eyebrow'          => ['field_mobile_help_eyebrow', 'Support Desk'],
-        'mobile_help_title'            => ['field_mobile_help_title', 'Need a hand?'],
-        'mobile_help_text'             => ['field_mobile_help_text', 'Find clear information about products, ordering and express Australia delivery.'],
-        'mobile_help_button_text'      => ['field_mobile_help_button_text', 'Visit the FAQs'],
-        'mobile_help_button_url'       => ['field_mobile_help_button_url', '/faq/'],
-        // Contact Info tab
-        'footer_whatsapp_label'        => ['field_footer_whatsapp_label', 'WhatsApp'],
-        'footer_chat_button_text'      => ['field_footer_chat_button', 'Chat Live'],
-        'working_days_label'           => ['field_footer_working_days_label', 'Working Days:'],
-        'office_hours_label'           => ['field_footer_office_hours_label', 'Office Hours:'],
-        // Footer: Text tab
-        'disclaimer_label'             => ['field_disclaimer_label', 'Medical Website Disclaimer:'],
-        'icon_credit_text'             => ['field_icon_credit_text', 'UIcons by Flaticon'],
-        // Checkout & Emails tab
-        'bank_transfer_bank_name' => ['field_ty_bank_transfer_bank_name', 'Commonwealth Bank'],
-        'bank_transfer_account_name' => ['field_ty_bank_transfer_account_name', 'Steven Waldberg'],
-        'bank_transfer_bsb' => ['field_ty_bank_transfer_bsb', '062 948'],
-        'bank_transfer_account_number' => ['field_ty_bank_transfer_account_number', '48880531'],
-        'bank_transfer_country' => ['field_ty_bank_transfer_country', 'Australia'],
-        'thankyou_status_bacs' => ['field_ty_thankyou_status_bacs', 'Order Placed • Awaiting Bank Transfer'],
-        'thankyou_status_paid' => ['field_ty_thankyou_status_paid', 'Order Placed Successfully'],
-        'thankyou_title_named' => ['field_ty_thankyou_title_named', 'Congratulations, {name}!'],
-        'thankyou_title' => ['field_ty_thankyou_title', 'Thank You for Your Order!'],
-        'thankyou_intro_bacs' => ['field_ty_thankyou_intro_bacs', 'Thank you for your order. Please complete your payment using **EFT** or **PayID** below.'],
-        'thankyou_intro_default' => ['field_ty_thankyou_intro_default', 'Your order has been received and is now being prepared for express delivery.'],
-        'thankyou_label_order' => ['field_ty_thankyou_label_order', 'Order Number'],
-        'thankyou_label_date' => ['field_ty_thankyou_label_date', 'Date'],
-        'thankyou_label_total' => ['field_ty_thankyou_label_total', 'Total Due'],
-        'thankyou_label_payment' => ['field_ty_thankyou_label_payment', 'Payment Method'],
-        'thankyou_label_sent_to' => ['field_ty_thankyou_label_sent_to', 'Confirmation sent to:'],
-        'thankyou_label_invoice' => ['field_ty_thankyou_label_invoice', 'Tax Invoice Generated'],
-        'bank_card_badge' => ['field_ty_bank_card_badge', 'Verified'],
-        'bank_card_subtitle' => ['field_ty_bank_card_subtitle', 'Official Direct Bank Transfer (EFT / NetBank / PayID)'],
-        'bank_card_amount_label' => ['field_ty_bank_card_amount_label', 'Amount to Transfer'],
-        'bank_label_account_name' => ['field_ty_bank_label_account_name', 'Account Name'],
-        'bank_label_bank' => ['field_ty_bank_label_bank', 'Bank'],
-        'bank_label_bsb' => ['field_ty_bank_label_bsb', 'BSB Code'],
-        'bank_label_account_number' => ['field_ty_bank_label_account_number', 'Account Number'],
-        'bank_label_payid' => ['field_ty_bank_label_payid', 'PayID'],
-        'bank_copy_label' => ['field_ty_bank_copy_label', 'Copy'],
-        'bank_copied_label' => ['field_ty_bank_copied_label', 'Copied!'],
-        'thankyou_note_heading' => ['field_ty_thankyou_note_heading', 'Note'],
-        'thankyou_shop_button' => ['field_ty_thankyou_shop_button', 'Return to Shop'],
-        'thankyou_footer_note' => ['field_ty_thankyou_footer_note', 'Your order confirmation & tax invoice have been dispatched to your email'],
-        'thankyou_failed_title' => ['field_ty_thankyou_failed_title', 'Order Payment Failed'],
-        'thankyou_failed_retry' => ['field_ty_thankyou_failed_retry', 'Retry Payment'],
-        'thankyou_failed_account' => ['field_ty_thankyou_failed_account', 'My Account'],
-        'thankyou_failed_text' => ['field_ty_thankyou_failed_text', 'Unfortunately your order payment could not be completed. Please re-attempt your payment or select direct bank transfer.'],
-        'payid_number' => ['field_checkout_payid_number', '0402 222 605'],
-        'checkout_bacs_warning' => ['field_checkout_bacs_warning', '* Use the below BSB & account details to make the transfer. Simply mention your order number in the comment section. DO NOT reference anything related to medicine or website name. Just mention your order number.'],
-        'checkout_receipt_notice' => ['field_checkout_receipt_notice', '* Once your payment is done, just send the transaction copy to {email} and we\'ll ship your order immediately.'],
-        'checkout_shipping_note' => ['field_checkout_shipping_note', 'The average shipping time is 10 - 15 days. Please note that delivery may take up to 30 days from the date of dispatch due to potential disruptions in postal services caused by weather issues or natural disaster.'],
-        // Page Labels tab
-        'breadcrumb_home_label'        => ['field_breadcrumb_home_label', 'Home'],
-    ];
+    return waklert_seed_defaults()['options'] ?? [];
 }
 
 /** Bank transfer details (Theme Settings -> Checkout & Emails) used by the thank-you page, the BACS block and WooCommerce. */
@@ -403,9 +46,50 @@ function waklert_bank_details() {
 
 /** Theme Settings text, with the default as a safety net when the admin left it empty. */
 function waklert_option_text($name) {
+    $saved = get_option('options_' . $name, null);
+    if ($saved !== null) { return is_scalar($saved) ? (string) $saved : ''; }
     $value = function_exists('get_field') ? trim((string) get_field($name, 'option')) : '';
-    return $value !== '' ? $value : (waklert_option_defaults()[$name][1] ?? '');
+    return $value !== '' ? $value : (waklert_option_defaults()[$name][1] ?? waklert_acf_option_default($name));
 }
+
+/** Read the canonical field default from the existing Theme Settings JSON. */
+function waklert_acf_option_default($name) {
+    static $defaults = null;
+    if ($defaults === null) {
+        $defaults = [];
+        $group = json_decode((string) file_get_contents(MODMY_THEME_DIR . '/acf-json/group_theme_settings.json'), true);
+        foreach ($group['fields'] ?? [] as $field) {
+            if (!empty($field['name']) && array_key_exists('default_value', $field)) {
+                $defaults[$field['name']] = $field['default_value'];
+            }
+        }
+    }
+    return $defaults[$name] ?? '';
+}
+
+/** Install existing scalar ACF defaults once, without resetting later edits or clears. */
+add_action('admin_init', function() {
+    if (!current_user_can('manage_options')
+        || (defined('WAKLERT_SKIP_CONTENT_SEED') && WAKLERT_SKIP_CONTENT_SEED)) { return; }
+    $path = MODMY_THEME_DIR . '/acf-json/group_theme_settings.json';
+    $version = hash_file('sha256', $path);
+    if (get_option('waklert_acf_defaults_version') === $version) { return; }
+    $markers = (array) get_option('waklert_acf_defaults_seeded', []);
+    $group = json_decode((string) file_get_contents($path), true);
+    foreach ($group['fields'] ?? [] as $field) {
+        $name = $field['name'] ?? '';
+        $default = $field['default_value'] ?? null;
+        if (!$name || isset($markers[$name]) || !is_scalar($default) || $default === '') { continue; }
+        $current = get_option('options_' . $name, null);
+        if ($current === null || $current === '') {
+            update_option('options_' . $name, $default);
+            update_option('_options_' . $name, $field['key']);
+        }
+        $markers[$name] = true;
+    }
+    update_option('waklert_acf_defaults_seeded', $markers, false);
+    update_option('waklert_acf_defaults_version', $version, false);
+}, 98);
 
 /** Default value of one field, used by the templates as a safety net. */
 function waklert_module_default($layout, $name) {
@@ -432,28 +116,28 @@ function waklert_default_trust_badge_desc($label, $idx = 0) {
     $rows  = waklert_module_default_rows('trust_strip', 'badges');
 
     if (str_contains($lower, 'focused') || str_contains($lower, 'category') || str_contains($lower, 'range')) {
-        return 'Dedicated exclusively to genuine armodafinil tablets and verified pack sizes.';
+        return waklert_seed_defaults()['trust_descriptions']['036c5026f5'];
     }
     if (str_contains($lower, 'checkout') && str_contains($lower, 'delivery')) {
-        return 'Transparent shipping options, transit estimates, and Australia Post tracking at checkout.';
+        return waklert_seed_defaults()['trust_descriptions']['d3e5857ced'];
     }
     if (str_contains($lower, 'listing') || str_contains($lower, 'detail')) {
-        return 'Clear active ingredient, strength, manufacturer, and pack options on every page.';
+        return waklert_seed_defaults()['trust_descriptions']['3aa6f3112c'];
     }
     if (str_contains($lower, 'support') || str_contains($lower, 'question') || str_contains($lower, 'chat')) {
-        return 'Direct Australian customer care via SMS, WhatsApp, and email 7 days a week.';
+        return waklert_seed_defaults()['trust_descriptions']['dd46c3441b'];
     }
     if (str_contains($lower, 'sealed')) {
-        return 'Original factory-sealed blister packs from licensed pharmaceutical manufacturers.';
+        return waklert_seed_defaults()['trust_descriptions']['f00d47a832'];
     }
     if (str_contains($lower, 'discreet')) {
-        return 'Plain, unmarked satchels with no external branding for complete privacy.';
+        return waklert_seed_defaults()['trust_descriptions']['e4abdc33bf'];
     }
     if (str_contains($lower, 'checkout') || str_contains($lower, 'payid') || str_contains($lower, 'secure')) {
-        return 'Encrypted AUD checkout supporting local PayID and Australian bank transfer.';
+        return waklert_seed_defaults()['trust_descriptions']['b619872424'];
     }
     if (str_contains($lower, 'australia') || str_contains($lower, 'delivery') || str_contains($lower, 'shipping')) {
-        return 'Tracked delivery via Australia Post to metro, regional, and PO Box addresses.';
+        return waklert_seed_defaults()['trust_descriptions']['9352490d6d'];
     }
     return $rows[$idx % max(1, count($rows))]['desc'] ?? '';
 }
@@ -482,9 +166,19 @@ function waklert_clear_repeater_rows($post_id, $idx, $name) {
     ));
 }
 
-/** Writes the default FAQs into one FAQs module, replacing any empty rows left behind. */
+/** Protect existing repeater children even if their parent count is missing. */
+function waklert_repeater_has_saved_rows($post_id, $idx, $name): bool {
+    $prefix = "modules_{$idx}_{$name}_";
+    foreach (array_keys(get_post_meta($post_id)) as $key) {
+        if (str_starts_with($key, $prefix) || str_starts_with($key, '_' . $prefix)) { return true; }
+    }
+    return false;
+}
+
+/** Initialize FAQs only when no saved list or child fields exist. */
 function waklert_seed_faq_module($post_id, $idx) {
-    waklert_clear_repeater_rows($post_id, $idx, 'faq_items');
+    if (metadata_exists('post', $post_id, "modules_{$idx}_faq_items")
+        || waklert_repeater_has_saved_rows($post_id, $idx, 'faq_items')) { return; }
 
     $items = waklert_default_faq_items();
     foreach ($items as $r => $row) {
@@ -512,6 +206,8 @@ function waklert_repeater_has_content($post_id, $idx, $name, $check) {
 }
 
 function waklert_seed_repeater($post_id, $idx, $name, $repeater) {
+    if (metadata_exists('post', $post_id, "modules_{$idx}_{$name}")
+        || waklert_repeater_has_saved_rows($post_id, $idx, $name)) { return; }
     foreach ($repeater['unless'] ?? [] as $other) {
         if (waklert_module_meta_filled($post_id, "modules_{$idx}_{$other}")) {
             return;
@@ -521,7 +217,6 @@ function waklert_seed_repeater($post_id, $idx, $name, $repeater) {
         return;
     }
 
-    waklert_clear_repeater_rows($post_id, $idx, $name);
     foreach ($repeater['rows'] as $r => $row) {
         foreach ($repeater['subs'] as $sub => $sub_key) {
             update_post_meta($post_id, "modules_{$idx}_{$name}_{$r}_{$sub}", $row[$sub] ?? '');
@@ -537,7 +232,7 @@ function waklert_seed_trust_badge_descriptions($post_id, $idx) {
     $count = (int) get_post_meta($post_id, "modules_{$idx}_badges", true);
     for ($r = 0; $r < $count; $r++) {
         $label = (string) get_post_meta($post_id, "modules_{$idx}_badges_{$r}_label", true);
-        if ($label === '' || waklert_module_meta_filled($post_id, "modules_{$idx}_badges_{$r}_desc")) {
+        if ($label === '' || metadata_exists('post', $post_id, "modules_{$idx}_badges_{$r}_desc")) {
             continue;
         }
         update_post_meta($post_id, "modules_{$idx}_badges_{$r}_desc", waklert_default_trust_badge_desc($label, $r));
@@ -557,7 +252,7 @@ function waklert_seed_module($post_id, $idx, $layout) {
     }
 
     foreach ($defaults['fields'] ?? [] as $name => [$field_key, $value]) {
-        if (waklert_module_meta_filled($post_id, "modules_{$idx}_{$name}")) {
+        if (metadata_exists('post', $post_id, "modules_{$idx}_{$name}")) {
             continue;
         }
         update_post_meta($post_id, "modules_{$idx}_{$name}", $value);
@@ -572,6 +267,7 @@ function waklert_seed_module($post_id, $idx, $layout) {
 }
 
 add_action('init', function() {
+    if (defined('WAKLERT_SKIP_CONTENT_SEED') && WAKLERT_SKIP_CONTENT_SEED) { return; }
     if (get_option('waklert_content_seed_version') === WAKLERT_CONTENT_SEED_VERSION) {
         return;
     }
@@ -589,7 +285,7 @@ add_action('init', function() {
             continue;
         }
         foreach ($layouts as $idx => $layout_name) {
-            if ($layout_name === 'faqs' && !waklert_faq_module_has_content($post_id, $idx)) {
+            if ($layout_name === 'faqs' && !metadata_exists('post', $post_id, "modules_{$idx}_faq_items")) {
                 waklert_seed_faq_module($post_id, $idx);
             }
             waklert_seed_module($post_id, $idx, $layout_name);

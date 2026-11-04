@@ -1,0 +1,53 @@
+{
+    "key": "group_wc_woocommerce_checkout_form_checkout_php",
+    "title": "Form Checkout",
+    "fields": [
+        {
+            "key": "field_wc_form_checkout_text_e88ddba8b7",
+            "label": "You must be logged in to checkout.",
+            "name": "wc_form_checkout_text_e88ddba8b7",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/checkout/form-checkout.php",
+            "default_value": "You must be logged in to checkout.",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_form_checkout_text_d5b7591187",
+            "label": "Checkout",
+            "name": "wc_form_checkout_text_d5b7591187",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/checkout/form-checkout.php",
+            "default_value": "Checkout",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_form_checkout_text_62694a4f46",
+            "label": "Your order",
+            "name": "wc_form_checkout_text_62694a4f46",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/checkout/form-checkout.php",
+            "default_value": "Your order",
+            "rows": 3,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "waklert-content-checkout"
+            }
+        ]
+    ],
+    "menu_order": 50,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "description": "Generated template content fields. Source: woocommerce/checkout/form-checkout.php"
+}

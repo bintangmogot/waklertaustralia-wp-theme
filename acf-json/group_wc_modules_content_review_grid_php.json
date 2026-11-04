@@ -1,0 +1,148 @@
+{
+    "key": "group_wc_modules_content_review_grid_php",
+    "title": "Review Grid",
+    "fields": [
+        {
+            "key": "field_wc_content_review_grid_icon_7577c020ff",
+            "label": "Icon 7577c020ff",
+            "name": "wc_content_review_grid_icon_7577c020ff",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: modules/content-review_grid.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-6 h-6\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z\"></path></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_review_grid_icon_7577c020ff_image",
+            "label": "Icon 7577c020ff custom image",
+            "name": "wc_content_review_grid_icon_7577c020ff_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_content_review_grid_icon_6d5e051030",
+            "label": "Icon 6d5e051030",
+            "name": "wc_content_review_grid_icon_6d5e051030",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: modules/content-review_grid.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-4 h-4\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z\"></path></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_review_grid_icon_6d5e051030_image",
+            "label": "Icon 6d5e051030 custom image",
+            "name": "wc_content_review_grid_icon_6d5e051030_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_content_review_grid_text_8009b97b02",
+            "label": "“",
+            "name": "wc_content_review_grid_text_8009b97b02",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: modules/content-review_grid.php",
+            "default_value": "“",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_review_grid_text_276073cb09",
+            "label": "”",
+            "name": "wc_content_review_grid_text_276073cb09",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: modules/content-review_grid.php",
+            "default_value": "”",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_review_grid_text_0511a9d4b2",
+            "label": "(10+ verified reviews)",
+            "name": "wc_content_review_grid_text_0511a9d4b2",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: modules/content-review_grid.php",
+            "default_value": "(10+ verified reviews)",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_review_grid_text_5f664eae42",
+            "label": "Customer Reviews",
+            "name": "wc_content_review_grid_text_5f664eae42",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: modules/content-review_grid.php",
+            "default_value": "Customer Reviews",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_review_grid_text_459dcd3ff9",
+            "label": "What Australian Customers Say",
+            "name": "wc_content_review_grid_text_459dcd3ff9",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: modules/content-review_grid.php",
+            "default_value": "What Australian Customers Say",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_review_grid_text_38f2a2fc1c",
+            "label": "Real testimonials from Waklert Australia users across Australia.",
+            "name": "wc_content_review_grid_text_38f2a2fc1c",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: modules/content-review_grid.php",
+            "default_value": "Real testimonials from Waklert Australia users across Australia.",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_review_grid_text_2d2f65336a",
+            "label": "Verified Buyer",
+            "name": "wc_content_review_grid_text_2d2f65336a",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: modules/content-review_grid.php",
+            "default_value": "Verified Buyer",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_review_grid_text_6291960655",
+            "label": "No reviews found.",
+            "name": "wc_content_review_grid_text_6291960655",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: modules/content-review_grid.php",
+            "default_value": "No reviews found.",
+            "rows": 3,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "waklert-content-pages"
+            }
+        ]
+    ],
+    "menu_order": 50,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "description": "Generated template content fields. Source: modules/content-review_grid.php"
+}

@@ -1,0 +1,91 @@
+{
+    "key": "group_wc_inc_theme_setup_php",
+    "title": "Theme Setup",
+    "fields": [
+        {
+            "key": "field_wc_theme_setup_icon_8cbaa9f5f7",
+            "label": "Icon 8cbaa9f5f7",
+            "name": "wc_theme_setup_icon_8cbaa9f5f7",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: inc/theme-setup.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"w-4.5 h-4.5 pointer-events-none transition-transform duration-200\"><path d=\"m6 9 6 6 6-6\"/></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_theme_setup_icon_8cbaa9f5f7_image",
+            "label": "Icon 8cbaa9f5f7 custom image",
+            "name": "wc_theme_setup_icon_8cbaa9f5f7_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_theme_setup_icon_e84d03c868",
+            "label": "Icon e84d03c868",
+            "name": "wc_theme_setup_icon_e84d03c868",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: inc/theme-setup.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"inline-block ml-1.5 w-3.5 h-3.5 opacity-60 group-hover:opacity-100 group-hover:rotate-180 transition-transform duration-200\"><path d=\"m6 9 6 6 6-6\"/></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_theme_setup_icon_e84d03c868_image",
+            "label": "Icon e84d03c868 custom image",
+            "name": "wc_theme_setup_icon_e84d03c868_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_theme_setup_icon_10314df0a2",
+            "label": "Icon 10314df0a2",
+            "name": "wc_theme_setup_icon_10314df0a2",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: inc/theme-setup.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"w-3.5 h-3.5 opacity-40 shrink-0\"><path d=\"m9 18 6-6-6-6\"/></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_theme_setup_icon_10314df0a2_image",
+            "label": "Icon 10314df0a2 custom image",
+            "name": "wc_theme_setup_icon_10314df0a2_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_theme_setup_image_1e37ac112e",
+            "label": "Image 1e37ac112e",
+            "name": "wc_theme_setup_image_1e37ac112e",
+            "type": "image",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: inc/theme-setup.php",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "library": "all"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "waklert-content-shared"
+            }
+        ]
+    ],
+    "menu_order": 50,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "description": "Generated template content fields. Source: inc/theme-setup.php"
+}

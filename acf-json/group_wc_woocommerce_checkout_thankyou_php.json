@@ -1,0 +1,233 @@
+{
+    "key": "group_wc_woocommerce_checkout_thankyou_php",
+    "title": "Thankyou",
+    "fields": [
+        {
+            "key": "field_wc_manual_copy_success_icon",
+            "label": "Copy success icon",
+            "name": "wc_manual_copy_success_icon",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/checkout/thankyou.php",
+            "default_value": "<svg class=\"w-3.5 h-3.5 text-emerald-600 inline\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.5\" d=\"M5 13l4 4L19 7\"/></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_manual_copy_success_icon_image",
+            "label": "Copy success icon custom image",
+            "name": "wc_manual_copy_success_icon_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_manual_receipt_subject",
+            "label": "Receipt email subject",
+            "name": "wc_manual_receipt_subject",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/checkout/thankyou.php",
+            "default_value": "Payment Receipt - Order #{order}",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_manual_receipt_body",
+            "label": "Receipt email body",
+            "name": "wc_manual_receipt_body",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/checkout/thankyou.php",
+            "default_value": "Hi,\n\nI have completed the bank transfer for Order #{order} ({total}).\n\nPlease find my transaction receipt attached.\n\nThank you,\n{name}",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_thankyou_icon_92adfd83a3",
+            "label": "Icon 92adfd83a3",
+            "name": "wc_thankyou_icon_92adfd83a3",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/checkout/thankyou.php",
+            "default_value": "<svg class=\"w-10 h-10\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.5\" d=\"M6 18L18 6M6 6l12 12\"></path></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_thankyou_icon_92adfd83a3_image",
+            "label": "Icon 92adfd83a3 custom image",
+            "name": "wc_thankyou_icon_92adfd83a3_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_thankyou_icon_1786e85dee",
+            "label": "Icon 1786e85dee",
+            "name": "wc_thankyou_icon_1786e85dee",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/checkout/thankyou.php",
+            "default_value": "<svg class=\"w-10 h-10\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-width=\"2.5\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M5 13l4 4L19 7\"/></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_thankyou_icon_1786e85dee_image",
+            "label": "Icon 1786e85dee custom image",
+            "name": "wc_thankyou_icon_1786e85dee_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_thankyou_icon_2d969f7cf6",
+            "label": "Icon 2d969f7cf6",
+            "name": "wc_thankyou_icon_2d969f7cf6",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/checkout/thankyou.php",
+            "default_value": "<svg class=\"w-4 h-4 text-emerald-600\" fill=\"currentColor\" viewBox=\"0 0 20 20\"><path fill-rule=\"evenodd\" d=\"M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z\" clip-rule=\"evenodd\"></path></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_thankyou_icon_2d969f7cf6_image",
+            "label": "Icon 2d969f7cf6 custom image",
+            "name": "wc_thankyou_icon_2d969f7cf6_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_thankyou_icon_b2f3371342",
+            "label": "Icon b2f3371342",
+            "name": "wc_thankyou_icon_b2f3371342",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/checkout/thankyou.php",
+            "default_value": "<svg class=\"w-6 h-6 text-[#1A1A1A]\" viewBox=\"0 0 24 24\" fill=\"currentColor\">\r\n                                    <path d=\"M12 2L2 12l10 10 10-10L12 2zm0 4.2L17.8 12 12 17.8 6.2 12 12 6.2z\"/>\r\n                                </svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_thankyou_icon_b2f3371342_image",
+            "label": "Icon b2f3371342 custom image",
+            "name": "wc_thankyou_icon_b2f3371342_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_thankyou_icon_858ca501ce",
+            "label": "Icon 858ca501ce",
+            "name": "wc_thankyou_icon_858ca501ce",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/checkout/thankyou.php",
+            "default_value": "<svg class=\"w-3.5 h-3.5 text-muted-foreground\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z\"></path></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_thankyou_icon_858ca501ce_image",
+            "label": "Icon 858ca501ce custom image",
+            "name": "wc_thankyou_icon_858ca501ce_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_thankyou_icon_907193d15a",
+            "label": "Icon 907193d15a",
+            "name": "wc_thankyou_icon_907193d15a",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/checkout/thankyou.php",
+            "default_value": "<svg class=\"w-3 h-3 text-[#1A1A1A]\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 2L2 12l10 10 10-10L12 2zm0 4.2L17.8 12 12 17.8 6.2 12 12 6.2z\"/></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_thankyou_icon_907193d15a_image",
+            "label": "Icon 907193d15a custom image",
+            "name": "wc_thankyou_icon_907193d15a_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_thankyou_icon_e46062cc8e",
+            "label": "Icon e46062cc8e",
+            "name": "wc_thankyou_icon_e46062cc8e",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/checkout/thankyou.php",
+            "default_value": "<svg class=\"w-5 h-5 text-white/90\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.5\" d=\"M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z\"></path></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_thankyou_icon_e46062cc8e_image",
+            "label": "Icon e46062cc8e custom image",
+            "name": "wc_thankyou_icon_e46062cc8e_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_thankyou_icon_b129927a56",
+            "label": "Icon b129927a56",
+            "name": "wc_thankyou_icon_b129927a56",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/checkout/thankyou.php",
+            "default_value": "<svg class=\"w-3.5 h-3.5 text-emerald-600 inline shrink-0\" fill=\"currentColor\" viewBox=\"0 0 20 20\"><path fill-rule=\"evenodd\" d=\"M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z\" clip-rule=\"evenodd\"></path></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_thankyou_icon_b129927a56_image",
+            "label": "Icon b129927a56 custom image",
+            "name": "wc_thankyou_icon_b129927a56_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_thankyou_text_5738a1a6ae",
+            "label": "Osko",
+            "name": "wc_thankyou_text_5738a1a6ae",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/checkout/thankyou.php",
+            "default_value": "Osko",
+            "rows": 3,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "waklert-content-checkout"
+            }
+        ]
+    ],
+    "menu_order": 50,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "description": "Generated template content fields. Source: woocommerce/checkout/thankyou.php"
+}

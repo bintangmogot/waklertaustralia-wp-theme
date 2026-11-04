@@ -31,20 +31,29 @@ function modmy_whatsapp_buy_button() {
     global $product;
     if (!$product) return;
     
-    $whatsapp_base = function_exists('waklert_format_whatsapp_url') ? waklert_format_whatsapp_url(get_field('whatsapp_number', 'option')) : 'https://wa.me/61488841833';
+    $whatsapp_number = function_exists('get_field') ? get_field('whatsapp_number', 'option') : '';
+    if (!$whatsapp_number) {
+        return;
+    }
+    $whatsapp_base = function_exists('waklert_format_whatsapp_url') ? waklert_format_whatsapp_url($whatsapp_number) : '';
+    if (!$whatsapp_base) {
+        return;
+    }
 
-    // Default message
-    $message = "Hi ModafinilMY, I'm interested in buying " . $product->get_name();
+    $message = strtr(waklert_content('com_product_whatsapp_message'), [
+        '{site}'    => get_bloginfo('name'),
+        '{product}' => $product->get_name(),
+    ]);
     $url = $whatsapp_base . "?text=" . urlencode($message);
 
-    $btn_text = "Order via WhatsApp";
+    $btn_text = waklert_content('com_product_whatsapp_button');
 
     echo '<div class="mt-8">';
     echo '<a href="' . esc_url($url) . '" target="_blank" rel="noopener noreferrer" class="flex w-full items-center justify-center gap-2 rounded-full bg-primary px-8 py-4 text-base font-bold text-primary-foreground shadow-pill transition-colors hover:bg-primary-dark sm:w-auto">';
-    echo '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5 shrink-0"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.67-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>';
-    echo $btn_text;
+    echo waklert_content_icon('com_whatsapp_icon');
+    echo esc_html($btn_text);
     echo '</a>';
-    echo '<p class="mt-3 text-center text-xs text-muted-foreground">' . "No credit card needed. Secure bank transfer via WhatsApp." . '</p>';
+    echo '<p class="mt-3 text-center text-xs text-muted-foreground">' . esc_html(waklert_content('com_product_whatsapp_note')) . '</p>';
     echo '</div>';
 }
 
@@ -151,7 +160,7 @@ add_filter('woocommerce_form_field_args', 'waklert_require_billing_phone_field_a
 function waklert_require_billing_phone_field_args($args, $key, $value) {
     if ('billing_phone' === $key) {
         $args['required'] = true;
-        $args['label'] = 'Phone';
+        $args['label'] = waklert_content('com_checkout_phone_label');
         $args['class'] = array_values(array_unique(array_merge((array) ($args['class'] ?? array()), array('validate-required'))));
     }
 
@@ -200,7 +209,7 @@ function waklert_require_billing_phone_ui() {
             if (!label.querySelector('.required')) {
                 const marker = document.createElement('abbr');
                 marker.className = 'required';
-                marker.title = 'required';
+                marker.title = <?php echo wp_json_encode(waklert_content('com_checkout_required_label')); ?>;
                 marker.textContent = '*';
                 label.append(document.createTextNode(' '), marker);
             }
@@ -220,7 +229,7 @@ add_action('wp_footer', 'waklert_require_billing_phone_ui', 99);
 /** Reject a missing phone number even when a checkout field extension skips core validation. */
 function waklert_validate_billing_phone_required($data, $errors) {
     if (empty($data['billing_phone']) && $errors instanceof WP_Error) {
-        $errors->add('billing_phone_required', __('Please enter a phone number.', 'woocommerce'));
+        $errors->add('billing_phone_required', waklert_content('com_checkout_phone_required_error'));
     }
 }
 add_action('woocommerce_after_checkout_validation', 'waklert_validate_billing_phone_required', PHP_INT_MAX, 2);
@@ -239,7 +248,7 @@ function modmy_remove_qris_from_button($label) {
  */
 add_filter('woocommerce_gateway_description', function($description, $gateway_id) {
     if ($gateway_id === 'bacs') {
-        return '<p>' . esc_html__('Your order is nearly complete – Please place the order we will send you an email confirmation with the bank payment & PayID details. Once you have paid we will immediately dispatch the product and issue you with an Australian Post tracking number.', 'waklertaustralia') . '</p>';
+        return '<p>' . esc_html(waklert_content('com_bacs_gateway_description')) . '</p>';
     }
     return $description;
 }, 99, 2);
@@ -298,11 +307,15 @@ add_action('woocommerce_email_before_order_table', function($order, $sent_to_adm
     if ($order->get_payment_method() !== 'bacs') {
         return;
     }
-    $payid_number = function_exists('get_field') ? (get_field('payid_number', 'option') ?: '0402 222 605') : '0402 222 605';
+    $payid_number = function_exists('waklert_option_text') ? waklert_option_text('payid_number') : '';
+    if ($payid_number === '') {
+        return;
+    }
+    $payid_label = waklert_content('com_payid_label');
     if ($plain_text) {
-        echo "\nPayID: " . $payid_number . "\n\n";
+        echo "\n" . wp_strip_all_tags($payid_label) . ': ' . $payid_number . "\n\n";
     } else {
-        echo '<p class="bacs-payid-email" style="color: #dc2626 !important; font-weight: 700 !important; font-size: 16px !important; margin: 16px 0 24px 0 !important; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Helvetica, Arial, sans-serif;">PayID: ' . esc_html($payid_number) . '</p>';
+        echo '<p class="bacs-payid-email" style="color: #dc2626 !important; font-weight: 700 !important; font-size: 16px !important; margin: 16px 0 24px 0 !important; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Helvetica, Arial, sans-serif;">' . esc_html($payid_label) . ': ' . esc_html($payid_number) . '</p>';
     }
 }, 11, 3);
 

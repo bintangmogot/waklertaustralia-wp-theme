@@ -4,10 +4,12 @@
  * Waklert Australia 2-tone Dashed & Patterned Theme
  */
 
-$heading = get_sub_field('heading') ?: waklert_module_default('about_delivery', 'heading');
-$eyebrow = get_sub_field('eyebrow') ?: waklert_module_default('about_delivery', 'eyebrow');
-$desc = get_sub_field('desc') ?: waklert_module_default('about_delivery', 'desc');
-$items = get_sub_field('list_items') ?: [];
+if (waklert_module_is_empty()) { return; }
+
+$heading = waklert_module_text('heading');
+$eyebrow = waklert_module_text('eyebrow');
+$desc = waklert_module_text('desc');
+$items = waklert_module_rows('list_items');
 
 if (!$heading && !$desc && !$items) {
     return;
@@ -19,12 +21,12 @@ $fallback_presets = ['australia_delivery', 'express_shipping', 'discreet_sealed'
 <section class="py-6 md:py-10 bg-white">
     <div class="container-site max-w-5xl">
         <div class="text-center max-w-3xl mx-auto mb-8">
-            <span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 border border-sky-300/80 px-3 py-0.5 text-[11px] font-black uppercase tracking-[0.16em] text-[#0c4161]">
+            <?php if (waklert_has_content(esc_html($eyebrow))): ?><span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 border border-sky-300/80 px-3 py-0.5 text-[11px] font-black uppercase tracking-[0.16em] text-[#0c4161]">
                 <?= esc_html($eyebrow) ?>
-            </span>
-            <h2 class="mt-2 font-heading font-black text-2xl sm:text-3xl md:text-4xl text-[#0c4161]"><?= esc_html($heading) ?></h2>
+            </span><?php endif; ?>
+            <?php if (waklert_has_content(esc_html($heading))): ?><h2 class="mt-2 font-heading font-black text-2xl sm:text-3xl md:text-4xl text-[#0c4161]"><?= esc_html($heading) ?></h2><?php endif; ?>
             <?php if ($desc): ?>
-                <p class="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed whitespace-pre-line"><?= esc_html($desc) ?></p>
+                <?php if (waklert_has_content(esc_html($desc))): ?><p class="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed whitespace-pre-line"><?= esc_html($desc) ?></p><?php endif; ?>
             <?php endif; ?>
         </div>
 
@@ -49,15 +51,15 @@ $fallback_presets = ['australia_delivery', 'express_shipping', 'discreet_sealed'
             ?>
             <div class="relative flex flex-col rounded-2xl border-2 border-dashed border-sky-200/80 bg-gradient-to-br from-sky-50/40 via-white to-transparent p-6 shadow-xs transition-all hover:border-sky-400 hover:shadow-md">
                 <div class="flex items-center gap-3.5 mb-3">
-                    <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white border border-sky-100 shadow-xs">
+                    <?php if (waklert_has_content($icon_html)): ?><span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white border border-sky-100 shadow-xs">
                         <?= $icon_html ?>
-                    </span>
+                    </span><?php endif; ?>
                     <?php if ($item_title !== ''): ?>
-                        <h3 class="font-heading font-bold text-base text-slate-900 m-0"><?= esc_html($item_title) ?></h3>
+                        <?php if (waklert_has_content(esc_html($item_title))): ?><h3 class="font-heading font-bold text-base text-slate-900 m-0"><?= esc_html($item_title) ?></h3><?php endif; ?>
                     <?php endif; ?>
                 </div>
                 <?php if ($item_desc !== ''): ?>
-                    <p class="text-sm text-slate-600 leading-relaxed m-0"><?= esc_html($item_desc) ?></p>
+                    <?php if (waklert_has_content(esc_html($item_desc))): ?><p class="text-sm text-slate-600 leading-relaxed m-0"><?= esc_html($item_desc) ?></p><?php endif; ?>
                 <?php endif; ?>
             </div>
             <?php endforeach; ?>

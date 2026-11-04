@@ -87,7 +87,7 @@ $review_summary = waklert_get_product_review_summary($product_id);
 $reviews = $review_summary['reviews'];
 $unit_price = waklert_get_product_unit_price($product);
 $display_unit_price = $unit_price;
-$unit_price_lead = 'From ';
+$unit_price_lead = waklert_content('single_product_text_8dfc4a8f73');
 if ($product->is_type('variable') && isset($variations[$default_variation_index])) {
     $default_variation = $variations[$default_variation_index];
     $default_variation_product = wc_get_product($default_variation['variation_id'] ?? 0);
@@ -106,52 +106,52 @@ $unit_price_decimal_separator = wc_get_price_decimal_separator();
 $unit_price_thousand_separator = wc_get_price_thousand_separator();
 $product_badge = trim((string) get_field('product_badge', $product_id));
 if ($product_badge === '' && $product->is_featured()) {
-    $product_badge = waklert_get_product_presentation_option('best_seller_label', 'Best Seller');
+    $product_badge = waklert_get_product_presentation_option('best_seller_label');
 }
-$free_shipping_message = waklert_get_product_presentation_option('free_shipping_message', 'Free shipping on orders above');
+$free_shipping_message = waklert_get_product_presentation_option('free_shipping_message');
 $free_shipping_threshold = get_field('free_shipping_threshold', 'option');
 $free_shipping_threshold = is_numeric($free_shipping_threshold) ? $free_shipping_threshold : 299;
 $trust_items = array_values(array_filter([
     [
-        'label' => waklert_get_product_presentation_option('product_trust_dispatch', 'AU-wide dispatch'),
+        'label' => waklert_get_product_presentation_option('product_trust_dispatch'),
         'icon' => 'fi-rr-truck-side',
     ],
     [
-        'label' => waklert_get_product_presentation_option('product_trust_checkout', 'Encrypted checkout'),
+        'label' => waklert_get_product_presentation_option('product_trust_checkout'),
         'icon' => 'fi-rr-lock',
     ],
     [
-        'label' => waklert_get_product_presentation_option('product_trust_quality', 'Quality verified'),
+        'label' => waklert_get_product_presentation_option('product_trust_quality'),
         'icon' => 'fi-rr-shield-check',
     ],
 ], static function ($item) {
     return trim((string) $item['label']) !== '';
 }));
-$product_specs_heading = waklert_get_product_presentation_option('product_specs_heading', 'Product specs');
-$no_reviews_text = waklert_get_product_presentation_option('product_no_reviews_text', 'No reviews yet');
+$product_specs_heading = waklert_get_product_presentation_option('product_specs_heading');
+$no_reviews_text = waklert_get_product_presentation_option('product_no_reviews_text');
 $product_specs = [
     [
-        'label' => waklert_get_product_presentation_option('product_specs_active_label', 'Active Ingredient'),
+        'label' => waklert_get_product_presentation_option('product_specs_active_label'),
         'value' => get_field('product_active_ingredient', $product_id),
     ],
     [
-        'label' => waklert_get_product_presentation_option('product_specs_indication_label', 'Indication'),
+        'label' => waklert_get_product_presentation_option('product_specs_indication_label'),
         'value' => get_field('product_indication', $product_id),
     ],
     [
-        'label' => waklert_get_product_presentation_option('product_specs_manufacturer_label', 'Manufacturer'),
+        'label' => waklert_get_product_presentation_option('product_specs_manufacturer_label'),
         'value' => get_field('product_manufacturer', $product_id) ?: (waklert_get_product_attribute_by_label($product, '/manufacturer|brand/i') ?: $product->get_meta('brand')),
     ],
     [
-        'label' => waklert_get_product_presentation_option('product_specs_strength_label', 'Strength'),
+        'label' => waklert_get_product_presentation_option('product_specs_strength_label'),
         'value' => waklert_get_product_strength($product),
     ],
     [
-        'label' => waklert_get_product_presentation_option('product_specs_packaging_label', 'Packaging'),
+        'label' => waklert_get_product_presentation_option('product_specs_packaging_label'),
         'value' => get_field('product_packaging', $product_id) ?: waklert_get_product_attribute_by_label($product, '/packaging/i'),
     ],
     [
-        'label' => waklert_get_product_presentation_option('product_specs_delivery_label', 'Delivery Time'),
+        'label' => waklert_get_product_presentation_option('product_specs_delivery_label'),
         'value' => get_field('product_delivery_time', $product_id),
     ],
 ];
@@ -167,10 +167,10 @@ $product_specs = array_values(array_filter($product_specs, static function ($spe
     <div class="container-site">
         <nav class="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-500 rounded-full border border-dashed border-sky-300/80 bg-white/90 px-4 py-1.5 shadow-sm backdrop-blur" data-testid="breadcrumb">
             <a href="<?= home_url('/') ?>"
-                class="hover:text-[#0c4161] transition-colors font-bold"><?= "Home" ?></a>
+                class="hover:text-[#0c4161] transition-colors font-bold"><?= esc_html(waklert_content('single_product_text_cfba5e0ecf')) ?></a>
             <span class="text-sky-300">/</span>
             <a href="<?= wc_get_page_permalink('shop') ?>"
-                class="hover:text-[#0c4161] transition-colors font-bold"><?= "Products" ?></a>
+                class="hover:text-[#0c4161] transition-colors font-bold"><?= esc_html(waklert_content('single_product_text_b1ae4b2c42')) ?></a>
             <span class="text-sky-300">/</span>
             <span class="text-[#0c4161] font-extrabold"><?= esc_html($product->get_name()) ?></span>
         </nav>
@@ -201,13 +201,13 @@ $product_specs = array_values(array_filter($product_specs, static function ($spe
             <div class="mb-3 flex flex-wrap items-center gap-2">
                 <?php if ($product_badge !== ''): ?>
                     <span class="inline-flex items-center gap-1.5 rounded-full bg-amber-500 px-3.5 py-1 text-xs font-black uppercase tracking-wider text-white shadow-sm">
-                        <svg class="w-3.5 h-3.5 text-white fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <?= waklert_content_icon('single_product_icon_9e301b9ac3') ?>
                         <?= esc_html($product_badge) ?>
                     </span>
                 <?php endif; ?>
                 <span class="inline-flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1 text-xs font-bold text-[#0c4161] border border-dashed border-sky-300 shadow-sm">
                     <span class="h-2 w-2 rounded-full <?= $product->is_in_stock() ? 'bg-emerald-500 animate-pulse' : 'bg-destructive' ?>" aria-hidden="true"></span>
-                    <?= esc_html($product->is_in_stock() ? 'In Stock — Ready to Dispatch' : 'Out of stock') ?>
+                    <?= esc_html($product->is_in_stock() ? waklert_content('single_product_text_c16cd9dc94') : waklert_content('single_product_text_86bab3b87b')) ?>
                 </span>
             </div>
             <h1 class="font-heading text-2xl md:text-4xl font-extrabold mb-3 text-[#0c4161] tracking-tight"
@@ -238,9 +238,7 @@ $product_specs = array_values(array_filter($product_specs, static function ($spe
                 <div class="mb-6 flex items-center gap-3.5 rounded-2xl border-2 border-dashed border-amber-300 bg-gradient-to-r from-amber-50 via-orange-50/50 to-amber-50 p-4 shadow-sm">
                     <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-500 text-white shadow-sm" aria-hidden="true">
                         <!-- Colorful Star/Gift SVG -->
-                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
+                        <?= waklert_content_icon('single_product_icon_9cc7e1a9c7') ?>
                     </span>
                     <?php
                     $free_shipping_threshold = (float) $free_shipping_threshold;
@@ -259,7 +257,7 @@ $product_specs = array_values(array_filter($product_specs, static function ($spe
                     <div class="space-y-5" data-testid="variation-selector">
                         <div>
                             <label
-                                class="text-sm font-bold text-foreground mb-2 block"><?= "Choose Quantity (prices in AUD)" ?></label>
+                                class="text-sm font-bold text-foreground mb-2 block"><?= esc_html(waklert_content('single_product_text_4934c98ce9')) ?></label>
 
                             <div class="space-y-1.5" id="variation-rows">
                                 <?php 
@@ -285,7 +283,7 @@ $product_specs = array_values(array_filter($product_specs, static function ($spe
                                     $display_qty_str = $variation_product ? $variation_product->get_attribute($first_attr_name) : '';
                                     $display_qty_str = $display_qty_str ?: str_replace(['-', '_'], ' ', (string) $qty_str);
                                     $display_qty_str = trim(preg_replace('/\s+/', ' ', wp_strip_all_tags($display_qty_str)));
-                                    $display_qty_str = $display_qty_str !== '' ? ucwords($display_qty_str) : 'Pack size not listed';
+                                    $display_qty_str = $display_qty_str !== '' ? ucwords($display_qty_str) : waklert_content('single_product_text_8299cfa71d');
                                     $qty_num = $variation_product ? waklert_get_product_pack_count($product, $variation_product) : 0;
 
                                     $price_num = (float) $variation['display_price'];
@@ -321,7 +319,7 @@ $product_specs = array_values(array_filter($product_specs, static function ($spe
                         <!-- Quantity Selector -->
                         <div class="flex items-center gap-3">
                             <label
-                                class="text-xs sm:text-sm font-bold text-[#0c4161]"><?= "Quantity" ?></label>
+                                class="text-xs sm:text-sm font-bold text-[#0c4161]"><?= esc_html(waklert_content('single_product_text_c23a3486a5')) ?></label>
                             <div class="flex items-center border-2 border-dashed border-sky-300 rounded-xl bg-white shadow-sm overflow-hidden">
                                 <button type="button" id="qty-dec"
                                     class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center text-slate-500 hover:text-[#0c4161] hover:bg-sky-50 transition-colors font-bold text-base">-</button>
@@ -343,13 +341,9 @@ $product_specs = array_values(array_filter($product_specs, static function ($spe
                         <!-- Checkout Button -->
                         <button type="submit"
                             class="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-amber-500 via-amber-600 to-amber-500 hover:from-amber-600 hover:to-amber-700 px-4 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-black uppercase tracking-wide sm:tracking-wider text-white shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all disabled:opacity-50">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-4.5 sm:w-4.5 shrink-0" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor" stroke-width="2.5">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                            </svg>
+                            <?= waklert_content_icon('single_product_icon_046e79f58e') ?>
                             <span id="submit-btn-text">
-                                <?= "Checkout & Pay" ?> -
+                                <?= esc_html(waklert_content('single_product_text_7bbcacafd1')) ?> -
                                 <?= wp_kses_post(wc_price((float) $variations[$default_variation_index]['display_price'])) ?>
                             </span>
                         </button>
@@ -384,7 +378,7 @@ $product_specs = array_values(array_filter($product_specs, static function ($spe
 
                         function updateBtnText() {
                             const total = selectedPrice * quantity;
-                            btnText.innerHTML = '<?= "Checkout & Pay" ?> - $' + total.toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                            btnText.textContent = <?= wp_json_encode(waklert_content('single_product_text_7bbcacafd1'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> + ' - $' + total.toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
                             if (stickyPrice) {
                                 stickyPrice.textContent = '$' + total.toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
                             }
@@ -475,7 +469,7 @@ $product_specs = array_values(array_filter($product_specs, static function ($spe
                 <div class="mb-6">
                     <span
                         class="w-full flex items-center justify-center rounded-md bg-destructive-soft px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-destructive">
-                        <?= "Out of Stock" ?>
+                        <?= esc_html(waklert_content('single_product_text_824d6cbc07')) ?>
                     </span>
                 </div>
             <?php endif; ?>
@@ -485,44 +479,33 @@ $product_specs = array_values(array_filter($product_specs, static function ($spe
                     <!-- 1. AU Express Dispatch -->
                     <div class="flex flex-col items-center justify-center text-center gap-2 rounded-2xl border-2 border-dashed border-sky-300/80 bg-gradient-to-br from-white to-sky-50/60 p-3.5 sm:p-4 shadow-sm hover:border-[#0c4161] hover:shadow-md transition-all">
                         <div class="flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-sky-50 text-sky-600 border border-sky-200">
-                            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="1" y="5" width="14" height="11" rx="1.5" fill="#38BDF8" fill-opacity="0.3" stroke="#38BDF8" stroke-width="1.8"/>
-                                <path d="M15 8h4.5l3.5 4.5v3.5h-8V8z" fill="#F59E0B" stroke="#F59E0B" stroke-width="1.8"/>
-                                <circle cx="6" cy="18" r="2.2" fill="#FFFFFF" stroke="#38BDF8" stroke-width="1.5"/>
-                                <circle cx="18" cy="18" r="2.2" fill="#FFFFFF" stroke="#F59E0B" stroke-width="1.5"/>
-                            </svg>
+                            <?= waklert_content_icon('single_product_icon_a30eaef5ef') ?>
                         </div>
                         <div>
-                            <h4 class="text-xs sm:text-[13px] font-bold text-slate-900 leading-snug">AU Express</h4>
-                            <p class="text-[11px] text-slate-500 mt-0.5">7-10 day delivery</p>
+                            <h4 class="text-xs sm:text-[13px] font-bold text-slate-900 leading-snug"><?= esc_html(waklert_content('single_product_text_4d8e899895')) ?></h4>
+                            <p class="text-[11px] text-slate-500 mt-0.5"><?= esc_html(waklert_content('single_product_text_222357302c')) ?></p>
                         </div>
                     </div>
 
                     <!-- 2. Encrypted Checkout -->
                     <div class="flex flex-col items-center justify-center text-center gap-2 rounded-2xl border-2 border-dashed border-sky-300/80 bg-gradient-to-br from-white to-sky-50/60 p-3.5 sm:p-4 shadow-sm hover:border-[#0c4161] hover:shadow-md transition-all">
                         <div class="flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-amber-50 text-amber-600 border border-amber-200">
-                            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2L4 6v6c0 5.25 3.4 10.15 8 11.35 4.6-1.2 8-6.1 8-11.35V6l-8-4z" fill="#F59E0B" fill-opacity="0.3" stroke="#F59E0B" stroke-width="1.8"/>
-                                <path d="M9 12l2 2 4-4" stroke="#0C4161" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
+                            <?= waklert_content_icon('single_product_icon_7149de0b2d') ?>
                         </div>
                         <div>
-                            <h4 class="text-xs sm:text-[13px] font-bold text-slate-900 leading-snug">256-Bit SSL</h4>
-                            <p class="text-[11px] text-slate-500 mt-0.5">Encrypted checkout</p>
+                            <h4 class="text-xs sm:text-[13px] font-bold text-slate-900 leading-snug"><?= esc_html(waklert_content('single_product_text_8c9ab75f09')) ?></h4>
+                            <p class="text-[11px] text-slate-500 mt-0.5"><?= esc_html(waklert_content('single_product_text_4b8cfdacbb')) ?></p>
                         </div>
                     </div>
 
                     <!-- 3. Quality Verified -->
                     <div class="flex flex-col items-center justify-center text-center gap-2 rounded-2xl border-2 border-dashed border-sky-300/80 bg-gradient-to-br from-white to-sky-50/60 p-3.5 sm:p-4 shadow-sm hover:border-[#0c4161] hover:shadow-md transition-all">
                         <div class="flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 border border-emerald-200">
-                            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="12" cy="12" r="9" fill="#10B981" fill-opacity="0.2" stroke="#10B981" stroke-width="1.8"/>
-                                <path d="M8.5 12.5l2.5 2.5 5-5" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
+                            <?= waklert_content_icon('single_product_icon_4ae59b577f') ?>
                         </div>
                         <div>
-                            <h4 class="text-xs sm:text-[13px] font-bold text-slate-900 leading-snug">Sun Pharma</h4>
-                            <p class="text-[11px] text-slate-500 mt-0.5">100% genuine seal</p>
+                            <h4 class="text-xs sm:text-[13px] font-bold text-slate-900 leading-snug"><?= esc_html(waklert_content('single_product_text_5aa2564a17')) ?></h4>
+                            <p class="text-[11px] text-slate-500 mt-0.5"><?= esc_html(waklert_content('single_product_text_ec8dde4aca')) ?></p>
                         </div>
                     </div>
                 </div>
@@ -533,13 +516,11 @@ $product_specs = array_values(array_filter($product_specs, static function ($spe
                 <summary class="group flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 font-bold text-[#0c4161] bg-sky-50/60 border-b border-dashed border-sky-200 marker:hidden [&::-webkit-details-marker]:hidden">
                     <span class="inline-flex items-center gap-2 text-sm sm:text-base font-heading">
                         <span class="flex h-7 w-7 items-center justify-center rounded-lg bg-sky-100 text-[#0c4161]">
-                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+                            <?= waklert_content_icon('single_product_icon_f2147f7a5a') ?>
                         </span>
-                        <span><?= esc_html($product_specs_heading ?: 'Product Specifications') ?> (<?= count($product_specs) ?>)</span>
+                        <span><?= esc_html($product_specs_heading ?: waklert_content('single_product_text_fbc57a99a5')) ?> (<?= count($product_specs) ?>)</span>
                     </span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0 text-[#0c4161] transition-transform duration-200 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="m6 9 6 6 6-6" />
-                    </svg>
+                    <?= waklert_content_icon('single_product_icon_525507ef56') ?>
                 </summary>
                 <dl class="divide-y divide-dashed divide-sky-100 px-5 py-2">
                     <?php foreach ($product_specs as $spec): ?>
@@ -582,10 +563,8 @@ $product_specs = array_values(array_filter($product_specs, static function ($spe
             <!-- Right: Add to Cart Button -->
             <div class="flex items-center justify-end shrink-0">
                 <button id="sticky-product-submit" type="button" class="w-auto inline-flex shrink-0 items-center justify-center gap-1.5 sm:gap-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 px-4 py-2.5 sm:px-7 sm:py-3 text-xs sm:text-sm font-black uppercase tracking-wider text-white shadow-md hover:shadow-lg transition-all active:scale-[0.98]">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                    <span>Add to Cart</span>
+                    <?= waklert_content_icon('single_product_icon_9a1dcf6b07') ?>
+                    <span><?= esc_html(waklert_content('single_product_text_89740a0702')) ?></span>
                 </button>
             </div>
         </div>

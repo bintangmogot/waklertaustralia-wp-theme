@@ -14,12 +14,10 @@ do_action( 'woocommerce_before_cart' ); ?>
         
         <div class="mb-6">
             <a href="<?php echo esc_url( apply_filters( 'woocommerce_return_to_shop_redirect', wc_get_page_permalink( 'shop' ) ) ); ?>" class="inline-flex items-center text-slate-500 hover:text-primary transition-colors text-sm font-medium mb-3 group">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                </svg>
-                <?php esc_html_e( 'Back to shop', 'woocommerce' ); ?>
+                <?= waklert_content_icon('cart_icon_90229b5868') ?>
+                <?php esc_html_e( waklert_content('cart_text_7a161231ec'), 'woocommerce' ); ?>
             </a>
-            <h1 class="text-2xl md:text-3xl font-black font-heading text-slate-900"><?php esc_html_e( 'Shopping Cart', 'woocommerce' ); ?></h1>
+            <h1 class="text-2xl md:text-3xl font-black font-heading text-slate-900"><?php esc_html_e( waklert_content('cart_text_b836985683'), 'woocommerce' ); ?></h1>
         </div>
         
         <form class="woocommerce-cart-form bg-white rounded-xl border border-stone-200 overflow-hidden" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
@@ -29,8 +27,8 @@ do_action( 'woocommerce_before_cart' ); ?>
                 <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents w-full text-left" cellspacing="0">
                     <thead class="border-b border-stone-200 bg-white">
                         <tr>
-                            <th colspan="2" class="product-name px-6 py-4 text-sm font-bold text-slate-700"><?php esc_html_e( 'Product', 'woocommerce' ); ?></th>
-                            <th class="product-subtotal px-6 py-4 text-sm font-bold text-slate-700 text-right"><?php esc_html_e( 'Total', 'woocommerce' ); ?></th>
+                            <th colspan="2" class="product-name px-6 py-4 text-sm font-bold text-slate-700"><?php esc_html_e( waklert_content('cart_text_9c638e555c'), 'woocommerce' ); ?></th>
+                            <th class="product-subtotal px-6 py-4 text-sm font-bold text-slate-700 text-right"><?php esc_html_e( waklert_content('cart_text_1cba2185b6'), 'woocommerce' ); ?></th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-stone-100">
@@ -63,7 +61,7 @@ do_action( 'woocommerce_before_cart' ); ?>
                                     </td>
 
                                     <!-- Product Info (Title, Price, Qty, Remove) -->
-                                    <td class="product-name px-6 py-6 align-top" data-title="<?php esc_attr_e( 'Product', 'woocommerce' ); ?>">
+                                    <td class="product-name px-6 py-6 align-top" data-title="<?php esc_attr_e( waklert_content('cart_text_9c638e555c'), 'woocommerce' ); ?>">
                                         <!-- Mobile Thumbnail (visible only on small screens) -->
                                         <div class="sm:hidden mb-4 max-w-[80px]">
                                             <?php
@@ -97,7 +95,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 
                                         // Backorder notification.
                                         if ( $_product->backorders_require_notification() && $_product->is_on_backorder( $cart_item['quantity'] ) ) {
-                                            echo wp_kses_post( apply_filters( 'woocommerce_cart_item_backorder_notification', '<p class="backorder_notification text-xs text-amber-600 mt-1">' . esc_html__( 'Available on backorder', 'woocommerce' ) . '</p>', $product_id ) );
+                                            echo wp_kses_post( apply_filters( 'woocommerce_cart_item_backorder_notification', '<p class="backorder_notification text-xs text-amber-600 mt-1">' . esc_html__( waklert_content('cart_text_f8376808d0'), 'woocommerce' ) . '</p>', $product_id ) );
                                         }
                                         ?>
 
@@ -111,7 +109,7 @@ do_action( 'woocommerce_before_cart' ); ?>
                                         <!-- Qty & Remove -->
                                         <div class="flex items-center gap-4 mt-4">
                                             <div class="flex items-center gap-2 text-sm font-medium text-slate-600">
-                                                <span>Qty:</span>
+                                                <span><?= esc_html(waklert_content('cart_text_349bec6b1e')) ?></span>
                                                 <div class="product-quantity max-w-[80px]">
                                                 <?php
                                                 if ( $_product->is_sold_individually() ) {
@@ -145,11 +143,13 @@ do_action( 'woocommerce_before_cart' ); ?>
                                                     echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                                         'woocommerce_cart_item_remove_link',
                                                         sprintf(
-                                                            '<a role="button" href="%s" class="remove inline-flex items-center justify-center p-1.5 rounded text-red-400 hover:bg-red-50 hover:text-red-600 transition-colors" aria-label="%s" data-product_id="%s" data-product_sku="%s" title="Remove"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg></a>',
+                                                            '<a role="button" href="%s" class="remove inline-flex items-center justify-center p-1.5 rounded text-red-400 hover:bg-red-50 hover:text-red-600 transition-colors" aria-label="%s" data-product_id="%s" data-product_sku="%s" title="%s">%s</a>',
                                                             esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
-                                                            esc_attr( sprintf( __( 'Remove %s from cart', 'woocommerce' ), wp_strip_all_tags( $product_name ) ) ),
+                                                            esc_attr( sprintf( __( waklert_content('cart_text_dac3f55da0'), 'woocommerce' ), wp_strip_all_tags( $product_name ) ) ),
                                                             esc_attr( $product_id ),
-                                                            esc_attr( $_product->get_sku() )
+                                                            esc_attr( $_product->get_sku() ),
+                                                            esc_attr(waklert_content('manual_cart_remove_title')),
+                                                            waklert_content_icon('manual_cart_remove_icon')
                                                         ),
                                                         $cart_item_key
                                                     );
@@ -159,7 +159,7 @@ do_action( 'woocommerce_before_cart' ); ?>
                                     </td>
 
                                     <!-- Subtotal -->
-                                    <td class="product-subtotal px-6 py-6 align-top text-right font-bold text-slate-900" data-title="<?php esc_attr_e( 'Subtotal', 'woocommerce' ); ?>">
+                                    <td class="product-subtotal px-6 py-6 align-top text-right font-bold text-slate-900" data-title="<?php esc_attr_e( waklert_content('cart_text_04f0073062'), 'woocommerce' ); ?>">
                                         <?php
                                             echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // PHPCS: XSS ok.
                                         ?>
@@ -177,7 +177,7 @@ do_action( 'woocommerce_before_cart' ); ?>
                             <td colspan="3" class="actions px-6 py-4 bg-stone-50/50 border-t border-stone-200 text-right">
                                 <?php do_action( 'woocommerce_cart_actions' ); ?>
                                 <?php wp_nonce_field( 'woocommerce-cart', 'woocommerce-cart-nonce' ); ?>
-                                <button type="submit" class="button px-5 py-2 bg-white border border-stone-200 hover:bg-stone-100 text-slate-700 text-sm font-semibold rounded-lg shadow-sm transition-colors" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?php esc_html_e( 'Update cart', 'woocommerce' ); ?></button>
+                                <button type="submit" class="button px-5 py-2 bg-white border border-stone-200 hover:bg-stone-100 text-slate-700 text-sm font-semibold rounded-lg shadow-sm transition-colors" name="update_cart" value="<?php esc_attr_e( waklert_content('cart_text_734498838e'), 'woocommerce' ); ?>"><?php esc_html_e( waklert_content('cart_text_734498838e'), 'woocommerce' ); ?></button>
                             </td>
                         </tr>
 

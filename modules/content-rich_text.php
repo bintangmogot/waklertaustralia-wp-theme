@@ -3,6 +3,8 @@
  * Module: Rich Text
  */
 
+if (waklert_module_is_empty()) { return; }
+
 $content = get_sub_field('content');
 if (!$content) {
     return;
@@ -27,9 +29,9 @@ $prose_classes = $is_about_page
     <div class="container-site <?= esc_attr($container_width_class) ?>">
         <div class="<?= esc_attr($panel_classes) ?>">
             <?php if ($is_about_page) waklert_output_pattern_rings(); ?>
-            <div class="<?= esc_attr($prose_classes) ?>">
+            <?php if (waklert_has_content(wp_kses_post($content))): ?><div class="<?= esc_attr($prose_classes) ?>">
                 <?= wp_kses_post($content) ?>
-            </div>
+            </div><?php endif; ?>
         </div>
     </div>
 </section>

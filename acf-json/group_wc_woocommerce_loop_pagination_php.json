@@ -1,0 +1,31 @@
+{
+    "key": "group_wc_woocommerce_loop_pagination_php",
+    "title": "Pagination",
+    "fields": [
+        {
+            "key": "field_wc_pagination_text_7d621134d8",
+            "label": "Product Pagination",
+            "name": "wc_pagination_text_7d621134d8",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/loop/pagination.php",
+            "default_value": "Product Pagination",
+            "rows": 3,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "waklert-content-storefront"
+            }
+        ]
+    ],
+    "menu_order": 50,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "description": "Generated template content fields. Source: woocommerce/loop/pagination.php"
+}

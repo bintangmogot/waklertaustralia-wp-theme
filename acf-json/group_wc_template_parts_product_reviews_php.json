@@ -1,0 +1,585 @@
+{
+    "key": "group_wc_template_parts_product_reviews_php",
+    "title": "Product Reviews",
+    "fields": [
+        {
+            "key": "field_wc_manual_review_select_rating",
+            "label": "Review select rating",
+            "name": "wc_manual_review_select_rating",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "Please select a star rating.",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_manual_review_submitting",
+            "label": "Review submitting",
+            "name": "wc_manual_review_submitting",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "Submitting...",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_manual_review_failed",
+            "label": "Review failed",
+            "name": "wc_manual_review_failed",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "Your review could not be submitted. Please try again.",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_manual_review_network_failed",
+            "label": "Review network failed",
+            "name": "wc_manual_review_network_failed",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "A network error occurred. Please try again.",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_manual_product_review_star_1",
+            "label": "Rating star 1",
+            "name": "wc_manual_product_review_star_1",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-4 w-4 \" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"m12 2 2.9 6.2 6.8 1-4.9 4.8L18 21l-6-3.2L5.9 21l1.2-7-5-4.8 6.9-1L12 2Z\"/></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_manual_product_review_star_1_image",
+            "label": "Rating star 1 custom image",
+            "name": "wc_manual_product_review_star_1_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_product_reviews_icon_c80fc78e5a",
+            "label": "Icon c80fc78e5a",
+            "name": "wc_product_reviews_icon_c80fc78e5a",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-3 w-3 text-accent\" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"m12 2 2.9 6.2 6.8 1-4.9 4.8L18 21l-6-3.2L5.9 21l1.2-7-5-4.8 6.9-1L12 2Z\"/></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_icon_c80fc78e5a_image",
+            "label": "Icon c80fc78e5a custom image",
+            "name": "wc_product_reviews_icon_c80fc78e5a_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_product_reviews_icon_1af1bd5bdc",
+            "label": "Icon 1af1bd5bdc",
+            "name": "wc_product_reviews_icon_1af1bd5bdc",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-3.5 w-3.5 text-white\" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"m12 2 2.9 6.2 6.8 1-4.9 4.8L18 21l-6-3.2L5.9 21l1.2-7-5-4.8 6.9-1L12 2Z\"/></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_icon_1af1bd5bdc_image",
+            "label": "Icon 1af1bd5bdc custom image",
+            "name": "wc_product_reviews_icon_1af1bd5bdc_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_product_reviews_icon_42ce6fb0aa",
+            "label": "Icon 42ce6fb0aa",
+            "name": "wc_product_reviews_icon_42ce6fb0aa",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-4 w-4\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"m15 18-6-6 6-6\"/></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_icon_42ce6fb0aa_image",
+            "label": "Icon 42ce6fb0aa custom image",
+            "name": "wc_product_reviews_icon_42ce6fb0aa_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_product_reviews_icon_ab5a1e9bd7",
+            "label": "Icon ab5a1e9bd7",
+            "name": "wc_product_reviews_icon_ab5a1e9bd7",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-4 w-4\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"m9 18 6-6-6-6\"/></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_icon_ab5a1e9bd7_image",
+            "label": "Icon ab5a1e9bd7 custom image",
+            "name": "wc_product_reviews_icon_ab5a1e9bd7_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_product_reviews_icon_f39fc56f4c",
+            "label": "Icon f39fc56f4c",
+            "name": "wc_product_reviews_icon_f39fc56f4c",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-3 w-3\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" aria-hidden=\"true\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"m5 13 4 4L19 7\"/></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_icon_f39fc56f4c_image",
+            "label": "Icon f39fc56f4c custom image",
+            "name": "wc_product_reviews_icon_f39fc56f4c_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_product_reviews_icon_d664718216",
+            "label": "Icon d664718216",
+            "name": "wc_product_reviews_icon_d664718216",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-[18px] w-[18px]\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z\"/></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_icon_d664718216_image",
+            "label": "Icon d664718216 custom image",
+            "name": "wc_product_reviews_icon_d664718216_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_product_reviews_icon_a9e77712a0",
+            "label": "Icon a9e77712a0",
+            "name": "wc_product_reviews_icon_a9e77712a0",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-8 w-8\" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"m12 2 2.9 6.2 6.8 1-4.9 4.8L18 21l-6-3.2L5.9 21l1.2-7-5-4.8 6.9-1L12 2Z\"/></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_icon_a9e77712a0_image",
+            "label": "Icon a9e77712a0 custom image",
+            "name": "wc_product_reviews_icon_a9e77712a0_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_product_reviews_icon_943143a1b3",
+            "label": "Icon 943143a1b3",
+            "name": "wc_product_reviews_icon_943143a1b3",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-4 w-4\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"m22 2-7 20-4-9-9-4 20-7ZM22 2 11 13\"/></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_icon_943143a1b3_image",
+            "label": "Icon 943143a1b3 custom image",
+            "name": "wc_product_reviews_icon_943143a1b3_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_product_reviews_text_4a114408dc",
+            "label": "Verified reviews",
+            "name": "wc_product_reviews_text_4a114408dc",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "Verified reviews",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_text_ea79028f54",
+            "label": "What our customers say",
+            "name": "wc_product_reviews_text_ea79028f54",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "What our customers say",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_text_85c9c4b152",
+            "label": "Real experiences from verified buyers",
+            "name": "wc_product_reviews_text_85c9c4b152",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "Real experiences from verified buyers",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_text_d00eec6f0f",
+            "label": "Customer rating",
+            "name": "wc_product_reviews_text_d00eec6f0f",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "Customer rating",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_text_8cceb457a7",
+            "label": "Based on",
+            "name": "wc_product_reviews_text_8cceb457a7",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "Based on",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_text_7041e9e044",
+            "label": "-star",
+            "name": "wc_product_reviews_text_7041e9e044",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "-star",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_text_f664708bfd",
+            "label": "No reviews yet. Be the first to review this product.",
+            "name": "wc_product_reviews_text_f664708bfd",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "No reviews yet. Be the first to review this product.",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_text_5725d99e4b",
+            "label": "Write a Review",
+            "name": "wc_product_reviews_text_5725d99e4b",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "Write a Review",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_text_cee93bc836",
+            "label": "for",
+            "name": "wc_product_reviews_text_cee93bc836",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "for",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_text_0851fba517",
+            "label": "Your rating",
+            "name": "wc_product_reviews_text_0851fba517",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "Your rating",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_text_55fe5282b5",
+            "label": "Name",
+            "name": "wc_product_reviews_text_55fe5282b5",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "Name",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_text_7204452a30",
+            "label": "Email",
+            "name": "wc_product_reviews_text_7204452a30",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "Email",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_text_30463c3dd9",
+            "label": "Title",
+            "name": "wc_product_reviews_text_30463c3dd9",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "Title",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_text_d6d86fdad8",
+            "label": "Your review",
+            "name": "wc_product_reviews_text_d6d86fdad8",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "Your review",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_text_c35fa8729d",
+            "label": "All fields are required.",
+            "name": "wc_product_reviews_text_c35fa8729d",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "All fields are required.",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_text_5b90d92c89",
+            "label": "Submit Review",
+            "name": "wc_product_reviews_text_5b90d92c89",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "Submit Review",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_text_880d3b6144",
+            "label": "Moderated before publishing",
+            "name": "wc_product_reviews_text_880d3b6144",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "Moderated before publishing",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_text_8bd3fc3c24",
+            "label": "Previous reviews",
+            "name": "wc_product_reviews_text_8bd3fc3c24",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "Previous reviews",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_text_926ba9028b",
+            "label": "Next reviews",
+            "name": "wc_product_reviews_text_926ba9028b",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "Next reviews",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_text_7826f3839d",
+            "label": "Customer reviews",
+            "name": "wc_product_reviews_text_7826f3839d",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "Customer reviews",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_text_039b5980e2",
+            "label": "Choose a rating",
+            "name": "wc_product_reviews_text_039b5980e2",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "Choose a rating",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_text_e73e7f1c01",
+            "label": "Your name",
+            "name": "wc_product_reviews_text_e73e7f1c01",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "Your name",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_text_398f602b4c",
+            "label": "you@example.com",
+            "name": "wc_product_reviews_text_398f602b4c",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "you@example.com",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_text_e7996fbf18",
+            "label": "Summarize your review",
+            "name": "wc_product_reviews_text_e7996fbf18",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "Summarize your review",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_text_95218c1b56",
+            "label": "Share your experience...",
+            "name": "wc_product_reviews_text_95218c1b56",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "Share your experience...",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_text_166c59aaeb",
+            "label": "Excellent",
+            "name": "wc_product_reviews_text_166c59aaeb",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "Excellent",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_text_a9414902c5",
+            "label": "Great",
+            "name": "wc_product_reviews_text_a9414902c5",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "Great",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_text_e4fa5fa3c9",
+            "label": "Average",
+            "name": "wc_product_reviews_text_e4fa5fa3c9",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "Average",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_text_0d0e311b7d",
+            "label": "Poor",
+            "name": "wc_product_reviews_text_0d0e311b7d",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "Poor",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_text_9c8650f458",
+            "label": "Verified",
+            "name": "wc_product_reviews_text_9c8650f458",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "Verified",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_product_reviews_text_d94d69c024",
+            "label": "Review",
+            "name": "wc_product_reviews_text_d94d69c024",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: template-parts/product-reviews.php",
+            "default_value": "Review",
+            "rows": 3,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "waklert-content-storefront"
+            }
+        ]
+    ],
+    "menu_order": 50,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "description": "Generated template content fields. Source: template-parts/product-reviews.php"
+}

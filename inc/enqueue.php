@@ -80,5 +80,10 @@ function modmy_enqueue_scripts() {
         file_exists(MODMY_THEME_DIR . '/assets/js/main.js') ? filemtime(MODMY_THEME_DIR . '/assets/js/main.js') : MODMY_THEME_VERSION,
         true
     );
+    wp_add_inline_script('modmy-main-js', 'window.waklertContentLabels = ' . wp_json_encode(array(
+        'readMore'           => waklert_content('com_read_more_label'),
+        'readLess'           => waklert_content('com_read_less_label'),
+        'supportEmailCopied' => waklert_content('com_support_email_copied_message'),
+    ), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) . ';', 'before');
 }
 add_action('wp_enqueue_scripts', 'modmy_enqueue_scripts');

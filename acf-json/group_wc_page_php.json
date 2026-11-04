@@ -1,0 +1,42 @@
+{
+    "key": "group_wc_page_php",
+    "title": "Page",
+    "fields": [
+        {
+            "key": "field_wc_page_text_327faaa73f",
+            "label": "Waklert Australia",
+            "name": "wc_page_text_327faaa73f",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: page.php",
+            "default_value": "Waklert Australia",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_page_text_d0b0862426",
+            "label": "Breadcrumb",
+            "name": "wc_page_text_d0b0862426",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: page.php",
+            "default_value": "Breadcrumb",
+            "rows": 3,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "waklert-content-pages"
+            }
+        ]
+    ],
+    "menu_order": 50,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "description": "Generated template content fields. Source: page.php"
+}

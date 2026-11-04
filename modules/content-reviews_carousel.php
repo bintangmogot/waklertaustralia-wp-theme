@@ -9,12 +9,14 @@
  * - Lift & hover animations
  */
 
-$tag = get_sub_field('badge') ?: waklert_module_default('reviews_carousel', 'badge');
-$heading = get_sub_field('title') ?: waklert_module_default('reviews_carousel', 'title');
-$description = get_sub_field('description') ?: waklert_module_default('reviews_carousel', 'description');
-$button_text = get_sub_field('button_text') ?: waklert_module_default('reviews_carousel', 'button_text');
-$button_href = waklert_resolve_link(get_sub_field('button_url') ?: waklert_module_default('reviews_carousel', 'button_url'));
-$verified_label = get_sub_field('verified_label') ?: waklert_module_default('reviews_carousel', 'verified_label');
+if (waklert_module_is_empty()) { return; }
+
+$tag = waklert_module_text('badge');
+$heading = waklert_module_text('title');
+$description = waklert_module_text('description');
+$button_text = waklert_module_text('button_text');
+$button_href = waklert_resolve_link(waklert_module_text('button_url'));
+$verified_label = waklert_module_text('verified_label');
 
 $reviews = get_sub_field('reviews');
 ?>
@@ -22,16 +24,16 @@ $reviews = get_sub_field('reviews');
     <div class="container-custom relative z-10">
         <!-- Section Header -->
         <div class="text-center max-w-3xl mx-auto mb-10 md:mb-12">
-            <span class="inline-flex items-center gap-2 bg-amber-100 text-amber-900 border border-amber-300 text-xs font-black uppercase tracking-widest px-4 py-1.5 rounded-full mb-3 shadow-xs">
-                <span class="text-amber-500">★★★★★</span>
+            <?php if (waklert_has_content(esc_html($tag))): ?><span class="inline-flex items-center gap-2 bg-amber-100 text-amber-900 border border-amber-300 text-xs font-black uppercase tracking-widest px-4 py-1.5 rounded-full mb-3 shadow-xs">
+                <span class="text-amber-500"><?= str_repeat(waklert_content_icon('manual_star_marker'), 5) ?></span>
                 <?= esc_html($tag) ?>
-            </span>
-            <h2 class="font-heading text-2xl md:text-4xl font-black text-ink tracking-tight mb-3">
+            </span><?php endif; ?>
+            <?php if (waklert_has_content(esc_html($heading))): ?><h2 class="font-heading text-2xl md:text-4xl font-black text-ink tracking-tight mb-3">
                 <?= esc_html($heading) ?>
-            </h2>
-            <p class="text-sm md:text-base text-muted-foreground leading-relaxed max-w-xl mx-auto">
+            </h2><?php endif; ?>
+            <?php if (waklert_has_content(esc_html($description))): ?><p class="text-sm md:text-base text-muted-foreground leading-relaxed max-w-xl mx-auto">
                 <?= esc_html($description) ?>
-            </p>
+            </p><?php endif; ?>
         </div>
 
         <!-- Horizontal Scrollable Review Cards -->
@@ -43,7 +45,7 @@ $reviews = get_sub_field('reviews');
                     $title = get_the_title($post_id);
                     $body = get_post_field('post_content', $post_id);
                     $reviewer = get_field('name', $post_id) ?: (is_object($r) ? $r->post_title : get_the_title($post_id));
-                    $meta = get_field('reviewer_meta', $post_id) ?: "Verified AU Buyer";
+                    $meta = get_field('reviewer_meta', $post_id) ?: waklert_content('content_reviews_carousel_text_0defd22ae1');
                     $rating_val = get_field('rating', $post_id) ?: 5;
                     $review_date = get_field('review_date', $post_id) ?: get_the_date('M j, Y', $post_id);
             ?>
@@ -54,40 +56,38 @@ $reviews = get_sub_field('reviews');
                     <div class="flex items-center justify-between mb-3.5">
                         <div class="flex items-center gap-1 text-amber-400">
                             <?php for($i=0; $i < $rating_val; $i++): ?>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                            <?= waklert_content_icon('content_reviews_carousel_icon_f715c1c786') ?>
                             <?php endfor; ?>
                         </div>
                         <!-- Colorful Quote SVG -->
                         <div class="w-7 h-7 rounded-lg bg-sky-50 border border-sky-100 flex items-center justify-center text-sky-600">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-sky-500">
-                                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-                            </svg>
+                            <?= waklert_content_icon('content_reviews_carousel_icon_9c5d17a257') ?>
                         </div>
                     </div>
 
-                    <h4 class="font-heading font-black text-ink text-base md:text-lg mb-2.5 leading-snug group-hover:text-[#0c4161] transition-colors">
+                    <?php if (waklert_has_content(esc_html($title))): ?><h4 class="font-heading font-black text-ink text-base md:text-lg mb-2.5 leading-snug group-hover:text-[#0c4161] transition-colors">
                         <?= esc_html($title) ?>
-                    </h4>
-                    <p class="text-xs md:text-sm text-slate-600 leading-relaxed italic">
-                        &ldquo;<?= esc_html(trim(wp_strip_all_tags($body))) ?>&rdquo;
-                    </p>
+                    </h4><?php endif; ?>
+                    <?php if (waklert_has_content($body)): ?><p class="text-xs md:text-sm text-slate-600 leading-relaxed italic">
+                        <?= esc_html(waklert_content('content_reviews_carousel_text_6fbc934d31')) ?><?= esc_html(trim(wp_strip_all_tags($body))) ?><?= esc_html(waklert_content('content_reviews_carousel_text_24575dc320')) ?>
+                    </p><?php endif; ?>
                 </div>
 
                 <!-- Bottom Half: Solid Navy Footer with Reviewer Info -->
                 <div class="bg-[#0c4161] group-hover:bg-[#082c42] text-white p-4 px-5 flex items-center justify-between transition-colors duration-300 border-t-2 border-dashed border-white/20">
                     <div class="flex items-center gap-3">
-                        <div class="w-9 h-9 rounded-full bg-gradient-to-br from-amber-400 to-amber-500 text-slate-950 font-black text-sm flex items-center justify-center shadow-xs shrink-0">
+                        <?php if (waklert_has_content(esc_html(strtoupper(substr($reviewer, 0, 1))))): ?><div class="w-9 h-9 rounded-full bg-gradient-to-br from-amber-400 to-amber-500 text-slate-950 font-black text-sm flex items-center justify-center shadow-xs shrink-0">
                             <?= esc_html(strtoupper(substr($reviewer, 0, 1))) ?>
-                        </div>
+                        </div><?php endif; ?>
                         <div>
-                            <p class="text-xs font-bold text-white leading-tight"><?= esc_html($reviewer) ?></p>
-                            <p class="text-[11px] text-emerald-300 font-semibold leading-tight mt-0.5">
+                            <?php if (waklert_has_content(esc_html($reviewer))): ?><p class="text-xs font-bold text-white leading-tight"><?= esc_html($reviewer) ?></p><?php endif; ?>
+                            <?php if (waklert_has_content(esc_html($verified_label))): ?><p class="text-[11px] text-emerald-300 font-semibold leading-tight mt-0.5">
                                 <?= esc_html($verified_label) ?>
-                            </p>
+                            </p><?php endif; ?>
                         </div>
                     </div>
                     <?php if ($review_date): ?>
-                    <span class="text-[10px] text-white/70 font-medium"><?= esc_html($review_date) ?></span>
+                    <?php if (waklert_has_content(esc_html($review_date))): ?><span class="text-[10px] text-white/70 font-medium"><?= esc_html($review_date) ?></span><?php endif; ?>
                     <?php endif; ?>
                 </div>
             </div>
@@ -98,10 +98,10 @@ $reviews = get_sub_field('reviews');
         </div>
 
         <div class="text-center mt-8">
-            <a href="<?= esc_url($button_href) ?>" class="inline-flex items-center gap-2 border-2 border-dashed border-sky-300/90 bg-white hover:bg-[#0c4161] text-[#0c4161] hover:text-white font-extrabold px-5 py-2.5 sm:px-8 sm:py-3.5 rounded-full transition-all duration-300 uppercase tracking-wider sm:tracking-widest text-xs shadow-sm hover:shadow-md hover:-translate-y-0.5">
-                <span><?= esc_html($button_text) ?></span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
-            </a>
+            <?php if ((waklert_has_content(esc_html($button_text))) && waklert_has_content(esc_url($button_href))): ?><a href="<?= esc_url($button_href) ?>" class="inline-flex items-center gap-2 border-2 border-dashed border-sky-300/90 bg-white hover:bg-[#0c4161] text-[#0c4161] hover:text-white font-extrabold px-5 py-2.5 sm:px-8 sm:py-3.5 rounded-full transition-all duration-300 uppercase tracking-wider sm:tracking-widest text-xs shadow-sm hover:shadow-md hover:-translate-y-0.5">
+                <?php if (waklert_has_content(esc_html($button_text))): ?><span><?= esc_html($button_text) ?></span><?php endif; ?>
+                <?= waklert_content_icon('content_reviews_carousel_icon_41430d82e3') ?>
+            </a><?php endif; ?>
         </div>
     </div>
 </section>

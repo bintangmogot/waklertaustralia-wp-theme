@@ -1,0 +1,53 @@
+{
+    "key": "group_wc_modules_content_city_header_php",
+    "title": "City Header",
+    "fields": [
+        {
+            "key": "field_wc_manual_city_heading",
+            "label": "City heading",
+            "name": "wc_manual_city_heading",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: modules/content-city_header.php",
+            "default_value": "Armodafinil delivery to {city}",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_manual_city_description",
+            "label": "City description",
+            "name": "wc_manual_city_description",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: modules/content-city_header.php",
+            "default_value": "Check the available shipping options and tracking details for {city} at checkout.",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_city_header_text_bcb5303d58",
+            "label": "Local Delivery",
+            "name": "wc_content_city_header_text_bcb5303d58",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: modules/content-city_header.php",
+            "default_value": "Local Delivery",
+            "rows": 3,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "waklert-content-pages"
+            }
+        ]
+    ],
+    "menu_order": 50,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "description": "Generated template content fields. Source: modules/content-city_header.php"
+}

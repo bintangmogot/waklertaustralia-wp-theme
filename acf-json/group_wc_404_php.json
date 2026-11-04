@@ -1,0 +1,53 @@
+{
+    "key": "group_wc_404_php",
+    "title": "404",
+    "fields": [
+        {
+            "key": "field_wc_pg_404_heading",
+            "label": "Not found heading",
+            "name": "wc_pg_404_heading",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: 404.php",
+            "default_value": "Oops! Page not found",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_pg_404_description",
+            "label": "Not found description",
+            "name": "wc_pg_404_description",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: 404.php",
+            "default_value": "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_pg_404_home",
+            "label": "Not found home button",
+            "name": "wc_pg_404_home",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: 404.php",
+            "default_value": "Back to Homepage",
+            "rows": 3,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "waklert-content-pages"
+            }
+        ]
+    ],
+    "menu_order": 50,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "description": "Generated template content fields. Source: 404.php"
+}

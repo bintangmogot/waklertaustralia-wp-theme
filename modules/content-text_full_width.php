@@ -2,6 +2,8 @@
 /**
  * Module: Text Full Width (For Privacy Policy, Terms, etc.)
  */
+
+if (waklert_module_is_empty()) { return; }
 ?>
 <section class="section-padding bg-background">
     <div class="container-custom max-w-4xl">

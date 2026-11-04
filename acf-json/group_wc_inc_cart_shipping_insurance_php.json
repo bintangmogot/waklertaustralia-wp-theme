@@ -1,0 +1,64 @@
+{
+    "key": "group_wc_inc_cart_shipping_insurance_php",
+    "title": "Cart Shipping Insurance",
+    "fields": [
+        {
+            "key": "field_wc_com_shipping_insurance_heading",
+            "label": "Shipping insurance heading",
+            "name": "wc_com_shipping_insurance_heading",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: inc/cart-shipping-insurance.php",
+            "default_value": "Shipping Insurance",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_com_cart_unavailable_error",
+            "label": "Cart insurance unavailable message",
+            "name": "wc_com_cart_unavailable_error",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: inc/cart-shipping-insurance.php",
+            "default_value": "Your cart is unavailable. Refresh the page and try again.",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_com_insurance_unavailable_error",
+            "label": "Insurance option unavailable message",
+            "name": "wc_com_insurance_unavailable_error",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: inc/cart-shipping-insurance.php",
+            "default_value": "This insurance option is unavailable. Refresh the page and choose another option.",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_com_insurance_update_error",
+            "label": "Shipping insurance update error message",
+            "name": "wc_com_insurance_update_error",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: inc/cart-shipping-insurance.php",
+            "default_value": "Could not update shipping insurance. Please try again.",
+            "rows": 3,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "waklert-content-system"
+            }
+        ]
+    ],
+    "menu_order": 50,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "description": "Generated template content fields. Source: inc/cart-shipping-insurance.php"
+}

@@ -11,14 +11,14 @@ defined( 'ABSPATH' ) || exit;
 
 $store_name = $store_name ?? get_bloginfo( 'name', 'display' );
 if ( empty( $store_name ) ) {
-    $store_name = 'Waklert Australia';
+    $store_name = waklert_content('email_header_text_305ba199ec');
 }
 
 $logo_url = function_exists( 'waklert_get_logo_url' ) ? waklert_get_logo_url( 'header' ) : '';
 if ( empty( $logo_url ) ) {
     $theme_logo = get_template_directory() . '/assets/images/waklert-australia-logo.png';
     if ( file_exists( $theme_logo ) ) {
-        $logo_url = get_template_directory_uri() . '/assets/images/waklert-australia-logo.png';
+        $logo_url = waklert_content_asset('email_header_image_fd11039a5d');
     }
 }
 $header_image_url = home_url( '/' );
@@ -42,7 +42,7 @@ $header_image_url = home_url( '/' );
 									
 									<!-- Preheader Preview Text for Email Clients -->
 									<div style="display: none; font-size: 1px; color: #ffffff; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all;">
-										Waklert Australia &bull; Order Confirmation
+										<?= esc_html(waklert_content('email_header_text_82f2c610d5')) ?>
 									</div>
 
 									<!-- Brand Top Bar / Logo Header -->
@@ -59,7 +59,7 @@ $header_image_url = home_url( '/' );
 													</a>
 												<?php endif; ?>
 												<p style="margin: 8px 0 0 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 12px; font-weight: 700; color: #0284C7; letter-spacing: 0.8px; text-transform: uppercase;">
-													Official Australian Express Order Confirmation
+													<?= esc_html(waklert_content('email_header_text_c1c1c840b2')) ?>
 												</p>
 											</td>
 										</tr>
@@ -74,7 +74,7 @@ $header_image_url = home_url( '/' );
 													<tr>
 														<td id="header_wrapper" align="center">
 															<h1><?php echo esc_html( $email_heading ); ?></h1>
-															<p class="email-subheading">Thank you for shopping with Waklert Australia</p>
+															<p class="email-subheading"><?= esc_html(waklert_content('email_header_text_4db68be418')) ?></p>
 														</td>
 													</tr>
 												</table>

@@ -157,7 +157,7 @@ add_filter('walker_nav_menu_start_el', function($item_output, $item, $depth, $ar
 
         if ($has_children && $depth === 0) {
             if ($is_mobile) {
-                $chevron_svg = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-4.5 h-4.5 pointer-events-none transition-transform duration-200"><path d="m6 9 6 6 6-6"/></svg>';
+                $chevron_svg = waklert_content_icon('theme_setup_icon_8cbaa9f5f7');
                 $toggle_button = sprintf(
                     '<button type="button" class="mobile-submenu-toggle is-active flex items-center justify-center w-9 h-9 mr-6 rounded-xl bg-surface border border-border/70 text-foreground/70 hover:text-primary hover:bg-primary-softer hover:border-primary/40 transition-all focus:outline-none shrink-0" aria-expanded="true" aria-label="%s">%s</button>',
                     esc_attr(sprintf(__('Toggle %s submenu', 'waklert-australia'), $item->title)),
@@ -165,11 +165,11 @@ add_filter('walker_nav_menu_start_el', function($item_output, $item, $depth, $ar
                 );
                 $item_output = '<div class="flex items-center justify-between w-full">' . $item_output . $toggle_button . '</div>';
             } else {
-                $desktop_chevron = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="inline-block ml-1.5 w-3.5 h-3.5 opacity-60 group-hover:opacity-100 group-hover:rotate-180 transition-transform duration-200"><path d="m6 9 6 6 6-6"/></svg>';
+                $desktop_chevron = waklert_content_icon('theme_setup_icon_e84d03c868');
                 $item_output = str_replace('</a>', $desktop_chevron . '</a>', $item_output);
             }
         } elseif ($depth > 0 && $is_mobile) {
-            $arrow_svg = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 opacity-40 shrink-0"><path d="m9 18 6-6-6-6"/></svg>';
+            $arrow_svg = waklert_content_icon('theme_setup_icon_10314df0a2');
             $item_output = str_replace('</a>', $arrow_svg . '</a>', $item_output);
         }
     }
@@ -207,7 +207,7 @@ function waklert_get_logo_url($location = 'header') {
     // Fallback to theme asset for fresh environments (e.g. InstaWP staging)
     $theme_logo = get_template_directory() . '/assets/images/waklert-australia-logo.png';
     if (file_exists($theme_logo)) {
-        return get_template_directory_uri() . '/assets/images/waklert-australia-logo.png';
+        return waklert_content_asset('theme_setup_image_1e37ac112e');
     }
     return false;
 }

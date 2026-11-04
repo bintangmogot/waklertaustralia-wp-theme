@@ -40,11 +40,11 @@ $in_stock = $product->is_in_stock();
             <div class="flex items-center text-amber-400">
                 <?php for($i=1; $i<=5; $i++): 
                     if ( $rating >= $i ) {
-                        echo '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
+                        echo waklert_content_icon('content_product_pills_icon_c46f69f405');
                     } elseif ( $rating >= ( $i - 0.5 ) ) {
-                        echo '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M12 17.8 5.8 21 7 14.1 2 9.3l7-1L12 2"/></svg>';
+                        echo waklert_content_icon('content_product_pills_icon_5d2cfb7425');
                     } else {
-                        echo '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 text-muted-foreground/30"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
+                        echo waklert_content_icon('content_product_pills_icon_1084e90cf2');
                     }
                 endfor; ?>
             </div>
@@ -52,7 +52,7 @@ $in_stock = $product->is_in_stock();
                 <?php if ($review_count > 0): ?>
                     <?= esc_html(number_format($rating, 1)) ?> <span class="opacity-70">(<?= esc_html($review_count) ?>)</span>
                 <?php else: ?>
-                    0 reviews
+                    <?= esc_html(waklert_get_product_presentation_option('product_no_reviews_text')) ?>
                 <?php endif; ?>
             </span>
         </div>
@@ -108,7 +108,7 @@ $in_stock = $product->is_in_stock();
                     } elseif (stripos($display_label, "tab") === false && stripos($display_label, "pill") === false) {
                         $display_label .= " Tabs";
                     }
-                    $display_label = str_ireplace("tablets", "Tabs", $display_label);
+                    $display_label = str_ireplace("tablets", waklert_content('content_product_pills_text_70bda98608'), $display_label);
                     echo esc_html($display_label);
 
                     echo '</button>';
@@ -126,13 +126,13 @@ $in_stock = $product->is_in_stock();
         </div>
         
         <div class="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest <?= $in_stock ? 'text-emerald-600' : 'text-destructive' ?> mb-1">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg> 
-            <?= $in_stock ? 'In Stock' : 'Out of Stock' ?>
+            <?= waklert_content_icon('content_product_pills_icon_b3bb384166') ?>
+            <?= $in_stock ? waklert_content('content_product_pills_text_ae6028163a') : waklert_content('content_product_pills_text_f9ef78d605') ?>
         </div>
         
         <a href="<?= esc_url($link) ?>" class="mt-2 w-full inline-flex justify-center items-center gap-1.5 sm:gap-2 h-9 sm:h-11 rounded-lg sm:rounded-xl bg-primary hover:bg-primary-dark text-primary-foreground text-xs sm:text-sm font-bold transition-all shadow-sm hover:shadow">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 sm:w-4 sm:h-4"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg> 
-            View Details
+            <?= waklert_content_icon('content_product_pills_icon_c9b8adaee3') ?>
+            <?= esc_html(waklert_content('content_product_pills_text_cef5775e80')) ?>
         </a>
     </div>
 </div>

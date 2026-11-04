@@ -1,0 +1,75 @@
+{
+    "key": "group_wc_inc_ajax_reviews_php",
+    "title": "Ajax Reviews",
+    "fields": [
+        {
+            "key": "field_wc_com_review_session_expired_error",
+            "label": "Review form session expired message",
+            "name": "wc_com_review_session_expired_error",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: inc/ajax-reviews.php",
+            "default_value": "Your session expired. Refresh the page and try again.",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_com_review_product_unavailable_error",
+            "label": "Review product unavailable message",
+            "name": "wc_com_review_product_unavailable_error",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: inc/ajax-reviews.php",
+            "default_value": "This product is not available for reviews.",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_com_review_incomplete_error",
+            "label": "Review form incomplete message",
+            "name": "wc_com_review_incomplete_error",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: inc/ajax-reviews.php",
+            "default_value": "Please complete each field and choose a valid rating.",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_com_review_save_error",
+            "label": "Review save error message",
+            "name": "wc_com_review_save_error",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: inc/ajax-reviews.php",
+            "default_value": "Your review could not be saved. Please try again.",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_com_review_success_message",
+            "label": "Review submission success message",
+            "name": "wc_com_review_success_message",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: inc/ajax-reviews.php",
+            "default_value": "Thank you. Your review has been submitted and is pending moderation.",
+            "rows": 3,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "waklert-content-system"
+            }
+        ]
+    ],
+    "menu_order": 50,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "description": "Generated template content fields. Source: inc/ajax-reviews.php"
+}

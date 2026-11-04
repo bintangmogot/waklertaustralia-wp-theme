@@ -4,35 +4,16 @@
  * Fully editable via ACF Pro flexible content module.
  */
 
+if (waklert_module_is_empty()) { return; }
+
 $row = function_exists('get_row') ? get_row() : [];
 if (!is_array($row)) {
     $row = [];
 }
 
-// Field values with robust fallback to $row array and default content
-$eyebrow = get_sub_field('eyebrow');
-if (empty($eyebrow) && isset($row['eyebrow'])) {
-    $eyebrow = $row['eyebrow'];
-}
-if ($eyebrow === null || $eyebrow === '') {
-    $eyebrow = waklert_module_default('blog_section', 'eyebrow');
-}
-
-$title = get_sub_field('title');
-if (empty($title) && isset($row['title'])) {
-    $title = $row['title'];
-}
-if (empty($title)) {
-    $title = get_sub_field('heading') ?: ($row['heading'] ?? waklert_module_default('blog_section', 'title'));
-}
-
-$subtitle = get_sub_field('subtitle');
-if (empty($subtitle) && isset($row['subtitle'])) {
-    $subtitle = $row['subtitle'];
-}
-if (empty($subtitle)) {
-    $subtitle = get_sub_field('description') ?: ($row['description'] ?? waklert_module_default('blog_section', 'subtitle'));
-}
+$eyebrow = waklert_module_text('eyebrow');
+$title = waklert_module_text('title');
+$subtitle = waklert_module_text('subtitle');
 
 $posts_count = get_sub_field('posts_count');
 if (empty($posts_count) && isset($row['posts_count'])) {
@@ -55,15 +36,13 @@ if (is_home() || is_archive() || (is_page() && get_the_ID() === (int) get_option
     $show_view_all = false;
 }
 
-$button_text = !empty(get_sub_field('button_text')) 
-    ? get_sub_field('button_text') 
-    : (!empty($row['button_text']) ? $row['button_text'] : waklert_module_default('blog_section', 'button_text'));
+$button_text = waklert_module_text('button_text');
 
-$read_more_label   = get_sub_field('read_more_label') ?: waklert_module_default('blog_section', 'read_more_label');
-$read_time_label   = get_sub_field('read_time_label') ?: waklert_module_default('blog_section', 'read_time_label');
-$default_category  = get_sub_field('default_category') ?: waklert_module_default('blog_section', 'default_category');
-$placeholder_label = get_sub_field('placeholder_label') ?: waklert_module_default('blog_section', 'placeholder_label');
-$empty_text        = get_sub_field('empty_text') ?: waklert_module_default('blog_section', 'empty_text');
+$read_more_label   = waklert_module_text('read_more_label');
+$read_time_label   = waklert_module_text('read_time_label');
+$default_category  = waklert_module_text('default_category');
+$placeholder_label = waklert_module_text('placeholder_label');
+$empty_text        = waklert_module_text('empty_text');
 
 $button_url = !empty(get_sub_field('button_url')) 
     ? get_sub_field('button_url') 
@@ -113,22 +92,22 @@ if (empty($articles)) {
         <?php if (!empty($title) || !empty($eyebrow)): ?>
         <div class="text-center max-w-3xl mx-auto mb-10 md:mb-12">
             <?php if (!empty($eyebrow)): ?>
-            <span class="inline-flex items-center gap-2 bg-amber-100 text-amber-900 border border-amber-300 text-xs font-black uppercase tracking-widest px-4 py-1.5 rounded-full mb-3 shadow-xs">
+            <?php if (waklert_has_content(esc_html($eyebrow))): ?><span class="inline-flex items-center gap-2 bg-amber-100 text-amber-900 border border-amber-300 text-xs font-black uppercase tracking-widest px-4 py-1.5 rounded-full mb-3 shadow-xs">
                 <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse-subtle"></span>
                 <?= esc_html($eyebrow) ?>
-            </span>
+            </span><?php endif; ?>
             <?php endif; ?>
 
             <?php if (!empty($title)): ?>
-            <h2 class="font-heading text-2xl sm:text-3xl md:text-4xl font-black text-ink tracking-tight mb-3">
+            <?php if (waklert_has_content(esc_html($title))): ?><h2 class="font-heading text-2xl sm:text-3xl md:text-4xl font-black text-ink tracking-tight mb-3">
                 <?= esc_html($title) ?>
-            </h2>
+            </h2><?php endif; ?>
             <?php endif; ?>
 
             <?php if (!empty($subtitle)): ?>
-            <p class="text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl mx-auto">
+            <?php if (waklert_has_content(esc_html($subtitle))): ?><p class="text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl mx-auto">
                 <?= esc_html($subtitle) ?>
-            </p>
+            </p><?php endif; ?>
             <?php endif; ?>
         </div>
         <?php endif; ?>
@@ -185,19 +164,17 @@ if (empty($articles)) {
                             <div class="absolute -right-8 -top-8 w-32 h-32 rounded-full bg-white/5 pointer-events-none"></div>
                             <div class="absolute -left-6 -bottom-6 w-24 h-24 rounded-full bg-white/5 pointer-events-none"></div>
                             <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center mb-3 backdrop-blur-xs border border-white/15 text-white/90 shadow-inner">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                                </svg>
+                                <?= waklert_content_icon('content_blog_section_icon_14530a2b38') ?>
                             </div>
-                            <span class="text-xs font-bold tracking-widest uppercase text-white/80"><?= esc_html($placeholder_label) ?></span>
+                            <?php if (waklert_has_content(esc_html($placeholder_label))): ?><span class="text-xs font-bold tracking-widest uppercase text-white/80"><?= esc_html($placeholder_label) ?></span><?php endif; ?>
                         </div>
                     <?php endif; ?>
 
                     <!-- Floating Category Badge -->
                     <div class="absolute top-3.5 left-3.5 z-10">
-                        <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[10px] font-black tracking-wider uppercase bg-amber-400 text-slate-950 shadow-md border border-amber-500/30">
-                            ★ <?= esc_html($cat_label) ?>
-                        </span>
+                        <?php if (waklert_has_content(esc_html($cat_label))): ?><span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[10px] font-black tracking-wider uppercase bg-amber-400 text-slate-950 shadow-md border border-amber-500/30">
+                            <?= waklert_content_icon('manual_star_marker') ?> <?= esc_html($cat_label) ?>
+                        </span><?php endif; ?>
                     </div>
                 </a>
 
@@ -207,59 +184,51 @@ if (empty($articles)) {
                         <!-- Meta: Date & Read Time with Colorful SVG Icons -->
                         <div class="flex items-center gap-3 text-xs text-slate-500 mb-3 font-semibold">
                             <time datetime="<?= get_the_date('c', $post_id) ?>" class="inline-flex items-center gap-1.5">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 text-sky-600">
-                                    <path fill-rule="evenodd" d="M5.75 2a.75.75 0 01.75.75V4h7V2.75a.75.75 0 011.5 0V4h.25A2.75 2.75 0 0118 6.75v8.5A2.75 2.75 0 0115.25 18H4.75A2.75 2.75 0 012 15.25v-8.5A2.75 2.75 0 014.75 4H5V2.75A.75.75 0 015.75 2zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75z" clip-rule="evenodd" />
-                                </svg>
+                                <?= waklert_content_icon('content_blog_section_icon_a25b78e8b2') ?>
                                 <?= get_the_date('M j, Y', $post_id) ?>
                             </time>
                             <span class="w-1 h-1 rounded-full bg-slate-300"></span>
-                            <span class="inline-flex items-center gap-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 text-amber-500">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z" clip-rule="evenodd" />
-                                </svg>
+                            <?php if (waklert_has_content(esc_html($read_time)) || waklert_has_content(esc_html($read_time_label))): ?><span class="inline-flex items-center gap-1">
+                                <?= waklert_content_icon('content_blog_section_icon_a252063e0e') ?>
                                 <?= esc_html($read_time) ?> <?= esc_html($read_time_label) ?>
-                            </span>
+                            </span><?php endif; ?>
                         </div>
 
                         <!-- Title -->
-                        <h3 class="font-heading font-black text-xl sm:text-2xl text-ink group-hover:text-[#0c4161] transition-colors line-clamp-2 mb-3 leading-snug">
-                            <a href="<?= esc_url($permalink) ?>">
+                        <?php if (waklert_has_content(esc_url($permalink)) || waklert_has_content(esc_html($article->post_title))): ?><h3 class="font-heading font-black text-xl sm:text-2xl text-ink group-hover:text-[#0c4161] transition-colors line-clamp-2 mb-3 leading-snug">
+                            <?php if ((waklert_has_content(esc_html($article->post_title))) && waklert_has_content(esc_url($permalink))): ?><a href="<?= esc_url($permalink) ?>">
                                 <?= esc_html($article->post_title) ?>
-                            </a>
-                        </h3>
+                            </a><?php endif; ?>
+                        </h3><?php endif; ?>
 
                         <!-- Excerpt -->
-                        <p class="text-sm text-slate-600 line-clamp-3 mb-4 leading-relaxed">
+                        <?php if (waklert_has_content(esc_html($excerpt))): ?><p class="text-sm text-slate-600 line-clamp-3 mb-4 leading-relaxed">
                             <?= esc_html($excerpt) ?>
-                        </p>
+                        </p><?php endif; ?>
                     </div>
                 </div>
 
                 <!-- Two-Tone Footer Block -->
-                <a href="<?= esc_url($permalink) ?>" class="bg-[#f0f6fa] group-hover:bg-[#0c4161] p-3 px-4 sm:p-4 sm:px-6 border-t-2 border-dashed border-sky-200/80 flex items-center justify-between transition-colors duration-300 text-xs sm:text-sm font-black text-[#0c4161] group-hover:text-white mt-auto">
-                    <span><?= esc_html($read_more_label) ?></span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 sm:w-4 sm:h-4 transform group-hover:translate-x-1.5 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                </a>
+                <?php if ((waklert_has_content(esc_html($read_more_label))) && waklert_has_content(esc_url($permalink))): ?><a href="<?= esc_url($permalink) ?>" class="bg-[#f0f6fa] group-hover:bg-[#0c4161] p-3 px-4 sm:p-4 sm:px-6 border-t-2 border-dashed border-sky-200/80 flex items-center justify-between transition-colors duration-300 text-xs sm:text-sm font-black text-[#0c4161] group-hover:text-white mt-auto">
+                    <?php if (waklert_has_content(esc_html($read_more_label))): ?><span><?= esc_html($read_more_label) ?></span><?php endif; ?>
+                    <?= waklert_content_icon('content_blog_section_icon_605c0cb448') ?>
+                </a><?php endif; ?>
             </article>
             <?php endforeach; ?>
         </div>
         <?php else: ?>
         <div class="text-center py-12 bg-white rounded-2xl border-2 border-dashed border-sky-300/80 p-8">
-            <p class="text-slate-500 font-medium"><?= esc_html($empty_text) ?></p>
+            <?php if (waklert_has_content(esc_html($empty_text))): ?><p class="text-slate-500 font-medium"><?= esc_html($empty_text) ?></p><?php endif; ?>
         </div>
         <?php endif; ?>
 
         <!-- View All Button -->
         <?php if ($show_view_all && !empty($button_text) && !empty($button_url)): ?>
         <div class="mt-10 md:mt-12 text-center">
-            <a href="<?= esc_url($button_url) ?>" class="inline-flex items-center gap-2 border-2 border-dashed border-sky-300/90 bg-white hover:bg-[#0c4161] text-[#0c4161] hover:text-white font-extrabold px-5 py-2.5 sm:px-8 sm:py-3.5 rounded-full transition-all duration-300 uppercase tracking-wider sm:tracking-widest text-xs shadow-sm hover:shadow-md hover:-translate-y-0.5">
-                <span><?= esc_html($button_text) ?></span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-            </a>
+            <?php if ((waklert_has_content(esc_html($button_text))) && waklert_has_content(esc_url($button_url))): ?><a href="<?= esc_url($button_url) ?>" class="inline-flex items-center gap-2 border-2 border-dashed border-sky-300/90 bg-white hover:bg-[#0c4161] text-[#0c4161] hover:text-white font-extrabold px-5 py-2.5 sm:px-8 sm:py-3.5 rounded-full transition-all duration-300 uppercase tracking-wider sm:tracking-widest text-xs shadow-sm hover:shadow-md hover:-translate-y-0.5">
+                <?php if (waklert_has_content(esc_html($button_text))): ?><span><?= esc_html($button_text) ?></span><?php endif; ?>
+                <?= waklert_content_icon('content_blog_section_icon_30f6347ddc') ?>
+            </a><?php endif; ?>
         </div>
         <?php endif; ?>
     </div>

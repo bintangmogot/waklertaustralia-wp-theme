@@ -43,142 +43,43 @@ function waklert_get_icon_preset_choices(): array {
 function waklert_get_colorful_icon_svgs(): array {
     return [
         // 1. Parcel Guarantee / Reship or Refund ("If it doesn't land, we fix it")
-        'parcel_guarantee' => '<svg viewBox="0 0 64 64" class="h-11 w-11" fill="none" xmlns="http://www.w3.org/2000/svg">'
-            . '<rect x="8" y="14" width="38" height="34" rx="5" fill="#F59E0B"/>'
-            . '<path d="M8 23h38v6H8z" fill="#D97706" opacity="0.45"/>'
-            . '<rect x="23" y="14" width="8" height="16" fill="#FEF3C7"/>'
-            . '<rect x="13" y="36" width="12" height="6" rx="1.5" fill="#FFFBEB"/>'
-            . '<path d="M44 24l14 5v11c0 9.5-6.2 16.5-14 19-7.8-2.5-14-9.5-14-19V29l14-5z" fill="#10B981" stroke="#fff" stroke-width="2.5"/>'
-            . '<path d="M38 41.5l4.2 4.2 8.3-8.5" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>'
-            . '</svg>',
+        'parcel_guarantee' => waklert_content_icon('icon_library_icon_fc5ea46761'),
 
         // 2. Real People on Chat / 24/7 SMS & Support ("Real people on chat", "Practical support", "Get order support")
-        'live_chat_support' => '<svg viewBox="0 0 64 64" class="h-11 w-11" fill="none" xmlns="http://www.w3.org/2000/svg">'
-            . '<rect x="6" y="10" width="38" height="28" rx="8" fill="#0EA5E9"/>'
-            . '<path d="M14 38v8l9-8h-9z" fill="#0EA5E9"/>'
-            . '<circle cx="17" cy="24" r="2.8" fill="#fff"/>'
-            . '<circle cx="25" cy="24" r="2.8" fill="#fff"/>'
-            . '<circle cx="33" cy="24" r="2.8" fill="#fff"/>'
-            . '<rect x="24" y="26" width="34" height="24" rx="8" fill="#10B981" stroke="#fff" stroke-width="2.5"/>'
-            . '<path d="M50 50v7l-8-7h8z" fill="#10B981"/>'
-            . '<path d="M33 36h16M33 42h10" stroke="#fff" stroke-width="3" stroke-linecap="round"/>'
-            . '<circle cx="52" cy="14" r="6" fill="#F59E0B" stroke="#fff" stroke-width="2"/>'
-            . '</svg>',
+        'live_chat_support' => waklert_content_icon('icon_library_icon_e2305dc980'),
 
         // 3. Straight-Up Medicine Info / Schedule 4 & Rx Clarity ("Straight up about what we sell", "Prescription Customers", "Clear boundaries")
-        'medical_rx_clarity' => '<svg viewBox="0 0 64 64" class="h-11 w-11" fill="none" xmlns="http://www.w3.org/2000/svg">'
-            . '<rect x="12" y="10" width="36" height="46" rx="5" fill="#0284C7"/>'
-            . '<rect x="16" y="16" width="28" height="36" rx="3" fill="#F0F9FF"/>'
-            . '<rect x="22" y="6" width="16" height="8" rx="3" fill="#F59E0B"/>'
-            . '<circle cx="30" cy="26" r="6" fill="#EF4444"/>'
-            . '<path d="M30 23v6M27 26h6" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>'
-            . '<path d="M21 37h18M21 43h12" stroke="#0284C7" stroke-width="2.8" stroke-linecap="round"/>'
-            . '<circle cx="47" cy="45" r="11" fill="#10B981" stroke="#fff" stroke-width="2.5"/>'
-            . '<path d="M42.5 45l3.2 3.2 6.3-6.5" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>'
-            . '</svg>',
+        'medical_rx_clarity' => waklert_content_icon('icon_library_icon_eae3c3f405'),
 
         // 4. Simple AUD Checkout / PayID & Secure Payment ("Simple AUD checkout", "Secure checkout", "Confirm Your Order")
-        'aud_checkout' => '<svg viewBox="0 0 64 64" class="h-11 w-11" fill="none" xmlns="http://www.w3.org/2000/svg">'
-            . '<rect x="6" y="14" width="44" height="30" rx="5" fill="#0C4161"/>'
-            . '<rect x="6" y="21" width="44" height="7" fill="#0EA5E9"/>'
-            . '<rect x="12" y="33" width="10" height="6" rx="1.5" fill="#FBBF24"/>'
-            . '<text x="27" y="38" fill="#E0F2FE" font-size="8" font-weight="900" font-family="sans-serif">AUD</text>'
-            . '<circle cx="46" cy="42" r="13" fill="#10B981" stroke="#fff" stroke-width="2.5"/>'
-            . '<text x="46" y="47" text-anchor="middle" fill="#fff" font-size="15" font-weight="900" font-family="sans-serif">$</text>'
-            . '</svg>',
+        'aud_checkout' => waklert_content_icon('icon_library_icon_87afd57c24'),
 
         // 5. Fast Domestic Express Shipping / Australia Post Van ("Fast, Local Domestic Shipping", "Track Delivery")
-        'express_shipping' => '<svg viewBox="0 0 64 64" class="h-11 w-11" fill="none" xmlns="http://www.w3.org/2000/svg">'
-            . '<path d="M6 20h32v24H6z" fill="#EF4444" rx="3"/>'
-            . '<path d="M38 26h12l8 10v8H38V26z" fill="#F59E0B"/>'
-            . '<path d="M41 29h8l5 6H41v-6z" fill="#E0F2FE"/>'
-            . '<circle cx="18" cy="46" r="6" fill="#1E293B"/>'
-            . '<circle cx="18" cy="46" r="2.5" fill="#E2E8F0"/>'
-            . '<circle cx="48" cy="46" r="6" fill="#1E293B"/>'
-            . '<circle cx="48" cy="46" r="2.5" fill="#E2E8F0"/>'
-            . '<text x="22" y="35" text-anchor="middle" fill="#fff" font-size="9" font-weight="900" font-family="sans-serif" font-style="italic">FAST</text>'
-            . '<path d="M2 26h6M0 32h6" stroke="#FCA5A5" stroke-width="2.5" stroke-linecap="round"/>'
-            . '</svg>',
+        'express_shipping' => waklert_content_icon('icon_library_icon_5fb6fbd893'),
 
         // 6. Australia-Wide Delivery / Map & Location Pin ("Australia-wide delivery", "Australia-wide Customers", "Delivery details at checkout")
-        'australia_delivery' => '<svg viewBox="0 0 64 64" class="h-11 w-11" fill="none" xmlns="http://www.w3.org/2000/svg">'
-            . '<circle cx="32" cy="34" r="22" fill="#E0F2FE" stroke="#38BDF8" stroke-width="2.5"/>'
-            . '<path d="M18 32c3-5 10-7 16-5 5 1.5 11 0 13 5 2 4-2 11-7 13-6 2-11-1-16-2-4-1-8-6-6-11z" fill="#10B981"/>'
-            . '<path d="M32 8c-7.2 0-13 5.6-13 12.6C19 29.8 32 42 32 42s13-12.2 13-21.4C45 13.6 39.2 8 32 8z" fill="#EF4444" stroke="#fff" stroke-width="2"/>'
-            . '<circle cx="32" cy="20" r="4.5" fill="#FEF08A"/>'
-            . '</svg>',
+        'australia_delivery' => waklert_content_icon('icon_library_icon_9898049116'),
 
         // 7. Focused Armodafinil Range / Blister Pack Catalogue ("Focused range", "A focused product category", "Browse the listings", "Review the Range")
-        'browse_catalogue' => '<svg viewBox="0 0 64 64" class="h-11 w-11" fill="none" xmlns="http://www.w3.org/2000/svg">'
-            . '<rect x="8" y="10" width="36" height="44" rx="6" fill="#0EA5E9"/>'
-            . '<rect x="12" y="14" width="28" height="36" rx="4" fill="#E0F2FE"/>'
-            . '<rect x="16" y="18" width="8" height="12" rx="4" fill="#0284C7"/>'
-            . '<rect x="28" y="18" width="8" height="12" rx="4" fill="#F59E0B"/>'
-            . '<rect x="16" y="34" width="8" height="12" rx="4" fill="#10B981"/>'
-            . '<rect x="28" y="34" width="8" height="12" rx="4" fill="#0284C7"/>'
-            . '<circle cx="46" cy="44" r="11" fill="#F59E0B" stroke="#fff" stroke-width="2.5"/>'
-            . '<path d="M42 44l3 3 5.5-5.5" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>'
-            . '</svg>',
+        'browse_catalogue' => waklert_content_icon('icon_library_icon_4c3257bedf'),
 
         // 8. Clear Listing Details / Compare Strengths & Packs ("Clear listing details", "Product details by listing", "Compare listing details", "New Customers")
-        'listing_details' => '<svg viewBox="0 0 64 64" class="h-11 w-11" fill="none" xmlns="http://www.w3.org/2000/svg">'
-            . '<rect x="10" y="8" width="34" height="44" rx="5" fill="#38BDF8"/>'
-            . '<rect x="14" y="13" width="26" height="34" rx="3" fill="#fff"/>'
-            . '<path d="M18 21h18M18 28h18M18 35h11" stroke="#0284C7" stroke-width="3" stroke-linecap="round"/>'
-            . '<circle cx="44" cy="42" r="11" fill="#F59E0B" stroke="#fff" stroke-width="2.5"/>'
-            . '<circle cx="44" cy="42" r="5" fill="#FEF3C7"/>'
-            . '<path d="M52 50l6 6" stroke="#D97706" stroke-width="4" stroke-linecap="round"/>'
-            . '</svg>',
+        'listing_details' => waklert_content_icon('icon_library_icon_d3b476d324'),
 
         // 9. Returning Customers / Fast Reorder & Loyalty ("Returning Customers")
-        'returning_loyalty' => '<svg viewBox="0 0 64 64" class="h-11 w-11" fill="none" xmlns="http://www.w3.org/2000/svg">'
-            . '<circle cx="32" cy="32" r="22" fill="#0EA5E9"/>'
-            . '<path d="M32 16l4.3 8.7 9.6 1.4-7 6.8 1.6 9.6L32 38l-8.5 4.5 1.6-9.6-7-6.8 9.6-1.4L32 16z" fill="#FBBF24" stroke="#fff" stroke-width="1.5"/>'
-            . '<circle cx="48" cy="48" r="10" fill="#10B981" stroke="#fff" stroke-width="2"/>'
-            . '<path d="M44 48l3 3 5-5.5" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>'
-            . '</svg>',
+        'returning_loyalty' => waklert_content_icon('icon_library_icon_f46d6bfeba'),
 
         // 10. Discreet Plain Packaging / Sealed Pharmacy Pack ("Discreet packaging", "Sealed product packaging")
-        'discreet_sealed' => '<svg viewBox="0 0 64 64" class="h-11 w-11" fill="none" xmlns="http://www.w3.org/2000/svg">'
-            . '<rect x="10" y="14" width="38" height="34" rx="5" fill="#D97706"/>'
-            . '<path d="M10 24h38v5H10z" fill="#B45309" opacity="0.5"/>'
-            . '<rect x="25" y="14" width="8" height="15" fill="#FDE68A"/>'
-            . '<circle cx="46" cy="44" r="12" fill="#0284C7" stroke="#fff" stroke-width="2.5"/>'
-            . '<rect x="41" y="43" width="10" height="8" rx="2" fill="#FBBF24"/>'
-            . '<path d="M43 43v-3a3 3 0 016 0v3" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>'
-            . '</svg>',
+        'discreet_sealed' => waklert_content_icon('icon_library_icon_b96293c1f7'),
 
         // 11. PO Box & Parcel Locker Delivery ("PO Box Delivery")
-        'po_box_delivery' => '<svg viewBox="0 0 64 64" class="h-11 w-11" fill="none" xmlns="http://www.w3.org/2000/svg">'
-            . '<rect x="28" y="38" width="8" height="18" fill="#94A3B8"/>'
-            . '<path d="M12 26c0-8.8 7.2-16 16-16h12c8.8 0 16 7.2 16 16v14H12V26z" fill="#EF4444"/>'
-            . '<path d="M12 26c0-8.8 7.2-16 16-16h4c8.8 0 16 7.2 16 16v14H12V26z" fill="#DC2626"/>'
-            . '<rect x="18" y="24" width="14" height="4" rx="2" fill="#1E293B"/>'
-            . '<path d="M42 18v12" stroke="#FBBF24" stroke-width="3.5" stroke-linecap="round"/>'
-            . '<path d="M42 18h8l-2 4 2 4h-8" fill="#FBBF24"/>'
-            . '</svg>',
+        'po_box_delivery' => waklert_content_icon('icon_library_icon_4db98a9a3e'),
 
         // 12. Smooth Domestic Dispatch / No Customs Hassle ("No Customs Issues")
-        'no_customs' => '<svg viewBox="0 0 64 64" class="h-11 w-11" fill="none" xmlns="http://www.w3.org/2000/svg">'
-            . '<circle cx="28" cy="16" r="8" fill="#FDBA74"/>'
-            . '<path d="M18 14c0-5.5 4.5-10 10-10s10 4.5 10 10H18z" fill="#0284C7"/>'
-            . '<path d="M26 10h14v4H26z" fill="#0369A1"/>'
-            . '<path d="M14 48c0-9 6-16 14-16s14 7 14 16H14z" fill="#0EA5E9"/>'
-            . '<rect x="30" y="30" width="22" height="18" rx="2" fill="#D97706"/>'
-            . '<path d="M30 36h22" stroke="#FDE68A" stroke-width="2.5"/>'
-            . '<circle cx="48" cy="44" r="9" fill="#10B981" stroke="#fff" stroke-width="2"/>'
-            . '<path d="M44.5 44l2.5 2.5 5-5" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>'
-            . '</svg>',
+        'no_customs' => waklert_content_icon('icon_library_icon_4940d1beed'),
 
         // 13. Affordable Direct Pricing / Best Value ("Affordable Prices")
-        'affordable_value' => '<svg viewBox="0 0 64 64" class="h-11 w-11" fill="none" xmlns="http://www.w3.org/2000/svg">'
-            . '<circle cx="28" cy="24" r="14" fill="#FBBF24"/>'
-            . '<circle cx="28" cy="24" r="10.5" fill="#F59E0B"/>'
-            . '<text x="28" y="29" text-anchor="middle" fill="#FEF3C7" font-size="15" font-weight="900" font-family="sans-serif">$</text>'
-            . '<path d="M36 32l10-10m0 0h-7m7 0v7" stroke="#EF4444" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>'
-            . '<path d="M10 44c4-3 10-3 15-1l13 3c4 1 7-1 8-3 1-2-1-4-4-4h-9" stroke="#FDBA74" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>'
-            . '<rect x="6" y="40" width="8" height="14" rx="2" fill="#0284C7"/>'
-            . '</svg>',
+        'affordable_value' => waklert_content_icon('icon_library_icon_9ae8d7d126'),
     ];
 }
 
@@ -438,13 +339,12 @@ function waklert_render_card_icon(array $args = []): string {
         return str_replace('class="h-11 w-11"', 'class="' . esc_attr($size_class) . '"', $library[$icon_preset]);
     }
 
-    // 3. Custom Colorful SVG Code Pasted in `icon_svg` (ignore legacy monochrome wireframe strokes)
+    // 3. Custom SVG code, including monochrome artwork, when the preset is Auto.
     if (
         $icon_svg !== '' &&
-        stripos($icon_svg, '<svg') !== false &&
-        stripos($icon_svg, 'stroke="currentColor"') === false
+        stripos($icon_svg, '<svg') !== false
     ) {
-        return $icon_svg;
+        return waklert_sanitize_content_svg($icon_svg);
     }
 
     // 4. Smart Semantic Match from Title + Description

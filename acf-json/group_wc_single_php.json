@@ -1,0 +1,115 @@
+{
+    "key": "group_wc_single_php",
+    "title": "Single",
+    "fields": [
+        {
+            "key": "field_wc_pg_single_blog_label",
+            "label": "Article category fallback",
+            "name": "wc_pg_single_blog_label",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: single.php",
+            "default_value": "Waklert Australia Insights",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_pg_single_author",
+            "label": "Article author fallback",
+            "name": "wc_pg_single_author",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: single.php",
+            "default_value": "Waklert Australia Team",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_single_icon_8c89cfb4e5",
+            "label": "Icon 8c89cfb4e5",
+            "name": "wc_single_icon_8c89cfb4e5",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: single.php",
+            "default_value": "<svg class=\"h-3.5 w-3.5 text-amber-500\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z\"/></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_single_icon_8c89cfb4e5_image",
+            "label": "Icon 8c89cfb4e5 custom image",
+            "name": "wc_single_icon_8c89cfb4e5_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_single_icon_ec89d8940b",
+            "label": "Icon ec89d8940b",
+            "name": "wc_single_icon_ec89d8940b",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: single.php",
+            "default_value": "<svg class=\"h-3.5 w-3.5 text-sky-500\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z\"/></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_single_icon_ec89d8940b_image",
+            "label": "Icon ec89d8940b custom image",
+            "name": "wc_single_icon_ec89d8940b_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_single_text_d8fa4a38d5",
+            "label": "Blog",
+            "name": "wc_single_text_d8fa4a38d5",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: single.php",
+            "default_value": "Blog",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_single_text_ba5d829b32",
+            "label": "·",
+            "name": "wc_single_text_ba5d829b32",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: single.php",
+            "default_value": "·",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_single_text_df1e330e39",
+            "label": "Breadcrumb",
+            "name": "wc_single_text_df1e330e39",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: single.php",
+            "default_value": "Breadcrumb",
+            "rows": 3,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "waklert-content-pages"
+            }
+        ]
+    ],
+    "menu_order": 50,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "description": "Generated template content fields. Source: single.php"
+}

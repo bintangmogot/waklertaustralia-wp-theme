@@ -152,8 +152,10 @@ if (!function_exists('waklert_format_product_unit_price')) {
 
 if (!function_exists('waklert_get_product_presentation_option')) {
     function waklert_get_product_presentation_option($field_name, $default = '') {
+        $saved = get_option('options_' . $field_name, null);
+        if ($saved !== null) { return is_scalar($saved) ? (string) $saved : ''; }
         $value = function_exists('get_field') ? trim((string) get_field($field_name, 'option')) : '';
-        return $value !== '' ? $value : $default;
+        return $value !== '' ? $value : (waklert_acf_option_default($field_name) ?: $default);
     }
 }
 

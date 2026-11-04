@@ -1,0 +1,164 @@
+{
+    "key": "group_wc_woocommerce_content_product_pills_php",
+    "title": "Product Pills",
+    "fields": [
+        {
+            "key": "field_wc_content_product_pills_icon_b3bb384166",
+            "label": "Icon b3bb384166",
+            "name": "wc_content_product_pills_icon_b3bb384166",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/content-product-pills.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"w-3.5 h-3.5\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"m9 12 2 2 4-4\"/></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_product_pills_icon_b3bb384166_image",
+            "label": "Icon b3bb384166 custom image",
+            "name": "wc_content_product_pills_icon_b3bb384166_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_content_product_pills_icon_c9b8adaee3",
+            "label": "Icon c9b8adaee3",
+            "name": "wc_content_product_pills_icon_c9b8adaee3",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/content-product-pills.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"w-3.5 h-3.5 sm:w-4 sm:h-4\"><circle cx=\"8\" cy=\"21\" r=\"1\"/><circle cx=\"19\" cy=\"21\" r=\"1\"/><path d=\"M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12\"/></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_product_pills_icon_c9b8adaee3_image",
+            "label": "Icon c9b8adaee3 custom image",
+            "name": "wc_content_product_pills_icon_c9b8adaee3_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_content_product_pills_icon_c46f69f405",
+            "label": "Icon c46f69f405",
+            "name": "wc_content_product_pills_icon_c46f69f405",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/content-product-pills.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"currentColor\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"w-3.5 h-3.5\"><polygon points=\"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2\"/></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_product_pills_icon_c46f69f405_image",
+            "label": "Icon c46f69f405 custom image",
+            "name": "wc_content_product_pills_icon_c46f69f405_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_content_product_pills_icon_5d2cfb7425",
+            "label": "Icon 5d2cfb7425",
+            "name": "wc_content_product_pills_icon_5d2cfb7425",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/content-product-pills.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"currentColor\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"w-3.5 h-3.5\"><path d=\"M12 17.8 5.8 21 7 14.1 2 9.3l7-1L12 2\"/></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_product_pills_icon_5d2cfb7425_image",
+            "label": "Icon 5d2cfb7425 custom image",
+            "name": "wc_content_product_pills_icon_5d2cfb7425_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_content_product_pills_icon_1084e90cf2",
+            "label": "Icon 1084e90cf2",
+            "name": "wc_content_product_pills_icon_1084e90cf2",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/content-product-pills.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"w-3.5 h-3.5 text-muted-foreground/30\"><polygon points=\"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2\"/></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_product_pills_icon_1084e90cf2_image",
+            "label": "Icon 1084e90cf2 custom image",
+            "name": "wc_content_product_pills_icon_1084e90cf2_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_content_product_pills_text_cef5775e80",
+            "label": "View Details",
+            "name": "wc_content_product_pills_text_cef5775e80",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/content-product-pills.php",
+            "default_value": "View Details",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_product_pills_text_70bda98608",
+            "label": "Tabs",
+            "name": "wc_content_product_pills_text_70bda98608",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/content-product-pills.php",
+            "default_value": "Tabs",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_product_pills_text_ae6028163a",
+            "label": "In Stock",
+            "name": "wc_content_product_pills_text_ae6028163a",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/content-product-pills.php",
+            "default_value": "In Stock",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_product_pills_text_f9ef78d605",
+            "label": "Out of Stock",
+            "name": "wc_content_product_pills_text_f9ef78d605",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/content-product-pills.php",
+            "default_value": "Out of Stock",
+            "rows": 3,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "waklert-content-storefront"
+            }
+        ]
+    ],
+    "menu_order": 50,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "description": "Generated template content fields. Source: woocommerce/content-product-pills.php"
+}

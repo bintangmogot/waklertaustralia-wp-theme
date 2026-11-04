@@ -33,19 +33,17 @@ $description_id = 'product-description-' . absint($product->get_id());
 $in_stock = $product->is_in_stock();
 $unit_price = waklert_get_product_unit_price($product);
 $review_summary = waklert_get_product_review_summary($product->get_id());
-$no_reviews_text = waklert_get_product_presentation_option('product_no_reviews_text', 'No reviews yet');
+$no_reviews_text = waklert_get_product_presentation_option('product_no_reviews_text');
 $in_stock_label = waklert_option_text('shop_card_in_stock_label');
 $out_of_stock_label = waklert_option_text('shop_card_out_of_stock_label');
-$best_seller_label = waklert_get_product_presentation_option('best_seller_label', 'Best Seller');
+$best_seller_label = waklert_get_product_presentation_option('best_seller_label');
 ?>
 <article class="group relative flex flex-col overflow-hidden rounded-3xl border-2 border-dashed border-sky-300/80 hover:border-[#0c4161] bg-white shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
     <!-- Badges -->
     <div class="absolute left-3 top-3 z-10 flex flex-col gap-1.5">
         <?php if ($in_stock): ?>
         <span class="inline-flex items-center gap-1 rounded-full bg-emerald-500 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white shadow-sm">
-            <svg class="w-3 h-3 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-            </svg>
+            <?= waklert_content_icon('content_product_icon_fe0715cd87') ?>
             <?= esc_html($in_stock_label) ?>
         </span>
         <?php else: ?>
@@ -56,9 +54,7 @@ $best_seller_label = waklert_get_product_presentation_option('best_seller_label'
 
         <?php if ($product->is_featured()): ?>
         <span class="inline-flex items-center gap-1 rounded-full bg-amber-500 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white shadow-sm">
-            <svg class="w-3 h-3 text-white fill-current" viewBox="0 0 24 24">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-            </svg>
+            <?= waklert_content_icon('content_product_icon_806f32cd78') ?>
             <?= esc_html($best_seller_label) ?>
         </span>
         <?php endif; ?>
@@ -66,7 +62,7 @@ $best_seller_label = waklert_get_product_presentation_option('best_seller_label'
 
     <!-- Product Image with Radial Spotlight -->
     <a href="<?= esc_url($link) ?>" class="relative block aspect-square overflow-hidden bg-[radial-gradient(ellipse_at_center,rgba(186,230,253,0.35)_0%,rgba(255,255,255,0.95)_70%)] p-6">
-        <img src="<?= esc_url($image) ?>" alt="<?= esc_attr($title) ?> product image" loading="lazy" class="h-full w-full object-contain transition-transform duration-500 group-hover:scale-110">
+        <img src="<?= esc_url($image) ?>" alt="<?= esc_attr(get_post_meta($product->get_image_id(), '_wp_attachment_image_alt', true) ?: $title) ?>" loading="lazy" class="h-full w-full object-contain transition-transform duration-500 group-hover:scale-110">
     </a>
 
     <!-- Product Info -->
@@ -84,7 +80,7 @@ $best_seller_label = waklert_get_product_presentation_option('best_seller_label'
             </p>
             <?php if ($excerpt_length > 80): ?>
             <button type="button" aria-expanded="false" aria-controls="<?= esc_attr($description_id) ?>" data-product-description-toggle class="mt-1 text-xs font-bold text-[#0c4161] hover:text-amber-600 transition-colors">
-                <?= esc_html(waklert_option_text('shop_card_read_more_label')) ?> &rarr;
+                <?= esc_html(waklert_option_text('shop_card_read_more_label')) ?> <?= esc_html(waklert_content('content_product_text_9cd110735f')) ?>
             </button>
             <?php endif; ?>
         </div>
@@ -105,12 +101,7 @@ $best_seller_label = waklert_get_product_presentation_option('best_seller_label'
 
             <!-- Mini AU Post Pill -->
             <span class="inline-flex items-center gap-1 text-[11px] font-bold text-slate-500">
-                <svg class="w-3.5 h-3.5 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="1" y="3" width="15" height="13" rx="1.5"/>
-                    <path d="M16 8h4l3 3v5h-7V8z"/>
-                    <circle cx="5.5" cy="18.5" r="2.5"/>
-                    <circle cx="18.5" cy="18.5" r="2.5"/>
-                </svg>
+                <?= waklert_content_icon('content_product_icon_de67906da9') ?>
                 <?= esc_html(waklert_option_text('shop_card_delivery_label')) ?>
             </span>
         </div>
@@ -122,7 +113,7 @@ $best_seller_label = waklert_get_product_presentation_option('best_seller_label'
                     <?php if ($review_summary['review_count'] > 0): ?>
                     <a href="<?= esc_url($link . '#product-reviews') ?>" class="inline-flex w-fit items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-primary-dark" aria-label="Read <?= esc_attr($review_summary['review_count']) ?> product reviews">
                         <?php if ($review_summary['rating_count'] > 0): ?>
-                            <span class="text-accent" aria-hidden="true">★</span>
+                            <span class="text-accent" aria-hidden="true"><?= waklert_content_icon('manual_star_marker') ?></span>
                             <span class="font-semibold text-ink"><?= esc_html(number_format($review_summary['average_rating'], 1)) ?></span>
                             <span aria-hidden="true">·</span>
                         <?php endif; ?>
@@ -140,9 +131,7 @@ $best_seller_label = waklert_get_product_presentation_option('best_seller_label'
             <div>
             <?php if ($in_stock): ?>
             <a href="<?= esc_url($link) ?>" class="flex w-full items-center justify-center gap-1.5 sm:gap-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 px-2.5 py-2 sm:px-4 sm:py-3 text-[11px] sm:text-xs md:text-sm font-black uppercase tracking-tight sm:tracking-wider text-white shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5 leading-none text-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0 transition-transform group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
+                <?= waklert_content_icon('content_product_icon_a4f9a0edd6') ?>
                 <span><?= esc_html(waklert_option_text('shop_card_button_text')) ?></span>
             </a>
             <?php else: ?>

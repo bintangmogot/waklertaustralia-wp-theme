@@ -1,0 +1,170 @@
+{
+    "key": "group_wc_woocommerce_cart_cart_php",
+    "title": "Cart",
+    "fields": [
+        {
+            "key": "field_wc_manual_cart_remove_icon",
+            "label": "Remove item icon",
+            "name": "wc_manual_cart_remove_icon",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/cart/cart.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-5 w-5\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16\" /></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_manual_cart_remove_icon_image",
+            "label": "Remove item icon custom image",
+            "name": "wc_manual_cart_remove_icon_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_manual_cart_remove_title",
+            "label": "Remove item tooltip",
+            "name": "wc_manual_cart_remove_title",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/cart/cart.php",
+            "default_value": "Remove",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_cart_icon_90229b5868",
+            "label": "Icon 90229b5868",
+            "name": "wc_cart_icon_90229b5868",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/cart/cart.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-4 w-4 mr-1 group-hover:-translate-x-1 transition-transform\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\">\n                    <path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M15 19l-7-7 7-7\" />\n                </svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_cart_icon_90229b5868_image",
+            "label": "Icon 90229b5868 custom image",
+            "name": "wc_cart_icon_90229b5868_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_cart_text_7a161231ec",
+            "label": "Back to shop",
+            "name": "wc_cart_text_7a161231ec",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/cart/cart.php",
+            "default_value": "Back to shop",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_cart_text_b836985683",
+            "label": "Shopping Cart",
+            "name": "wc_cart_text_b836985683",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/cart/cart.php",
+            "default_value": "Shopping Cart",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_cart_text_9c638e555c",
+            "label": "Product",
+            "name": "wc_cart_text_9c638e555c",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/cart/cart.php",
+            "default_value": "Product",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_cart_text_1cba2185b6",
+            "label": "Total",
+            "name": "wc_cart_text_1cba2185b6",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/cart/cart.php",
+            "default_value": "Total",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_cart_text_f8376808d0",
+            "label": "Available on backorder",
+            "name": "wc_cart_text_f8376808d0",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/cart/cart.php",
+            "default_value": "Available on backorder",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_cart_text_dac3f55da0",
+            "label": "Remove %s from cart",
+            "name": "wc_cart_text_dac3f55da0",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/cart/cart.php",
+            "default_value": "Remove %s from cart",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_cart_text_04f0073062",
+            "label": "Subtotal",
+            "name": "wc_cart_text_04f0073062",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/cart/cart.php",
+            "default_value": "Subtotal",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_cart_text_734498838e",
+            "label": "Update cart",
+            "name": "wc_cart_text_734498838e",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/cart/cart.php",
+            "default_value": "Update cart",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_cart_text_349bec6b1e",
+            "label": "Qty:",
+            "name": "wc_cart_text_349bec6b1e",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/cart/cart.php",
+            "default_value": "Qty:",
+            "rows": 3,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "waklert-content-checkout"
+            }
+        ]
+    ],
+    "menu_order": 50,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "description": "Generated template content fields. Source: woocommerce/cart/cart.php"
+}

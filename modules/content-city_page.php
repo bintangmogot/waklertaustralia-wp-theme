@@ -4,6 +4,8 @@
  * Pulls every section from the chosen City entry (Australia Delivery), so the content
  * is still edited in one place: WP Admin -> Australia Delivery -> the city.
  */
+
+if (waklert_module_is_empty()) { return; }
 $city_id = (int) get_sub_field('city');
 if (!$city_id) {
     return;

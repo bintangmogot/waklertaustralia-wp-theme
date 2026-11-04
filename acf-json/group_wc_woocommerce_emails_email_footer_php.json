@@ -1,0 +1,64 @@
+{
+    "key": "group_wc_woocommerce_emails_email_footer_php",
+    "title": "Email: Footer",
+    "fields": [
+        {
+            "key": "field_wc_email_footer_text_dcc7a5a475",
+            "label": "All orders are dispatched discreetly in plain packaging via Australia Post Express with un",
+            "name": "wc_email_footer_text_dcc7a5a475",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/emails/email-footer.php",
+            "default_value": "All orders are dispatched discreetly in plain packaging via Australia Post Express with unique tracking.",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_email_footer_text_bf3efdeb76",
+            "label": "©",
+            "name": "wc_email_footer_text_bf3efdeb76",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/emails/email-footer.php",
+            "default_value": "©",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_email_footer_text_ad84f54414",
+            "label": "Waklert Australia",
+            "name": "wc_email_footer_text_ad84f54414",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/emails/email-footer.php",
+            "default_value": "Waklert Australia",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_email_footer_text_d404057c6f",
+            "label": ". All rights reserved.",
+            "name": "wc_email_footer_text_d404057c6f",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/emails/email-footer.php",
+            "default_value": ". All rights reserved.",
+            "rows": 3,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "waklert-content-emails"
+            }
+        ]
+    ],
+    "menu_order": 50,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "description": "Generated template content fields. Source: woocommerce/emails/email-footer.php"
+}

@@ -1,0 +1,53 @@
+{
+    "key": "group_wc_assets_js_main_js",
+    "title": "Main",
+    "fields": [
+        {
+            "key": "field_wc_com_read_more_label",
+            "label": "Expand content button text",
+            "name": "wc_com_read_more_label",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: assets/js/main.js",
+            "default_value": "Read more",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_com_read_less_label",
+            "label": "Collapse content button text",
+            "name": "wc_com_read_less_label",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: assets/js/main.js",
+            "default_value": "Read less",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_com_support_email_copied_message",
+            "label": "Support email copied message",
+            "name": "wc_com_support_email_copied_message",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: assets/js/main.js",
+            "default_value": "Copied {email}",
+            "rows": 3,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "waklert-content-pages"
+            }
+        ]
+    ],
+    "menu_order": 50,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "description": "Generated template content fields. Source: assets/js/main.js"
+}

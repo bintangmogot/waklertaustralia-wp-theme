@@ -33,13 +33,13 @@ if (have_rows('modules', $shop_page_id)) {
     <div class="container-site max-w-4xl relative z-10 px-4">
         <span class="inline-flex items-center gap-2 rounded-full border border-amber-400/40 bg-amber-400/15 px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-amber-300 shadow-sm mb-4">
             <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-            Full Catalogue
+            <?= esc_html(waklert_content('archive_product_text_d3efd42396')) ?>
         </span>
         <h1 class="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
             <?= esc_html(woocommerce_page_title(false)) ?>
         </h1>
         <p class="mx-auto mt-3 max-w-2xl text-base leading-relaxed text-sky-100/90 font-medium">
-            <?= "Browse and buy genuine Armodafinil tablets online in Australia. Fast Australia-wide delivery on all orders." ?>
+            <?= esc_html(waklert_content('archive_product_text_6962463ffc')) ?>
         </p>
     </div>
 </section>
@@ -73,11 +73,11 @@ if (have_rows('modules', $shop_page_id)) {
     <div class="container-site max-w-4xl relative z-10 px-4">
         <div class="text-center mb-10">
             <span class="inline-flex items-center gap-2 rounded-full bg-sky-100 border border-sky-300/80 px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-[#0c4161] shadow-sm mb-3">
-                Buyer's Guide
+                <?= esc_html(waklert_content('archive_product_text_af2df132d3')) ?>
             </span>
-            <h2 class="font-heading text-2xl md:text-4xl font-extrabold text-[#0c4161]"><?= "Choosing the Right Modafinil" ?></h2>
+            <h2 class="font-heading text-2xl md:text-4xl font-extrabold text-[#0c4161]"><?= esc_html(waklert_content('archive_product_text_5219383dd0')) ?></h2>
             <p class="mt-3 text-base leading-relaxed text-slate-600 max-w-2xl mx-auto">
-                <?= "With several brands and dosages available, the right product depends on your experience level, desired effects, and budget. Below is a comparison of our most popular options." ?>
+                <?= esc_html(waklert_content('archive_product_text_bbaa6ec8b6')) ?>
             </p>
         </div>
         
@@ -85,33 +85,33 @@ if (have_rows('modules', $shop_page_id)) {
             <div class="group rounded-3xl border-2 border-dashed border-sky-300/80 hover:border-[#0c4161] bg-white p-6 sm:p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all">
                 <div class="flex items-center gap-3 mb-2">
                     <span class="flex h-8 w-8 items-center justify-center rounded-xl bg-amber-500 text-white font-black text-sm">1</span>
-                    <h3 class="font-heading text-xl font-bold text-slate-900 group-hover:text-[#0c4161] transition-colors"><?= "Modalert 200mg — The Gold Standard" ?></h3>
+                    <h3 class="font-heading text-xl font-bold text-slate-900 group-hover:text-[#0c4161] transition-colors"><?= esc_html(waklert_content('archive_product_text_35b28c755f')) ?></h3>
                 </div>
-                <p class="mt-2 text-sm leading-relaxed text-slate-600"><?= "Manufactured by Sun Pharma, Modalert is the most widely recognised modafinil brand worldwide. Each tablet contains the standard 200mg clinical dose and delivers a clean, sustained boost in focus lasting 10–12 hours." ?></p>
+                <p class="mt-2 text-sm leading-relaxed text-slate-600"><?= esc_html(waklert_content('archive_product_text_8ff824cb04')) ?></p>
                 <div class="mt-4 pt-3 border-t border-dashed border-sky-100 flex items-center justify-between">
-                    <p class="text-xs font-bold text-[#0c4161] bg-sky-50 px-3 py-1 rounded-full"><?= "Best for: First-time users who want a trusted, proven brand." ?></p>
+                    <p class="text-xs font-bold text-[#0c4161] bg-sky-50 px-3 py-1 rounded-full"><?= esc_html(waklert_content('archive_product_text_cc1d0dc4be')) ?></p>
                 </div>
             </div>
             
             <div class="group rounded-3xl border-2 border-dashed border-sky-300/80 hover:border-[#0c4161] bg-white p-6 sm:p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all">
                 <div class="flex items-center gap-3 mb-2">
                     <span class="flex h-8 w-8 items-center justify-center rounded-xl bg-sky-600 text-white font-black text-sm">2</span>
-                    <h3 class="font-heading text-xl font-bold text-slate-900 group-hover:text-[#0c4161] transition-colors"><?= "Modvigil 200mg — Affordable Alternative" ?></h3>
+                    <h3 class="font-heading text-xl font-bold text-slate-900 group-hover:text-[#0c4161] transition-colors"><?= esc_html(waklert_content('archive_product_text_c1ba514e6a')) ?></h3>
                 </div>
-                <p class="mt-2 text-sm leading-relaxed text-slate-600"><?= "Produced by HAB Pharma with the same 200mg dose as Modalert. Many users report very similar effects at a lower price, with a slightly gentler onset that suits all-day productivity." ?></p>
+                <p class="mt-2 text-sm leading-relaxed text-slate-600"><?= esc_html(waklert_content('archive_product_text_a3879d6c30')) ?></p>
                 <div class="mt-4 pt-3 border-t border-dashed border-sky-100 flex items-center justify-between">
-                    <p class="text-xs font-bold text-[#0c4161] bg-sky-50 px-3 py-1 rounded-full"><?= "Best for: Budget-conscious buyers or those who want a smoother onset." ?></p>
+                    <p class="text-xs font-bold text-[#0c4161] bg-sky-50 px-3 py-1 rounded-full"><?= esc_html(waklert_content('archive_product_text_a886e8071e')) ?></p>
                 </div>
             </div>
 
             <div class="group rounded-3xl border-2 border-dashed border-sky-300/80 hover:border-[#0c4161] bg-white p-6 sm:p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all">
                 <div class="flex items-center gap-3 mb-2">
                     <span class="flex h-8 w-8 items-center justify-center rounded-xl bg-[#0c4161] text-white font-black text-sm">3</span>
-                    <h3 class="font-heading text-xl font-bold text-slate-900 group-hover:text-[#0c4161] transition-colors"><?= "Modasmart 400mg — Extended Duration" ?></h3>
+                    <h3 class="font-heading text-xl font-bold text-slate-900 group-hover:text-[#0c4161] transition-colors"><?= esc_html(waklert_content('archive_product_text_ab6c6ff57a')) ?></h3>
                 </div>
-                <p class="mt-2 text-sm leading-relaxed text-slate-600"><?= "Double the standard dose in a single tablet, designed for experienced users who need longer-lasting cognitive enhancement for extended study sessions or overnight shifts." ?></p>
+                <p class="mt-2 text-sm leading-relaxed text-slate-600"><?= esc_html(waklert_content('archive_product_text_db0ef3129c')) ?></p>
                 <div class="mt-4 pt-3 border-t border-dashed border-sky-100 flex items-center justify-between">
-                    <p class="text-xs font-bold text-[#0c4161] bg-sky-50 px-3 py-1 rounded-full"><?= "Best for: Experienced users who need 14+ hours of sustained focus." ?></p>
+                    <p class="text-xs font-bold text-[#0c4161] bg-sky-50 px-3 py-1 rounded-full"><?= esc_html(waklert_content('archive_product_text_9edd96017a')) ?></p>
                 </div>
             </div>
         </div>

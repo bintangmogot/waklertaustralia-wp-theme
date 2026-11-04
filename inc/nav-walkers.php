@@ -46,7 +46,7 @@ function waklert_get_product_menu_meta($title, $url = '', $object_id = 0) {
 
     $badge = trim((string) get_field('product_badge', $product->get_id()));
     if ($badge === '' && $product->is_featured()) {
-        $badge = waklert_get_product_presentation_option('best_seller_label', 'Best Seller');
+        $badge = waklert_get_product_presentation_option('best_seller_label');
     }
     $meta['badge'] = $badge;
     $meta['is_best_seller'] = $badge !== '';
@@ -68,23 +68,7 @@ function waklert_get_product_menu_image($title, $url = '', $object_id = 0) {
             $img_url = get_the_post_thumbnail_url($post_id, 'woocommerce_thumbnail') ?: get_the_post_thumbnail_url($post_id, 'thumbnail');
         }
     }
-    if (!$img_url) {
-        $lower = strtolower($title);
-        $fallback_ids = [
-            'waklert 150'  => 1174,
-            'waklert 50'   => 1179,
-            'artvigil'     => 1175,
-            'armodacharge' => 1178,
-            'armod 150'    => 1176,
-            'armod 50'     => 1177,
-        ];
-        foreach ($fallback_ids as $key => $id) {
-            if (strpos($lower, $key) !== false) {
-                $img_url = get_the_post_thumbnail_url($id, 'woocommerce_thumbnail') ?: get_the_post_thumbnail_url($id, 'thumbnail');
-                break;
-            }
-        }
-    }
+
     return $img_url;
 }
 
@@ -122,12 +106,12 @@ class Waklert_Desktop_Nav_Walker extends Walker_Nav_Menu {
             $shop_url = esc_url(waklert_resolve_link(waklert_option_text('menu_dropdown_button_url')));
             $output .= '<div class="bg-gradient-to-r from-sky-50 via-slate-50 to-amber-50/60 px-4 py-3 border-t-2 border-dashed border-sky-200/80 flex items-center justify-between text-xs">';
             $output .= '<div class="flex items-center gap-1.5 font-bold text-slate-700">';
-            $output .= '<svg class="w-4 h-4 text-emerald-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>';
+            $output .= waklert_content_icon('nav_walkers_icon_00bc0fe59a');
             $output .= '<span>' . esc_html(waklert_option_text('menu_dropdown_note')) . '</span>';
             $output .= '</div>';
             $output .= '<a href="' . $shop_url . '" class="inline-flex items-center gap-1.5 font-black text-[#0c4161] hover:text-amber-600 bg-white hover:bg-sky-50 px-3 py-1.5 rounded-full border-2 border-dashed border-sky-300 shadow-sm transition-all hover:scale-105">';
             $output .= '<span>' . esc_html(waklert_option_text('menu_dropdown_button_text')) . '</span>';
-            $output .= '<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>';
+            $output .= waklert_content_icon('nav_walkers_icon_2d846cc854');
             $output .= '</a>';
             $output .= '</div>';
 
@@ -170,7 +154,7 @@ class Waklert_Desktop_Nav_Walker extends Walker_Nav_Menu {
 
             $chevron = '';
             if ($has_children) {
-                $chevron = '<svg class="w-3.5 h-3.5 ' . $chev_color . ' transition-transform duration-200 group-hover:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>';
+                $chevron = str_replace('class="', 'class="' . esc_attr($chev_color) . ' ', waklert_content_icon('manual_menu_chevron'));
             }
 
             $output .= '<a href="' . $url . '" class="' . $link_class . '">';
@@ -189,12 +173,7 @@ class Waklert_Desktop_Nav_Walker extends Walker_Nav_Menu {
             if ($img_url) {
                 $output .= '<img src="' . esc_url($img_url) . '" alt="' . esc_attr($title) . '" class="w-full h-full object-contain transition-transform duration-300 group-hover/pcard:scale-110" loading="lazy" />';
             } else {
-                $output .= '<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">';
-                $output .= '<rect x="3" y="7" width="18" height="10" rx="5" fill="' . $meta['icon_color'] . '" fill-opacity="0.18" stroke="' . $meta['icon_color'] . '" stroke-width="1.8"/>';
-                $output .= '<path d="M12 7V17" stroke="#0C4161" stroke-width="1.8" stroke-dasharray="2 2"/>';
-                $output .= '<circle cx="7.5" cy="12" r="1.5" fill="' . $meta['dot_color'] . '"/>';
-                $output .= '<circle cx="16.5" cy="12" r="1.5" fill="' . $meta['icon_color'] . '"/>';
-                $output .= '</svg>';
+                $output .= waklert_content_icon('manual_menu_product_icon');
             }
             $output .= '</div>';
 
@@ -204,7 +183,7 @@ class Waklert_Desktop_Nav_Walker extends Walker_Nav_Menu {
             $output .= '<h4 class="min-w-0 text-[13px] font-extrabold leading-snug text-[#0c4161] group-hover/pcard:text-[#082a3f]">' . $title . '</h4>';
             if (!empty($meta['is_best_seller'])) {
                 $output .= '<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-amber-50 text-amber-900 border border-amber-300/80 shrink-0 shadow-2xs">';
-                $output .= '<svg class="w-3 h-3 text-amber-600 shrink-0 animate-point-to-product" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>';
+                $output .= waklert_content_icon('nav_walkers_icon_016a8ea27d');
                 $output .= '<span class="font-caveat font-bold text-[13px] leading-none text-amber-950 tracking-normal select-none">' . esc_html($meta['badge']) . '</span>';
                 $output .= '</span>';
             }
@@ -273,7 +252,7 @@ class Waklert_Mobile_Nav_Walker extends Walker_Nav_Menu {
 
             if ($has_children) {
                 $output .= '<button type="button" class="mobile-submenu-toggle is-active flex items-center justify-center w-11 h-11 rounded-2xl bg-white border-2 border-dashed border-sky-300 text-[#0c4161] hover:bg-sky-50 transition-colors shrink-0" aria-expanded="true" aria-label="Toggle submenu">';
-                $output .= '<svg class="w-4.5 h-4.5 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>';
+                $output .= waklert_content_icon('nav_walkers_icon_735144bc3c');
                 $output .= '</button>';
             }
 
@@ -291,12 +270,7 @@ class Waklert_Mobile_Nav_Walker extends Walker_Nav_Menu {
             if ($img_url) {
                 $output .= '<img src="' . esc_url($img_url) . '" alt="' . esc_attr($title) . '" class="w-full h-full object-contain" loading="lazy" />';
             } else {
-                $output .= '<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">';
-                $output .= '<rect x="3" y="7" width="18" height="10" rx="5" fill="' . $meta['icon_color'] . '" fill-opacity="0.18" stroke="' . $meta['icon_color'] . '" stroke-width="1.8"/>';
-                $output .= '<path d="M12 7V17" stroke="#0C4161" stroke-width="1.8" stroke-dasharray="2 2"/>';
-                $output .= '<circle cx="7.5" cy="12" r="1.5" fill="' . $meta['dot_color'] . '"/>';
-                $output .= '<circle cx="16.5" cy="12" r="1.5" fill="' . $meta['icon_color'] . '"/>';
-                $output .= '</svg>';
+                $output .= waklert_content_icon('manual_mobile_menu_product_icon');
             }
             $output .= '</div>';
 
@@ -306,7 +280,7 @@ class Waklert_Mobile_Nav_Walker extends Walker_Nav_Menu {
             $output .= '<span class="text-xs font-bold text-[#0c4161] truncate">' . $title . '</span>';
             if (!empty($meta['is_best_seller'])) {
                 $output .= '<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-50 text-amber-900 border border-amber-300/80 shrink-0 shadow-2xs">';
-                $output .= '<svg class="w-3 h-3 text-amber-600 shrink-0 animate-point-to-product" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>';
+                $output .= waklert_content_icon('nav_walkers_icon_016a8ea27d');
                 $output .= '<span class="font-caveat font-bold text-[13px] leading-none text-amber-950 tracking-normal select-none">' . esc_html($meta['badge']) . '</span>';
                 $output .= '</span>';
             }

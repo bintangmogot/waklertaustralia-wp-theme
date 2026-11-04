@@ -4,7 +4,7 @@
  */
 $footer_desc = get_field('footer_description', 'option');
 $footer_address = get_field('location_text', 'option') ?: get_field('footer_address', 'option');
-$footer_email = get_field('support_email', 'option') ?: get_field('footer_email', 'option') ?: 'orders@waklertaustralia.com.au';
+$footer_email = get_field('support_email', 'option') ?: get_field('footer_email', 'option') ?: waklert_content('pg_footer_email');
 $footer_contact_heading = get_field('footer_contact_heading', 'option');
 $working_days = get_field('working_days', 'option');
 $office_hours = get_field('office_hours', 'option');
@@ -101,55 +101,13 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
                     ?>
                         <img src="<?= esc_url($c_url) ?>" alt="<?= esc_attr($badge_title) ?>" class="w-10 h-10 sm:w-11 sm:h-11 object-contain shrink-0">
                     <?php elseif ($badge_icon_type === 'shield_pharma'): ?>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="w-10 h-10 sm:w-11 sm:h-11 shrink-0" fill="none" aria-hidden="true">
-                            <ellipse cx="32" cy="55" rx="18" ry="2.5" fill="#0C4161" fill-opacity="0.15" />
-                            <path d="M32 7L15 13.5V28C15 41.5 22.2 50 32 53.5C41.8 50 49 41.5 49 28V13.5L32 7Z" fill="#D97706" />
-                            <path d="M32 10L18 15.5V28C18 39.5 23.8 47 32 50.2C40.2 47 46 39.5 46 28V15.5L32 10Z" fill="#F59E0B" />
-                            <path d="M32 12.5L20.5 17V28C20.5 38 25.2 44.5 32 47.5C38.8 44.5 43.5 38 43.5 28V17L32 12.5Z" fill="#FBBF24" />
-                            <circle cx="32" cy="30" r="11" fill="#10B981" />
-                            <path d="M28 30H36M32 26V34" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
-                            <circle cx="43" cy="18" r="4" fill="#38BDF8" stroke="#FFFFFF" stroke-width="1.5" />
-                            <path d="M41.5 18L42.5 19L44.5 17" stroke="#FFFFFF" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
+                        <?= waklert_content_icon('footer_icon_fc80858035') ?>
                     <?php elseif ($badge_icon_type === 'shield_insurance'): ?>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="w-10 h-10 sm:w-11 sm:h-11 shrink-0" fill="none" aria-hidden="true">
-                            <ellipse cx="32" cy="55" rx="18" ry="2.5" fill="#0C4161" fill-opacity="0.15" />
-                            <path d="M32 7L16 13.5V27C16 40.5 23 48.5 32 52.5C41 48.5 48 40.5 48 27V13.5L32 7Z" fill="#059669" />
-                            <path d="M32 10L18.5 15.5V27C18.5 38.5 24.5 45.8 32 49.2C39.5 45.8 45.5 38.5 45.5 27V15.5L32 10Z" fill="#10B981" />
-                            <path d="M32 12.5L21 17V27C21 37 26 43 32 46.2C38 43 43 37 43 27V17L32 12.5Z" fill="#34D399" />
-                            <circle cx="32" cy="29" r="10" fill="#065F46" />
-                            <path d="M27 29L30.5 32.5L37 25.5" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M24 46L21 53L27 50L32 52L29 46" fill="#F59E0B" stroke="#D97706" stroke-width="1" />
-                            <path d="M40 46L43 53L37 50L32 52L35 46" fill="#F59E0B" stroke="#D97706" stroke-width="1" />
-                        </svg>
+                        <?= waklert_content_icon('footer_icon_161fa942fa') ?>
                     <?php elseif ($badge_icon_type === 'parcel'): ?>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="w-10 h-10 sm:w-11 sm:h-11 shrink-0" fill="none" aria-hidden="true">
-                            <ellipse cx="32" cy="55" rx="20" ry="2.5" fill="#0C4161" fill-opacity="0.15" />
-                            <rect x="13" y="18" width="38" height="30" rx="3" fill="#B45309" />
-                            <rect x="15" y="16" width="34" height="29" rx="2.5" fill="#D97706" />
-                            <path d="M15 27H49M32 16V45" stroke="#92400E" stroke-width="2.5" />
-                            <rect x="18" y="32" width="11" height="8" rx="1.5" fill="#FFFFFF" />
-                            <line x1="20" y1="35" x2="27" y2="35" stroke="#64748B" stroke-width="1.2" />
-                            <line x1="20" y1="37.5" x2="25" y2="37.5" stroke="#64748B" stroke-width="1.2" />
-                            <rect x="35" y="30" width="12" height="11" rx="2.5" fill="#0284C7" />
-                            <path d="M38 30V27C38 25.3 39.3 24 41 24C42.7 24 44 25.3 44 27V30" stroke="#F59E0B" stroke-width="2.2" stroke-linecap="round" />
-                            <circle cx="41" cy="35.5" r="1.5" fill="#FFFFFF" />
-                        </svg>
+                        <?= waklert_content_icon('footer_icon_506df1a599') ?>
                     <?php else: // 'truck' or default ?>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="w-10 h-10 sm:w-11 sm:h-11 shrink-0" fill="none" aria-hidden="true">
-                            <ellipse cx="32" cy="54" rx="22" ry="2.5" fill="#0C4161" fill-opacity="0.15" />
-                            <path d="M6 31H12M4 37H10M8 43H14" stroke="#DC2626" stroke-width="2.5" stroke-linecap="round" />
-                            <rect x="16" y="16" width="28" height="28" rx="4" fill="#DC2626" />
-                            <path d="M44 23H52L58 31V44H44V23Z" fill="#B91C1C" />
-                            <path d="M44 23H51.5L56 31H44V23Z" fill="#93C5FD" />
-                            <rect x="19" y="20" width="22" height="10" rx="2" fill="#FFFFFF" />
-                            <text x="30" y="27.5" font-family="system-ui, -apple-system, sans-serif" font-size="6.5" font-weight="900" fill="#DC2626" text-anchor="middle" letter-spacing="0.5">EXPRESS</text>
-                            <circle cx="25" cy="44" r="6.5" fill="#1E293B" />
-                            <circle cx="25" cy="44" r="2.8" fill="#F8FAFC" />
-                            <circle cx="49" cy="44" r="6.5" fill="#1E293B" />
-                            <circle cx="49" cy="44" r="2.8" fill="#F8FAFC" />
-                            <circle cx="56" cy="38" r="2" fill="#FBBF24" />
-                        </svg>
+                        <?= waklert_content_icon('footer_icon_49a47a3c44') ?>
                     <?php endif; ?>
                 </div>
                 <span class="text-xs font-extrabold tracking-wider uppercase text-white leading-tight"><?= esc_html($badge_title) ?></span>
@@ -184,19 +142,19 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
             <div class="mt-5 flex flex-wrap items-center gap-2 pt-1 text-xs">
                 <?php if (!empty($ssl_text)): ?>
                 <span class="inline-flex items-center gap-1.5 rounded-lg bg-white/5 border border-sky-400/30 px-2.5 py-1 text-sky-200">
-                    <svg class="w-3.5 h-3.5 text-sky-300 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    <?= waklert_content_icon('footer_icon_c00e1f65a5') ?>
                     <span><?= esc_html($ssl_text) ?></span>
                 </span>
                 <?php endif; ?>
                 <?php if (!empty($dispatch_text)): ?>
                 <span class="inline-flex items-center gap-1.5 rounded-lg bg-white/5 border border-amber-400/30 px-2.5 py-1 text-amber-200">
-                    <svg class="w-3.5 h-3.5 text-amber-300 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="5" width="14" height="11" rx="1.5"/><path d="M15 8h4.5l3.5 4.5v3.5h-8V8z"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg>
+                    <?= waklert_content_icon('footer_icon_be48130d38') ?>
                     <span><?= esc_html($dispatch_text) ?></span>
                 </span>
                 <?php endif; ?>
                 <?php if (!empty($checkout_text)): ?>
                 <span class="inline-flex items-center gap-1.5 rounded-lg bg-white/5 border border-emerald-400/30 px-2.5 py-1 text-emerald-200">
-                    <svg class="w-3.5 h-3.5 text-emerald-300 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 5.25 3.4 10.15 8 11.35 4.6-1.2 8-6.1 8-11.35V6l-8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+                    <?= waklert_content_icon('footer_icon_ffc0ddb7d2') ?>
                     <span><?= esc_html($checkout_text) ?></span>
                 </span>
                 <?php endif; ?>
@@ -219,17 +177,17 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
             <div class="mt-4 space-y-3.5">
                 <?php if (!empty($footer_address)): ?>
                 <div class="flex items-start gap-3 text-[13px] text-ink-foreground/80">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mt-0.5 text-[#FFD700] shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <?= waklert_content_icon('footer_icon_71853b0e8d') ?>
                     <span><?= esc_html($footer_address) ?></span>
                 </div>
                 <?php endif; ?>
 
                 <?php if (!empty($whatsapp_raw)): ?>
                 <div class="flex items-center gap-3 text-[13px] text-ink-foreground/80">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#FFD700] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                    <span><?= esc_html(waklert_option_text('footer_whatsapp_label')) ?> &rarr;</span>
+                    <?= waklert_content_icon('footer_icon_d2539dece7') ?>
+                    <span><?= esc_html(waklert_option_text('footer_whatsapp_label')) ?> <?= esc_html(waklert_content('footer_text_5a971de8a2')) ?></span>
                     <a href="<?= esc_url($whatsapp) ?>" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/40 px-2.5 py-0.5 text-xs font-bold text-emerald-300 hover:bg-emerald-500/30 transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#25D366]" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.67-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                        <?= waklert_content_icon('footer_icon_8f34b67158') ?>
                         <span><?= esc_html(waklert_option_text('footer_chat_button_text')) ?></span>
                     </a>
                 </div>
@@ -237,21 +195,21 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
 
                 <?php if (!empty($footer_email)): ?>
                 <div class="flex items-center gap-3 text-[13px] text-ink-foreground/80">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-sky-400 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    <?= waklert_content_icon('footer_icon_94ee377a9c') ?>
                     <a href="mailto:<?= esc_attr($footer_email) ?>" class="hover:text-white transition-colors"><?= esc_html($footer_email) ?></a>
                 </div>
                 <?php endif; ?>
 
                 <?php if (!empty($working_days)): ?>
                 <div class="flex items-center gap-3 text-[13px] text-ink-foreground/80">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-amber-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                    <?= waklert_content_icon('footer_icon_9f7ddb75ab') ?>
                     <span><strong class="text-white font-medium"><?= esc_html(waklert_option_text('working_days_label')) ?></strong> <?= esc_html($working_days) ?></span>
                 </div>
                 <?php endif; ?>
 
                 <?php if (!empty($office_hours)): ?>
                 <div class="flex items-center gap-3 text-[13px] text-ink-foreground/80">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-amber-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    <?= waklert_content_icon('footer_icon_fd4c2a4372') ?>
                     <span><strong class="text-white font-medium"><?= esc_html(waklert_option_text('office_hours_label')) ?></strong> <?= esc_html($office_hours) ?></span>
                 </div>
                 <?php endif; ?>
@@ -277,7 +235,7 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
                             }
                         }
                         if (!$img_src) continue;
-                        $alt_val = !empty($pay['alt_text']) ? $pay['alt_text'] : (is_array($pay['image']) ? ($pay['image']['alt'] ?? $pay['image']['title'] ?? 'Payment Method') : 'Payment Method');
+                        $alt_val = !empty($pay['alt_text']) ? $pay['alt_text'] : (is_array($pay['image']) ? ($pay['image']['alt'] ?? $pay['image']['title'] ?? waklert_content('footer_text_808c622899')) : waklert_content('footer_text_808c622899'));
                     ?>
                         <img src="<?= esc_url($img_src) ?>" alt="<?= esc_attr($alt_val) ?>" class="footer-payment-logo object-contain h-8 sm:h-9 w-auto hover:scale-105 transition-transform" style="height: 34px; max-height: 36px; width: auto; max-width: 160px; object-fit: contain;">
                     <?php endforeach; ?>
@@ -303,7 +261,7 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
                             }
                         }
                         if (!$img_src) continue;
-                        $alt_val = !empty($ship['alt_text']) ? $ship['alt_text'] : (is_array($ship['image']) ? ($ship['image']['alt'] ?? $ship['image']['title'] ?? 'Shipping Partner') : 'Shipping Partner');
+                        $alt_val = !empty($ship['alt_text']) ? $ship['alt_text'] : (is_array($ship['image']) ? ($ship['image']['alt'] ?? $ship['image']['title'] ?? waklert_content('footer_text_e735f72b09')) : waklert_content('footer_text_e735f72b09'));
                     ?>
                         <img src="<?= esc_url($img_src) ?>" alt="<?= esc_attr($alt_val) ?>" class="footer-shipping-logo object-contain h-10 sm:h-11 w-auto hover:scale-105 transition-transform" style="height: 40px; max-height: 44px; width: auto; max-width: 150px; object-fit: contain;">
                     <?php endforeach; ?>
@@ -329,7 +287,7 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
             <?php if (!empty($copyright_text)): ?>
                 <p><?= wp_kses_post($copyright_text) ?></p>
             <?php else: ?>
-                <p>&copy; <?= esc_html(date('Y')) ?> <?= esc_html(get_bloginfo('name') ?: 'Waklert Australia') ?>. All rights reserved.</p>
+                <p><?= esc_html(waklert_content('footer_text_c68dc600b1')) ?> <?= esc_html(date('Y')) ?> <?= esc_html(get_bloginfo('name') ?: waklert_content('footer_text_580af76bd8')) ?><?= esc_html(waklert_content('footer_text_8431a25d58')) ?></p>
             <?php endif; ?>
             <?php if (function_exists('is_product') && is_product()): ?>
                 <a href="https://www.flaticon.com/uicons" class="transition-colors hover:text-white" target="_blank" rel="noopener noreferrer"><?= esc_html(waklert_option_text('icon_credit_text')) ?></a>

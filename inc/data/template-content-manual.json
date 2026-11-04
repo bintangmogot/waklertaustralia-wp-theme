@@ -1,0 +1,272 @@
+{
+    "manual_city_heading": {
+        "type": "text",
+        "default": "Armodafinil delivery to {city}",
+        "source": "modules/content-city_header.php",
+        "label": "City heading"
+    },
+    "manual_city_description": {
+        "type": "text",
+        "default": "Check the available shipping options and tracking details for {city} at checkout.",
+        "source": "modules/content-city_header.php",
+        "label": "City description"
+    },
+    "manual_review_select_rating": {
+        "type": "text",
+        "default": "Please select a star rating.",
+        "source": "template-parts/product-reviews.php",
+        "label": "Review select rating"
+    },
+    "manual_review_submitting": {
+        "type": "text",
+        "default": "Submitting...",
+        "source": "template-parts/product-reviews.php",
+        "label": "Review submitting"
+    },
+    "manual_review_failed": {
+        "type": "text",
+        "default": "Your review could not be submitted. Please try again.",
+        "source": "template-parts/product-reviews.php",
+        "label": "Review failed"
+    },
+    "manual_review_network_failed": {
+        "type": "text",
+        "default": "A network error occurred. Please try again.",
+        "source": "template-parts/product-reviews.php",
+        "label": "Review network failed"
+    },
+    "manual_card_show_less": {
+        "type": "text",
+        "default": "Show less",
+        "source": "woocommerce/content-product-horizontal.php",
+        "label": "Card show less"
+    },
+    "manual_copy_success_icon": {
+        "type": "icon",
+        "default": "<svg class=\"w-3.5 h-3.5 text-emerald-600 inline\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.5\" d=\"M5 13l4 4L19 7\"/></svg>",
+        "source": "woocommerce/checkout/thankyou.php",
+        "label": "Copy success icon"
+    },
+    "manual_email_greeting_fallback": {
+        "type": "text",
+        "default": "there",
+        "source": "woocommerce/emails/customer-processing-order.php",
+        "label": "Email greeting fallback"
+    },
+    "manual_contact_submit_icon": {
+        "type": "icon",
+        "default": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-4 w-4 shrink-0\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-width=\"2\">\r\n                    <path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z\" />\r\n                </svg>",
+        "source": "functions.php",
+        "label": "Contact submit icon"
+    },
+    "manual_bank_details_heading": {
+        "type": "text",
+        "default": "Bank Details",
+        "source": "functions.php",
+        "label": "Bank details heading"
+    },
+    "manual_bank_swift_label": {
+        "type": "text",
+        "default": "SWIFT/BIC",
+        "source": "functions.php",
+        "label": "Bank swift label"
+    },
+    "manual_menu_product_icon": {
+        "type": "icon",
+        "default": "<svg class=\"w-6 h-6\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"3\" y=\"7\" width=\"18\" height=\"10\" rx=\"5\" fill=\"#0284C7\" fill-opacity=\"0.18\" stroke=\"#0284C7\" stroke-width=\"1.8\"/><path d=\"M12 7V17\" stroke=\"#0C4161\" stroke-width=\"1.8\" stroke-dasharray=\"2 2\"/><circle cx=\"7.5\" cy=\"12\" r=\"1.5\" fill=\"#F59E0B\"/><circle cx=\"16.5\" cy=\"12\" r=\"1.5\" fill=\"#0284C7\"/></svg>",
+        "source": "inc/nav-walkers.php",
+        "label": "Menu product icon"
+    },
+    "manual_mobile_menu_product_icon": {
+        "type": "icon",
+        "default": "<svg class=\"w-5 h-5\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"3\" y=\"7\" width=\"18\" height=\"10\" rx=\"5\" fill=\"#0284C7\" fill-opacity=\"0.18\" stroke=\"#0284C7\" stroke-width=\"1.8\"/><path d=\"M12 7V17\" stroke=\"#0C4161\" stroke-width=\"1.8\" stroke-dasharray=\"2 2\"/><circle cx=\"7.5\" cy=\"12\" r=\"1.5\" fill=\"#F59E0B\"/><circle cx=\"16.5\" cy=\"12\" r=\"1.5\" fill=\"#0284C7\"/></svg>",
+        "source": "inc/nav-walkers.php",
+        "label": "Mobile menu product icon"
+    },
+    "manual_menu_chevron": {
+        "type": "icon",
+        "default": "<svg class=\"w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"><path d=\"m6 9 6 6 6-6\"/></svg>",
+        "source": "inc/nav-walkers.php",
+        "label": "Menu chevron"
+    },
+    "manual_review_module_star_1": {
+        "type": "icon",
+        "default": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-5 h-5 \" viewBox=\"0 0 24 24\">\r\n                                    <path d=\"M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z\"></path>\r\n                                </svg>",
+        "source": "modules/content-reviews.php",
+        "label": "Rating star 1",
+        "module": "reviews"
+    },
+    "manual_review_module_star_2": {
+        "type": "icon",
+        "default": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-4 h-4 \" viewBox=\"0 0 24 24\">\r\n                                        <path d=\"M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z\"></path>\r\n                                    </svg>",
+        "source": "modules/content-reviews.php",
+        "label": "Rating star 2",
+        "module": "reviews"
+    },
+    "manual_product_review_star_1": {
+        "type": "icon",
+        "default": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-4 w-4 \" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"m12 2 2.9 6.2 6.8 1-4.9 4.8L18 21l-6-3.2L5.9 21l1.2-7-5-4.8 6.9-1L12 2Z\"/></svg>",
+        "source": "template-parts/product-reviews.php",
+        "label": "Rating star 1"
+    },
+    "manual_cart_remove_icon": {
+        "type": "icon",
+        "default": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-5 w-5\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16\" /></svg>",
+        "source": "woocommerce/cart/cart.php",
+        "label": "Remove item icon"
+    },
+    "manual_cart_remove_title": {
+        "type": "text",
+        "default": "Remove",
+        "source": "woocommerce/cart/cart.php",
+        "label": "Remove item tooltip"
+    },
+    "manual_footer_brand_mark": {
+        "type": "icon",
+        "default": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M3.5 6.5 7.5 18 12 10 16.5 18 20.5 6.5' fill='none' stroke='#fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/><circle cx='3.5' cy='6.5' r='1.6' fill='#fff'/><circle cx='7.5' cy='18' r='1.6' fill='#fff'/><circle cx='12' cy='10' r='2.4' fill='#f49a5b'/><circle cx='16.5' cy='18' r='1.6' fill='#fff'/><circle cx='20.5' cy='6.5' r='1.6' fill='#fff'/></svg>",
+        "source": "footer.php",
+        "label": "Footer brand mark"
+    },
+    "manual_thankyou_payid_logo": {
+        "type": "image",
+        "default": "assets/images/payid.png",
+        "source": "woocommerce/checkout/thankyou.php",
+        "label": "Thankyou payid logo",
+        "field_name": "thankyou_payid_logo",
+        "field_key": "field_ty_thankyou_payid_logo"
+    },
+    "manual_thankyou_osko_logo": {
+        "type": "image",
+        "default": "assets/images/osko.jpg",
+        "source": "woocommerce/checkout/thankyou.php",
+        "label": "Thankyou osko logo",
+        "field_name": "thankyou_osko_logo",
+        "field_key": "field_ty_thankyou_osko_logo"
+    },
+    "manual_receipt_subject": {
+        "type": "text",
+        "default": "Payment Receipt - Order #{order}",
+        "source": "woocommerce/checkout/thankyou.php",
+        "label": "Receipt email subject"
+    },
+    "manual_receipt_body": {
+        "type": "text",
+        "default": "Hi,\n\nI have completed the bank transfer for Order #{order} ({total}).\n\nPlease find my transaction receipt attached.\n\nThank you,\n{name}",
+        "source": "woocommerce/checkout/thankyou.php",
+        "label": "Receipt email body"
+    },
+    "manual_delivery_12ee315960": {
+        "type": "text",
+        "default": "Delivery to {city}",
+        "source": "template-parts/australia-delivery.php",
+        "label": "Delivery to {city}"
+    },
+    "manual_delivery_2ad783c17f": {
+        "type": "text",
+        "default": "Delivery information for {city}",
+        "source": "template-parts/australia-delivery.php",
+        "label": "Delivery information for {city}"
+    },
+    "manual_delivery_0cb40d265e": {
+        "type": "text",
+        "default": "How long does delivery to {city} take?",
+        "source": "template-parts/australia-delivery.php",
+        "label": "How long does delivery to {city} take?"
+    },
+    "manual_delivery_88d5e53136": {
+        "type": "text",
+        "default": "{days}. Contact our team to confirm the current estimate for your address.",
+        "source": "template-parts/australia-delivery.php",
+        "label": "{days}. Contact our team to confirm the current estimate for your address."
+    },
+    "manual_delivery_ba68a4ba18": {
+        "type": "text",
+        "default": "Armodafinil Delivery to {city}",
+        "source": "template-parts/australia-delivery.php",
+        "label": "Armodafinil Delivery to {city}"
+    },
+    "manual_delivery_3f9eb2ca28": {
+        "type": "text",
+        "default": "Explore the Waklert Australia range and check ordering and delivery information for your {city} address.",
+        "source": "template-parts/australia-delivery.php",
+        "label": "Explore the Waklert Australia range and check ordering and delivery information for your {"
+    },
+    "manual_delivery_90d17920a2": {
+        "type": "text",
+        "default": "About {city}",
+        "source": "template-parts/australia-delivery.php",
+        "label": "About {city}"
+    },
+    "manual_delivery_0fe57946e1": {
+        "type": "text",
+        "default": "Planning an order to {city}? Browse the current range, compare pack options and confirm delivery details for your address with our team.",
+        "source": "template-parts/australia-delivery.php",
+        "label": "Planning an order to {city}? Browse the current range, compare pack options and confirm de"
+    },
+    "manual_delivery_14a6198e5f": {
+        "type": "text",
+        "default": "Ordering in {city}",
+        "source": "template-parts/australia-delivery.php",
+        "label": "Ordering in {city}"
+    },
+    "manual_delivery_785b84ea0d": {
+        "type": "text",
+        "default": "Armodafinil for {city} Customers",
+        "source": "template-parts/australia-delivery.php",
+        "label": "Armodafinil for {city} Customers"
+    },
+    "manual_delivery_25b96f7534": {
+        "type": "text",
+        "default": "{rating} out of 5 stars",
+        "source": "template-parts/australia-delivery.php",
+        "label": "{rating} out of 5 stars"
+    },
+    "manual_delivery_16ace2911a": {
+        "type": "text",
+        "default": "{city} Delivery FAQ",
+        "source": "template-parts/australia-delivery.php",
+        "label": "{city} Delivery FAQ"
+    },
+    "manual_delivery_e88b1426ff": {
+        "type": "text",
+        "default": "Ready to Order in {city}?",
+        "source": "template-parts/australia-delivery.php",
+        "label": "Ready to Order in {city}?"
+    },
+    "manual_delivery_dceb64d7b1": {
+        "type": "text",
+        "default": "Browse the range and confirm delivery options for your {city} address before ordering.",
+        "source": "template-parts/australia-delivery.php",
+        "label": "Browse the range and confirm delivery options for your {city} address before ordering."
+    },
+    "manual_delivery_reason_title": {
+        "type": "text",
+        "default": "A focused product range",
+        "source": "template-parts/australia-delivery.php",
+        "label": "A focused product range"
+    },
+    "manual_delivery_discreet_badge": {
+        "type": "text",
+        "default": "100% Discreet & sealed",
+        "source": "template-parts/australia-delivery.php",
+        "label": "100% Discreet & sealed"
+    },
+    "manual_delivery_reasons_heading": {
+        "type": "text",
+        "default": "{count} Reasons to Choose Waklert Australia",
+        "source": "template-parts/australia-delivery.php",
+        "label": "Reasons heading template"
+    },
+    "manual_star_marker": {
+        "type": "icon",
+        "default": "<svg class=\"inline-block h-[1em] w-[1em]\" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"m12 2 2.9 6.2 6.8 1-4.9 4.8L18 21l-6-3.2L5.9 21l1.2-7-5-4.8 6.9-1L12 2Z\"/></svg>",
+        "source": "inc/icon-library.php",
+        "label": "Star marker"
+    },
+    "manual_check_marker": {
+        "type": "icon",
+        "default": "<svg class=\"inline-block h-[1em] w-[1em]\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" aria-hidden=\"true\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M5 12l4 4L19 6\"/></svg>",
+        "source": "inc/icon-library.php",
+        "label": "Check marker"
+    }
+}

@@ -1,0 +1,240 @@
+{
+    "key": "group_wc_modules_content_catalog_comparison_php",
+    "title": "Catalog Comparison",
+    "fields": [
+        {
+            "key": "field_wc_content_catalog_comparis_text_e4c36662ea",
+            "label": "Product comparison",
+            "name": "wc_content_catalog_comparis_text_e4c36662ea",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: modules/content-catalog_comparison.php",
+            "default_value": "Product comparison",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_catalog_comparis_text_43d78c93fd",
+            "label": "Compare our products",
+            "name": "wc_content_catalog_comparis_text_43d78c93fd",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: modules/content-catalog_comparison.php",
+            "default_value": "Compare our products",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_catalog_comparis_text_26949753fd",
+            "label": "Compare listed product details, pack sizes and current prices. Prices and availability com",
+            "name": "wc_content_catalog_comparis_text_26949753fd",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: modules/content-catalog_comparison.php",
+            "default_value": "Compare listed product details, pack sizes and current prices. Prices and availability come from the product listings.",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_catalog_comparis_text_d759a7ea80",
+            "label": "From",
+            "name": "wc_content_catalog_comparis_text_d759a7ea80",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: modules/content-catalog_comparison.php",
+            "default_value": "From",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_catalog_comparis_text_cb318e206c",
+            "label": "/tab",
+            "name": "wc_content_catalog_comparis_text_cb318e206c",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: modules/content-catalog_comparison.php",
+            "default_value": "/tab",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_catalog_comparis_text_aa7a7119ab",
+            "label": "Strength",
+            "name": "wc_content_catalog_comparis_text_aa7a7119ab",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: modules/content-catalog_comparison.php",
+            "default_value": "Strength",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_catalog_comparis_text_04a1eb7aff",
+            "label": "Price",
+            "name": "wc_content_catalog_comparis_text_04a1eb7aff",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: modules/content-catalog_comparison.php",
+            "default_value": "Price",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_catalog_comparis_text_7a09d76ae5",
+            "label": "Availability",
+            "name": "wc_content_catalog_comparis_text_7a09d76ae5",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: modules/content-catalog_comparison.php",
+            "default_value": "Availability",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_catalog_comparis_text_1b490d8676",
+            "label": "View pack sizes and prices",
+            "name": "wc_content_catalog_comparis_text_1b490d8676",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: modules/content-catalog_comparison.php",
+            "default_value": "View pack sizes and prices",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_catalog_comparis_text_e9814ee8f4",
+            "label": "Pack sizes and prices are currently unavailable.",
+            "name": "wc_content_catalog_comparis_text_e9814ee8f4",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: modules/content-catalog_comparison.php",
+            "default_value": "Pack sizes and prices are currently unavailable.",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_catalog_comparis_text_a1d7711afb",
+            "label": "Pack size:",
+            "name": "wc_content_catalog_comparis_text_a1d7711afb",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: modules/content-catalog_comparison.php",
+            "default_value": "Pack size:",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_catalog_comparis_text_0205562a3c",
+            "label": "View product options",
+            "name": "wc_content_catalog_comparis_text_0205562a3c",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: modules/content-catalog_comparison.php",
+            "default_value": "View product options",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_catalog_comparis_text_cfa3de3a9b",
+            "label": "No products are currently available to compare.",
+            "name": "wc_content_catalog_comparis_text_cfa3de3a9b",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: modules/content-catalog_comparison.php",
+            "default_value": "No products are currently available to compare.",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_catalog_comparis_text_cadd94dd4d",
+            "label": "Product information is for comparison only. Speak with a qualified health professional abo",
+            "name": "wc_content_catalog_comparis_text_cadd94dd4d",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: modules/content-catalog_comparison.php",
+            "default_value": "Product information is for comparison only. Speak with a qualified health professional about medicine selection.",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_catalog_comparis_text_0a165c46cd",
+            "label": "Product comparison carousel",
+            "name": "wc_content_catalog_comparis_text_0a165c46cd",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: modules/content-catalog_comparison.php",
+            "default_value": "Product comparison carousel",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_catalog_comparis_text_1f5b0790d6",
+            "label": "Not listed",
+            "name": "wc_content_catalog_comparis_text_1f5b0790d6",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: modules/content-catalog_comparison.php",
+            "default_value": "Not listed",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_catalog_comparis_text_4708265c97",
+            "label": "Price unavailable",
+            "name": "wc_content_catalog_comparis_text_4708265c97",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: modules/content-catalog_comparison.php",
+            "default_value": "Price unavailable",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_catalog_comparis_text_6ea8844c9d",
+            "label": "In stock",
+            "name": "wc_content_catalog_comparis_text_6ea8844c9d",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: modules/content-catalog_comparison.php",
+            "default_value": "In stock",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_catalog_comparis_text_c986896bdf",
+            "label": "Currently unavailable",
+            "name": "wc_content_catalog_comparis_text_c986896bdf",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: modules/content-catalog_comparison.php",
+            "default_value": "Currently unavailable",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_catalog_comparis_text_42d7a798e4",
+            "label": "Pack size not listed",
+            "name": "wc_content_catalog_comparis_text_42d7a798e4",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: modules/content-catalog_comparison.php",
+            "default_value": "Pack size not listed",
+            "rows": 3,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "waklert-content-pages"
+            }
+        ]
+    ],
+    "menu_order": 50,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "description": "Generated template content fields. Source: modules/content-catalog_comparison.php"
+}

@@ -1,0 +1,398 @@
+{
+    "key": "group_wc_woocommerce_single_product_php",
+    "title": "Single Product",
+    "fields": [
+        {
+            "key": "field_wc_single_product_icon_9e301b9ac3",
+            "label": "Icon 9e301b9ac3",
+            "name": "wc_single_product_icon_9e301b9ac3",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/single-product.php",
+            "default_value": "<svg class=\"w-3.5 h-3.5 text-white fill-current\" viewBox=\"0 0 24 24\"><path d=\"M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z\"/></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_single_product_icon_9e301b9ac3_image",
+            "label": "Icon 9e301b9ac3 custom image",
+            "name": "wc_single_product_icon_9e301b9ac3_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_single_product_icon_9cc7e1a9c7",
+            "label": "Icon 9cc7e1a9c7",
+            "name": "wc_single_product_icon_9cc7e1a9c7",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/single-product.php",
+            "default_value": "<svg class=\"h-5 w-5\" viewBox=\"0 0 24 24\" fill=\"currentColor\">\r\n                            <path d=\"M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z\"/>\r\n                        </svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_single_product_icon_9cc7e1a9c7_image",
+            "label": "Icon 9cc7e1a9c7 custom image",
+            "name": "wc_single_product_icon_9cc7e1a9c7_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_single_product_icon_046e79f58e",
+            "label": "Icon 046e79f58e",
+            "name": "wc_single_product_icon_046e79f58e",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/single-product.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-4 w-4 sm:h-4.5 sm:w-4.5 shrink-0\" fill=\"none\" viewBox=\"0 0 24 24\"\r\n                                stroke=\"currentColor\" stroke-width=\"2.5\">\r\n                                <path stroke-linecap=\"round\" stroke-linejoin=\"round\"\r\n                                    d=\"M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z\" />\r\n                            </svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_single_product_icon_046e79f58e_image",
+            "label": "Icon 046e79f58e custom image",
+            "name": "wc_single_product_icon_046e79f58e_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_single_product_icon_a30eaef5ef",
+            "label": "Icon a30eaef5ef",
+            "name": "wc_single_product_icon_a30eaef5ef",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/single-product.php",
+            "default_value": "<svg class=\"h-6 w-6\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\r\n                                <rect x=\"1\" y=\"5\" width=\"14\" height=\"11\" rx=\"1.5\" fill=\"#38BDF8\" fill-opacity=\"0.3\" stroke=\"#38BDF8\" stroke-width=\"1.8\"/>\r\n                                <path d=\"M15 8h4.5l3.5 4.5v3.5h-8V8z\" fill=\"#F59E0B\" stroke=\"#F59E0B\" stroke-width=\"1.8\"/>\r\n                                <circle cx=\"6\" cy=\"18\" r=\"2.2\" fill=\"#FFFFFF\" stroke=\"#38BDF8\" stroke-width=\"1.5\"/>\r\n                                <circle cx=\"18\" cy=\"18\" r=\"2.2\" fill=\"#FFFFFF\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\r\n                            </svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_single_product_icon_a30eaef5ef_image",
+            "label": "Icon a30eaef5ef custom image",
+            "name": "wc_single_product_icon_a30eaef5ef_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_single_product_icon_7149de0b2d",
+            "label": "Icon 7149de0b2d",
+            "name": "wc_single_product_icon_7149de0b2d",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/single-product.php",
+            "default_value": "<svg class=\"h-6 w-6\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\r\n                                <path d=\"M12 2L4 6v6c0 5.25 3.4 10.15 8 11.35 4.6-1.2 8-6.1 8-11.35V6l-8-4z\" fill=\"#F59E0B\" fill-opacity=\"0.3\" stroke=\"#F59E0B\" stroke-width=\"1.8\"/>\r\n                                <path d=\"M9 12l2 2 4-4\" stroke=\"#0C4161\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\r\n                            </svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_single_product_icon_7149de0b2d_image",
+            "label": "Icon 7149de0b2d custom image",
+            "name": "wc_single_product_icon_7149de0b2d_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_single_product_icon_4ae59b577f",
+            "label": "Icon 4ae59b577f",
+            "name": "wc_single_product_icon_4ae59b577f",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/single-product.php",
+            "default_value": "<svg class=\"h-6 w-6\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\r\n                                <circle cx=\"12\" cy=\"12\" r=\"9\" fill=\"#10B981\" fill-opacity=\"0.2\" stroke=\"#10B981\" stroke-width=\"1.8\"/>\r\n                                <path d=\"M8.5 12.5l2.5 2.5 5-5\" stroke=\"#10B981\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\r\n                            </svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_single_product_icon_4ae59b577f_image",
+            "label": "Icon 4ae59b577f custom image",
+            "name": "wc_single_product_icon_4ae59b577f_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_single_product_icon_f2147f7a5a",
+            "label": "Icon f2147f7a5a",
+            "name": "wc_single_product_icon_f2147f7a5a",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/single-product.php",
+            "default_value": "<svg class=\"w-4 h-4\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4\"/></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_single_product_icon_f2147f7a5a_image",
+            "label": "Icon f2147f7a5a custom image",
+            "name": "wc_single_product_icon_f2147f7a5a_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_single_product_icon_525507ef56",
+            "label": "Icon 525507ef56",
+            "name": "wc_single_product_icon_525507ef56",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/single-product.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-5 w-5 shrink-0 text-[#0c4161] transition-transform duration-200 group-open:rotate-180\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\r\n                        <path d=\"m6 9 6 6 6-6\" />\r\n                    </svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_single_product_icon_525507ef56_image",
+            "label": "Icon 525507ef56 custom image",
+            "name": "wc_single_product_icon_525507ef56_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_single_product_icon_9a1dcf6b07",
+            "label": "Icon 9a1dcf6b07",
+            "name": "wc_single_product_icon_9a1dcf6b07",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/single-product.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-4 w-4 shrink-0\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-width=\"2.5\" aria-hidden=\"true\">\r\n                        <path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z\" />\r\n                    </svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_single_product_icon_9a1dcf6b07_image",
+            "label": "Icon 9a1dcf6b07 custom image",
+            "name": "wc_single_product_icon_9a1dcf6b07_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_single_product_text_4d8e899895",
+            "label": "AU Express",
+            "name": "wc_single_product_text_4d8e899895",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/single-product.php",
+            "default_value": "AU Express",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_single_product_text_222357302c",
+            "label": "7-10 day delivery",
+            "name": "wc_single_product_text_222357302c",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/single-product.php",
+            "default_value": "7-10 day delivery",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_single_product_text_8c9ab75f09",
+            "label": "256-Bit SSL",
+            "name": "wc_single_product_text_8c9ab75f09",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/single-product.php",
+            "default_value": "256-Bit SSL",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_single_product_text_4b8cfdacbb",
+            "label": "Encrypted checkout",
+            "name": "wc_single_product_text_4b8cfdacbb",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/single-product.php",
+            "default_value": "Encrypted checkout",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_single_product_text_5aa2564a17",
+            "label": "Sun Pharma",
+            "name": "wc_single_product_text_5aa2564a17",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/single-product.php",
+            "default_value": "Sun Pharma",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_single_product_text_ec8dde4aca",
+            "label": "100% genuine seal",
+            "name": "wc_single_product_text_ec8dde4aca",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/single-product.php",
+            "default_value": "100% genuine seal",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_single_product_text_89740a0702",
+            "label": "Add to Cart",
+            "name": "wc_single_product_text_89740a0702",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/single-product.php",
+            "default_value": "Add to Cart",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_single_product_text_cfba5e0ecf",
+            "label": "Home",
+            "name": "wc_single_product_text_cfba5e0ecf",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/single-product.php",
+            "default_value": "Home",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_single_product_text_b1ae4b2c42",
+            "label": "Products",
+            "name": "wc_single_product_text_b1ae4b2c42",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/single-product.php",
+            "default_value": "Products",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_single_product_text_4934c98ce9",
+            "label": "Choose Quantity (prices in AUD)",
+            "name": "wc_single_product_text_4934c98ce9",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/single-product.php",
+            "default_value": "Choose Quantity (prices in AUD)",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_single_product_text_c23a3486a5",
+            "label": "Quantity",
+            "name": "wc_single_product_text_c23a3486a5",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/single-product.php",
+            "default_value": "Quantity",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_single_product_text_7bbcacafd1",
+            "label": "Checkout & Pay",
+            "name": "wc_single_product_text_7bbcacafd1",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/single-product.php",
+            "default_value": "Checkout & Pay",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_single_product_text_824d6cbc07",
+            "label": "Out of Stock",
+            "name": "wc_single_product_text_824d6cbc07",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/single-product.php",
+            "default_value": "Out of Stock",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_single_product_text_8dfc4a8f73",
+            "label": "From",
+            "name": "wc_single_product_text_8dfc4a8f73",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/single-product.php",
+            "default_value": "From ",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_single_product_text_c16cd9dc94",
+            "label": "In Stock — Ready to Dispatch",
+            "name": "wc_single_product_text_c16cd9dc94",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/single-product.php",
+            "default_value": "In Stock — Ready to Dispatch",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_single_product_text_86bab3b87b",
+            "label": "Out of stock",
+            "name": "wc_single_product_text_86bab3b87b",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/single-product.php",
+            "default_value": "Out of stock",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_single_product_text_8299cfa71d",
+            "label": "Pack size not listed",
+            "name": "wc_single_product_text_8299cfa71d",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/single-product.php",
+            "default_value": "Pack size not listed",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_single_product_text_fbc57a99a5",
+            "label": "Product Specifications",
+            "name": "wc_single_product_text_fbc57a99a5",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/single-product.php",
+            "default_value": "Product Specifications",
+            "rows": 3,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "waklert-content-storefront"
+            }
+        ]
+    ],
+    "menu_order": 50,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "description": "Generated template content fields. Source: woocommerce/single-product.php"
+}

@@ -1,0 +1,53 @@
+{
+    "key": "group_wc_woocommerce_emails_customer_processing_order_php",
+    "title": "Email: Customer Processing Order",
+    "fields": [
+        {
+            "key": "field_wc_manual_email_greeting_fallback",
+            "label": "Email greeting fallback",
+            "name": "wc_manual_email_greeting_fallback",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/emails/customer-processing-order.php",
+            "default_value": "there",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_customer_processing_orde_text_f39a8eb369",
+            "label": "Hi %s,",
+            "name": "wc_customer_processing_orde_text_f39a8eb369",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/emails/customer-processing-order.php",
+            "default_value": "Hi %s,",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_customer_processing_orde_text_6b74aef439",
+            "label": "Just to let you know — we've received your order, and it is now being processed:",
+            "name": "wc_customer_processing_orde_text_6b74aef439",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/emails/customer-processing-order.php",
+            "default_value": "Just to let you know — we've received your order, and it is now being processed:",
+            "rows": 3,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "waklert-content-emails"
+            }
+        ]
+    ],
+    "menu_order": 50,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "description": "Generated template content fields. Source: woocommerce/emails/customer-processing-order.php"
+}

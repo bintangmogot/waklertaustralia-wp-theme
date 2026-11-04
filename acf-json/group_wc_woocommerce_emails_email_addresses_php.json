@@ -1,0 +1,53 @@
+{
+    "key": "group_wc_woocommerce_emails_email_addresses_php",
+    "title": "Email: Addresses",
+    "fields": [
+        {
+            "key": "field_wc_email_addresses_text_cb526d19e0",
+            "label": "Billing address",
+            "name": "wc_email_addresses_text_cb526d19e0",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/emails/email-addresses.php",
+            "default_value": "Billing address",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_email_addresses_text_07acae02a1",
+            "label": "N/A",
+            "name": "wc_email_addresses_text_07acae02a1",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/emails/email-addresses.php",
+            "default_value": "N/A",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_email_addresses_text_e9e5c9e3d9",
+            "label": "Shipping address",
+            "name": "wc_email_addresses_text_e9e5c9e3d9",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/emails/email-addresses.php",
+            "default_value": "Shipping address",
+            "rows": 3,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "waklert-content-emails"
+            }
+        ]
+    ],
+    "menu_order": 50,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "description": "Generated template content fields. Source: woocommerce/emails/email-addresses.php"
+}

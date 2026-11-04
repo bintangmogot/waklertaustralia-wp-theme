@@ -27,7 +27,7 @@ get_header();
             <div class="container-site max-w-4xl mx-auto px-4 relative z-10">
                 <!-- Breadcrumbs -->
                 <div class="mb-3">
-                    <nav aria-label="Breadcrumb" class="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border border-dashed border-sky-300/80 bg-white/90 px-3.5 py-1 text-xs font-medium text-slate-500 shadow-xs backdrop-blur">
+                    <nav aria-label="<?= esc_attr(waklert_content('page_text_d0b0862426')) ?>" class="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border border-dashed border-sky-300/80 bg-white/90 px-3.5 py-1 text-xs font-medium text-slate-500 shadow-xs backdrop-blur">
                         <a href="<?= esc_url(home_url('/')) ?>" class="font-bold text-slate-600 transition-colors hover:text-[#0c4161]"><?= esc_html(waklert_option_text('breadcrumb_home_label')) ?></a>
                         <span class="text-sky-300 font-normal">/</span>
                         <span aria-current="page" class="font-extrabold text-[#0c4161]"><?php the_title(); ?></span>
@@ -38,7 +38,7 @@ get_header();
                 <div class="mb-2.5">
                     <span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 border border-sky-300/80 px-3.5 py-1 text-xs font-black uppercase tracking-[0.16em] text-[#0c4161] shadow-xs">
                         <span class="h-1.5 w-1.5 rounded-full bg-amber-500 animate-pulse" aria-hidden="true"></span>
-                        Waklert Australia
+                        <?= esc_html(waklert_content('page_text_327faaa73f')) ?>
                     </span>
                 </div>
 

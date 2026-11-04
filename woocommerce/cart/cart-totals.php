@@ -16,7 +16,7 @@ defined( 'ABSPATH' ) || exit;
 
 	<?php do_action( 'woocommerce_before_cart_totals' ); ?>
 
-	<h2 class="text-xl font-bold font-heading text-slate-900 mb-5"><?php esc_html_e( 'Carts Totals', 'woocommerce' ); ?></h2>
+	<h2 class="text-xl font-bold font-heading text-slate-900 mb-5"><?php esc_html_e( waklert_content('cart_totals_text_8f4d2caa1f'), 'woocommerce' ); ?></h2>
 
 
 
@@ -24,8 +24,8 @@ defined( 'ABSPATH' ) || exit;
 
 		<!-- Subtotal -->
 		<div class="cart-totals-flex py-4 border-b border-stone-100">
-			<div class="font-medium text-slate-500"><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></div>
-			<div class="font-bold text-slate-900" data-title="<?php esc_attr_e( 'Subtotal', 'woocommerce' ); ?>"><?php wc_cart_totals_subtotal_html(); ?></div>
+			<div class="font-medium text-slate-500"><?php esc_html_e( waklert_content('cart_totals_text_7dcbd9eb45'), 'woocommerce' ); ?></div>
+			<div class="font-bold text-slate-900" data-title="<?php esc_attr_e( waklert_content('cart_totals_text_7dcbd9eb45'), 'woocommerce' ); ?>"><?php wc_cart_totals_subtotal_html(); ?></div>
 		</div>
 
 		<!-- Coupons -->
@@ -42,7 +42,7 @@ defined( 'ABSPATH' ) || exit;
 
 			<!-- Custom Shipping Display Wrapper -->
 			<div class="py-4 border-b border-stone-100">
-				<div class="font-bold text-slate-900 text-base mb-3"><?php esc_html_e( 'Shipment', 'woocommerce' ); ?></div>
+				<div class="font-bold text-slate-900 text-base mb-3"><?php esc_html_e( waklert_content('cart_totals_text_015982e083'), 'woocommerce' ); ?></div>
 				<table class="w-full custom-cart-shipping-table">
 					<tbody>
 						<?php wc_cart_totals_shipping_html(); ?>
@@ -54,8 +54,8 @@ defined( 'ABSPATH' ) || exit;
 
 		<?php elseif ( WC()->cart->needs_shipping() && 'yes' === get_option( 'woocommerce_enable_shipping_calc' ) ) : ?>
 			<div class="cart-totals-flex py-4 border-b border-stone-100 shipping">
-				<div class="font-medium text-slate-500"><?php esc_html_e( 'Shipping', 'woocommerce' ); ?></div>
-				<div data-title="<?php esc_attr_e( 'Shipping', 'woocommerce' ); ?>"><?php woocommerce_shipping_calculator(); ?></div>
+				<div class="font-medium text-slate-500"><?php esc_html_e( waklert_content('cart_totals_text_7d8d42a40a'), 'woocommerce' ); ?></div>
+				<div data-title="<?php esc_attr_e( waklert_content('cart_totals_text_7d8d42a40a'), 'woocommerce' ); ?>"><?php woocommerce_shipping_calculator(); ?></div>
 			</div>
 		<?php endif; ?>
 
@@ -75,7 +75,7 @@ defined( 'ABSPATH' ) || exit;
 
 			if ( WC()->customer->is_customer_outside_base() && ! WC()->customer->has_calculated_shipping() ) {
 				/* translators: %s location. */
-				$estimated_text = sprintf( ' <small>' . esc_html__( '(estimated for %s)', 'woocommerce' ) . '</small>', WC()->countries->estimated_for_prefix( $taxable_address[0] ) . WC()->countries->countries[ $taxable_address[0] ] );
+				$estimated_text = sprintf( ' <small>' . esc_html__( waklert_content('cart_totals_text_a883bd7e7b'), 'woocommerce' ) . '</small>', WC()->countries->estimated_for_prefix( $taxable_address[0] ) . WC()->countries->countries[ $taxable_address[0] ] );
 			}
 
 			if ( 'itemized' === get_option( 'woocommerce_tax_total_display' ) ) {
@@ -102,8 +102,8 @@ defined( 'ABSPATH' ) || exit;
 
 		<!-- Total -->
 		<div class="cart-totals-flex pt-6 pb-2 order-total">
-			<div class="text-lg font-black text-slate-900"><?php esc_html_e( 'Total', 'woocommerce' ); ?></div>
-			<div class="text-xl font-black text-slate-900" data-title="<?php esc_attr_e( 'Total', 'woocommerce' ); ?>"><?php wc_cart_totals_order_total_html(); ?></div>
+			<div class="text-lg font-black text-slate-900"><?php esc_html_e( waklert_content('cart_totals_text_98ac01ccc1'), 'woocommerce' ); ?></div>
+			<div class="text-xl font-black text-slate-900" data-title="<?php esc_attr_e( waklert_content('cart_totals_text_98ac01ccc1'), 'woocommerce' ); ?>"><?php wc_cart_totals_order_total_html(); ?></div>
 		</div>
 
 		<?php do_action( 'woocommerce_cart_totals_after_order_total' ); ?>

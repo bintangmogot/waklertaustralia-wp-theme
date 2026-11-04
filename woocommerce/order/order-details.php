@@ -44,17 +44,17 @@ if ( $show_downloads ) {
 	<?php do_action( 'woocommerce_order_details_before_order_table', $order ); ?>
 
 	<h2 class="woocommerce-order-details__title font-heading text-lg sm:text-xl font-extrabold text-[#0C4161] mb-3 pb-2 border-b border-border/80 flex items-center justify-between">
-		<span><?php esc_html_e( 'Order details', 'woocommerce' ); ?></span>
+		<span><?php esc_html_e( waklert_content('order_details_text_930e45fb43'), 'woocommerce' ); ?></span>
 		<span class="text-xs font-bold uppercase tracking-wider text-[#0284C7] px-2.5 py-0.5 rounded-full bg-sky-50 border border-sky-200">
-			Order #<?php echo esc_html( $order->get_order_number() ); ?>
+			<?= esc_html(waklert_content('order_details_text_fd8bd24f4a')) ?><?php echo esc_html( $order->get_order_number() ); ?>
 		</span>
 	</h2>
 
 	<!-- Mobile Flat Clean List (NO nested tables, NO nested boxes) -->
 	<div class="order-details-mobile-stack md:hidden mb-2">
 		<div class="bg-[#0C4161] text-white flex items-center justify-between py-2 px-3.5 rounded-lg text-xs font-bold uppercase tracking-wider mb-2" style="background-color: #0C4161 !important; color: #FFFFFF !important;">
-			<span style="color: #FFFFFF !important; -webkit-text-fill-color: #FFFFFF !important;"><?php esc_html_e( 'Product', 'woocommerce' ); ?></span>
-			<span style="color: #FFFFFF !important; -webkit-text-fill-color: #FFFFFF !important;"><?php esc_html_e( 'Total', 'woocommerce' ); ?></span>
+			<span style="color: #FFFFFF !important; -webkit-text-fill-color: #FFFFFF !important;"><?php esc_html_e( waklert_content('order_details_text_553c1fd7c8'), 'woocommerce' ); ?></span>
+			<span style="color: #FFFFFF !important; -webkit-text-fill-color: #FFFFFF !important;"><?php esc_html_e( waklert_content('order_details_text_af06f2116c'), 'woocommerce' ); ?></span>
 		</div>
 		<!-- Ordered Items -->
 		<div class="divide-y divide-border/60 mb-4">
@@ -70,7 +70,7 @@ if ( $show_downloads ) {
 							<?php echo wp_kses_post( $item->get_name() ); ?>
 						</div>
 						<div class="text-xs text-muted-foreground mt-1 flex items-center gap-2">
-							<span>Qty: <strong class="text-foreground font-semibold"><?php echo esc_html( $qty ); ?></strong></span>
+							<span><?= esc_html(waklert_content('order_details_text_52653dbae9')) ?> <strong class="text-foreground font-semibold"><?php echo esc_html( $qty ); ?></strong></span>
 						</div>
 						<?php wc_display_item_meta( $item ); ?>
 						<?php if ( $show_purchase_note && $product && $product->get_purchase_note() ) : ?>
@@ -119,7 +119,7 @@ if ( $show_downloads ) {
 
 		<?php if ( $order->get_customer_note() ) : ?>
 			<div class="mt-4 pt-3 border-t border-border/60 text-xs text-muted-foreground">
-				<span class="font-bold text-foreground block mb-1"><?php esc_html_e( 'Note:', 'woocommerce' ); ?></span>
+				<span class="font-bold text-foreground block mb-1"><?php esc_html_e( waklert_content('order_details_text_2b63e8e394'), 'woocommerce' ); ?></span>
 				<?php echo wp_kses( nl2br( wc_wptexturize_order_note( $order->get_customer_note() ) ), array( 'br' => array() ) ); ?>
 			</div>
 		<?php endif; ?>
@@ -130,8 +130,8 @@ if ( $show_downloads ) {
 		<table class="woocommerce-table woocommerce-table--order-details shop_table order_details w-full text-left border-collapse">
 			<thead>
 				<tr class="bg-[#0C4161] text-white" style="background-color: #0C4161 !important;">
-					<th class="woocommerce-table__product-name product-name py-2.5 px-3.5 text-xs font-bold uppercase tracking-wider text-white" style="color: #FFFFFF !important; -webkit-text-fill-color: #FFFFFF !important; background-color: #0C4161 !important; border: none !important;"><?php esc_html_e( 'Product', 'woocommerce' ); ?></th>
-					<th class="woocommerce-table__product-table product-total py-2.5 px-3.5 text-xs font-bold uppercase tracking-wider text-white text-right" style="color: #FFFFFF !important; -webkit-text-fill-color: #FFFFFF !important; background-color: #0C4161 !important; border: none !important;"><?php esc_html_e( 'Total', 'woocommerce' ); ?></th>
+					<th class="woocommerce-table__product-name product-name py-2.5 px-3.5 text-xs font-bold uppercase tracking-wider text-white" style="color: #FFFFFF !important; -webkit-text-fill-color: #FFFFFF !important; background-color: #0C4161 !important; border: none !important;"><?php esc_html_e( waklert_content('order_details_text_553c1fd7c8'), 'woocommerce' ); ?></th>
+					<th class="woocommerce-table__product-table product-total py-2.5 px-3.5 text-xs font-bold uppercase tracking-wider text-white text-right" style="color: #FFFFFF !important; -webkit-text-fill-color: #FFFFFF !important; background-color: #0C4161 !important; border: none !important;"><?php esc_html_e( waklert_content('order_details_text_af06f2116c'), 'woocommerce' ); ?></th>
 				</tr>
 			</thead>
 
@@ -175,7 +175,7 @@ if ( $show_downloads ) {
 						}
 					}
 					?>
-					<tr class="<?php echo $is_grand_total ? 'bg-[#F0F7FC] border-y-2 border-[#BAE6FD] order-total' : ''; ?>" <?php if ( $is_grand_total ) echo 'style="background-color: #F0F7FC !important;"'; ?>>
+					<tr class="<?php echo $is_grand_total ? 'bg-[#F0F7FC] border-y-2 border-[#BAE6FD] order-total' : ''; ?>" <?php if ( $is_grand_total ) echo esc_html(waklert_content('order_details_text_ff61f411f4')); ?>>
 						<th scope="row" class="py-3 px-3.5 <?php echo $is_grand_total ? 'text-[#0C4161] font-black text-base sm:text-lg' : 'text-xs sm:text-sm font-semibold text-muted-foreground'; ?>" <?php if ( $is_grand_total ) echo 'style="color: #0C4161 !important; font-size: 1.25rem !important; font-weight: 900 !important;"'; ?>><?php echo esc_html( $total['label'] ); ?></th>
 						<td class="py-3 px-3.5 text-right font-bold <?php echo $is_grand_total ? 'text-[#0284C7] font-black text-2xl sm:text-3xl font-heading' : 'text-xs sm:text-sm text-foreground'; ?>" <?php if ( $is_grand_total ) echo 'style="color: #0284C7 !important; font-size: 1.625rem !important; font-weight: 900 !important;"'; ?>>
 							<?php if ( $is_shipping && $shipping_method ) : ?>
@@ -191,7 +191,7 @@ if ( $show_downloads ) {
 				?>
 				<?php if ( $order->get_customer_note() ) : ?>
 					<tr>
-						<th class="py-3 px-4 text-sm font-semibold text-muted-foreground"><?php esc_html_e( 'Note:', 'woocommerce' ); ?></th>
+						<th class="py-3 px-4 text-sm font-semibold text-muted-foreground"><?php esc_html_e( waklert_content('order_details_text_2b63e8e394'), 'woocommerce' ); ?></th>
 						<td class="py-3 px-4 text-sm text-foreground">
 						<?php
 						$customer_note = wc_wptexturize_order_note( $order->get_customer_note() );

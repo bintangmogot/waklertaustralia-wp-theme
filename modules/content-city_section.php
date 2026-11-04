@@ -6,22 +6,24 @@
  * Features 2-tone dashed styling, pattern dots, glowing amber indicators, and unlinked location badges.
  */
 
+if (waklert_module_is_empty()) { return; }
+
 $theme_style = get_sub_field('theme_style') ?: 'navy';
 $is_navy     = ($theme_style !== 'light');
 
 $tag = get_sub_field('tag');
 if ($tag === null || $tag === '') {
-    $tag = waklert_module_default('city_section', 'tag');
+    $tag = '';
 }
 
 $heading = get_sub_field('title');
 if ($heading === null || $heading === '') {
-    $heading = waklert_module_default('city_section', 'title');
+    $heading = '';
 }
 
 $desc = get_sub_field('description');
 if ($desc === null || $desc === '') {
-    $desc = waklert_module_default('city_section', 'description');
+    $desc = '';
 }
 
 // 1. Check quick_cities textarea
@@ -49,6 +51,7 @@ if (!empty($quick_cities)) {
 if (empty($cities_list) && have_rows('cities_list')) {
     while (have_rows('cities_list')) {
         the_row();
+        if (!waklert_module_row_has_content(get_row(true))) { continue; }
         $name = trim((string) get_sub_field('city_name'));
         if ($name === '') continue;
         $has_check = (bool) get_sub_field('has_checkmark');
@@ -65,18 +68,12 @@ if (empty($cities_list) && have_rows('cities_list')) {
 
 // 3. Fallback to default 8 Australian delivery cities
 if (empty($cities_list)) {
-    foreach (waklert_module_default_rows('city_section', 'cities_list') as $default_city) {
+    foreach ([] as $default_city) {
         $cities_list[] = ['name' => $default_city['city_name'], 'checkmark' => !empty($default_city['has_checkmark'])];
     }
 }
 
-// 4. Ensure legacy Perth references are mapped to Canberra
-foreach ($cities_list as &$c_item) {
-    if (stripos($c_item['name'], 'Perth') !== false) {
-        $c_item['name'] = 'Canberra';
-    }
-}
-unset($c_item);
+
 ?>
 
 <?php if ($is_navy): ?>
@@ -92,19 +89,19 @@ unset($c_item);
         <!-- Section Header -->
         <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12">
             <?php if (!empty($tag)): ?>
-            <div class="inline-flex items-center rounded-full bg-amber-400/15 border border-amber-300/35 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-amber-300 mb-4 sm:mb-5">
+            <?php if (waklert_has_content(esc_html($tag))): ?><div class="inline-flex items-center rounded-full bg-amber-400/15 border border-amber-300/35 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-amber-300 mb-4 sm:mb-5">
                 <?= esc_html($tag) ?>
-            </div>
+            </div><?php endif; ?>
             <?php endif; ?>
 
-            <h2 class="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-black text-white tracking-tight leading-tight mb-3 sm:mb-4">
+            <?php if (waklert_has_content(esc_html($heading))): ?><h2 class="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-black text-white tracking-tight leading-tight mb-3 sm:mb-4">
                 <?= esc_html($heading) ?>
-            </h2>
+            </h2><?php endif; ?>
 
             <?php if (!empty($desc)): ?>
-            <p class="text-sm sm:text-base text-sky-100/85 max-w-xl mx-auto leading-relaxed">
+            <?php if (waklert_has_content(esc_html($desc))): ?><p class="text-sm sm:text-base text-sky-100/85 max-w-xl mx-auto leading-relaxed">
                 <?= esc_html($desc) ?>
-            </p>
+            </p><?php endif; ?>
             <?php endif; ?>
         </div>
 
@@ -112,9 +109,9 @@ unset($c_item);
         <div class="max-w-4xl mx-auto flex flex-wrap justify-center items-center gap-2.5 sm:gap-3 md:gap-3.5">
             <?php foreach ($cities_list as $city): ?>
             <div class="inline-flex items-center bg-white/10 hover:bg-white/15 border border-white/20 hover:border-amber-400/50 text-white rounded-full px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm md:text-[15px] font-semibold tracking-wide backdrop-blur-sm transition-colors duration-200 cursor-text select-text">
-                <span class="text-white"><?= esc_html($city['name']) ?></span>
+                <?php if (waklert_has_content(esc_html($city['name']))): ?><span class="text-white"><?= esc_html($city['name']) ?></span><?php endif; ?>
                 <?php if (!empty($city['checkmark'])): ?>
-                <span class="text-amber-300 font-bold ml-1.5" aria-hidden="true">✓</span>
+                <span class="text-amber-300 font-bold ml-1.5" aria-hidden="true"><?= waklert_content_icon('manual_check_marker') ?></span>
                 <?php endif; ?>
             </div>
             <?php endforeach; ?>
@@ -129,19 +126,19 @@ unset($c_item);
         <!-- Section Header -->
         <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12">
             <?php if (!empty($tag)): ?>
-            <span class="inline-flex items-center bg-sky-100 text-[#0c4161] border border-sky-300 text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full mb-3">
+            <?php if (waklert_has_content(esc_html($tag))): ?><span class="inline-flex items-center bg-sky-100 text-[#0c4161] border border-sky-300 text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full mb-3">
                 <?= esc_html($tag) ?>
-            </span>
+            </span><?php endif; ?>
             <?php endif; ?>
 
-            <h2 class="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-black text-ink tracking-tight leading-tight mb-3 sm:mb-4">
+            <?php if (waklert_has_content(esc_html($heading))): ?><h2 class="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-black text-ink tracking-tight leading-tight mb-3 sm:mb-4">
                 <?= esc_html($heading) ?>
-            </h2>
+            </h2><?php endif; ?>
 
             <?php if (!empty($desc)): ?>
-            <p class="text-sm sm:text-base text-muted-foreground max-w-xl mx-auto leading-relaxed">
+            <?php if (waklert_has_content(esc_html($desc))): ?><p class="text-sm sm:text-base text-muted-foreground max-w-xl mx-auto leading-relaxed">
                 <?= esc_html($desc) ?>
-            </p>
+            </p><?php endif; ?>
             <?php endif; ?>
         </div>
 
@@ -149,9 +146,9 @@ unset($c_item);
         <div class="max-w-4xl mx-auto flex flex-wrap justify-center items-center gap-2.5 sm:gap-3 md:gap-3.5">
             <?php foreach ($cities_list as $city): ?>
             <div class="inline-flex items-center bg-white hover:bg-sky-50 border border-sky-200 hover:border-[#0c4161] text-[#0c4161] rounded-full px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm md:text-[15px] font-semibold tracking-wide shadow-2xs transition-colors duration-200 cursor-text select-text">
-                <span class="text-slate-800 hover:text-[#0c4161]"><?= esc_html($city['name']) ?></span>
+                <?php if (waklert_has_content(esc_html($city['name']))): ?><span class="text-slate-800 hover:text-[#0c4161]"><?= esc_html($city['name']) ?></span><?php endif; ?>
                 <?php if (!empty($city['checkmark'])): ?>
-                <span class="text-emerald-600 font-bold ml-1.5" aria-hidden="true">✓</span>
+                <span class="text-emerald-600 font-bold ml-1.5" aria-hidden="true"><?= waklert_content_icon('manual_check_marker') ?></span>
                 <?php endif; ?>
             </div>
             <?php endforeach; ?>

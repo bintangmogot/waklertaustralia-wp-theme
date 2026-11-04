@@ -3,16 +3,18 @@
  * Customer Reviews Module
  */
 
-$heading = get_sub_field('heading') ?: waklert_module_default('reviews', 'heading');
-$desc = get_sub_field('description') ?: waklert_module_default('reviews', 'description');
-$eyebrow = get_sub_field('eyebrow') ?: waklert_module_default('reviews', 'eyebrow');
-$summary_text = get_sub_field('summary_text') ?: waklert_module_default('reviews', 'summary_text');
-$score_suffix = get_sub_field('score_suffix') ?: waklert_module_default('reviews', 'score_suffix');
-$badge_1 = get_sub_field('badge_1') ?: waklert_module_default('reviews', 'badge_1');
-$badge_2 = get_sub_field('badge_2') ?: waklert_module_default('reviews', 'badge_2');
-$default_meta = get_sub_field('default_meta') ?: waklert_module_default('reviews', 'default_meta');
-$verified_label = get_sub_field('verified_label') ?: waklert_module_default('reviews', 'verified_label');
-$empty_text = get_sub_field('empty_text') ?: waklert_module_default('reviews', 'empty_text');
+if (waklert_module_is_empty()) { return; }
+
+$heading = waklert_module_text('heading');
+$desc = waklert_module_text('description');
+$eyebrow = waklert_module_text('eyebrow');
+$summary_text = waklert_module_text('summary_text');
+$score_suffix = waklert_module_text('score_suffix');
+$badge_1 = waklert_module_text('badge_1');
+$badge_2 = waklert_module_text('badge_2');
+$default_meta = waklert_module_text('default_meta');
+$verified_label = waklert_module_text('verified_label');
+$empty_text = waklert_module_text('empty_text');
 
 // Run query first to calculate dynamic stats
 $reviews_query = new WP_Query([
@@ -54,16 +56,16 @@ $average_stars = round($average_rating);
         <!-- Header & Aggregate Summary Card -->
         <div class="mb-12">
             <div class="text-center max-w-2xl mx-auto mb-8">
-                <span class="inline-flex items-center gap-2 rounded-full bg-sky-100 border border-sky-300/80 px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-[#0c4161] shadow-sm mb-4">
+                <?php if (waklert_has_content(esc_html($eyebrow))): ?><span class="inline-flex items-center gap-2 rounded-full bg-sky-100 border border-sky-300/80 px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-[#0c4161] shadow-sm mb-4">
                     <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                     <?= esc_html($eyebrow) ?>
-                </span>
-                <h1 class="font-heading text-3xl md:text-5xl font-extrabold text-[#0c4161] tracking-tight mb-4">
+                </span><?php endif; ?>
+                <?php if (waklert_has_content(esc_html($heading))): ?><h1 class="font-heading text-3xl md:text-5xl font-extrabold text-[#0c4161] tracking-tight mb-4">
                     <?= esc_html($heading) ?>
-                </h1>
-                <p class="text-slate-600 text-base md:text-lg leading-relaxed">
+                </h1><?php endif; ?>
+                <?php if (waklert_has_content(esc_html($desc))): ?><p class="text-slate-600 text-base md:text-lg leading-relaxed">
                     <?= esc_html($desc) ?>
-                </p>
+                </p><?php endif; ?>
             </div>
 
             <!-- 2-Tone Dashed Rating Summary Card -->
@@ -71,39 +73,29 @@ $average_stars = round($average_rating);
                 <div class="flex items-center gap-4">
                     <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-400 to-amber-500 text-white shadow-md">
                         <!-- Multi-color Shield SVG -->
-                        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 2L3 6V12C3 17.5 7 21 12 22C17 21 21 17.5 21 12V6L12 2Z" fill="#FFFFFF" fill-opacity="0.3"/>
-                            <path d="M12 3L4 7V12C4 16.8 7.5 20 12 21C16.5 20 20 16.8 20 12V7L12 3Z" stroke="#0C4161" stroke-width="1.8"/>
-                            <path d="M8.5 12L10.8 14.3L15.5 9.7" stroke="#0C4161" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
+                        <?= waklert_content_icon('content_reviews_icon_b88d9a8db7') ?>
                     </div>
                     <div>
                         <div class="flex items-center gap-1.5 text-amber-400 mb-1">
                             <?php for ($i = 0; $i < 5; $i++): ?>
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 <?= ($i < $average_stars) ? 'text-amber-400 fill-current' : 'text-slate-200 fill-current' ?>" viewBox="0 0 24 24">
-                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                                </svg>
+                                <?= waklert_content_icon_class('manual_review_module_star_1', ($i < $average_stars) ? 'text-amber-400 fill-current' : 'text-slate-200 fill-current') ?>
                             <?php endfor; ?>
-                            <span class="ml-1 text-lg font-black text-slate-900"><?= number_format($average_rating, 1) ?> <?= esc_html($score_suffix) ?></span>
+                            <?php if (waklert_has_content(number_format($average_rating, 1)) || waklert_has_content(esc_html($score_suffix))): ?><span class="ml-1 text-lg font-black text-slate-900"><?= number_format($average_rating, 1) ?> <?= esc_html($score_suffix) ?></span><?php endif; ?>
                         </div>
-                        <p class="text-xs sm:text-sm font-semibold text-slate-500">
+                        <?php if (waklert_has_content(esc_html(str_replace('{count}', (string) $total_reviews, $summary_text)))): ?><p class="text-xs sm:text-sm font-semibold text-slate-500">
                             <?= esc_html(str_replace('{count}', (string) $total_reviews, $summary_text)) ?>
-                        </p>
+                        </p><?php endif; ?>
                     </div>
                 </div>
                 <div class="flex flex-wrap items-center gap-3">
-                    <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 border border-emerald-300 px-3.5 py-1.5 text-xs font-bold text-emerald-800">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
-                        </svg>
+                    <?php if (waklert_has_content(esc_html($badge_1))): ?><span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 border border-emerald-300 px-3.5 py-1.5 text-xs font-bold text-emerald-800">
+                        <?= waklert_content_icon('content_reviews_icon_c064a6e8b9') ?>
                         <?= esc_html($badge_1) ?>
-                    </span>
-                    <span class="inline-flex items-center gap-1.5 rounded-full bg-sky-50 border border-sky-300 px-3.5 py-1.5 text-xs font-bold text-[#0c4161]">
-                        <svg class="w-3.5 h-3.5 text-sky-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
+                    </span><?php endif; ?>
+                    <?php if (waklert_has_content(esc_html($badge_2))): ?><span class="inline-flex items-center gap-1.5 rounded-full bg-sky-50 border border-sky-300 px-3.5 py-1.5 text-xs font-bold text-[#0c4161]">
+                        <?= waklert_content_icon('content_reviews_icon_c4604a30e0') ?>
                         <?= esc_html($badge_2) ?>
-                    </span>
+                    </span><?php endif; ?>
                 </div>
             </div>
         </div>
@@ -131,26 +123,22 @@ $average_stars = round($average_rating);
                         <div class="flex items-center justify-between gap-3 mb-4">
                             <!-- Colorful Quote Mark SVG -->
                             <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-sky-50 border border-sky-200 text-[#0c4161] group-hover:scale-110 transition-transform">
-                                <svg class="w-5 h-5 text-amber-500" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-                                </svg>
+                                <?= waklert_content_icon('content_reviews_icon_3b705a7473') ?>
                             </div>
 
                             <!-- Golden Stars -->
                             <div class="flex items-center gap-1 text-amber-400">
                                 <?php for ($stars = 0; $stars < 5; $stars++): ?>
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 <?= ($stars < $rating) ? "text-amber-400 fill-current" : "text-slate-200 fill-current" ?>" viewBox="0 0 24 24">
-                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                                    </svg>
+                                    <?= waklert_content_icon_class('manual_review_module_star_2', ($stars < $rating) ? "text-amber-400 fill-current" : "text-slate-200 fill-current") ?>
                                 <?php endfor; ?>
                             </div>
                         </div>
 
-                        <h3 class="font-heading text-base font-bold text-slate-900 mb-2 leading-snug group-hover:text-[#0c4161] transition-colors">
+                        <?php if (waklert_has_content(esc_html($title))): ?><h3 class="font-heading text-base font-bold text-slate-900 mb-2 leading-snug group-hover:text-[#0c4161] transition-colors">
                             <?= esc_html($title) ?>
-                        </h3>
+                        </h3><?php endif; ?>
                         <p class="text-xs sm:text-sm text-slate-600 leading-relaxed italic">
-                            &ldquo;<?= esc_html(trim(wp_strip_all_tags($body))) ?>&rdquo;
+                            <?= esc_html(waklert_content('content_reviews_text_a018beff4e')) ?><?= esc_html(trim(wp_strip_all_tags($body))) ?><?= esc_html(waklert_content('content_reviews_text_7d2f94618b')) ?>
                         </p>
                     </div>
 
@@ -158,30 +146,28 @@ $average_stars = round($average_rating);
                     <div class="bg-gradient-to-r from-[#0c4161] to-[#125883] p-4 sm:p-5 flex items-center justify-between gap-3 text-white">
                         <div class="flex min-w-0 items-center gap-3">
                             <!-- Vibrant Amber Reviewer Avatar -->
-                            <div class="w-9 h-9 rounded-full bg-gradient-to-br from-amber-400 to-amber-500 text-[#0c4161] flex items-center justify-center font-extrabold text-sm uppercase shadow-sm shrink-0">
+                            <?php if (waklert_has_content(esc_html($initial))): ?><div class="w-9 h-9 rounded-full bg-gradient-to-br from-amber-400 to-amber-500 text-[#0c4161] flex items-center justify-center font-extrabold text-sm uppercase shadow-sm shrink-0">
                                 <?= esc_html($initial) ?>
-                            </div>
+                            </div><?php endif; ?>
                             <div class="min-w-0">
-                                <p class="font-bold text-xs sm:text-sm text-white leading-snug">
+                                <?php if (waklert_has_content(esc_html($name))): ?><p class="font-bold text-xs sm:text-sm text-white leading-snug">
                                     <?= esc_html($name) ?>
-                                </p>
-                                <p class="text-[11px] text-sky-200 font-medium"><?= esc_html($meta) ?> &bull; <?= get_the_date('M Y') ?></p>
+                                </p><?php endif; ?>
+                                <p class="text-[11px] text-sky-200 font-medium"><?= esc_html($meta) ?> <?= esc_html(waklert_content('content_reviews_text_d4f2412b9d')) ?> <?= get_the_date('M Y') ?></p>
                             </div>
                         </div>
 
-                        <span class="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-300 bg-emerald-500/20 border border-emerald-400/40 px-2.5 py-1 rounded-full shrink-0" data-testid="badge-verified-buyer">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 text-emerald-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
-                            </svg>
+                        <?php if (waklert_has_content(esc_html($verified_label))): ?><span class="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-300 bg-emerald-500/20 border border-emerald-400/40 px-2.5 py-1 rounded-full shrink-0" data-testid="badge-verified-buyer">
+                            <?= waklert_content_icon('content_reviews_icon_c42edf2d00') ?>
                             <?= esc_html($verified_label) ?>
-                        </span>
+                        </span><?php endif; ?>
                     </div>
                 </div>
                 <?php endwhile;
                 wp_reset_postdata();
             else: ?>
                 <div class="col-span-full py-16 text-center text-slate-500 bg-white rounded-3xl border-2 border-dashed border-sky-200 p-8">
-                    <p class="text-lg font-bold text-[#0c4161]"><?= esc_html($empty_text) ?></p>
+                    <?php if (waklert_has_content(esc_html($empty_text))): ?><p class="text-lg font-bold text-[#0c4161]"><?= esc_html($empty_text) ?></p><?php endif; ?>
                 </div>
             <?php endif; ?>
         </div>

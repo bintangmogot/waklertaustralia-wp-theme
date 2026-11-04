@@ -7,6 +7,8 @@
  * - Dashed borders & Lift/scale animations
  */
 
+if (waklert_module_is_empty()) { return; }
+
 $fallback_presets = ['australia_delivery', 'discreet_sealed', 'aud_checkout', 'live_chat_support'];
 
 $trust_items = [];
@@ -14,9 +16,10 @@ if (have_rows('badges')) {
     $idx = 0;
     while (have_rows('badges')) {
         the_row();
+        if (!waklert_module_row_has_content(get_row(true))) { continue; }
         $label       = (string) get_sub_field('label');
         $custom_desc = trim((string) get_sub_field('desc'));
-        $desc        = $custom_desc !== '' ? $custom_desc : waklert_default_trust_badge_desc($label, $idx);
+        $desc        = $custom_desc;
         $icon_preset = (string) (get_sub_field('icon_preset') ?: 'auto');
         $icon_image  = get_sub_field('icon_image');
         $icon_svg    = (string) get_sub_field('icon_svg');
@@ -41,7 +44,7 @@ if (have_rows('badges')) {
 }
 
 if (empty($trust_items)) {
-    $defaults = waklert_module_default_rows('trust_strip', 'badges');
+    $defaults = [];
     foreach ($defaults as $card) {
         $trust_items[] = [
             'icon'  => waklert_render_card_icon([
@@ -67,16 +70,16 @@ if (empty($trust_items)) {
                     <div class="w-16 h-16 mb-3 flex items-center justify-center shrink-0 transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-1">
                         <?= $item['icon'] ?>
                     </div>
-                    <h3 class="font-heading font-extrabold text-[16px] md:text-[17px] text-ink text-center leading-snug tracking-tight">
+                    <?php if (waklert_has_content(esc_html($item['title']))): ?><h3 class="font-heading font-extrabold text-[16px] md:text-[17px] text-ink text-center leading-snug tracking-tight">
                         <?= esc_html($item['title']) ?>
-                    </h3>
+                    </h3><?php endif; ?>
                 </div>
 
                 <!-- Bottom Half: Solid theme colored block with description -->
                 <div class="bg-[#0c4161] group-hover:bg-[#082c42] text-white p-4 md:p-5 text-center text-xs md:text-[13px] leading-relaxed font-normal text-white/95 flex-1 flex items-center justify-center transition-colors duration-300 border-t-2 border-dashed border-white/20">
-                    <p class="leading-relaxed">
+                    <?php if (waklert_has_content(esc_html($item['desc']))): ?><p class="leading-relaxed">
                         <?= esc_html($item['desc']) ?>
-                    </p>
+                    </p><?php endif; ?>
                 </div>
             </div>
             <?php endforeach; ?>

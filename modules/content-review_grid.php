@@ -3,11 +3,13 @@
  * Module: Review Grid
  */
 
-$tag = get_sub_field('tag') ?: "Customer Reviews";
+if (waklert_module_is_empty()) { return; }
 
-$heading = get_sub_field('heading') ?: "What Australian Customers Say";
+$tag = waklert_module_text('tag');
 
-$desc = get_sub_field('description') ?: "Real testimonials from Waklert Australia users across Australia.";
+$heading = waklert_module_text('heading');
+
+$desc = waklert_module_text('description');
 
 // Fetch reviews from CPT
 $reviews = get_posts([
@@ -32,26 +34,26 @@ $reviews = get_posts([
 <section class="section-padding bg-white">
     <div class="container-custom max-w-5xl">
         <div class="text-center mb-12">
-            <span class="inline-block bg-primary-soft text-primary-dark text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4">
+            <?php if (waklert_has_content($tag)): ?><span class="inline-block bg-primary-soft text-primary-dark text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4">
                 <?= $tag ?>
-            </span>
-            <h1 class="font-heading text-4xl md:text-5xl font-black text-ink mb-4">
+            </span><?php endif; ?>
+            <?php if (waklert_has_content($heading)): ?><h1 class="font-heading text-4xl md:text-5xl font-black text-ink mb-4">
                 <?= $heading ?>
-            </h1>
-            <p class="text-muted-foreground max-w-xl mx-auto">
+            </h1><?php endif; ?>
+            <?php if (waklert_has_content($desc)): ?><p class="text-muted-foreground max-w-xl mx-auto">
                 <?= $desc ?>
-            </p>
+            </p><?php endif; ?>
 
             <div class="flex items-center justify-center gap-3 mt-5">
                 <div class="flex gap-0.5 text-accent">
                     <?php for($i=0; $i<5; $i++): ?>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                    <?= waklert_content_icon('content_review_grid_icon_7577c020ff') ?>
                     <?php endfor; ?>
                 </div>
                 <span class="font-heading font-black text-2xl text-ink">4.9</span>
-                <span class="text-muted-foreground text-sm">
-                    <?= "(10+ verified reviews)" ?>
-                </span>
+                <?php if (waklert_has_content(esc_html(waklert_content('content_review_grid_text_0511a9d4b2')))): ?><span class="text-muted-foreground text-sm">
+                    <?= esc_html(waklert_content('content_review_grid_text_0511a9d4b2')) ?>
+                </span><?php endif; ?>
             </div>
         </div>
 
@@ -63,36 +65,36 @@ $reviews = get_posts([
                     $title = get_the_title($post_id);
                     $body = get_post_field('post_content', $post_id);
                     $reviewer = get_field('name', $post_id) ?: (is_object($r) ? $r->post_title : get_the_title($post_id));
-                    $meta = get_field('reviewer_meta', $post_id) ?: "Verified Buyer";
+                    $meta = get_field('reviewer_meta', $post_id) ?: waklert_content('content_review_grid_text_2d2f65336a');
                     $rating_val = get_field('rating', $post_id) ?: 5;
             ?>
             <div class="bg-white border border-stone-200 rounded-xl p-6 hover:border-primary-soft hover:shadow-sm transition-all">
                 <div class="flex gap-0.5 mb-3 text-accent">
                     <?php for($i=0; $i < $rating_val; $i++): ?>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                    <?= waklert_content_icon('content_review_grid_icon_6d5e051030') ?>
                     <?php endfor; ?>
                 </div>
-                <h4 class="font-heading font-bold text-ink text-sm mb-2"><?= $title ?></h4>
-                <p class="text-sm text-muted-foreground leading-relaxed mb-4">
-                    &ldquo;<?= $body ?>&rdquo;
-                </p>
+                <?php if (waklert_has_content($title)): ?><h4 class="font-heading font-bold text-ink text-sm mb-2"><?= $title ?></h4><?php endif; ?>
+                <?php if (waklert_has_content($body)): ?><p class="text-sm text-muted-foreground leading-relaxed mb-4">
+                    <?= esc_html(waklert_content('content_review_grid_text_8009b97b02')) ?><?= $body ?><?= esc_html(waklert_content('content_review_grid_text_276073cb09')) ?>
+                </p><?php endif; ?>
                 <div class="flex items-center gap-3 pt-3 border-t border-stone-100">
-                    <div class="w-8 h-8 rounded-full bg-primary-softer flex items-center justify-center text-primary-dark font-bold text-xs flex-shrink-0">
+                    <?php if (waklert_has_content(substr($reviewer, 0, 1))): ?><div class="w-8 h-8 rounded-full bg-primary-softer flex items-center justify-center text-primary-dark font-bold text-xs flex-shrink-0">
                         <?= substr($reviewer, 0, 1) ?>
-                    </div>
+                    </div><?php endif; ?>
                     <div>
-                        <p class="text-xs font-bold text-ink"><?= esc_html($reviewer) ?></p>
-                        <p class="text-[11px] text-muted-foreground">
+                        <?php if (waklert_has_content(esc_html($reviewer))): ?><p class="text-xs font-bold text-ink"><?= esc_html($reviewer) ?></p><?php endif; ?>
+                        <?php if (waklert_has_content(esc_html($meta)) || waklert_has_content(get_the_date('M j, Y', $post_id))): ?><p class="text-[11px] text-muted-foreground">
                             <?= esc_html($meta) ?>
-                            &bull; <span><?= get_the_date('M j, Y', $post_id) ?></span>
-                        </p>
+                            &bull; <?php if (waklert_has_content(get_the_date('M j, Y', $post_id))): ?><span><?= get_the_date('M j, Y', $post_id) ?></span><?php endif; ?>
+                        </p><?php endif; ?>
                     </div>
                 </div>
             </div>
             <?php 
                 endforeach;
             else:
-                echo "<p class='col-span-full text-center text-muted-foreground'>" . "No reviews found." . "</p>";
+                echo "<p class='col-span-full text-center text-muted-foreground'>" . waklert_content('content_review_grid_text_6291960655') . "</p>";
             endif; 
             ?>
         </div>

@@ -23,10 +23,10 @@ $has_shipping  = ! wc_ship_to_billing_address_only() && $order->needs_shipping_a
 		<tr>
 			<td class="font-family text-align-left address-column billing-address-col" style="border: 0; padding: 0 <?php echo $has_shipping ? '10px' : '0'; ?> 0 0; vertical-align: top;" width="<?php echo $has_shipping ? '50%' : '100%'; ?>" valign="top">
 				<h3 style="color: #0C4161; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 15px; font-weight: 700; margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: 0.5px;">
-					<?php esc_html_e( 'Billing address', 'woocommerce' ); ?>
+					<?php esc_html_e( waklert_content('email_addresses_text_cb526d19e0'), 'woocommerce' ); ?>
 				</h3>
 				<address class="address" style="background-color: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px 18px; font-style: normal; font-size: 14px; line-height: 1.6; color: #0F172A; min-height: 140px; box-sizing: border-box; display: block;">
-					<?php echo wp_kses_post( $address ? $address : esc_html__( 'N/A', 'woocommerce' ) ); ?>
+					<?php echo wp_kses_post( $address ? $address : esc_html__( waklert_content('email_addresses_text_07acae02a1'), 'woocommerce' ) ); ?>
 					<?php if ( $order->get_billing_phone() ) : ?>
 						<br/><a href="tel:<?php echo esc_attr( $order->get_billing_phone() ); ?>" style="color: #0284C7; text-decoration: none; font-weight: 600;"><?php echo esc_html( $order->get_billing_phone() ); ?></a>
 					<?php endif; ?>
@@ -39,7 +39,7 @@ $has_shipping  = ! wc_ship_to_billing_address_only() && $order->needs_shipping_a
 			<?php if ( $has_shipping ) : ?>
 				<td class="font-family text-align-left address-column shipping-address-col" style="border: 0; padding: 0 0 0 10px; vertical-align: top;" width="50%" valign="top">
 					<h3 style="color: #0C4161; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 15px; font-weight: 700; margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: 0.5px;">
-						<?php esc_html_e( 'Shipping address', 'woocommerce' ); ?>
+						<?php esc_html_e( waklert_content('email_addresses_text_e9e5c9e3d9'), 'woocommerce' ); ?>
 					</h3>
 					<address class="address" style="background-color: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px 18px; font-style: normal; font-size: 14px; line-height: 1.6; color: #0F172A; min-height: 140px; box-sizing: border-box; display: block;">
 						<?php echo wp_kses_post( $shipping ); ?>

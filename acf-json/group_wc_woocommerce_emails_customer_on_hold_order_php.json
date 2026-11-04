@@ -1,0 +1,64 @@
+{
+    "key": "group_wc_woocommerce_emails_customer_on_hold_order_php",
+    "title": "Email: Customer On Hold Order",
+    "fields": [
+        {
+            "key": "field_wc_customer_on_hold_order_text_5e32f846d7",
+            "label": "Hi %s,",
+            "name": "wc_customer_on_hold_order_text_5e32f846d7",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/emails/customer-on-hold-order.php",
+            "default_value": "Hi %s,",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_customer_on_hold_order_text_547f81f4cf",
+            "label": "We've received your order and it's currently on hold until we can confirm your payment has",
+            "name": "wc_customer_on_hold_order_text_547f81f4cf",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/emails/customer-on-hold-order.php",
+            "default_value": "We've received your order and it's currently on hold until we can confirm your payment has been processed.",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_customer_on_hold_order_text_89c0c6d8cb",
+            "label": "Please complete your payment using EFT or PayID below with your order number and we will s",
+            "name": "wc_customer_on_hold_order_text_89c0c6d8cb",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/emails/customer-on-hold-order.php",
+            "default_value": "Please complete your payment using EFT or PayID below with your order number and we will send the product immediately and also send you an Australian Post tracking number.",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_customer_on_hold_order_text_01df4572e6",
+            "label": "Please DO NOT mention WAKLERT or Armodafinil on your bank transfer description.",
+            "name": "wc_customer_on_hold_order_text_01df4572e6",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/emails/customer-on-hold-order.php",
+            "default_value": "Please DO NOT mention WAKLERT or Armodafinil on your bank transfer description.",
+            "rows": 3,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "waklert-content-emails"
+            }
+        ]
+    ],
+    "menu_order": 50,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "description": "Generated template content fields. Source: woocommerce/emails/customer-on-hold-order.php"
+}

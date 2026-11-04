@@ -15,8 +15,8 @@ defined( 'ABSPATH' ) || exit;
 do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
 
 <?php /* translators: %s: Customer first name */ ?>
-<p><?php printf( esc_html__( 'Hi %s,', 'woocommerce' ), esc_html( $order->get_billing_first_name() ?: 'there' ) ); ?></p>
-<p><?php esc_html_e( "Just to let you know — we've received your order, and it is now being processed:", 'woocommerce' ); ?></p>
+<p><?php printf( esc_html__( waklert_content('customer_processing_orde_text_f39a8eb369'), 'woocommerce' ), esc_html( $order->get_billing_first_name() ?: waklert_content('manual_email_greeting_fallback') ) ); ?></p>
+<p><?php esc_html_e( waklert_content('customer_processing_orde_text_6b74aef439'), 'woocommerce' ); ?></p>
 
 <?php
 /*

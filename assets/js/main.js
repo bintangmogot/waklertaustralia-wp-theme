@@ -90,7 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const expanded = button.getAttribute('aria-expanded') === 'true';
             description.classList.toggle('line-clamp-2', expanded);
             button.setAttribute('aria-expanded', String(!expanded));
-            button.textContent = expanded ? 'Read more' : 'Read less';
+            const labels = window.waklertContentLabels || {};
+            button.textContent = expanded ? (labels.readMore || '') : (labels.readLess || '');
         });
     });
 
@@ -187,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     badge.className = 'email-copied-badge inline-flex items-center text-xs font-bold text-[#f49a5b] bg-black/50 border border-[#f49a5b]/40 px-2.5 py-0.5 rounded-full transition-opacity duration-300 ml-2 shadow-sm';
                     link.parentElement.appendChild(badge);
                 }
-                badge.textContent = 'Copied ' + email;
+                badge.textContent = (window.waklertContentLabels?.supportEmailCopied || '').replace('{email}', email);
                 badge.style.opacity = '1';
                 setTimeout(() => {
                     badge.style.opacity = '0';

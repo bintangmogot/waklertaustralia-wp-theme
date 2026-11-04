@@ -1,0 +1,174 @@
+{
+    "key": "group_wc_woocommerce_archive_product_php",
+    "title": "Archive Product",
+    "fields": [
+        {
+            "key": "field_wc_archive_product_text_d3efd42396",
+            "label": "Full Catalogue",
+            "name": "wc_archive_product_text_d3efd42396",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/archive-product.php",
+            "default_value": "Full Catalogue",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_archive_product_text_af2df132d3",
+            "label": "Buyer's Guide",
+            "name": "wc_archive_product_text_af2df132d3",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/archive-product.php",
+            "default_value": "Buyer's Guide",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_archive_product_text_6962463ffc",
+            "label": "Browse and buy genuine Armodafinil tablets online in Australia. Fast Australia-wide delive",
+            "name": "wc_archive_product_text_6962463ffc",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/archive-product.php",
+            "default_value": "Browse and buy genuine Armodafinil tablets online in Australia. Fast Australia-wide delivery on all orders.",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_archive_product_text_5219383dd0",
+            "label": "Choosing the Right Modafinil",
+            "name": "wc_archive_product_text_5219383dd0",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/archive-product.php",
+            "default_value": "Choosing the Right Modafinil",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_archive_product_text_bbaa6ec8b6",
+            "label": "With several brands and dosages available, the right product depends on your experience le",
+            "name": "wc_archive_product_text_bbaa6ec8b6",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/archive-product.php",
+            "default_value": "With several brands and dosages available, the right product depends on your experience level, desired effects, and budget. Below is a comparison of our most popular options.",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_archive_product_text_35b28c755f",
+            "label": "Modalert 200mg — The Gold Standard",
+            "name": "wc_archive_product_text_35b28c755f",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/archive-product.php",
+            "default_value": "Modalert 200mg — The Gold Standard",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_archive_product_text_8ff824cb04",
+            "label": "Manufactured by Sun Pharma, Modalert is the most widely recognised modafinil brand worldwi",
+            "name": "wc_archive_product_text_8ff824cb04",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/archive-product.php",
+            "default_value": "Manufactured by Sun Pharma, Modalert is the most widely recognised modafinil brand worldwide. Each tablet contains the standard 200mg clinical dose and delivers a clean, sustained boost in focus lasting 10–12 hours.",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_archive_product_text_cc1d0dc4be",
+            "label": "Best for: First-time users who want a trusted, proven brand.",
+            "name": "wc_archive_product_text_cc1d0dc4be",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/archive-product.php",
+            "default_value": "Best for: First-time users who want a trusted, proven brand.",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_archive_product_text_c1ba514e6a",
+            "label": "Modvigil 200mg — Affordable Alternative",
+            "name": "wc_archive_product_text_c1ba514e6a",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/archive-product.php",
+            "default_value": "Modvigil 200mg — Affordable Alternative",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_archive_product_text_a3879d6c30",
+            "label": "Produced by HAB Pharma with the same 200mg dose as Modalert. Many users report very simila",
+            "name": "wc_archive_product_text_a3879d6c30",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/archive-product.php",
+            "default_value": "Produced by HAB Pharma with the same 200mg dose as Modalert. Many users report very similar effects at a lower price, with a slightly gentler onset that suits all-day productivity.",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_archive_product_text_a886e8071e",
+            "label": "Best for: Budget-conscious buyers or those who want a smoother onset.",
+            "name": "wc_archive_product_text_a886e8071e",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/archive-product.php",
+            "default_value": "Best for: Budget-conscious buyers or those who want a smoother onset.",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_archive_product_text_ab6c6ff57a",
+            "label": "Modasmart 400mg — Extended Duration",
+            "name": "wc_archive_product_text_ab6c6ff57a",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/archive-product.php",
+            "default_value": "Modasmart 400mg — Extended Duration",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_archive_product_text_db0ef3129c",
+            "label": "Double the standard dose in a single tablet, designed for experienced users who need longe",
+            "name": "wc_archive_product_text_db0ef3129c",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/archive-product.php",
+            "default_value": "Double the standard dose in a single tablet, designed for experienced users who need longer-lasting cognitive enhancement for extended study sessions or overnight shifts.",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_archive_product_text_9edd96017a",
+            "label": "Best for: Experienced users who need 14+ hours of sustained focus.",
+            "name": "wc_archive_product_text_9edd96017a",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/archive-product.php",
+            "default_value": "Best for: Experienced users who need 14+ hours of sustained focus.",
+            "rows": 3,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "waklert-content-storefront"
+            }
+        ]
+    ],
+    "menu_order": 50,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "description": "Generated template content fields. Source: woocommerce/archive-product.php"
+}

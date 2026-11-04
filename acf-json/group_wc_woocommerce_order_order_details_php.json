@@ -1,0 +1,97 @@
+{
+    "key": "group_wc_woocommerce_order_order_details_php",
+    "title": "Order Details",
+    "fields": [
+        {
+            "key": "field_wc_order_details_text_930e45fb43",
+            "label": "Order details",
+            "name": "wc_order_details_text_930e45fb43",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/order/order-details.php",
+            "default_value": "Order details",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_order_details_text_553c1fd7c8",
+            "label": "Product",
+            "name": "wc_order_details_text_553c1fd7c8",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/order/order-details.php",
+            "default_value": "Product",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_order_details_text_af06f2116c",
+            "label": "Total",
+            "name": "wc_order_details_text_af06f2116c",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/order/order-details.php",
+            "default_value": "Total",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_order_details_text_2b63e8e394",
+            "label": "Note:",
+            "name": "wc_order_details_text_2b63e8e394",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/order/order-details.php",
+            "default_value": "Note:",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_order_details_text_fd8bd24f4a",
+            "label": "Order #",
+            "name": "wc_order_details_text_fd8bd24f4a",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/order/order-details.php",
+            "default_value": "Order #",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_order_details_text_52653dbae9",
+            "label": "Qty:",
+            "name": "wc_order_details_text_52653dbae9",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/order/order-details.php",
+            "default_value": "Qty:",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_order_details_text_ff61f411f4",
+            "label": "style=\"background-color: #F0F7FC !important;\"",
+            "name": "wc_order_details_text_ff61f411f4",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/order/order-details.php",
+            "default_value": "style=\"background-color: #F0F7FC !important;\"",
+            "rows": 3,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "waklert-content-checkout"
+            }
+        ]
+    ],
+    "menu_order": 50,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "description": "Generated template content fields. Source: woocommerce/order/order-details.php"
+}

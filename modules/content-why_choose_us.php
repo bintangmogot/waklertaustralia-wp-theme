@@ -8,9 +8,11 @@
  * 3. Custom SVG Code (`icon_svg`) — Paste raw colorful `<svg>` markup
  */
 
+if (waklert_module_is_empty()) { return; }
+
 $tag = get_sub_field('tag');
-$heading = get_sub_field('heading') ?: waklert_module_default('why_choose_us', 'heading');
-$desc = get_sub_field('description') ?: waklert_module_default('why_choose_us', 'description');
+$heading = waklert_module_text('heading');
+$desc = waklert_module_text('description');
 
 $is_about_page = is_page('about-us');
 
@@ -30,6 +32,7 @@ if (have_rows('audiences')) {
     $idx = 0;
     while (have_rows('audiences')) {
         the_row();
+        if (!waklert_module_row_has_content(get_row(true))) { continue; }
         $card_title  = (string) get_sub_field('title');
         $card_desc   = (string) get_sub_field('desc');
         $icon_preset = (string) (get_sub_field('icon_preset') ?: 'auto');
@@ -57,7 +60,7 @@ if (have_rows('audiences')) {
 
 // Fallback cards if repeater is empty
 if (empty($items)) {
-    $default_cards = waklert_module_default_rows('why_choose_us', 'audiences');
+    $default_cards = [];
 
     foreach ($default_cards as $card) {
         $items[] = [
@@ -80,17 +83,17 @@ if (empty($items)) {
         <!-- Section Header -->
         <div class="text-center max-w-3xl mx-auto mb-12 md:mb-14">
             <?php if (!empty($tag)): ?>
-                <span class="<?= esc_attr($tag_classes) ?>">
+                <?php if (waklert_has_content(esc_html($tag))): ?><span class="<?= esc_attr($tag_classes) ?>">
                     <?= esc_html($tag) ?>
-                </span>
+                </span><?php endif; ?>
             <?php endif; ?>
-            <h2 class="font-heading text-2xl sm:text-3xl md:text-4xl font-extrabold <?= $is_about_page ? 'text-white' : 'text-ink' ?> tracking-tight mb-3.5">
+            <?php if (waklert_has_content(esc_html($heading))): ?><h2 class="font-heading text-2xl sm:text-3xl md:text-4xl font-extrabold <?= $is_about_page ? 'text-white' : 'text-ink' ?> tracking-tight mb-3.5">
                 <?= esc_html($heading) ?>
-            </h2>
+            </h2><?php endif; ?>
             <?php if (!empty($desc)): ?>
-                <p class="<?= $is_about_page ? 'text-white/80' : 'text-muted-foreground' ?> text-sm md:text-base leading-relaxed max-w-2xl mx-auto">
+                <?php if (waklert_has_content(esc_html($desc))): ?><p class="<?= $is_about_page ? 'text-white/80' : 'text-muted-foreground' ?> text-sm md:text-base leading-relaxed max-w-2xl mx-auto">
                     <?= esc_html($desc) ?>
-                </p>
+                </p><?php endif; ?>
             <?php endif; ?>
         </div>
 
@@ -103,16 +106,16 @@ if (empty($items)) {
                         <div class="w-16 h-16 mb-4 flex items-center justify-center shrink-0 transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-1">
                             <?= $card['icon'] ?>
                         </div>
-                        <h3 class="font-heading font-extrabold text-[17px] md:text-lg text-ink text-center leading-snug tracking-tight">
+                        <?php if (waklert_has_content(esc_html($card['title']))): ?><h3 class="font-heading font-extrabold text-[17px] md:text-lg text-ink text-center leading-snug tracking-tight">
                             <?= esc_html($card['title']) ?>
-                        </h3>
+                        </h3><?php endif; ?>
                     </div>
 
                     <!-- Bottom Half: Solid theme colored block with description -->
                     <div class="bg-[#0c4161] group-hover:bg-[#082c42] text-white p-5 md:p-6 text-center text-xs md:text-[13px] leading-relaxed font-normal text-white/95 flex-1 flex items-center justify-center transition-colors duration-300 border-t-2 border-dashed border-white/20">
-                        <p class="leading-relaxed">
+                        <?php if (waklert_has_content(esc_html($card['desc']))): ?><p class="leading-relaxed">
                             <?= esc_html($card['desc']) ?>
-                        </p>
+                        </p><?php endif; ?>
                     </div>
                 </div>
             <?php endforeach; ?>

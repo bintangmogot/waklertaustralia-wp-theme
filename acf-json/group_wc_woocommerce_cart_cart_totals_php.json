@@ -1,0 +1,86 @@
+{
+    "key": "group_wc_woocommerce_cart_cart_totals_php",
+    "title": "Cart Totals",
+    "fields": [
+        {
+            "key": "field_wc_cart_totals_text_8f4d2caa1f",
+            "label": "Cart totals",
+            "name": "wc_cart_totals_text_8f4d2caa1f",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/cart/cart-totals.php",
+            "default_value": "Cart totals",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_cart_totals_text_7dcbd9eb45",
+            "label": "Subtotal",
+            "name": "wc_cart_totals_text_7dcbd9eb45",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/cart/cart-totals.php",
+            "default_value": "Subtotal",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_cart_totals_text_015982e083",
+            "label": "Shipment",
+            "name": "wc_cart_totals_text_015982e083",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/cart/cart-totals.php",
+            "default_value": "Shipment",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_cart_totals_text_7d8d42a40a",
+            "label": "Shipping",
+            "name": "wc_cart_totals_text_7d8d42a40a",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/cart/cart-totals.php",
+            "default_value": "Shipping",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_cart_totals_text_a883bd7e7b",
+            "label": "(estimated for %s)",
+            "name": "wc_cart_totals_text_a883bd7e7b",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/cart/cart-totals.php",
+            "default_value": "(estimated for %s)",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_cart_totals_text_98ac01ccc1",
+            "label": "Total",
+            "name": "wc_cart_totals_text_98ac01ccc1",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/cart/cart-totals.php",
+            "default_value": "Total",
+            "rows": 3,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "waklert-content-checkout"
+            }
+        ]
+    ],
+    "menu_order": 50,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "description": "Generated template content fields. Source: woocommerce/cart/cart-totals.php"
+}

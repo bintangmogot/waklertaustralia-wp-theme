@@ -1,0 +1,265 @@
+{
+    "key": "group_wc_index_php",
+    "title": "Index",
+    "fields": [
+        {
+            "key": "field_wc_pg_archive_title",
+            "label": "Default archive heading",
+            "name": "wc_pg_archive_title",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: index.php",
+            "default_value": "Articles & Guides",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_pg_archive_subtitle",
+            "label": "Default archive description",
+            "name": "wc_pg_archive_subtitle",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: index.php",
+            "default_value": "General information, site updates and resources. Website content is not individual medical advice.",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_pg_archive_blog_label",
+            "label": "Blog archive label",
+            "name": "wc_pg_archive_blog_label",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: index.php",
+            "default_value": "Waklert Australia Insights",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_pg_archive_search_label",
+            "label": "Search results label",
+            "name": "wc_pg_archive_search_label",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: index.php",
+            "default_value": "Search Results",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_pg_archive_empty_search",
+            "label": "Empty search heading",
+            "name": "wc_pg_archive_empty_search",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: index.php",
+            "default_value": "No results found",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_pg_archive_empty_blog",
+            "label": "Empty blog heading",
+            "name": "wc_pg_archive_empty_blog",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: index.php",
+            "default_value": "No articles are published yet",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_pg_archive_empty_search_hint",
+            "label": "Empty search description",
+            "name": "wc_pg_archive_empty_search_hint",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: index.php",
+            "default_value": "Try a different search term.",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_pg_archive_empty_blog_hint",
+            "label": "Empty blog description",
+            "name": "wc_pg_archive_empty_blog_hint",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: index.php",
+            "default_value": "Please check back for new articles and general information.",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_pg_index_category_fallback",
+            "label": "Default article category",
+            "name": "wc_pg_index_category_fallback",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: index.php",
+            "default_value": "Armodafinil Guide",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_pg_index_search",
+            "label": "Search label",
+            "name": "wc_pg_index_search",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: index.php",
+            "default_value": "Search",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_pg_index_search_heading",
+            "label": "Search heading prefix",
+            "name": "wc_pg_index_search_heading",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: index.php",
+            "default_value": "Search results for:",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_index_icon_673ed92658",
+            "label": "Icon 673ed92658",
+            "name": "wc_index_icon_673ed92658",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: index.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-6 h-6\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-width=\"1.75\">\r\n                                                <path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253\" />\r\n                                            </svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_index_icon_673ed92658_image",
+            "label": "Icon 673ed92658 custom image",
+            "name": "wc_index_icon_673ed92658_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_index_icon_946d59acce",
+            "label": "Icon 946d59acce",
+            "name": "wc_index_icon_946d59acce",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: index.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" fill=\"currentColor\" class=\"w-4 h-4 text-sky-600\">\r\n                                                <path fill-rule=\"evenodd\" d=\"M5.75 2a.75.75 0 01.75.75V4h7V2.75a.75.75 0 011.5 0V4h.25A2.75 2.75 0 0118 6.75v8.5A2.75 2.75 0 0115.25 18H4.75A2.75 2.75 0 012 15.25v-8.5A2.75 2.75 0 014.75 4H5V2.75A.75.75 0 015.75 2zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75z\" clip-rule=\"evenodd\" />\r\n                                            </svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_index_icon_946d59acce_image",
+            "label": "Icon 946d59acce custom image",
+            "name": "wc_index_icon_946d59acce_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_index_icon_087a81bc80",
+            "label": "Icon 087a81bc80",
+            "name": "wc_index_icon_087a81bc80",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: index.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" fill=\"currentColor\" class=\"w-4 h-4 text-amber-500\">\r\n                                                <path fill-rule=\"evenodd\" d=\"M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z\" clip-rule=\"evenodd\" />\r\n                                            </svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_index_icon_087a81bc80_image",
+            "label": "Icon 087a81bc80 custom image",
+            "name": "wc_index_icon_087a81bc80_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_index_icon_76f8373bb5",
+            "label": "Icon 76f8373bb5",
+            "name": "wc_index_icon_76f8373bb5",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: index.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-3.5 h-3.5 sm:w-4 sm:h-4 transform group-hover:translate-x-1.5 transition-transform duration-300\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-width=\"2.5\">\r\n                                    <path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M14 5l7 7m0 0l-7 7m7-7H3\" />\r\n                                </svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_index_icon_76f8373bb5_image",
+            "label": "Icon 76f8373bb5 custom image",
+            "name": "wc_index_icon_76f8373bb5_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_index_text_8f30e26088",
+            "label": "Waklert Knowledge",
+            "name": "wc_index_text_8f30e26088",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: index.php",
+            "default_value": "Waklert Knowledge",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_index_text_20439f05f2",
+            "label": "min read",
+            "name": "wc_index_text_20439f05f2",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: index.php",
+            "default_value": "min read",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_index_text_83cfdb2776",
+            "label": "Read Full Guide",
+            "name": "wc_index_text_83cfdb2776",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: index.php",
+            "default_value": "Read Full Guide",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_index_text_fa6c48d810",
+            "label": "Articles",
+            "name": "wc_index_text_fa6c48d810",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: index.php",
+            "default_value": "Articles",
+            "rows": 3,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "waklert-content-pages"
+            }
+        ]
+    ],
+    "menu_order": 50,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "description": "Generated template content fields. Source: index.php"
+}

@@ -1,0 +1,62 @@
+{
+    "key": "group_wc_functions_php",
+    "title": "Functions",
+    "fields": [
+        {
+            "key": "field_wc_manual_contact_submit_icon",
+            "label": "Contact submit icon",
+            "name": "wc_manual_contact_submit_icon",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: functions.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-4 w-4 shrink-0\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-width=\"2\">\r\n                    <path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z\" />\r\n                </svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_manual_contact_submit_icon_image",
+            "label": "Contact submit icon custom image",
+            "name": "wc_manual_contact_submit_icon_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_manual_bank_details_heading",
+            "label": "Bank details heading",
+            "name": "wc_manual_bank_details_heading",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: functions.php",
+            "default_value": "Bank Details",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_manual_bank_swift_label",
+            "label": "Bank swift label",
+            "name": "wc_manual_bank_swift_label",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: functions.php",
+            "default_value": "SWIFT/BIC",
+            "rows": 3,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "waklert-content-pages"
+            }
+        ]
+    ],
+    "menu_order": 50,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "description": "Generated template content fields. Source: functions.php"
+}

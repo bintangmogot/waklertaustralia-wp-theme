@@ -15,9 +15,6 @@ defined( 'ABSPATH' ) || exit;
 // Every text on this page is edited in WP Admin -> Theme Settings -> Checkout & Emails
 $contact_email = sanitize_email( (string) get_field( 'support_email', 'option' ) );
 
-$phone_raw    = preg_replace( '/[^0-9]/', '', (string) get_field( 'whatsapp_number', 'option' ) );
-$whatsapp_url = 'https://wa.me/61' . ltrim( $phone_raw, '0' );
-
 // Bank account details
 $bank      = waklert_bank_details();
 $bacs_bank = $bank['bank'];
@@ -30,12 +27,6 @@ $checkout_bacs_warning   = waklert_option_text( 'checkout_bacs_warning' );
 $checkout_receipt_notice = waklert_option_text( 'checkout_receipt_notice' );
 $shipping_note           = waklert_option_text( 'checkout_shipping_note' );
 
-// Optional logo overrides (Theme Settings); the bundled logos are the safety net
-$logo_src = static function ( $field, $fallback ) {
-    $img = get_field( $field, 'option' );
-    $url = is_array( $img ) ? ( $img['url'] ?? '' ) : ( is_numeric( $img ) ? wp_get_attachment_image_url( (int) $img, 'full' ) : (string) $img );
-    return $url ?: get_template_directory_uri() . $fallback;
-};
 // **word** in a text becomes bold red
 $bold_red = static function ( $text ) {
     return preg_replace( '/\*\*(.+?)\*\*/', '<strong class="text-[#DC2626] font-bold" style="color: #dc2626;">$1</strong>', esc_html( $text ) );
@@ -53,7 +44,7 @@ $bold_red = static function ( $text ) {
             <!-- Order Failed State -->
             <div class="text-center bg-card border border-destructive/20 rounded-3xl p-8 sm:p-12 shadow-sm mb-10">
                 <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-destructive/10 text-destructive mb-6 ring-8 ring-destructive/5">
-                    <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    <?= waklert_content_icon('thankyou_icon_92adfd83a3') ?>
                 </div>
                 <h1 class="font-heading text-3xl sm:text-4xl font-extrabold text-foreground mb-3"><?php echo esc_html( waklert_option_text( 'thankyou_failed_title' ) ); ?></h1>
                 <p class="text-muted-foreground text-base sm:text-lg max-w-xl mx-auto mb-8"><?php echo esc_html( waklert_option_text( 'thankyou_failed_text' ) ); ?></p>
@@ -73,18 +64,17 @@ $bold_red = static function ( $text ) {
             $order_num = $order->get_order_number();
             $order_total = $order->get_formatted_order_total();
             $customer_first_name = $order->get_billing_first_name();
-            $email_subject = rawurlencode( 'Payment Receipt - Order #' . $order_num );
-            $email_body    = rawurlencode( "Hi,\n\nI have completed the bank transfer for Order #" . $order_num . " (" . wp_strip_all_tags( $order_total ) . ").\n\nPlease find my transaction receipt attached.\n\nThank you,\n" . $customer_first_name );
-            $mailto_url    = 'mailto:' . esc_attr( $contact_email ) . '?subject=' . $email_subject . '&body=' . $email_body;
-            $wa_text       = rawurlencode( 'Hi, here is my payment receipt for Order #' . $order_num . ' (' . wp_strip_all_tags( $order_total ) . ').' );
-            $wa_full_url   = $whatsapp_url . '?text=' . $wa_text;
+            $receipt_values = ['{order}' => $order_num, '{total}' => wp_strip_all_tags($order_total), '{name}' => $customer_first_name];
+            $email_subject = rawurlencode(strtr(waklert_content('manual_receipt_subject'), $receipt_values));
+            $email_body = rawurlencode(strtr(waklert_content('manual_receipt_body'), $receipt_values));
+            $mailto_url    = 'mailto:' . $contact_email . '?subject=' . $email_subject . '&body=' . $email_body;
             ?>
 
             <!-- Hero Header Card -->
             <div class="flex flex-col items-center text-center mb-4 sm:mb-5">
                 <!-- Status Check Circle: Blue Circle (#0284C7) with White Checkmark Icon -->
                 <div class="flex items-center justify-center w-20 h-20 rounded-full bg-[#0284C7] text-white shadow-lg ring-8 ring-sky-100 mb-5">
-                    <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                    <?= waklert_content_icon('thankyou_icon_1786e85dee') ?>
                 </div>
                 <div class="mb-4">
                     <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs sm:text-sm font-semibold shadow-xs">
@@ -141,7 +131,7 @@ $bold_red = static function ( $text ) {
                             <strong class="text-foreground"><?php echo esc_html( $order->get_billing_email() ); ?></strong>
                         </div>
                         <span class="inline-flex items-center gap-1.5 text-emerald-700 font-medium">
-                            <svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <?= waklert_content_icon('thankyou_icon_2d969f7cf6') ?>
                             <?php echo esc_html( waklert_option_text( 'thankyou_label_invoice' ) ); ?>
                         </span>
                     </div>
@@ -156,9 +146,7 @@ $bold_red = static function ( $text ) {
                         <div class="flex items-center gap-3 min-w-0 shrink">
                             <!-- Commonwealth Bank Yellow Diamond Badge -->
                             <div class="w-9 h-9 shrink-0 rounded-lg bg-[#FFCC00] flex items-center justify-center shadow-xs border border-amber-300">
-                                <svg class="w-6 h-6 text-[#1A1A1A]" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 2L2 12l10 10 10-10L12 2zm0 4.2L17.8 12 12 17.8 6.2 12 12 6.2z"/>
-                                </svg>
+                                <?= waklert_content_icon('thankyou_icon_b2f3371342') ?>
                             </div>
                             <div>
                                 <div class="flex items-center gap-2">
@@ -196,7 +184,7 @@ $bold_red = static function ( $text ) {
                                 <span class="text-base sm:text-lg font-bold text-foreground select-all"><?php echo esc_html( $bacs_name ); ?></span>
                             </div>
                             <button type="button" onclick="copyValue('<?php echo esc_js( $bacs_name ); ?>', this)" class="copy-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-border text-xs font-bold text-foreground bg-muted/40 hover:bg-muted transition-all active:scale-95 cursor-pointer">
-                                <svg class="w-3.5 h-3.5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                <?= waklert_content_icon('thankyou_icon_858ca501ce') ?>
                                 <span><?php echo esc_html( waklert_option_text( 'bank_copy_label' ) ); ?></span>
                             </button>
                         </div>
@@ -217,7 +205,7 @@ $bold_red = static function ( $text ) {
                                 <span class="text-xl sm:text-2xl font-mono font-extrabold text-foreground tracking-wider select-all"><?php echo esc_html( $bacs_bsb ); ?></span>
                             </div>
                             <button type="button" onclick="copyValue('<?php echo esc_js( str_replace(' ', '', $bacs_bsb) ); ?>', this)" class="copy-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-border text-xs font-bold text-foreground bg-muted/40 hover:bg-muted transition-all active:scale-95 cursor-pointer">
-                                <svg class="w-3.5 h-3.5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                <?= waklert_content_icon('thankyou_icon_858ca501ce') ?>
                                 <span><?php echo esc_html( waklert_option_text( 'bank_copy_label' ) ); ?></span>
                             </button>
                         </div>
@@ -229,7 +217,7 @@ $bold_red = static function ( $text ) {
                                 <span class="text-xl sm:text-2xl font-mono font-extrabold text-foreground tracking-wider select-all"><?php echo esc_html( $bacs_acc ); ?></span>
                             </div>
                             <button type="button" onclick="copyValue('<?php echo esc_js( $bacs_acc ); ?>', this)" class="copy-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-border text-xs font-bold text-foreground bg-muted/40 hover:bg-muted transition-all active:scale-95 cursor-pointer">
-                                <svg class="w-3.5 h-3.5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                <?= waklert_content_icon('thankyou_icon_858ca501ce') ?>
                                 <span><?php echo esc_html( waklert_option_text( 'bank_copy_label' ) ); ?></span>
                             </button>
                         </div>
@@ -241,7 +229,7 @@ $bold_red = static function ( $text ) {
                                 <span class="text-xl sm:text-2xl font-mono font-extrabold text-[#0C4161] tracking-wider select-all"><?php echo esc_html( $payid_number ); ?></span>
                             </div>
                             <button type="button" onclick="copyValue('<?php echo esc_js( preg_replace('/\s+/', '', $payid_number) ); ?>', this)" class="copy-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-border text-xs font-bold text-foreground bg-muted/40 hover:bg-muted transition-all active:scale-95 cursor-pointer">
-                                <svg class="w-3.5 h-3.5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                <?= waklert_content_icon('thankyou_icon_858ca501ce') ?>
                                 <span><?php echo esc_html( waklert_option_text( 'bank_copy_label' ) ); ?></span>
                             </button>
                         </div>
@@ -253,15 +241,15 @@ $bold_red = static function ( $text ) {
                     <div class="mt-3.5 pt-3 border-t border-[#EAB308]/30 flex flex-wrap items-center justify-center gap-3">
                         <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl border border-slate-200/90 bg-white shadow-2xs h-10">
                             <div class="w-4.5 h-4.5 rounded bg-[#FFCC00] flex items-center justify-center shrink-0">
-                                <svg class="w-3 h-3 text-[#1A1A1A]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 12l10 10 10-10L12 2zm0 4.2L17.8 12 12 17.8 6.2 12 12 6.2z"/></svg>
+                                <?= waklert_content_icon('thankyou_icon_907193d15a') ?>
                             </div>
                             <span class="text-xs font-bold text-slate-800"><?php echo esc_html( $bacs_bank ); ?></span>
                         </div>
                         <div class="inline-flex items-center justify-center px-3.5 py-1.5 rounded-xl border border-slate-200/90 bg-white shadow-2xs h-10">
-                            <img src="<?php echo esc_url( $logo_src( 'thankyou_payid_logo', '/assets/images/payid.png' ) ); ?>" alt="<?php echo esc_attr( waklert_option_text( 'bank_label_payid' ) ); ?>" style="height: 18px; max-height: 18px; width: auto; object-fit: contain; display: block;" />
+                            <img src="<?php echo esc_url( waklert_content_asset('manual_thankyou_payid_logo') ); ?>" alt="<?php echo esc_attr( waklert_option_text( 'bank_label_payid' ) ); ?>" style="height: 18px; max-height: 18px; width: auto; object-fit: contain; display: block;" />
                         </div>
                         <div class="inline-flex items-center justify-center px-3.5 py-1.5 rounded-xl border border-slate-200/90 bg-white shadow-2xs h-10">
-                            <img src="<?php echo esc_url( $logo_src( 'thankyou_osko_logo', '/assets/images/osko.jpg' ) ); ?>" alt="Osko" style="height: 18px; max-height: 18px; width: auto; object-fit: contain; display: block;" />
+                            <img src="<?php echo esc_url( waklert_content_asset('manual_thankyou_osko_logo') ); ?>" alt="<?= esc_attr(waklert_content('thankyou_text_5738a1a6ae')) ?>" style="height: 18px; max-height: 18px; width: auto; object-fit: contain; display: block;" />
                         </div>
                     </div>
                 </div>
@@ -271,7 +259,7 @@ $bold_red = static function ( $text ) {
                     <?php
                     $receipt_notice_text = str_replace(
                         '{email}',
-                        '<a href="mailto:' . esc_attr( $contact_email ) . '" class="font-bold text-foreground underline">' . esc_html( $contact_email ) . '</a>',
+                        '<a href="' . esc_url($mailto_url) . '" class="font-bold text-foreground underline">' . esc_html( $contact_email ) . '</a>',
                         esc_html( $checkout_receipt_notice )
                     );
                     echo $receipt_notice_text;
@@ -569,11 +557,11 @@ $bold_red = static function ( $text ) {
             <!-- Return to Shop CTA -->
             <div class="mt-10 pt-8 border-t border-border/60 flex flex-col items-center text-center">
                 <a href="<?php echo esc_url( $shop_page_url ); ?>" class="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-primary hover:bg-primary-dark text-white font-extrabold text-base tracking-wide transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 ring-4 ring-primary/10 w-full sm:w-auto">
-                    <svg class="w-5 h-5 text-white/90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                    <?= waklert_content_icon('thankyou_icon_e46062cc8e') ?>
                     <span><?php echo esc_html( waklert_option_text( 'thankyou_shop_button' ) ); ?></span>
                 </a>
                 <p class="text-xs text-muted-foreground mt-3 flex items-center justify-center gap-1.5">
-                    <svg class="w-3.5 h-3.5 text-emerald-600 inline shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    <?= waklert_content_icon('thankyou_icon_b129927a56') ?>
                     <span><?php echo esc_html( waklert_option_text( 'thankyou_footer_note' ) ); ?></span>
                 </p>
             </div>
@@ -610,7 +598,11 @@ function copyValue(text, btn) {
 
 function showCopied(btn) {
     var originalHTML = btn.innerHTML;
-    btn.innerHTML = '<svg class="w-3.5 h-3.5 text-emerald-600 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg><span class="text-emerald-700 font-bold">' + <?php echo wp_json_encode( waklert_option_text( 'bank_copied_label' ) ); ?> + '</span>';
+    btn.innerHTML = <?= wp_json_encode(waklert_content_icon('manual_copy_success_icon'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
+    var label = document.createElement('span');
+    label.className = 'text-emerald-700 font-bold';
+    label.textContent = <?= wp_json_encode(waklert_option_text('bank_copied_label'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
+    btn.appendChild(label);
     btn.classList.add('border-emerald-300', 'bg-emerald-50');
     setTimeout(function() {
         btn.innerHTML = originalHTML;

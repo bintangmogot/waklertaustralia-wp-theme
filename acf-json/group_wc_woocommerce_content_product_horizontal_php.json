@@ -1,0 +1,137 @@
+{
+    "key": "group_wc_woocommerce_content_product_horizontal_php",
+    "title": "Product Horizontal",
+    "fields": [
+        {
+            "key": "field_wc_manual_card_show_less",
+            "label": "Card show less",
+            "name": "wc_manual_card_show_less",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/content-product-horizontal.php",
+            "default_value": "Show less",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_product_horizont_icon_ca78f435d3",
+            "label": "Icon ca78f435d3",
+            "name": "wc_content_product_horizont_icon_ca78f435d3",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/content-product-horizontal.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" fill=\"currentColor\" class=\"w-3.5 h-3.5 text-amber-500\">\n                    <path fill-rule=\"evenodd\" d=\"M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z\" clip-rule=\"evenodd\" />\n                </svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_product_horizont_icon_ca78f435d3_image",
+            "label": "Icon ca78f435d3 custom image",
+            "name": "wc_content_product_horizont_icon_ca78f435d3_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_content_product_horizont_icon_3bf6858433",
+            "label": "Icon 3bf6858433",
+            "name": "wc_content_product_horizont_icon_3bf6858433",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/content-product-horizontal.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover/btn:translate-x-1\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_product_horizont_icon_3bf6858433_image",
+            "label": "Icon 3bf6858433 custom image",
+            "name": "wc_content_product_horizont_icon_3bf6858433_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_content_product_horizont_text_71e9e38f61",
+            "label": "★ POPULAR",
+            "name": "wc_content_product_horizont_text_71e9e38f61",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/content-product-horizontal.php",
+            "default_value": "★ POPULAR",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_product_horizont_text_68bedd3c2a",
+            "label": "AUSTRALIAN DISPATCH",
+            "name": "wc_content_product_horizont_text_68bedd3c2a",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/content-product-horizontal.php",
+            "default_value": "AUSTRALIAN DISPATCH",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_product_horizont_text_fc2c441ed2",
+            "label": "Read more",
+            "name": "wc_content_product_horizont_text_fc2c441ed2",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/content-product-horizontal.php",
+            "default_value": "Read more",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_product_horizont_text_02e33cd22a",
+            "label": "Price in AUD",
+            "name": "wc_content_product_horizont_text_02e33cd22a",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/content-product-horizontal.php",
+            "default_value": "Price in AUD",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_product_horizont_text_c25bac5760",
+            "label": "Order Now",
+            "name": "wc_content_product_horizont_text_c25bac5760",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/content-product-horizontal.php",
+            "default_value": "Order Now",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_content_product_horizont_text_73956e4af7",
+            "label": "From",
+            "name": "wc_content_product_horizont_text_73956e4af7",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/content-product-horizontal.php",
+            "default_value": "From ",
+            "rows": 3,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "waklert-content-storefront"
+            }
+        ]
+    ],
+    "menu_order": 50,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "description": "Generated template content fields. Source: woocommerce/content-product-horizontal.php"
+}

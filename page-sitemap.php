@@ -7,7 +7,7 @@
 get_header();
 
 $sitemap_title = get_field('sitemap_title') ?: get_the_title();
-$sitemap_intro = get_field('sitemap_intro') ?: 'Browse the main pages, armodafinil products, Australian delivery hubs, and support information on this site.';
+$sitemap_intro = get_field('sitemap_intro') ?: waklert_content('page_sitemap_text_d880a9db1e');
 $custom_columns = get_field('sitemap_columns');
 
 $columns = [];
@@ -52,7 +52,7 @@ if (!$columns) {
         }
     }
 
-    $columns[] = ['title' => 'Main Pages', 'links' => array_map(static fn($page) => [
+    $columns[] = ['title' => waklert_content('page_sitemap_text_b06ab30e65'), 'links' => array_map(static fn($page) => [
         'title' => $page->post_title,
         'url' => get_permalink($page),
     ], $main_pages)];
@@ -64,16 +64,16 @@ if (!$columns) {
         }
     }
     if (!$product_links) {
-        $product_links[] = ['title' => 'Shop All Products', 'url' => home_url('/shop/')];
+        $product_links[] = ['title' => waklert_content('page_sitemap_text_b715e84603'), 'url' => home_url('/shop/')];
     }
-    $columns[] = ['title' => 'Armodafinil Products', 'links' => $product_links];
+    $columns[] = ['title' => waklert_content('page_sitemap_text_cd1740da3a'), 'links' => $product_links];
 
-    $columns[] = ['title' => 'Help & Support', 'links' => array_map(static fn($page) => [
+    $columns[] = ['title' => waklert_content('page_sitemap_text_a9b63f003f'), 'links' => array_map(static fn($page) => [
         'title' => $page->post_title,
         'url' => get_permalink($page),
     ], $support_pages)];
 
-    $columns[] = ['title' => 'Policies & Disclaimers', 'links' => array_map(static fn($page) => [
+    $columns[] = ['title' => waklert_content('page_sitemap_text_56c1930aaf'), 'links' => array_map(static fn($page) => [
         'title' => $page->post_title,
         'url' => get_permalink($page),
     ], $policy_pages)];
@@ -84,7 +84,7 @@ foreach (get_posts(['post_type' => 'city', 'post_status' => 'publish', 'posts_pe
     $delivery_links[] = ['title' => get_field('city_name', $city_page->ID) ?: $city_page->post_title, 'url' => get_permalink($city_page)];
 }
 if ($delivery_links) {
-    $columns[] = ['title' => 'Australia Delivery', 'links' => $delivery_links];
+    $columns[] = ['title' => waklert_content('page_sitemap_text_318967dcbb'), 'links' => $delivery_links];
 }
 ?>
 
@@ -94,10 +94,10 @@ if ($delivery_links) {
         <div class="container-site max-w-4xl mx-auto px-4 relative z-10">
             <!-- Breadcrumbs -->
             <div class="mb-3">
-                <nav aria-label="Breadcrumb" class="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border border-dashed border-sky-300/80 bg-white/90 px-3.5 py-1 text-xs font-medium text-slate-500 shadow-xs backdrop-blur">
+                <nav aria-label="<?= esc_attr(waklert_content('page_sitemap_text_1ae8b3bffd')) ?>" class="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border border-dashed border-sky-300/80 bg-white/90 px-3.5 py-1 text-xs font-medium text-slate-500 shadow-xs backdrop-blur">
                     <a href="<?= esc_url(home_url('/')) ?>" class="font-bold text-slate-600 transition-colors hover:text-[#0c4161]"><?= esc_html(waklert_option_text('breadcrumb_home_label')) ?></a>
                     <span class="text-sky-300 font-normal">/</span>
-                    <span aria-current="page" class="font-extrabold text-[#0c4161]">Sitemap</span>
+                    <span aria-current="page" class="font-extrabold text-[#0c4161]"><?= esc_html(waklert_content('page_sitemap_text_d10228acca')) ?></span>
                 </nav>
             </div>
 
@@ -105,7 +105,7 @@ if ($delivery_links) {
             <div class="mb-2.5">
                 <span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 border border-sky-300/80 px-3.5 py-1 text-xs font-black uppercase tracking-[0.16em] text-[#0c4161] shadow-xs">
                     <span class="h-1.5 w-1.5 rounded-full bg-amber-500 animate-pulse" aria-hidden="true"></span>
-                    Site Directory
+                    <?= esc_html(waklert_content('page_sitemap_text_0400e6381e')) ?>
                 </span>
             </div>
 
@@ -138,7 +138,7 @@ if ($delivery_links) {
                     <?php endforeach; ?>
                 </ul>
                 <?php else: ?>
-                <p class="text-xs text-slate-400">No links in this category.</p>
+                <p class="text-xs text-slate-400"><?= esc_html(waklert_content('page_sitemap_text_734b47ec9a')) ?></p>
                 <?php endif; ?>
             </section>
             <?php endforeach; ?>

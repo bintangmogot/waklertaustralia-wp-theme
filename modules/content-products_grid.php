@@ -3,6 +3,8 @@
  * Module: Products Grid
  * Displays the WooCommerce products loop.
  */
+
+if (waklert_module_is_empty()) { return; }
 ?>
 <section class="relative overflow-hidden bg-gradient-to-b from-[#f0f6fa] via-[#e9f2f8] to-[#f8fafc] bg-pattern-dots py-8 md:py-12">
     <div class="container-site px-3 sm:px-4 relative z-10">

@@ -1,0 +1,73 @@
+{
+    "key": "group_wc_woocommerce_cart_cart_empty_php",
+    "title": "Cart Empty",
+    "fields": [
+        {
+            "key": "field_wc_cart_empty_icon_a8db55ecb3",
+            "label": "Icon a8db55ecb3",
+            "name": "wc_cart_empty_icon_a8db55ecb3",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/cart/cart-empty.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-16 h-16 text-slate-300\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-width=\"1.5\">\n                <path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z\" />\n            </svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_cart_empty_icon_a8db55ecb3_image",
+            "label": "Icon a8db55ecb3 custom image",
+            "name": "wc_cart_empty_icon_a8db55ecb3_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_cart_empty_text_a9e5304b2d",
+            "label": "Your cart is empty",
+            "name": "wc_cart_empty_text_a9e5304b2d",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/cart/cart-empty.php",
+            "default_value": "Your cart is empty",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_cart_empty_text_ac0c0392b4",
+            "label": "Looks like you haven't added anything to your cart yet. Discover our premium products and ",
+            "name": "wc_cart_empty_text_ac0c0392b4",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/cart/cart-empty.php",
+            "default_value": "Looks like you haven't added anything to your cart yet. Discover our premium products and get started.",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_cart_empty_text_9e686063b2",
+            "label": "Return to shop",
+            "name": "wc_cart_empty_text_9e686063b2",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/cart/cart-empty.php",
+            "default_value": "Return to shop",
+            "rows": 3,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "waklert-content-checkout"
+            }
+        ]
+    ],
+    "menu_order": 50,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "description": "Generated template content fields. Source: woocommerce/cart/cart-empty.php"
+}

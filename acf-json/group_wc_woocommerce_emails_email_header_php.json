@@ -1,0 +1,75 @@
+{
+    "key": "group_wc_woocommerce_emails_email_header_php",
+    "title": "Email: Header",
+    "fields": [
+        {
+            "key": "field_wc_email_header_image_fd11039a5d",
+            "label": "Image fd11039a5d",
+            "name": "wc_email_header_image_fd11039a5d",
+            "type": "image",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/emails/email-header.php",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "library": "all"
+        },
+        {
+            "key": "field_wc_email_header_text_82f2c610d5",
+            "label": "Waklert Australia • Order Confirmation",
+            "name": "wc_email_header_text_82f2c610d5",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/emails/email-header.php",
+            "default_value": "Waklert Australia • Order Confirmation",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_email_header_text_c1c1c840b2",
+            "label": "Official Australian Express Order Confirmation",
+            "name": "wc_email_header_text_c1c1c840b2",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/emails/email-header.php",
+            "default_value": "Official Australian Express Order Confirmation",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_email_header_text_4db68be418",
+            "label": "Thank you for shopping with Waklert Australia",
+            "name": "wc_email_header_text_4db68be418",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/emails/email-header.php",
+            "default_value": "Thank you for shopping with Waklert Australia",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_email_header_text_305ba199ec",
+            "label": "Waklert Australia",
+            "name": "wc_email_header_text_305ba199ec",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/emails/email-header.php",
+            "default_value": "Waklert Australia",
+            "rows": 3,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "waklert-content-emails"
+            }
+        ]
+    ],
+    "menu_order": 50,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "description": "Generated template content fields. Source: woocommerce/emails/email-header.php"
+}

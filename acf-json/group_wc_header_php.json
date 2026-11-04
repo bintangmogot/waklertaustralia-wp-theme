@@ -1,0 +1,255 @@
+{
+    "key": "group_wc_header_php",
+    "title": "Header",
+    "fields": [
+        {
+            "key": "field_wc_pg_header_gtm_id",
+            "label": "Google Tag Measurement ID",
+            "name": "wc_pg_header_gtm_id",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: header.php",
+            "default_value": "G-D0FP1NRE56",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_header_icon_211072ad49",
+            "label": "Icon 211072ad49",
+            "name": "wc_header_icon_211072ad49",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: header.php",
+            "default_value": "<svg class=\"w-4 h-4 shrink-0\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\r\n                <rect x=\"1\" y=\"5\" width=\"14\" height=\"11\" rx=\"1.5\" fill=\"#38BDF8\" fill-opacity=\"0.3\" stroke=\"#38BDF8\" stroke-width=\"1.5\"/>\r\n                <path d=\"M15 8h4.5l3.5 4.5v3.5h-8V8z\" fill=\"#F59E0B\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\r\n                <circle cx=\"6\" cy=\"18\" r=\"2.5\" fill=\"#FFFFFF\" stroke=\"#0C4161\" stroke-width=\"1.5\"/>\r\n                <circle cx=\"18\" cy=\"18\" r=\"2.5\" fill=\"#FFFFFF\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\r\n                <circle cx=\"6\" cy=\"18\" r=\"1\" fill=\"#0C4161\"/>\r\n                <circle cx=\"18\" cy=\"18\" r=\"1\" fill=\"#F59E0B\"/>\r\n                <path d=\"M17 11h3\" stroke=\"#FFFFFF\" stroke-width=\"1.2\" stroke-linecap=\"round\"/>\r\n            </svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_header_icon_211072ad49_image",
+            "label": "Icon 211072ad49 custom image",
+            "name": "wc_header_icon_211072ad49_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_header_icon_91ef0d23aa",
+            "label": "Icon 91ef0d23aa",
+            "name": "wc_header_icon_91ef0d23aa",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: header.php",
+            "default_value": "<svg class=\"w-4 h-4 text-amber-400\" viewBox=\"0 0 24 24\" fill=\"currentColor\">\r\n                <path d=\"M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z\"/>\r\n            </svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_header_icon_91ef0d23aa_image",
+            "label": "Icon 91ef0d23aa custom image",
+            "name": "wc_header_icon_91ef0d23aa_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_header_icon_abf8657331",
+            "label": "Icon abf8657331",
+            "name": "wc_header_icon_abf8657331",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: header.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"text-emerald-300\"><path d=\"M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z\"/><path d=\"M14.05 2a9 9 0 0 1 8 7.94\"/><path d=\"M14.05 6A5 5 0 0 1 18 10\"/></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_header_icon_abf8657331_image",
+            "label": "Icon abf8657331 custom image",
+            "name": "wc_header_icon_abf8657331_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_header_icon_a31a0c4c5a",
+            "label": "Icon a31a0c4c5a",
+            "name": "wc_header_icon_a31a0c4c5a",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: header.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"h-5 w-5\"><line x1=\"4\" x2=\"20\" y1=\"12\" y2=\"12\"/><line x1=\"4\" x2=\"20\" y1=\"6\" y2=\"6\"/><line x1=\"4\" x2=\"20\" y1=\"18\" y2=\"18\"/></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_header_icon_a31a0c4c5a_image",
+            "label": "Icon a31a0c4c5a custom image",
+            "name": "wc_header_icon_a31a0c4c5a_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_header_icon_7ae7816964",
+            "label": "Icon 7ae7816964",
+            "name": "wc_header_icon_7ae7816964",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: header.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"h-3.5 w-3.5 sm:h-4 sm:w-4 text-white\"><path d=\"M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z\"/></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_header_icon_7ae7816964_image",
+            "label": "Icon 7ae7816964 custom image",
+            "name": "wc_header_icon_7ae7816964_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_header_icon_9ffbbe9b97",
+            "label": "Icon 9ffbbe9b97",
+            "name": "wc_header_icon_9ffbbe9b97",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: header.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"h-5 w-5\"><path d=\"M18 6 6 18\"/><path d=\"m6 6 12 12\"/></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_header_icon_9ffbbe9b97_image",
+            "label": "Icon 9ffbbe9b97 custom image",
+            "name": "wc_header_icon_9ffbbe9b97_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_header_icon_5f623be711",
+            "label": "Icon 5f623be711",
+            "name": "wc_header_icon_5f623be711",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: header.php",
+            "default_value": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"h-3.5 w-3.5 text-white\"><path d=\"M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z\"/></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_header_icon_5f623be711_image",
+            "label": "Icon 5f623be711 custom image",
+            "name": "wc_header_icon_5f623be711_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_header_icon_76cdc1cd7a",
+            "label": "Icon 76cdc1cd7a",
+            "name": "wc_header_icon_76cdc1cd7a",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: header.php",
+            "default_value": "<svg class=\"h-5 w-5\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\r\n                        <circle cx=\"12\" cy=\"12\" r=\"9\" stroke=\"#F59E0B\" stroke-width=\"2\"/>\r\n                        <circle cx=\"12\" cy=\"12\" r=\"4\" stroke=\"#0C4161\" stroke-width=\"2\"/>\r\n                        <path d=\"M4.93 4.93L8.5 8.5M15.5 15.5L19.07 19.07M4.93 19.07L8.5 15.5M15.5 8.5L19.07 4.93\" stroke=\"#F59E0B\" stroke-width=\"2\" stroke-linecap=\"round\"/>\r\n                    </svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_header_icon_76cdc1cd7a_image",
+            "label": "Icon 76cdc1cd7a custom image",
+            "name": "wc_header_icon_76cdc1cd7a_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_header_icon_d49d6353f9",
+            "label": "Icon d49d6353f9",
+            "name": "wc_header_icon_d49d6353f9",
+            "type": "textarea",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: header.php",
+            "default_value": "<svg aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" class=\"h-4 w-4\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-width=\"2.5\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M5 12h14m-6-6 6 6-6 6\"/></svg>",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_header_icon_d49d6353f9_image",
+            "label": "Icon d49d6353f9 custom image",
+            "name": "wc_header_icon_d49d6353f9_image",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "instructions": "Optional Media Library image replacing this icon."
+        },
+        {
+            "key": "field_wc_header_image_9ed1f5bbdf",
+            "label": "Image 9ed1f5bbdf",
+            "name": "wc_header_image_9ed1f5bbdf",
+            "type": "image",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: header.php",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "library": "all"
+        },
+        {
+            "key": "field_wc_header_image_18dabadce0",
+            "label": "Image 18dabadce0",
+            "name": "wc_header_image_18dabadce0",
+            "type": "image",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: header.php",
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "library": "all"
+        },
+        {
+            "key": "field_wc_header_text_0b7eb152ba",
+            "label": "Menu",
+            "name": "wc_header_text_0b7eb152ba",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: header.php",
+            "default_value": "Menu",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_header_text_ba014a1153",
+            "label": "Close menu",
+            "name": "wc_header_text_ba014a1153",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: header.php",
+            "default_value": "Close menu",
+            "rows": 3,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "waklert-content-shared"
+            }
+        ]
+    ],
+    "menu_order": 50,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "description": "Generated template content fields. Source: header.php"
+}

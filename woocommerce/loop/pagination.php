@@ -18,7 +18,7 @@ if ( $total <= 1 ) {
 	return;
 }
 ?>
-<nav class="woocommerce-pagination mt-12 flex justify-center" aria-label="<?php esc_attr_e( 'Product Pagination', 'woocommerce' ); ?>">
+<nav class="woocommerce-pagination mt-12 flex justify-center" aria-label="<?php esc_attr_e( waklert_content('pagination_text_7d621134d8'), 'woocommerce' ); ?>">
 	<?php
 	$pages = paginate_links(
 		apply_filters(

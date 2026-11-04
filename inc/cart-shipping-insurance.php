@@ -158,7 +158,7 @@ function waklert_cart_insurance_render_cart_choices() {
 	);
 
 	echo '<div class="shipping-insurance" style="padding:1rem 0;border-bottom:1px solid #f5f5f4">';
-	echo '<div style="font-weight:700;color:#0f172a;font-size:1rem;line-height:1.5rem;margin-bottom:.75rem">' . esc_html__( 'Shipping Insurance', 'woocommerce' ) . '</div>';
+	echo '<div style="font-weight:700;color:#0f172a;font-size:1rem;line-height:1.5rem;margin-bottom:.75rem">' . esc_html(waklert_content('com_shipping_insurance_heading')) . '</div>';
 	echo '<div style="display:flex;flex-direction:column;gap:.5rem">' . $options . '</div>';
 	echo '</div>';
 }
@@ -241,14 +241,14 @@ function waklert_cart_insurance_save_choice() {
 	check_ajax_referer( 'waklert_cart_insurance', 'nonce' );
 
 	if ( ! WC()->session || ! WC()->cart || ! isset( $_POST['package'] ) ) {
-		wp_send_json_error( array( 'message' => 'Cart is unavailable.' ), 400 );
+		wp_send_json_error( array( 'message' => waklert_content('com_cart_unavailable_error') ), 400 );
 	}
 
 	$package_id = sanitize_text_field( wp_unslash( $_POST['package'] ) );
 	if ( 'NO_INSURANCE' !== $package_id ) {
 		$packages = (array) get_option( 'shipping_insurance_packages', array() );
 		if ( ! isset( $packages[ $package_id ]['enabled'] ) || 'yes' !== $packages[ $package_id ]['enabled'] ) {
-			wp_send_json_error( array( 'message' => 'Insurance option is unavailable.' ), 400 );
+			wp_send_json_error( array( 'message' => waklert_content('com_insurance_unavailable_error') ), 400 );
 		}
 	}
 
@@ -266,8 +266,9 @@ function waklert_cart_insurance_cart_script() {
 	}
 
 	$config = array(
-		'url'   => admin_url( 'admin-ajax.php' ),
-		'nonce' => wp_create_nonce( 'waklert_cart_insurance' ),
+		'url'              => admin_url( 'admin-ajax.php' ),
+		'nonce'            => wp_create_nonce( 'waklert_cart_insurance' ),
+		'updateError'      => waklert_content('com_insurance_update_error'),
 	);
 	?>
 	<script>
@@ -292,11 +293,11 @@ function waklert_cart_insurance_cart_script() {
 					body
 				});
 				const result = await response.json();
-				if (!response.ok || !result.success) throw new Error('Could not update insurance.');
+				if (!response.ok || !result.success) throw new Error(result.data?.message || config.updateError);
 				window.location.reload();
 			} catch (error) {
 				input.disabled = false;
-				window.alert(error.message);
+				window.alert(error.message || config.updateError);
 			}
 		});
 	})();

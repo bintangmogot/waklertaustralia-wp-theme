@@ -35,12 +35,12 @@ $site_url = home_url( '/' );
 
 												<!-- Australia Post Express Guarantee -->
 												<p style="margin: 0 0 10px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 12px; color: #64748B; line-height: 1.5;">
-													All orders are dispatched discreetly in plain packaging via Australia Post Express with unique tracking.
+													<?= esc_html(waklert_content('email_footer_text_dcc7a5a475')) ?>
 												</p>
 
 												<!-- Copyright -->
 												<p style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 12px; color: #94A3B8;">
-													&copy; <?php echo esc_html( date( 'Y' ) ); ?> <a href="<?php echo esc_url( $site_url ); ?>" style="color: #64748B; text-decoration: underline; font-weight: 600;">Waklert Australia</a>. All rights reserved.
+													<?= esc_html(waklert_content('email_footer_text_bf3efdeb76')) ?> <?php echo esc_html( date( 'Y' ) ); ?> <a href="<?php echo esc_url( $site_url ); ?>" style="color: #64748B; text-decoration: underline; font-weight: 600;"><?= esc_html(waklert_content('email_footer_text_ad84f54414')) ?></a><?= esc_html(waklert_content('email_footer_text_d404057c6f')) ?>
 												</p>
 
 											</td>
