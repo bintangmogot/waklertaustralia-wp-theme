@@ -108,13 +108,13 @@ $get_variations = static function ($product) {
 <section id="product-comparison" class="relative isolate scroll-mt-24 overflow-hidden bg-ink py-8 text-primary-foreground md:py-12" data-testid="product-comparison">
     <?php waklert_output_pattern_rings(); ?>
     <div class="container-site relative z-10">
-        <header class="mx-auto mb-8 max-w-3xl text-center md:mb-10">
+        <?php if ((waklert_has_content(esc_html(waklert_content('content_catalog_comparis_text_e4c36662ea')))) || (waklert_has_content(esc_html(waklert_content('content_catalog_comparis_text_43d78c93fd')))) || (waklert_has_content(esc_html(waklert_content('content_catalog_comparis_text_26949753fd'))))): ?><header class="mx-auto mb-8 max-w-3xl text-center md:mb-10">
             <?php if (waklert_has_content(esc_html(waklert_content('content_catalog_comparis_text_e4c36662ea')))): ?><span class="mb-4 inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary-foreground"><?= esc_html(waklert_content('content_catalog_comparis_text_e4c36662ea')) ?></span><?php endif; ?>
             <?php if (waklert_has_content(esc_html(waklert_content('content_catalog_comparis_text_43d78c93fd')))): ?><h2 class="font-heading text-2xl font-black text-primary-foreground md:text-4xl"><?= esc_html(waklert_content('content_catalog_comparis_text_43d78c93fd')) ?></h2><?php endif; ?>
             <?php if (waklert_has_content(esc_html(waklert_content('content_catalog_comparis_text_26949753fd')))): ?><p class="mt-3 text-base leading-relaxed text-primary-foreground/80">
                 <?= esc_html(waklert_content('content_catalog_comparis_text_26949753fd')) ?>
             </p><?php endif; ?>
-        </header>
+        </header><?php endif; ?>
 
         <div role="region" aria-label="<?= esc_attr(waklert_content('content_catalog_comparis_text_0a165c46cd')) ?>" tabindex="0" class="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain px-4 pb-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 md:mx-0 md:grid md:grid-cols-3 md:items-stretch md:gap-5 md:overflow-visible md:px-0 md:pb-0">
             <?php foreach ($catalog_products as $product): ?>

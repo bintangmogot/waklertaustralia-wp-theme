@@ -56,12 +56,12 @@ $faq_items     = is_array($faq_items) ? $faq_items : [];
 
         <!-- Eyebrow Badge -->
         <?php if ($page_badge !== ''): ?>
-        <div class="mb-2.5">
+        <?php if ((waklert_has_content(esc_html($page_badge)))): ?><div class="mb-2.5">
             <?php if (waklert_has_content(esc_html($page_badge))): ?><span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 border border-sky-300/80 px-3.5 py-1 text-xs font-black uppercase tracking-[0.16em] text-[#0c4161] shadow-xs">
                 <span class="h-1.5 w-1.5 rounded-full bg-amber-500 animate-pulse" aria-hidden="true"></span>
                 <?= esc_html($page_badge) ?>
             </span><?php endif; ?>
-        </div>
+        </div><?php endif; ?>
         <?php endif; ?>
 
         <?php if (waklert_has_content(esc_html($page_title))): ?><h1 class="mx-auto max-w-3xl font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-tight text-[#0c4161]">
@@ -145,14 +145,14 @@ $faq_items     = is_array($faq_items) ? $faq_items : [];
 <section class="py-7 md:py-10 bg-gradient-to-b from-slate-50/60 via-white to-slate-50/40">
     <div class="container-site max-w-6xl">
         <?php if ($products_heading !== ''): ?>
-            <div class="mb-10 text-center max-w-3xl mx-auto">
+            <?php if ((waklert_has_content(esc_html(waklert_content('content_dosage_guide_text_841ea3acd6')))) || (waklert_has_content(esc_html($products_heading)))): ?><div class="mb-10 text-center max-w-3xl mx-auto">
                 <?php if (waklert_has_content(esc_html(waklert_content('content_dosage_guide_text_841ea3acd6')))): ?><span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 border border-sky-300/80 px-3 py-0.5 text-[11px] font-black uppercase tracking-[0.16em] text-[#0c4161]">
                     <?= esc_html(waklert_content('content_dosage_guide_text_841ea3acd6')) ?>
                 </span><?php endif; ?>
                 <?php if (waklert_has_content(esc_html($products_heading))): ?><h2 class="mt-2 font-heading text-2xl sm:text-3xl md:text-4xl font-black text-[#0c4161]">
                     <?= esc_html($products_heading) ?>
                 </h2><?php endif; ?>
-            </div>
+            </div><?php endif; ?>
         <?php endif; ?>
 
         <?php if ($product_cards): ?>
@@ -164,10 +164,10 @@ $faq_items     = is_array($faq_items) ? $faq_items : [];
                             <?= esc_html(strtoupper(substr((string) ($prod['name'] ?? ''), 0, 1))) ?>
                         </div><?php endif; ?>
                         <div class="min-w-0 flex-1">
-                            <div class="flex items-center justify-between">
+                            <?php if ((waklert_has_content(esc_html($prod['name'] ?? '')))): ?><div class="flex items-center justify-between">
                                 <?php if (waklert_has_content(esc_html($prod['name'] ?? ''))): ?><p class="font-heading font-black text-slate-900 text-lg group-hover:text-[#0c4161] transition-colors"><?= esc_html($prod['name'] ?? '') ?></p><?php endif; ?>
                                 <?= waklert_content_icon('content_dosage_guide_icon_8d72795ee3') ?>
-                            </div>
+                            </div><?php endif; ?>
                             <?php if (!empty($prod['use'])): ?>
                                 <?php if (waklert_has_content(esc_html($prod['use']))): ?><p class="text-sm text-slate-600 mt-1"><?= esc_html($prod['use']) ?></p><?php endif; ?>
                             <?php endif; ?>
@@ -290,14 +290,14 @@ $faq_items     = is_array($faq_items) ? $faq_items : [];
 <?php if ($faq_items): ?>
 <section class="py-7 md:py-10 bg-white">
     <div class="container-site max-w-5xl">
-        <div class="mb-10 text-center max-w-3xl mx-auto">
+        <?php if ((waklert_has_content(esc_html(waklert_content('content_dosage_guide_text_68471f55b4')))) || (waklert_has_content(esc_html($faq_heading)))): ?><div class="mb-10 text-center max-w-3xl mx-auto">
             <?php if (waklert_has_content(esc_html(waklert_content('content_dosage_guide_text_68471f55b4')))): ?><span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 border border-sky-300/80 px-3 py-0.5 text-[11px] font-black uppercase tracking-[0.16em] text-[#0c4161]">
                 <?= esc_html(waklert_content('content_dosage_guide_text_68471f55b4')) ?>
             </span><?php endif; ?>
             <?php if (waklert_has_content(esc_html($faq_heading))): ?><h2 class="mt-2 font-heading text-2xl sm:text-3xl md:text-4xl font-black text-[#0c4161]">
                 <?= esc_html($faq_heading) ?>
             </h2><?php endif; ?>
-        </div>
+        </div><?php endif; ?>
 
         <div class="grid gap-4 md:grid-cols-2">
             <?php foreach ($faq_items as $faq): ?>

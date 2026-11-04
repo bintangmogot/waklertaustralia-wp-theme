@@ -54,12 +54,12 @@ $trust_cards = waklert_module_rows('trust_cards');
         </div>
 
         <!-- Eyebrow Badge -->
-        <div class="mb-2.5">
+        <?php if ((waklert_has_content(esc_html($badge_text)))): ?><div class="mb-2.5">
             <?php if (waklert_has_content(esc_html($badge_text))): ?><span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 border border-sky-300/80 px-3.5 py-1 text-xs font-black uppercase tracking-[0.16em] text-[#0c4161] shadow-xs">
                 <span class="h-1.5 w-1.5 rounded-full bg-amber-500 animate-pulse" aria-hidden="true"></span>
                 <?= esc_html($badge_text) ?>
             </span><?php endif; ?>
-        </div>
+        </div><?php endif; ?>
 
         <?php if (waklert_has_content(esc_html($page_title))): ?><h1 class="mx-auto max-w-3xl font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-tight text-[#0c4161]">
             <?= esc_html($page_title) ?>
@@ -86,18 +86,18 @@ $trust_cards = waklert_module_rows('trust_cards');
     <!-- Main Australia Post Tracking Tool Card (Clean, Focused Single Card) -->
     <section class="rounded-3xl border-2 border-dashed border-sky-300/80 bg-white p-6 sm:p-8 md:p-10 shadow-sm relative overflow-hidden" aria-label="<?= esc_attr(waklert_content('content_track_order_text_ed94aa8399')) ?>">
         <div class="max-w-3xl mx-auto space-y-6">
-            <div class="text-center sm:text-left">
-                <div class="inline-flex items-center gap-2 rounded-full bg-sky-100 border border-sky-300/80 px-3 py-1 text-xs font-black uppercase tracking-wider text-[#0c4161] mb-2.5">
+            <?php if ((waklert_has_content(esc_html($form_heading))) || (waklert_has_content(wp_kses_post($form_instructions)))): ?><div class="text-center sm:text-left">
+                <?php if ((waklert_has_content(esc_html($form_heading)))): ?><div class="inline-flex items-center gap-2 rounded-full bg-sky-100 border border-sky-300/80 px-3 py-1 text-xs font-black uppercase tracking-wider text-[#0c4161] mb-2.5">
                     <?= waklert_content_icon('content_track_order_icon_08a7994f1b') ?>
                     <?php if (waklert_has_content(esc_html($form_heading))): ?><span><?= esc_html($form_heading) ?></span><?php endif; ?>
-                </div>
+                </div><?php endif; ?>
                 <?php if (waklert_has_content(esc_html($form_heading))): ?><h2 class="font-heading text-2xl sm:text-3xl font-black text-[#0c4161] tracking-tight">
                     <?= esc_html($form_heading) ?>
                 </h2><?php endif; ?>
                 <?php if (waklert_has_content(wp_kses_post($form_instructions))): ?><p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
                     <?= wp_kses_post($form_instructions) ?>
                 </p><?php endif; ?>
-            </div>
+            </div><?php endif; ?>
 
             <!-- Interactive Tracking Form with Pill / Capsule Styling -->
             <form id="auspost-tracking-form" action="https://auspost.com.au/mypost/track/search" method="GET" target="_blank" rel="noopener noreferrer" class="space-y-3">
@@ -131,23 +131,23 @@ $trust_cards = waklert_module_rows('trust_cards');
             </form>
 
             <!-- Info Alert Box (Soft Yellow/Amber) -->
-            <div class="rounded-2xl border border-amber-200/90 bg-amber-50/70 p-4 flex items-start gap-3">
+            <?php if ((waklert_has_content(wp_kses_post($redirect_notice)))): ?><div class="rounded-2xl border border-amber-200/90 bg-amber-50/70 p-4 flex items-start gap-3">
                 <?= waklert_content_icon('content_track_order_icon_4a1ad4e839') ?>
                 <?php if (waklert_has_content(wp_kses_post($redirect_notice))): ?><p class="text-xs sm:text-sm text-slate-700 leading-relaxed m-0">
                     <?= wp_kses_post($redirect_notice) ?>
                 </p><?php endif; ?>
-            </div>
+            </div><?php endif; ?>
         </div>
     </section>
 
     <!-- "How Order Tracking Works" Section -->
     <?php if (!empty($how_steps)): ?>
     <section class="space-y-6 pt-2" aria-labelledby="how-tracking-works-heading">
-        <div class="border-b border-slate-200 pb-3">
+        <?php if ((waklert_has_content(esc_html($how_heading)))): ?><div class="border-b border-slate-200 pb-3">
             <?php if (waklert_has_content(esc_html($how_heading))): ?><h2 id="how-tracking-works-heading" class="font-heading text-2xl sm:text-3xl font-black text-[#0c4161] tracking-tight">
                 <?= esc_html($how_heading) ?>
             </h2><?php endif; ?>
-        </div>
+        </div><?php endif; ?>
 
         <div class="space-y-4">
             <?php foreach ($how_steps as $step): 
@@ -155,14 +155,14 @@ $trust_cards = waklert_module_rows('trust_cards');
                 $sdesc  = $step['description'] ?? '';
                 if (!$stitle) continue;
             ?>
-            <div class="rounded-2xl border border-slate-200 bg-white border-t-[4px] border-t-amber-500 p-5 sm:p-6 shadow-xs hover:border-slate-300 transition-all">
+            <?php if ((waklert_has_content(esc_html($stitle))) || (waklert_has_content(esc_html($sdesc)))): ?><div class="rounded-2xl border border-slate-200 bg-white border-t-[4px] border-t-amber-500 p-5 sm:p-6 shadow-xs hover:border-slate-300 transition-all">
                 <?php if (waklert_has_content(esc_html($stitle))): ?><h3 class="font-heading text-base sm:text-lg font-black text-slate-900 mb-2">
                     <?= esc_html($stitle) ?>
                 </h3><?php endif; ?>
                 <?php if (waklert_has_content(esc_html($sdesc))): ?><p class="text-xs sm:text-sm text-slate-600 leading-relaxed m-0">
                     <?= esc_html($sdesc) ?>
                 </p><?php endif; ?>
-            </div>
+            </div><?php endif; ?>
             <?php endforeach; ?>
         </div>
     </section>
@@ -170,14 +170,14 @@ $trust_cards = waklert_module_rows('trust_cards');
 
     <!-- "Need Help?" Card -->
     <section class="rounded-2xl border-2 border-dashed border-sky-300/80 bg-gradient-to-r from-sky-50/60 via-white to-sky-50/40 p-6 sm:p-7 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5" aria-labelledby="need-help-heading">
-        <div class="space-y-1.5 max-w-xl">
+        <?php if ((waklert_has_content(esc_html($help_title))) || (waklert_has_content(wp_kses_post($help_desc)))): ?><div class="space-y-1.5 max-w-xl">
             <?php if (waklert_has_content(esc_html($help_title))): ?><h3 id="need-help-heading" class="font-heading text-lg sm:text-xl font-extrabold text-[#0c4161]">
                 <?= esc_html($help_title) ?>
             </h3><?php endif; ?>
             <?php if (waklert_has_content(wp_kses_post($help_desc))): ?><p class="text-xs sm:text-sm text-slate-600 leading-relaxed m-0">
                 <?= wp_kses_post($help_desc) ?>
             </p><?php endif; ?>
-        </div>
+        </div><?php endif; ?>
         <div class="flex items-center gap-3 shrink-0">
             <?php if ((waklert_has_content(esc_html($help_btn_text))) && waklert_has_content(esc_url($help_btn_url))): ?><a href="<?= esc_url($help_btn_url) ?>" class="inline-flex items-center gap-2 rounded-xl bg-[#0c4161] hover:bg-[#082a40] text-white px-5 py-2.5 text-xs sm:text-sm font-extrabold uppercase tracking-wider shadow-sm transition-all">
                 <?php if (waklert_has_content(esc_html($help_btn_text))): ?><span><?= esc_html($help_btn_text) ?></span><?php endif; ?>
@@ -211,7 +211,7 @@ $trust_cards = waklert_module_rows('trust_cards');
                 'size_class'     => 'w-10 h-10 shrink-0',
             ]);
         ?>
-        <div class="rounded-2xl border-2 border-dashed border-sky-200/90 bg-white p-6 shadow-xs hover:border-sky-400 hover:shadow-md transition-all flex flex-col items-center text-center">
+        <?php if ((waklert_has_content($card_icon_html)) || (waklert_has_content(esc_html($ctitle))) || (waklert_has_content(esc_html($cdesc)))): ?><div class="rounded-2xl border-2 border-dashed border-sky-200/90 bg-white p-6 shadow-xs hover:border-sky-400 hover:shadow-md transition-all flex flex-col items-center text-center">
             <?php if (waklert_has_content($card_icon_html)): ?><div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-white p-2 shadow-lg shadow-black/10 border-2 border-sky-100 mb-4 shrink-0">
                 <?= $card_icon_html ?>
             </div><?php endif; ?>
@@ -219,7 +219,7 @@ $trust_cards = waklert_module_rows('trust_cards');
             <?php if (waklert_has_content(esc_html($cdesc))): ?><p class="text-xs sm:text-sm text-slate-600 leading-relaxed m-0">
                 <?= esc_html($cdesc) ?>
             </p><?php endif; ?>
-        </div>
+        </div><?php endif; ?>
         <?php endforeach; ?>
     </section>
     <?php endif; ?>

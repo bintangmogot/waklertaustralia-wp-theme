@@ -224,15 +224,15 @@ $mobile_png_url = waklert_content_asset('content_hero_section_image_fe12bd4316')
                 <?php if ($hero_badges): ?>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-2">
                     <?php foreach ($hero_badges as $badge): ?>
-                    <div class="group flex items-center gap-2.5 rounded-xl border border-dashed border-white/30 bg-white/10 hover:bg-white/15 backdrop-blur-sm p-2.5 px-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-400/80">
+                    <?php if ((waklert_has_content(esc_html($badge['title']))) || (waklert_has_content(esc_html($badge['subtitle'])))): ?><div class="group flex items-center gap-2.5 rounded-xl border border-dashed border-white/30 bg-white/10 hover:bg-white/15 backdrop-blur-sm p-2.5 px-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-400/80">
                         <div class="w-8 h-8 rounded-lg bg-white/90 p-1 flex items-center justify-center shrink-0 shadow-xs transition-transform duration-300 group-hover:scale-110">
                             <?= $hero_badge_icons[$badge['icon']] ?? $hero_badge_icons['shield'] ?>
                         </div>
-                        <div class="leading-tight">
+                        <?php if ((waklert_has_content(esc_html($badge['title']))) || (waklert_has_content(esc_html($badge['subtitle'])))): ?><div class="leading-tight">
                             <?php if (waklert_has_content(esc_html($badge['title']))): ?><span class="block text-[11px] font-extrabold text-white"><?= esc_html($badge['title']) ?></span><?php endif; ?>
                             <?php if (waklert_has_content(esc_html($badge['subtitle']))): ?><span class="block text-[10px] text-white/75 font-medium"><?= esc_html($badge['subtitle']) ?></span><?php endif; ?>
-                        </div>
-                    </div>
+                        </div><?php endif; ?>
+                    </div><?php endif; ?>
                     <?php endforeach; ?>
                 </div>
                 <?php endif; ?>

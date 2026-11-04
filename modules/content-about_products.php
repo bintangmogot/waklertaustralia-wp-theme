@@ -36,14 +36,14 @@ if (!$heading && !$desc && !$products) {
             <?php foreach ($products as $idx => $product): ?>
             <div class="group relative flex flex-col justify-between overflow-hidden rounded-2xl border-2 border-dashed border-sky-200/80 bg-white p-6 shadow-xs transition-all duration-200 hover:border-sky-400 hover:shadow-md">
                 <div>
-                    <div class="flex items-center justify-between gap-2 mb-3">
+                    <?php if ((waklert_has_content(sprintf('%02d', $idx + 1))) || (waklert_has_content(esc_html($badge_text)))): ?><div class="flex items-center justify-between gap-2 mb-3">
                         <?php if (waklert_has_content(sprintf('%02d', $idx + 1))): ?><span class="flex h-9 w-9 items-center justify-center rounded-xl bg-sky-100 text-[#0c4161] font-heading font-black text-xs">
                             <?= sprintf('%02d', $idx + 1) ?>
                         </span><?php endif; ?>
                         <?php if (waklert_has_content(esc_html($badge_text))): ?><span class="inline-flex items-center gap-1 rounded-full bg-amber-50 border border-amber-200 px-2.5 py-0.5 text-[10px] font-bold text-amber-700">
                             <?= esc_html($badge_text) ?>
                         </span><?php endif; ?>
-                    </div>
+                    </div><?php endif; ?>
                     <?php if (!empty($product['title'])): ?>
                         <?php if (waklert_has_content(esc_html($product['title']))): ?><h3 class="font-heading font-bold text-lg text-slate-900 mb-2"><?= esc_html($product['title']) ?></h3><?php endif; ?>
                     <?php endif; ?>

@@ -93,4 +93,27 @@ try {
     visibility_assert(str_contains($image, 'assets/images/waklert-site-icon.png'), 'Blank global image lost its bundled fallback.');
 } finally { remove_filter('acf/load_value', $blank_artwork, 100); acf_get_store('values')->reset(); }
 echo "Image/icon fallback, uploaded image priority and empty-text checks passed.\n";
+function visibility_repeater_row($fields, $name, $values) {
+    foreach ($fields as $field) {
+        if ($field['name'] !== $name) { continue; }
+        $row = [];
+        foreach ($field['sub_fields'] as $sub) { $row[$sub['key']] = $values[$sub['name']] ?? ''; }
+        return $row;
+    }
+    throw new RuntimeException('Unknown fixture repeater: ' . $name);
+}
+foreach ([['trust_strip','badges','label'],['why_choose_us','audiences','title'],['how_to_order','steps','title']] as [$layout,$repeater,$title_field]) {
+    $row = visibility_repeater_row($by_name[$layout], $repeater, [$title_field=>'KEPT CARD TITLE']);
+    $html = render_visibility_module($layout, $by_name[$layout], [$repeater=>[$row]]);
+    visibility_assert(str_contains($html, 'KEPT CARD TITLE'), 'Populated card disappeared: ' . $layout);
+    visibility_assert(!str_contains($html, 'bg-[#0c4161] group-hover:bg-[#082c42] text-white'), 'Empty description left a coloured panel: ' . $layout);
+}
+$html = render_visibility_module('about_mission', $by_name['about_mission'], ['mission_heading'=>'KEPT MISSION']);
+visibility_assert(str_contains($html, 'KEPT MISSION') && !str_contains($html, 'border-amber-300/80'), 'Cleared vision left its card or icon.');
+foreach (['faqs','product_faqs'] as $layout) {
+    $row = visibility_repeater_row($by_name[$layout], 'faq_items', ['answer'=>'Answer without a question']);
+    $html = render_visibility_module($layout, $by_name[$layout], ['faq_items'=>[$row]]);
+    visibility_assert(!str_contains($html, '<details'), 'Blank question left an icon-only FAQ: ' . $layout);
+}
+echo "Companion card panels, mission/vision and FAQ question visibility passed.\n";
 echo "All module visibility checks passed.\n";

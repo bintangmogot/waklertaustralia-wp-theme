@@ -217,24 +217,41 @@
         <?php endif; ?>
     </div>
 
+    <?php
+    $help_eyebrow = waklert_option_text('mobile_help_eyebrow');
+    $help_title = waklert_option_text('mobile_help_title');
+    $help_text = waklert_option_text('mobile_help_text');
+    $help_button = waklert_option_text('mobile_help_button_text');
+    $help_url = esc_url(waklert_resolve_link(waklert_option_text('mobile_help_button_url')));
+    $show_help_heading = waklert_has_content($help_eyebrow) || waklert_has_content($help_title);
+    $show_help_button = waklert_has_content($help_button) && waklert_has_content($help_url);
+    ?>
+    <?php if ($show_help_heading || waklert_has_content($help_text) || $show_help_button): ?>
     <!-- 2-Tone Dashed Help Card in Mobile Drawer -->
-    <div class="mx-6 mb-8 mt-4 shrink-0 rounded-3xl border-2 border-dashed border-sky-300/80 bg-white overflow-hidden shadow-sm transition-all hover:shadow-md">
+    <div data-testid="mobile-help-card" class="mx-6 mb-8 mt-4 shrink-0 rounded-3xl border-2 border-dashed border-sky-300/80 bg-white overflow-hidden shadow-sm transition-all hover:shadow-md">
+        <?php if ($show_help_heading || waklert_has_content($help_text)): ?>
         <div class="p-5">
+            <?php if ($show_help_heading): ?>
             <div class="flex items-center gap-3 mb-2.5">
                 <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-50 text-amber-600 border border-amber-200">
                     <!-- Colorful Help Life Ring SVG -->
                     <?= waklert_content_icon('header_icon_76cdc1cd7a') ?>
                 </div>
                 <div>
-                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-amber-600"><?= esc_html(waklert_option_text('mobile_help_eyebrow')) ?></span>
-                    <h3 class="text-sm font-extrabold text-[#0c4161]"><?= esc_html(waklert_option_text('mobile_help_title')) ?></h3>
+                    <?php if (waklert_has_content($help_eyebrow)): ?><span class="text-[10px] font-extrabold uppercase tracking-widest text-amber-600"><?= esc_html($help_eyebrow) ?></span><?php endif; ?>
+                    <?php if (waklert_has_content($help_title)): ?><h3 class="text-sm font-extrabold text-[#0c4161]"><?= esc_html($help_title) ?></h3><?php endif; ?>
                 </div>
             </div>
-            <p class="text-xs leading-relaxed text-slate-600"><?= esc_html(waklert_option_text('mobile_help_text')) ?></p>
+            <?php endif; ?>
+            <?php if (waklert_has_content($help_text)): ?><p class="text-xs leading-relaxed text-slate-600"><?= esc_html($help_text) ?></p><?php endif; ?>
         </div>
-        <a href="<?= esc_url(waklert_resolve_link(waklert_option_text('mobile_help_button_url'))) ?>" class="flex items-center justify-between bg-gradient-to-r from-[#0c4161] to-[#125883] px-4 py-2.5 sm:px-5 sm:py-3 text-xs font-bold text-white transition-colors hover:from-[#09324c] hover:to-[#0c4161]">
-            <span><?= esc_html(waklert_option_text('mobile_help_button_text')) ?></span>
+        <?php endif; ?>
+        <?php if ($show_help_button): ?>
+        <a href="<?= $help_url ?>" class="flex items-center justify-between bg-gradient-to-r from-[#0c4161] to-[#125883] px-4 py-2.5 sm:px-5 sm:py-3 text-xs font-bold text-white transition-colors hover:from-[#09324c] hover:to-[#0c4161]">
+            <span><?= esc_html($help_button) ?></span>
             <?= waklert_content_icon('header_icon_d49d6353f9') ?>
         </a>
+        <?php endif; ?>
     </div>
+    <?php endif; ?>
 </div>

@@ -20,7 +20,7 @@ $cities_field = get_sub_field('cities');
 <section class="section-padding bg-gradient-to-b from-[#f0f6fa] via-[#e9f2f8] to-[#f8fafc] bg-pattern-dots border-t-2 border-dashed border-sky-200/80 relative isolate overflow-hidden" data-testid="city-spotlight">
     <div class="container-custom relative z-10">
         <!-- Section Header -->
-        <div class="text-center max-w-3xl mx-auto mb-10 md:mb-12">
+        <?php if ((waklert_has_content(esc_html($tag))) || (waklert_has_content(esc_html($heading))) || (waklert_has_content(esc_html($desc)))): ?><div class="text-center max-w-3xl mx-auto mb-10 md:mb-12">
             <?php if (waklert_has_content(esc_html($tag))): ?><span class="inline-flex items-center gap-2 bg-sky-100 text-[#0c4161] border border-sky-300 text-xs font-black uppercase tracking-widest px-4 py-1.5 rounded-full mb-3 shadow-xs">
                 <span class="w-2 h-2 rounded-full bg-[#0c4161] animate-pulse-subtle"></span>
                 <?= esc_html($tag) ?>
@@ -31,7 +31,7 @@ $cities_field = get_sub_field('cities');
             <?php if (waklert_has_content(esc_html($desc))): ?><p class="text-sm md:text-base text-muted-foreground max-w-xl mx-auto leading-relaxed">
                 <?= esc_html($desc) ?>
             </p><?php endif; ?>
-        </div>
+        </div><?php endif; ?>
 
         <!-- Featured Cities Grid -->
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
@@ -72,12 +72,12 @@ $cities_field = get_sub_field('cities');
                     $permalink = get_permalink($city_id);
             ?>
             <a href="<?= esc_url($permalink) ?>" class="group flex items-center justify-between gap-4 bg-white border-2 border-dashed border-sky-300/80 hover:border-[#0c4161] rounded-2xl p-5 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 ease-out shadow-xs">
-                <div class="flex items-center gap-3.5 min-w-0">
+                <?php if ((waklert_has_content(esc_html($city_name))) || (waklert_has_content(esc_html($region))) || (waklert_has_content(esc_html(waklert_content('content_delivery_cities_text_7149dbb192')))) || (waklert_has_content(esc_html($days)) || waklert_has_content(esc_html(waklert_content('content_delivery_cities_text_e351a5e638'))))): ?><div class="flex items-center gap-3.5 min-w-0">
                     <!-- Colorful Location Pin Icon -->
                     <div class="w-12 h-12 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center shrink-0 shadow-inner transform transition-transform duration-300 group-hover:scale-110">
                         <?= waklert_content_icon('content_delivery_cities_icon_f127e0cdd4') ?>
                     </div>
-                    <div class="truncate">
+                    <?php if ((waklert_has_content(esc_html($city_name))) || (waklert_has_content(esc_html($region))) || (waklert_has_content(esc_html(waklert_content('content_delivery_cities_text_7149dbb192')))) || (waklert_has_content(esc_html($days)) || waklert_has_content(esc_html(waklert_content('content_delivery_cities_text_e351a5e638'))))): ?><div class="truncate">
                         <?php if (waklert_has_content(esc_html($city_name))): ?><h3 class="font-heading font-black text-ink text-base md:text-[17px] group-hover:text-[#0c4161] transition-colors truncate">
                             <?= esc_html($city_name) ?>
                         </h3><?php endif; ?>
@@ -89,8 +89,8 @@ $cities_field = get_sub_field('cities');
                                 <?= esc_html($days) ?> <?= esc_html(waklert_content('content_delivery_cities_text_e351a5e638')) ?>
                             </span><?php endif; ?>
                         </p>
-                    </div>
-                </div>
+                    </div><?php endif; ?>
+                </div><?php endif; ?>
                 <!-- Animated Chevron -->
                 <div class="w-8 h-8 rounded-full bg-slate-50 group-hover:bg-[#0c4161] group-hover:text-white flex items-center justify-center shrink-0 text-slate-400 transition-colors duration-300">
                     <?= waklert_content_icon('content_delivery_cities_icon_d7fd697c4d') ?>

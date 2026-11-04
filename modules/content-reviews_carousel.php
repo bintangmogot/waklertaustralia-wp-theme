@@ -23,7 +23,7 @@ $reviews = get_sub_field('reviews');
 <section class="section-padding bg-gradient-to-b from-[#f0f6fa] via-[#e9f2f8] to-[#f8fafc] bg-pattern-dots border-t-2 border-dashed border-sky-200/80 relative isolate overflow-hidden" data-testid="testimonials">
     <div class="container-custom relative z-10">
         <!-- Section Header -->
-        <div class="text-center max-w-3xl mx-auto mb-10 md:mb-12">
+        <?php if ((waklert_has_content(esc_html($tag))) || (waklert_has_content(esc_html($heading))) || (waklert_has_content(esc_html($description)))): ?><div class="text-center max-w-3xl mx-auto mb-10 md:mb-12">
             <?php if (waklert_has_content(esc_html($tag))): ?><span class="inline-flex items-center gap-2 bg-amber-100 text-amber-900 border border-amber-300 text-xs font-black uppercase tracking-widest px-4 py-1.5 rounded-full mb-3 shadow-xs">
                 <span class="text-amber-500"><?= str_repeat(waklert_content_icon('manual_star_marker'), 5) ?></span>
                 <?= esc_html($tag) ?>
@@ -34,7 +34,7 @@ $reviews = get_sub_field('reviews');
             <?php if (waklert_has_content(esc_html($description))): ?><p class="text-sm md:text-base text-muted-foreground leading-relaxed max-w-xl mx-auto">
                 <?= esc_html($description) ?>
             </p><?php endif; ?>
-        </div>
+        </div><?php endif; ?>
 
         <!-- Horizontal Scrollable Review Cards -->
         <div class="flex gap-6 overflow-x-auto pb-6 pt-2 snap-x snap-mandatory scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
@@ -75,17 +75,17 @@ $reviews = get_sub_field('reviews');
 
                 <!-- Bottom Half: Solid Navy Footer with Reviewer Info -->
                 <div class="bg-[#0c4161] group-hover:bg-[#082c42] text-white p-4 px-5 flex items-center justify-between transition-colors duration-300 border-t-2 border-dashed border-white/20">
-                    <div class="flex items-center gap-3">
+                    <?php if ((waklert_has_content(esc_html(strtoupper(substr($reviewer, 0, 1))))) || (waklert_has_content(esc_html($reviewer))) || (waklert_has_content(esc_html($verified_label)))): ?><div class="flex items-center gap-3">
                         <?php if (waklert_has_content(esc_html(strtoupper(substr($reviewer, 0, 1))))): ?><div class="w-9 h-9 rounded-full bg-gradient-to-br from-amber-400 to-amber-500 text-slate-950 font-black text-sm flex items-center justify-center shadow-xs shrink-0">
                             <?= esc_html(strtoupper(substr($reviewer, 0, 1))) ?>
                         </div><?php endif; ?>
-                        <div>
+                        <?php if ((waklert_has_content(esc_html($reviewer))) || (waklert_has_content(esc_html($verified_label)))): ?><div>
                             <?php if (waklert_has_content(esc_html($reviewer))): ?><p class="text-xs font-bold text-white leading-tight"><?= esc_html($reviewer) ?></p><?php endif; ?>
                             <?php if (waklert_has_content(esc_html($verified_label))): ?><p class="text-[11px] text-emerald-300 font-semibold leading-tight mt-0.5">
                                 <?= esc_html($verified_label) ?>
                             </p><?php endif; ?>
-                        </div>
-                    </div>
+                        </div><?php endif; ?>
+                    </div><?php endif; ?>
                     <?php if ($review_date): ?>
                     <?php if (waklert_has_content(esc_html($review_date))): ?><span class="text-[10px] text-white/70 font-medium"><?= esc_html($review_date) ?></span><?php endif; ?>
                     <?php endif; ?>

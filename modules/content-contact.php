@@ -90,12 +90,12 @@ if (strpos($entered_embed, 'maps.app.goo.gl') !== false || strpos($entered_embed
         </div>
 
         <!-- Eyebrow Badge -->
-        <div class="mb-2.5">
+        <?php if ((waklert_has_content(esc_html($eyebrow)))): ?><div class="mb-2.5">
             <?php if (waklert_has_content(esc_html($eyebrow))): ?><span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 border border-sky-300/80 px-3.5 py-1 text-xs font-black uppercase tracking-[0.16em] text-[#0c4161] shadow-xs">
                 <span class="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true"></span>
                 <?= esc_html($eyebrow) ?>
             </span><?php endif; ?>
-        </div>
+        </div><?php endif; ?>
 
         <?php if (waklert_has_content(esc_html($heading))): ?><h1 class="mx-auto max-w-3xl font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-tight text-[#0c4161]">
             <?= esc_html($heading) ?>
@@ -115,75 +115,75 @@ if (strpos($entered_embed, 'maps.app.goo.gl') !== false || strpos($entered_embed
             
             <!-- WhatsApp Card (Fastest Option) -->
             <a href="<?= esc_url($wa_url) ?>" target="_blank" rel="noopener noreferrer" class="group relative block overflow-hidden rounded-2xl border-2 border-dashed border-emerald-300/80 bg-gradient-to-br from-emerald-50/60 via-white to-emerald-50/30 p-6 shadow-xs transition-all duration-200 hover:border-emerald-400 hover:shadow-md">
-                <div class="flex items-start gap-4">
+                <?php if ((waklert_has_content(esc_html($wa_title))) || (waklert_has_content(esc_html($wa_badge))) || (waklert_has_content(esc_html($wa_number))) || (waklert_has_content(esc_html($wa_subtext))) || (waklert_has_content(esc_html($wa_link)) || waklert_has_content(esc_html(waklert_content('content_contact_text_98dd745a32'))))): ?><div class="flex items-start gap-4">
                     <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-emerald-500 text-white shadow-xs group-hover:scale-105 transition-transform">
                         <?= waklert_content_icon('content_contact_icon_45d7697278') ?>
                     </span>
-                    <div class="min-w-0 flex-1">
-                        <div class="flex items-center gap-2">
+                    <?php if ((waklert_has_content(esc_html($wa_title))) || (waklert_has_content(esc_html($wa_badge))) || (waklert_has_content(esc_html($wa_number))) || (waklert_has_content(esc_html($wa_subtext)))): ?><div class="min-w-0 flex-1">
+                        <?php if ((waklert_has_content(esc_html($wa_title))) || (waklert_has_content(esc_html($wa_badge)))): ?><div class="flex items-center gap-2">
                             <?php if (waklert_has_content(esc_html($wa_title))): ?><h2 class="font-heading text-base font-bold text-slate-900"><?= esc_html($wa_title) ?></h2><?php endif; ?>
                             <?php if (waklert_has_content(esc_html($wa_badge))): ?><span class="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-bold text-emerald-800">
                                 <span class="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                                 <?= esc_html($wa_badge) ?>
                             </span><?php endif; ?>
-                        </div>
+                        </div><?php endif; ?>
                         <?php if (waklert_has_content(esc_html($wa_number))): ?><p class="mt-1 font-mono text-base font-bold text-emerald-700"><?= esc_html($wa_number) ?></p><?php endif; ?>
                         <?php if (waklert_has_content(esc_html($wa_subtext))): ?><p class="mt-1 text-xs text-slate-500"><?= esc_html($wa_subtext) ?></p><?php endif; ?>
-                    </div>
+                    </div><?php endif; ?>
                     <?php if (waklert_has_content(esc_html($wa_link)) || waklert_has_content(esc_html(waklert_content('content_contact_text_98dd745a32')))): ?><span class="hidden sm:inline-flex items-center text-xs font-bold text-emerald-600 group-hover:translate-x-1 transition-transform">
                         <?= esc_html($wa_link) ?> <?= esc_html(waklert_content('content_contact_text_98dd745a32')) ?>
                     </span><?php endif; ?>
-                </div>
+                </div><?php endif; ?>
             </a>
 
             <!-- Email Card -->
             <a href="<?= esc_url('mailto:' . $email_address) ?>" class="group relative block overflow-hidden rounded-2xl border-2 border-dashed border-sky-300/80 bg-gradient-to-br from-sky-50/60 via-white to-sky-50/30 p-6 shadow-xs transition-all duration-200 hover:border-sky-400 hover:shadow-md">
-                <div class="flex items-start gap-4">
+                <?php if ((waklert_has_content(esc_html($email_title))) || (waklert_has_content(esc_html($email_address))) || (waklert_has_content(esc_html($email_timeframe_label)) || waklert_has_content(esc_html($email_subtext))) || (waklert_has_content(esc_html($email_link)) || waklert_has_content(esc_html(waklert_content('content_contact_text_98dd745a32'))))): ?><div class="flex items-start gap-4">
                     <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#0c4161] text-white shadow-xs group-hover:scale-105 transition-transform">
                         <?= waklert_content_icon('content_contact_icon_ce3ac4136a') ?>
                     </span>
-                    <div class="min-w-0 flex-1">
+                    <?php if ((waklert_has_content(esc_html($email_title))) || (waklert_has_content(esc_html($email_address))) || (waklert_has_content(esc_html($email_timeframe_label)) || waklert_has_content(esc_html($email_subtext)))): ?><div class="min-w-0 flex-1">
                         <?php if (waklert_has_content(esc_html($email_title))): ?><h2 class="font-heading text-base font-bold text-slate-900"><?= esc_html($email_title) ?></h2><?php endif; ?>
                         <?php if (waklert_has_content(esc_html($email_address))): ?><p class="mt-1 font-mono text-sm font-semibold text-[#0c4161] break-all"><?= esc_html($email_address) ?></p><?php endif; ?>
                         <?php if (waklert_has_content(esc_html($email_timeframe_label)) || waklert_has_content(esc_html($email_subtext))): ?><p class="mt-1 text-xs text-slate-500"><?= esc_html($email_timeframe_label) ?> <?= esc_html($email_subtext) ?></p><?php endif; ?>
-                    </div>
+                    </div><?php endif; ?>
                     <?php if (waklert_has_content(esc_html($email_link)) || waklert_has_content(esc_html(waklert_content('content_contact_text_98dd745a32')))): ?><span class="hidden sm:inline-flex items-center text-xs font-bold text-sky-700 group-hover:translate-x-1 transition-transform">
                         <?= esc_html($email_link) ?> <?= esc_html(waklert_content('content_contact_text_98dd745a32')) ?>
                     </span><?php endif; ?>
-                </div>
+                </div><?php endif; ?>
             </a>
 
             <!-- Operating Hours Card -->
-            <div class="rounded-2xl border-2 border-dashed border-slate-200/90 bg-white p-6 shadow-xs">
-                <div class="flex items-center gap-2 mb-4">
+            <?php if ((waklert_has_content(esc_html($hours_title))) || (waklert_has_content(esc_html($hours_mon_fri_label))) || (waklert_has_content(esc_html($hours_mon_fri))) || (waklert_has_content(esc_html($hours_sat_label))) || (waklert_has_content(esc_html($hours_sat))) || (waklert_has_content(esc_html($hours_sun_label))) || (waklert_has_content(esc_html($hours_sun)))): ?><div class="rounded-2xl border-2 border-dashed border-slate-200/90 bg-white p-6 shadow-xs">
+                <?php if ((waklert_has_content(esc_html($hours_title)))): ?><div class="flex items-center gap-2 mb-4">
                     <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-sky-100 text-[#0c4161]">
                         <?= waklert_content_icon('content_contact_icon_3a9844c53a') ?>
                     </div>
                     <?php if (waklert_has_content(esc_html($hours_title))): ?><h2 class="font-heading text-sm font-black uppercase tracking-wider text-slate-900"><?= esc_html($hours_title) ?></h2><?php endif; ?>
-                </div>
-                <div class="space-y-3 text-sm">
-                    <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+                </div><?php endif; ?>
+                <?php if ((waklert_has_content(esc_html($hours_mon_fri_label))) || (waklert_has_content(esc_html($hours_mon_fri))) || (waklert_has_content(esc_html($hours_sat_label))) || (waklert_has_content(esc_html($hours_sat))) || (waklert_has_content(esc_html($hours_sun_label))) || (waklert_has_content(esc_html($hours_sun)))): ?><div class="space-y-3 text-sm">
+                    <?php if ((waklert_has_content(esc_html($hours_mon_fri_label))) || (waklert_has_content(esc_html($hours_mon_fri)))): ?><div class="flex items-center justify-between border-b border-slate-100 pb-2">
                         <?php if (waklert_has_content(esc_html($hours_mon_fri_label))): ?><span class="text-slate-600 font-medium"><?= esc_html($hours_mon_fri_label) ?></span><?php endif; ?>
                         <?php if (waklert_has_content(esc_html($hours_mon_fri))): ?><span class="font-bold text-slate-900"><?= esc_html($hours_mon_fri) ?></span><?php endif; ?>
-                    </div>
-                    <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+                    </div><?php endif; ?>
+                    <?php if ((waklert_has_content(esc_html($hours_sat_label))) || (waklert_has_content(esc_html($hours_sat)))): ?><div class="flex items-center justify-between border-b border-slate-100 pb-2">
                         <?php if (waklert_has_content(esc_html($hours_sat_label))): ?><span class="text-slate-600 font-medium"><?= esc_html($hours_sat_label) ?></span><?php endif; ?>
                         <?php if (waklert_has_content(esc_html($hours_sat))): ?><span class="font-bold text-slate-900"><?= esc_html($hours_sat) ?></span><?php endif; ?>
-                    </div>
-                    <div class="flex items-center justify-between">
+                    </div><?php endif; ?>
+                    <?php if ((waklert_has_content(esc_html($hours_sun_label))) || (waklert_has_content(esc_html($hours_sun)))): ?><div class="flex items-center justify-between">
                         <?php if (waklert_has_content(esc_html($hours_sun_label))): ?><span class="text-slate-600 font-medium"><?= esc_html($hours_sun_label) ?></span><?php endif; ?>
                         <?php if (waklert_has_content(esc_html($hours_sun))): ?><span class="inline-flex items-center gap-1 rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-bold text-amber-800"><?= esc_html($hours_sun) ?></span><?php endif; ?>
-                    </div>
-                </div>
-            </div>
+                    </div><?php endif; ?>
+                </div><?php endif; ?>
+            </div><?php endif; ?>
 
             <!-- Visit Us / Google Maps Card -->
             <div class="rounded-2xl border-2 border-dashed border-slate-200/90 bg-white overflow-hidden shadow-xs">
                 <div class="p-6 space-y-3">
-                    <div class="flex items-center gap-2 font-heading font-bold text-base text-[#0c4161]">
+                    <?php if ((waklert_has_content(esc_html($address_title)))): ?><div class="flex items-center gap-2 font-heading font-bold text-base text-[#0c4161]">
                         <?= waklert_content_icon('content_contact_icon_ed47200777') ?>
                         <?php if (waklert_has_content(esc_html($address_title))): ?><span><?= esc_html($address_title) ?></span><?php endif; ?>
-                    </div>
+                    </div><?php endif; ?>
                     <?php
                     $address_parts = array_filter(array_map(function($p) {
                         return rtrim(trim((string) $p), ',');
@@ -218,19 +218,19 @@ if (strpos($entered_embed, 'maps.app.goo.gl') !== false || strpos($entered_embed
         </div>
 
         <!-- Right: Message Form Card -->
-        <div class="rounded-3xl border-2 border-dashed border-sky-300/80 bg-white p-6 sm:p-8 md:p-10 shadow-xs relative">
-            <div class="mb-6">
+        <?php if ((waklert_has_content(esc_html($form_eyebrow))) || (waklert_has_content(esc_html($form_title))) || (waklert_has_content(esc_html($form_text))) || (waklert_has_content(do_shortcode('[gravityform id="' . $form_id . '" title="false" description="false" ajax="true"]')))): ?><div class="rounded-3xl border-2 border-dashed border-sky-300/80 bg-white p-6 sm:p-8 md:p-10 shadow-xs relative">
+            <?php if ((waklert_has_content(esc_html($form_eyebrow))) || (waklert_has_content(esc_html($form_title))) || (waklert_has_content(esc_html($form_text)))): ?><div class="mb-6">
                 <?php if (waklert_has_content(esc_html($form_eyebrow))): ?><span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 border border-sky-300/80 px-3 py-0.5 text-[11px] font-black uppercase tracking-[0.16em] text-[#0c4161]">
                     <?= esc_html($form_eyebrow) ?>
                 </span><?php endif; ?>
                 <?php if (waklert_has_content(esc_html($form_title))): ?><h2 class="mt-2 font-heading text-2xl font-black text-[#0c4161]"><?= esc_html($form_title) ?></h2><?php endif; ?>
                 <?php if (waklert_has_content(esc_html($form_text))): ?><p class="mt-1 text-sm text-slate-500"><?= esc_html($form_text) ?></p><?php endif; ?>
-            </div>
+            </div><?php endif; ?>
 
             <?php if (waklert_has_content(do_shortcode('[gravityform id="' . $form_id . '" title="false" description="false" ajax="true"]'))): ?><div class="contact-form-wrapper">
                 <?= do_shortcode('[gravityform id="' . $form_id . '" title="false" description="false" ajax="true"]') ?>
             </div><?php endif; ?>
-        </div>
+        </div><?php endif; ?>
 
     </div>
 </section>

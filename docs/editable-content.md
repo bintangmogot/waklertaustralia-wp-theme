@@ -102,3 +102,14 @@ FAQ questions, answers, saved repeater rows, text or artwork. A saved empty fiel
 remains an editor-controlled clear. Existing FAQ/repeater children are preserved
 even when their parent row count is absent. Deployment never copies the local
 WordPress database into the hosted site.
+
+### Companion containers and icons
+
+Optional text controls its decorative companions. Clearing the mega-menu heading,
+delivery badge, bottom note or button label also hides its icon, pill or button.
+Header/footer strips disappear when none of their content is visible. The product
+links remain available. The mobile help card, mission/vision cards and coloured
+card-description panels follow the same rule. An FAQ without a question does not
+render an empty icon-only accordion. These checks do not alter saved content or
+remove editor fields. Verify with `php tests/menu-empty-content.php` and
+`php tests/module-visibility.php`.

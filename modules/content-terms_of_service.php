@@ -63,12 +63,12 @@ $default_sections = [];
         </div>
 
         <!-- Eyebrow Badge -->
-        <div class="mb-2.5">
+        <?php if ((waklert_has_content(esc_html(waklert_content('content_terms_of_service_text_22de085e47'))))): ?><div class="mb-2.5">
             <?php if (waklert_has_content(esc_html(waklert_content('content_terms_of_service_text_22de085e47')))): ?><span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 border border-sky-300/80 px-3.5 py-1 text-xs font-black uppercase tracking-[0.16em] text-[#0c4161] shadow-xs">
                 <span class="h-1.5 w-1.5 rounded-full bg-amber-500 animate-pulse" aria-hidden="true"></span>
                 <?= esc_html(waklert_content('content_terms_of_service_text_22de085e47')) ?>
             </span><?php endif; ?>
-        </div>
+        </div><?php endif; ?>
 
         <?php if (waklert_has_content(esc_html($title))): ?><h1 class="mx-auto max-w-3xl font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-tight text-[#0c4161]">
             <?= esc_html($title) ?>
@@ -111,14 +111,14 @@ $default_sections = [];
                 $s_content = get_sub_field('content');
             ?>
             <article class="rounded-2xl border-2 border-dashed border-sky-200/80 bg-white p-6 sm:p-8 shadow-xs transition-all hover:border-sky-300">
-                <div class="flex items-center gap-2 mb-2">
+                <?php if ((waklert_has_content(sprintf('%02d', $s_idx))) || (waklert_has_content(esc_html($s_title)))): ?><div class="flex items-center gap-2 mb-2">
                     <?php if (waklert_has_content(sprintf('%02d', $s_idx))): ?><span class="flex h-6 w-6 items-center justify-center rounded-md bg-sky-100 font-mono text-xs font-bold text-[#0c4161]">
                         <?= sprintf('%02d', $s_idx) ?>
                     </span><?php endif; ?>
                     <?php if (waklert_has_content(esc_html($s_title))): ?><h2 class="font-heading font-black text-lg sm:text-xl text-[#0c4161] m-0">
                         <?= esc_html($s_title) ?>
                     </h2><?php endif; ?>
-                </div>
+                </div><?php endif; ?>
                 <?php if (waklert_has_content(wp_kses_post(wpautop($s_content)))): ?><div class="prose max-w-none text-slate-600 text-sm sm:text-base leading-relaxed mt-3">
                     <?= wp_kses_post(wpautop($s_content)) ?>
                 </div><?php endif; ?>
@@ -127,14 +127,14 @@ $default_sections = [];
         <?php else: ?>
             <?php foreach ($default_sections as $s_idx => $sec): ?>
             <article class="rounded-2xl border-2 border-dashed border-sky-200/80 bg-white p-6 sm:p-8 shadow-xs transition-all hover:border-sky-300">
-                <div class="flex items-center gap-2 mb-2">
+                <?php if ((waklert_has_content(sprintf('%02d', $s_idx + 1))) || (waklert_has_content(esc_html($sec['title'])))): ?><div class="flex items-center gap-2 mb-2">
                     <?php if (waklert_has_content(sprintf('%02d', $s_idx + 1))): ?><span class="flex h-6 w-6 items-center justify-center rounded-md bg-sky-100 font-mono text-xs font-bold text-[#0c4161]">
                         <?= sprintf('%02d', $s_idx + 1) ?>
                     </span><?php endif; ?>
                     <?php if (waklert_has_content(esc_html($sec['title']))): ?><h2 class="font-heading font-black text-lg sm:text-xl text-[#0c4161] m-0">
                         <?= esc_html($sec['title']) ?>
                     </h2><?php endif; ?>
-                </div>
+                </div><?php endif; ?>
                 <?php if (waklert_has_content(wp_kses_post(wpautop($sec['content'])))): ?><div class="prose max-w-none text-slate-600 text-sm sm:text-base leading-relaxed mt-3">
                     <?= wp_kses_post(wpautop($sec['content'])) ?>
                 </div><?php endif; ?>

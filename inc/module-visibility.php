@@ -20,7 +20,8 @@ function waklert_module_row_has_content($row): bool {
     if (!is_array($row)) { return waklert_has_content($row); }
     foreach ($row as $name => $value) {
         if (is_bool($value)) { continue; }
-        $field = function_exists('acf_get_field') ? acf_get_field($name) : false;
+        $field = is_string($name) && str_starts_with($name, 'field_') && function_exists('acf_get_field')
+            ? acf_get_field($name) : false;
         $name = $field['name'] ?? $name;
         $type = $field['type'] ?? '';
         if (in_array($type, ['select', 'true_false', 'number', 'tab'], true)

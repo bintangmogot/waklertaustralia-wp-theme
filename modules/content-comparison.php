@@ -53,7 +53,7 @@ if (empty($rows)) {
 <section class="section-padding bg-gradient-to-b from-[#f8fafc] via-[#eff6fb] to-[#f8fafc] bg-pattern-dots border-t-2 border-dashed border-sky-200/80 relative isolate overflow-hidden" data-testid="comparison-table">
     <div class="container-custom max-w-5xl relative z-10">
         <!-- Section Header -->
-        <div class="text-center max-w-3xl mx-auto mb-10 md:mb-12">
+        <?php if ((waklert_has_content(esc_html($tag))) || (waklert_has_content(esc_html($heading))) || (waklert_has_content(esc_html($desc)))): ?><div class="text-center max-w-3xl mx-auto mb-10 md:mb-12">
             <?php if (waklert_has_content(esc_html($tag))): ?><span class="inline-flex items-center bg-amber-100 text-amber-900 border border-amber-300 text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full mb-3 shadow-2xs">
                 <?= esc_html($tag) ?>
             </span><?php endif; ?>
@@ -63,7 +63,7 @@ if (empty($rows)) {
             <?php if (waklert_has_content(esc_html($desc))): ?><p class="text-sm md:text-base text-muted-foreground leading-relaxed max-w-xl mx-auto">
                 <?= esc_html($desc) ?>
             </p><?php endif; ?>
-        </div>
+        </div><?php endif; ?>
 
         <!-- Comparison Table Card with Dashed Border and Two-Tone Structure -->
         <div class="bg-white border-2 border-dashed border-sky-300/80 rounded-3xl overflow-hidden shadow-xl hover:border-[#0c4161] transition-all duration-300">
@@ -99,12 +99,12 @@ if (empty($rows)) {
                         <tr class="group hover:bg-sky-50/50 transition-colors duration-200">
                             <!-- Feature Name with Colorful Icon -->
                             <td class="py-4 px-5 md:px-6 font-heading font-bold text-ink">
-                                <div class="flex items-center gap-3">
+                                <?php if ((waklert_has_content($icon_svg)) || (waklert_has_content(esc_html($r['feature'])))): ?><div class="flex items-center gap-3">
                                     <?php if (waklert_has_content($icon_svg)): ?><div class="w-9 h-9 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                                         <?= $icon_svg ?>
                                     </div><?php endif; ?>
                                     <?php if (waklert_has_content(esc_html($r['feature']))): ?><span class="text-sm md:text-[15px]"><?= esc_html($r['feature']) ?></span><?php endif; ?>
-                                </div>
+                                </div><?php endif; ?>
                             </td>
 
                             <!-- Waklert Value (Clean Pill without bullet dot) -->
@@ -130,13 +130,13 @@ if (empty($rows)) {
             </div>
 
             <!-- Bottom Table Footer with Australia Note -->
-            <div class="p-4 px-6 bg-slate-50 border-t-2 border-dashed border-sky-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-slate-500">
+            <?php if ((waklert_has_content(esc_html($footer_note))) || (waklert_has_content(esc_html($footer_badge)))): ?><div class="p-4 px-6 bg-slate-50 border-t-2 border-dashed border-sky-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-slate-500">
                 <?php if (waklert_has_content(esc_html($footer_note))): ?><span class="flex items-center gap-2">
                     <?= waklert_content_icon('content_comparison_icon_1b701caa03') ?>
                     <?php if (waklert_has_content(esc_html($footer_note))): ?><span><?= esc_html($footer_note) ?></span><?php endif; ?>
                 </span><?php endif; ?>
                 <?php if (waklert_has_content(esc_html($footer_badge))): ?><span class="font-bold text-[#0c4161]"><?= esc_html($footer_badge) ?></span><?php endif; ?>
-            </div>
+            </div><?php endif; ?>
         </div>
     </div>
 </section>

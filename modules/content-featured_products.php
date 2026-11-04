@@ -18,7 +18,7 @@ $products = get_sub_field('products') ?: [];
 <section class="section-padding bg-gradient-to-b from-[#f8fafc] via-[#eff6fb] to-[#f8fafc] bg-pattern-dots border-t-2 border-dashed border-sky-200/80 relative isolate overflow-hidden" data-testid="featured-products">
     <div class="container-custom relative z-10">
         <?php if ($tag !== '' || $heading !== '' || $description !== ''): ?>
-        <div class="text-center mb-10 md:mb-12">
+        <?php if ((waklert_has_content(esc_html($tag))) || (waklert_has_content(esc_html($heading))) || (waklert_has_content(esc_html($description)))): ?><div class="text-center mb-10 md:mb-12">
             <?php if (waklert_has_content(esc_html($tag))): ?><span class="inline-flex items-center gap-2 bg-amber-100/90 text-amber-900 border border-amber-300 text-xs font-black uppercase tracking-widest px-4 py-1.5 rounded-full mb-3 shadow-xs">
                 <?= waklert_content_icon('content_featured_product_icon_83d2048db9') ?>
                 <?= esc_html($tag) ?>
@@ -29,7 +29,7 @@ $products = get_sub_field('products') ?: [];
             <?php if (waklert_has_content(esc_html($description))): ?><p class="text-sm md:text-base text-muted-foreground max-w-xl mx-auto leading-relaxed">
                 <?= esc_html($description) ?>
             </p><?php endif; ?>
-        </div>
+        </div><?php endif; ?>
 
         <?php endif; ?>
 

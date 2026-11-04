@@ -68,10 +68,10 @@ foreach ($sections as $index => $section) {
             <aside class="hidden lg:block">
                 <div class="sticky top-28 space-y-4">
                     <div class="rounded-2xl border-2 border-dashed border-sky-200/80 bg-white p-4 shadow-xs">
-                        <div class="flex items-center gap-2 mb-3 px-2">
+                        <?php if ((waklert_has_content(esc_html(waklert_content('content_privacy_policy_text_342de8f274'))))): ?><div class="flex items-center gap-2 mb-3 px-2">
                             <span class="h-2 w-2 rounded-full bg-[#0c4161]"></span>
                             <?php if (waklert_has_content(esc_html(waklert_content('content_privacy_policy_text_342de8f274')))): ?><p class="text-xs font-black uppercase tracking-widest text-[#0c4161]"><?= esc_html(waklert_content('content_privacy_policy_text_342de8f274')) ?></p><?php endif; ?>
-                        </div>
+                        </div><?php endif; ?>
                         <nav aria-label="<?= esc_attr(waklert_content('content_privacy_policy_text_c8aefdb107')) ?>">
                             <ol class="space-y-1">
                                 <?php foreach ($sections as $index => $section) :

@@ -82,14 +82,21 @@ class Waklert_Desktop_Nav_Walker extends Walker_Nav_Menu {
             $output .= '<div class="sub-menu-dropdown-wrapper absolute top-full left-[-80px] pt-2.5 w-[625px] max-w-[92vw] opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-2 group-hover:translate-y-0 transition-all duration-200 z-50 pointer-events-none group-hover:pointer-events-auto filter drop-shadow-2xl">';
             $output .= '<div class="rounded-2xl border-2 border-dashed border-sky-300/90 bg-white overflow-hidden shadow-2xl">';
             
-            // Dropdown Header Strip
-            $output .= '<div class="bg-gradient-to-r from-[#0c4161] via-[#0e4a70] to-[#125883] px-4 py-2.5 flex items-center justify-between border-b border-sky-400/20">';
-            $output .= '<div class="flex items-center gap-2">';
-            $output .= '<span class="flex h-5 w-5 items-center justify-center rounded-lg bg-amber-400/20 border border-amber-400/40 text-amber-300 text-xs font-black">★</span>';
-            $output .= '<span class="text-xs font-black uppercase tracking-wider text-white">' . esc_html(waklert_option_text('menu_dropdown_heading')) . '</span>';
-            $output .= '</div>';
-            $output .= '<span class="text-[11px] font-bold text-sky-200 bg-white/10 px-2.5 py-0.5 rounded-full border border-sky-300/30">' . esc_html(waklert_option_text('menu_dropdown_badge')) . '</span>';
-            $output .= '</div>';
+            // Companion artwork and the entire strip follow their visible text.
+            $heading = waklert_option_text('menu_dropdown_heading');
+            $badge = waklert_option_text('menu_dropdown_badge');
+            if (waklert_has_content($heading) || waklert_has_content($badge)) {
+                $output .= '<div data-testid="menu-dropdown-header" class="bg-gradient-to-r from-[#0c4161] via-[#0e4a70] to-[#125883] px-4 py-2.5 flex items-center justify-between border-b border-sky-400/20">';
+                if (waklert_has_content($heading)) {
+                    $output .= '<div class="flex items-center gap-2">';
+                    $output .= '<span class="flex h-5 w-5 items-center justify-center rounded-lg bg-amber-400/20 border border-amber-400/40 text-amber-300 text-xs font-black">★</span>';
+                    $output .= '<span class="text-xs font-black uppercase tracking-wider text-white">' . esc_html($heading) . '</span></div>';
+                }
+                if (waklert_has_content($badge)) {
+                    $output .= '<span class="text-[11px] font-bold text-sky-200 bg-white/10 px-2.5 py-0.5 rounded-full border border-sky-300/30">' . esc_html($badge) . '</span>';
+                }
+                $output .= '</div>';
+            }
 
             // 2-Column Product Grid
             $output .= '<ul class="sub-menu grid grid-cols-2 gap-2.5 p-3.5 bg-gradient-to-b from-[#f8fafc] to-[#ffffff] bg-pattern-dots">';
@@ -102,18 +109,26 @@ class Waklert_Desktop_Nav_Walker extends Walker_Nav_Menu {
         if ($depth === 0) {
             $output .= '</ul>';
 
-            // Dropdown Footer Strip
+            // No note means no tick; no labelled destination means no button/arrow.
+            $note = waklert_option_text('menu_dropdown_note');
+            $button_text = waklert_option_text('menu_dropdown_button_text');
             $shop_url = esc_url(waklert_resolve_link(waklert_option_text('menu_dropdown_button_url')));
-            $output .= '<div class="bg-gradient-to-r from-sky-50 via-slate-50 to-amber-50/60 px-4 py-3 border-t-2 border-dashed border-sky-200/80 flex items-center justify-between text-xs">';
-            $output .= '<div class="flex items-center gap-1.5 font-bold text-slate-700">';
-            $output .= waklert_content_icon('nav_walkers_icon_00bc0fe59a');
-            $output .= '<span>' . esc_html(waklert_option_text('menu_dropdown_note')) . '</span>';
-            $output .= '</div>';
-            $output .= '<a href="' . $shop_url . '" class="inline-flex items-center gap-1.5 font-black text-[#0c4161] hover:text-amber-600 bg-white hover:bg-sky-50 px-3 py-1.5 rounded-full border-2 border-dashed border-sky-300 shadow-sm transition-all hover:scale-105">';
-            $output .= '<span>' . esc_html(waklert_option_text('menu_dropdown_button_text')) . '</span>';
-            $output .= waklert_content_icon('nav_walkers_icon_2d846cc854');
-            $output .= '</a>';
-            $output .= '</div>';
+            $show_button = waklert_has_content($button_text) && waklert_has_content($shop_url);
+            if (waklert_has_content($note) || $show_button) {
+                $output .= '<div data-testid="menu-dropdown-footer" class="bg-gradient-to-r from-sky-50 via-slate-50 to-amber-50/60 px-4 py-3 border-t-2 border-dashed border-sky-200/80 flex items-center justify-between text-xs">';
+                if (waklert_has_content($note)) {
+                    $output .= '<div class="flex items-center gap-1.5 font-bold text-slate-700">';
+                    $output .= waklert_content_icon('nav_walkers_icon_00bc0fe59a');
+                    $output .= '<span>' . esc_html($note) . '</span></div>';
+                }
+                if ($show_button) {
+                    $output .= '<a href="' . $shop_url . '" class="inline-flex items-center gap-1.5 font-black text-[#0c4161] hover:text-amber-600 bg-white hover:bg-sky-50 px-3 py-1.5 rounded-full border-2 border-dashed border-sky-300 shadow-sm transition-all hover:scale-105">';
+                    $output .= '<span>' . esc_html($button_text) . '</span>';
+                    $output .= waklert_content_icon('nav_walkers_icon_2d846cc854');
+                    $output .= '</a>';
+                }
+                $output .= '</div>';
+            }
 
             $output .= '</div></div>';
         } else {
@@ -188,9 +203,13 @@ class Waklert_Desktop_Nav_Walker extends Walker_Nav_Menu {
                 $output .= '</span>';
             }
             $output .= '</div>';
-            $output .= '<p class="text-[11px] text-slate-500 font-medium truncate">' . esc_html($meta['brand']) . '</p>';
+            if (waklert_has_content($meta['brand'])) {
+                $output .= '<p class="text-[11px] text-slate-500 font-medium truncate">' . esc_html($meta['brand']) . '</p>';
+            }
             $output .= '<div class="mt-1 flex items-center justify-between">';
-            $output .= '<span class="text-[10.5px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">' . esc_html($meta['price']) . '</span>';
+            if (waklert_has_content($meta['price'])) {
+                $output .= '<span class="text-[10.5px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">' . esc_html($meta['price']) . '</span>';
+            }
             $output .= '<span class="text-[11px] font-bold text-slate-400 group-hover/pcard:text-[#0c4161] group-hover/pcard:translate-x-0.5 transition-all">→</span>';
             $output .= '</div>';
             $output .= '</div>';

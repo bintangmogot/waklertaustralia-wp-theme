@@ -64,24 +64,24 @@ if (empty($trust_items)) {
     <div class="container-site relative z-10">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
             <?php foreach ($trust_items as $item): ?>
-            <div class="group flex flex-col h-full rounded-2xl bg-white border-2 border-dashed border-sky-300/80 hover:border-[#0c4161] overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 ease-out">
+            <?php if ((waklert_has_content(esc_html($item['title']))) || (waklert_has_content($item['desc'])) || (waklert_has_content(esc_html($item['desc'])))): ?><div class="group flex flex-col h-full rounded-2xl bg-white border-2 border-dashed border-sky-300/80 hover:border-[#0c4161] overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 ease-out">
                 <!-- Top Half: Pure white surface with colorful illustration & bold title -->
-                <div class="bg-white p-6 pb-5 flex flex-col items-center text-center justify-start min-h-[176px]">
+                <?php if ((waklert_has_content(esc_html($item['title'])))): ?><div class="bg-white p-6 pb-5 flex flex-col items-center text-center justify-start min-h-[176px]">
                     <div class="w-16 h-16 mb-3 flex items-center justify-center shrink-0 transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-1">
                         <?= $item['icon'] ?>
                     </div>
                     <?php if (waklert_has_content(esc_html($item['title']))): ?><h3 class="font-heading font-extrabold text-[16px] md:text-[17px] text-ink text-center leading-snug tracking-tight">
                         <?= esc_html($item['title']) ?>
                     </h3><?php endif; ?>
-                </div>
+                </div><?php endif; ?>
 
                 <!-- Bottom Half: Solid theme colored block with description -->
-                <div class="bg-[#0c4161] group-hover:bg-[#082c42] text-white p-4 md:p-5 text-center text-xs md:text-[13px] leading-relaxed font-normal text-white/95 flex-1 flex items-center justify-center transition-colors duration-300 border-t-2 border-dashed border-white/20">
+                <?php if (waklert_has_content($item['desc'])): ?><?php if ((waklert_has_content(esc_html($item['desc'])))): ?><div class="bg-[#0c4161] group-hover:bg-[#082c42] text-white p-4 md:p-5 text-center text-xs md:text-[13px] leading-relaxed font-normal text-white/95 flex-1 flex items-center justify-center transition-colors duration-300 border-t-2 border-dashed border-white/20">
                     <?php if (waklert_has_content(esc_html($item['desc']))): ?><p class="leading-relaxed">
                         <?= esc_html($item['desc']) ?>
                     </p><?php endif; ?>
-                </div>
-            </div>
+                </div><?php endif; ?><?php endif; ?>
+            </div><?php endif; ?>
             <?php endforeach; ?>
         </div>
     </div>

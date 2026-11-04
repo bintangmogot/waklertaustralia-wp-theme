@@ -160,22 +160,22 @@ if (empty($articles)) {
                         ]); ?>
                     <?php else: ?>
                         <!-- Branded Fallback Visual -->
-                        <div class="w-full h-full bg-gradient-to-br from-[#081729] via-[#0d2a4a] to-[#1a4066] flex flex-col items-center justify-center p-6 text-white text-center relative overflow-hidden transition-transform duration-500 ease-out group-hover:scale-105">
+                        <?php if ((waklert_has_content(esc_html($placeholder_label)))): ?><div class="w-full h-full bg-gradient-to-br from-[#081729] via-[#0d2a4a] to-[#1a4066] flex flex-col items-center justify-center p-6 text-white text-center relative overflow-hidden transition-transform duration-500 ease-out group-hover:scale-105">
                             <div class="absolute -right-8 -top-8 w-32 h-32 rounded-full bg-white/5 pointer-events-none"></div>
                             <div class="absolute -left-6 -bottom-6 w-24 h-24 rounded-full bg-white/5 pointer-events-none"></div>
                             <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center mb-3 backdrop-blur-xs border border-white/15 text-white/90 shadow-inner">
                                 <?= waklert_content_icon('content_blog_section_icon_14530a2b38') ?>
                             </div>
                             <?php if (waklert_has_content(esc_html($placeholder_label))): ?><span class="text-xs font-bold tracking-widest uppercase text-white/80"><?= esc_html($placeholder_label) ?></span><?php endif; ?>
-                        </div>
+                        </div><?php endif; ?>
                     <?php endif; ?>
 
                     <!-- Floating Category Badge -->
-                    <div class="absolute top-3.5 left-3.5 z-10">
+                    <?php if ((waklert_has_content(esc_html($cat_label)))): ?><div class="absolute top-3.5 left-3.5 z-10">
                         <?php if (waklert_has_content(esc_html($cat_label))): ?><span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[10px] font-black tracking-wider uppercase bg-amber-400 text-slate-950 shadow-md border border-amber-500/30">
                             <?= waklert_content_icon('manual_star_marker') ?> <?= esc_html($cat_label) ?>
                         </span><?php endif; ?>
-                    </div>
+                    </div><?php endif; ?>
                 </a>
 
                 <!-- Card Body -->
@@ -217,9 +217,9 @@ if (empty($articles)) {
             <?php endforeach; ?>
         </div>
         <?php else: ?>
-        <div class="text-center py-12 bg-white rounded-2xl border-2 border-dashed border-sky-300/80 p-8">
+        <?php if ((waklert_has_content(esc_html($empty_text)))): ?><div class="text-center py-12 bg-white rounded-2xl border-2 border-dashed border-sky-300/80 p-8">
             <?php if (waklert_has_content(esc_html($empty_text))): ?><p class="text-slate-500 font-medium"><?= esc_html($empty_text) ?></p><?php endif; ?>
-        </div>
+        </div><?php endif; ?>
         <?php endif; ?>
 
         <!-- View All Button -->

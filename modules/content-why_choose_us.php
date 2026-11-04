@@ -100,24 +100,24 @@ if (empty($items)) {
         <!-- 4-Card Grid matching reference design -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
             <?php foreach ($items as $card): ?>
-                <div class="group flex flex-col h-full rounded-2xl bg-white border-2 border-dashed border-sky-300/80 hover:border-[#0c4161] overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-out">
+                <?php if ((waklert_has_content(esc_html($card['title']))) || (waklert_has_content($card['desc'])) || (waklert_has_content(esc_html($card['desc'])))): ?><div class="group flex flex-col h-full rounded-2xl bg-white border-2 border-dashed border-sky-300/80 hover:border-[#0c4161] overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-out">
                     <!-- Top Half: Pure white surface with colorful illustration & bold title -->
-                    <div class="bg-white p-6 pb-6 flex flex-col items-center text-center justify-start min-h-[180px]">
+                    <?php if ((waklert_has_content(esc_html($card['title'])))): ?><div class="bg-white p-6 pb-6 flex flex-col items-center text-center justify-start min-h-[180px]">
                         <div class="w-16 h-16 mb-4 flex items-center justify-center shrink-0 transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-1">
                             <?= $card['icon'] ?>
                         </div>
                         <?php if (waklert_has_content(esc_html($card['title']))): ?><h3 class="font-heading font-extrabold text-[17px] md:text-lg text-ink text-center leading-snug tracking-tight">
                             <?= esc_html($card['title']) ?>
                         </h3><?php endif; ?>
-                    </div>
+                    </div><?php endif; ?>
 
                     <!-- Bottom Half: Solid theme colored block with description -->
-                    <div class="bg-[#0c4161] group-hover:bg-[#082c42] text-white p-5 md:p-6 text-center text-xs md:text-[13px] leading-relaxed font-normal text-white/95 flex-1 flex items-center justify-center transition-colors duration-300 border-t-2 border-dashed border-white/20">
+                    <?php if (waklert_has_content($card['desc'])): ?><?php if ((waklert_has_content(esc_html($card['desc'])))): ?><div class="bg-[#0c4161] group-hover:bg-[#082c42] text-white p-5 md:p-6 text-center text-xs md:text-[13px] leading-relaxed font-normal text-white/95 flex-1 flex items-center justify-center transition-colors duration-300 border-t-2 border-dashed border-white/20">
                         <?php if (waklert_has_content(esc_html($card['desc']))): ?><p class="leading-relaxed">
                             <?= esc_html($card['desc']) ?>
                         </p><?php endif; ?>
-                    </div>
-                </div>
+                    </div><?php endif; ?><?php endif; ?>
+                </div><?php endif; ?>
             <?php endforeach; ?>
         </div>
     </div>

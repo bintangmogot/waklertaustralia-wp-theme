@@ -100,13 +100,13 @@ if (empty($step_items)) {
         <!-- 3-Card Grid matching the 2-Tone Dashed Card Rule -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch max-w-5xl mx-auto">
             <?php foreach ($step_items as $card): ?>
-                <div class="group flex flex-col h-full rounded-2xl bg-white border-2 border-dashed border-sky-300/80 hover:border-[#0c4161] overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-out">
+                <?php if ((waklert_has_content(esc_html($step_label)) || waklert_has_content(esc_html($card['step']))) || (waklert_has_content(esc_html($card['title']))) || (waklert_has_content($card['desc'])) || (waklert_has_content(esc_html($card['desc'])))): ?><div class="group flex flex-col h-full rounded-2xl bg-white border-2 border-dashed border-sky-300/80 hover:border-[#0c4161] overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-out">
                     <!-- Top Half: Pure white surface with colorful illustration, step pill & bold title -->
-                    <div class="bg-white p-6 pb-6 flex flex-col items-center text-center justify-start relative min-h-[205px]">
+                    <?php if ((waklert_has_content(esc_html($step_label)) || waklert_has_content(esc_html($card['step']))) || (waklert_has_content(esc_html($card['title'])))): ?><div class="bg-white p-6 pb-6 flex flex-col items-center text-center justify-start relative min-h-[205px]">
                         <!-- Step Badge -->
-                        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-900 border border-amber-300 text-[11px] font-black tracking-widest uppercase mb-4 shadow-xs">
+                        <?php if ((waklert_has_content(esc_html($step_label)) || waklert_has_content(esc_html($card['step'])))): ?><div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-900 border border-amber-300 text-[11px] font-black tracking-widest uppercase mb-4 shadow-xs">
                             <?php if (waklert_has_content(esc_html($step_label)) || waklert_has_content(esc_html($card['step']))): ?><span><?= esc_html($step_label) ?> <?= esc_html($card['step']) ?></span><?php endif; ?>
-                        </div>
+                        </div><?php endif; ?>
 
                         <!-- Colorful Vector Illustration -->
                         <div class="w-16 h-16 mb-4 flex items-center justify-center shrink-0 transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-1">
@@ -117,15 +117,15 @@ if (empty($step_items)) {
                         <?php if (waklert_has_content(esc_html($card['title']))): ?><h3 class="font-heading font-extrabold text-[18px] md:text-xl text-ink text-center leading-snug tracking-tight">
                             <?= esc_html($card['title']) ?>
                         </h3><?php endif; ?>
-                    </div>
+                    </div><?php endif; ?>
 
                     <!-- Bottom Half: Solid theme colored block with description -->
-                    <div class="bg-[#0c4161] group-hover:bg-[#082c42] text-white p-5 md:p-6 text-center text-xs md:text-[13px] leading-relaxed font-normal text-white/95 flex-1 flex items-center justify-center transition-colors duration-300 border-t-2 border-dashed border-white/20">
+                    <?php if (waklert_has_content($card['desc'])): ?><?php if ((waklert_has_content(esc_html($card['desc'])))): ?><div class="bg-[#0c4161] group-hover:bg-[#082c42] text-white p-5 md:p-6 text-center text-xs md:text-[13px] leading-relaxed font-normal text-white/95 flex-1 flex items-center justify-center transition-colors duration-300 border-t-2 border-dashed border-white/20">
                         <?php if (waklert_has_content(esc_html($card['desc']))): ?><p class="leading-relaxed">
                             <?= esc_html($card['desc']) ?>
                         </p><?php endif; ?>
-                    </div>
-                </div>
+                    </div><?php endif; ?><?php endif; ?>
+                </div><?php endif; ?>
             <?php endforeach; ?>
         </div>
     </div>

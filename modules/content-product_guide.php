@@ -50,25 +50,25 @@ if (!$heading && !$desc && !$guide_items) {
                 <article class="group flex h-full flex-col justify-between rounded-2xl border-2 border-dashed border-sky-200/80 bg-white p-6 sm:p-7 shadow-xs transition-all duration-200 hover:border-sky-400 hover:shadow-md">
                     <div>
                         <!-- Header with Avatar & Badge -->
-                        <div class="flex items-center justify-between gap-3 mb-4">
+                        <?php if ((waklert_has_content(esc_html($item_initial ?: sprintf('%02d', $guide_idx)))) || (waklert_has_content(esc_html(waklert_content('content_product_guide_text_1458f29e94'))))): ?><div class="flex items-center justify-between gap-3 mb-4">
                             <?php if (waklert_has_content(esc_html($item_initial ?: sprintf('%02d', $guide_idx)))): ?><span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sky-100 font-heading text-base font-black text-[#0c4161] shadow-2xs group-hover:scale-105 transition-transform" aria-hidden="true">
                                 <?= esc_html($item_initial ?: sprintf('%02d', $guide_idx)) ?>
                             </span><?php endif; ?>
                             <?php if (waklert_has_content(esc_html(waklert_content('content_product_guide_text_1458f29e94')))): ?><span class="inline-flex items-center gap-1 rounded-full bg-sky-50 border border-sky-200 px-2.5 py-0.5 text-[11px] font-bold text-[#0c4161]">
                                 <?= esc_html(waklert_content('content_product_guide_text_1458f29e94')) ?>
                             </span><?php endif; ?>
-                        </div>
+                        </div><?php endif; ?>
 
                         <?php if (waklert_has_content(esc_html($item_title))): ?><h3 class="font-heading text-lg sm:text-xl font-black text-slate-900 mb-2"><?= esc_html($item_title) ?></h3><?php endif; ?>
                         
                         <?php if (waklert_has_content(esc_html($item_description))): ?><p class="text-sm leading-relaxed text-slate-600 mb-4"><?= esc_html($item_description) ?></p><?php endif; ?>
 
                         <?php if ($item_note): ?>
-                        <div class="mb-4">
+                        <?php if ((waklert_has_content(esc_html(waklert_content('content_product_guide_text_745ac9e31e'))) || waklert_has_content(esc_html($item_note))) || (waklert_has_content(esc_html(waklert_content('content_product_guide_text_745ac9e31e'))))): ?><div class="mb-4">
                             <?php if (waklert_has_content(esc_html(waklert_content('content_product_guide_text_745ac9e31e'))) || waklert_has_content(esc_html($item_note))): ?><span class="inline-flex items-center gap-1.5 rounded-lg bg-amber-50 border border-amber-200/80 px-2.5 py-1 text-xs font-semibold text-amber-900">
                                 <?php if (waklert_has_content(esc_html(waklert_content('content_product_guide_text_745ac9e31e')))): ?><span class="font-bold text-amber-700"><?= esc_html(waklert_content('content_product_guide_text_745ac9e31e')) ?></span><?php endif; ?> <?= esc_html($item_note) ?>
                             </span><?php endif; ?>
-                        </div>
+                        </div><?php endif; ?>
                         <?php endif; ?>
                     </div>
 

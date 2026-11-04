@@ -55,7 +55,7 @@ $average_stars = round($average_rating);
     <div class="container-site max-w-6xl mx-auto px-4 relative z-10">
         <!-- Header & Aggregate Summary Card -->
         <div class="mb-12">
-            <div class="text-center max-w-2xl mx-auto mb-8">
+            <?php if ((waklert_has_content(esc_html($eyebrow))) || (waklert_has_content(esc_html($heading))) || (waklert_has_content(esc_html($desc)))): ?><div class="text-center max-w-2xl mx-auto mb-8">
                 <?php if (waklert_has_content(esc_html($eyebrow))): ?><span class="inline-flex items-center gap-2 rounded-full bg-sky-100 border border-sky-300/80 px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-[#0c4161] shadow-sm mb-4">
                     <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                     <?= esc_html($eyebrow) ?>
@@ -66,7 +66,7 @@ $average_stars = round($average_rating);
                 <?php if (waklert_has_content(esc_html($desc))): ?><p class="text-slate-600 text-base md:text-lg leading-relaxed">
                     <?= esc_html($desc) ?>
                 </p><?php endif; ?>
-            </div>
+            </div><?php endif; ?>
 
             <!-- 2-Tone Dashed Rating Summary Card -->
             <div class="rounded-3xl border-2 border-dashed border-sky-300/80 bg-white p-6 md:p-8 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6 hover:shadow-md transition-shadow">
@@ -87,7 +87,7 @@ $average_stars = round($average_rating);
                         </p><?php endif; ?>
                     </div>
                 </div>
-                <div class="flex flex-wrap items-center gap-3">
+                <?php if ((waklert_has_content(esc_html($badge_1))) || (waklert_has_content(esc_html($badge_2)))): ?><div class="flex flex-wrap items-center gap-3">
                     <?php if (waklert_has_content(esc_html($badge_1))): ?><span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 border border-emerald-300 px-3.5 py-1.5 text-xs font-bold text-emerald-800">
                         <?= waklert_content_icon('content_reviews_icon_c064a6e8b9') ?>
                         <?= esc_html($badge_1) ?>
@@ -96,7 +96,7 @@ $average_stars = round($average_rating);
                         <?= waklert_content_icon('content_reviews_icon_c4604a30e0') ?>
                         <?= esc_html($badge_2) ?>
                     </span><?php endif; ?>
-                </div>
+                </div><?php endif; ?>
             </div>
         </div>
 
@@ -166,9 +166,9 @@ $average_stars = round($average_rating);
                 <?php endwhile;
                 wp_reset_postdata();
             else: ?>
-                <div class="col-span-full py-16 text-center text-slate-500 bg-white rounded-3xl border-2 border-dashed border-sky-200 p-8">
+                <?php if ((waklert_has_content(esc_html($empty_text)))): ?><div class="col-span-full py-16 text-center text-slate-500 bg-white rounded-3xl border-2 border-dashed border-sky-200 p-8">
                     <?php if (waklert_has_content(esc_html($empty_text))): ?><p class="text-lg font-bold text-[#0c4161]"><?= esc_html($empty_text) ?></p><?php endif; ?>
-                </div>
+                </div><?php endif; ?>
             <?php endif; ?>
         </div>
     </div>

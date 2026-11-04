@@ -64,12 +64,12 @@ $cities = get_posts([
         </div>
 
         <!-- Eyebrow Badge -->
-        <div class="mb-2.5">
+        <?php if ((waklert_has_content(esc_html(waklert_content('content_sitemap_text_5e3322a22b'))))): ?><div class="mb-2.5">
             <?php if (waklert_has_content(esc_html(waklert_content('content_sitemap_text_5e3322a22b')))): ?><span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 border border-sky-300/80 px-3.5 py-1 text-xs font-black uppercase tracking-[0.16em] text-[#0c4161] shadow-xs">
                 <span class="h-1.5 w-1.5 rounded-full bg-amber-500 animate-pulse" aria-hidden="true"></span>
                 <?= esc_html(waklert_content('content_sitemap_text_5e3322a22b')) ?>
             </span><?php endif; ?>
-        </div>
+        </div><?php endif; ?>
 
         <?php if (waklert_has_content(esc_html($title))): ?><h1 class="mx-auto max-w-3xl font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-tight text-[#0c4161]">
             <?= esc_html($title) ?>
@@ -87,14 +87,14 @@ $cities = get_posts([
             
             <!-- Column 1: Main Pages -->
             <div class="rounded-2xl border-2 border-dashed border-sky-200/80 bg-white p-6 shadow-xs">
-                <div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-100">
+                <?php if ((waklert_has_content(esc_html(waklert_content('content_sitemap_text_2531b1c5fd'))))): ?><div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-100">
                     <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-sky-100 text-[#0c4161]">
                         <?= waklert_content_icon('content_sitemap_icon_e97086a627') ?>
                     </span>
                     <?php if (waklert_has_content(esc_html(waklert_content('content_sitemap_text_2531b1c5fd')))): ?><h2 class="font-heading text-base font-black text-[#0c4161] uppercase tracking-wider">
                         <?= esc_html(waklert_content('content_sitemap_text_2531b1c5fd')) ?>
                     </h2><?php endif; ?>
-                </div>
+                </div><?php endif; ?>
                 <ul class="space-y-2.5">
                     <?php foreach ($main_links as $link): ?>
                         <?php if (waklert_has_content(esc_url($link['url'])) || waklert_has_content(esc_html($link['label']))): ?><li>
@@ -109,14 +109,14 @@ $cities = get_posts([
 
             <!-- Column 2: Products -->
             <div class="rounded-2xl border-2 border-dashed border-sky-200/80 bg-white p-6 shadow-xs">
-                <div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-100">
+                <?php if ((waklert_has_content(esc_html(waklert_content('content_sitemap_text_28b1ee1ab8'))))): ?><div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-100">
                     <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-100 text-amber-700">
                         <?= waklert_content_icon('content_sitemap_icon_f85561063f') ?>
                     </span>
                     <?php if (waklert_has_content(esc_html(waklert_content('content_sitemap_text_28b1ee1ab8')))): ?><h2 class="font-heading text-base font-black text-[#0c4161] uppercase tracking-wider">
                         <?= esc_html(waklert_content('content_sitemap_text_28b1ee1ab8')) ?>
                     </h2><?php endif; ?>
-                </div>
+                </div><?php endif; ?>
                 <ul class="space-y-2.5">
                     <?php if ($products): ?>
                         <?php foreach ($products as $prod): ?>
@@ -135,14 +135,14 @@ $cities = get_posts([
 
             <!-- Column 3: Australia Delivery Hubs -->
             <div class="rounded-2xl border-2 border-dashed border-sky-200/80 bg-white p-6 shadow-xs">
-                <div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-100">
+                <?php if ((waklert_has_content(esc_html(waklert_content('content_sitemap_text_c7173699c3'))))): ?><div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-100">
                     <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-100 text-emerald-700">
                         <?= waklert_content_icon('content_sitemap_icon_052d9ae2b5') ?>
                     </span>
                     <?php if (waklert_has_content(esc_html(waklert_content('content_sitemap_text_c7173699c3')))): ?><h2 class="font-heading text-base font-black text-[#0c4161] uppercase tracking-wider">
                         <?= esc_html(waklert_content('content_sitemap_text_c7173699c3')) ?>
                     </h2><?php endif; ?>
-                </div>
+                </div><?php endif; ?>
                 <ul class="space-y-2.5">
                     <?php if ($cities): ?>
                         <?php foreach (array_slice($cities, 0, 10) as $c): ?>
@@ -161,14 +161,14 @@ $cities = get_posts([
 
             <!-- Column 4: Legal & Policies -->
             <div class="rounded-2xl border-2 border-dashed border-sky-200/80 bg-white p-6 shadow-xs">
-                <div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-100">
+                <?php if ((waklert_has_content(esc_html(waklert_content('content_sitemap_text_c749dd2e47'))))): ?><div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-100">
                     <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-100 text-slate-700">
                         <?= waklert_content_icon('content_sitemap_icon_af1caec82c') ?>
                     </span>
                     <?php if (waklert_has_content(esc_html(waklert_content('content_sitemap_text_c749dd2e47')))): ?><h2 class="font-heading text-base font-black text-[#0c4161] uppercase tracking-wider">
                         <?= esc_html(waklert_content('content_sitemap_text_c749dd2e47')) ?>
                     </h2><?php endif; ?>
-                </div>
+                </div><?php endif; ?>
                 <ul class="space-y-2.5">
                     <?php foreach ($legal_links as $link): ?>
                         <?php if (waklert_has_content(esc_url($link['url'])) || waklert_has_content(esc_html($link['label']))): ?><li>

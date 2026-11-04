@@ -9,17 +9,17 @@ $heading = waklert_content('content_product_faqs_text_d537212157');
 ?>
 <section class="section-padding bg-white" data-testid="faq-strip">
     <div class="container-custom max-w-3xl">
-        <div class="text-center mb-10">
+        <?php if ((waklert_has_content($heading))): ?><div class="text-center mb-10">
             <?php if (waklert_has_content($heading)): ?><h2 class="font-heading text-2xl md:text-4xl font-black text-ink mb-3">
                 <?= $heading ?>
             </h2><?php endif; ?>
-        </div>
+        </div><?php endif; ?>
 
         <div class="space-y-4">
             <?php 
             if(have_rows('faq_items')): 
                 while(have_rows('faq_items')): the_row();
-        if (!waklert_module_row_has_content(get_row(true))) { continue; }
+        if (!waklert_has_content(get_sub_field('question'))) { continue; }
             ?>
             <details open class="group border border-stone-200 rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md open:bg-primary-softer/50 open:border-primary/40">
                 <summary class="flex items-center justify-between gap-4 p-5 cursor-pointer list-none rounded-xl transition-colors hover:text-primary-dark active:bg-primary-softer/60">

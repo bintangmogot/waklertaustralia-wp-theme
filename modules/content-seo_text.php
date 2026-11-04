@@ -38,12 +38,12 @@ if (strpos($cta_link, '/dosage-guide') !== false) {
             <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm group-hover:scale-105 transition-transform">
                 <?= waklert_content_icon('content_seo_text_icon_1cd5e03fa4') ?>
             </div>
-            <div class="flex-1">
+            <?php if ((waklert_has_content(esc_html($cta_title))) || (waklert_has_content(esc_html($cta_desc)))): ?><div class="flex-1">
                 <?php if (waklert_has_content(esc_html($cta_title))): ?><h3 class="font-heading font-bold text-slate-900 text-lg"><?= esc_html($cta_title) ?></h3><?php endif; ?>
                 <?php if (waklert_has_content(esc_html($cta_desc))): ?><p class="text-slate-600 text-sm mt-1 leading-relaxed">
                     <?= esc_html($cta_desc) ?>
                 </p><?php endif; ?>
-            </div>
+            </div><?php endif; ?>
             <div class="hidden md:flex flex-shrink-0 text-primary group-hover:translate-x-1 transition-transform">
                 <?= waklert_content_icon('content_seo_text_icon_098a3174ce') ?>
             </div>
