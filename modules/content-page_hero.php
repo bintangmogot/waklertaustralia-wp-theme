@@ -100,7 +100,7 @@ if (is_home()) :
 
         <!-- Subtitle -->
         <?php if ($subtitle) : ?>
-            <?php if (waklert_has_content(esc_html($subtitle))): ?><p class="mx-auto mt-4 max-w-2xl text-base sm:text-lg leading-relaxed text-sky-100/90 font-medium">
+            <?php if (waklert_has_content(esc_html($subtitle))): ?><p class="mx-auto mt-4 max-w-4xl text-base sm:text-lg leading-relaxed text-sky-100/90 font-medium">
                 <?php echo esc_html($subtitle); ?>
             </p><?php endif; ?>
         <?php endif; ?>

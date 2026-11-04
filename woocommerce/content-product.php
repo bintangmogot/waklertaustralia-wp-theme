@@ -21,6 +21,7 @@ if (empty($product) || !$product->is_visible()) {
 $title = $product->get_title();
 $link = $product->get_permalink();
 $image = wp_get_attachment_image_url($product->get_image_id(), 'medium') ?: '';
+$delivery_label = trim((string) waklert_option_text('shop_card_delivery_label'));
 $shop_page_text = get_field('shop_page_text', $product->get_id()); // From ACF
 $shop_page_excerpt = trim(wp_strip_all_tags((string) $shop_page_text));
 $is_placeholder_excerpt = preg_match('/^(?:armodafinil|modafinil)\s+product$/i', $shop_page_excerpt);
@@ -100,10 +101,12 @@ $best_seller_label = waklert_get_product_presentation_option('best_seller_label'
             </div>
 
             <!-- Mini AU Post Pill -->
+            <?php if (waklert_has_content($delivery_label)): ?>
             <span class="inline-flex items-center gap-1 text-[11px] font-bold text-slate-500">
                 <?= waklert_content_icon('content_product_icon_de67906da9') ?>
-                <?= esc_html(waklert_option_text('shop_card_delivery_label')) ?>
+                <?= esc_html($delivery_label) ?>
             </span>
+            <?php endif; ?>
         </div>
 
         <!-- Anchor action at the bottom of the card -->
