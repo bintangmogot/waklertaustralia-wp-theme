@@ -80,7 +80,7 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
         'emerald' => 'text-emerald-200',
     ];
     ?>
-    <?php if (!is_front_page() && !empty($pre_footer_enabled) && !empty($pre_footer_badges) && is_array($pre_footer_badges)): ?>
+    <?php if (!is_front_page() && !is_shop() && !empty($pre_footer_enabled) && !empty($pre_footer_badges) && is_array($pre_footer_badges)): ?>
     <!-- 2-Tone Dashed Inner Page Badge Strip (Editable in WP Admin -> Theme Settings -> Footer) -->
     <div class="relative isolate overflow-hidden bg-gradient-to-r from-[#082a3f] via-[#0c4161] to-[#125883] bg-pattern-dots-dark py-10 text-white border-b-2 border-solid border-sky-400/30">
         <?php waklert_output_pattern_rings(); ?>
