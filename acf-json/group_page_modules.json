@@ -9175,26 +9175,6 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_lp_title",
-                            "label": "Page Title",
-                            "name": "title",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
                             "key": "field_lp_eyebrow",
                             "label": "Eyebrow",
                             "name": "eyebrow",

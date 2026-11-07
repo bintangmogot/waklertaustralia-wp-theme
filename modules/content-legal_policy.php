@@ -7,7 +7,7 @@
  */
 
 if (waklert_module_is_empty()) { return; }
-$title = waklert_module_text('title');
+$title = get_the_title();
 $eyebrow = waklert_content('content_legal_policy_text_e264055a52');
 $intro = waklert_module_text('intro');
 $updated = get_sub_field('updated');
