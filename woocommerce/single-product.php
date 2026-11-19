@@ -83,8 +83,8 @@ foreach ($variations as $variation_index => $variation_data) {
 
 $text_under_image = get_field('text_under_product_image', $product->get_id()); // ACF field
 $product_id = $product->get_id();
-$review_summary = waklert_get_product_review_summary($product_id);
-$reviews = $review_summary['reviews'];
+$show_product_reviews = apply_filters('waklert_show_product_reviews', true);
+$review_summary = $show_product_reviews ? waklert_get_product_review_summary($product_id) : null;
 $unit_price = waklert_get_product_unit_price($product);
 $display_unit_price = $unit_price;
 $unit_price_lead = waklert_content('single_product_text_8dfc4a8f73');
@@ -210,10 +210,32 @@ $product_specs = array_values(array_filter($product_specs, static function ($spe
                     <?= esc_html($product->is_in_stock() ? waklert_content('single_product_text_c16cd9dc94') : waklert_content('single_product_text_86bab3b87b')) ?>
                 </span>
             </div>
-            <h1 class="font-heading text-2xl md:text-4xl font-extrabold mb-3 text-[#0c4161] tracking-tight"
+            <h1 class="font-heading text-2xl md:text-4xl font-extrabold <?= $show_product_reviews ? 'mb-1' : 'mb-3' ?> text-[#0c4161] tracking-tight"
                 data-testid="text-product-title">
                 <?= esc_html($product->get_name()) ?>
             </h1>
+
+            <?php if ($show_product_reviews): ?>
+                <a href="#product-reviews" data-product-review-link class="mb-1 flex w-fit min-h-8 flex-wrap items-center gap-1.5 rounded-sm text-[13px] font-bold text-primary-light hover:text-primary-dark focus-visible:outline-2 focus-visible:outline-offset-4 sm:text-sm">
+                    <?php if ($review_summary['average_rating'] !== null): ?>
+                        <span class="inline-flex gap-0.5" role="img" aria-label="<?= esc_attr(sprintf(__('%s out of 5 stars', 'modmy'), number_format_i18n($review_summary['average_rating'], 1))) ?>">
+                            <?php for ($star = 1; $star <= 5; $star++): ?>
+                                <span class="relative">
+                                    <?= waklert_content_icon_class('manual_product_review_star_1', 'text-border') ?>
+                                    <span class="absolute inset-0 overflow-hidden text-accent" style="width: <?= esc_attr(max(0, min(1, $review_summary['average_rating'] - $star + 1)) * 100) ?>%">
+                                        <?= waklert_content_icon('manual_product_review_star_1') ?>
+                                    </span>
+                                </span>
+                            <?php endfor; ?>
+                        </span>
+                    <?php endif; ?>
+                    <span class="underline underline-offset-4">
+                        <?= esc_html($review_summary['review_count'] > 0
+                            ? sprintf(_n('%s customer review', '%s customer reviews', $review_summary['review_count'], 'modmy'), number_format_i18n($review_summary['review_count']))
+                            : ($no_reviews_text ?: waklert_content('manual_product_reviews_tab'))) ?>
+                    </span>
+                </a>
+            <?php endif; ?>
 
             <div class="mb-5 flex flex-wrap items-baseline gap-3">
                 <span class="text-3xl md:text-4xl font-black text-[#0c4161]" data-testid="text-product-price">
@@ -546,9 +568,22 @@ if ($acf_main) {
     $main_desc = get_the_content();
 }
 
-if (!empty(trim(strip_tags($main_desc)))): 
+$has_description = trim(wp_strip_all_tags($main_desc)) !== '';
 ?>
-<section class="section-padding relative overflow-hidden bg-gradient-to-b from-[#f0f6fa] via-[#e9f2f8] to-[#f8fafc] bg-pattern-dots border-t-2 border-solid border-sky-200/80" data-testid="section-product-description">
+<?php if ($show_product_reviews): ?>
+    <div id="product-content-tabs" data-product-tabs>
+        <div class="border-t border-border bg-white">
+            <div class="container-site flex scroll-mt-24 flex-wrap gap-x-6" data-product-tab-list aria-label="<?= esc_attr(waklert_content('manual_product_tabs_label')) ?>">
+                <?php if ($has_description): ?>
+                    <a id="product-description-tab" href="#product-description" class="border-b-2 border-transparent px-2 py-3 text-sm font-semibold text-muted-foreground hover:text-primary-dark focus-visible:outline-2 focus-visible:outline-offset-2 aria-selected:border-primary aria-selected:text-primary-dark"><?= esc_html(waklert_content('manual_product_description_tab')) ?></a>
+                <?php endif; ?>
+                <a id="product-reviews-tab" href="#product-reviews" class="border-b-2 border-transparent px-2 py-3 text-sm font-semibold text-muted-foreground hover:text-primary-dark focus-visible:outline-2 focus-visible:outline-offset-2 aria-selected:border-primary aria-selected:text-primary-dark"><?= esc_html(waklert_content('manual_product_reviews_tab')) ?> (<?= esc_html(number_format_i18n($review_summary['review_count'])) ?>)</a>
+            </div>
+        </div>
+<?php endif; ?>
+
+<?php if ($has_description): ?>
+<section id="product-description" class="section-padding relative overflow-hidden bg-gradient-to-b from-[#f0f6fa] via-[#e9f2f8] to-[#f8fafc] bg-pattern-dots border-t-2 border-solid border-sky-200/80" data-testid="section-product-description">
     <div class="container-site relative z-10 max-w-5xl">
         <div class="bg-white rounded-3xl shadow-sm border-2 border-solid border-sky-300/80 p-6 md:p-12 prose prose-slate max-w-none">
             <?= apply_filters('the_content', $main_desc); ?>
@@ -557,16 +592,13 @@ if (!empty(trim(strip_tags($main_desc)))):
 </section>
 <?php endif; ?>
 
-<?php
-// Product reviews section - preserved in codebase, hidden on product page as requested
-$show_product_reviews = apply_filters('waklert_show_product_reviews', false);
-if ($show_product_reviews) {
-    get_template_part('template-parts/product-reviews', null, [
-        'product_id' => $product->get_id(),
+<?php if ($show_product_reviews): ?>
+    <?php get_template_part('template-parts/product-reviews', null, [
+        'product_id' => $product_id,
         'product_name' => $product->get_name(),
-    ]);
-}
-?>
+    ]); ?>
+    </div>
+<?php endif; ?>
 
 <!-- Dynamic ACF Modules (Replaces Hardcoded FAQs) -->
 <?php

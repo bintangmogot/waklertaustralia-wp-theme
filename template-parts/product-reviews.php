@@ -8,38 +8,25 @@
 $args = isset($args) && is_array($args) ? $args : [];
 $product_id = absint($args['product_id'] ?? get_the_ID());
 $product_name = (string) ($args['product_name'] ?? get_the_title($product_id));
-$reviews = get_posts([
-    'post_type' => 'review',
-    'post_status' => 'publish',
-    'posts_per_page' => -1,
-    'orderby' => 'date',
-    'order' => 'DESC',
-    'meta_query' => [[
-        'key' => 'linked_product',
-        'value' => $product_id,
-        'compare' => '=',
-    ]],
-]);
-$review_count = count($reviews);
-$rating_count = 0;
-$rating_total = 0;
-$review_ratings = [];
+$summary = waklert_get_product_review_summary($product_id);
+$reviews = $summary['reviews'];
+$review_count = $summary['review_count'];
+$rating_count = $summary['rating_count'];
+$review_ratings = $summary['ratings'];
+$average_rating = $summary['average_rating'];
 $rating_counts = array_fill_keys([5, 4, 3, 2, 1], 0);
+$verified_reviews = [];
 
 foreach ($reviews as $review) {
-    $rating_value = function_exists('get_field')
-        ? get_field('rating', $review->ID)
-        : get_post_meta($review->ID, 'rating', true);
-    $review_ratings[$review->ID] = $rating_value;
+    $reviewer_meta = get_post_meta($review->ID, 'reviewer_meta', true);
+    $verified_reviews[$review->ID] = (bool) preg_match('/^verified(?:\s+(?:buyer|customer|purchase|purchaser))?$/i', trim((string) $reviewer_meta));
+}
+$all_verified = $review_count > 0 && !in_array(false, $verified_reviews, true);
 
-    if (is_numeric($rating_value) && (float) $rating_value >= 1 && (float) $rating_value <= 5) {
-        $rating_counts[(int) round((float) $rating_value)]++;
-        $rating_count++;
-        $rating_total += (float) $rating_value;
-    }
+foreach ($review_ratings as $rating_value) {
+    $rating_counts[(int) round($rating_value)]++;
 }
 
-$average_rating = $rating_count > 0 ? round($rating_total / $rating_count, 1) : null;
 $rounded_rating = $average_rating !== null ? (int) round($average_rating) : 0;
 
 $rating_percentages = [];
@@ -63,13 +50,17 @@ if ($average_rating !== null) {
 
 <section id="product-reviews" class="scroll-mt-24 border-t border-slate-200 bg-slate-50 py-8 md:py-12" data-testid="section-reviews">
     <div class="container-site max-w-6xl">
-        <header class="mb-10 flex flex-col items-center justify-center text-center">
-            <span class="mb-4 inline-flex items-center gap-1.5 rounded-full bg-primary-softer px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-primary-dark">
-                <?= waklert_content_icon('product_reviews_icon_c80fc78e5a') ?>
-                <?= esc_html(waklert_content('product_reviews_text_4a114408dc')) ?>
-            </span>
+        <header class="mb-6 flex flex-col items-center justify-center text-center">
+            <?php if ($all_verified): ?>
+                <span class="mb-4 inline-flex items-center gap-1.5 rounded-full bg-primary-softer px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-primary-dark">
+                    <?= waklert_content_icon('product_reviews_icon_c80fc78e5a') ?>
+                    <?= esc_html(waklert_content('product_reviews_text_4a114408dc')) ?>
+                </span>
+            <?php endif; ?>
             <h2 class="mb-2 font-heading text-3xl font-extrabold tracking-tight text-slate-900 md:text-4xl"><?= esc_html(waklert_content('product_reviews_text_ea79028f54')) ?></h2>
-            <p class="text-sm font-medium text-slate-500 md:text-base"><?= esc_html(waklert_content('product_reviews_text_85c9c4b152')) ?></p>
+            <?php if ($all_verified): ?>
+                <p class="text-sm font-medium text-slate-500 md:text-base"><?= esc_html(waklert_content('product_reviews_text_85c9c4b152')) ?></p>
+            <?php endif; ?>
         </header>
 
         <?php if ($review_count > 0 && $rating_count > 0): ?>
@@ -121,7 +112,6 @@ if ($average_rating !== null) {
                     $body = get_post_field('post_content', $post_id);
                     $reviewer = function_exists('get_field') ? get_field('name', $post_id) : '';
                     $reviewer = $reviewer ?: $review->post_title;
-                    $reviewer_meta = function_exists('get_field') ? get_field('reviewer_meta', $post_id) : '';
                     $rating_value = $review_ratings[$post_id] ?? null;
                     $name_parts = preg_split('/\s+/', trim((string) $reviewer)) ?: [];
                     $first_initial = !empty($name_parts[0])
@@ -132,9 +122,9 @@ if ($average_rating !== null) {
                         ? (function_exists('mb_substr') ? mb_substr($last_name, 0, 1) : substr($last_name, 0, 1))
                         : '';
                     $initials = strtoupper($first_initial . $last_initial);
-                    $is_verified = !$reviewer_meta || stripos((string) $reviewer_meta, 'verified') !== false;
+                    $is_verified = $verified_reviews[$post_id];
                 ?>
-                    <article class="w-full shrink-0 snap-start rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:w-[350px]" data-testid="review-<?= esc_attr($index) ?>">
+                    <article class="flex w-full shrink-0 snap-start flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:w-[350px]" data-testid="review-<?= esc_attr($index) ?>">
                         <?php if (is_numeric($rating_value) && (float) $rating_value >= 1 && (float) $rating_value <= 5): ?>
                             <div class="mb-4 flex gap-0.5" aria-label="<?= esc_attr($rating_value) ?> out of 5 stars">
                                 <?php for ($star = 1; $star <= 5; $star++): ?>
@@ -144,7 +134,7 @@ if ($average_rating !== null) {
                         <?php endif; ?>
 
                         <h3 class="mb-2 text-[15px] font-bold leading-snug text-slate-900"><?= esc_html($title) ?></h3>
-                        <div class="mb-6 line-clamp-4 flex-1 text-[13px] leading-relaxed text-slate-600"><?= wp_kses_post($body) ?></div>
+                        <div class="mb-6 flex-1 wrap-break-word text-[13px] leading-relaxed text-slate-600"><?= wp_kses_post(wpautop($body)) ?></div>
 
                         <div class="mt-auto flex items-center justify-between gap-3 border-t border-slate-100 pt-4">
                             <div class="flex min-w-0 items-center gap-3">
@@ -233,13 +223,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const slider = section.querySelector('.waklert-review-slider');
     const firstCard = slider ? slider.querySelector('article') : null;
-    const slideBy = firstCard ? firstCard.getBoundingClientRect().width + 24 : 374;
+    const slideBy = () => firstCard ? firstCard.getBoundingClientRect().width + 24 : 374;
 
     section.querySelector('.waklert-review-prev')?.addEventListener('click', function () {
-        slider?.scrollBy({ left: -slideBy, behavior: 'smooth' });
+        slider?.scrollBy({ left: -slideBy(), behavior: 'smooth' });
     });
     section.querySelector('.waklert-review-next')?.addEventListener('click', function () {
-        slider?.scrollBy({ left: slideBy, behavior: 'smooth' });
+        slider?.scrollBy({ left: slideBy(), behavior: 'smooth' });
     });
 
     const form = section.querySelector('#waklert-product-review-form');

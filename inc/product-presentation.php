@@ -186,12 +186,13 @@ if (!function_exists('waklert_get_product_review_summary')) {
                 ? get_field('rating', $review->ID)
                 : get_post_meta($review->ID, 'rating', true);
             if (is_numeric($rating) && (float) $rating >= 1 && (float) $rating <= 5) {
-                $ratings[] = (float) $rating;
+                $ratings[$review->ID] = (float) $rating;
             }
         }
 
         $cache[$product_id] = [
             'reviews' => $reviews,
+            'ratings' => $ratings,
             'review_count' => count($reviews),
             'rating_count' => count($ratings),
             'average_rating' => $ratings ? round(array_sum($ratings) / count($ratings), 1) : null,

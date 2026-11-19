@@ -13,6 +13,13 @@ function modmy_enqueue_scripts() {
     );
 
     if (function_exists('is_product') && is_product()) {
+        wp_enqueue_script(
+            'waklert-product-tabs',
+            MODMY_THEME_URI . '/assets/js/product-tabs.js',
+            [],
+            filemtime(MODMY_THEME_DIR . '/assets/js/product-tabs.js'),
+            true
+        );
         wp_enqueue_style(
             'waklert-flaticon-uicons',
             'https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css',

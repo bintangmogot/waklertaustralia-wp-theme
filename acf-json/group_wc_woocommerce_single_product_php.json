@@ -3,6 +3,39 @@
     "title": "Single Product",
     "fields": [
         {
+            "key": "field_wc_manual_product_tabs_label",
+            "label": "Product tabs accessible label",
+            "name": "wc_manual_product_tabs_label",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/single-product.php",
+            "default_value": "Product information",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_manual_product_description_tab",
+            "label": "Product description tab",
+            "name": "wc_manual_product_description_tab",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/single-product.php",
+            "default_value": "Description",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_wc_manual_product_reviews_tab",
+            "label": "Product reviews tab",
+            "name": "wc_manual_product_reviews_tab",
+            "type": "text",
+            "required": 0,
+            "instructions": "Default is installed once into an empty field. Later edits and clears are preserved. Source: woocommerce/single-product.php",
+            "default_value": "Reviews",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
             "key": "field_wc_single_product_icon_9e301b9ac3",
             "label": "Icon 9e301b9ac3",
             "name": "wc_single_product_icon_9e301b9ac3",

@@ -1,4 +1,22 @@
 {
+    "manual_product_tabs_label": {
+        "type": "text",
+        "default": "Product information",
+        "source": "woocommerce/single-product.php",
+        "label": "Product tabs accessible label"
+    },
+    "manual_product_description_tab": {
+        "type": "text",
+        "default": "Description",
+        "source": "woocommerce/single-product.php",
+        "label": "Product description tab"
+    },
+    "manual_product_reviews_tab": {
+        "type": "text",
+        "default": "Reviews",
+        "source": "woocommerce/single-product.php",
+        "label": "Product reviews tab"
+    },
     "manual_city_heading": {
         "type": "text",
         "default": "Armodafinil delivery to {city}",

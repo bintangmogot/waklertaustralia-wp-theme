@@ -33,6 +33,14 @@ WordPress/plugin interface strings, technical route names, CSS layout tokens,
 numeric counters and transaction calculations remain implementation or native
 plugin behavior. The theme's existing operational mail routing is unchanged.
 
+## Product reviews
+
+In WordPress, go to **Reviews → Add New**. Enter the review title, text and
+rating, choose the correct **Linked Product**, then publish. Published linked
+reviews appear in that product's **Reviews** tab and update the count and rating
+under its title. Reviews without a linked product are for the site-wide reviews
+page. Reviews submitted through a product page remain drafts until published.
+
 ## Defaults and preservation
 
 `inc/data/content-defaults.json` contains the original module, option and FAQ
