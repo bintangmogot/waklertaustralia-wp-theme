@@ -36,11 +36,6 @@ $unit_price = waklert_get_product_unit_price($product);
 $show_card_reviews = apply_filters('waklert_show_product_card_reviews', is_shop());
 $review_summary = $show_card_reviews ? waklert_get_product_review_summary($product->get_id()) : null;
 $review_count = $review_summary['review_count'] ?? 0;
-$review_label = $show_card_reviews
-    ? ($review_count > 0
-        ? sprintf(_n('%s review', '%s reviews', $review_count, 'modmy'), number_format_i18n($review_count))
-        : waklert_get_product_presentation_option('product_no_reviews_text'))
-    : '';
 $in_stock_label = waklert_option_text('shop_card_in_stock_label');
 $out_of_stock_label = waklert_option_text('shop_card_out_of_stock_label');
 $best_seller_label = waklert_get_product_presentation_option('best_seller_label');
@@ -80,7 +75,7 @@ $best_seller_label = waklert_get_product_presentation_option('best_seller_label'
             </a>
         </h3>
 
-        <?php if ($review_label !== ''): ?>
+        <?php if ($review_count > 0): ?>
         <a href="<?= esc_url($link . '#product-reviews') ?>" class="mt-1 inline-flex min-h-6 w-fit flex-wrap items-center gap-x-1.5 rounded-sm text-[13px] text-muted-foreground hover:text-primary-dark focus-visible:outline-2 focus-visible:outline-offset-2" data-product-card-reviews>
             <?php if ($review_summary['average_rating'] !== null): ?>
                 <span class="inline-flex items-center gap-1 font-semibold text-ink">
@@ -89,7 +84,7 @@ $best_seller_label = waklert_get_product_presentation_option('best_seller_label'
                 </span>
                 <span aria-hidden="true">·</span>
             <?php endif; ?>
-            <span class="underline underline-offset-2"><?= esc_html($review_label) ?></span>
+            <span class="underline underline-offset-2"><?= esc_html(sprintf(_n('%s review', '%s reviews', $review_count, 'modmy'), number_format_i18n($review_count))) ?></span>
         </a>
         <?php endif; ?>
 
