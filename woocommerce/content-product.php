@@ -33,8 +33,14 @@ $excerpt_length = function_exists('mb_strlen') ? mb_strlen($excerpt) : strlen($e
 $description_id = 'product-description-' . absint($product->get_id());
 $in_stock = $product->is_in_stock();
 $unit_price = waklert_get_product_unit_price($product);
-$review_summary = waklert_get_product_review_summary($product->get_id());
-$no_reviews_text = waklert_get_product_presentation_option('product_no_reviews_text');
+$show_card_reviews = apply_filters('waklert_show_product_card_reviews', is_shop());
+$review_summary = $show_card_reviews ? waklert_get_product_review_summary($product->get_id()) : null;
+$review_count = $review_summary['review_count'] ?? 0;
+$review_label = $show_card_reviews
+    ? ($review_count > 0
+        ? sprintf(_n('%s review', '%s reviews', $review_count, 'modmy'), number_format_i18n($review_count))
+        : waklert_get_product_presentation_option('product_no_reviews_text'))
+    : '';
 $in_stock_label = waklert_option_text('shop_card_in_stock_label');
 $out_of_stock_label = waklert_option_text('shop_card_out_of_stock_label');
 $best_seller_label = waklert_get_product_presentation_option('best_seller_label');
@@ -74,6 +80,19 @@ $best_seller_label = waklert_get_product_presentation_option('best_seller_label'
             </a>
         </h3>
 
+        <?php if ($review_label !== ''): ?>
+        <a href="<?= esc_url($link . '#product-reviews') ?>" class="mt-1 inline-flex min-h-6 w-fit flex-wrap items-center gap-x-1.5 rounded-sm text-[13px] text-muted-foreground hover:text-primary-dark focus-visible:outline-2 focus-visible:outline-offset-2" data-product-card-reviews>
+            <?php if ($review_summary['average_rating'] !== null): ?>
+                <span class="inline-flex items-center gap-1 font-semibold text-ink">
+                    <span class="text-accent" aria-hidden="true"><?= waklert_content_icon('manual_star_marker') ?></span>
+                    <span><?= esc_html(number_format_i18n($review_summary['average_rating'], 1)) ?>/5</span>
+                </span>
+                <span aria-hidden="true">·</span>
+            <?php endif; ?>
+            <span class="underline underline-offset-2"><?= esc_html($review_label) ?></span>
+        </a>
+        <?php endif; ?>
+
         <?php if ($excerpt !== ''): ?>
         <div class="product-desc-wrapper mt-2">
             <p id="<?= esc_attr($description_id) ?>" class="text-xs sm:text-sm text-slate-600 leading-relaxed">
@@ -111,25 +130,6 @@ $best_seller_label = waklert_get_product_presentation_option('best_seller_label'
 
         <!-- Anchor action at the bottom of the card -->
         <div class="mt-auto pt-3 sm:pt-5">
-            <?php if (apply_filters('waklert_show_product_card_reviews', false)): ?>
-                <div class="mb-2 sm:mb-3">
-                    <?php if ($review_summary['review_count'] > 0): ?>
-                    <a href="<?= esc_url($link . '#product-reviews') ?>" class="inline-flex w-fit items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-primary-dark" aria-label="Read <?= esc_attr($review_summary['review_count']) ?> product reviews">
-                        <?php if ($review_summary['rating_count'] > 0): ?>
-                            <span class="text-accent" aria-hidden="true"><?= waklert_content_icon('manual_star_marker') ?></span>
-                            <span class="font-semibold text-ink"><?= esc_html(number_format($review_summary['average_rating'], 1)) ?></span>
-                            <span aria-hidden="true">·</span>
-                        <?php endif; ?>
-                        <span>(<?= esc_html($review_summary['review_count']) ?> <?= esc_html($review_summary['review_count'] === 1 ? 'review' : 'reviews') ?>)</span>
-                    </a>
-                    <?php else: ?>
-                    <a href="<?= esc_url($link . '#product-reviews') ?>" class="inline-flex w-fit text-xs text-muted-foreground transition-colors hover:text-primary-dark">
-                        <?= esc_html($no_reviews_text) ?>
-                    </a>
-                    <?php endif; ?>
-                </div>
-            <?php endif; ?>
-
             <!-- CTA Button (Compact on Mobile) -->
             <div>
             <?php if ($in_stock): ?>
