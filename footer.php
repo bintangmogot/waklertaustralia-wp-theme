@@ -216,6 +216,27 @@ if (is_front_page() && empty($GLOBALS['waklert_support_cta_rendered'])) {
             </div>
             <?php endif; ?>
 
+            <?php
+            // Social media links come from Theme Settings > Social Media. An empty link is not shown.
+            $social_links = [
+                'Facebook'    => ['url' => get_field('facebook_link', 'option'), 'path' => 'M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z'],
+                'Instagram'   => ['url' => get_field('instagram_link', 'option'), 'path' => 'M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2zm-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6zm9.65 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z'],
+                'X (Twitter)' => ['url' => get_field('twitter_link', 'option'), 'path' => 'M17.8 3h3.1l-6.8 7.8L22 21h-6.2l-4.9-6.3L5.3 21H2.2l7.3-8.3L2 3h6.4l4.4 5.8L17.8 3zm-1.1 16.2h1.7L7.4 4.7H5.6l11.1 14.5z'],
+            ];
+            $social_links = array_filter($social_links, static fn($item) => trim((string) $item['url']) !== '');
+            ?>
+            <?php if ($social_links): ?>
+            <ul class="mt-6 flex flex-wrap items-center gap-2" aria-label="Social media">
+                <?php foreach ($social_links as $social_label => $social): ?>
+                <li>
+                    <a href="<?= esc_url($social['url']) ?>" target="_blank" rel="noopener noreferrer" aria-label="<?= esc_attr($social_label) ?>" class="transition-opacity hover:opacity-80" style="display:grid;place-items:center;width:2.5rem;height:2.5rem;border-radius:9999px;background:rgba(255,255,255,.12);color:#fff;">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="<?= esc_attr($social['path']) ?>"/></svg>
+                    </a>
+                </li>
+                <?php endforeach; ?>
+            </ul>
+            <?php endif; ?>
+
             <?php if (!empty($payment_images) && is_array($payment_images)) : ?>
                 <?php if (!empty($payments_heading)): ?>
                 <h3 class="text-[15px] font-bold text-white mb-3 mt-8" style="color: #fff !important">

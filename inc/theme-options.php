@@ -101,6 +101,27 @@ add_action('wp_update_nav_menu', function() {
 });
 
 /**
+ * Reviews appear on product pages, Shop cards, the Reviews page and the star rating under product titles.
+ * Without this, a review published, edited, unpublished or deleted in WordPress stays hidden on those pages
+ * until the cached copy expires. Clear the page cache whenever a review changes.
+ */
+add_action('acf/save_post', function($post_id) {
+    if (is_numeric($post_id) && get_post_type((int) $post_id) === 'review') {
+        do_action('litespeed_purge_all');
+    }
+}, 30);
+add_action('transition_post_status', function($new_status, $old_status, $post) {
+    if ($post && $post->post_type === 'review' && ($new_status === 'publish' || $old_status === 'publish')) {
+        do_action('litespeed_purge_all');
+    }
+}, 10, 3);
+add_action('before_delete_post', function($post_id) {
+    if (get_post_type((int) $post_id) === 'review') {
+        do_action('litespeed_purge_all');
+    }
+});
+
+/**
  * One-time import of the reorganised Theme Settings tabs (acf-json/group_theme_settings.json)
  * into the database field group. Field names are unchanged, so saved values are kept.
  */
